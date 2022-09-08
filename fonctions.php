@@ -102,37 +102,20 @@ function user($info)
 
 function menu_item($title, $url = null, $active = null)
 {
+    $html = <<<HTML
 
-    if ($url == null) {
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link {$active}" href="{$url}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">$title</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
 
-        $html = <<<HTML
-
-            <div class="menu-item">
-                <!--begin:Menu content-->
-                <div class="menu-content">
-                    <span class="menu-section fs-5 fw-bolder ps-1 py-1">$title</span>
-                </div>
-                <!--end:Menu content-->
-            </div>
-
-        HTML;
-    } else {
-
-        $html = <<<HTML
-
-            <div class="menu-item">
-                <!--begin:Menu link-->
-                <a class="aside_menu_link menu-link {$active}" href="{$url}">
-                    <span class="menu-bullet">
-                        <span class="bullet bullet-dot"></span>
-                    </span>
-                    <span class="menu-title">$title</span>
-                </a>
-                <!--end:Menu link-->
-            </div>
-
-        HTML;
-    }
+    HTML;
 
     return $html;
 }
@@ -160,7 +143,7 @@ function menu_sub_item($title, $url = null, $active = null)
 
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="aside_menu_link menu-link {$active}" href="{$url}">
+                <a class="menu-link {$active}" href="{$url}">
                     <span class="menu-bullet">
                         <span class="bullet bullet-dot"></span>
                     </span>
@@ -175,15 +158,16 @@ function menu_sub_item($title, $url = null, $active = null)
     return $html;
 }
 
-function single_menu($nom, $icon, $active)
+function single_menu($nom, $icon, $url, $active)
 {
 
     $html = <<<HTML
 
-        <div data-bs-toggle="tooltip" data-bs-placement="right" data-bs-dismiss="click" title="{$nom}" class="menu-item {$active} py-2">
+        <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link" href="fournisseur">
+            <a class="menu-link {$active}" href="{$url}">
                 $icon
+                <span class="menu-title">$nom</span>
             </a>
             <!--end:Menu link-->
         </div>
@@ -197,16 +181,20 @@ function single_sub_menu($nom, $icon, $tab_menu, $active)
 {
     $html = <<<HTML
 
-        <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item {$active} py-2">
+        <div data-kt-menu-trigger="click" class="menu-item {$active} menu-accordion">
             <!--begin:Menu link-->
-            $icon
+            <span class="menu-link">
+                $icon
+                <span class="menu-title">$nom</span>
+                <span class="menu-arrow"></span>
+            </span>
             <!--end:Menu link-->
             <!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-dropdown menu-sub-indention px-2 py-4 w-250px">
+            <div class="menu-sub menu-sub-accordion">
 
     HTML;
 
-    $html .= menu_item($nom);
+    // $html .= menu_item($nom);
 
     foreach ($tab_menu as $sub_menu) {
 
