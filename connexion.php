@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/db.php');
-require_once(__DIR__ . '/fonctions.php');
-require_once(__DIR__ . '/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 //Vérifie si le formulaire a été envoyé
 $email = $_POST['email'];
@@ -20,7 +20,7 @@ $statement = $db->prepare($query);
 $statement->execute();
 $count = $statement->rowCount();
 
-if ($count > 0) {
+if ($count > 0  && $email != 'null' && $password != 'null') {
 
     $data = $statement->fetch(PDO::FETCH_ASSOC);
     //Si le compte est Actif
@@ -42,40 +42,30 @@ if ($count > 0) {
             $_SESSION['email_utilisateur'] = $data['email_utilisateur'];
             $_SESSION['tel_utilisateur'] = $data['tel_utilisateur'];
             $_SESSION['avatar_utilisateur'] = $data['avatar_utilisateur'];
-
-            // Menu session active
-            $_SESSION['menu_view_articles'] = 'all';
-            $_SESSION['menu_add_articles'] = 'add_public';
-
-            $_SESSION['menu_view_clients'] = 'all';
-            $_SESSION['menu_add_clients'] = 'add_clients';
-
-            $_SESSION['menu_view_redacteurs'] = 'all';
-            $_SESSION['menu_add_redacteurs'] = 'add_redacteurs';
-
-            $_SESSION['menu_view_correcteurs'] = 'all';
-            $_SESSION['menu_add_correcteurs'] = 'add_correcteurs';
-
-            $_SESSION['menu_view_equipe'] = 'all';
-            $_SESSION['menu_add_equipe'] = 'add_equipe';
-
-            $_SESSION['menu_view_missions'] = 'all';
             
 
-            if ($data['type_compte'] == "client") {
-                $message = "parametres corrects - client";
+            if ($data['type_compte'] == "dg") {
+                $message = "parametres corrects - dg";
             }
 
-            if ($data['type_compte'] == "fournisseur") {
-                $message = "parametres corrects - fournisseur";
+            if ($data['type_compte'] == "dd") {
+                $message = "parametres corrects - dd";
             }
 
-            if ($data['type_compte'] == "redacteur") {
-                $message = "parametres corrects - redacteur";
+            if ($data['type_compte'] == "dm") {
+                $message = "parametres corrects - dm";
             }
 
-            if ($data['type_compte'] == "correcteur") {
-                $message = "parametres corrects - correcteur";
+            if ($data['type_compte'] == "cm") {
+                $message = "parametres corrects - cm";
+            }
+
+            if ($data['type_compte'] == "am") {
+                $message = "parametres corrects - am";
+            }
+
+            if ($data['type_compte'] == "stg") {
+                $message = "parametres corrects - stg";
             }
 
         } else {

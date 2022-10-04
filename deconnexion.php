@@ -1,7 +1,7 @@
 <?php 
-    require_once(__DIR__.'/db.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
 
     session_destroy();
-    header("location:/admin.redac.ap");
+    header("location:/ged");
     exit();
 ?>
