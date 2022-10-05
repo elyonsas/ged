@@ -1,3 +1,6 @@
+<?php
+require($_SERVER['DOCUMENT_ROOT'] . '/ged/global.php');
+?>
 <!DOCTYPE html>
 <!--
 Author: Keenthemes
@@ -117,9 +120,13 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Col-->
 								<div class="col-md-6">
 									<!--begin::Google link=-->
-									<a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+									<a href="#" data-onsuccess="onSignIn" class="g-signin2 btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
 										<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-15px me-3" />Connexion avec Google</a>
 									<!--end::Google link=-->
+								</div>
+								<div id="g_id_onload" data-client_id="<?= GOOGLE_ID ?>" data-callback="handleCredentialResponse" data-auto_prompt="false">
+								</div>
+								<div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
 								</div>
 								<!--end::Col-->
 								<!--begin::Col-->
@@ -198,8 +205,19 @@ License: For each use you must have a valid license purchased only from above li
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Custom Javascript(used by this page)-->
 	<!-- <script src="assets/js/custom/authentication/sign-in/general.js"></script> -->
-
 	<script>
+		function handleCredentialResponse(response) {
+			// decodeJwtResponse() is a custom function defined by you
+			// to decode the credential response.
+			const responsePayload = decodeJwtResponse(response.credential);
+
+			console.log("ID: " + responsePayload.sub);
+			console.log('Full Name: ' + responsePayload.name);
+			console.log('Given Name: ' + responsePayload.given_name);
+			console.log('Family Name: ' + responsePayload.family_name);
+			console.log("Image URL: " + responsePayload.picture);
+			console.log("Email: " + responsePayload.email);
+		}
 		$(document).ready(function() {
 
 			"use strict";
@@ -378,6 +396,7 @@ License: For each use you must have a valid license purchased only from above li
 
 		})
 	</script>
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
 </body>
