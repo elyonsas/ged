@@ -5,6 +5,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+$key = 'example_key';
+$payload = [
+    'iss' => 'http://example.org',
+    'aud' => 'http://example.com',
+    'iat' => 1356999524,
+    'nbf' => 1357000000
+];
+
+/**
+ * IMPORTANT:
+ * You must specify supported algorithms for your application. See
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
+ * for a list of spec-compliant algorithms.
+ */
+$jwt = JWT::encode($payload, $key, 'HS256');
+$decoded = JWT::decode('', new Key($key, 'HS256'));
+
+
+dd($decoded);
+
 //Vérifie si le formulaire a été envoyé
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -30,10 +53,10 @@ if ($count > 0  && $email != 'null' && $password != 'null') {
 
         //Si le mot de passe de l'admin correspond 
         if ($password == $data['mdp_compte']) {
-            
+
             //update('utilisateur', ['etat_personne' => 'connecte'], "email_personne = '$email'", $db);
             //On créé une session pour stocker l'id de l'admin et son role
-            
+
             $_SESSION['id_compte'] = $data['id_compte'];
             $_SESSION['type_compte'] = $data['type_compte'];
             $_SESSION['id_utilisateur'] = $data['id_utilisateur'];
@@ -44,7 +67,7 @@ if ($count > 0  && $email != 'null' && $password != 'null') {
             $_SESSION['email_utilisateur'] = $data['email_utilisateur'];
             $_SESSION['tel_utilisateur'] = $data['tel_utilisateur'];
             $_SESSION['avatar_utilisateur'] = $data['avatar_utilisateur'];
-            
+
 
             if ($data['type_compte'] == "dg") {
                 $message = "parametres corrects - dg";
@@ -69,7 +92,6 @@ if ($count > 0  && $email != 'null' && $password != 'null') {
             if ($data['type_compte'] == "stg") {
                 $message = "parametres corrects - stg";
             }
-
         } else {
 
             $message = "Mot de passe erroné";
@@ -78,7 +100,7 @@ if ($count > 0  && $email != 'null' && $password != 'null') {
 
         $message = "Compte désactivé";
     }
-}else{
+} else {
     $message = "Email invalide";
 }
 

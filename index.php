@@ -206,6 +206,14 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Custom Javascript(used by this page)-->
 	<!-- <script src="assets/js/custom/authentication/sign-in/general.js"></script> -->
 	<script>
+		const jose = require('jose')
+
+		function decodeJwtResponse(response) {
+			const { id_token } = response
+			const { payload } = jose.JWT.decode(id_token)
+			return payload
+		}
+		
 		function handleCredentialResponse(response) {
 			// decodeJwtResponse() is a custom function defined by you
 			// to decode the credential response.
@@ -217,7 +225,10 @@ License: For each use you must have a valid license purchased only from above li
 			console.log('Family Name: ' + responsePayload.family_name);
 			console.log("Image URL: " + responsePayload.picture);
 			console.log("Email: " + responsePayload.email);
+
+			console.log(response.credential);
 		}
+
 		$(document).ready(function() {
 
 			"use strict";
