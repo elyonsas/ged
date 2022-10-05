@@ -1,10 +1,9 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
-
-dump($_POST);
-die;
 
 //Vérifie si le formulaire a été envoyé
 $email = $_POST['email'];

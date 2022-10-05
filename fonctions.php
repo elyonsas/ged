@@ -7,7 +7,7 @@
         }
     }
     ////////// dump avec des pre pour saut de ligne
-    function dump($variable)
+    function dumpi($variable)
     {
         echo '<pre>';
         var_dump($variable);
@@ -65,7 +65,7 @@
         echo d($data) . "<br>\n";
     }
 
-    function dd($data)
+    function ddi($data)
     {
         echo dnl($data);
         exit;
