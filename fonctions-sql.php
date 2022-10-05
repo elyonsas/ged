@@ -177,6 +177,20 @@
         return $result["$info"];
     }
 
+    function compte_exists($email, PDO $db){
+        $query = "SELECT * FROM compte WHERE email_compte = :email_compte";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':email_compte' => $email
+        ]);
+        $result = $statement->fetch();
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //// Pour les stats tableau de bord fournisseur
 
     function stat_article_en_cour(PDO $db, $acces = null)

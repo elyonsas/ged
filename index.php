@@ -206,7 +206,6 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Custom Javascript(used by this page)-->
 	<!-- <script src="assets/js/custom/authentication/sign-in/general.js"></script> -->
 	<script>
-		
 		function handleCredentialResponse(response) {
 
 			// Faire une requete ajax pour envoyer le token au serveur
@@ -216,12 +215,41 @@ License: For each use you must have a valid license purchased only from above li
 				data: {
 					'credential': response.credential,
 				},
-				success: function (data) {
-					
+				dataType: 'JSON',
+				success: function(data) {
+					if (data == "compte inexistant") {
+						Swal.fire({
+							title: "Compte inexistant",
+							text: "Ce compte n'existe pas dans la notre base de données pour plus d'infos veuillez contacter l'administrateur",
+							icon: "error",
+						});
+					} else {
+						if (data == "parametres corrects - dg") {
+							window.location = "roll/dg/";
+						}
+
+						if (data == "parametres corrects - dd") {
+							window.location = "roll/dd/";
+						}
+
+						if (data == "parametres corrects - dm") {
+							window.location = "roll/dm/";
+						}
+
+						if (data == "parametres corrects - cm") {
+							window.location = "roll/cm/";
+						}
+
+						if (data == "parametres corrects - am") {
+							window.location = "roll/am/";
+						}
+
+						if (data == "parametres corrects - stg") {
+							window.location = "roll/stg/";
+						}
+					}
 				},
 			});
-
-			console.log(response);
 		}
 
 		$(document).ready(function() {
