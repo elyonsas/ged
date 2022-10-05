@@ -1,14 +1,10 @@
-const http = require('http');
+const jwt =
+  'eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..KVcNLqK-3-8ZkYIC.xSwF4VxO0kUMUD2W-cifsNUxnr-swyBq-nADBptyt6y9n79-iNc5b0AALJpRwc0wwDkJw8hNOMjApNUTMsK9b-asToZ3DXFMvwfJ6n1aWefvd7RsoZ2LInWFfVAuttJDzoGB.uuexQoWHwrLMEYRElT8pBQ'
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const { payload, protectedHeader } = await jose.jwtDecrypt(jwt, secretKey, {
+  issuer: 'urn:example:issuer',
+  audience: 'urn:example:audience',
+})
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+console.log(protectedHeader)
+console.log(payload)
