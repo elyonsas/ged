@@ -19,6 +19,7 @@ if (isset($_POST['credential'])) {
     if ($payload) {
 
         // récuperer les infos
+        $userid = $payload['sub'];
         $email = $payload['email'];
         $nom = $payload['family_name'];
         $prenom = $payload['given_name'];
@@ -27,7 +28,8 @@ if (isset($_POST['credential'])) {
         // Si le compte existe, connecter
         if (compte_exists($email, $db)) {
 
-            $query = "SELECT * FROM compte, utilisateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND email = '$email'";
+
+            $query = "SELECT * FROM compte, utilisateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.email_compte = '$email'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -67,15 +69,12 @@ if (isset($_POST['credential'])) {
             if ($result['type_compte'] == "stg") {
                 $message = "parametres corrects - stg";
             }
-
-            $message = 'Connexion réussie';
         } else {
             $message = 'compte inexistant';
         }
     } else {
         // Invalid ID token
     }
-
 } else {
 
     //Vérifie si le formulaire a été envoyé

@@ -1,5 +1,33 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/ged/global.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+
+if (isset($_SESSION['id_compte'])) {
+	if ($_SESSION['type_compte'] == "dg") {
+		header("Location:/ged/roll/dg");
+	}
+
+	if ($_SESSION['type_compte'] == "dd") {
+		header("Location:/ged/roll/dd");
+	}
+
+	if ($_SESSION['type_compte'] == "dm") {
+		header("Location:/ged/roll/dm");
+	}
+
+	if ($_SESSION['type_compte'] == "cm") {
+		header("Location:/ged/roll/cm");
+	}
+
+	if ($_SESSION['type_compte'] == "am") {
+		header("Location:/ged/roll/am");
+	}
+
+	if ($_SESSION['type_compte'] == "stg") {
+		header("Location:/ged/roll/stg");
+	}
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -116,26 +144,21 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--begin::Heading-->
 							<!--begin::Login options-->
-							<div class="row g-3 mb-9">
+							<div class="row g-3 mb-9 justify-content-center">
 								<!--begin::Col-->
-								<div class="col-md-6">
-									<!--begin::Google link=-->
-									<a href="#" data-onsuccess="onSignIn" class="g-signin2 btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-										<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-15px me-3" />Connexion avec Google</a>
-									<!--end::Google link=-->
+								<div id="g_id_onload" 
+								data-client_id="<?= GOOGLE_ID ?>" 
+								data-callback="handleCredentialResponse" 
+								data-auto_prompt="false">
 								</div>
-								<div id="g_id_onload" data-client_id="<?= GOOGLE_ID ?>" data-callback="handleCredentialResponse" data-auto_prompt="false">
-								</div>
-								<div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-								</div>
-								<!--end::Col-->
-								<!--begin::Col-->
-								<div class="col-md-6">
-									<!--begin::Google link=-->
-									<a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-										<img alt="Logo" src="assets/media/svg/brand-logos/facebook-2.svg" class="theme-light-show h-15px me-2" />
-										<img alt="Logo" src="assets/media/svg/brand-logos/facebook-3.svg" class="theme-dark-show h-15px me-2" />Connexion avec facebook</a>
-									<!--end::Google link=-->
+								<div class="g_id_signin" 
+								data-type="standard" 
+								data-size="large" 
+								data-width="500" 
+								data-theme="outline" 
+								data-text="sign_in_with" 
+								data-shape="rectangular" 
+								data-logo_alignment="left">
 								</div>
 								<!--end::Col-->
 							</div>
@@ -220,7 +243,7 @@ License: For each use you must have a valid license purchased only from above li
 					if (data == "compte inexistant") {
 						Swal.fire({
 							title: "Compte inexistant",
-							text: "Ce compte n'existe pas dans la notre base de données pour plus d'infos veuillez contacter l'administrateur",
+							text: "Ce compte n'existe pas dans notre base de données pour plus d'infos veuillez contacter l'administrateur",
 							icon: "error",
 						});
 					} else {
