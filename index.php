@@ -146,19 +146,9 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Login options-->
 							<div class="row g-3 mb-9 justify-content-center">
 								<!--begin::Col-->
-								<div id="g_id_onload" 
-								data-client_id="<?= GOOGLE_ID ?>" 
-								data-callback="handleCredentialResponse" 
-								data-auto_prompt="false">
+								<div id="g_id_onload" data-client_id="<?= GOOGLE_ID ?>" data-callback="handleCredentialResponse" data-auto_prompt="false">
 								</div>
-								<div class="g_id_signin" 
-								data-type="standard" 
-								data-size="large" 
-								data-width="500" 
-								data-theme="outline" 
-								data-text="sign_in_with" 
-								data-shape="rectangular" 
-								data-logo_alignment="left">
+								<div class="g_id_signin" data-type="standard" data-size="large" data-width="500" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
 								</div>
 								<!--end::Col-->
 							</div>
@@ -336,6 +326,55 @@ License: For each use you must have a valid license purchased only from above li
 								// Disable button to avoid multiple click 
 								submitButton.disabled = true;
 
+								// Submit form request
+								var form_data = $(form).serialize();
+								$.ajax({
+									url: 'connexion.php',
+									method: 'POST',
+									data: form_data,
+									dataType: 'json',
+									success: function(data) {
+
+
+										if (data == "parametres corrects - dg") {
+											window.location = "roll/dg/";
+										}
+
+										if (data == "parametres corrects - dd") {
+											window.location = "roll/dd/";
+										}
+
+										if (data == "parametres corrects - dm") {
+											window.location = "roll/dm/";
+										}
+
+										if (data == "parametres corrects - cm") {
+											window.location = "roll/cm/";
+										}
+
+										if (data == "parametres corrects - am") {
+											window.location = "roll/am/";
+										}
+
+										if (data == "parametres corrects - stg") {
+											window.location = "roll/stg/";
+										}
+
+
+										if (data == "Email invalide") {
+											swal.fire('Erreur de connexion', 'Email ou mot de passe incorrect', 'error');
+										}
+
+										if (data == "Mot de passe erroné") {
+											swal.fire('Erreur de connexion', 'Email ou mot de passe incorrect', 'error');
+										}
+
+										if (data == "Compte désactivé") {
+											swal.fire('Erreur de connexion', 'Compte désactivé', 'error');
+										}
+									}
+								});
+
 
 								// Simulate ajax request
 								setTimeout(function() {
@@ -379,55 +418,6 @@ License: For each use you must have a valid license purchased only from above li
 										confirmButton: "btn btn-primary"
 									}
 								});
-							}
-						});
-
-						// Submit form request
-						var form_data = $(form).serialize();
-						$.ajax({
-							url: 'connexion.php',
-							method: 'POST',
-							data: form_data,
-							dataType: 'json',
-							success: function(data) {
-
-
-								if (data == "parametres corrects - dg") {
-									window.location = "roll/dg/";
-								}
-
-								if (data == "parametres corrects - dd") {
-									window.location = "roll/dd/";
-								}
-
-								if (data == "parametres corrects - dm") {
-									window.location = "roll/dm/";
-								}
-
-								if (data == "parametres corrects - cm") {
-									window.location = "roll/cm/";
-								}
-
-								if (data == "parametres corrects - am") {
-									window.location = "roll/am/";
-								}
-
-								if (data == "parametres corrects - stg") {
-									window.location = "roll/stg/";
-								}
-
-
-								if (data == "Email invalide") {
-									swal.fire('Erreur de connexion', 'Email incorrect', 'error');
-								}
-
-								if (data == "Mot de passe erroné") {
-									swal.fire('Erreur de connexion', 'Mot de passe incorrect', 'error');
-								}
-
-								if (data == "Compte désactivé") {
-									swal.fire('Erreur de connexion', 'Compte désactivé', 'error');
-								}
 							}
 						});
 					});
