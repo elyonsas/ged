@@ -38,6 +38,7 @@ if (isset($_POST['credential'])) {
             $_SESSION['type_compte'] = $result['type_compte'];
             $_SESSION['id_utilisateur'] = $result['id_utilisateur'];
             $_SESSION['pseudo_compte'] = $result['pseudo_compte'];
+            $_SESSION['statut_compte'] = $data['statut_compte'];
 
             $_SESSION['nom_utilisateur'] = $result['nom_utilisateur'];
             $_SESSION['prenom_utilisateur'] = $result['prenom_utilisateur'];
@@ -110,6 +111,7 @@ if (isset($_POST['credential'])) {
                 $_SESSION['type_compte'] = $data['type_compte'];
                 $_SESSION['id_utilisateur'] = $data['id_utilisateur'];
                 $_SESSION['pseudo_compte'] = $data['pseudo_compte'];
+                $_SESSION['statut_compte'] = $data['statut_compte'];
 
                 $_SESSION['nom_utilisateur'] = $data['nom_utilisateur'];
                 $_SESSION['prenom_utilisateur'] = $data['prenom_utilisateur'];

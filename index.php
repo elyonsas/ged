@@ -144,13 +144,8 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--begin::Heading-->
 							<!--begin::Login options-->
-							<div class="row g-3 mb-9 justify-content-center">
-								<!--begin::Col-->
-								<div id="g_id_onload" data-client_id="<?= GOOGLE_ID ?>" data-callback="handleCredentialResponse" data-auto_prompt="false">
-								</div>
-								<div class="g_id_signin" data-type="standard" data-size="large" data-width="500" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-								</div>
-								<!--end::Col-->
+							<div class="d-flex justify-content-center">
+								<div id="buttonDiv"></div>
 							</div>
 							<!--end::Login options-->
 							<!--begin::Separator-->
@@ -221,6 +216,12 @@ License: For each use you must have a valid license purchased only from above li
 	<script>
 		function handleCredentialResponse(response) {
 
+			submitButton = document.querySelector('#kt_sign_in_submit');
+			// Show loading indication
+			submitButton.setAttribute('data-kt-indicator', 'on');
+			// Disable button to avoid multiple click 
+			submitButton.disabled = true;
+
 			// Faire une requete ajax pour envoyer le token au serveur
 			$.ajax({
 				url: 'connexion.php',
@@ -231,9 +232,14 @@ License: For each use you must have a valid license purchased only from above li
 				dataType: 'JSON',
 				success: function(data) {
 					if (data == "compte inexistant") {
+						// Hide loading indication
+						submitButton.removeAttribute('data-kt-indicator');
+						// Enable button
+						submitButton.disabled = false;
+						
 						Swal.fire({
 							title: "Compte inexistant",
-							text: "Ce compte n'existe pas dans notre base de données pour plus d'infos veuillez contacter l'administrateur",
+							text: "Ce compte n'existe pas dans notre base de données. Pour plus d'infos veuillez contacter l'administrateur",
 							icon: "error",
 						});
 					} else {
@@ -263,6 +269,23 @@ License: For each use you must have a valid license purchased only from above li
 					}
 				},
 			});
+		}
+
+		window.onload = function() {
+			google.accounts.id.initialize({
+				client_id: "<?= GOOGLE_ID ?>",
+				callback: handleCredentialResponse
+			});
+			// avec une size très grande
+
+			google.accounts.id.renderButton(
+				document.getElementById("buttonDiv"), {
+					theme: "outline",
+					size: "large",
+				} // customization attributes
+			);
+
+			google.accounts.id.prompt(); // also display the One Tap dialog
 		}
 
 		$(document).ready(function() {
@@ -444,6 +467,8 @@ License: For each use you must have a valid license purchased only from above li
 		})
 	</script>
 	<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
 	<!--end::Custom Javascript-->
 	<!--end::Javascript-->
 </body>
