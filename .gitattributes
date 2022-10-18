@@ -1,1 +1,6 @@
+# Detect all php file like php language
 *.php linguist-language=php
+
+# Ignore all files in the vendor directory
+vendor/* linguist-vendored
+assets/* linguist-vendored
