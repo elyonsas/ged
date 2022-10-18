@@ -66,7 +66,7 @@ License: For each use you must have a valid license purchased only from above li
 									</button>
 									<!--end::Mobile menu toggle-->
 									<!--begin::Logo image-->
-									<a href="../../demo1/dist/landing.html">
+									<a href="../../demo1/dist/landing.php">
 										<img alt="Logo" src="assets/media/logos/landing.svg" class="logo-default h-25px h-lg-30px" />
 										<img alt="Logo" src="assets/media/logos/landing-dark.svg" class="logo-sticky h-20px h-lg-25px" />
 									</a>
@@ -127,7 +127,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--end::Menu wrapper-->
 								<!--begin::Toolbar-->
 								<div class="flex-equal text-end ms-1">
-									<a href="../../demo1/dist/authentication/layouts/basic/sign-in.html" class="btn btn-success">Sign In</a>
+									<a href="../../demo1/dist/authentication/layouts/basic/sign-in.php" class="btn btn-success">Sign In</a>
 								</div>
 								<!--end::Toolbar-->
 							</div>
@@ -148,7 +148,7 @@ License: For each use you must have a valid license purchased only from above li
 							</span></h1>
 							<!--end::Title-->
 							<!--begin::Action-->
-							<a href="../../demo1/dist/index.html" class="btn btn-primary">Try Metronic</a>
+							<a href="../../demo1/dist/index.php" class="btn btn-primary">Try Metronic</a>
 							<!--end::Action-->
 						</div>
 						<!--end::Heading-->
@@ -483,7 +483,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--end::Testimonial-->
 						<!--begin::Author-->
 						<div class="fs-2 fw-semibold text-muted text-center">
-							<a href="../../demo1/dist/account/security.html" class="link-primary fs-4 fw-bold">Marcus Levy,</a>
+							<a href="../../demo1/dist/account/security.php" class="link-primary fs-4 fw-bold">Marcus Levy,</a>
 							<span class="fs-4 fw-bold text-gray-600">KeenThemes CEO</span>
 						</div>
 						<!--end::Author-->
@@ -1606,7 +1606,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Title-->
 									<!--begin::Text-->
 									<span class="fw-normal fs-4 text-gray-700">Use Our Custom Development Service.
-									<a href="../../demo1/dist/pages/user-profile/overview.html" class="text-white opacity-50 text-hover-primary">Click to Get a Quote</a></span>
+									<a href="../../demo1/dist/pages/user-profile/overview.php" class="text-white opacity-50 text-hover-primary">Click to Get a Quote</a></span>
 									<!--end::Text-->
 								</div>
 								<!--end::Block-->
@@ -1696,7 +1696,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Copyright-->
 							<div class="d-flex align-items-center order-2 order-md-1">
 								<!--begin::Logo-->
-								<a href="../../demo1/dist/landing.html">
+								<a href="../../demo1/dist/landing.php">
 									<img alt="Logo" src="assets/media/logos/landing.svg" class="h-15px h-md-20px" />
 								</a>
 								<!--end::Logo image-->
@@ -2321,7 +2321,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Wrapper-->
 								<div class="d-flex flex-column me-2 me-lg-5">
 									<!--begin::Title-->
-									<a href="https://preview.keenthemes.com/metronic8/demo1/layout-builder.html" class="text-dark text-hover-primary fw-bold fs-6 fs-lg-4 mb-1">Layout Builder</a>
+									<a href="https://preview.keenthemes.com/metronic8/demo1/layout-builder.php" class="text-dark text-hover-primary fw-bold fs-6 fs-lg-4 mb-1">Layout Builder</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fw-semibold fs-7 fs-lg-6">Build your layout, preview it and export the HTML for server side integration.</div>

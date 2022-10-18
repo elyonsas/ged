@@ -11,10 +11,10 @@
         <!--begin::Menu-->
         <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
             <li class="menu-item">
-                <a href="https://elyonsas.com/fr/apropos.html" target="_blank" class="menu-link px-2">À propos</a>
+                <a href="https://elyonsas.com/fr/apropos.php" target="_blank" class="menu-link px-2">À propos</a>
             </li>
             <li class="menu-item">
-                <a href="https://elyonsas.com/fr/services.html" target="_blank" class="menu-link px-2">Services</a>
+                <a href="https://elyonsas.com/fr/services.php" target="_blank" class="menu-link px-2">Services</a>
             </li>
         </ul>
         <!--end::Menu-->
@@ -102,7 +102,7 @@
                                 <!--begin::Record-->
                                 <div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
                                     <!--begin::Title-->
-                                    <a href="../../demo1/dist/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
+                                    <a href="../../demo1/dist/apps/projects/project.php" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
                                     <!--end::Title-->
                                     <!--begin::Label-->
                                     <div class="min-w-175px pe-2">
@@ -134,14 +134,14 @@
                                     </div>
                                     <!--end::Progress-->
                                     <!--begin::Action-->
-                                    <a href="../../demo1/dist/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+                                    <a href="../../demo1/dist/apps/projects/project.php" class="btn btn-sm btn-light btn-active-light-primary">View</a>
                                     <!--end::Action-->
                                 </div>
                                 <!--end::Record-->
                                 <!--begin::Record-->
                                 <div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
                                     <!--begin::Title-->
-                                    <a href="../../demo1/dist/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
+                                    <a href="../../demo1/dist/apps/projects/project.php" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
                                     <!--end::Title-->
                                     <!--begin::Label-->
                                     <div class="min-w-175px">
@@ -168,7 +168,7 @@
                                     </div>
                                     <!--end::Progress-->
                                     <!--begin::Action-->
-                                    <a href="../../demo1/dist/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+                                    <a href="../../demo1/dist/apps/projects/project.php" class="btn btn-sm btn-light btn-active-light-primary">View</a>
                                     <!--end::Action-->
                                 </div>
                                 <!--end::Record-->
@@ -273,7 +273,7 @@
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
                                             <!--begin::Desc-->
-                                            <a href="../../demo1/dist/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+                                            <a href="../../demo1/dist/apps/projects/project.php" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
                                             <!--end::Desc-->
                                             <!--begin::Number-->
                                             <div class="text-gray-400">1.9mb</div>
@@ -285,7 +285,7 @@
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                         <!--begin::Icon-->
-                                        <img alt="../../demo1/dist/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+                                        <img alt="../../demo1/dist/apps/projects/project.php" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
@@ -302,7 +302,7 @@
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center">
                                         <!--begin::Icon-->
-                                        <img alt="../../demo1/dist/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+                                        <img alt="../../demo1/dist/apps/projects/project.php" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
@@ -638,7 +638,7 @@
         <!--end::Body-->
         <!--begin::Footer-->
         <div class="card-footer py-5 text-center" id="kt_activities_footer">
-            <a href="../../demo1/dist/pages/user-profile/activity.html" class="btn btn-bg-body text-primary">View All Activities
+            <a href="../../demo1/dist/pages/user-profile/activity.php" class="btn btn-bg-body text-primary">View All Activities
                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                 <span class="svg-icon svg-icon-3 svg-icon-primary">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
