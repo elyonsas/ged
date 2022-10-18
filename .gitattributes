@@ -3,4 +3,4 @@
 
 # Ignore all files in the vendor directory
 vendor/* linguist-vendored
-assets/* linguist-vendored
+assets/** linguist-vendored
