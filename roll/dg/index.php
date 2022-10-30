@@ -13,24 +13,15 @@ HTML;
 
 $menu_tb = "active";
 
-$menu_articles = "";
+$menu_dt = "";
+$menu_collabo = "";
+$menu_compta = "";
 
-$menu_articles_all = "";
-$menu_articles_dispo_public = "";
-$menu_articles_dispo_prive = "";
-$menu_articles_dispo_equipe = "";
-$menu_articles_dispo = "";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/html_header.php');
 
-$menu_articles_add_public = "";
-$menu_articles_add_prive = "";
-$menu_articles_add_equipe = "";
-$menu_articles_add = "";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/header.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/html_header.php');
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/header.php');
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
 
 ?>
 
@@ -161,7 +152,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 							<!--begin::Body-->
 							<div class="card-body pt-5 pb-3">
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Contrat</div>
 									<!--end::Section-->
@@ -178,7 +169,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Facturé</div>
 									<!--end::Section-->
@@ -195,7 +186,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Encaissé</div>
 									<!--end::Section-->
@@ -212,7 +203,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Créances</div>
 									<!--end::Section-->
@@ -268,7 +259,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 							<!--begin::Body-->
 							<div class="card-body pt-5 pb-3">
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Contrat</div>
 									<!--end::Section-->
@@ -285,7 +276,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Facturé</div>
 									<!--end::Section-->
@@ -302,7 +293,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Encaissé</div>
 									<!--end::Section-->
@@ -319,7 +310,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Créances</div>
 									<!--end::Section-->
@@ -375,7 +366,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 							<!--begin::Body-->
 							<div class="card-body pt-5 pb-3">
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Contrat</div>
 									<!--end::Section-->
@@ -392,7 +383,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Facturé</div>
 									<!--end::Section-->
@@ -409,7 +400,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Encaissé</div>
 									<!--end::Section-->
@@ -426,7 +417,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<div class="separator separator-dashed my-2"></div>
 								<!--end::Separator-->
 								<!--begin::Item-->
-								<div class="d-flex flex-stack">
+								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
 									<div class="text-gray-700 fw-semibold fs-6 me-2">Créances</div>
 									<!--end::Section-->
@@ -470,7 +461,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 								<!--begin::Items-->
 								<div class="mt-5">
 									<!--begin::Item-->
-									<div class="d-flex flex-stack">
+									<div class="d-flex flex-stack flex-wrap">
 										<!--begin::Section-->
 										<div class="text-gray-700 fw-semibold fs-6 me-2">Octobre</div>
 										<!--end::Section-->
@@ -487,7 +478,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack">
+									<div class="d-flex flex-stack flex-wrap">
 										<!--begin::Section-->
 										<div class="text-gray-700 fw-semibold fs-6 me-2">Septembre</div>
 										<!--end::Section-->
@@ -504,7 +495,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack">
+									<div class="d-flex flex-stack flex-wrap">
 										<!--begin::Section-->
 										<div class="text-gray-700 fw-semibold fs-6 me-2">Août</div>
 										<!--end::Section-->
@@ -521,7 +512,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack">
+									<div class="d-flex flex-stack flex-wrap">
 										<!--begin::Section-->
 										<div class="text-gray-700 fw-semibold fs-6 me-2">Juillet</div>
 										<!--end::Section-->
@@ -538,7 +529,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack">
+									<div class="d-flex flex-stack flex-wrap">
 										<!--begin::Section-->
 										<div class="text-gray-700 fw-semibold fs-6 me-2">Juin</div>
 										<!--end::Section-->
@@ -722,7 +713,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/sidebar.php');
 <!--end::Content wrapper-->
 
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/include/footer_activities.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/footer_activities.php'); ?>
 
 
 <!--begin::Javascript-->
