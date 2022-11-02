@@ -73,10 +73,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
                                 <!--begin::Head-->
                                 <thead class="fs-7 text-gray-400 text-uppercase">
                                     <tr>
-                                        <th class="">Collaborateur</th>
-                                        <th class="">Email</th>
-                                        <th class="">Téléphone</th>
-                                        <th class="">Dossier en charge</th>
+                                        <th class="min-w-100px">Collaborateur</th>
+                                        <th class="min-w-200px">Email</th>
+                                        <th class="min-w-75px">Téléphone</th>
+                                        <th class="min-w-50px">Dossier en charge</th>
+                                        <th class="min-w-75px">Statut</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
@@ -156,14 +157,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
                 "order": [],
                 "data": data,
                 "columnDefs": [{
-                        "targets": [5],
-                        "orderable": false,
-                    },
-                    {
-                        "targets": [1],
-                        "visible": false,
-                    }
-                ],
+                    "targets": [5],
+                    "orderable": false,
+                }, ],
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -223,10 +219,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
                     "order": [],
                     "data": data.data,
                     "columnDefs": [{
-                            "targets": [4],
-                            "orderable": false,
-                        },
-                    ],
+                        "targets": [5],
+                        "orderable": false,
+                    }, ],
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)

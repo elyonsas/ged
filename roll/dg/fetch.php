@@ -15,7 +15,7 @@ if (isset($_POST['datatable'])) {
         $query = '';
 
         $query .= "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur ORDER BY statut_compte ASC";
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
 
 
         // // pour la recherche
@@ -25,7 +25,7 @@ if (isset($_POST['datatable'])) {
         //     $query .= 'OR titre_article LIKE "%' . $_POST["search"]["value"] . '%" ';
         //     $query .= 'OR created_at_article LIKE "%' . $_POST["search"]["value"] . '%" ';
         //     $query .= 'OR date_valide_article LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR statut_article LIKE "%' . $_POST["search"]["value"] . '%" ) ';
+        //     $query .= 'OR statut_compte LIKE "%' . $_POST["search"]["value"] . '%" ) ';
         // }
 
         // // Filtrage dans le tableau
@@ -57,8 +57,23 @@ if (isset($_POST['datatable'])) {
             $prenom = $row['prenom_utilisateur'];
             $email = $row['email_utilisateur'];
             $telephone = $row['tel_utilisateur'];
+            
+            $statut_compte = $row['statut_compte'];
 
             $dossiers = 50;
+
+            switch ($statut_compte) {
+                case 'actif':
+                    $statut_compte_html = <<<HTML
+                        <span class="badge badge-light-success">Actif</span>
+                    HTML;
+                    break;
+                case 'inactif':
+                    $statut_compte_html = <<<HTML
+                        <span class="badge badge-light-danger">Inactif</span>
+                    HTML;
+                    break;
+            }
 
             // Collaborateur
             $sub_array[] = <<<HTML
@@ -79,7 +94,15 @@ if (isset($_POST['datatable'])) {
 
             // dossiers
             $sub_array[] = <<<HTML
-                $dossiers
+                <td>
+                    <div class="text-dark fw-bold d-block fs-6">$dossiers</div>
+                    <span class="text-muted fw-semibold text-muted d-block fs-7">dossiers</span>
+                </td>
+            HTML;
+
+            // Statut
+            $sub_array[] = <<<HTML
+                $statut_compte_html
             HTML;
 
             // Action
@@ -102,20 +125,26 @@ if (isset($_POST['datatable'])) {
 
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
-                                <a href="" class="menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Coming soon</a>
+                                <a href="" class="changer_statut menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Changer le statut</a>
                             </div>
                             <!--end::Menu item-->
                             
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
-                                <a href="" class="menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Coming soon</a>
+                                <a href="" class="attribuer_mission menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Attribuer une mission</a>
                             </div>
                             <!--end::Menu item-->
 
+                            <!--begin::Menu separator-->
+                            <!-- <div class="separator mt-3 opacity-75"></div> -->
+                            <!--end::Menu separator-->
+
                             <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Coming soon</a>
-                            </div>
+                            <!-- <div class="menu-item">
+                                <div class="menu-content px-3 py-3">
+                                    <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
+                                </div>
+                            </div> -->
                             <!--end::Menu item-->
                         </div>
                         <!--end::Menu 3-->
