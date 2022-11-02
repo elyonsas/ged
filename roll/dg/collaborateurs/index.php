@@ -186,12 +186,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
 
         function reload_datatables(datatable) {
             $.ajax({
-                url: "fournisseur/articles/fetch.php",
+                url: "roll/dg/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
-                    date_visualise: $('#date_visualise').val(),
-                    statut_article: $('#filter_statut').val(),
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -245,6 +243,51 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
                     }, 1000);
                 })
             }
+        });
+
+        // Lorsqu'on clique sur .changer_statut
+        $(document).on('click', '.changer_statut', function(e) {
+            e.preventDefault();
+            var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
+
+            // Voulez-vous vraiment changer ce statut ?
+            Swal.fire({
+                title: "Voulez-vous vraiment changer ce statut",
+                text: "Vous ne pourrez pas revenir en arrière !",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui, changer !",
+                cancelButtonText: "Non, annuler !",
+                reverseButtons: true
+            }).then(function(result) {
+                if (result.value) {
+
+                    $.ajax({
+                        url: "roll/dg/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_collaborateur: id_collaborateur,
+                            action: 'changer_statut'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                reload_datatables('all_collabo'); // On recharge le datatable
+
+                                toastr.success(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+
+                }
+            });
+
         });
 
 

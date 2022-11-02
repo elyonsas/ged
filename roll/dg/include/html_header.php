@@ -41,6 +41,23 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+
+	<style>
+		.toastr-success,
+		.toastr-error,
+		.toastr-warning,
+		.toastr-info {
+			background-color: black !important;
+			opacity: 0.9 !important;
+		}
+
+		.toastr-progress{
+			background-color: white !important;
+			opacity: 0.9 !important;
+		}
+
+		
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->

@@ -60,7 +60,7 @@ if (isset($_POST['datatable'])) {
             
             $statut_compte = $row['statut_compte'];
 
-            $dossiers = 50;
+            $dossiers = select_all_dossiers_collabo($id_collaborateur, $db);
 
             switch ($statut_compte) {
                 case 'actif':
@@ -176,6 +176,51 @@ if (isset($_POST['datatable'])) {
 }
 
 if (isset($_POST['action'])) {
+
+    // espace datatables    
+    if ($_POST['action'] == 'changer_statut') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+
+        $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND collaborateur.id_collaborateur = '$id_collaborateur'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        if ($statut_compte == 'actif') {
+            $update = update(
+                'compte',
+                ['statut_compte' => 'inactif'],
+                "id_utilisateur = '$id_utilisateur'",
+                $db
+            );
+        } else {
+            $update = update(
+                'compte',
+                ['statut_compte' => 'actif'],
+                "id_utilisateur = '$id_utilisateur'",
+                $db
+            );
+        }
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Statut du compte modifié !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );  
+        }
+        
+    }
 
 }
 
