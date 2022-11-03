@@ -57,10 +57,10 @@ if (isset($_POST['datatable'])) {
             $prenom = $row['prenom_utilisateur'];
             $email = $row['email_utilisateur'];
             $telephone = $row['tel_utilisateur'];
-            
+
             $statut_compte = $row['statut_compte'];
 
-            $dossiers = select_all_dossiers_collabo($id_collaborateur, $db);
+            $dossiers = select_all_actifs_dossiers_collabo($id_collaborateur, $db);
 
             switch ($statut_compte) {
                 case 'actif':
@@ -106,52 +106,86 @@ if (isset($_POST['datatable'])) {
             HTML;
 
             // Action
-            $action = <<<HTML
+            switch ($statut_compte) {
+                case 'actif':
+                    $action = <<<HTML
 
-                <td>
-                    <div class="d-flex justify-content-end flex-shrink-0">
-                    
-                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="voir" href="" data-id_collaborateur="{$id_collaborateur}" class="view_article btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                            <i class="bi bi-eye-fill fs-3"></i>
-                        </a>
-                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                        </a> -->
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="bi bi-three-dots fs-3"></i>
-                        </button>
-                        <!--begin::Menu 3-->
-                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="changer_statut menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Changer le statut</a>
-                            </div>
-                            <!--end::Menu item-->
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
                             
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="attribuer_mission menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Attribuer une mission</a>
-                            </div>
-                            <!--end::Menu item-->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 
-                            <!--begin::Menu separator-->
-                            <!-- <div class="separator mt-3 opacity-75"></div> -->
-                            <!--end::Menu separator-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="desactiver_compte menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Désactiver ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="attribuer_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_collaborateur="{$id_collaborateur}">Attribuer un dossier</a>
+                                    </div>
+                                    <!--end::Menu item-->
 
-                            <!--begin::Menu item-->
-                            <!-- <div class="menu-item">
-                                <div class="menu-content px-3 py-3">
-                                    <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
+
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
                                 </div>
-                            </div> -->
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu 3-->
-                    </div>
-                </td>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
 
-            HTML;
+                    HTML;
+                    break;
+                case 'inactif':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="activer_compte menu-link px-3" data-id_collaborateur="{$id_collaborateur}">Activer ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
+
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+            }
 
             $sub_array[] = $action;
 
@@ -177,9 +211,8 @@ if (isset($_POST['datatable'])) {
 
 if (isset($_POST['action'])) {
 
-    // espace datatables    
-    if ($_POST['action'] == 'changer_statut') {
-
+    // espace datatables
+    if ($_POST['action'] == 'activer_compte') {
         $id_collaborateur = $_POST['id_collaborateur'];
 
         $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
@@ -192,40 +225,160 @@ if (isset($_POST['action'])) {
         $id_utilisateur = $result['id_utilisateur'];
         $statut_compte = $result['statut_compte'];
 
-        if ($statut_compte == 'actif') {
-            $update = update(
-                'compte',
-                ['statut_compte' => 'inactif'],
-                "id_utilisateur = '$id_utilisateur'",
-                $db
-            );
-        } else {
-            $update = update(
-                'compte',
-                ['statut_compte' => 'actif'],
-                "id_utilisateur = '$id_utilisateur'",
-                $db
-            );
-        }
+        $update = update(
+            'compte',
+            ['statut_compte' => 'actif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
 
         if ($update) {
             $output = array(
                 'success' => true,
-                'message' => 'Statut du compte modifié !'
+                'message' => 'Le compte à été activé !'
             );
         } else {
             $output = array(
                 'success' => false,
                 'message' => 'Une erreur s\'est produite !'
-            );  
+            );
         }
-        
     }
 
-    if ($_POST['action'] == 'fetch_attribuer_mission') {
-        
+    if ($_POST['action'] == 'desactiver_compte') {
+        $id_collaborateur = $_POST['id_collaborateur'];
+
+        $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND collaborateur.id_collaborateur = '$id_collaborateur'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update1 = update(
+            'compte',
+            ['statut_compte' => 'inactif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        $query = "SELECT * FROM assoc_client_collabo WHERE id_collaborateur = '$id_collaborateur'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        foreach ($result as $row) {
+            if ($id_collaborateur == $row['id_collaborateur']) {
+                $update2 = update(
+                    'assoc_client_collabo',
+                    [
+                        'statut_assoc_client_collabo' => 'inactif',
+                        'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                        'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
+                    ],
+                    "id_collaborateur = '$id_collaborateur'",
+                    $db
+                );
+
+                $update3 = update(
+                    'client',
+                    [
+                        'prise_en_charge_client' => 'non',
+                    ],
+                    "id_client = '" . $row['id_client'] . "'",
+                    $db
+                );
+            }
+        }
+
+
+        if ($update1 && $update2 && $update3) {
+            $output = array(
+                'success' => true,
+                'message' => 'Le compte à été désactivé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
     }
 
+    if ($_POST['action'] == 'fetch_attribuer_dossier') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+
+        // Récupérer les infos du collaborateur
+        $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND collaborateur.id_collaborateur = '$id_collaborateur'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'success' => true,
+            'id_collaborateur' => $result['id_collaborateur'],
+            'nom_collaborateur' => $result['prenom_utilisateur'] . ' ' . $result['nom_utilisateur'],
+            'code_collaborateur' => $result['code_collaborateur'],
+            'dossier_html' => ''
+        ];
+
+        if ($result) {
+            $query = "SELECT * FROM client, utilisateur WHERE utilisateur.id_utilisateur = client.id_utilisateur
+            AND prise_en_charge_client = 'non'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $output['dossier_html'] .= '<option></option>';
+            foreach ($result as $row) {
+                $output['dossier_html'] .= <<<HTML
+                    <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
+                HTML;
+            }
+        }
+    }
+
+    if ($_POST['action'] == 'edit_attribuer_dossier') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+        $id_client = $_POST['id_client'];
+
+        // insert
+        $insert = insert(
+            'assoc_client_collabo',
+            [
+                'role_assoc_client_collabo' => 'cm',
+                'statut_assoc_client_collabo' => 'actif',
+                'date_debut_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'date_fin_assoc_client_collabo' => null,
+                'created_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'id_client' => $id_client,
+                'id_collaborateur' => $id_collaborateur
+            ],
+            $db
+        );
+
+        // update
+        $update = update(
+            'client',
+            ['prise_en_charge_client' => 'oui'],
+            "id_client = '$id_client'",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Le dossier a été attribué'
+            );
+        }
+    }
 }
 
 
