@@ -431,9 +431,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
 						if (data.success) {
 							$('#attribuer_modal').modal('hide');
 
-							toastr.success(data.message, '', {
-								positionClass: "toastr-bottom-left",
-							});
+							// swal
+                            Swal.fire({
+                                title: "Dossier attribué !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reload_datatables('all_collabo'); // On recharge le datatable
+
 						} else {
 							$('#attribuer_modal').modal('hide');
 
@@ -442,8 +453,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
 							});
 						}
 					}, 2000);
-
-					reload_datatables('all_collabo');
 
 				}
 			})

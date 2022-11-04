@@ -348,6 +348,18 @@ if (isset($_POST['action'])) {
         $id_collaborateur = $_POST['id_collaborateur'];
         $id_client = $_POST['id_client'];
 
+        $query1 = "SELECT * FROM utilisateur, collaborateur WHERE utilisateur.id_utilisateur = collaborateur.id_utilisateur
+        AND collaborateur.id_collaborateur = '$id_collaborateur'";
+        $statement1 = $db->prepare($query1);
+        $statement1->execute();
+        $result1 = $statement1->fetch();
+
+        $query2 = "SELECT * FROM utilisateur, client WHERE utilisateur.id_utilisateur = client.id_utilisateur
+        AND client.id_client = '$id_client'";
+        $statement2 = $db->prepare($query2);
+        $statement2->execute();
+        $result2 = $statement2->fetch();
+
         // insert
         $insert = insert(
             'assoc_client_collabo',
@@ -372,10 +384,10 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        if ($update) {
+        if ($insert && $update) {
             $output = array(
                 'success' => true,
-                'message' => 'Le dossier a été attribué'
+                'message' => "Le dossier <b>{$result2['nom_utilisateur']}</b> a été attribué à <b>{$result1['prenom_utilisateur']} {$result1['nom_utilisateur']}</b> !"
             );
         }
     }
