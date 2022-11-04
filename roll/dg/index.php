@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
-connected('dg');
+connected('ag');
 
 $titre_page = 'GED-ELYON - Tableau de bord';
 $titre_menu = 'Tableau de bord';
@@ -17,11 +17,11 @@ $menu_dt = "";
 $menu_collabo = "";
 $menu_compta = "";
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/html_header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/header.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 ?>
 
@@ -713,7 +713,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/sidebar.php');
 <!--end::Content wrapper-->
 
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dg/include/footer_activities.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/footer_activities.php'); ?>
 
 
 <!--begin::Javascript-->

@@ -4,8 +4,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 if (isset($_SESSION['id_compte'])) {
-	if ($_SESSION['type_compte'] == "dg") {
-		header("Location:/ged/roll/dg");
+	if ($_SESSION['type_compte'] == "ag") {
+		header("Location:/ged/roll/ag");
 	}
 
 	if ($_SESSION['type_compte'] == "dd") {
@@ -243,8 +243,8 @@ License: For each use you must have a valid license purchased only from above li
 							icon: "error",
 						});
 					} else {
-						if (data == "parametres corrects - dg") {
-							window.location = "roll/dg/";
+						if (data == "parametres corrects - ag") {
+							window.location = "roll/ag/";
 						}
 
 						if (data == "parametres corrects - dd") {
@@ -359,8 +359,8 @@ License: For each use you must have a valid license purchased only from above li
 									success: function(data) {
 
 
-										if (data == "parametres corrects - dg") {
-											window.location = "roll/dg/";
+										if (data == "parametres corrects - ag") {
+											window.location = "roll/ag/";
 										}
 
 										if (data == "parametres corrects - dd") {

@@ -47,8 +47,8 @@ if (isset($_POST['credential'])) {
             $_SESSION['avatar_utilisateur'] = $result['avatar_utilisateur'];
 
 
-            if ($result['type_compte'] == "dg") {
-                $message = "parametres corrects - dg";
+            if ($result['type_compte'] == "ag") {
+                $message = "parametres corrects - ag";
             }
 
             if ($result['type_compte'] == "dd") {
@@ -70,6 +70,7 @@ if (isset($_POST['credential'])) {
             if ($result['type_compte'] == "stg") {
                 $message = "parametres corrects - stg";
             }
+
         } else {
             $message = 'compte inexistant';
         }
@@ -120,8 +121,8 @@ if (isset($_POST['credential'])) {
                 $_SESSION['avatar_utilisateur'] = $data['avatar_utilisateur'];
 
 
-                if ($data['type_compte'] == "dg") {
-                    $message = "parametres corrects - dg";
+                if ($data['type_compte'] == "ag") {
+                    $message = "parametres corrects - ag";
                 }
 
                 if ($data['type_compte'] == "dd") {
@@ -143,6 +144,7 @@ if (isset($_POST['credential'])) {
                 if ($data['type_compte'] == "stg") {
                     $message = "parametres corrects - stg";
                 }
+                
             } else {
 
                 $message = "Mot de passe erroné";

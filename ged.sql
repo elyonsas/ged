@@ -111,7 +111,7 @@ CREATE TABLE `compte` (
   `email_compte` varchar(255) NOT NULL,
   `mdp_compte` varchar(255) NOT NULL,
   `statut_compte` enum('actif','inactif','supprime') NOT NULL,
-  `type_compte` enum('dg','dd','dm','cm','am','stg','client') NOT NULL,
+  `type_compte` enum('ag','dd','dm','cm','am','stg','client') NOT NULL,
   `auth_means_compte` enum('EMAIL_AND_PASSWORD','GOOGLE_OAUTH2.0','FACEBOOK_OAUTH2.0') NOT NULL,
   `created_at_compte` datetime NOT NULL,
   `updated_at_compte` datetime NOT NULL,
@@ -124,8 +124,8 @@ CREATE TABLE `compte` (
 --
 
 INSERT INTO `compte` (`id_compte`, `pseudo_compte`, `email_compte`, `mdp_compte`, `statut_compte`, `type_compte`, `auth_means_compte`, `created_at_compte`, `updated_at_compte`, `deleted_at_compte`, `id_utilisateur`) VALUES
-(1, 'Arnaud', 'arnaudadjovi274@gmail.com', '5551666', 'actif', 'dg', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 1),
-(2, 'Eustache', 'g_eustache@yahoo.fr', '12345', 'actif', 'dg', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 2),
+(1, 'Arnaud', 'arnaudadjovi274@gmail.com', '5551666', 'actif', 'ag', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 1),
+(2, 'Eustache', 'g_eustache@yahoo.fr', '12345', 'actif', 'ag', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 2),
 (3, 'M. Mamavi', 'jgamamavi@gmx.fr', '12345', 'actif', 'dd', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 3),
 (4, 'Ismael', 'badarouismael@yahoo.com', '12345', 'inactif', 'cm', 'EMAIL_AND_PASSWORD', '2022-08-19 22:47:46', '2022-08-19 22:47:46', '2022-08-19 22:47:46', 4),
 (5, 'Vinolia', 'kinyidonadine@gmail.com', '12345', 'actif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 5),

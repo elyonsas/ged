@@ -49,7 +49,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Tableau de bord', $icon, 'roll/dg', $menu_tb) ?>
+                    <?= single_menu('Tableau de bord', $icon, 'roll/ag', $menu_tb) ?>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
@@ -78,7 +78,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Dossiers de travails', $icon, 'roll/dg/clients', $menu_dt) ?>
+                    <?= single_menu('Dossiers de travails', $icon, 'roll/ag/clients', $menu_dt) ?>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
@@ -99,7 +99,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Collaborateurs', $icon, 'roll/dg/collaborateurs', $menu_collabo) ?>
+                    <?= single_menu('Collaborateurs', $icon, 'roll/ag/collaborateurs', $menu_collabo) ?>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
@@ -118,7 +118,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Comptabilité', $icon, 'roll/dg/comptabilite', $menu_compta) ?>
+                    <?= single_menu('Comptabilité', $icon, 'roll/ag/comptabilite', $menu_compta) ?>
                     <!--end:Menu item-->
 
                 </div>
