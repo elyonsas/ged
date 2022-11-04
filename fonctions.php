@@ -1,9 +1,16 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+    use Ramsey\Uuid\Uuid;
 
     function connected($acces)
     {
         if (!isset($_SESSION['id_compte']) || $_SESSION['type_compte'] != $acces) {
-            header("Location:/ged");
+            $redirect = $_SERVER['REQUEST_URI'];
+
+            $uuid = Uuid::uuid1();
+            $deceive_uri_rand_str = $uuid->toString();
+
+            header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
         }
     }
     ////////// dump avec des pre pour saut de ligne

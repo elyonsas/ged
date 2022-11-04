@@ -111,60 +111,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <div id="infos_generale" class="row g-5 g-xxl-8">
                     <!--begin::Col-->
                     <div class="col-lg-5">
-                        <!--begin::Feeds Widget 1-->
-                        <div class="card mb-5 mb-xxl-8">
-                            <!--begin::Body-->
-                            <div class="card-body pb-0">
-                                <!--begin::Header-->
-                                <div class="d-flex align-items-center">
-                                    <h2>Note collaborateur</h2>
-                                </div>
-                                <!--end::Header-->
-                                <!--begin::Form-->
-                                <form id="kt_forms_widget_1_form" class="ql-quil ql-quil-plain pb-3">
-                                    <!--begin::Editor-->
-                                    <div id="kt_forms_widget_1_editor" class="py-6"></div>
-                                    <!--end::Editor-->
-                                    <div class="separator"></div>
-                                    <!--begin::Toolbar-->
-                                    <div id="kt_forms_widget_1_editor_toolbar" class="ql-toolbar d-flex flex-stack py-2">
-                                        <div class="me-2">
-                                            <span class="ql-formats ql-size ms-0">
-                                                <select class="ql-size w-75px"></select>
-                                            </span>
-                                            <span class="ql-formats">
-                                                <button class="ql-bold"></button>
-                                                <button class="ql-italic"></button>
-                                                <button class="ql-underline"></button>
-                                                <button class="ql-strike"></button>
-                                                <button class="ql-image"></button>
-                                                <button class="ql-link"></button>
-                                                <button class="ql-clean"></button>
-                                            </span>
-                                        </div>
-                                        <div class="me-n3">
-                                            <span class="btn btn-icon btn-sm btn-active-color-primary">
-                                                <i class="flaticon2-clip-symbol icon-ms"></i>
-                                            </span>
-                                            <span class="btn btn-icon btn-sm btn-active-color-primary">
-                                                <i class="flaticon2-pin icon-ms"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!--end::Toolbar-->
-                                </form>
-                                <!--end::Form-->
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Feeds Widget 1-->
                         <!--begin::Feeds Widget 2-->
                         <div class="card mb-5 mb-xxl-8">
                             <!--begin::Body-->
                             <div class="card-body pb-0">
                                 <!--begin::Header-->
                                 <div class="d-flex align-items-center mb-5">
-                                    <h2>Autres informations</h2>
+                                    <h2>Infos collaborateur</h2>
                                 </div>
                                 <!--end::Header-->
                                 <div class="d-flex flex-column">

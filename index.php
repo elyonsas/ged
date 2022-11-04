@@ -45,7 +45,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
-	<base href="/ged/" />
+	<!-- <base href="/ged/" /> -->
 	<title>GED-ELYON - Connexion</title>
 	<meta charset="utf-8" />
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -236,35 +236,65 @@ License: For each use you must have a valid license purchased only from above li
 						submitButton.removeAttribute('data-kt-indicator');
 						// Enable button
 						submitButton.disabled = false;
-						
+
 						Swal.fire({
 							title: "Compte inexistant",
 							text: "Ce compte n'existe pas dans notre base de données. Pour plus d'infos veuillez contacter l'administrateur",
 							icon: "error",
 						});
 					} else {
+						<?php if (isset($_GET['redirect_uri'])) { ?>
+							var redirect = "<?= $_GET['redirect_uri'] ?>";
+						<?php } else { ?>
+							var redirect = false;
+						<?php } ?>
+
 						if (data == "parametres corrects - ag") {
-							window.location = "roll/ag/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/ag/";
+							}
 						}
 
 						if (data == "parametres corrects - dd") {
-							window.location = "roll/dd/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/dd/";
+							}
 						}
 
 						if (data == "parametres corrects - dm") {
-							window.location = "roll/dm/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/dm/";
+							}
 						}
 
 						if (data == "parametres corrects - cm") {
-							window.location = "roll/cm/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/cm/";
+							}
 						}
 
 						if (data == "parametres corrects - am") {
-							window.location = "roll/am/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/am/";
+							}
 						}
 
 						if (data == "parametres corrects - stg") {
-							window.location = "roll/stg/";
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/stg/";
+							}
 						}
 					}
 				},
@@ -358,29 +388,59 @@ License: For each use you must have a valid license purchased only from above li
 									dataType: 'json',
 									success: function(data) {
 
+										<?php if (isset($_GET['redirect_uri'])) { ?>
+											var redirect = "<?= $_GET['redirect_uri'] ?>";
+										<?php } else { ?>
+											var redirect = false;
+										<?php } ?>
+
 
 										if (data == "parametres corrects - ag") {
-											window.location = "roll/ag/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/ag/";
+											}
 										}
 
 										if (data == "parametres corrects - dd") {
-											window.location = "roll/dd/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/dd/";
+											}
 										}
 
 										if (data == "parametres corrects - dm") {
-											window.location = "roll/dm/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/dm/";
+											}
 										}
 
 										if (data == "parametres corrects - cm") {
-											window.location = "roll/cm/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/cm/";
+											}
 										}
 
 										if (data == "parametres corrects - am") {
-											window.location = "roll/am/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/am/";
+											}
 										}
 
 										if (data == "parametres corrects - stg") {
-											window.location = "roll/stg/";
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/stg/";
+											}
 										}
 
 
