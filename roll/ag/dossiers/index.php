@@ -240,7 +240,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function reload_datatables(datatable) {
             $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
+                url: "roll/ag/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
@@ -254,7 +254,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Datatable for all articles
         $.ajax({
-            url: "roll/ag/collaborateurs/fetch.php",
+            url: "roll/ag/fetch.php",
             method: "POST",
             data: {
                 datatable: 'all_collabo',
@@ -316,7 +316,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/collaborateurs/fetch.php",
+                        url: "roll/ag/fetch.php",
                         method: "POST",
                         data: {
                             id_collaborateur: id_collaborateur,
@@ -361,7 +361,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/collaborateurs/fetch.php",
+                        url: "roll/ag/fetch.php",
                         method: "POST",
                         data: {
                             id_collaborateur: id_collaborateur,
@@ -394,7 +394,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
 
             $.ajax({
-				url: "roll/ag/collaborateurs/fetch.php",
+				url: "roll/ag/fetch.php",
 				method: "POST",
 				data: {
                     id_collaborateur: id_collaborateur,
@@ -419,7 +419,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 			formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
 			$.ajax({
-				url: "roll/ag/collaborateurs/fetch.php",
+				url: "roll/ag/fetch.php",
 				method: "POST",
 				data: $(this).serialize(),
 				dataType: "JSON",
