@@ -418,7 +418,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function reload_datatables(datatable) {
             $.ajax({
-                url: "roll/ag/fetch.php",
+                url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
@@ -432,7 +432,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Fait une réquête AJAX pour récupérer les données
         $.ajax({
-            url: "roll/ag/fetch.php",
+            url: "roll/ag/collaborateurs/fetch.php",
             method: "POST",
             data: {
                 action: 'fetch_page_collaborateur'
@@ -459,7 +459,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Datatable for dossiers collaborateur
         $.ajax({
-            url: "roll/ag/fetch.php",
+            url: "roll/ag/collaborateurs/fetch.php",
             method: "POST",
             data: {
                 datatable: 'dossiers_collabo',
@@ -499,7 +499,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             // Fait une réquête AJAX pour récupérer les données
             $.ajax({
-                url: "roll/ag/fetch.php",
+                url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
                 data: {
                     action: 'fetch_page_collaborateur'
@@ -608,7 +608,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/fetch.php",
+                        url: "roll/ag/collaborateurs/fetch.php",
                         method: "POST",
                         data: {
                             id_collaborateur: id_collaborateur,
@@ -653,7 +653,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/fetch.php",
+                        url: "roll/ag/collaborateurs/fetch.php",
                         method: "POST",
                         data: {
                             id_collaborateur: id_collaborateur,
@@ -686,7 +686,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
 
             $.ajax({
-                url: "roll/ag/fetch.php",
+                url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
                 data: {
                     id_collaborateur: id_collaborateur,
@@ -711,7 +711,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
             $.ajax({
-                url: "roll/ag/fetch.php",
+                url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
@@ -769,7 +769,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/fetch.php",
+                        url: "roll/ag/collaborateurs/fetch.php",
                         method: "POST",
                         data: {
                             id_collaborateur: id_collaborateur,
@@ -803,7 +803,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             var id_client = $(this).data('id_client');
 
             $.ajax({
-                url: "roll/ag/fetch.php",
+                url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
                 data: {
                     id_client: id_client,
