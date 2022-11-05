@@ -280,7 +280,7 @@ if (isset($_POST['datatable'])) {
 
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
-                                <a href="" class="detail_dossier menu-link px-3" data-id_client="{$id_client}">Details</a>
+                                <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Details</a>
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu item-->
@@ -672,6 +672,24 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !',
             );
         }
+    }
+
+    if ($_POST['action'] == 'detail_dossier') {
+
+        $id_client = $_POST['id_client'];
+
+        $query = "SELECT * FROM utilisateur, client WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'nom_client' => $result['nom_utilisateur'],
+            'matricule_client' => $result['matricule_client'],
+            'tel_client' => $result['tel_utilisateur'],
+            'email_client' => $result['email_utilisateur'],
+            'adresse_client' => $result['adresse_utilisateur'],
+        ];
     }
 }
 

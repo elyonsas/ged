@@ -276,6 +276,73 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal attribuer dossier-->
 
+    	<!-- begin::Modal detail-->
+	<div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<form method="POST" class="form modal-content" action="">
+				<div class="modal-header p-5">
+					<h4 class="modal-title">Détails</h4>
+					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+						<span class="svg-icon svg-icon-1">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+							</svg>
+						</span>
+						<!--end::Svg Icon-->
+					</div>
+				</div>
+				<div class="modal-body">
+
+					<div class="">
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-3 fw-bold">CLIENT</label>
+								<div id="detail_nom_client" class="fs-5 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-3 fw-bold">MATRICULE</label>
+								<div id="detail_matricule_client" class="fs-5 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-3 fw-bold">TELEPHONE</label>
+								<div id="detail_telephone_client" class="fs-5 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-3 fw-bold">EMAIL</label>
+								<div id="detail_email_client" class="fs-5 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+                        <div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-3 fw-bold">ADRESSE</label>
+								<div id="detail_adresse_client" class="fs-5 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- end::Modal detail-->
+
 </div>
 <!--end::Content wrapper-->
 
@@ -725,6 +792,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         }
                     })
 
+                }
+            });
+
+        });
+
+        // Lorsqu'on clique sur .detail_dossier
+        $(document).on('click', '.detail_dossier', function(e) {
+            e.preventDefault();
+            var id_client = $(this).data('id_client');
+
+            $.ajax({
+                url: "roll/ag/fetch.php",
+                method: "POST",
+                data: {
+                    id_client: id_client,
+                    action: 'detail_dossier'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#detail_nom_client').html(data.nom_client);
+                    $('#detail_matricule_client').html(data.matricule_client);
+                    $('#detail_telephone_client').html(data.tel_client);
+                    $('#detail_email_client').html(data.email_client);
+                    $('#detail_adresse_client').html(data.adresse_client);
                 }
             });
 
