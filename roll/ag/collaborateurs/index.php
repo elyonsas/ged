@@ -252,7 +252,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        // Datatable for all articles
+        // Datatable for all collaborateurs
         $.ajax({
             url: "roll/ag/collaborateurs/fetch.php",
             method: "POST",

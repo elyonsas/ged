@@ -78,7 +78,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Dossiers de travails', $icon, 'roll/ag/clients', $menu_dt) ?>
+                    <?= single_menu('Dossiers de travail', $icon, 'roll/ag/dossiers', $menu_dt) ?>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
