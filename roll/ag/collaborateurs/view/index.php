@@ -186,7 +186,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <tr>
                                                 <th class="">#</th>
                                                 <th class="min-w-200px">Client</th>
-                                                <th class="">Matricule</th>
+                                                <th class="min-w-100px">Matricule</th>
                                                 <th class="">Rôle</th>
                                                 <th class="text-end">Actions</th>
                                             </tr>

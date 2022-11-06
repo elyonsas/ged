@@ -78,7 +78,7 @@ if (isset($_POST['datatable'])) {
             // Collaborateur
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/ag/view_redirect/?action=view_collaborateur&id_view_collaborateur={$id_collaborateur}" 
+                    <a data-sorting="{$prenom} {$nom}" href="roll/ag/view_redirect/?action=view_collaborateur&id_view_collaborateur={$id_collaborateur}" 
                     class="fs-6 text-gray-800 text-hover-primary">$prenom $nom</a>
                 </div>
             HTML;
