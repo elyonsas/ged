@@ -131,7 +131,7 @@ if (isset($_POST['datatable'])) {
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="attribuer_collaborateur menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
+                                        <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
@@ -183,11 +183,6 @@ if (isset($_POST['datatable'])) {
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="attribuer_collaborateur menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
                                         <a href="" class="activer_compte menu-link px-3" data-id_client="{$id_client}">Activer ce compte</a>
                                     </div>
                                     <!--end::Menu item-->
@@ -233,112 +228,6 @@ if (isset($_POST['datatable'])) {
         );
     }
 
-    if ($_POST['datatable'] == 'dossiers_collabo') {
-
-        $id_client = $_SESSION['id_view_client'];
-
-        $query = "SELECT * FROM assoc_client_collabo, client, client, utilisateur 
-        WHERE assoc_client_collabo.id_client = client.id_client AND assoc_client_collabo.id_client = client.id_client 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = $id_client 
-        AND statut_assoc_client_collabo = 'actif' ORDER BY updated_at_assoc_client_collabo DESC";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-
-        $data = array();
-        $filtered_rows = $statement->rowCount();
-
-        $i = 1;
-        foreach ($result as $row) {
-
-            $sub_array = array();
-
-            $id_client = $row['id_client'];
-            $nom_client = $row['nom_utilisateur'];
-            $matricule_client = $row['matricule_client'];
-            $email_client = $row['email_utilisateur'];
-            $telephone_client = $row['tel_utilisateur'];
-            $role_client = $row['role_assoc_client_collabo'];
-
-            // #
-            $sub_array[] = $i;
-
-            // Client
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
-                    class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
-                </div>
-            HTML;
-
-            // Matricule
-            $sub_array[] = <<<HTML
-                $matricule_client
-            HTML;
-
-            // Rôle
-            switch ($role_client) {
-                case 'cm':
-                    $role_client = 'Chef de mission';
-                    break;
-
-                case 'am':
-                    $role_client = 'Assistant mission';
-                    break;
-            }
-            $sub_array[] = <<<HTML
-                $role_client
-            HTML;
-
-            // Actions
-            $action = <<<HTML
-
-                <td>
-                    <div class="d-flex justify-content-end flex-shrink-0">
-
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="bi bi-three-dots fs-3"></i>
-                        </button>
-                        <!--begin::Menu 3-->
-                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Details</a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="retirer_dossier menu-link text-hover-danger px-3" data-id_client="{$id_client}" data-id_client="{$id_client}">Retirer ce dossier</a>
-                            </div>
-                            <!--end::Menu item-->
-
-                            <!--begin::Menu separator-->
-                            <!-- <div class="separator mt-3 opacity-75"></div> -->
-                            <!--end::Menu separator-->
-
-                            <!--begin::Menu item-->
-                            <!-- <div class="menu-item">
-                                <div class="menu-content px-3 py-3">
-                                    <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_client="{$id_client}">Supprimer définitivement</a>
-                                </div>
-                            </div> -->
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu 3-->
-                    </div>
-                </td>
-
-            HTML;
-            $sub_array[] = $action;
-
-            $data[] = $sub_array;
-            $i++;
-        }
-
-
-        $output = $data;
-    }
 }
 
 if (isset($_POST['action'])) {
@@ -367,7 +256,7 @@ if (isset($_POST['action'])) {
         if ($update) {
             $output = array(
                 'success' => true,
-                'message' => 'Le compte à été activé !'
+                'message' => 'Compte activé !'
             );
         } else {
             $output = array(
@@ -390,18 +279,29 @@ if (isset($_POST['action'])) {
         $id_utilisateur = $result['id_utilisateur'];
         $statut_compte = $result['statut_compte'];
 
-        $update = update(
+        $update1 = update(
             'compte',
             ['statut_compte' => 'inactif'],
             "id_utilisateur = '$id_utilisateur'",
             $db
         );
 
+        $update2 = update(
+            'assoc_client_collabo',
+            [
+                'statut_assoc_client_collabo' => 'inactif',
+                'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
+            ],
+            "id_client = $id_client",
+            $db
+        );
 
-        if ($update) {
+
+        if ($update1 && $update2) {
             $output = array(
                 'success' => true,
-                'message' => 'Le compte à été désactivé !'
+                'message' => 'Compte désactivé !'
             );
         } else {
             $output = array(
@@ -411,7 +311,7 @@ if (isset($_POST['action'])) {
         }
     }
 
-    if ($_POST['action'] == 'fetch_attribuer_dossier') {
+    if ($_POST['action'] == 'fetch_attribuer_collabo') {
 
         $id_client = $_POST['id_client'];
 
@@ -425,14 +325,13 @@ if (isset($_POST['action'])) {
         $output = [
             'success' => true,
             'id_client' => $result['id_client'],
-            'nom_client' => $result['prenom_utilisateur'] . ' ' . $result['nom_utilisateur'],
-            'code_client' => $result['code_client'],
+            'nom_client' => $result['nom_utilisateur'],
             'dossier_html' => ''
         ];
 
         if ($result) {
-            $query = "SELECT * FROM client, utilisateur WHERE utilisateur.id_utilisateur = client.id_utilisateur
-            AND prise_en_charge_client = 'non'";
+            $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+            AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND compte.statut_compte = 'actif'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -440,19 +339,19 @@ if (isset($_POST['action'])) {
             $output['dossier_html'] .= '<option></option>';
             foreach ($result as $row) {
                 $output['dossier_html'] .= <<<HTML
-                    <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
+                    <option value="{$row['id_collaborateur']}">collaborateur {$row['code_collaborateur']} : {$row['prenom_utilisateur']} {$row['nom_utilisateur']}</option>
                 HTML;
             }
         }
     }
 
-    if ($_POST['action'] == 'edit_attribuer_dossier') {
+    if ($_POST['action'] == 'edit_attribuer_collabo') {
 
-        $id_client = $_POST['id_client'];
+        $id_collaborateur = $_POST['id_collaborateur'];
         $id_client = $_POST['id_client'];
 
-        $query1 = "SELECT * FROM utilisateur, client WHERE utilisateur.id_utilisateur = client.id_utilisateur
-        AND client.id_client = '$id_client'";
+        $query1 = "SELECT * FROM utilisateur, collaborateur WHERE utilisateur.id_utilisateur = collaborateur.id_utilisateur
+        AND collaborateur.id_collaborateur = '$id_collaborateur'";
         $statement1 = $db->prepare($query1);
         $statement1->execute();
         $result1 = $statement1->fetch();
@@ -474,7 +373,7 @@ if (isset($_POST['action'])) {
                 'created_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
                 'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
                 'id_client' => $id_client,
-                'id_client' => $id_client
+                'id_collaborateur' => $id_collaborateur
             ],
             $db
         );
@@ -556,7 +455,7 @@ if (isset($_POST['action'])) {
                                     
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="attribuer_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer un dossier</a>
+                                        <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer un dossier</a>
                                     </div>
                                     <!--end::Menu item-->
 

@@ -343,7 +343,7 @@ if (isset($_POST['action'])) {
         if ($update) {
             $output = array(
                 'success' => true,
-                'message' => 'Le compte à été activé !'
+                'message' => 'Compte activé !'
             );
         } else {
             $output = array(
@@ -407,7 +407,7 @@ if (isset($_POST['action'])) {
         if ($update1 && $update2 && $update3) {
             $output = array(
                 'success' => true,
-                'message' => 'Le compte à été désactivé !'
+                'message' => 'Compte désactivé !'
             );
         } else {
             $output = array(

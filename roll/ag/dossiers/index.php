@@ -107,7 +107,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form id="form_attribuer" method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
-                    <h4 class="modal-title">Attribution de dossier</h4>
+                    <h4 class="modal-title">Attribuer collaborateur</h4>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-1">
@@ -124,21 +124,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="">
                         <div class="d-flex fw-semibold me-5 mb-5 align-items-center">
                             <div class="fs-5">
-                                client :
+                                Client :
                             </div>
-                            <div id="attribuer_nom_client" class="fs-5 text-muted ms-3">
-                                Ismael Badarou
-                            </div>
+                            <div id="attribuer_nom_client" class="fs-5 text-muted ms-3">--</div>
                         </div>
                         <!--begin::Input group-->
                         <div id="choisir_dossier" class="fv-row row mb-10">
-                            <select id="attribuer_dossier" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un dossier" name="id_client" required>
+                            <select id="attribuer_collabo" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un collaborateur" name="id_collaborateur" required>
 
                             </select>
                         </div>
                     </div>
                     <div class="opt d-flex justify-content-end">
-                        <input type="hidden" name="action" value="edit_attribuer_dossier">
+                        <input type="hidden" name="action" value="edit_attribuer_collabo">
                         <input id="attribuer_id_client" type="hidden" name="id_client" value="">
                         <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                         <button id="btn_attribuer" type="submit" class="btn btn-lg btn-primary ms-2">
@@ -478,8 +476,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Lorsqu'on clique sur .attribuer_dossier
-        $(document).on('click', '.attribuer_dossier', function(e) {
+        // Lorsqu'on clique sur .attribuer_collabo
+        $(document).on('click', '.attribuer_collabo', function(e) {
             e.preventDefault();
             var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
@@ -488,12 +486,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 				method: "POST",
 				data: {
                     id_client: id_client,
-                    action: 'fetch_attribuer_dossier'
+                    action: 'fetch_attribuer_collabo'
 				},
 				dataType: "JSON",
 				success: function(data) {
                     $('#attribuer_nom_client').html(data.nom_client);
-                    $('#attribuer_dossier').html(data.dossier_html);
+                    $('#attribuer_collabo').html(data.dossier_html);
                     $('#attribuer_id_client').val(data.id_client);
 				}
 			});
@@ -523,7 +521,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 							// swal
                             Swal.fire({
-                                title: "Dossier attribué !",
+                                title: "Dossier prise en charge !",
                                 html: data.message,
                                 icon: "success",
                                 buttonsStyling: false,
