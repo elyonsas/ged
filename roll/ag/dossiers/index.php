@@ -47,6 +47,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar my-1">
+                            <!-- begin::add btn client -->
+                            <a href="#" class="btn btn-sm btn-light btn-active-primary me-3">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                                <span class="svg-icon svg-icon-3">
+                                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
+                                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
+                                    </svg>
+                                </span>Ajouter un client
+                                <!--end::Svg Icon-->
+                            </a>
+                            <!-- end::add btn client -->
                             <!--begin::Search-->
                             <div class="d-flex align-items-center position-relative my-1">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->

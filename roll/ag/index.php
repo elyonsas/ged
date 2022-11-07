@@ -517,8 +517,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							<!--begin::Beader-->
 							<div class="card-header border-0 py-5">
 								<h3 class="card-title align-items-start flex-column">
-									<span class="card-label fw-bold fs-3 mb-1">Tendance</span>
-									<span class="text-muted fw-semibold fs-7">Tendance mensuelle (Saisie à jour)</span>
+									<span class="card-label fw-bold fs-3 mb-1">Saisies clients</span>
+									<span class="text-muted fw-semibold fs-7">Tendance mensuelle (Saisies à jour)</span>
 								</h3>
 							</div>
 							<!--end::Header-->
@@ -629,8 +629,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<span class="card-label fw-bold fs-3 mb-1">Secteurs d'activés des clients</span>
 									<span class="text-muted mt-1 fw-semibold fs-7">plus de 25 secteurs d'activités</span>
 								</h3>
-								<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
-									<a href="#" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+								<div class="card-toolbar">
+									<a href="#" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

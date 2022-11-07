@@ -57,13 +57,22 @@ if (isset($_POST['datatable'])) {
             $matricule_client = $row['matricule_client'];
 
             $prise_en_charge_client = $row['prise_en_charge_client'];
+            $attribuer_a = '';
             switch ($prise_en_charge_client) {
                 case 'oui':
                     $prise_en_charge_client = '<span class="badge badge-success">Oui</span>';
+                    $attribuer_a = '';
                     break;
                 
                 case 'non':
                     $prise_en_charge_client = '<span class="badge badge-danger">Non</span>';
+                    $attribuer_a = <<<HTML
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
+                        </div>
+                        <!--end::Menu item-->
+                    HTML;
                     break;
             }
 
@@ -129,11 +138,9 @@ if (isset($_POST['datatable'])) {
                                         <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
-                                    </div>
-                                    <!--end::Menu item-->
+
+                                    $attribuer_a
+
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
@@ -287,6 +294,13 @@ if (isset($_POST['action'])) {
         );
 
         $update2 = update(
+            'client',
+            ['prise_en_charge_client' => 'non'],
+            "id_client = '$id_client'",
+            $db
+        );
+
+        $update3 = update(
             'assoc_client_collabo',
             [
                 'statut_assoc_client_collabo' => 'inactif',
@@ -298,7 +312,7 @@ if (isset($_POST['action'])) {
         );
 
 
-        if ($update1 && $update2) {
+        if ($update1 && $update2 && $update3) {
             $output = array(
                 'success' => true,
                 'message' => 'Compte désactivé !'
