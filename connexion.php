@@ -28,6 +28,24 @@ if (isset($_POST['credential'])) {
         // Si le compte existe, connecter
         if (compte_exists($email, $db)) {
 
+            // Vérifier si le compte est inactif ou pas et...
+            $query = "
+                SELECT * 
+                FROM compte
+                INNER JOIN utilisateur
+                ON compte.id_utilisateur = utilisateur.id_utilisateur
+                WHERE email_compte = '$email'
+                ";
+
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            if ($result['statut_compte'] != 'actif'){
+                $message = 'compte inactif';
+                echo json_encode($message);
+                die;
+            }
 
             $query = "SELECT * FROM compte, utilisateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.email_compte = '$email'";
             $statement = $db->prepare($query);
@@ -90,7 +108,6 @@ if (isset($_POST['credential'])) {
         ON compte.id_utilisateur = utilisateur.id_utilisateur
         WHERE email_compte = '$email'
         ";
-    $message = '';
 
     $statement = $db->prepare($query);
     $statement->execute();
@@ -151,7 +168,7 @@ if (isset($_POST['credential'])) {
             }
         } else {
 
-            $message = "Compte désactivé";
+            $message = "compte inactif";
         }
     } else {
         $message = "Email invalide";

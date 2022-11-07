@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 03 nov. 2022 à 19:01
+-- Généré le : ven. 04 nov. 2022 à 19:29
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 7.4.30
 
@@ -44,8 +44,39 @@ CREATE TABLE `assoc_client_collabo` (
 --
 
 INSERT INTO `assoc_client_collabo` (`id_assoc_client_collabo`, `role_assoc_client_collabo`, `statut_assoc_client_collabo`, `date_debut_assoc_client_collabo`, `date_fin_assoc_client_collabo`, `created_at_assoc_client_collabo`, `updated_at_assoc_client_collabo`, `id_client`, `id_collaborateur`) VALUES
-(1, 'cm', 'inactif', '2022-11-03 17:33:25', '2022-11-03 18:27:22', '2022-11-03 17:33:25', '2022-11-03 18:27:22', 1, 2),
-(2, 'cm', 'inactif', '2022-11-03 17:36:58', '2022-11-03 18:27:22', '2022-11-03 17:36:58', '2022-11-03 18:27:22', 3, 2);
+(1, 'cm', 'inactif', '2022-11-03 17:33:25', '2022-11-04 08:48:53', '2022-11-03 17:33:25', '2022-11-04 08:48:53', 1, 2),
+(2, 'cm', 'inactif', '2022-11-03 17:36:58', '2022-11-04 08:48:53', '2022-11-03 17:36:58', '2022-11-04 08:48:53', 3, 2),
+(3, 'cm', 'inactif', '2022-11-04 08:23:32', '2022-11-04 15:53:13', '2022-11-04 08:23:32', '2022-11-04 15:53:13', 2, 6),
+(4, 'cm', 'inactif', '2022-11-04 08:23:43', '2022-11-04 15:49:54', '2022-11-04 08:23:43', '2022-11-04 15:49:54', 1, 6),
+(5, 'cm', 'inactif', '2022-11-04 08:23:54', '2022-11-04 15:49:54', '2022-11-04 08:23:54', '2022-11-04 15:49:54', 3, 6),
+(6, 'cm', 'inactif', '2022-11-04 08:30:26', '2022-11-04 15:49:54', '2022-11-04 08:30:26', '2022-11-04 15:49:54', 1, 6),
+(7, 'cm', 'inactif', '2022-11-04 08:31:09', '2022-11-04 15:49:54', '2022-11-04 08:31:09', '2022-11-04 15:49:54', 3, 6),
+(8, 'cm', 'inactif', '2022-11-04 08:38:57', '2022-11-04 15:53:13', '2022-11-04 08:38:57', '2022-11-04 15:53:13', 2, 6),
+(9, 'cm', 'inactif', '2022-11-04 08:40:31', '2022-11-04 15:49:54', '2022-11-04 08:40:31', '2022-11-04 15:49:54', 1, 6),
+(10, 'cm', 'inactif', '2022-11-04 08:43:19', '2022-11-04 15:53:13', '2022-11-04 08:43:19', '2022-11-04 15:53:13', 2, 6),
+(11, 'cm', 'inactif', '2022-11-04 08:46:07', '2022-11-04 15:49:54', '2022-11-04 08:46:07', '2022-11-04 15:49:54', 3, 6),
+(12, 'cm', 'inactif', '2022-11-04 08:46:37', '2022-11-04 15:49:54', '2022-11-04 08:46:37', '2022-11-04 15:49:54', 4, 6),
+(13, 'cm', 'inactif', '2022-11-04 08:47:23', '2022-11-04 15:49:54', '2022-11-04 08:47:23', '2022-11-04 15:49:54', 5, 6),
+(14, 'cm', 'inactif', '2022-11-04 08:48:07', '2022-11-04 15:49:54', '2022-11-04 08:48:07', '2022-11-04 15:49:54', 6, 6),
+(15, 'cm', 'inactif', '2022-11-04 08:57:34', '2022-11-04 15:49:54', '2022-11-04 08:57:34', '2022-11-04 15:49:54', 1, 6),
+(16, 'cm', 'inactif', '2022-11-04 09:17:06', '2022-11-04 15:53:13', '2022-11-04 09:17:06', '2022-11-04 15:53:13', 2, 6),
+(17, 'cm', 'inactif', '2022-11-04 13:44:56', '2022-11-04 15:49:54', '2022-11-04 13:44:56', '2022-11-04 15:49:54', 3, 6),
+(18, 'cm', 'inactif', '2022-11-04 14:05:37', '2022-11-04 15:49:54', '2022-11-04 14:05:37', '2022-11-04 15:49:54', 4, 6),
+(19, 'cm', 'inactif', '2022-11-04 14:07:38', '2022-11-04 15:49:54', '2022-11-04 14:07:38', '2022-11-04 15:49:54', 1, 6),
+(20, 'cm', 'inactif', '2022-11-04 14:10:03', '2022-11-04 15:49:54', '2022-11-04 14:10:03', '2022-11-04 15:49:54', 1, 6),
+(21, 'cm', 'inactif', '2022-11-04 14:12:25', '2022-11-04 15:53:13', '2022-11-04 14:12:25', '2022-11-04 15:53:13', 2, 6),
+(22, 'cm', 'inactif', '2022-11-04 14:17:34', '2022-11-04 15:49:54', '2022-11-04 14:17:34', '2022-11-04 15:49:54', 1, 6),
+(23, 'cm', 'inactif', '2022-11-04 14:21:25', '2022-11-04 15:49:54', '2022-11-04 14:21:25', '2022-11-04 15:49:54', 1, 6),
+(24, 'cm', 'inactif', '2022-11-04 14:21:39', '2022-11-04 15:49:54', '2022-11-04 14:21:39', '2022-11-04 15:49:54', 3, 6),
+(25, 'cm', 'inactif', '2022-11-04 14:21:55', '2022-11-04 15:53:13', '2022-11-04 14:21:55', '2022-11-04 15:53:13', 2, 6),
+(26, 'cm', 'inactif', '2022-11-04 14:32:39', '2022-11-04 15:49:54', '2022-11-04 14:32:39', '2022-11-04 15:49:54', 1, 6),
+(27, 'cm', 'inactif', '2022-11-04 14:32:53', '2022-11-04 15:49:54', '2022-11-04 14:32:53', '2022-11-04 15:49:54', 6, 6),
+(28, 'cm', 'inactif', '2022-11-04 14:33:05', '2022-11-04 15:49:54', '2022-11-04 14:33:05', '2022-11-04 15:49:54', 4, 6),
+(29, 'cm', 'inactif', '2022-11-04 15:49:13', '2022-11-04 15:49:54', '2022-11-04 15:49:13', '2022-11-04 15:49:54', 1, 6),
+(30, 'cm', 'inactif', '2022-11-04 15:49:33', '2022-11-04 15:53:13', '2022-11-04 15:49:33', '2022-11-04 15:53:13', 2, 6),
+(31, 'cm', 'inactif', '2022-11-04 15:50:16', '2022-11-04 15:53:13', '2022-11-04 15:50:16', '2022-11-04 15:53:13', 2, 6),
+(32, 'cm', 'actif', '2022-11-04 15:50:32', NULL, '2022-11-04 15:50:32', '2022-11-04 15:50:32', 4, 6),
+(33, 'cm', 'actif', '2022-11-04 16:01:36', NULL, '2022-11-04 16:01:36', '2022-11-04 16:01:36', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -55,7 +86,7 @@ INSERT INTO `assoc_client_collabo` (`id_assoc_client_collabo`, `role_assoc_clien
 
 CREATE TABLE `client` (
   `id_client` int(11) NOT NULL,
-  `matricule_client` int(11) NOT NULL,
+  `matricule_client` varchar(255) NOT NULL,
   `code_view_client` varchar(255) NOT NULL,
   `prise_en_charge_client` enum('oui','non') NOT NULL,
   `id_utilisateur` int(11) NOT NULL
@@ -66,12 +97,12 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id_client`, `matricule_client`, `code_view_client`, `prise_en_charge_client`, `id_utilisateur`) VALUES
-(1, 12001, 'wgfshghhdgfKJHFGSss', 'non', 9),
-(2, 12002, 'wgfshghhdgfKJHFGSss', 'non', 10),
-(3, 12003, 'hgfgfhhdgfKJHFGSss', 'non', 11),
-(4, 12004, 'kjgfuyftgfKjkkgHFGSss', 'non', 12),
-(5, 12005, 'kjhghfgfhdgfKJHFGSss', 'non', 13),
-(6, 12006, '1fdg5fd64f6hdgfKJHFGSss', 'non', 14);
+(1, 'DEC-12001', 'wgfshghhdgfKJHFGSss', 'oui', 9),
+(2, 'DEC-12002', 'wgfshghhdgfKJHFGSss', 'non', 10),
+(3, 'DEC-12003', 'hgfgfhhdgfKJHFGSss', 'non', 11),
+(4, 'DEC-12004', 'kjgfuyftgfKjkkgHFGSss', 'oui', 12),
+(5, 'DEC-12005', 'kjhghfgfhdgfKJHFGSss', 'non', 13),
+(6, 'DEC-12006', '1fdg5fd64f6hdgfKJHFGSss', 'non', 14);
 
 -- --------------------------------------------------------
 
@@ -131,7 +162,7 @@ INSERT INTO `compte` (`id_compte`, `pseudo_compte`, `email_compte`, `mdp_compte`
 (5, 'Vinolia', 'kinyidonadine@gmail.com', '12345', 'actif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 5),
 (6, 'Roméo', 'romeobakpe@gmail.com', '12345', 'actif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 6),
 (7, 'Sévérin', 'ssewade9@gmail.com', '12345', 'actif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 7),
-(8, 'Théophilia', 'theolatedjou@gmail.com', '12345', 'inactif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 8),
+(8, 'Théophilia', 'theolatedjou@gmail.com', '12345', 'actif', 'cm', 'EMAIL_AND_PASSWORD', '2022-10-31 18:26:33', '2022-10-31 18:26:33', '2022-10-31 18:26:33', 8),
 (9, 'Pylones', 'pharmacielespylones@gmail.com', '12345', 'actif', 'client', 'EMAIL_AND_PASSWORD', '2022-11-02 12:22:28', '2022-11-02 12:22:28', '2022-11-02 12:22:28', 9),
 (10, 'ATV', 'afriquetransportv@gmail.com', '12345', 'actif', 'client', 'EMAIL_AND_PASSWORD', '2022-11-02 12:23:20', '2022-11-02 12:23:20', '2022-11-02 12:23:20', 10),
 (11, 'Aigles', 'lesaigles@gmail.com', '12345', 'actif', 'client', 'EMAIL_AND_PASSWORD', '2022-11-02 12:23:59', '2022-11-02 12:23:59', '2022-11-02 12:23:59', 11),
@@ -197,8 +228,8 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `nom_utilisateur`, `prenom_utilisat
 (10, 'ATV (AFRIQUE TRANSPORT VOYAGE)', '', NULL, '', '(+229)67842525', '', 'afriquetransportv@gmail.com', 'Lot pharmacie de l’étoile rouge (Presque en face de la BOA – Etoile)\nCotonou - Bénin', '2022-11-02 11:50:16', '2022-11-02 11:50:16'),
 (11, 'LES AIGLES', '', NULL, '', '(+229)67842525', '', 'lesaigles@gmail.com', 'Cotonou - Bénin', '2022-11-02 11:50:16', '2022-11-02 11:50:16'),
 (12, 'NEUROTECH', '', NULL, '', '(+221)338699090', '', 'contact@groupeneurotech.com', 'Siège Dakar: 8, Boulevard du Sud - Point E - BP : 14 276 - Dakar – Sénégal', '2022-11-02 11:50:16', '2022-11-02 11:50:16'),
-(13, 'BERAKAH PLUS', '', NULL, '', '+22912345678', '', 'contact@bera.com', 'Cotonou - Benin', '2022-11-02 11:50:16', '2022-11-02 11:50:16'),
-(14, 'HERMES COMMUNICATION', '', NULL, '', '+22912345678', '', 'contact@hermes.com', 'Cotonou - Benin', '2022-11-02 11:50:16', '2022-11-02 11:50:16');
+(13, 'BERAKAH PLUS', '', NULL, '', '(+229)12345678', '', 'contact@bera.com', 'Cotonou - Benin', '2022-11-02 11:50:16', '2022-11-02 11:50:16'),
+(14, 'HERMES COMMUNICATION', '', NULL, '', '(+229)12345678', '', 'contact@hermes.com', 'Cotonou - Benin', '2022-11-02 11:50:16', '2022-11-02 11:50:16');
 
 --
 -- Index pour les tables déchargées
@@ -255,7 +286,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `assoc_client_collabo`
 --
 ALTER TABLE `assoc_client_collabo`
-  MODIFY `id_assoc_client_collabo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_assoc_client_collabo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `client`

@@ -242,7 +242,18 @@ License: For each use you must have a valid license purchased only from above li
 							text: "Ce compte n'existe pas dans notre base de données. Pour plus d'infos veuillez contacter l'administrateur",
 							icon: "error",
 						});
-					} else {
+					} else if(data == "compte inactif"){
+						// Hide loading indication
+						submitButton.removeAttribute('data-kt-indicator');
+						// Enable button
+						submitButton.disabled = false;
+
+						Swal.fire({
+							title: "Compte inactif",
+							text: "Votre compte est inactif. Veuillez contacter l\'administrateur.",
+							icon: "error",
+						});
+					}else {
 						<?php if (isset($_GET['redirect_uri'])) { ?>
 							var redirect = "<?= $_GET['redirect_uri'] ?>";
 						<?php } else { ?>
@@ -452,8 +463,8 @@ License: For each use you must have a valid license purchased only from above li
 											swal.fire('Erreur de connexion', 'Email ou mot de passe incorrect', 'error');
 										}
 
-										if (data == "Compte désactivé") {
-											swal.fire('Erreur de connexion', 'Compte désactivé', 'error');
+										if (data == "compte inactif") {
+											swal.fire('Compte inactif', 'Votre compte est inactif. Veuillez contacter l\'administrateur.', 'error');
 										}
 									}
 								});
