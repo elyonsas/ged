@@ -53,7 +53,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_client = $row['id_client'];
-            $nom_client = $row['nom_utilisateur'];   
+            $nom_client = $row['nom_utilisateur'];
             $matricule_client = $row['matricule_client'];
 
             $prise_en_charge_client = $row['prise_en_charge_client'];
@@ -63,7 +63,7 @@ if (isset($_POST['datatable'])) {
                     $prise_en_charge_client = '<span class="badge badge-success">Oui</span>';
                     $attribuer_a = '';
                     break;
-                
+
                 case 'non':
                     $prise_en_charge_client = '<span class="badge badge-danger">Non</span>';
                     $attribuer_a = <<<HTML
@@ -93,7 +93,7 @@ if (isset($_POST['datatable'])) {
             // Client
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    <a data-sorting="{$nom_client}" href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
                     class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                 </div>
             HTML;
@@ -121,7 +121,8 @@ if (isset($_POST['datatable'])) {
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
                                 
-                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="voir" href="" data-id_client="{$id_client}" class="view_client btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -171,7 +172,8 @@ if (isset($_POST['datatable'])) {
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
 
-                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="voir" href="" data-id_client="{$id_client}" class="view_client btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -234,7 +236,6 @@ if (isset($_POST['datatable'])) {
             "data"                =>    $data
         );
     }
-
 }
 
 if (isset($_POST['action'])) {
@@ -426,9 +427,8 @@ if (isset($_POST['action'])) {
                 <img src="assets/media/avatars/{$row['avatar_utilisateur']}" alt="image">
             HTML;
             $nom_client = $row['nom_utilisateur'];
-            $prenom_client = $row['prenom_utilisateur'];
             $email_client = $row['email_utilisateur'];
-            $code_client = $row['code_client'];
+            $matricule_client = $row['matricule_client'];
             $date_naiss_client = si_funct1($row['date_naiss_utilisateur'], date('d-m-Y', strtotime($row['date_naiss_utilisateur'])), '--');
             $tel_client = $row['tel_utilisateur'];
             $adresse_client = $row['adresse_utilisateur'];
@@ -447,6 +447,26 @@ if (isset($_POST['action'])) {
                     break;
             }
 
+            $prise_en_charge_client = $row['prise_en_charge_client'];
+            $attribuer_a = '';
+            switch ($prise_en_charge_client) {
+                case 'oui':
+                    $prise_en_charge_client = '<span class="badge badge-success">Oui</span>';
+                    $attribuer_a = '';
+                    break;
+
+                case 'non':
+                    $prise_en_charge_client = '<span class="badge badge-danger">Non</span>';
+                    $attribuer_a = <<<HTML
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
+                        </div>
+                        <!--end::Menu item-->
+                    HTML;
+                    break;
+            }
+
             $action_client = '';
             switch ($statut_client) {
                 case 'actif':
@@ -454,7 +474,7 @@ if (isset($_POST['action'])) {
 
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
-                            
+                                
                                 <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
@@ -463,13 +483,15 @@ if (isset($_POST['action'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
+                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
-                                    
+
+                                    $attribuer_a
+
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer un dossier</a>
+                                        <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -496,13 +518,18 @@ if (isset($_POST['action'])) {
 
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
-
+                                
                                 <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
                                 <!--begin::Menu 3-->
                                 <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="activer_compte menu-link px-3" data-id_client="{$id_client}">Activer ce compte</a>
@@ -532,51 +559,15 @@ if (isset($_POST['action'])) {
 
             $output = array(
                 'avatar_client' => $avatar_client,
-                'nom_prenom_client' => $nom_client . ' ' . $prenom_client,
+                'nom_client' => $nom_client,
                 'email_client' => $email_client,
-                'code_client' => $code_client,
+                'matricule_client' => $matricule_client,
                 'date_naiss_client' => $date_naiss_client,
                 'tel_client' => $tel_client,
                 'adresse_client' => $adresse_client,
                 'statut_client' => $statut_client_html,
+                'prise_en_charge_client' => $prise_en_charge_client,
                 'action_client' => $action_client,
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'retirer_dossier') {
-        $id_client = $_POST['id_client'];
-        $id_client = $_POST['id_client'];
-
-        $update1 = update(
-            'assoc_client_collabo',
-            [
-                'statut_assoc_client_collabo' => 'inactif',
-                'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
-                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
-            ],
-            "id_client = $id_client AND role_assoc_client_collabo = 'cm' AND id_client = $id_client",
-            $db
-        );
-
-        $update2 = update(
-            'client',
-            [
-                'prise_en_charge_client' => 'non',
-            ],
-            "id_client = $id_client",
-            $db
-        );
-
-        if ($update1 && $update2) {
-            $output = array(
-                'success' => true,
-                'message' => 'Le dossier a été retiré !',
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !',
             );
         }
     }

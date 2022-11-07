@@ -114,7 +114,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!--end::Content-->
 
-    <!-- begin::Modal attribuer dossier-->
+    <!-- begin::Modal attribuer collaborateur-->
     <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form id="form_attribuer" method="POST" class="form modal-content" action="">
@@ -163,9 +163,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             </form>
         </div>
     </div>
-    <!-- end::Modal attribuer dossier-->
+    <!-- end::Modal attribuer collaborateur-->
 
-    	<!-- begin::Modal detail-->
+    <!-- begin::Modal detail-->
 	<div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable" role="document">
 			<form method="POST" class="form modal-content" action="">
@@ -510,7 +510,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour l'attribution un dossier à un client
+        // Pour l'attribution un collaborateur à un client
 		$(document).on('submit', '#form_attribuer', function(event) {
 			event.preventDefault();
 

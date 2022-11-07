@@ -5,16 +5,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
-$titre_page = 'GED-ELYON - Collaborateur';
-$titre_menu = 'Collaborateur';
+$titre_page = 'GED-ELYON - Client';
+$titre_menu = 'Client';
 $chemin_menu = <<<HTML
 
 HTML;
 
 $menu_tb = "";
 
-$menu_dt = "";
-$menu_collabo = "active";
+$menu_dt = "active";
+$menu_collabo = "";
 $menu_compta = "";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
@@ -42,7 +42,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="d-flex flex-wrap flex-sm-nowrap">
                             <!--begin: Pic-->
                             <div class="me-7 mb-4">
-                                <div id="avatar_collaborateur" class="symbol symbol-100px symbol-fixed position-relative"></div>
+                                <div id="avatar_client" class="symbol symbol-100px symbol-fixed position-relative"></div>
                             </div>
                             <!--end::Pic-->
                             <!--begin::Info-->
@@ -53,7 +53,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     <div class="d-flex flex-column">
                                         <!--begin::Name-->
                                         <div class="d-flex align-items-center mb-2">
-                                            <a id="nom_prenom_collaborateur" href="roll/ag/collaborateurs/view" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">--</a>
+                                            <a id="nom_client" href="roll/ag/clients/view" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">--</a>
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Info-->
@@ -67,20 +67,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                                <span id="email_collaborateur">--</span>
+                                                <span id="email_client">--</span>
                                             </a>
                                         </div>
                                         <!--end::Info-->
                                         <!-- begin:niveau -->
-                                        <div id="niveau_collaborateur"></div>
+                                        <div id="niveau_client"></div>
                                         <!-- end:niveau -->
                                     </div>
                                     <!--end::User-->
                                     <!--begin::Actions-->
                                     <div class="d-flex align-items-center">
-                                        <div id="statut_collaborateur" class="me-5">
+                                        <div id="statut_client" class="me-5">
                                         </div>
-                                        <div id="action_collaborateur">
+                                        <div id="action_client">
                                         </div>
                                     </div>
                                     <!--end::Actions-->
@@ -117,17 +117,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="card-body pb-0">
                                 <!--begin::Header-->
                                 <div class="d-flex align-items-center mb-5">
-                                    <h2>Infos collaborateur</h2>
+                                    <h2>Infos client</h2>
                                 </div>
                                 <!--end::Header-->
                                 <div class="d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Code collaborateur :
-                                            <span id="code_collaborateur" class="text-gray-400 fw-bold"></span>
+                                            Matricule :
+                                            <span id="matricule_client" class="text-gray-400 fw-bold"></span>
                                         </div>
                                         <!--begin::copy-btn-->
-                                        <button id="code_collaborateur_copy_btn" type="button" data-clipboard-target="#code_collaborateur" data-bs-toggle="popover" data-bs-placement="top" title="" data-bs-content="Copié !" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary">
+                                        <button id="matricule_client_copy_btn" type="button" data-clipboard-target="#matricule_client" data-bs-toggle="popover" data-bs-placement="top" title="" data-bs-content="Copié !" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary">
                                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-07-151451/core/html/src/media/icons/duotune/general/gen054.svg-->
                                             <span id="code_article_copy_icon" class="svg-icon svg-icon-muted svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor" />
@@ -140,15 +140,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">Date de naissance : </div>
-                                        <div id="date_naiss_collaborateur" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div id="date_naiss_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">Téléphone : </div>
-                                        <div id="tel_collaborateur" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div id="tel_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">Adresse : </div>
-                                        <div id="adresse_collaborateur" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div id="adresse_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="card-header border-0 pt-5">
                                 <!--begin::Title-->
                                 <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label fw-bold fs-3 mb-1">Dossiers en charges</span>
+                                    <span class="card-label fw-bold fs-3 mb-1">Collaborateur en charge</span>
                                     <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
                                 </h3>
                                 <!--end::Title-->
@@ -185,8 +185,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <thead class="fs-7 text-gray-400 text-uppercase">
                                             <tr>
                                                 <th class="">#</th>
-                                                <th class="min-w-200px">Client</th>
-                                                <th class="">Matricule</th>
+                                                <th class="min-w-200px">Collaborateur</th>
+                                                <th class="">Téléphone</th>
                                                 <th class="">Rôle</th>
                                                 <th class="text-end">Actions</th>
                                             </tr>
@@ -223,12 +223,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!--end::Content-->
 
-    <!-- begin::Modal attribuer dossier-->
+    <!-- begin::Modal attribuer collaborateur-->
     <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form id="form_attribuer" method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
-                    <h4 class="modal-title">Attribution de dossier</h4>
+                    <h4 class="modal-title">Attribuer collaborateur</h4>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-1">
@@ -245,22 +245,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="">
                         <div class="d-flex fw-semibold me-5 mb-5 align-items-center">
                             <div class="fs-5">
-                                Collaborateur :
+                                Client :
                             </div>
-                            <div id="attribuer_nom_collaborateur" class="fs-5 text-muted ms-3">
-                                Ismael Badarou
-                            </div>
+                            <div id="attribuer_nom_client" class="fs-5 text-muted ms-3">--</div>
                         </div>
                         <!--begin::Input group-->
                         <div id="choisir_dossier" class="fv-row row mb-10">
-                            <select id="attribuer_dossier" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un dossier" name="id_client" required>
+                            <select id="attribuer_collabo" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un collaborateur" name="id_collaborateur" required>
 
                             </select>
                         </div>
                     </div>
                     <div class="opt d-flex justify-content-end">
-                        <input type="hidden" name="action" value="edit_attribuer_dossier">
-                        <input id="attribuer_id_collaborateur" type="hidden" name="id_collaborateur" value="">
+                        <input type="hidden" name="action" value="edit_attribuer_collabo">
+                        <input id="attribuer_id_client" type="hidden" name="id_client" value="">
                         <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                         <button id="btn_attribuer" type="submit" class="btn btn-lg btn-primary ms-2">
                             <span class="indicator-label">Valider</span>
@@ -274,74 +272,74 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             </form>
         </div>
     </div>
-    <!-- end::Modal attribuer dossier-->
+    <!-- end::Modal attribuer collaborateur-->
 
-    	<!-- begin::Modal detail-->
-	<div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<form method="POST" class="form modal-content" action="">
-				<div class="modal-header p-5">
-					<h4 class="modal-title">Détails</h4>
-					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-						<span class="svg-icon svg-icon-1">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-							</svg>
-						</span>
-						<!--end::Svg Icon-->
-					</div>
-				</div>
-				<div class="modal-body">
+    <!-- begin::Modal detail-->
+    <div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Détails</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <div class="modal-body">
 
-					<div class="">
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">CLIENT</label>
-								<div id="detail_nom_client" class="fs-5 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">MATRICULE</label>
-								<div id="detail_matricule_client" class="fs-5 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">TELEPHONE</label>
-								<div id="detail_telephone_client" class="fs-5 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">EMAIL</label>
-								<div id="detail_email_client" class="fs-5 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
+                    <div class="">
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">ADRESSE</label>
-								<div id="detail_adresse_client" class="fs-5 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- end::Modal detail-->
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">CLIENT</label>
+                                <div id="detail_nom_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">MATRICULE</label>
+                                <div id="detail_matricule_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">TELEPHONE</label>
+                                <div id="detail_telephone_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">EMAIL</label>
+                                <div id="detail_email_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">ADRESSE</label>
+                                <div id="detail_adresse_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal detail-->
 
 </div>
 <!--end::Content wrapper-->
@@ -418,7 +416,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function reload_datatables(datatable) {
             $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
+                url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
@@ -432,100 +430,58 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Fait une réquête AJAX pour récupérer les données
         $.ajax({
-            url: "roll/ag/collaborateurs/fetch.php",
+            url: "roll/ag/dossiers/fetch.php",
             method: "POST",
             data: {
-                action: 'fetch_page_collaborateur'
+                action: 'fetch_page_client'
             },
             dataType: "JSON",
             success: function(data) {
 
                 // Affiche les données dans la page
-                $('#avatar_collaborateur').html(data.avatar_collaborateur);
-                $('#nom_prenom_collaborateur').html(data.nom_prenom_collaborateur);
-                $('#email_collaborateur').html(data.email_collaborateur);
-                $('#code_collaborateur').html(data.code_collaborateur);
-                $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
-                $('#tel_collaborateur').html(data.tel_collaborateur);
-                $('#adresse_collaborateur').html(data.adresse_collaborateur);
-                $('#statut_collaborateur').html(data.statut_collaborateur);
-                $('#action_collaborateur').html(data.action_collaborateur);
-                $('#niveau_collaborateur').html(data.niveau_collaborateur);
+                $('#avatar_client').html(data.avatar_client);
+                $('#nom_client').html(data.nom_client);
+                $('#email_client').html(data.email_client);
+                $('#matricule_client').html(data.matricule_client);
+                $('#date_naiss_client').html(data.date_naiss_client);
+                $('#tel_client').html(data.tel_client);
+                $('#adresse_client').html(data.adresse_client);
+                $('#statut_client').html(data.statut_client);
+                $('#action_client').html(data.action_client);
+                $('#niveau_client').html(data.niveau_client);
 
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
             }
         });
 
-        // Datatable for dossiers collaborateur
-        $.ajax({
-            url: "roll/ag/collaborateurs/fetch.php",
-            method: "POST",
-            data: {
-                datatable: 'dossiers_collabo',
-            },
-            dataType: "JSON",
-            success: function(data) {
-                var dossiers_collabo = $('#dossiers_collabo').DataTable({
-                    "processing": true,
-                    "serverSide": false,
-                    "paging": false,
-                    "bInfo": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "order": [],
-                    "data": data,
-                    "initComplete": function(settings, json) {
-                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                    }
-                });
-
-                $('.dataTables_paginate').click(function() {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
-                })
-
-                $('.sorting').click(function() {
-                    setTimeout(() => {
-                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                    }, 1000);
-                })
-            }
-        });
-
         function reloadPage() {
-
             // Fait une réquête AJAX pour récupérer les données
             $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
+                url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
-                    action: 'fetch_page_collaborateur'
+                    action: 'fetch_page_client'
                 },
                 dataType: "JSON",
                 success: function(data) {
 
                     // Affiche les données dans la page
-                    $('#avatar_collaborateur').html(data.avatar_collaborateur);
-                    $('#nom_prenom_collaborateur').html(data.nom_prenom_collaborateur);
-                    $('#email_collaborateur').html(data.email_collaborateur);
-                    $('#code_collaborateur').html(data.code_collaborateur);
-                    $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
-                    $('#tel_collaborateur').html(data.tel_collaborateur);
-                    $('#adresse_collaborateur').html(data.adresse_collaborateur);
-                    $('#statut_collaborateur').html(data.statut_collaborateur);
-                    $('#action_collaborateur').html(data.action_collaborateur);
-                    $('#niveau_collaborateur').html(data.niveau_collaborateur);
+                    $('#avatar_client').html(data.avatar_client);
+                    $('#nom_client').html(data.nom_client);
+                    $('#email_client').html(data.email_client);
+                    $('#matricule_client').html(data.matricule_client);
+                    $('#date_naiss_client').html(data.date_naiss_client);
+                    $('#tel_client').html(data.tel_client);
+                    $('#adresse_client').html(data.adresse_client);
+                    $('#statut_client').html(data.statut_client);
+                    $('#action_client').html(data.action_client);
+                    $('#niveau_client').html(data.niveau_client);
 
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
-
-            reload_datatables('dossiers_collabo');
-
         }
 
         // Afficher les infos selon la zone cliquée (generale, avance)
@@ -561,8 +517,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         var KTModalShareEarn = function() {
             // Private functions
             var handleForm = function() {
-                var button = document.querySelector('#code_collaborateur_copy_btn');
-                var input = document.querySelector('#code_collaborateur');
+                var button = document.querySelector('#matricule_client_copy_btn');
+                var input = document.querySelector('#matricule_client');
                 var clipboard = new ClipboardJS(button);
 
                 if (!clipboard) {
@@ -594,7 +550,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Lorsqu'on clique sur .activer_compte
         $(document).on('click', '.activer_compte', function(e) {
             e.preventDefault();
-            var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
+            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
             // Voulez-vous vraiment activer ce compte ?
             Swal.fire({
@@ -608,10 +564,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/collaborateurs/fetch.php",
+                        url: "roll/ag/dossiers/fetch.php",
                         method: "POST",
                         data: {
-                            id_collaborateur: id_collaborateur,
+                            id_client: id_client,
                             action: 'activer_compte'
                         },
                         dataType: "JSON",
@@ -638,12 +594,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Lorsqu'on clique sur .desactiver_compte
         $(document).on('click', '.desactiver_compte', function(e) {
             e.preventDefault();
-            var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
+            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
             // Voulez-vous vraiment désactiver ce compte ?
             Swal.fire({
                 title: "Voulez-vous vraiment désactiver ce compte ?",
-                text: "Tous les dossiers de ce collaborateur ne seront plus pris en charge !",
+                text: "Vous ne pouvez plus revenir en arrière !",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonText: "Oui, désactiver !",
@@ -653,128 +609,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 if (result.value) {
 
                     $.ajax({
-                        url: "roll/ag/collaborateurs/fetch.php",
+                        url: "roll/ag/dossiers/fetch.php",
                         method: "POST",
                         data: {
-                            id_collaborateur: id_collaborateur,
-                            action: 'desactiver_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reloadPage(); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .attribuer_dossier
-        $(document).on('click', '.attribuer_dossier', function(e) {
-            e.preventDefault();
-            var id_collaborateur = $(this).data('id_collaborateur'); // On récupère l'id de l'article
-
-            $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
-                method: "POST",
-                data: {
-                    id_collaborateur: id_collaborateur,
-                    action: 'fetch_attribuer_dossier'
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    $('#attribuer_nom_collaborateur').html(data.nom_collaborateur);
-                    $('#attribuer_dossier').html(data.dossier_html);
-                    $('#attribuer_id_collaborateur').val(data.id_collaborateur);
-                }
-            });
-
-        });
-
-        // Pour l'attribution un dossier à un collaborateur
-        $(document).on('submit', '#form_attribuer', function(event) {
-            event.preventDefault();
-
-            // Show loading indication
-            formSubmitButton = document.querySelector('#btn_attribuer');
-            formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-            $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
-                        // Hide loading indication
-                        formSubmitButton.removeAttribute('data-kt-indicator');
-
-                        if (data.success) {
-                            $('#attribuer_modal').modal('hide');
-
-                            // swal
-                            Swal.fire({
-                                title: "Dossier attribué !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reloadPage(); // On recharge le datatable
-
-                        } else {
-                            $('#attribuer_modal').modal('hide');
-
-                            toastr.error('une erreur s\'est produite', '', {
-                                positionClass: "toastr-bottom-left",
-                            });
-                        }
-                    }, 2000);
-
-                }
-            })
-        });
-
-        // Lorsqu'on clique sur .retirer_dossier
-        $(document).on('click', '.retirer_dossier', function(e) {
-            e.preventDefault();
-            var id_collaborateur = $(this).data('id_collaborateur');
-            var id_client = $(this).data('id_client');
-
-            // Voulez-vous vraiment retirer ce dossier ?
-            Swal.fire({
-                title: "Voulez-vous vraiment retirer ce dossier ?",
-                text: "Ce dossier ne sera plus pris en charge par ce collaborateur !",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, retirer !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/collaborateurs/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_collaborateur: id_collaborateur,
                             id_client: id_client,
-                            action: 'retirer_dossier'
+                            action: 'desactiver_compte'
                         },
                         dataType: "JSON",
                         success: function(data) {
@@ -803,7 +642,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             var id_client = $(this).data('id_client');
 
             $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
+                url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
                     id_client: id_client,
@@ -819,6 +658,76 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
 
+        });
+
+        // Lorsqu'on clique sur .attribuer_collabo
+        $(document).on('click', '.attribuer_collabo', function(e) {
+            e.preventDefault();
+            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_client: id_client,
+                    action: 'fetch_attribuer_collabo'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#attribuer_nom_client').html(data.nom_client);
+                    $('#attribuer_collabo').html(data.dossier_html);
+                    $('#attribuer_id_client').val(data.id_client);
+                }
+            });
+
+        });
+
+        // Pour l'attribution un collaborateur à un client
+        $(document).on('submit', '#form_attribuer', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_attribuer');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#attribuer_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Dossier prise en charge !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            $('#attribuer_modal').modal('hide');
+
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
         });
 
 
