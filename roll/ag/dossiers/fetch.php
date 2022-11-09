@@ -120,7 +120,7 @@ if (isset($_POST['datatable'])) {
                             <div class="d-flex justify-content-end flex-shrink-0">
                                 
                                 <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -171,7 +171,7 @@ if (isset($_POST['datatable'])) {
                             <div class="d-flex justify-content-end flex-shrink-0">
 
                                 <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -229,7 +229,7 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']}";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY nom_document ASC";
 
 
         // // pour la recherche
@@ -264,6 +264,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $nom_document = $row['nom_document'];
+            $max_nom_document = (strlen($nom_document) > 55) ? substr($nom_document, 0, 55) . '...' : $nom_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
 
@@ -284,8 +285,8 @@ if (isset($_POST['datatable'])) {
             // Document
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a data-sorting="{$nom_document}" href="" 
-                    class="fs-6 text-gray-800 text-hover-primary">$nom_document</a>
+                    <a data-sorting="{$nom_document}" href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$nom_document}"
+                    class="fs-6 text-gray-800 text-hover-primary">$max_nom_document</a>
                 </div>
             HTML;
 
@@ -309,7 +310,7 @@ if (isset($_POST['datatable'])) {
                             <div class="d-flex justify-content-end flex-shrink-0">
                                 
                                 <a href=""
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -335,7 +336,7 @@ if (isset($_POST['datatable'])) {
                             <div class="d-flex justify-content-end flex-shrink-0">
                                 
                                 <a href=""
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
                                 </a>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">

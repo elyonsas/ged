@@ -245,7 +245,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Rechercher...">
+                                        <input type="text" id="kt_filter_search2" class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Rechercher...">
                                     </div>
                                     <!--end::Search-->
                                 </div>
@@ -424,6 +424,40 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal detail-->
 
+    <!--begin::Modal - preview-->
+    <div class="modal fade" id="preview_modal" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-xl h-100">
+            <!--begin::Modal content-->
+            <div class="modal-content rounded" style="height: 90%;">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-end border-0 py-3">
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <!--begin::Modal body-->
+                <div class="modal-body p-0">
+
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - preview-->
+
 </div>
 <!--end::Content wrapper-->
 
@@ -595,10 +629,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
                     "processing": true,
                     "serverSide": false,
-                    "paging": false,
-                    "bInfo": false,
-                    "bFilter": false,
-                    "bSort": false,
+                    "paging": true,
+                    "bInfo": true,
+                    "bFilter": true,
+                    "bSort": true,
                     "order": [],
                     "data": data.data,
                     "initComplete": function(settings, json) {
@@ -606,6 +640,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
+
+                $('#kt_filter_search2').keyup(function() {
+                    documents_juridico_admin.search($(this).val()).draw();
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                })
 
                 $('.dataTables_paginate').click(function() {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -760,6 +800,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         KTUtil.onDOMContentLoaded(function() {
             KTModalShareEarn.init();
         });
+
+        /* --------------------------------- */
 
         // Lorsqu'on clique sur .activer_compte
         $(document).on('click', '.activer_compte', function(e) {
@@ -942,6 +984,27 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 }
             })
+        });
+
+        /* --------------------------------- */
+
+        // Pour voir l'arperçu d'un document
+        $(document).on('click', '.preview_doc_write', function(event) {
+
+            var id_document_write = $(this).data('id_document_write');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document_write: id_document_write,
+                    action: 'preview_doc_write'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_modal .modal-body').html(data.btn_preview_html + data.iframe_html);
+                }
+            })
+
         });
 
 
