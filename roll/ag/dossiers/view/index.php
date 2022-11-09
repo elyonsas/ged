@@ -99,7 +99,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Avancé</a>
+                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects juridiques et administratifs</a>
+                            </li>
+                            <!--end::Nav item-->
+
+                            <!--begin::Nav item-->
+                            <li class="nav-item mt-2">
+                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects techniques</a>
+                            </li>
+                            <!--end::Nav item-->
+
+                            <!--begin::Nav item-->
+                            <li class="nav-item mt-2">
+                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects comptables et financiers</a>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -212,8 +224,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <!--end::Row Générale-->
 
                 <!--begin::Row Avancé-->
-                <div id="infos_avance" class="row g-5 g-xxl-8">
-
+                <div id="infos_avance" class="row g-5 g-xxl-8 mx-15 d-none">
+                    <ul>
+                        <li><a href="" class="fs-3">DOC N°2 Prise de connaissance générale du client</a></li>
+                        <li><a href="" class="fs-3">DOC N°8 Fiche d’identification du client</a></li>
+                        <li><a href="" class="fs-3">DOC N°3 Acceptation préalable et maintien de la mission</a></li>
+                    </ul>
                 </div>
                 <!--end::Row Avancé-->
             </div>
