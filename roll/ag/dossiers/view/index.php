@@ -99,19 +99,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects juridiques et administratifs</a>
+                                <a id="juridico_admin_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects juridiques et administratifs</a>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects techniques</a>
+                                <a id="technique_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects techniques</a>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects comptables et financiers</a>
+                                <a id="compta_finance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects comptables et financiers</a>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -151,10 +151,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--end::copy-btn-->
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
-                                        <div class="text-gray-900 fs-3 fw-bold">Date de naissance : </div>
-                                        <div id="date_naiss_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
-                                    </div>
-                                    <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">Téléphone : </div>
                                         <div id="tel_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
                                     </div>
@@ -177,7 +173,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="card-header border-0 pt-5">
                                 <!--begin::Title-->
                                 <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label fw-bold fs-3 mb-1">Collaborateur en charge</span>
+                                    <span class="card-label fw-bold fs-3 mb-1">Collaborateurs en charge</span>
                                     <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
                                 </h3>
                                 <!--end::Title-->
@@ -223,15 +219,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 </div>
                 <!--end::Row Générale-->
 
-                <!--begin::Row Avancé-->
-                <div id="infos_avance" class="row g-5 g-xxl-8 mx-15 d-none">
-                    <ul>
-                        <li><a href="" class="fs-3">DOC N°2 Prise de connaissance générale du client</a></li>
-                        <li><a href="" class="fs-3">DOC N°8 Fiche d’identification du client</a></li>
-                        <li><a href="" class="fs-3">DOC N°3 Acceptation préalable et maintien de la mission</a></li>
-                    </ul>
+                <!--begin::Row juridico_admin-->
+                <div id="infos_juridico_admin" class="row g-5 g-xxl-8 d-none">
                 </div>
-                <!--end::Row Avancé-->
+                <!--end::Row juridico_admin-->
+
+                <!--begin::Row technique-->
+                <div id="infos_technique" class="row g-5 g-xxl-8 d-none">
+                </div>
+                <!--end::Row technique-->
+
+                <!--begin::Row compta_finance-->
+                <div id="infos_compta_finance" class="row g-5 g-xxl-8 d-none">
+                </div>
+                <!--end::Row compta_finance-->
             </div>
             <!--end::Container-->
         </div>
@@ -504,29 +505,77 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         $(document).on('click', '#generale_area_btn', function(e) {
             e.preventDefault();
 
-            // suppression de la classe active de l'element #avance_area_btn
-            $('#avance_area_btn').removeClass('active');
+            // suppression de la classe active des autres area
+            $('#juridico_admin_area_btn').removeClass('active');
+            $('#technique_area_btn').removeClass('active');
+            $('#compta_finance_area_btn').removeClass('active');
+
             // ajout de la classe active de l'element #generale_area_btn
             $('#generale_area_btn').addClass('active');
-
             // supprimer d-none de l'element #infos_generale
             $('#infos_generale').removeClass('d-none');
-            // ajouter d-none à l'element #infos_avance
-            $('#infos_avance').addClass('d-none');
+
+            // ajouter d-none aux autres elements
+            $('#infos_juridico_admin').addClass('d-none');
+            $('#infos_technique').addClass('d-none');
+            $('#infos_compta_finance').addClass('d-none');
         })
 
-        $(document).on('click', '#avance_area_btn', function(e) {
+        $(document).on('click', '#juridico_admin_area_btn', function(e) {
             e.preventDefault();
 
-            // suppression de la classe active de l'element #generale_area_btn
+            // suppression de la classe active des autres area
             $('#generale_area_btn').removeClass('active');
-            // ajout de la classe active de l'element #avance_area_btn
-            $('#avance_area_btn').addClass('active');
+            $('#technique_area_btn').removeClass('active');
+            $('#compta_finance_area_btn').removeClass('active');
 
-            // supprimer d-none de l'element #infos_avance
-            $('#infos_avance').removeClass('d-none');
-            // ajouter d-none à l'element #infos_generale
+            // ajout de la classe active de l'element #generale_area_btn
+            $('#juridico_admin_area_btn').addClass('active');
+            // supprimer d-none de l'element #infos_generale
+            $('#infos_juridico_admin').removeClass('d-none');
+
+            // ajouter d-none aux autres elements
             $('#infos_generale').addClass('d-none');
+            $('#infos_technique').addClass('d-none');
+            $('#infos_compta_finance').addClass('d-none');
+        })
+
+        $(document).on('click', '#technique_area_btn', function(e) {
+            e.preventDefault();
+
+            // suppression de la classe active des autres area
+            $('#generale_area_btn').removeClass('active');
+            $('#juridico_admin_area_btn').removeClass('active');
+            $('#compta_finance_area_btn').removeClass('active');
+
+            // ajout de la classe active de l'element #generale_area_btn
+            $('#technique_area_btn').addClass('active');
+            // supprimer d-none de l'element #infos_generale
+            $('#infos_technique').removeClass('d-none');
+
+            // ajouter d-none aux autres elements
+            $('#infos_generale').addClass('d-none');
+            $('#infos_juridico_admin').addClass('d-none');
+            $('#infos_compta_finance').addClass('d-none');
+        })
+
+        $(document).on('click', '#compta_finance_area_btn', function(e) {
+            e.preventDefault();
+
+            // suppression de la classe active des autres area
+            $('#generale_area_btn').removeClass('active');
+            $('#juridico_admin_area_btn').removeClass('active');
+            $('#technique_area_btn').removeClass('active');
+
+            // ajout de la classe active de l'element #generale_area_btn
+            $('#compta_finance_area_btn').addClass('active');
+            // supprimer d-none de l'element #infos_generale
+            $('#infos_compta_finance').removeClass('d-none');
+
+            // ajouter d-none aux autres elements
+            $('#infos_generale').addClass('d-none');
+            $('#infos_juridico_admin').addClass('d-none');
+            $('#infos_technique').addClass('d-none');
         })
 
         // Pour la copie du code de l'article
