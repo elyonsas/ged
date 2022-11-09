@@ -167,7 +167,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <!--end::Col-->
                     <!--begin::Col-->
                     <div class="col-lg-7">
-                        <!--begin::Charts Widget 1-->
+                        <!--begin::Card-->
                         <div class="card mb-5 mb-xxl-8">
                             <!--begin::Header-->
                             <div class="card-header border-0 pt-5">
@@ -213,7 +213,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             </div>
                             <!--end::Body-->
                         </div>
-                        <!--end::Charts Widget 1-->
+                        <!--end::Card-->
                     </div>
                     <!--end::Col-->
                 </div>
@@ -221,6 +221,72 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 <!--begin::Row juridico_admin-->
                 <div id="infos_juridico_admin" class="row g-5 g-xxl-8 d-none">
+                    <div class="col-xl-12">
+                        <!--begin::Card-->
+                        <div class="card mb-5 mb-xxl-8">
+                            <!--begin::Header-->
+                            <div class="card-header border-0 pt-5">
+                                <!--begin::Title-->
+                                <h3 class="card-title align-items-start flex-column">
+                                    <!-- <span class="card-label fw-bold fs-3 mb-1">Documents client</span> -->
+                                    <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
+                                </h3>
+                                <!--end::Title-->
+
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar my-1">
+                                    <!--begin::Search-->
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                                        <span class="svg-icon svg-icon-3 position-absolute ms-3">
+                                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"></rect>
+                                                <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        <input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Rechercher...">
+                                    </div>
+                                    <!--end::Search-->
+                                </div>
+                                <!--begin::Card toolbar-->
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Chart-->
+                                <!-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> -->
+                                <!--end::Chart-->
+
+                                <!--begin::Table container-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table id="documents_juridico_admin" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                                        <!--begin::Head-->
+                                        <thead class="fs-7 text-gray-400 text-uppercase">
+                                            <tr>
+                                                <th class="min-w-200px">Document</th>
+                                                <th class="">Dernière modification</th>
+                                                <th class="">statut</th>
+                                                <th class="text-end">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <!--end::Head-->
+                                        <!--begin::Body-->
+                                        <tbody class="fs-6">
+
+                                        </tbody>
+                                        <!--end::Body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Table container-->
+
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
                 </div>
                 <!--end::Row juridico_admin-->
 
@@ -430,6 +496,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
+
         function reload_datatables1() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -446,8 +513,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function update_data_datatable2(data) {
 
-            $("#collabos_dossier").DataTable().destroy();
-            var collabos_dossier = $('#collabos_dossier').DataTable({
+            $("#documents_juridico_admin").DataTable().destroy();
+            var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
                 "processing": true,
                 "serverSide": false,
                 "paging": false,
@@ -474,12 +541,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
+
         function reload_datatables2() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
-                    datatable: 'collabos_dossier',
+                    datatable: 'documents_juridico_admin',
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -520,11 +588,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             url: "roll/ag/dossiers/fetch.php",
             method: "POST",
             data: {
-                datatable: 'documents_client',
+                datatable: 'documents_juridico_admin',
             },
             dataType: "JSON",
             success: function(data) {
-                var documents_client = $('#documents_client').DataTable({
+                var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
                     "processing": true,
                     "serverSide": false,
                     "paging": false,
@@ -532,7 +600,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "bFilter": false,
                     "bSort": false,
                     "order": [],
-                    "data": data,
+                    "data": data.data,
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)

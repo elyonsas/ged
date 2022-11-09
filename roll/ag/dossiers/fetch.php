@@ -45,8 +45,6 @@ if (isset($_POST['datatable'])) {
 
         $data = array();
 
-        $filtered_rows = $statement->rowCount();
-
 
         foreach ($result as $row) {
 
@@ -221,19 +219,151 @@ if (isset($_POST['datatable'])) {
             $data[] = $sub_array;
         }
 
-        function get_total_all_records($db)
-        {
-            $statement = $db->prepare("SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur ORDER BY statut_compte ASC"); // same query as above
-            $statement->execute();
-            return $statement->rowCount();
+        $output = array(
+            "data" => $data
+        );
+    }
+
+    if ($_POST['datatable'] == 'documents_juridico_admin') {
+
+        $output = array();
+        $query = '';
+
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']}";
+
+
+        // // pour la recherche
+        // if (isset($_POST["search"]["value"])) {
+        //     $query .= 'AND (nom_utilisateur LIKE "%' . $_POST["search"]["value"] . '%" ';
+        //     $query .= 'OR prenom_utilisateur LIKE "%'. $_POST["search"]["value"] .'%" ';
+        //     $query .= 'OR titre_client LIKE "%' . $_POST["search"]["value"] . '%" ';
+        //     $query .= 'OR created_at_client LIKE "%' . $_POST["search"]["value"] . '%" ';
+        //     $query .= 'OR date_valide_client LIKE "%' . $_POST["search"]["value"] . '%" ';
+        //     $query .= 'OR statut_compte LIKE "%' . $_POST["search"]["value"] . '%" ) ';
+        // }
+
+        // // Filtrage dans le tableau
+        // if (isset($_POST['order'])) {
+        //     $query .= 'ORDER BY ' . $colonne[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
+        // }
+        // if ($_POST['length'] != -1) {
+        //     $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+        // }
+
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        $data = array();
+
+        foreach ($result as $row) {
+
+            $sub_array = array();
+
+            $nom_document = $row['nom_document'];
+            $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
+            $statut_document = $row['statut_document'];
+
+            $statut_document = $row['statut_document'];
+            switch ($statut_document) {
+                case 'valide':
+                    $statut_document_html = <<<HTML
+                        <span class="badge badge-light-success">Validé</span>
+                    HTML;
+                    break;
+                case 'invalide':
+                    $statut_document_html = <<<HTML
+                        <span class="badge badge-light-danger">Invalidé</span>
+                    HTML;
+                    break;
+            }
+
+            // Document
+            $sub_array[] = <<<HTML
+                <div class="d-flex flex-column justify-content-center">
+                    <a data-sorting="{$nom_document}" href="" 
+                    class="fs-6 text-gray-800 text-hover-primary">$nom_document</a>
+                </div>
+            HTML;
+
+            // Dernière modification
+            $sub_array[] = <<<HTML
+                $derniere_modif
+            HTML;
+
+            // Statut
+            $sub_array[] = <<<HTML
+                $statut_document_html
+            HTML;
+
+
+            // Action
+            switch ($statut_document) {
+                case 'valide':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <a href=""
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-eye-fill fs-3"></i>
+                                </a>
+                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                </a> -->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+                case 'invalide':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <a href=""
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="voir" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-eye-fill fs-3"></i>
+                                </a>
+                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                </a> -->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+            }
+
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
         }
 
 
         $output = array(
-            "recordsTotal"      =>  $filtered_rows,
-            "recordsFiltered"     =>     get_total_all_records($db),
-            "data"                =>    $data
+            "data" => $data
         );
     }
 }
