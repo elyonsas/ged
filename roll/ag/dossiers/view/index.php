@@ -1033,6 +1033,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
+        // Pour voir l'arperçu d'un document file
+        $(document).on('click', '.preview_doc_file', function(e) {
+            
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_file'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_modal .modal-body').html(data.iframe_html);
+                }
+            })
+
+        });
+
 
     })
 </script>
