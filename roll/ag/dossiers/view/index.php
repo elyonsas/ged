@@ -993,7 +993,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* --------------------------------- */
 
-        // Pour voir l'arperçu d'un document
+        // Pour voir l'arperçu d'un document write
         $(document).on('click', '.preview_doc_write', function(e) {
             
             var id_document = $(this).data('id_document');
@@ -1004,6 +1004,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 data: {
                     id_document: id_document,
                     action: 'preview_doc_write'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_modal .modal-body').html(data.contenu_document);
+                }
+            })
+
+        });
+
+        // Pour voir l'arperçu d'un document generate
+        $(document).on('click', '.preview_doc_generate', function(e) {
+            
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_generate'
                 },
                 dataType: "JSON",
                 success: function(data) {
