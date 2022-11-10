@@ -5144,10 +5144,18 @@ if (isset($_POST['action'])) {
         $result = $statement->fetch();
 
         $src_document = $result['src_document'];
+        $type_document = $result['type_document'];
 
-        $output['iframe_html'] .= <<<HTML
-            <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
-        HTML;
+        // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
+        if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
+            $output['iframe_html'] .= <<<HTML
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+            HTML;
+        } else {
+            $output['iframe_html'] = <<<HTML
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}&embedded=true" width="100%" height="500px" frameborder="0"></iframe>
+            HTML;
+        }
     }
 }
 
