@@ -426,6 +426,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
     <!--begin::Modal - preview-->
     <div class="modal fade" id="preview_modal" tabindex="-1" aria-hidden="true">
+        <style>
+            #preview_modal li {
+                white-space: nowrap !important;
+            }
+        </style>
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-xl h-100">
             <!--begin::Modal content-->
@@ -447,7 +452,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 </div>
                 <!--end::Modal header-->
                 <!--begin::Modal body-->
-                <div class="modal-body p-0">
+                <div class="modal-body px-20 scroll-y">
 
                 </div>
                 <!--end::Modal body-->
@@ -989,19 +994,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         /* --------------------------------- */
 
         // Pour voir l'arperçu d'un document
-        $(document).on('click', '.preview_doc_write', function(event) {
+        $(document).on('click', '.preview_doc_write', function(e) {
+            
+            var id_document = $(this).data('id_document');
 
-            var id_document_write = $(this).data('id_document_write');
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
-                    id_document_write: id_document_write,
+                    id_document: id_document,
                     action: 'preview_doc_write'
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    $('#preview_modal .modal-body').html(data.btn_preview_html + data.iframe_html);
+                    $('#preview_modal .modal-body').html(data.contenu_document);
                 }
             })
 

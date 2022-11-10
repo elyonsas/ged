@@ -229,7 +229,7 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY nom_document ASC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY titre_document ASC";
 
 
         // // pour la recherche
@@ -263,8 +263,11 @@ if (isset($_POST['datatable'])) {
 
             $sub_array = array();
 
-            $nom_document = $row['nom_document'];
-            $max_nom_document = (strlen($nom_document) > 55) ? substr($nom_document, 0, 55) . '...' : $nom_document;
+            $id_document = $row['id_document'];
+            $titre_document = $row['titre_document'];
+            $type_document = $row['type_document'];
+            $table_document = $row['table_document'];
+            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
 
@@ -285,8 +288,8 @@ if (isset($_POST['datatable'])) {
             // Document
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a data-sorting="{$nom_document}" href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$nom_document}"
-                    class="fs-6 text-gray-800 text-hover-primary">$max_nom_document</a>
+                    <a data-sorting="{$titre_document}" href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                    class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</a>
                 </div>
             HTML;
 
@@ -304,56 +307,312 @@ if (isset($_POST['datatable'])) {
             // Action
             switch ($statut_document) {
                 case 'valide':
-                    $action = <<<HTML
+                    if ($type_document == 'generate') {
+                        $action = <<<HTML
 
-                        <td>
-                            <div class="d-flex justify-content-end flex-shrink-0">
-                                
-                                <a href=""
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
-                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                </a> -->
-                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <i class="bi bi-three-dots fs-3"></i>
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                    class="preview_doc_generate btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                    </a>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
 
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="modifier_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le formulaire</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="modifier_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
                                 </div>
-                                <!--end::Menu 3-->
-                            </div>
-                        </td>
+                            </td>
 
-                    HTML;
+                        HTML;
+                    }else if ($type_document == 'write') {
+                        if ($table_document != 'document_write'){
+                            $action = <<<HTML
+
+                                <td>
+                                    <div class="d-flex justify-content-end flex-shrink-0">
+                                        
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        class="preview_doc_write btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                        </a>
+                                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                        </a> -->
+                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                            <i class="bi bi-three-dots fs-3"></i>
+                                        </button>
+                                        <!--begin::Menu 3-->
+                                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="modifier_doc_autre menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="supprimer_doc_autre menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu 3-->
+                                    </div>
+                                </td>
+
+                            HTML;
+                        }else{
+                            $action = <<<HTML
+
+                                <td>
+                                    <div class="d-flex justify-content-end flex-shrink-0">
+                                        
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        class="preview_doc_write btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                        </a>
+                                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                        </a> -->
+                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                            <i class="bi bi-three-dots fs-3"></i>
+                                        </button>
+                                        <!--begin::Menu 3-->
+                                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="modifier_doc_write menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu 3-->
+                                    </div>
+                                </td>
+
+                            HTML;
+                        }
+                    }else if ($type_document == 'file') {
+                        if ($table_document != 'document_file'){
+                            $action = <<<HTML
+
+                                <td>
+                                    <div class="d-flex justify-content-end flex-shrink-0">
+                                        
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                        </a>
+                                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                        </a> -->
+                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                            <i class="bi bi-three-dots fs-3"></i>
+                                        </button>
+                                        <!--begin::Menu 3-->
+                                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="modifier_doc_autre menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="supprimer_doc_autre menu-link px-3" data-id_document="{$id_document}">Supprimer</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu 3-->
+                                    </div>
+                                </td>
+
+                            HTML;
+                        }else{
+                            $action = <<<HTML
+
+                                <td>
+                                    <div class="d-flex justify-content-end flex-shrink-0">
+                                        
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                        </a>
+                                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                        </a> -->
+                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                            <i class="bi bi-three-dots fs-3"></i>
+                                        </button>
+                                        <!--begin::Menu 3-->
+                                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="modifier_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu 3-->
+                                    </div>
+                                </td>
+
+                            HTML;
+                        }
+                    }
                     break;
                 case 'invalide':
-                    $action = <<<HTML
+                    if ($type_document == 'generate') {
+                        $action = <<<HTML
 
-                        <td>
-                            <div class="d-flex justify-content-end flex-shrink-0">
-                                
-                                <a href=""
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
-                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                </a> -->
-                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <i class="bi bi-three-dots fs-3"></i>
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
 
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="remplir_doc_generate menu-link px-3" data-id_document="{$id_document}">Remplir le formulaire</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
                                 </div>
-                                <!--end::Menu 3-->
-                            </div>
-                        </td>
+                            </td>
 
-                    HTML;
+                        HTML;
+                    }else if ($type_document == 'write') {
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="rediger_doc_write menu-link px-3" data-id_document="{$id_document}">Rédiger le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    }else if ($type_document == 'file') {
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="importer_doc_file menu-link px-3" data-id_document="{$id_document}">Importer</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    }
                     break;
             }
 
@@ -719,6 +978,52 @@ if (isset($_POST['action'])) {
             'email_client' => $result['email_utilisateur'],
             'adresse_client' => $result['adresse_utilisateur'],
         ];
+    }
+
+    if ($_POST['action'] == 'preview_doc_write') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+        $output = [
+            'titre_document' => $result['titre_document'],
+            'contenu_document' => '',
+        ];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['contenu_document'] = $result['contenu_document_write'];
+    }
+
+    if ($_POST['action'] == 'preview_doc_generate') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+        $output = [
+            'titre_document' => $result['titre_document'],
+            'contenu_document' => '',
+        ];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['contenu_document'] = $result['contenu_document_write'];
     }
 }
 
