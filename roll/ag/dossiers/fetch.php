@@ -134,7 +134,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -185,7 +185,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
@@ -286,12 +286,41 @@ if (isset($_POST['datatable'])) {
             }
 
             // Document
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <a data-sorting="{$titre_document}" href="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
-                    class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</a>
-                </div>
-            HTML;
+            if ($statut_document == 'valide') {
+                if ($type_document == 'generate') {
+
+                    $sub_array[] = <<<HTML
+                        <div class="preview_doc_generate d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_generate_modal">
+                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                        </div>
+                    HTML;
+                } else if ($type_document == 'write') {
+
+                    $sub_array[] = <<<HTML
+                        <div class="preview_doc_write d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal">
+                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                        </div>
+                    HTML;
+                } else if ($type_document == 'file') {
+
+                    $sub_array[] = <<<HTML
+                        <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                        </div>
+                    HTML;
+                }
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                        <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                    </div>
+                HTML;
+            }
 
             // Dernière modification
             $sub_array[] = <<<HTML
@@ -313,7 +342,7 @@ if (isset($_POST['datatable'])) {
                             <td>
                                 <div class="d-flex justify-content-end flex-shrink-0">
                                     
-                                    <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                    <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_generate_modal" 
                                     class="preview_doc_generate btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
                                     </a>
@@ -327,7 +356,7 @@ if (isset($_POST['datatable'])) {
                                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -348,14 +377,14 @@ if (isset($_POST['datatable'])) {
                             </td>
 
                         HTML;
-                    }else if ($type_document == 'write') {
-                        if ($table_document != 'document_write'){
+                    } else if ($type_document == 'write') {
+                        if ($table_document != 'document_write') {
                             $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         
-                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal" 
                                         class="preview_doc_write btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
                                         </a>
@@ -369,13 +398,13 @@ if (isset($_POST['datatable'])) {
                                         <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                                <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                             </div>
                                             <!--end::Menu item-->
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_autre menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="modifier_doc_autre menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -390,13 +419,13 @@ if (isset($_POST['datatable'])) {
                                 </td>
 
                             HTML;
-                        }else{
+                        } else {
                             $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         
-                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal" 
                                         class="preview_doc_write btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
                                         </a>
@@ -410,13 +439,13 @@ if (isset($_POST['datatable'])) {
                                         <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                                <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                             </div>
                                             <!--end::Menu item-->
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_write menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="modifier_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -426,14 +455,14 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         }
-                    }else if ($type_document == 'file') {
-                        if ($table_document != 'document_file'){
+                    } else if ($type_document == 'file') {
+                        if ($table_document != 'document_file') {
                             $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         
-                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal" 
                                         class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
                                         </a>
@@ -447,7 +476,7 @@ if (isset($_POST['datatable'])) {
                                         <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                                <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -468,13 +497,13 @@ if (isset($_POST['datatable'])) {
                                 </td>
 
                             HTML;
-                        }else{
+                        } else {
                             $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         
-                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_modal" 
+                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal" 
                                         class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
                                         </a>
@@ -488,7 +517,7 @@ if (isset($_POST['datatable'])) {
                                         <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                                <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -513,7 +542,7 @@ if (isset($_POST['datatable'])) {
                             <td>
                                 <div class="d-flex justify-content-end flex-shrink-0">
                                     
-                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                    <span style="cursor: not-allowed;"
                                         class="btn btn-icon btn-bg-light btn-sm me-1">
                                         <i class="bi bi-eye-fill fs-3"></i>
                                     </span>
@@ -527,7 +556,7 @@ if (isset($_POST['datatable'])) {
                                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -542,13 +571,13 @@ if (isset($_POST['datatable'])) {
                             </td>
 
                         HTML;
-                    }else if ($type_document == 'write') {
+                    } else if ($type_document == 'write') {
                         $action = <<<HTML
 
                             <td>
                                 <div class="d-flex justify-content-end flex-shrink-0">
                                     
-                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                    <span style="cursor: not-allowed;"
                                         class="btn btn-icon btn-bg-light btn-sm me-1">
                                         <i class="bi bi-eye-fill fs-3"></i>
                                     </span>
@@ -562,7 +591,7 @@ if (isset($_POST['datatable'])) {
                                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -577,13 +606,13 @@ if (isset($_POST['datatable'])) {
                             </td>
 
                         HTML;
-                    }else if ($type_document == 'file') {
+                    } else if ($type_document == 'file') {
                         $action = <<<HTML
 
                             <td>
                                 <div class="d-flex justify-content-end flex-shrink-0">
                                     
-                                    <span style="cursor: not-allowed;" tabindex="-1" aria-disabled="disabled" disabled
+                                    <span style="cursor: not-allowed;"
                                         class="btn btn-icon btn-bg-light btn-sm me-1">
                                         <i class="bi bi-eye-fill fs-3"></i>
                                     </span>
@@ -597,7 +626,7 @@ if (isset($_POST['datatable'])) {
                                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="view_details menu-link px-3" data-id_document="{$id_document}">Détails</a>
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -873,7 +902,7 @@ if (isset($_POST['action'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -917,7 +946,7 @@ if (isset($_POST['action'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
@@ -962,7 +991,69 @@ if (isset($_POST['action'])) {
         }
     }
 
-    if ($_POST['action'] == 'detail_dossier') {
+    if ($_POST['action'] == 'view_detail_document') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = array();
+
+        foreach ($result as $row) {
+
+            $aspect_document = $row['aspect_document'];
+            switch ($aspect_document) {
+                case 'juridiques_et_administratifs':
+                    $aspect_document = 'Juridiques et administratifs';
+                    break;
+                case 'techniques':
+                    $aspect_document = 'Techniques';
+                    break;
+                case 'comptables_et_financiers':
+                    $aspect_document = 'Comptables et financiers';
+                    break;
+            }
+
+
+            $code_document = $row['code_document'];
+            $titre_document = $row['titre_document'];
+
+            $statut_document = $row['statut_document'];
+            switch ($statut_document) {
+                case 'valide':
+                    $statut_document = <<<HTML
+                        <span class="badge badge-light-success">Validé</span>
+                    HTML;
+                    break;
+                case 'invalide':
+                    $statut_document = <<<HTML
+                        <span class="badge badge-light-danger">Invalidé</span>
+                    HTML;
+                    break;
+            }
+
+            $created_by_document = find_info_utilisateur('prenom_utilisateur', $row['created_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $row['created_by_document'], $db);
+            $created_at_document = si_funct1($row['created_at_document'], date('d/m/Y H:i:s', strtotime($row['created_at_document'])), '');
+            $updated_by_document = find_info_utilisateur('prenom_utilisateur', $row['updated_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $row['updated_by_document'], $db);
+            $updated_at_document = si_funct1($row['updated_at_document'], date('d/m/Y H:i:s', strtotime($row['updated_at_document'])), '');
+
+            $output = [
+                'aspect_document' => $aspect_document,
+                'code_document' => $code_document,
+                'titre_document' => $titre_document,
+                'statut_document' => $statut_document,
+                'created_by_document' => $created_by_document,
+                'created_at_document' => $created_at_document,
+                'updated_by_document' => $updated_by_document,
+                'updated_at_document' => $updated_at_document
+            ];
+        }
+    }
+
+    if ($_POST['action'] == 'view_detail_dossier') {
 
         $id_client = $_POST['id_client'];
 
@@ -1054,10 +1145,10 @@ if (isset($_POST['action'])) {
         $professionnel_salarie_ou_cabinet = $result['professionnel_salarie_ou_cabinet'];
         $visa_expert = 'CABINET ELYON';
         $etats_financiers_approuves = $result['etats_financiers_approuves'];
-        if($etats_financiers_approuves == 'oui'){
+        if ($etats_financiers_approuves == 'oui') {
             $etats_financiers_approuves_oui = 'X';
             $etats_financiers_approuves_non = '';
-        }else{
+        } else {
             $etats_financiers_approuves_oui = '';
             $etats_financiers_approuves_non = 'X';
         }
@@ -5153,8 +5244,74 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}&embedded=true" width="100%" height="500px" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_modifier_doc_write') {
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'titre_document' => $result['titre_document'],
+            'contenu_document' => $result['contenu_document']
+        ];
+    }
+
+    if ($_POST['action'] == 'modifier_doc_write') {
+
+    }
+
+    if ($_POST['action'] == 'fetch_modifier_doc_autre') {
+
+    }
+
+    if ($_POST['action'] == 'modifier_doc_autre') {
+
+    }
+
+
+    if ($_POST['action'] == 'edit_brief_article') {
+        $id_article = $_SESSION['id_article_brouillon'];
+        $brief_article = $_POST['brief_article'];
+        $brief_article_text = $_POST['brief_text_article'];
+
+        // Si le brief est vide error
+        if (empty($brief_article)) {
+            $output = array(
+                'error' => true,
+                'message' => 'Le brief ne peut pas être vide !'
+            );
+
+            echo json_encode($output);
+            die;
+        }
+
+        $update = update(
+            'article_brouillon',
+            [
+                'brief_article' => $brief_article,
+                'brief_text_article' => $brief_article_text,
+                'updated_at_article' => date('Y-m-d H:i:s')
+            ],
+            "id_article = $id_article",
+            $db
+        );
+
+        if ($update) {
+            $output = 'update brief';
         }
     }
 }

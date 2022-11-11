@@ -424,21 +424,128 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal detail-->
 
+    <!-- begin::Modal detail-->
+	<div class="modal fade" id="detail_document_modal" tabindex="-1" role="dialog" aria-labelledby="detail_document_modal_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<form method="POST" class="form modal-content" action="">
+				<div class="modal-header p-5">
+					<h4 class="modal-title">Détail du document</h4>
+					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+						<span class="svg-icon svg-icon-1">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+							</svg>
+						</span>
+						<!--end::Svg Icon-->
+					</div>
+				</div>
+				<div class="modal-body">
+
+					<div class="">
+						<div id="equipe_detail_area" class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-4">Aspect : <span id="detail_doc_aspect" class="fs-5 text-muted">--</span></label>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-4">Code document : <span id="detail_doc_code" class="fs-5 text-muted">--</span></label>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-4">Titre du document :</label>
+								<div id="detail_doc_titre" class="fs-6 text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+                                <label class="fs-4">Statut document : <span id="detail_doc_statut" class="">--</span></label>
+							</div>
+							<!--end::item-->
+						</div>
+                        <div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-4">Document créé par :</label>
+								<div id="detail_doc_created_by" class="fs-6 fst-italic text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+						<div class="d-flex flex-stack mb-5">
+							<!--begin::item-->
+							<div class="me-5 fw-semibold">
+								<label class="fs-4">Dernière modification par :</label>
+								<div id="detail_doc_updated_by" class="fs-6 fst-italic text-muted"></div>
+							</div>
+							<!--end::item-->
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- end::Modal detail-->
+
     <!--begin::Modal - preview-->
-    <div class="modal fade" id="preview_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="preview_doc_write_modal" tabindex="-1" aria-hidden="true">
         <style>
-            #preview_modal li {
+            #preview_doc_write_modal li {
                 white-space: nowrap !important;
+            }
+
+            #preview_doc_write_modal .doc-content {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif
+            }
+
+            @media screen {
+                #preview_doc_write_modal .modal-header {
+                    margin: 1rem auto 0;
+                    min-width: 25%;
+                    max-width: 90%;
+                    background-color: #fff;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                }
+
+                #preview_doc_write_modal .modal-body {
+                    background: #f8f9fa;
+                    min-height: 100%
+                }
+
+                #preview_doc_write_modal .document-top-shadow {
+                    background: linear-gradient(to bottom, rgba(0,0,0,.1), transparent);
+                    height: 15px;
+                }
+
+                #preview_doc_write_modal .doc-content {
+                    background-color: #fff;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                    box-sizing: border-box;
+                    margin: 1rem auto 0;
+                    max-width: 820px;
+                    min-height: calc(100vh - 1rem);
+                    padding: 4rem 6rem 6rem 6rem
+                }
             }
         </style>
         <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-xl h-100">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <!--begin::Modal content-->
-            <div class="modal-content rounded" style="height: 90%;">
+            <div class="modal-content">
                 <!--begin::Modal header-->
-                <div class="modal-header justify-content-end border-0 py-3">
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
                     <!--begin::Close-->
-                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-1">
                             <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -451,9 +558,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <!--end::Close-->
                 </div>
                 <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
                 <!--begin::Modal body-->
-                <div class="modal-body px-20 scroll-y">
+                <div class="modal-body">
+                    <!--begin::Modal body-->
+                    <div class="doc-content">
 
+                    </div>
+                    <!--end::Modal body-->
                 </div>
                 <!--end::Modal body-->
             </div>
@@ -462,6 +574,204 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Modal dialog-->
     </div>
     <!--end::Modal - preview-->
+
+    <!--begin::Modal - preview-->
+    <div class="modal fade" id="preview_doc_generate_modal" tabindex="-1" aria-hidden="true">
+        <style>
+            #preview_doc_generate_modal li {
+                white-space: nowrap !important;
+            }
+
+            #preview_doc_generate_modal .doc-content {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif
+            }
+
+            @media screen {
+
+                #preview_doc_generate_modal .modal-header {
+                    margin: 1rem auto 0;
+                    min-width: 25%;
+                    max-width: 90%;
+                    background-color: #fff;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                }
+
+                #preview_doc_generate_modal .doc-content {
+                    background-color: #fff;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                    box-sizing: border-box;
+                    margin: 15px auto 0;
+                    max-width: 90%;
+                    min-height: 75%;
+                    padding: 5px;
+                }
+
+                #preview_doc_generate_modal .document-top-shadow {
+                    background: linear-gradient(to bottom, rgba(0,0,0,.1), transparent);
+                    height: 15px;
+                }
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <!--begin::Modal body-->
+                    <div class="doc-content">
+
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - preview-->
+
+    <!--begin::Modal - preview-->
+    <div class="modal fade" id="preview_doc_file_modal" tabindex="-1" aria-hidden="true">
+        <style>
+
+            @media screen {
+                #preview_doc_file_modal .modal-header {
+                    margin: 1rem auto 0;
+                    min-width: 25%;
+                    max-width: 90%;
+                    background-color: #fff;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                }
+
+                #preview_doc_file_modal .modal-body {
+                    background: #d1d1d1;
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #preview_doc_file_modal .doc-content {
+                    height: 100%;
+                }
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <div class="modal-content h-100">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <!--begin::Modal body-->
+                    <div class="doc-content">
+
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - preview-->
+
+    <!-- begin::Modal edit_doc_write -->
+    <div class="modal fade" id="edit_doc_write_modal" tabindex="-1" aria-hidden="true">
+        <style>
+
+            @media screen {
+                #edit_doc_write_modal .modal-body {
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #edit_doc_write_modal .doc-content {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_write" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="fv-row row">
+                            <textarea id="id_edit_doc_write" class="form-control form-control-solid" rows="3" 
+                            placeholder="" 
+                            name="contenu_document"></textarea>
+                            <textarea id="id_edit_doc_write_text" name="contenu_text_document" hidden></textarea>
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+	<!-- end::Modal edit_doc_write -->
 
 </div>
 <!--end::Content wrapper-->
@@ -501,6 +811,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <script src="assets/js/custom/utilities/modals/create-app.js"></script>
 <script src="assets/js/custom/utilities/modals/new-target.js"></script>
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+<script src="assets/plugins/custom/tinymce/tinymce.bundle.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -897,8 +1208,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Lorsqu'on clique sur .detail_dossier
-        $(document).on('click', '.detail_dossier', function(e) {
+        // Lorsqu'on clique sur .view_detail_dossier
+        $(document).on('click', '.view_detail_dossier', function(e) {
             e.preventDefault();
             var id_client = $(this).data('id_client');
 
@@ -907,7 +1218,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     id_client: id_client,
-                    action: 'detail_dossier'
+                    action: 'view_detail_dossier'
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -993,9 +1304,42 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* --------------------------------- */
 
+        // Pour l'affichage des détails d'un document
+		$(document).on('click', '.view_detail_document', function() {
+			var id_document = $(this).data('id_document');
+			$.ajax({
+				url: "roll/ag/dossiers/fetch.php",
+				method: "POST",
+				data: {
+					id_document: id_document,
+					action: 'view_detail_document'
+				},
+				dataType: "JSON",
+				success: function(data) {
+                    /*aspect_document
+                    code_document
+                    titre_document
+                    statut_document
+                    created_by_document
+                    created_at_document
+                    updated_by_document
+                    updated_at_document */
+
+
+                    $('#detail_doc_aspect').html(data.aspect_document);
+                    $('#detail_doc_code').html(data.code_document);
+                    $('#detail_doc_titre').html(data.titre_document);
+                    $('#detail_doc_statut').html(data.statut_document);
+                    $('#detail_doc_created_by').html('<u>' + data.created_by_document + '</u>' + ' le ' + data.created_at_document);
+                    $('#detail_doc_updated_by').html('<u>' + data.updated_by_document + '</u>' + ' le ' + data.updated_at_document);
+
+				}
+			})
+		});
+
         // Pour voir l'arperçu d'un document write
         $(document).on('click', '.preview_doc_write', function(e) {
-            
+
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -1007,7 +1351,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    $('#preview_modal .modal-body').html(data.contenu_document);
+                    $('#preview_doc_write_modal .doc-content').html(data.contenu_document);
+                    $('#preview_doc_write_modal .modal-title').html(data.titre_document);
                 }
             })
 
@@ -1015,7 +1360,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Pour voir l'arperçu d'un document generate
         $(document).on('click', '.preview_doc_generate', function(e) {
-            
+
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -1027,7 +1372,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    $('#preview_modal .modal-body').html(data.contenu_document);
+                    $('#preview_doc_generate_modal .doc-content').html(data.contenu_document);
+                    $('#preview_doc_generate_modal .modal-title').html(data.titre_document);
                 }
             })
 
@@ -1035,7 +1381,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Pour voir l'arperçu d'un document file
         $(document).on('click', '.preview_doc_file', function(e) {
-            
+
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -1047,10 +1393,66 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    $('#preview_modal .modal-body').html(data.iframe_html);
+                    $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_file_modal .modal-title').html(data.titre_document);
                 }
             })
 
+        });
+
+        // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
+        tinymce.init({
+            selector: '#id_edit_doc_write',
+            language: 'fr_FR',
+            content_css: 'document',
+            menubar: false,
+            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons export',
+            toolbar: 'undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+            height: 660,
+        });
+
+        // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+        document.addEventListener('focusin', (e) => {
+            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                e.stopImmediatePropagation();
+            }
+        });
+
+        //Lorsqu'on clique sur .modifier_doc_write
+        $(document).on('click', '.modifier_doc_write', function() {
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_modifier_doc_write'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+                    $('#edit_doc_write_modal .modal-title').html(data.titre_document);
+
+                }
+            })
+        });
+
+        //Lorsqu'on clique sur .modifier_doc_autre
+        $(document).on('click', '.modifier_doc_autre', function() {
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_modifier_doc_autre'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    console.log(data);
+                }
+            })
         });
 
 

@@ -56,7 +56,9 @@ License: For each use you must have a valid license purchased only from above li
 			opacity: 0.9 !important;
 		}
 
-		
+		.tox-statusbar__branding{
+			display: none !important;
+		}
 	</style>
 </head>
 <!--end::Head-->
