@@ -5422,7 +5422,7 @@ if (isset($_FILES['file'])) {
     $uniq_str = $uuid->toString();
     $infoPath = pathinfo($_FILES['file']['name']);
 
-    $targetFile =  $targetPath . $titre_document .  $uniq_str . '.' . $infoPath['extension'];
+    $targetFile =  $targetPath . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'];
     move_uploaded_file($tempFile, $targetFile);
 
     $query = "SELECT * FROM document WHERE id_document = $id_document";
