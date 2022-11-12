@@ -5359,6 +5359,9 @@ if (isset($_POST['action'])) {
 
         $src_document = $result['src_document'];
         $src_temp_document = $result['src_temp_document'];
+
+        $infoPath = pathinfo($src_temp_document);
+        $type_document = '.' . $infoPath['extension'];
         $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;   
 
         if (file_exists($file_path)) {
@@ -5369,6 +5372,7 @@ if (isset($_POST['action'])) {
             $table_document,
             [
                 'src_document' => $src_temp_document,
+                'type_document' => $type_document
             ],
             "id_document = $id_document",
             $db
