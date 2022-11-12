@@ -306,6 +306,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!--end::Content-->
 
+    <style>
+        /* Pour permettre aux instances de tinymce d'avoir une hauteur max */
+        .doc-content > .fv-row.row,
+        .doc-content > .fv-row.row > .tox.tox-tinymce {
+            height: 100% !important;
+        }
+    </style>
+
     <!-- begin::Modal attribuer collaborateur-->
     <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -425,76 +433,76 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal detail-->
 
     <!-- begin::Modal detail-->
-	<div class="modal fade" id="detail_document_modal" tabindex="-1" role="dialog" aria-labelledby="detail_document_modal_title" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<form method="POST" class="form modal-content" action="">
-				<div class="modal-header p-5">
-					<h4 class="modal-title">Détail du document</h4>
-					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-						<span class="svg-icon svg-icon-1">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-							</svg>
-						</span>
-						<!--end::Svg Icon-->
-					</div>
-				</div>
-				<div class="modal-body">
+    <div class="modal fade" id="detail_document_modal" tabindex="-1" role="dialog" aria-labelledby="detail_document_modal_title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Détail du document</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <div class="modal-body">
 
-					<div class="">
-						<div id="equipe_detail_area" class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-4">Aspect : <span id="detail_doc_aspect" class="fs-5 text-muted">--</span></label>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-4">Code document : <span id="detail_doc_code" class="fs-5 text-muted">--</span></label>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-4">Titre du document :</label>
-								<div id="detail_doc_titre" class="fs-6 text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-                                <label class="fs-4">Statut document : <span id="detail_doc_statut" class="">--</span></label>
-							</div>
-							<!--end::item-->
-						</div>
+                    <div class="">
+                        <div id="equipe_detail_area" class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Aspect : <span id="detail_doc_aspect" class="fs-5 text-muted">--</span></label>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-4">Document créé par :</label>
-								<div id="detail_doc_created_by" class="fs-6 fst-italic text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-4">Dernière modification par :</label>
-								<div id="detail_doc_updated_by" class="fs-6 fst-italic text-muted"></div>
-							</div>
-							<!--end::item-->
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- end::Modal detail-->
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Code document : <span id="detail_doc_code" class="fs-5 text-muted">--</span></label>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Titre du document :</label>
+                                <div id="detail_doc_titre" class="fs-6 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Statut document : <span id="detail_doc_statut" class="">--</span></label>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Document créé par :</label>
+                                <div id="detail_doc_created_by" class="fs-6 fst-italic text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-4">Dernière modification par :</label>
+                                <div id="detail_doc_updated_by" class="fs-6 fst-italic text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal detail-->
 
     <!--begin::Modal - preview-->
     <div class="modal fade" id="preview_doc_write_modal" tabindex="-1" aria-hidden="true">
@@ -522,7 +530,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
 
                 #preview_doc_write_modal .document-top-shadow {
-                    background: linear-gradient(to bottom, rgba(0,0,0,.1), transparent);
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, .1), transparent);
                     height: 15px;
                 }
 
@@ -607,7 +615,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
 
                 #preview_doc_generate_modal .document-top-shadow {
-                    background: linear-gradient(to bottom, rgba(0,0,0,.1), transparent);
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, .1), transparent);
                     height: 15px;
                 }
             }
@@ -653,7 +661,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!--begin::Modal - preview-->
     <div class="modal fade" id="preview_doc_file_modal" tabindex="-1" aria-hidden="true">
         <style>
-
             @media screen {
                 #preview_doc_file_modal .modal-header {
                     margin: 1rem auto 0;
@@ -716,12 +723,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- begin::Modal edit_doc_write -->
     <div class="modal fade" id="edit_doc_write_modal" tabindex="-1" aria-hidden="true">
         <style>
-
             @media screen {
                 #edit_doc_write_modal .modal-body {
                     height: 100%;
                     margin: 0px;
                     padding: 0px;
+                    overflow: hidden;
                 }
 
                 #edit_doc_write_modal .doc-content {
@@ -757,13 +764,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="doc-content">
                         <!--begin::Input group-->
                         <div class="fv-row row">
-                            <textarea id="id_edit_doc_write" class="form-control form-control-solid" rows="3" 
-                            placeholder="" 
-                            name="contenu_document"></textarea>
+                            <textarea id="id_edit_doc_write" class="form-control form-control-solid" rows="3" placeholder="" name="contenu_document"></textarea>
                             <textarea id="id_edit_doc_write_text" name="contenu_text_document" hidden></textarea>
                         </div>
                         <!--end::Input group-->
                     </div>
+
+                    <input type="hidden" name="action" value="edit_doc_write">
+                    <input type="hidden" name="id_document" value="">
                 </div>
                 <!--end::Modal body-->
             </form>
@@ -771,7 +779,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         </div>
         <!--end::Modal dialog-->
     </div>
-	<!-- end::Modal edit_doc_write -->
+    <!-- end::Modal edit_doc_write -->
 
 </div>
 <!--end::Content wrapper-->
@@ -816,6 +824,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <script>
     $(document).ready(function() {
 
+        // Datatable1 = datatable collabo
         function update_data_datatable1(data) {
 
             $("#collabos_dossier").DataTable().destroy();
@@ -861,6 +870,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
+        // Datatable2 = datatable docs juridico admin
         function update_data_datatable2(data) {
 
             $("#documents_juridico_admin").DataTable().destroy();
@@ -906,7 +916,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        // Fait une réquête AJAX pour récupérer les données
+        // Reload all data pages and datatable
+        function reloadPage() {}
+
+        // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
             url: "roll/ag/dossiers/fetch.php",
             method: "POST",
@@ -933,7 +946,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        // Datatable for documents
+        // Datatable for documents juridico admin
         $.ajax({
             url: "roll/ag/dossiers/fetch.php",
             method: "POST",
@@ -976,35 +989,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 })
             }
         });
-
-        function reloadPage() {
-            // Fait une réquête AJAX pour récupérer les données
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: {
-                    action: 'fetch_page_client'
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    // Affiche les données dans la page
-                    $('#avatar_client').html(data.avatar_client);
-                    $('#nom_client').html(data.nom_client);
-                    $('#email_client').html(data.email_client);
-                    $('#matricule_client').html(data.matricule_client);
-                    $('#date_naiss_client').html(data.date_naiss_client);
-                    $('#tel_client').html(data.tel_client);
-                    $('#adresse_client').html(data.adresse_client);
-                    $('#statut_client').html(data.statut_client);
-                    $('#action_client').html(data.action_client);
-                    $('#niveau_client').html(data.niveau_client);
-
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }
-            });
-        }
 
         // Afficher les infos selon la zone cliquée (generale, avance)
         $(document).on('click', '#generale_area_btn', function(e) {
@@ -1083,7 +1067,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             $('#infos_technique').addClass('d-none');
         })
 
-        // Pour la copie du code de l'article
+        // Pour la copie du code document
         var KTModalShareEarn = function() {
             // Private functions
             var handleForm = function() {
@@ -1117,7 +1101,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             KTModalShareEarn.init();
         });
 
-        /* --------------------------------- */
+        /* ---------------- Données Page dossier ----------------- */
 
         // Lorsqu'on clique sur .activer_compte
         $(document).on('click', '.activer_compte', function(e) {
@@ -1254,7 +1238,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour l'attribution un collaborateur à un client
+        // Pour l'attribution un collaborateur à un dossier
         $(document).on('submit', '#form_attribuer', function(event) {
             event.preventDefault();
 
@@ -1302,20 +1286,46 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        /* --------------------------------- */
+        /* -----------------Données docs juridico admin---------------- */
+        function save_doc_write() {
+
+            // Récupérer les données text tinymce du briefing et mettre dans un textarea
+            var docs_write = tinymce.get('id_edit_doc_write').getContent({
+                format: 'text'
+            });
+            $('#id_edit_doc_write_text').val(docs_write);
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $('#form_edit_doc_write').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.success) {
+                        toastr.success(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    } else {
+                        toastr.error(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    }   
+                }
+            })
+        }
 
         // Pour l'affichage des détails d'un document
-		$(document).on('click', '.view_detail_document', function() {
-			var id_document = $(this).data('id_document');
-			$.ajax({
-				url: "roll/ag/dossiers/fetch.php",
-				method: "POST",
-				data: {
-					id_document: id_document,
-					action: 'view_detail_document'
-				},
-				dataType: "JSON",
-				success: function(data) {
+        $(document).on('click', '.view_detail_document', function() {
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'view_detail_document'
+                },
+                dataType: "JSON",
+                success: function(data) {
                     /*aspect_document
                     code_document
                     titre_document
@@ -1333,9 +1343,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#detail_doc_created_by').html('<u>' + data.created_by_document + '</u>' + ' le ' + data.created_at_document);
                     $('#detail_doc_updated_by').html('<u>' + data.updated_by_document + '</u>' + ' le ' + data.updated_at_document);
 
-				}
-			})
-		});
+                }
+            })
+        });
 
         // Pour voir l'arperçu d'un document write
         $(document).on('click', '.preview_doc_write', function(e) {
@@ -1403,14 +1413,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
         tinymce.init({
             selector: '#id_edit_doc_write',
+            menubar: false,
             language: 'fr_FR',
             content_css: 'document',
-            menubar: false,
-            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons export',
-            toolbar: 'undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-            height: 660,
+            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+            save_onsavecallback: save_doc_write,
         });
-
         // Prevent Bootstrap dialog from blocking focusin for TinyMCE
         document.addEventListener('focusin', (e) => {
             if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
@@ -1418,19 +1427,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        //Lorsqu'on clique sur .modifier_doc_write
-        $(document).on('click', '.modifier_doc_write', function() {
+        //Lorsqu'on clique sur .edit_doc_write
+        $(document).on('click', '.edit_doc_write', function() {
             var id_document = $(this).data('id_document');
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
                     id_document: id_document,
-                    action: 'fetch_modifier_doc_write'
+                    action: 'fetch_edit_doc_write'
                 },
                 dataType: "JSON",
                 success: function(data) {
-
+                    $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
                     tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
 
@@ -1438,22 +1447,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        //Lorsqu'on clique sur .modifier_doc_autre
-        $(document).on('click', '.modifier_doc_autre', function() {
-            var id_document = $(this).data('id_document');
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: {
-                    id_document: id_document,
-                    action: 'fetch_modifier_doc_autre'
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    console.log(data);
-                }
-            })
-        });
 
 
     })

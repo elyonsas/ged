@@ -368,7 +368,7 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="modifier_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            <a href="" class="edit_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
@@ -404,7 +404,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_autre menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -445,7 +445,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -482,7 +482,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_autre menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -523,7 +523,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="modifier_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -5249,7 +5249,7 @@ if (isset($_POST['action'])) {
         }
     }
 
-    if ($_POST['action'] == 'fetch_modifier_doc_write') {
+    if ($_POST['action'] == 'fetch_edit_doc_write') {
         $id_document = $_POST['id_document'];
 
         $query = "SELECT * FROM document WHERE id_document = $id_document";
@@ -5270,18 +5270,52 @@ if (isset($_POST['action'])) {
         ];
     }
 
-    if ($_POST['action'] == 'modifier_doc_write') {
+    if ($_POST['action'] == 'edit_doc_write') {
+
+        $id_document = $_POST['id_document'];
+        $contenu_document = $_POST['contenu_document'];
+        $contenu_text_document = $_POST['contenu_text_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $update1 = update(
+            $table_document,
+            [
+                'contenu_document' => $contenu_document,
+                'contenu_text_document' => $contenu_text_document
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        $update2 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = [
+                'success' => true,
+                'message' => 'Document enregistré !'
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une s\'est produite !'
+            ];
+        }
 
     }
-
-    if ($_POST['action'] == 'fetch_modifier_doc_autre') {
-
-    }
-
-    if ($_POST['action'] == 'modifier_doc_autre') {
-
-    }
-
 
     if ($_POST['action'] == 'edit_brief_article') {
         $id_article = $_SESSION['id_article_brouillon'];
