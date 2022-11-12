@@ -5434,7 +5434,7 @@ if (isset($_FILES['file'])) {
     $update = update(
         $table_document,
         [
-            'src_temp_document' => $titre_document .  $uniq_str . '.' . $infoPath['extension'],
+            'src_temp_document' => $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
         ],
         "id_document = $id_document",
         $db
