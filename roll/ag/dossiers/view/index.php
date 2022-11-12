@@ -308,14 +308,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
     <style>
         /* Pour permettre aux instances de tinymce d'avoir une hauteur max */
-        .doc-content > .fv-row.row,
-        .doc-content > .fv-row.row > .tox.tox-tinymce {
+        .doc-content>.fv-row.row,
+        .doc-content>.fv-row.row>.tox.tox-tinymce {
             height: 100% !important;
         }
     </style>
 
     <!-- begin::Modal attribuer collaborateur-->
-    <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
+    <div class="modal fade" id="attribuer_modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form id="form_attribuer" method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
@@ -366,7 +366,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal attribuer collaborateur-->
 
     <!-- begin::Modal detail-->
-    <div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
+    <div class="modal fade" id="detail_dossier_modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
@@ -433,7 +433,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal detail-->
 
     <!-- begin::Modal detail-->
-    <div class="modal fade" id="detail_document_modal" tabindex="-1" role="dialog" aria-labelledby="detail_document_modal_title" aria-hidden="true">
+    <div class="modal fade" id="detail_document_modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
@@ -505,7 +505,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal detail-->
 
     <!--begin::Modal - preview-->
-    <div class="modal fade" id="preview_doc_write_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="preview_doc_write_modal" tabindex="-1">
         <style>
             #preview_doc_write_modal li {
                 white-space: nowrap !important;
@@ -584,7 +584,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!--end::Modal - preview-->
 
     <!--begin::Modal - preview-->
-    <div class="modal fade" id="preview_doc_generate_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="preview_doc_generate_modal" tabindex="-1">
         <style>
             #preview_doc_generate_modal li {
                 white-space: nowrap !important;
@@ -659,7 +659,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!--end::Modal - preview-->
 
     <!--begin::Modal - preview-->
-    <div class="modal fade" id="preview_doc_file_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="preview_doc_file_modal" tabindex="-1">
         <style>
             @media screen {
                 #preview_doc_file_modal .modal-header {
@@ -721,7 +721,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!--end::Modal - preview-->
 
     <!-- begin::Modal edit_doc_write -->
-    <div class="modal fade" id="edit_doc_write_modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="edit_doc_write_modal" tabindex="-1">
         <style>
             @media screen {
                 #edit_doc_write_modal .modal-body {
@@ -780,6 +780,110 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Modal dialog-->
     </div>
     <!-- end::Modal edit_doc_write -->
+
+    <!-- begin::Modal edit_doc_file -->
+    <div class="modal fade" id="edit_doc_file_modal" tabindex="-1">
+
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_file" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="form-group row">
+
+                            <!--begin::Col-->
+                            <div class="col-lg-10">
+                                <!--begin::Dropzone-->
+                                <div class="dropzone dropzone-queue mb-2" id="file_upload_zone">
+                                    <!--begin::Controls-->
+                                    <div class="dropzone-panel mb-lg-0 mb-2">
+                                        <a class="dropzone-select btn btn-sm btn-primary me-2">Sélectionner un fichier</a>
+                                        <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
+                                    </div>
+                                    <!--end::Controls-->
+
+                                    <!--begin::Items-->
+                                    <div class="dropzone-items wm-200px">
+                                        <div class="dropzone-item" style="display:none">
+                                            <!--begin::File-->
+                                            <div class="dropzone-file">
+                                                <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                                    <span data-dz-name>some_image_file_name.jpg</span>
+                                                    <strong>(<span data-dz-size>340kb</span>)</strong>
+                                                </div>
+
+                                                <div class="dropzone-error" data-dz-errormessage></div>
+                                            </div>
+                                            <!--end::File-->
+
+                                            <!--begin::Progress-->
+                                            <div class="dropzone-progress">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Progress-->
+
+                                            <!--begin::Toolbar-->
+                                            <div class="dropzone-toolbar">
+                                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                                            </div>
+                                            <!--end::Toolbar-->
+                                        </div>
+                                    </div>
+                                    <!--end::Items-->
+                                </div>
+                                <!--end::Dropzone-->
+
+                                <!--begin::Hint-->
+                                <span class="form-text text-muted">Choisissez un document pdf, word, excel ou des images. </br> (Tailles maximal de fichier : 10MB)</span>
+                                <!--end::Hint-->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                    <div class="opt d-flex justify-content-end">
+                        <input type="hidden" name="action" value="edit_doc_file">
+                        <input type="hidden" name="id_document" value="">
+                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                        <button id="btn_edit_doc_file" type="submit" class="btn btn-lg btn-primary ms-2">
+                            <span class="indicator-label">Valider</span>
+                            <span class="indicator-progress">Veuillez patienter...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_file -->
 
 </div>
 <!--end::Content wrapper-->
@@ -917,7 +1021,36 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }
 
         // Reload all data pages and datatable
-        function reloadPage() {}
+        function reloadPage() {
+
+            // Fait une réquête AJAX pour récupérer les données de la page
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'fetch_page_client'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    // Affiche les données dans la page
+                    $('#avatar_client').html(data.avatar_client);
+                    $('#nom_client').html(data.nom_client);
+                    $('#email_client').html(data.email_client);
+                    $('#matricule_client').html(data.matricule_client);
+                    $('#date_naiss_client').html(data.date_naiss_client);
+                    $('#tel_client').html(data.tel_client);
+                    $('#adresse_client').html(data.adresse_client);
+                    $('#statut_client').html(data.statut_client);
+                    $('#action_client').html(data.action_client);
+                    $('#niveau_client').html(data.niveau_client);
+
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }
+            });
+
+        }
 
         // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
@@ -1309,7 +1442,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         toastr.error(data.message, '', {
                             positionClass: "toastr-bottom-left",
                         });
-                    }   
+                    }
                 }
             })
         }
@@ -1410,6 +1543,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
+        /* -----------------Modification d'un document write---------------- */
         // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
         tinymce.init({
             selector: '#id_edit_doc_write',
@@ -1426,7 +1560,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 e.stopImmediatePropagation();
             }
         });
-
         //Lorsqu'on clique sur .edit_doc_write
         $(document).on('click', '.edit_doc_write', function() {
             var id_document = $(this).data('id_document');
@@ -1440,8 +1573,173 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 dataType: "JSON",
                 success: function(data) {
                     $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
-                    tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
+                    tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+
+                }
+            })
+        });
+
+        /* -----------------Modification d'un document file---------------- */
+        //Variable contenant les fichiers joint
+        fileList = [];
+        fileListPath = [];
+        fileListName = [];
+        // set the dropzone container id
+        const id = "#file_upload_zone";
+        const dropzone = document.querySelector(id);
+
+        // Lorsqu'on clique sur .edit_doc_file
+        $(document).on('click', '.edit_doc_file', function() {
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_doc_file'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#edit_doc_file_modal input[name="id_document"]').val(id_document);
+                    $('#edit_doc_file_modal .modal-title').html(data.titre_document);
+
+
+                    /* -----------------Mise en place du plugin dropzonejs---------------- */  
+                    // set the preview element template
+                    var previewNode = dropzone.querySelector(".dropzone-item");
+                    previewNode.id = "";
+                    var previewTemplate = previewNode.parentNode.innerHTML;
+                    previewNode.parentNode.removeChild(previewNode);
+                    var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
+                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
+                        parallelUploads: 20,
+                        maxFilesize: 10, // Max filesize in MB
+                        previewTemplate: previewTemplate,
+                        previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+                        clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
+                    });
+
+                    // When added file
+                    myDropzone.on("addedfile", function(file) {
+                        // Hookup the start button
+                        const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
+                        dropzoneItems.forEach(dropzoneItem => {
+                            dropzoneItem.style.display = '';
+                        });
+                    });
+                    // Packaging of files in array
+                    myDropzone.on("success", function(file, serverFileName) {
+                        fileList.push({
+                            "serverPath": serverFileName,
+                            "uploadId": file.upload.uuid
+                        });
+                        fileListPath.push(serverFileName);
+                        fileListName.push(file.name);
+
+                    });
+                    // Remove file from the list
+                    myDropzone.on("removedfile", function(file) {
+                        for (let i = 0; i < fileList.length; i++) {
+                            if (file.upload.uuid == fileList[i].uploadId) {
+                                $.ajax({
+                                    url: "roll/ag/dossiers/fetch.php",
+                                    method: "POST",
+                                    data: {
+                                        action: 'delete_file',
+                                        file_path: fileList[i].serverPath,
+                                    },
+                                    dataType: "json",
+                                    success: function(data) {
+                                        // do something
+                                    }
+                                })
+                                fileList.splice(i, 1)
+                                fileListPath.splice(i, 1)
+                                fileListName.splice(i, 1)
+                            }
+                        }
+
+                        // var server_file = $(file.previewTemplate).children('.server_file').text();
+                        // alert(server_file);
+                        // // Do a post request and pass this path and use server-side language to delete the file
+                        // $.post("delete.php", {
+                        // 	file_to_be_deleted: server_file
+                        // });
+                    });
+                    // Update the total progress bar
+                    myDropzone.on("totaluploadprogress", function(progress) {
+                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.width = progress + "%";
+                        });
+                    });
+                    // Sending files to server
+                    myDropzone.on("sending", function(file) {
+                        // Show the total progress bar when upload starts
+                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.opacity = "1";
+                        });
+                    });
+                    // Hide the total progress bar when nothing"s uploading anymore
+                    myDropzone.on("complete", function(progress) {
+                        const progressBars = dropzone.querySelectorAll('.dz-complete');
+
+                        setTimeout(function() {
+                            progressBars.forEach(progressBar => {
+                                progressBar.querySelector('.progress-bar').style.opacity = "0";
+                                progressBar.querySelector('.progress').style.opacity = "0";
+                            });
+                        }, 300);
+                    });
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire d'édition d'un document write
+        $(document).on('submit', '#form_edit_doc_file', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_doc_file');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#edit_doc_file_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Document enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
 
                 }
             })

@@ -1,7 +1,11 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+
+use Ramsey\Uuid\Uuid;
 
 connected('ag');
 
@@ -482,7 +486,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="edit_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -523,7 +527,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="edit_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -5270,6 +5274,26 @@ if (isset($_POST['action'])) {
         ];
     }
 
+    if ($_POST['action'] == 'fetch_edit_doc_file') {
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'titre_document' => $result['titre_document'],
+        ];
+    }
+
     if ($_POST['action'] == 'edit_doc_write') {
 
         $id_document = $_POST['id_document'];
@@ -5314,40 +5338,107 @@ if (isset($_POST['action'])) {
                 'message' => 'Une s\'est produite !'
             ];
         }
-
     }
 
-    if ($_POST['action'] == 'edit_brief_article') {
-        $id_article = $_SESSION['id_article_brouillon'];
-        $brief_article = $_POST['brief_article'];
-        $brief_article_text = $_POST['brief_text_article'];
+    if ($_POST['action'] == 'edit_doc_file') {
 
-        // Si le brief est vide error
-        if (empty($brief_article)) {
-            $output = array(
-                'error' => true,
-                'message' => 'Le brief ne peut pas être vide !'
-            );
+        $id_document = $_POST['id_document'];
 
-            echo json_encode($output);
-            die;
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+        $titre_document = $result['titre_document'];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $src_document = $result['src_document'];
+        $src_temp_document = $result['src_temp_document'];
+        $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;   
+
+        if (file_exists($file_path)) {
+            unlink($file_path);
         }
 
-        $update = update(
-            'article_brouillon',
+        $update1 = update(
+            $table_document,
             [
-                'brief_article' => $brief_article,
-                'brief_text_article' => $brief_article_text,
-                'updated_at_article' => date('Y-m-d H:i:s')
+                'src_document' => $src_temp_document,
             ],
-            "id_article = $id_article",
+            "id_document = $id_document",
             $db
         );
 
-        if ($update) {
-            $output = 'update brief';
+        $update2 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = [
+                'success' => true,
+                'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
         }
     }
+
+    if ($_POST['action'] == 'delete_file') {
+
+        $file_path = $_POST['file_path'];
+
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+    }
+}
+
+if (isset($_FILES['file'])) {
+
+    $tempFile = $_FILES['file']['tmp_name'];
+    $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/';
+    $id_document = $_GET['id_document'];
+    $titre_document = $_GET['titre_document'];  
+
+    $uuid = Uuid::uuid1();
+    $uniq_str = $uuid->toString();
+    $infoPath = pathinfo($_FILES['file']['name']);
+
+    $targetFile =  $targetPath . $titre_document .  $uniq_str . '.' . $infoPath['extension'];
+    move_uploaded_file($tempFile, $targetFile);
+
+    $query = "SELECT * FROM document WHERE id_document = $id_document";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch();
+
+    $table_document = $result['table_document'];
+    $update = update(
+        $table_document,
+        [
+            'src_temp_document' => $titre_document .  $uniq_str . '.' . $infoPath['extension'],
+        ],
+        "id_document = $id_document",
+        $db
+    );
+
+    $output = $targetFile;
+    echo $output;
+    die;
 }
 
 echo json_encode($output);
