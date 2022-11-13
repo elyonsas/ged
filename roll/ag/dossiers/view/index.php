@@ -813,13 +813,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="form-group row">
                             <!--begin::Dropzone-->
                             <style>
-                                #file_upload_zone .dropzone-select{
+                                #file_upload_zone .dropzone-select {
                                     min-height: auto;
                                     padding: 1.5rem 1.75rem !important;
                                     text-align: center !important;
-                                    border: 1px dashed var(--kt-primary) !important;
+                                    border: 1px dashed var(--kt-primary);
                                     background-color: var(--kt-primary-light) !important;
                                     border-radius: 0.475rem !important;
+                                }
+                                .dz-drag-hover{
+                                    opacity: 0.5;   
+                                }
+                                .dz-drag-hover .dropzone-select{
+                                    border-style: solid !important;
                                 }
                             </style>
                             <div class="dropzone dropzone-queue mb-2" id="file_upload_zone">
@@ -884,7 +890,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="opt d-flex justify-content-end">
                         <input type="hidden" name="action" value="edit_doc_file">
                         <input type="hidden" name="id_document" value="">
-                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                        <button id="btn_cancel_edit_doc_file" type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                         <button id="btn_edit_doc_file" type="submit" class="btn btn-lg btn-primary ms-2">
                             <span class="indicator-label">Valider</span>
                             <span class="indicator-progress">Veuillez patienter...
@@ -1607,6 +1613,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Lorsqu'on clique sur .edit_doc_file
         $(document).on('click', '.edit_doc_file', function() {
+
             var id_document = $(this).data('id_document');
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -1630,7 +1637,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
                         url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
                         parallelUploads: 20,
-                        maxFilesize: 10, // Max filesize in MB
+                        maxFilesize: 5000, // Max filesize in MB
+                        maxFiles: 1,
                         previewTemplate: previewTemplate,
                         previewsContainer: id + " .dropzone-items", // Define the container to display the previews
                         clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
@@ -1711,6 +1719,53 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         }, 300);
                     });
 
+                    //Lorsqu'on clique sur .btn_cancel_edit_doc_file
+                    $(document).on('click', '#btn_cancel_edit_doc_file', function() {
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_file',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function(data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+
+                    });
+
+                    //Lorsque l'utilisateur tente de quitter la page
+                    $(window).on('beforeunload', function() {
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_file',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function(data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+                    });
+
                 }
             })
         });
@@ -1750,7 +1805,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                             reloadPage(); // On recharge le datatable
 
-                        }else {
+                        } else {
                             toastr.error(data.message, '', {
                                 positionClass: "toastr-bottom-left",
                             });
