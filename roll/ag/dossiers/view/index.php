@@ -1663,6 +1663,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     method: "POST",
                                     data: {
                                         action: 'delete_file',
+                                        id_document: id_document,
                                         file_path: fileList[i].serverPath,
                                     },
                                     dataType: "json",

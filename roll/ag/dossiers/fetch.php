@@ -5371,7 +5371,7 @@ if (isset($_POST['action'])) {
             $type_document = '.' . $infoPath['extension'];
             $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;
 
-            if (file_exists($file_path)) {
+            if (is_file($file_path)) {
                 unlink($file_path);
             }
 
@@ -5412,9 +5412,26 @@ if (isset($_POST['action'])) {
 
     if ($_POST['action'] == 'delete_file') {
 
+        $id_document = $_POST['id_document'];
         $file_path = $_POST['file_path'];
 
-        if (file_exists($file_path)) {
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $update = update(
+            $table_document,
+            [
+                'src_temp_document' => '',
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if (is_file($file_path)) {
             unlink($file_path);
         }
     }
