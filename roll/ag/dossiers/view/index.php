@@ -849,33 +849,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                 <!--begin::Items-->
                                 <div class="dropzone-items wm-200px">
-                                    <div class="dropzone-item" style="display:none">
-                                        <!--begin::File-->
-                                        <div class="dropzone-file">
-                                            <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                                <span data-dz-name>some_image_file_name.jpg</span>
-                                                <strong>(<span data-dz-size>340kb</span>)</strong>
-                                            </div>
-
-                                            <div class="dropzone-error" data-dz-errormessage></div>
-                                        </div>
-                                        <!--end::File-->
-
-                                        <!--begin::Progress-->
-                                        <div class="dropzone-progress">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end::Progress-->
-
-                                        <!--begin::Toolbar-->
-                                        <div class="dropzone-toolbar">
-                                            <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
-                                        </div>
-                                        <!--end::Toolbar-->
-                                    </div>
+                                    
                                 </div>
                                 <!--end::Items-->
                             </div>
@@ -890,7 +864,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="opt d-flex justify-content-end">
                         <input type="hidden" name="action" value="edit_doc_file">
                         <input type="hidden" name="id_document" value="">
-                        <button id="btn_cancel_edit_doc_file" type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                         <button id="btn_edit_doc_file" type="submit" class="btn btn-lg btn-primary ms-2">
                             <span class="indicator-label">Valider</span>
                             <span class="indicator-progress">Veuillez patienter...
@@ -1630,10 +1604,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     /* -----------------Mise en place du plugin dropzonejs---------------- */
                     // set the preview element template
-                    var previewNode = dropzone.querySelector(".dropzone-item");
-                    previewNode.id = "";
-                    var previewTemplate = previewNode.parentNode.innerHTML;
-                    previewNode.parentNode.removeChild(previewNode);
+                    var previewTemplate = `
+                        <div class="dropzone-item">
+                            <!--begin::File-->
+                            <div class="dropzone-file">
+                                <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                    <span data-dz-name>some_image_file_name.jpg</span>
+                                    <strong>(<span data-dz-size>340kb</span>)</strong>
+                                </div>
+
+                                <div class="dropzone-error" data-dz-errormessage></div>
+                            </div>
+                            <!--end::File-->
+
+                            <!--begin::Progress-->
+                            <div class="dropzone-progress">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Progress-->
+
+                            <!--begin::Toolbar-->
+                            <div class="dropzone-toolbar">
+                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                    `;
                     var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
                         url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
                         parallelUploads: 20,
@@ -1719,8 +1718,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         }, 300);
                     });
 
-                    //Lorsqu'on clique sur .btn_cancel_edit_doc_file
-                    $(document).on('click', '#btn_cancel_edit_doc_file', function() {
+                    // Si on quitte le modal
+                    $('#edit_doc_file_modal').on('hidden.bs.modal', function() {
+                        // Supprimer l'instance de dropzone
+                        myDropzone.destroy();
+                        
                         // Remove file from the list
                         for (let i = 0; i < fileList.length; i++) {
                             $.ajax({
@@ -1740,8 +1742,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             fileListPath.splice(i, 1)
                             fileListName.splice(i, 1)
                         }
-
-                    });
+                    }); 
 
                     //Lorsque l'utilisateur tente de quitter la page
                     $(window).on('beforeunload', function() {
@@ -1770,7 +1771,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        // Lorsqu'on soumet le formulaire d'édition d'un document write
+        // Lorsqu'on soumet le formulaire d'édition d'un document file
         $(document).on('submit', '#form_edit_doc_file', function() {
             event.preventDefault();
 
@@ -1802,6 +1803,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     confirmButton: "btn fw-bold btn-primary"
                                 }
                             });
+
+                            // Vider les fileLists
+                            fileList = [];
+                            fileListPath = [];
+                            fileListName = [];
 
                             reloadPage(); // On recharge le datatable
 
