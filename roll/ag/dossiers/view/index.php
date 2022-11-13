@@ -813,7 +813,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="form-group row">
                             <!--begin::Dropzone-->
                             <style>
-                                #file_upload_zone > .dropzone-panel{
+                                #file_upload_zone .dropzone-select{
                                     min-height: auto;
                                     padding: 1.5rem 1.75rem !important;
                                     text-align: center !important;
@@ -825,7 +825,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="dropzone dropzone-queue mb-2" id="file_upload_zone">
                                 <!--begin::Controls-->
                                 <div class="dropzone-panel mb-lg-0 mb-2">
-                                    <div class="dropzone-select me-2">Sélectionner un fichier</div>
+                                    <div class="dropzone-select">
+                                        <!--begin::Icon-->
+                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                        <!--end::Icon-->
+
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Glissez déposez un fichier ici ou cliquez pour télécharger.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-400">Télécharger un seul fichier</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
                                     <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
                                 </div>
                                 <!--end::Controls-->
@@ -865,7 +876,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--end::Dropzone-->
 
                             <!--begin::Hint-->
-                            <span class="form-text text-muted">Choisissez un document pdf, word, excel ou des images. </br> (Tailles maximal de fichier : 10MB)</span>
+                            <span class="form-text text-muted">Choisissez un document pdf, word, excel ou une image. </br> (Tailles maximal de fichier : 10MB)</span>
                             <!--end::Hint-->
                         </div>
                         <!--end::Input group-->
@@ -1738,12 +1749,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                             reloadPage(); // On recharge le datatable
 
-                        } else {
-
-                            toastr.error('une erreur s\'est produite', '', {
+                        }else {
+                            toastr.error(data.message, '', {
                                 positionClass: "toastr-bottom-left",
                             });
                         }
+
                     }, 2000);
 
                 }

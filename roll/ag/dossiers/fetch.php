@@ -5360,44 +5360,53 @@ if (isset($_POST['action'])) {
         $src_document = $result['src_document'];
         $src_temp_document = $result['src_temp_document'];
 
-        $infoPath = pathinfo($src_temp_document);
-        $type_document = '.' . $infoPath['extension'];
-        $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;   
-
-        if (file_exists($file_path)) {
-            unlink($file_path);
-        }
-
-        $update1 = update(
-            $table_document,
-            [
-                'src_document' => $src_temp_document,
-                'type_document' => $type_document
-            ],
-            "id_document = $id_document",
-            $db
-        );
-
-        $update2 = update(
-            'document',
-            [
-                'updated_at_document' => date('Y-m-d H:i:s'),
-                'updated_by_document' => $_SESSION['id_utilisateur']
-            ],
-            "id_document = $id_document",
-            $db
-        );
-
-        if ($update1 && $update2) {
-            $output = [
-                'success' => true,
-                'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
-            ];
-        } else {
+        if ($src_temp_document == '') {
             $output = [
                 'success' => false,
-                'message' => 'Une erreur s\'est produite !'
+                'message' => 'Vous devez sélectionner un fichier !'
             ];
+        } else {
+
+            $infoPath = pathinfo($src_temp_document);
+            $type_document = '.' . $infoPath['extension'];
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;
+
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+
+            $update1 = update(
+                $table_document,
+                [
+                    'src_document' => $src_temp_document,
+                    'src_temp_document' => '',
+                    'type_document' => $type_document
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            $update2 = update(
+                'document',
+                [
+                    'updated_at_document' => date('Y-m-d H:i:s'),
+                    'updated_by_document' => $_SESSION['id_utilisateur']
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            if ($update1 && $update2) {
+                $output = [
+                    'success' => true,
+                    'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
+                ];
+            } else {
+                $output = [
+                    'success' => false,
+                    'message' => 'Une erreur s\'est produite !'
+                ];
+            }
         }
     }
 
@@ -5416,7 +5425,7 @@ if (isset($_FILES['file'])) {
     $tempFile = $_FILES['file']['tmp_name'];
     $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/';
     $id_document = $_GET['id_document'];
-    $titre_document = $_GET['titre_document'];  
+    $titre_document = $_GET['titre_document'];
 
     $uuid = Uuid::uuid1();
     $uniq_str = $uuid->toString();
