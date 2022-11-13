@@ -811,57 +811,62 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="doc-content">
                         <!--begin::Input group-->
                         <div class="form-group row">
-
-                            <!--begin::Col-->
-                            <div class="col-lg-10">
-                                <!--begin::Dropzone-->
-                                <div class="dropzone dropzone-queue mb-2" id="file_upload_zone">
-                                    <!--begin::Controls-->
-                                    <div class="dropzone-panel mb-lg-0 mb-2">
-                                        <a class="dropzone-select btn btn-sm btn-primary me-2">Sélectionner un fichier</a>
-                                        <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
-                                    </div>
-                                    <!--end::Controls-->
-
-                                    <!--begin::Items-->
-                                    <div class="dropzone-items wm-200px">
-                                        <div class="dropzone-item" style="display:none">
-                                            <!--begin::File-->
-                                            <div class="dropzone-file">
-                                                <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                                    <span data-dz-name>some_image_file_name.jpg</span>
-                                                    <strong>(<span data-dz-size>340kb</span>)</strong>
-                                                </div>
-
-                                                <div class="dropzone-error" data-dz-errormessage></div>
-                                            </div>
-                                            <!--end::File-->
-
-                                            <!--begin::Progress-->
-                                            <div class="dropzone-progress">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--end::Progress-->
-
-                                            <!--begin::Toolbar-->
-                                            <div class="dropzone-toolbar">
-                                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
-                                            </div>
-                                            <!--end::Toolbar-->
-                                        </div>
-                                    </div>
-                                    <!--end::Items-->
+                            <!--begin::Dropzone-->
+                            <style>
+                                #file_upload_zone > .dropzone-panel{
+                                    min-height: auto;
+                                    padding: 1.5rem 1.75rem !important;
+                                    text-align: center !important;
+                                    border: 1px dashed var(--kt-primary) !important;
+                                    background-color: var(--kt-primary-light) !important;
+                                    border-radius: 0.475rem !important;
+                                }
+                            </style>
+                            <div class="dropzone dropzone-queue mb-2" id="file_upload_zone">
+                                <!--begin::Controls-->
+                                <div class="dropzone-panel mb-lg-0 mb-2">
+                                    <div class="dropzone-select me-2">Sélectionner un fichier</div>
+                                    <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
                                 </div>
-                                <!--end::Dropzone-->
+                                <!--end::Controls-->
 
-                                <!--begin::Hint-->
-                                <span class="form-text text-muted">Choisissez un document pdf, word, excel ou des images. </br> (Tailles maximal de fichier : 10MB)</span>
-                                <!--end::Hint-->
+                                <!--begin::Items-->
+                                <div class="dropzone-items wm-200px">
+                                    <div class="dropzone-item" style="display:none">
+                                        <!--begin::File-->
+                                        <div class="dropzone-file">
+                                            <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                                <span data-dz-name>some_image_file_name.jpg</span>
+                                                <strong>(<span data-dz-size>340kb</span>)</strong>
+                                            </div>
+
+                                            <div class="dropzone-error" data-dz-errormessage></div>
+                                        </div>
+                                        <!--end::File-->
+
+                                        <!--begin::Progress-->
+                                        <div class="dropzone-progress">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Progress-->
+
+                                        <!--begin::Toolbar-->
+                                        <div class="dropzone-toolbar">
+                                            <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                                        </div>
+                                        <!--end::Toolbar-->
+                                    </div>
+                                </div>
+                                <!--end::Items-->
                             </div>
-                            <!--end::Col-->
+                            <!--end::Dropzone-->
+
+                            <!--begin::Hint-->
+                            <span class="form-text text-muted">Choisissez un document pdf, word, excel ou des images. </br> (Tailles maximal de fichier : 10MB)</span>
+                            <!--end::Hint-->
                         </div>
                         <!--end::Input group-->
                     </div>
@@ -1605,7 +1610,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#edit_doc_file_modal .modal-title').html(data.titre_document);
 
 
-                    /* -----------------Mise en place du plugin dropzonejs---------------- */  
+                    /* -----------------Mise en place du plugin dropzonejs---------------- */
                     // set the preview element template
                     var previewNode = dropzone.querySelector(".dropzone-item");
                     previewNode.id = "";
