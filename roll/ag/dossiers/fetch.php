@@ -366,13 +366,15 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="modifier_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le formulaire</a>
+                                            <a href="" class="edit_form_doc_generate menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_form_doc_generate_table_doc_fiche_id_client_modal" 
+                                            data-id_document="{$id_document}">Modifier le formulaire</a>
                                         </div>
                                         <!--end::Menu item-->
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="edit_doc_generate menu-link px-3" data-id_document="{$id_document}">Modifier le document</a>
+                                            <a href="" class="edit_doc_generate menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_generate_modal" 
+                                            data-id_document="{$id_document}">Modifier le document</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
@@ -1056,7 +1058,6 @@ if (isset($_POST['action'])) {
             ];
         }
     }
-
     if ($_POST['action'] == 'view_detail_dossier') {
 
         $id_client = $_POST['id_client'];
@@ -1097,7 +1098,6 @@ if (isset($_POST['action'])) {
 
         $output['contenu_document'] = $result['contenu_document'];
     }
-
     if ($_POST['action'] == 'preview_doc_generate') {
 
         $id_document = $_POST['id_document'];
@@ -1122,7 +1122,7 @@ if (isset($_POST['action'])) {
 
         $adresse = $result['adresse'];
         $id_fiscale_client = $result['id_fiscale_client'];
-        $exercice_clo_le = si_funct1($result['exercice_clo_le'], date('d/m/Y', strtotime($result['exercice_clo_le'])), '');
+        $exercice_clos_le = si_funct1($result['exercice_clos_le'], date('d/m/Y', strtotime($result['exercice_clos_le'])), '');
         $duree_en_mois = $result['duree_en_mois'];
         $exercice_compta_du = si_funct1($result['exercice_compta_du'], date('d/m/Y', strtotime($result['exercice_compta_du'])), '');
         $exercice_compta_au = si_funct1($result['exercice_compta_au'], date('d/m/Y', strtotime($result['exercice_compta_au'])), '');
@@ -1513,7 +1513,7 @@ if (isset($_POST['action'])) {
                             >Exercice clos le :
                         </td>
                         <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(252, 243, 5);"
-                            colspan="9" rowspan="1" data-sheets-numberformat="{&quot;1&quot;:1}"><div style="font-weight: bold; text-align: center;">$exercice_clo_le</div></td>
+                            colspan="9" rowspan="1" data-sheets-numberformat="{&quot;1&quot;:1}"><div style="font-weight: bold; text-align: center;">$exercice_clos_le</div></td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: Arial; font-size: 12pt;"
@@ -5217,7 +5217,6 @@ if (isset($_POST['action'])) {
 
         $output['contenu_document'] = $result['contenu_document'];
     }
-
     if ($_POST['action'] == 'preview_doc_file') {
 
         $id_document = $_POST['id_document'];
@@ -5275,7 +5274,6 @@ if (isset($_POST['action'])) {
             'contenu_document' => $result['contenu_document']
         ];
     }
-
     if ($_POST['action'] == 'fetch_edit_doc_file') {
         $id_document = $_POST['id_document'];
 
@@ -5294,6 +5292,23 @@ if (isset($_POST['action'])) {
         $output = [
             'titre_document' => $result['titre_document'],
         ];
+    }
+    if ($_POST['action'] == 'fetch_edit_doc_generate') {
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
     }
 
     if ($_POST['action'] == 'edit_doc_write') {
@@ -5341,7 +5356,6 @@ if (isset($_POST['action'])) {
             ];
         }
     }
-
     if ($_POST['action'] == 'edit_doc_file') {
 
         $id_document = $_POST['id_document'];
@@ -5413,8 +5427,57 @@ if (isset($_POST['action'])) {
             }
         }
     }
+    if ($_POST['action'] == 'edit_table_doc_fiche_id_client') {
 
-    if ($_POST['action'] == 'delete_file') {
+        $id_document = $_POST['id_document'];
+        $adresse = $_POST['adresse'];
+        $id_fiscale_client = $_POST['id_fiscale_client'];
+        $exercice_clos_le = $_POST['exercice_clos_le'];
+
+        $update1 = update(
+            'doc_fiche_id_client',
+            [
+                'adresse' => $adresse,
+                'id_fiscale_client' => $id_fiscale_client,
+                'exercice_clos_le' => $exercice_clos_le
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        $update2 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
+        $titre_document = $result['titre_document'];
+
+        if ($update1 && $update2) {
+            $output = [
+                'success' => true,
+                'message' => "La fiche d'identification de <b>$nom_client</b> à été mise à jour !"
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+    }
+
+    if ($_POST['action'] == 'delete_doc_file') {
 
         $id_document = $_POST['id_document'];
         $file_path = $_POST['file_path'];

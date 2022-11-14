@@ -132,3 +132,15 @@ function compte_exists($email, PDO $db)
         return false;
     }
 }
+
+
+
+function update_table_doc_fiche_id_client($id_client, $id_fiche, PDO $db)
+{
+    $query = "UPDATE doc_fiche SET id_client = :id_client WHERE id_fiche = :id_fiche";
+    $statement = $db->prepare($query);
+    $statement->execute([
+        ':id_client' => $id_client,
+        ':id_fiche' => $id_fiche
+    ]);
+}

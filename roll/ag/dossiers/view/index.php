@@ -681,6 +681,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     height: 100%;
                 }
             }
+
+            #preview_doc_file_modal .refresh-preview {
+                position: relative;
+                left: 75px;
+                cursor: pointer;
+            }
         </style>
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
@@ -701,6 +707,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--end::Svg Icon-->
                     </div>
                     <!--end::Close-->
+
+                    <div class="refresh-preview btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualiser">
+                        <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/arrows/arr029.svg-->
+                        <span class="svg-icon svg-icon-muted svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z" fill="currentColor" />
+                                <path opacity="0.3" d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
                 </div>
                 <!--end::Modal header-->
                 <div class="document-top-shadow w-100"></div>
@@ -821,10 +837,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     background-color: var(--kt-primary-light) !important;
                                     border-radius: 0.475rem !important;
                                 }
-                                .dz-drag-hover{
-                                    opacity: 0.5;   
+
+                                .dz-drag-hover {
+                                    opacity: 0.5;
                                 }
-                                .dz-drag-hover .dropzone-select{
+
+                                .dz-drag-hover .dropzone-select {
                                     border-style: solid !important;
                                 }
                             </style>
@@ -849,7 +867,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                 <!--begin::Items-->
                                 <div class="dropzone-items wm-200px">
-                                    
+
                                 </div>
                                 <!--end::Items-->
                             </div>
@@ -874,6 +892,300 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     </div>
                 </div>
                 <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_file -->
+
+    <!-- begin::Modal edit_doc_file -->
+    <div class="modal fade" id="edit_form_doc_generate_table_doc_fiche_id_client_modal" tabindex="-1">
+
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <!--begin::Modal content-->
+            <form id="form_edit_form_doc_generate_table_doc_fiche_id_client" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 1)</h3> <br><br>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Adresse</label>
+                                <input id="table_doc_fiche_id_client_adresse" type="text" class="form-control form-control-solid" placeholder="Entrez l'adresse du client" name="adresse">
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12 col-lg-4 form-group">
+                                <label class="fs-5 mb-2">N° d'identification fiscal</label>
+                                <input id="table_doc_fiche_id_client_id_fiscale_client" type="text" class="form-control form-control-solid" placeholder="N° d'identification fiscal" name="id_fiscale_client">
+                            </div>
+                            <div class="col-md-6 col-lg-4 form-group">
+                                <label class="fs-5 mb-2">Exercice clos le</label>
+                                <input id="table_doc_fiche_id_client_exercice_clos_le" type="date" class="form-control form-control-solid" placeholder="Exercice clos le" name="exercice_clos_le">
+                            </div>
+                            <div class="col-md-6 col-lg-4 form-group">
+                                <label class="fs-5 mb-2">Durée de l'exercice</label>
+                                <input id="table_doc_fiche_id_client_duree_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_en_mois">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Exercice comptable du</label>
+                            <div class="input-group">
+                                <input id="table_doc_fiche_id_client_exercice_compta_du" type="date" class="form-control" placeholder="" name="exercice_compta_du">
+                                <span class="input-group-text">au</span>
+                                <input id="table_doc_fiche_id_client_exercice_compta_au" type="date" class="form-control" placeholder="" name="exercice_compta_au">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-4 form-group">
+                                <label class="fs-5 mb-2">Date d'arrêté des comptes</label>
+                                <input id="table_doc_fiche_id_client_date_arret_compta" type="date" class="form-control form-control-solid" placeholder="" name="date_arret_compta">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class="fs-5 mb-2">Exercice précédent clos le</label>
+                                <input id="table_doc_fiche_id_client_exercice_prev_clos_le" type="date" class="form-control form-control-solid" placeholder="" name="exercice_prev_clos_le">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class="fs-5 mb-2">Durée de l'exercice précédent</label>
+                                <input id="table_doc_fiche_id_client_duree_exercice_prev_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_exercice_prev_en_mois">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-4 col-md-4 form-group">
+                                <label class="fs-5 mb-2">Greffe</label>
+                                <input id="table_doc_fiche_id_client_greffe" type="int" class="form-control form-control-solid" placeholder="Greffe" name="greffe">
+                            </div>
+                            <div class="col-8 col-md-4 form-group">
+                                <label class="fs-5 mb-2">N° Registre du commerce</label>
+                                <input id="table_doc_fiche_id_client_num_registre_commerce" type="text" class="form-control form-control-solid" placeholder="N° Registre du commerce" name="num_registre_commerce">
+                            </div>
+                            <div class="col-12 col-md-4 form-group">
+                                <label class="fs-5 mb-2">N° Répertoire des entités</label>
+                                <input id="table_doc_fiche_id_client_num_repertoire_entite" type="text" class="form-control form-control-solid" placeholder="N° Répertoire des entités" name="num_repertoire_entite">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-6 col-md-4 form-group">
+                                <label class="fs-5 mb-2">N° de caisse sociale</label>
+                                <input id="table_doc_fiche_id_client_num_caisse_sociale" type="int" class="form-control form-control-solid" placeholder="N° de caisse sociale" name="num_caisse_sociale">
+                            </div>
+                            <div class="col-6 col-md-4 form-group">
+                                <label class="fs-5 mb-2">N° Code Importateur</label>
+                                <input id="table_doc_fiche_id_client_num_code_importateur" type="text" class="form-control form-control-solid" placeholder="N° Code Importateur" name="num_code_importateur">
+                            </div>
+                            <div class="col-12 col-md-4 form-group">
+                                <label class="fs-5 mb-2">Code activité principale</label>
+                                <input id="table_doc_fiche_id_client_code_activite_principale" type="text" class="form-control form-control-solid" placeholder="Code activité principale" name="code_activite_principale">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-8 form-group">
+                                <label class="fs-5 mb-2">Désignation de l'entité</label>
+                                <input id="table_doc_fiche_id_client_designation_entite" type="int" class="form-control form-control-solid" placeholder="Désignation de l'entité" name="designation_entite">
+                            </div>
+                            <div class="col-4 form-group">
+                                <label class="fs-5 mb-2">Sigle</label>
+                                <input id="table_doc_fiche_id_client_sigle" type="text" class="form-control form-control-solid" placeholder="Sigle" name="sigle">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-5 form-group">
+                                <label class="fs-5 mb-2">N° de téléphone</label>
+                                <input id="table_doc_fiche_id_client_telephone" type="int" class="form-control form-control-solid" placeholder="N° de téléphone" name="telephone">
+                            </div>
+                            <div class="col-7 form-group">
+                                <label class="fs-5 mb-2">Email</label>
+                                <input id="table_doc_fiche_id_client_email" type="text" class="form-control form-control-solid" placeholder="Email" name="email">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Boite postal</label>
+                            <div class="input-group">
+                                <input id="table_doc_fiche_id_client_num_code" type="text" class="form-control" placeholder="" name="num_code">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_fiche_id_client_code" type="text" class="form-control" placeholder="Code" name="code">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_fiche_id_client_boite_postal" type="text" class="form-control" placeholder="Boite postale" name="boite_postal">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Adresse géographique complète</label>
+                                <textarea id="table_doc_fiche_id_client_adresse_geo_complete" class="form-control form-control-solid" placeholder="Adresse géographique complète (Immeuble, rue, quartier, ville, pays)" rows="3" name="adresse_geo_complete"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Désignation précise de l'activité principale</label>
+                                <textarea id="table_doc_fiche_id_client_designation_activite_principale" class="form-control form-control-solid" placeholder="Désignation précise de l'activité principale exercée par l'entité" rows="3" name="designation_activite_principale"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Personne à contacter pour renseignement</label>
+                                <input id="table_doc_fiche_id_client_personne_a_contacter" type="text" class="form-control form-control-solid" placeholder="Nom, adresse et qualité de la personne à contacter" name="personne_a_contacter">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Professionnel salarié ou Cabinet</label>
+                                <textarea id="table_doc_fiche_id_client_professionnel_salarie_ou_cabinet" class="form-control form-control-solid" placeholder="Nom du professionnel salarié de l'entité ou Nom, adresse et téléphone du cabinet comptable ou du professionnel INSCRIT A L'ORDRE NATIONAL DES EXPERTS COMPTABLES ET DES COMPTABLES AGREES ayant établi les états financiers" rows="3" name="professionnel_salarie_ou_cabinet"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group d-none">
+                                <label class="fs-5 mb-2">Visa de l'expert comptable</label>
+                                <input id="table_doc_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="personne_a_contacter">
+                            </div>
+
+                            <div class="col-md-12 form-group justify-content-end">
+                                <div class="text-end">
+                                    <label class="fs-5 mb-2">Etats financiers approuvés</label>
+                                </div>
+                                <div class="form-check form-check-custom form-check-solid form-check-lg justify-content-end">
+                                    <div class="d-flex flex-column">
+                                        <input id="table_doc_fiche_id_client_etats_financiers_approuves_oui" class="form-check-input" type="radio" value="oui" name="etats_financiers_approuves">
+                                        <label class="form-check-label m-0 mt-2 text-center" for="etats_financiers_approuves_oui">Oui</label>
+                                    </div>
+                                    <div class="d-flex flex-column ms-5">
+                                        <input id="table_doc_fiche_id_client_etats_financiers_approuves_non" class="form-check-input" type="radio" value="non" name="etats_financiers_approuves">
+                                        <label class="form-check-label m-0 mt-2 text-center" for="etats_financiers_approuves_non">Non</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 2)</h3> <br><br>
+
+                        <div class="row mb-5">
+                            <div class="input-group">
+                                <span class="input-group-text">Forme juridique :</span>
+                                <input id="table_doc_fiche_id_client_forme_juridique_1" type="number" class="form-control" placeholder="" name="forme_juridique_1">
+                                <input id="table_doc_fiche_id_client_forme_juridique_2" type="number" class="form-control" placeholder="" name="forme_juridique_2">
+                                <span class="input-group-text">Régime fiscal :</span>
+                                <input id="table_doc_fiche_id_client_regime_fiscal_1" type="number" class="form-control" placeholder="" name="regime_fiscal_1">
+                                <input id="table_doc_fiche_id_client_regime_fiscal_2" type="number" class="form-control" placeholder="" name="regime_fiscal_2">
+                                <span class="input-group-text">Pays du siège social :</span>
+                                <input id="table_doc_fiche_id_client_pays_siege_social_1" type="number" class="form-control" placeholder="" name="pays_siege_social_1">
+                                <input id="table_doc_fiche_id_client_pays_siege_social_2" type="number" class="form-control" placeholder="" name="pays_siege_social_2">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="input-group">
+                                <span class="input-group-text">Nombre d'établissement dans le pays :</span>
+                                <input id="table_doc_fiche_id_client_nbr_etablissement_in" type="number" class="form-control" placeholder="" name="nbr_etablissement_in">
+                                <span class="input-group-text">Hors du pays :</span>
+                                <input id="table_doc_fiche_id_client_nbr_etablissement_out" type="number" class="form-control" placeholder="" name="nbr_etablissement_out">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="d-flex form-group align-center">
+                                <label class="fs-5 p-3 ps-0">Première année d'exercice dans le pays :</label>
+                                <input id="table_doc_fiche_id_client_prem_annee_exercice_in" class="form-control mw-250px ms-3" type="number" min="1800" max="<?= date('Y') ?>" step="1" value="" name="prem_annee_exercice_in">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Contrôle de l'entité</label>
+
+                            <div class="form-group col-4">
+                                <!--begin::Col-->
+                                <label class="form-check-clip text-center w-100">
+                                    <input id="table_doc_fiche_id_client_controle_entite_public" class="btn-check" type="radio" value="public" checked name="controle_entite" />
+                                    <div class="form-check-wrapper w-100">
+                                        <div class="form-check-indicator"></div>
+                                        <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
+                                            <span class="text-dark fw-bold d-block fs-3">Entité</span>
+                                            <span class="text-muted fw-semibold fs-6">Sous contrôle public</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="form-group col-4">
+                                <!--begin::Col-->
+                                <label class="form-check-clip text-center w-100">
+                                    <input id="table_doc_fiche_id_client_controle_entite_prive_national" class="btn-check" type="radio" value="prive_national" checked name="controle_entite" />
+                                    <div class="form-check-wrapper w-100">
+                                        <div class="form-check-indicator"></div>
+                                        <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
+                                            <span class="text-dark fw-bold d-block fs-3">Entité</span>
+                                            <span class="text-muted fw-semibold fs-6">Sous contrôle privé national</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="form-group col-4">
+                                <!--begin::Col-->
+                                <label class="form-check-clip text-center w-100">
+                                    <input id="table_doc_fiche_id_client_controle_entite_prive_etranger" class="btn-check" type="radio" value="prive_etranger" name="controle_entite" />
+                                    <div class="form-check-wrapper w-100">
+                                        <div class="form-check-indicator"></div>
+                                        <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
+                                            <span class="text-dark fw-bold d-block fs-3">Entité</span>
+                                            <span class="text-muted fw-semibold fs-6">Sous contrôle privé étranger</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <!--end::Col-->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_table_doc_fiche_id_client">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_form_doc_generate_table_doc_fiche_id_client" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Générer</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
             </form>
             <!--end::Modal content-->
         </div>
@@ -1522,6 +1834,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         $(document).on('click', '.preview_doc_file', function(e) {
 
             var id_document = $(this).data('id_document');
+            $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -1537,6 +1850,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
 
+        });
+
+        // Quand on clique sur .preview_doc_file_modal .refresh-preview
+        $(document).on('click', '#preview_doc_file_modal .refresh-preview', function(e) {
+            var id_document = $(this).data('id_document');
+            console.log(id_document);
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_file'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_file_modal .modal-title').html(data.titre_document);
+                }
+            })
         });
 
         /* -----------------Modification d'un document write---------------- */
@@ -1669,7 +2002,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     url: "roll/ag/dossiers/fetch.php",
                                     method: "POST",
                                     data: {
-                                        action: 'delete_file',
+                                        action: 'delete_doc_file',
                                         id_document: id_document,
                                         file_path: fileList[i].serverPath,
                                     },
@@ -1722,14 +2055,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#edit_doc_file_modal').on('hidden.bs.modal', function() {
                         // Supprimer l'instance de dropzone
                         myDropzone.destroy();
-                        
+
                         // Remove file from the list
                         for (let i = 0; i < fileList.length; i++) {
                             $.ajax({
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_file',
+                                    action: 'delete_doc_file',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -1742,7 +2075,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             fileListPath.splice(i, 1)
                             fileListName.splice(i, 1)
                         }
-                    }); 
+                    });
 
                     //Lorsque l'utilisateur tente de quitter la page
                     $(window).on('beforeunload', function() {
@@ -1752,7 +2085,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_file',
+                                    action: 'delete_doc_file',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -1822,6 +2155,212 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         });
+
+        /* -----------------Modification d'un document generate---------------- */
+        function date_formatter(date, format) {
+            if (date == null) {
+                return '';
+            }
+
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            if (format == 'dd/mm/yyyy') {
+                return [day, month, year].join('/');
+            } else if (format == 'mm/dd/yyyy') {
+                return [month, day, year].join('/');
+            } else if (format == 'yyyy/mm/dd') {
+                return [year, month, day].join('/');
+            } else if (format == 'yyyy/dd/mm') {
+                return [year, day, month].join('/');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'dd-mm-yyyy') {
+                return [day, month, year].join('-');
+            } else if (format == 'mm-dd-yyyy') {
+                return [month, day, year].join('-');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'yyyy-dd-mm') {
+                return [year, day, month].join('-');
+            }
+        }
+
+        // Lorsqu'on clique sur .edit_form_doc_generate
+        $(document).on('click', '.edit_form_doc_generate', function() {
+
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_doc_generate'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    if (data.table_document == 'doc_fiche_id_client') {
+
+                        titre_document = data.titre_document;
+                        adresse = data.adresse; 
+                        id_fiscale_client = data.id_fiscale_client; 
+                        exercice_clos_le = date_formatter(data.exercice_clos_le, 'yyyy-mm-dd');
+                        duree_en_mois = data.duree_en_mois; 
+                        exercice_compta_du = date_formatter(data.exercice_compta_du, 'yyyy-mm-dd'); 
+                        exercice_compta_au = date_formatter(data.exercice_compta_au, 'yyyy-mm-dd');
+                        date_arret_compta = date_formatter(data.date_arret_compta, 'yyyy-mm-dd');
+                        exercice_prev_clos_le = date_formatter(data.exercice_prev_clos_le, 'yyyy-mm-dd');
+                        duree_exercice_prev_en_mois = data.duree_exercice_prev_en_mois; 
+                        greffe = data.greffe; 
+                        num_registre_commerce = data.num_registre_commerce; 
+                        num_repertoire_entite = data.num_repertoire_entite; 
+                        num_caisse_sociale = data.num_caisse_sociale; 
+                        num_code_importateur = data.num_code_importateur; 
+                        code_activite_principale = data.code_activite_principale; 
+                        designation_entite = data.designation_entite; 
+                        sigle = data.sigle; 
+                        telephone = data.telephone; 
+                        email = data.email; 
+                        num_code = data.num_code; 
+                        code = data.code; 
+                        boite_postal = data.boite_postal;   
+                        ville = data.ville; 
+                        adresse_geo_complete = data.adresse_geo_complete; 
+                        designation_activite_principale = data.designation_activite_principale; 
+                        personne_a_contacter = data.personne_a_contacter; 
+                        professionnel_salarie_ou_cabinet = data.professionnel_salarie_ou_cabinet; 
+                        visa_expert = data.visa_expert; 
+                        etats_financiers_approuves = data.etats_financiers_approuves;
+
+                        forme_juridique_1 = data.forme_juridique_1; 
+                        forme_juridique_2 = data.forme_juridique_2; 
+                        regime_fiscal_1 = data.regime_fiscal_1; 
+                        regime_fiscal_2 = data.regime_fiscal_2; 
+                        pays_siege_social_1 = data.pays_siege_social_1; 
+                        pays_siege_social_2 = data.pays_siege_social_2; 
+                        nbr_etablissement_in = data.nbr_etablissement_in; 
+                        nbr_etablissement_out = data.nbr_etablissement_out; 
+                        prem_annee_exercice_in = data.prem_annee_exercice_in; 
+                        controle_entite = data.controle_entite; 
+
+                        $('#edit_form_doc_generate_table_doc_fiche_id_client_modal input[name="id_document"]').val(id_document);
+                        $('#edit_form_doc_generate_table_doc_fiche_id_client_modal .modal-title').html(titre_document);
+
+                        $('#table_doc_fiche_id_client_adresse').val(adresse);
+                        $('#table_doc_fiche_id_client_id_fiscale_client').val(id_fiscale_client);
+                        $('#table_doc_fiche_id_client_exercice_clos_le').val(exercice_clos_le);
+                        $('#table_doc_fiche_id_client_duree_en_mois').val(duree_en_mois);
+                        $('#table_doc_fiche_id_client_exercice_compta_du').val(exercice_compta_du);
+                        $('#table_doc_fiche_id_client_exercice_compta_au').val(exercice_compta_au);
+                        $('#table_doc_fiche_id_client_date_arret_compta').val(date_arret_compta);
+                        $('#table_doc_fiche_id_client_exercice_prev_clos_le').val(exercice_prev_clos_le);
+                        $('#table_doc_fiche_id_client_duree_exercice_prev_en_mois').val(duree_exercice_prev_en_mois);
+                        $('#table_doc_fiche_id_client_greffe').val(greffe);
+                        $('#table_doc_fiche_id_client_num_registre_commerce').val(num_registre_commerce);
+                        $('#table_doc_fiche_id_client_num_repertoire_entite').val(num_repertoire_entite);
+                        $('#table_doc_fiche_id_client_num_caisse_sociale').val(num_caisse_sociale);
+                        $('#table_doc_fiche_id_client_num_code_importateur').val(num_code_importateur);
+                        $('#table_doc_fiche_id_client_code_activite_principale').val(code_activite_principale);
+                        $('#table_doc_fiche_id_client_designation_entite').val(designation_entite);
+                        $('#table_doc_fiche_id_client_sigle').val(sigle);
+                        $('#table_doc_fiche_id_client_telephone').val(telephone);
+                        $('#table_doc_fiche_id_client_email').val(email);
+                        $('#table_doc_fiche_id_client_num_code').val(num_code);
+                        $('#table_doc_fiche_id_client_code').val(code);
+                        $('#table_doc_fiche_id_client_boite_postal').val(boite_postal);
+                        $('#table_doc_fiche_id_client_ville').val(ville);
+                        $('#table_doc_fiche_id_client_adresse_geo_complete').val(adresse_geo_complete);
+                        $('#table_doc_fiche_id_client_designation_activite_principale').val(designation_activite_principale);
+                        $('#table_doc_fiche_id_client_personne_a_contacter').val(personne_a_contacter);
+                        $('#table_doc_fiche_id_client_professionnel_salarie_ou_cabinet').val(professionnel_salarie_ou_cabinet);
+                        $('#table_doc_fiche_id_client_visa_expert').val(visa_expert);
+                        if(etats_financiers_approuves == 'oui'){
+                            $('#table_doc_fiche_id_client_etats_financiers_approuves_oui').prop('checked', true);
+                        }else{
+                            $('#table_doc_fiche_id_client_etats_financiers_approuves_non').prop('checked', true);
+                        }
+
+
+                        $('#table_doc_fiche_id_client_forme_juridique_1').val(forme_juridique_1);
+                        $('#table_doc_fiche_id_client_forme_juridique_2').val(forme_juridique_2);
+                        $('#table_doc_fiche_id_client_regime_fiscal_1').val(regime_fiscal_1);
+                        $('#table_doc_fiche_id_client_regime_fiscal_2').val(regime_fiscal_2);
+                        $('#table_doc_fiche_id_client_pays_siege_social_1').val(pays_siege_social_1);
+                        $('#table_doc_fiche_id_client_pays_siege_social_2').val(pays_siege_social_2);
+                        $('#table_doc_fiche_id_client_nbr_etablissement_in').val(nbr_etablissement_in);
+                        $('#table_doc_fiche_id_client_nbr_etablissement_out').val(nbr_etablissement_out);
+                        $('#table_doc_fiche_id_client_prem_annee_exercice_in').val(prem_annee_exercice_in);
+                        if(controle_entite == 'public'){
+                            $('#table_doc_fiche_id_client_controle_entite_public').prop('checked', true);
+                        }else if(controle_entite == 'prive_national'){
+                            $('#table_doc_fiche_id_client_controle_entite_prive_national').prop('checked', true);
+                        }else if(controle_entite == 'prive_etranger'){
+                            $('#table_doc_fiche_id_client_controle_entite_prive_etranger').prop('checked', true);
+                        }
+
+                    }
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_fiche_id_client
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_fiche_id_client', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_fiche_id_client');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_fiche_id_client_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Fiche enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
 
 
 
