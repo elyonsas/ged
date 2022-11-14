@@ -5227,6 +5227,8 @@ if (isset($_POST['action'])) {
         $statement->execute();
         $result = $statement->fetch();
 
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
         $table_document = $result['table_document'];
         $output = [
             'titre_document' => $result['titre_document'],
@@ -5244,11 +5246,11 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -5349,6 +5351,8 @@ if (isset($_POST['action'])) {
         $statement->execute();
         $result = $statement->fetch();
 
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
         $table_document = $result['table_document'];
         $titre_document = $result['titre_document'];
 
@@ -5369,7 +5373,7 @@ if (isset($_POST['action'])) {
 
             $infoPath = pathinfo($src_temp_document);
             $type_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $src_document;
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
@@ -5439,10 +5443,19 @@ if (isset($_POST['action'])) {
 
 if (isset($_FILES['file'])) {
 
-    $tempFile = $_FILES['file']['tmp_name'];
-    $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/';
     $id_document = $_GET['id_document'];
     $titre_document = $_GET['titre_document'];
+
+    $query = "SELECT * FROM document WHERE id_document = $id_document";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch();
+
+    $id_client = $result['id_client'];
+    $matricule_client = find_info_client('matricule_client', $id_client, $db);
+
+    $tempFile = $_FILES['file']['tmp_name'];
+    $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
 
     $uuid = Uuid::uuid1();
     $uniq_str = $uuid->toString();

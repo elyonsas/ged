@@ -838,8 +838,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                         <!--begin::Info-->
                                         <div class="ms-4">
-                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Glissez déposez un fichier ici ou cliquez pour télécharger.</h3>
-                                            <span class="fs-7 fw-semibold text-gray-400">Télécharger un seul fichier</span>
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Glissez déposez un fichier ici ou cliquez pour importer.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-400">Importer un seul fichier</span>
                                         </div>
                                         <!--end::Info-->
                                     </div>
@@ -1636,7 +1636,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
                         url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
                         parallelUploads: 20,
-                        maxFilesize: 5000, // Max filesize in MB
+                        maxFilesize: 10, // Max filesize in MB
                         maxFiles: 1,
                         previewTemplate: previewTemplate,
                         previewsContainer: id + " .dropzone-items", // Define the container to display the previews

@@ -104,6 +104,20 @@ function find_info_utilisateur($info, $id_utilisateur, PDO $db)
     return $result["$info"];
 }
 
+function find_info_client($info, $id_client, PDO $db)
+{
+
+    $query = "SELECT $info FROM client, utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+    AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = :id_client";
+    $statement = $db->prepare($query);
+    $statement->execute([
+        ':id_client' => $id_client
+    ]);
+    $result = $statement->fetch();
+
+    return $result["$info"];
+}
+
 function compte_exists($email, PDO $db)
 {
     $query = "SELECT * FROM compte WHERE email_compte = :email_compte";
