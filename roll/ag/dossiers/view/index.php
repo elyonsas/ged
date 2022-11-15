@@ -1088,9 +1088,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </div>
                                 </div>
                             </div>
-                        </div><br><br>
+                        </div>
 
-                        <h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 2)</h3> <br><br>
+                        <br><br><h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 2)</h3> <br><br>
 
                         <div class="row mb-5">
                             <div class="input-group">
@@ -1171,6 +1171,232 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             </div>
                         </div>
 
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">ACTIVITE DE L'ENTITE</span>
+                        </div>
+
+                        <!--begin::Repeater-->
+                        <div id="table_doc_fiche_id_client_activite_client_repeater">
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <div data-repeater-list="activite_client">
+                                    <div data-repeater-item>
+                                        <div class="form-group row mb-2">
+                                            <div class="col-md-3">
+                                                <!-- <label class="form-label">Designation</label>
+                                                <input name="designation_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Désignation de l'activité" /> -->
+                                                <div class="form-floating">
+                                                    <input name="designation_activite_client" type="text" class="form-control" placeholder="Désignation de l'activité"/>
+                                                    <label>Designation</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <!-- <label class="form-label">Nomenclature</label>
+                                                <input name="code_nomenclature_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Code nomenclature d'activité" /> -->
+                                                <div class="form-floating">
+                                                    <input name="code_nomenclature_activite_client" type="text" class="form-control" placeholder="Code nomenclature d'activité"/>
+                                                    <label>Nomenclature</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <!-- <label class="form-label">Chiffre d'affaires HT</label>
+                                                <input name="chiffre_affaires_ht_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Chiffre d'affaires HT" /> -->
+                                                <div class="form-floating">
+                                                    <input name="chiffre_affaires_ht_activite_client" type="number" class="form-control" placeholder="Chiffre d'affaires HT"/>
+                                                    <label>Chiffre d'affaires HT</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <!-- <label class="form-label">% activité dans le CA</label>
+                                                <input name="percent_activite_in_ca_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="% activité dans le CA HT" /> -->
+                                                <div class="form-floating">
+                                                    <input name="percent_activite_in_ca_activite_client" type="number" class="form-control" placeholder="% activité dans le CA HT"/>
+                                                    <label>% activité dans le CA</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                    <i class="la la-trash-o fs-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form group-->
+
+                            <div class="infos_activite_client">
+                                <span class="fst-italic fw-bold text-muted fs-6">(!) Lister de manière précise les activités dans l'ordre décroissant du C. A. HT, ou de la valeur ajoutée (V. A.).</span>
+                            </div>
+
+                            <!--begin::Form group-->
+                            <div class="form-group mt-5">
+                                <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+                                    <i class="la la-plus"></i>Ajouter
+                                </a>
+                            </div>
+                            <!--end::Form group-->
+                        </div>
+                        <!--end::Repeater-->
+
+                        <br><br><h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 3)</h3> <br><br>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">DIRIGEANTS</span>
+                        </div>
+
+                        <!--begin::Repeater-->
+                        <div id="table_doc_fiche_id_client_dirigeant_client_repeater">
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <div data-repeater-list="dirigeant_client">
+                                    <div data-repeater-item>
+                                        <div class="form-group row mb-5">
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="nom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                    <label>Nom</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="prenom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                    <label>Prénom</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="qualite_dirigeant_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                    <label>Qualité</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="id_fiscal_dirigeant_client" type="number" class="form-control mb-2" placeholder="N° identification fiscale"/>
+                                                    <label>N° identification fiscale</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="tel_dirigeant_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                    <label>Téléphone</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="mail_dirigeant_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                    <label>Mail</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="adresse_dirigeant_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                    <label>Adresse</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                    <i class="la la-trash-o fs-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form group-->
+
+                            <div class="infos_activite_client">
+                                <span class="fst-italic fw-bold text-muted fs-6">(!) Dirigeants = Président Directeur Général, Directeur Général, Administrateur Général, Gérant, Autres.</span>
+                            </div>
+
+                            <!--begin::Form group-->
+                            <div class="form-group mt-5">
+                                <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+                                    <i class="la la-plus"></i>Ajouter
+                                </a>
+                            </div>
+                            <!--end::Form group-->
+                        </div>
+                        <!--end::Repeater-->
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">MEMBRES DU CONSEIL D'ADMINISTRATION</span>
+                        </div>
+
+                        <!--begin::Repeater-->
+                        <div id="table_doc_fiche_id_client_membre_conseil_client_repeater">
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <div data-repeater-list="membre_conseil_client">
+                                    <div data-repeater-item>
+                                        <div class="form-group row mb-5">
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="nom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                    <label>Nom</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="prenom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                    <label>Prénom</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="qualite_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                    <label>Qualité</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="tel_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                    <label>Téléphone</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="mail_membre_conseil_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                    <label>Mail</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <input name="adresse_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                    <label>Adresse</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <textarea name="observation_membre_conseil_client" class="form-control mb-2" placeholder="Observation"></textarea>
+                                                    <label>Observation</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                    <i class="la la-trash-o fs-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form group-->
+
+                            <div class="infos_activite_client">
+                                <span class="fst-italic fw-bold text-muted fs-6">(!) Dirigeants = Président Directeur Général, Directeur Général, Administrateur Général, Gérant, Autres.</span>
+                            </div>
+
+                            <!--begin::Form group-->
+                            <div class="form-group mt-5">
+                                <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+                                    <i class="la la-plus"></i>Ajouter
+                                </a>
+                            </div>
+                            <!--end::Form group-->
+                        </div>
+                        <!--end::Repeater-->
+
                     </div>
 
                 </div>
@@ -1234,6 +1460,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <script src="assets/js/custom/utilities/modals/new-target.js"></script>
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
 <script src="assets/plugins/custom/tinymce/tinymce.bundle.js"></script>
+<script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -2212,47 +2439,94 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     if (data.table_document == 'doc_fiche_id_client') {
 
+                        // Pour les formulaires de répétition
+                        $('#table_doc_fiche_id_client_activite_client_repeater').repeater({
+                            initEmpty: false,
+
+                            defaultValues: {
+                                'text-input': 'foo'
+                            },
+
+                            show: function () {
+                                $(this).slideDown();
+                            },
+
+                            hide: function (deleteElement) {
+                                $(this).slideUp(deleteElement);
+                            }
+                        });
+                        $('#table_doc_fiche_id_client_dirigeant_client_repeater').repeater({
+                            initEmpty: false,
+
+                            defaultValues: {
+                                'text-input': 'foo'
+                            },
+
+                            show: function () {
+                                $(this).slideDown();
+                            },
+
+                            hide: function (deleteElement) {
+                                $(this).slideUp(deleteElement);
+                            }
+                        });
+                        $('#table_doc_fiche_id_client_membre_conseil_client_repeater').repeater({
+                            initEmpty: false,
+
+                            defaultValues: {
+                                'text-input': 'foo'
+                            },
+
+                            show: function () {
+                                $(this).slideDown();
+                            },
+
+                            hide: function (deleteElement) {
+                                $(this).slideUp(deleteElement);
+                            }
+                        });
+
                         titre_document = data.titre_document;
-                        adresse = data.adresse; 
-                        id_fiscale_client = data.id_fiscale_client; 
+                        adresse = data.adresse;
+                        id_fiscale_client = data.id_fiscale_client;
                         exercice_clos_le = date_formatter(data.exercice_clos_le, 'yyyy-mm-dd');
-                        duree_en_mois = data.duree_en_mois; 
-                        exercice_compta_du = date_formatter(data.exercice_compta_du, 'yyyy-mm-dd'); 
+                        duree_en_mois = data.duree_en_mois;
+                        exercice_compta_du = date_formatter(data.exercice_compta_du, 'yyyy-mm-dd');
                         exercice_compta_au = date_formatter(data.exercice_compta_au, 'yyyy-mm-dd');
                         date_arret_compta = date_formatter(data.date_arret_compta, 'yyyy-mm-dd');
                         exercice_prev_clos_le = date_formatter(data.exercice_prev_clos_le, 'yyyy-mm-dd');
-                        duree_exercice_prev_en_mois = data.duree_exercice_prev_en_mois; 
-                        greffe = data.greffe; 
-                        num_registre_commerce = data.num_registre_commerce; 
-                        num_repertoire_entite = data.num_repertoire_entite; 
-                        num_caisse_sociale = data.num_caisse_sociale; 
-                        num_code_importateur = data.num_code_importateur; 
-                        code_activite_principale = data.code_activite_principale; 
-                        designation_entite = data.designation_entite; 
-                        sigle = data.sigle; 
-                        telephone = data.telephone; 
-                        email = data.email; 
-                        num_code = data.num_code; 
-                        code = data.code; 
-                        boite_postal = data.boite_postal;   
-                        ville = data.ville; 
-                        adresse_geo_complete = data.adresse_geo_complete; 
-                        designation_activite_principale = data.designation_activite_principale; 
-                        personne_a_contacter = data.personne_a_contacter; 
-                        professionnel_salarie_ou_cabinet = data.professionnel_salarie_ou_cabinet; 
-                        visa_expert = data.visa_expert; 
+                        duree_exercice_prev_en_mois = data.duree_exercice_prev_en_mois;
+                        greffe = data.greffe;
+                        num_registre_commerce = data.num_registre_commerce;
+                        num_repertoire_entite = data.num_repertoire_entite;
+                        num_caisse_sociale = data.num_caisse_sociale;
+                        num_code_importateur = data.num_code_importateur;
+                        code_activite_principale = data.code_activite_principale;
+                        designation_entite = data.designation_entite;
+                        sigle = data.sigle;
+                        telephone = data.telephone;
+                        email = data.email;
+                        num_code = data.num_code;
+                        code = data.code;
+                        boite_postal = data.boite_postal;
+                        ville = data.ville;
+                        adresse_geo_complete = data.adresse_geo_complete;
+                        designation_activite_principale = data.designation_activite_principale;
+                        personne_a_contacter = data.personne_a_contacter;
+                        professionnel_salarie_ou_cabinet = data.professionnel_salarie_ou_cabinet;
+                        visa_expert = data.visa_expert;
                         etats_financiers_approuves = data.etats_financiers_approuves;
 
-                        forme_juridique_1 = data.forme_juridique_1; 
-                        forme_juridique_2 = data.forme_juridique_2; 
-                        regime_fiscal_1 = data.regime_fiscal_1; 
-                        regime_fiscal_2 = data.regime_fiscal_2; 
-                        pays_siege_social_1 = data.pays_siege_social_1; 
-                        pays_siege_social_2 = data.pays_siege_social_2; 
-                        nbr_etablissement_in = data.nbr_etablissement_in; 
-                        nbr_etablissement_out = data.nbr_etablissement_out; 
-                        prem_annee_exercice_in = data.prem_annee_exercice_in; 
-                        controle_entite = data.controle_entite; 
+                        forme_juridique_1 = data.forme_juridique_1;
+                        forme_juridique_2 = data.forme_juridique_2;
+                        regime_fiscal_1 = data.regime_fiscal_1;
+                        regime_fiscal_2 = data.regime_fiscal_2;
+                        pays_siege_social_1 = data.pays_siege_social_1;
+                        pays_siege_social_2 = data.pays_siege_social_2;
+                        nbr_etablissement_in = data.nbr_etablissement_in;
+                        nbr_etablissement_out = data.nbr_etablissement_out;
+                        prem_annee_exercice_in = data.prem_annee_exercice_in;
+                        controle_entite = data.controle_entite;
 
                         $('#edit_form_doc_generate_table_doc_fiche_id_client_modal input[name="id_document"]').val(id_document);
                         $('#edit_form_doc_generate_table_doc_fiche_id_client_modal .modal-title').html(titre_document);
@@ -2285,9 +2559,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         $('#table_doc_fiche_id_client_personne_a_contacter').val(personne_a_contacter);
                         $('#table_doc_fiche_id_client_professionnel_salarie_ou_cabinet').val(professionnel_salarie_ou_cabinet);
                         $('#table_doc_fiche_id_client_visa_expert').val(visa_expert);
-                        if(etats_financiers_approuves == 'oui'){
+                        if (etats_financiers_approuves == 'oui') {
                             $('#table_doc_fiche_id_client_etats_financiers_approuves_oui').prop('checked', true);
-                        }else{
+                        } else {
                             $('#table_doc_fiche_id_client_etats_financiers_approuves_non').prop('checked', true);
                         }
 
@@ -2301,11 +2575,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         $('#table_doc_fiche_id_client_nbr_etablissement_in').val(nbr_etablissement_in);
                         $('#table_doc_fiche_id_client_nbr_etablissement_out').val(nbr_etablissement_out);
                         $('#table_doc_fiche_id_client_prem_annee_exercice_in').val(prem_annee_exercice_in);
-                        if(controle_entite == 'public'){
+                        if (controle_entite == 'public') {
                             $('#table_doc_fiche_id_client_controle_entite_public').prop('checked', true);
-                        }else if(controle_entite == 'prive_national'){
+                        } else if (controle_entite == 'prive_national') {
                             $('#table_doc_fiche_id_client_controle_entite_prive_national').prop('checked', true);
-                        }else if(controle_entite == 'prive_etranger'){
+                        } else if (controle_entite == 'prive_etranger') {
                             $('#table_doc_fiche_id_client_controle_entite_prive_etranger').prop('checked', true);
                         }
 

@@ -1373,7 +1373,32 @@ if (isset($_POST['action'])) {
         $prem_annee_exercice_in = $_POST['prem_annee_exercice_in'];
         $controle_entite = $_POST['controle_entite'];
 
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
+        $titre_document = $result['titre_document'];
+
+        
+        
+
+        // update table document
         $update1 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        // update table doc_fiche_id_client
+        $update2 = update(
             'doc_fiche_id_client',
             [
                 'adresse' => $adresse,
@@ -1420,28 +1445,87 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        $update2 = update(
-            'document',
-            [
-                'updated_at_document' => date('Y-m-d H:i:s'),
-                'updated_by_document' => $_SESSION['id_utilisateur']
-            ],
-            "id_document = $id_document",
-            $db
-        );
+        // update table activite_client
+        $update3 = false;
+        if(isset($_POST['activite_client'])){
+            $activites_clients = $_POST['activite_client'];
 
-        $update3 = update_contenu_document_table_doc_fiche_id_client($id_document, $db);
+            $delete = delete('activite_client', "id_client = $id_client", $db);
+            foreach ($activites_clients as $activite_client) {
+                $update3 = insert(
+                    'activite_client',
+                    [
+                        'designation_activite_client' => $activite_client['designation_activite_client'],
+                        'code_nomenclature_activite_client' => $activite_client['code_nomenclature_activite_client'],
+                        'chiffre_affaires_ht_activite_client' => $activite_client['chiffre_affaires_ht_activite_client'],
+                        'percent_activite_in_ca_activite_client' => $activite_client['percent_activite_in_ca_activite_client'],
+                        'id_client' => $id_client
+                    ],
+                    $db
+                );
+            }
+        }else{
+            $update3 = true;
+            $delete = delete('activite_client', "id_client = $id_client", $db);
+        }
 
-        $query = "SELECT * FROM document WHERE id_document = $id_document";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
+        // update table dirigeant_client
+        $update4 = false;
+        if(isset($_POST['dirigeant_client'])){
+            $dirigeants_clients = $_POST['dirigeant_client'];
 
-        $id_client = $result['id_client'];
-        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
-        $titre_document = $result['titre_document'];
+            $delete = delete('dirigeant_client', "id_client = $id_client", $db);
+            foreach ($dirigeants_clients as $dirigeant_client) {
+                $update4 = insert(
+                    'dirigeant_client',
+                    [
+                        'nom_dirigeant_client' => $dirigeant_client['nom_dirigeant_client'],
+                        'prenom_dirigeant_client' => $dirigeant_client['prenom_dirigeant_client'],
+                        'qualite_dirigeant_client' => $dirigeant_client['qualite_dirigeant_client'],
+                        'id_fiscal_dirigeant_client' => $dirigeant_client['id_fiscal_dirigeant_client'],
+                        'tel_dirigeant_client' => $dirigeant_client['tel_dirigeant_client'],
+                        'mail_dirigeant_client' => $dirigeant_client['mail_dirigeant_client'],
+                        'adresse_dirigeant_client' => $dirigeant_client['adresse_dirigeant_client'],
+                        'id_client' => $id_client
+                    ],
+                    $db
+                );
+            }
+        }else{
+            $update4 = true;
+            $delete = delete('dirigeant_client', "id_client = $id_client", $db);
+        }
 
-        if ($update1 && $update2 && $update3) {
+        // update table membre_conseil_client
+        $update5 = false;
+        if(isset($_POST['membre_conseil_client'])){
+            $membres_conseils_clients = $_POST['membre_conseil_client'];
+
+            $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
+            foreach ($membres_conseils_clients as $membre_conseil_client) {
+                $update5 = insert(
+                    'membre_conseil_client',
+                    [
+                        'nom_membre_conseil_client' => $membre_conseil_client['nom_membre_conseil_client'],
+                        'prenom_membre_conseil_client' => $membre_conseil_client['prenom_membre_conseil_client'],
+                        'qualite_membre_conseil_client' => $membre_conseil_client['qualite_membre_conseil_client'],
+                        'tel_membre_conseil_client' => $membre_conseil_client['tel_membre_conseil_client'],
+                        'mail_membre_conseil_client' => $membre_conseil_client['mail_membre_conseil_client'],
+                        'adresse_membre_conseil_client' => $membre_conseil_client['adresse_membre_conseil_client'],
+                        'observation_membre_conseil_client' => $membre_conseil_client['observation_membre_conseil_client'],
+                        'id_client' => $id_client
+                    ],
+                    $db
+                );
+            }
+        }else{
+            $update5 = true;
+            $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
+        }
+        
+        $update6 = update_contenu_document_table_doc_fiche_id_client($id_document, $db);
+
+        if ($update1 && $update2 && $update3 && $update4 && $update5 && $update6) {
             $output = [
                 'success' => true,
                 'message' => "La fiche d'identification de <b>$nom_client</b> à été mise à jour !"
