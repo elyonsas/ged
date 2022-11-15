@@ -1034,6 +1034,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <input id="table_doc_fiche_id_client_code" type="text" class="form-control" placeholder="Code" name="code">
                                 <span class="input-group-text">-</span>
                                 <input id="table_doc_fiche_id_client_boite_postal" type="text" class="form-control" placeholder="Boite postale" name="boite_postal">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_fiche_id_client_ville" type="text" class="form-control" placeholder="Boite postale" name="ville">
                             </div>
                         </div>
 
@@ -1068,7 +1070,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="col-md-6 form-group d-none">
                                 <label class="fs-5 mb-2">Visa de l'expert comptable</label>
-                                <input id="table_doc_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="personne_a_contacter">
+                                <input id="table_doc_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="visa_expert">
                             </div>
 
                             <div class="col-md-12 form-group justify-content-end">
@@ -1179,7 +1181,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <input type="hidden" name="id_document" value="">
                     <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                     <button id="btn_edit_form_doc_generate_table_doc_fiche_id_client" type="submit" class="btn btn-lg btn-primary ms-2">
-                        <span class="indicator-label">Générer</span>
+                        <span class="indicator-label">Valider</span>
                         <span class="indicator-progress">Veuillez patienter...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
