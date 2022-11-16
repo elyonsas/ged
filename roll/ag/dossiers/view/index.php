@@ -780,7 +780,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="doc-content">
                         <!--begin::Input group-->
                         <div class="fv-row row">
-                            <textarea id="id_edit_doc_write" class="form-control form-control-solid" rows="3" placeholder="" name="contenu_document"></textarea>
+                            <textarea id="id_edit_doc_write" class="edit_doc_tinymce form-control form-control-solid" rows="3" placeholder="" name="contenu_document"></textarea>
                             <textarea id="id_edit_doc_write_text" name="contenu_text_document" hidden></textarea>
                         </div>
                         <!--end::Input group-->
@@ -898,6 +898,67 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Modal dialog-->
     </div>
     <!-- end::Modal edit_doc_file -->
+
+    <!-- begin::Modal edit_doc_write -->
+    <div class="modal fade" id="edit_doc_generate_modal" tabindex="-1">
+        <style>
+            @media screen {
+                #edit_doc_generate_modal .modal-body {
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                    overflow: hidden;
+                }
+
+                #edit_doc_generate_modal .doc-content {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_generate" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="fv-row row">
+                            <textarea id="id_edit_doc_generate" class="edit_doc_tinymce form-control form-control-solid" rows="3" placeholder="" name="contenu_document"></textarea>
+                            <textarea id="id_edit_doc_generate_text" name="contenu_text_document" hidden></textarea>
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+
+                    <input type="hidden" name="action" value="edit_doc_generate">
+                    <input type="hidden" name="id_document" value="">
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_generate -->
 
     <!-- begin::Modal edit_doc_file -->
     <div class="modal fade" id="edit_form_doc_generate_table_doc_fiche_id_client_modal" tabindex="-1">
@@ -1449,7 +1510,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
 
                         <br><br>
-                        <h3>Sous-doc N°8-3: Autres informations au niveau du cabinet & documents reçus du client</h3> <br><br>
+                        <h3>Sous-doc N°8-3: Autres informations au niveau du cabinet</h3> <br><br>
 
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
@@ -2055,6 +2116,32 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         }
+        function save_doc_generate() {
+
+            // Récupérer les données text tinymce du briefing et mettre dans un textarea
+            var docs_generate = tinymce.get('id_edit_doc_generate').getContent({
+                format: 'text'
+            });
+            $('#id_edit_doc_generate_text').val(docs_generate);
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $('#form_edit_doc_generate').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.success) {
+                        toastr.success(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    } else {
+                        toastr.error(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    }
+                }
+            })
+        }
 
         // Pour l'affichage des détails d'un document
         $(document).on('click', '.view_detail_document', function() {
@@ -2174,24 +2261,28 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         /* -----------------Modification d'un document write---------------- */
-        // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
-        tinymce.init({
-            selector: '#id_edit_doc_write',
-            menubar: false,
-            language: 'fr_FR',
-            content_css: 'document',
-            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-            save_onsavecallback: save_doc_write,
-        });
-        // Prevent Bootstrap dialog from blocking focusin for TinyMCE
-        document.addEventListener('focusin', (e) => {
-            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                e.stopImmediatePropagation();
-            }
-        });
         //Lorsqu'on clique sur .edit_doc_write
         $(document).on('click', '.edit_doc_write', function() {
+            // Détruire toutes les instances tinymce
+            // tinymce.remove();
+
+            // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
+            tinymce.init({
+                selector: '#id_edit_doc_write',
+                menubar: false,
+                language: 'fr_FR',
+                content_css: 'document',
+                plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                save_onsavecallback: save_doc_write,
+            });
+            // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+            document.addEventListener('focusin', (e) => {
+                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                    e.stopImmediatePropagation();
+                }
+            });
+
             var id_document = $(this).data('id_document');
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -2204,7 +2295,53 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
-                    tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+                    setTimeout(function() {
+                        tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+                    }, 1000);
+
+                }
+            })
+        });
+
+        /* -----------------Modification d'un document generate---------------- */
+        //Lorsqu'on clique sur .edit_doc_generate
+        $(document).on('click', '.edit_doc_generate', function() {
+            // Détruire toutes les instances tinymce
+            // tinymce.remove();
+
+            // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate
+            tinymce.init({
+                selector: '#id_edit_doc_generate',
+                menubar: false,
+                language: 'fr_FR',
+                content_css: 'document',
+                content_style: 'body { padding: 5px !important; }',
+                plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                save_onsavecallback: save_doc_generate,
+            });
+            // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+            document.addEventListener('focusin', (e) => {
+                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                    e.stopImmediatePropagation();
+                }
+            });
+
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_doc_generate'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#edit_doc_generate_modal input[name="id_document"]').val(id_document);
+                    $('#edit_doc_generate_modal .modal-title').html(data.titre_document);
+                    setTimeout(function() {
+                        tinymce.get('id_edit_doc_generate').setContent(data.contenu_document);
+                    }, 1000);
 
                 }
             })
@@ -2457,7 +2594,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        /* -----------------Modification d'un document generate---------------- */
+        /* -----------------Modification d'un formulaire docs generate---------------- */
         function date_formatter(date, format) {
             if (date == null) {
                 return '';

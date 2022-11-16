@@ -1341,6 +1341,50 @@ if (isset($_POST['action'])) {
             }
         }
     }
+    if ($_POST['action'] == 'edit_doc_generate') {
+
+        $id_document = $_POST['id_document'];
+        $contenu_document = $_POST['contenu_document'];
+        $contenu_text_document = $_POST['contenu_text_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $update1 = update(
+            $table_document,
+            [
+                'contenu_document' => $contenu_document,
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        $update2 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = [
+                'success' => true,
+                'message' => 'Document enregistré !'
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une s\'est produite !'
+            ];
+        }
+    }
     if ($_POST['action'] == 'edit_table_doc_fiche_id_client') {
 
         $id_document = $_POST['id_document'];
