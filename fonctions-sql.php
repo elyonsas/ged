@@ -953,7 +953,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                         colspan="16" rowspan="1"
                         >EXERCICE
                         PRECEDENT CLOS LE :</td>
-                    <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(252, 243, 5);"
+                    <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; vertical-align: middle; background-color: rgb(252, 243, 5);"
                         colspan="4" rowspan="1" data-sheets-numberformat="{&quot;1&quot;:1}"><div style="font-weight: bold; text-align: center;">$exercice_prev_clos_le</div></td>
                     <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     <td style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: Arial; font-size: 12pt;"
@@ -1739,7 +1739,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                     <td
                         style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: Arial; font-size: 12pt; text-align: center;">
                         &nbsp;</td>
-                    <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                    <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; vertical-align: middle;"
                         colspan="7" rowspan="1"><div style="font-weight: bold; text-align: center;">$email</div></td>
                     <td
                         style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: Arial; font-size: 12pt; text-align: center;">
@@ -5125,7 +5125,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                         colspan="14" rowspan="1"
                         data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Premi&egrave;re ann&eacute;e d'exercice dans le pays :&quot;}">
                         Premi&egrave;re ann&eacute;e d'exercice dans le pays :</td>
-                    <td colspan="4" style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(252, 243, 5);"
+                    <td colspan="4" style="letter-spacing: 10px; border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(252, 243, 5);"
                         data-sheets-numberformat="{&quot;1&quot;:1}">$prem_annee_exercice_in</td>
                     <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(255, 255, 255);">
                         &nbsp;</td>

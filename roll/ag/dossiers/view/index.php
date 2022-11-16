@@ -2315,7 +2315,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 menubar: false,
                 language: 'fr_FR',
                 content_css: 'document',
-                content_style: 'body { padding: 5px !important; }',
+                content_style: 'body { padding: 25px !important; max-width: 90% !important; min-height: 75% !important;}',
                 plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
                 toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
                 save_onsavecallback: save_doc_generate,
