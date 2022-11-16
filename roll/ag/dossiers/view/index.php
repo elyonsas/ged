@@ -935,6 +935,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <input id="table_doc_fiche_id_client_adresse" type="text" class="form-control form-control-solid" placeholder="Entrez l'adresse du client" name="adresse">
                             </div>
                         </div>
+
                         <div class="row mb-5">
                             <div class="col-md-12 col-lg-4 form-group">
                                 <label class="fs-5 mb-2">N° d'identification fiscal</label>
@@ -1090,7 +1091,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             </div>
                         </div>
 
-                        <br><br><h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 2)</h3> <br><br>
+                        <br><br>
+                        <h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 2)</h3> <br><br>
 
                         <div class="row mb-5">
                             <div class="input-group">
@@ -1186,7 +1188,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!-- <label class="form-label">Designation</label>
                                                 <input name="designation_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Désignation de l'activité" /> -->
                                                 <div class="form-floating">
-                                                    <input name="designation_activite_client" type="text" class="form-control" placeholder="Désignation de l'activité"/>
+                                                    <input name="designation_activite_client" type="text" class="form-control" placeholder="Désignation de l'activité" />
                                                     <label>Designation</label>
                                                 </div>
                                             </div>
@@ -1194,7 +1196,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!-- <label class="form-label">Nomenclature</label>
                                                 <input name="code_nomenclature_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Code nomenclature d'activité" /> -->
                                                 <div class="form-floating">
-                                                    <input name="code_nomenclature_activite_client" type="text" class="form-control" placeholder="Code nomenclature d'activité"/>
+                                                    <input name="code_nomenclature_activite_client" type="text" class="form-control" placeholder="Code nomenclature d'activité" />
                                                     <label>Nomenclature</label>
                                                 </div>
                                             </div>
@@ -1202,7 +1204,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!-- <label class="form-label">Chiffre d'affaires HT</label>
                                                 <input name="chiffre_affaires_ht_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Chiffre d'affaires HT" /> -->
                                                 <div class="form-floating">
-                                                    <input name="chiffre_affaires_ht_activite_client" type="number" class="form-control" placeholder="Chiffre d'affaires HT"/>
+                                                    <input name="chiffre_affaires_ht_activite_client" type="number" class="form-control" placeholder="Chiffre d'affaires HT" />
                                                     <label>Chiffre d'affaires HT</label>
                                                 </div>
                                             </div>
@@ -1210,7 +1212,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!-- <label class="form-label">% activité dans le CA</label>
                                                 <input name="percent_activite_in_ca_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="% activité dans le CA HT" /> -->
                                                 <div class="form-floating">
-                                                    <input name="percent_activite_in_ca_activite_client" type="number" class="form-control" placeholder="% activité dans le CA HT"/>
+                                                    <input name="percent_activite_in_ca_activite_client" type="number" class="form-control" placeholder="% activité dans le CA HT" />
                                                     <label>% activité dans le CA</label>
                                                 </div>
                                             </div>
@@ -1239,7 +1241,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                         <!--end::Repeater-->
 
-                        <br><br><h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 3)</h3> <br><br>
+                        <br><br>
+                        <h3>Sous-doc N°8-1 : Informations générales sur le client (Partie 3)</h3> <br><br>
 
                         <div class="separator d-flex flex-center my-8">
                             <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">DIRIGEANTS</span>
@@ -1254,43 +1257,43 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="form-group row mb-5">
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="nom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                    <input name="nom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Nom" />
                                                     <label>Nom</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="prenom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                    <input name="prenom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Prénom" />
                                                     <label>Prénom</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="qualite_dirigeant_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                    <input name="qualite_dirigeant_client" type="text" class="form-control mb-2" placeholder="Qualité" />
                                                     <label>Qualité</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="id_fiscal_dirigeant_client" type="number" class="form-control mb-2" placeholder="N° identification fiscale"/>
+                                                    <input name="id_fiscal_dirigeant_client" type="number" class="form-control mb-2" placeholder="N° identification fiscale" />
                                                     <label>N° identification fiscale</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="tel_dirigeant_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                    <input name="tel_dirigeant_client" type="text" class="form-control mb-2" placeholder="Téléphone" />
                                                     <label>Téléphone</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="mail_dirigeant_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                    <input name="mail_dirigeant_client" type="email" class="form-control mb-2" placeholder="Mail" />
                                                     <label>Mail</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="adresse_dirigeant_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                    <input name="adresse_dirigeant_client" type="text" class="form-control mb-2" placeholder="Adresse" />
                                                     <label>Adresse</label>
                                                 </div>
                                             </div>
@@ -1332,44 +1335,44 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="form-group row mb-5">
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="nom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                    <input name="nom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Nom" />
                                                     <label>Nom</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="prenom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                    <input name="prenom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Prénom" />
                                                     <label>Prénom</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="qualite_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                    <input name="qualite_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Qualité" />
                                                     <label>Qualité</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="tel_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                    <input name="tel_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Téléphone" />
                                                     <label>Téléphone</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="mail_membre_conseil_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                    <input name="mail_membre_conseil_client" type="email" class="form-control mb-2" placeholder="Mail" />
                                                     <label>Mail</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <input name="adresse_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                    <input name="adresse_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Adresse" />
                                                     <label>Adresse</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-floating">
-                                                    <textarea name="observation_membre_conseil_client" class="form-control mb-2" placeholder="Observation"></textarea>
-                                                    <label>Observation</label>
+                                                    <textarea name="fonction_membre_conseil_client" class="form-control mb-2" placeholder="Fonction"></textarea>
+                                                    <label>Fonction</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -1396,6 +1399,75 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--end::Form group-->
                         </div>
                         <!--end::Repeater-->
+
+                        <br><br>
+                        <h3>Sous-doc N°8-2 : Autres informations sur le client</h3> <br><br>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Durée de vie de la société :</label>
+                                <input id="table_doc_fiche_id_client_duree_vie_societe" type="number" class="form-control form-control-solid" placeholder="Entrez le nombre d'année" name="duree_vie_societe">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Date de dissolution prévisible :</label>
+                                <input id="table_doc_fiche_id_client_date_dissolution" type="date" class="form-control form-control-solid" placeholder="Date de dissolution prévisible" name="date_dissolution">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Capital Social :</label>
+                                <input id="table_doc_fiche_id_client_capital_social" type="number" class="form-control form-control-solid" placeholder="Capital Social" name="capital_social">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Siège Social :</label>
+                                <input id="table_doc_fiche_id_client_siege_social" type="text" class="form-control form-control-solid" placeholder="Siège Social" name="siege_social">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Site internet :</label>
+                                <input id="table_doc_fiche_id_client_site_internet" type="text" class="form-control form-control-solid" placeholder="Site internet" name="site_internet">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Nombre de salariés :</label>
+                                <input id="table_doc_fiche_id_client_nombre_de_salarie" type="number" class="form-control form-control-solid" placeholder="Nombre de salariés" name="nombre_de_salarie">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Chiffre d'affaires des 3 derniers exercices :</label>
+                            <div class="input-group">
+                                <span class="input-group-text">N-1</span>
+                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_1" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_1">
+                                <span class="input-group-text">N-2</span>
+                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_2" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_2">
+                                <span class="input-group-text">N-3</span>
+                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_3" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_3">
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <h3>Sous-doc N°8-3: Autres informations au niveau du cabinet & documents reçus du client</h3> <br><br>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Date ouverture du dossier du client :</label>
+                                <input id="table_doc_fiche_id_client_date_ouverture_dossier" type="date" class="form-control form-control-solid" placeholder="Date ouverture du dossier du client" name="date_ouverture_dossier">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Nom du Cabinet du confrère ou de l'Expert :</label>
+                                <input id="table_doc_fiche_id_client_nom_cabinet_confrere" type="text" class="form-control form-control-solid" placeholder="Nom du Cabinet du confrère ou de l'Expert" name="nom_cabinet_confrere">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Dossier hérité du confrère :</label>
+                                <input id="table_doc_fiche_id_client_dossier_herite_confrere" type="text" class="form-control form-control-solid" placeholder="Dossier hérité du confrère" name="dossier_herite_confrere">
+                            </div>
+                        </div>
 
                     </div>
 
@@ -2423,6 +2495,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }
 
         // Lorsqu'on clique sur .edit_form_doc_generate
+        init_repeater_count = 0;
         $(document).on('click', '.edit_form_doc_generate', function() {
 
             var id_document = $(this).data('id_document');
@@ -2439,53 +2512,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     if (data.table_document == 'doc_fiche_id_client') {
 
-                        // Pour les formulaires de répétition
-                        $('#table_doc_fiche_id_client_activite_client_repeater').repeater({
-                            initEmpty: false,
-
-                            defaultValues: {
-                                'text-input': 'foo'
-                            },
-
-                            show: function () {
-                                $(this).slideDown();
-                            },
-
-                            hide: function (deleteElement) {
-                                $(this).slideUp(deleteElement);
-                            }
-                        });
-                        $('#table_doc_fiche_id_client_dirigeant_client_repeater').repeater({
-                            initEmpty: false,
-
-                            defaultValues: {
-                                'text-input': 'foo'
-                            },
-
-                            show: function () {
-                                $(this).slideDown();
-                            },
-
-                            hide: function (deleteElement) {
-                                $(this).slideUp(deleteElement);
-                            }
-                        });
-                        $('#table_doc_fiche_id_client_membre_conseil_client_repeater').repeater({
-                            initEmpty: false,
-
-                            defaultValues: {
-                                'text-input': 'foo'
-                            },
-
-                            show: function () {
-                                $(this).slideDown();
-                            },
-
-                            hide: function (deleteElement) {
-                                $(this).slideUp(deleteElement);
-                            }
-                        });
-
+                        id_document = data.id_document;
+                        id_client = data.id_client;
                         titre_document = data.titre_document;
                         adresse = data.adresse;
                         id_fiscale_client = data.id_fiscale_client;
@@ -2527,6 +2555,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         nbr_etablissement_out = data.nbr_etablissement_out;
                         prem_annee_exercice_in = data.prem_annee_exercice_in;
                         controle_entite = data.controle_entite;
+
+                        duree_vie_societe = data.duree_vie_societe;
+                        date_dissolution = date_formatter(data.date_dissolution, 'yyyy-mm-dd');
+                        capital_social = data.capital_social;
+                        siege_social = data.siege_social;
+                        site_internet = data.site_internet;
+                        nombre_de_salarie = data.nombre_de_salarie;
+                        ca_3_derniers_exercices_n_1 = data.ca_3_derniers_exercices_n_1;
+                        ca_3_derniers_exercices_n_2 = data.ca_3_derniers_exercices_n_2;
+                        ca_3_derniers_exercices_n_3 = data.ca_3_derniers_exercices_n_3;
+
+                        date_ouverture_dossier = date_formatter(data.date_ouverture_dossier, 'yyyy-mm-dd');
+                        nom_cabinet_confrere = data.nom_cabinet_confrere;
+                        dossier_herite_confrere = data.dossier_herite_confrere;
+
 
                         $('#edit_form_doc_generate_table_doc_fiche_id_client_modal input[name="id_document"]').val(id_document);
                         $('#edit_form_doc_generate_table_doc_fiche_id_client_modal .modal-title').html(titre_document);
@@ -2581,6 +2624,300 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#table_doc_fiche_id_client_controle_entite_prive_national').prop('checked', true);
                         } else if (controle_entite == 'prive_etranger') {
                             $('#table_doc_fiche_id_client_controle_entite_prive_etranger').prop('checked', true);
+                        }
+
+                        $('#table_doc_fiche_id_client_duree_vie_societe').val(duree_vie_societe);
+                        $('#table_doc_fiche_id_client_date_dissolution').val(date_dissolution);
+                        $('#table_doc_fiche_id_client_capital_social').val(capital_social);
+                        $('#table_doc_fiche_id_client_siege_social').val(siege_social);
+                        $('#table_doc_fiche_id_client_site_internet').val(site_internet);
+                        $('#table_doc_fiche_id_client_nombre_de_salarie').val(nombre_de_salarie);
+                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_1').val(ca_3_derniers_exercices_n_1);
+                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_2').val(ca_3_derniers_exercices_n_2);
+                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_3').val(ca_3_derniers_exercices_n_3);
+
+
+                        $('#table_doc_fiche_id_client_date_ouverture_dossier').val(date_ouverture_dossier);
+                        $('#table_doc_fiche_id_client_nom_cabinet_confrere').val(nom_cabinet_confrere);
+                        $('#table_doc_fiche_id_client_dossier_herite_confrere').val(dossier_herite_confrere);
+
+                        init_repeater_count++;
+                        if (init_repeater_count == 1) {
+                            // Fetch data for activite_client (Repeater)
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    table: 'activite_client',
+                                    condition: 'id_client = ' + id_client,
+                                    action: 'fetch_table'
+                                },
+                                dataType: "JSON",
+                                success: function(data) {
+
+                                    $template = `
+                                        <div data-repeater-item>
+                                            <div class="form-group row mb-2">
+                                                <div class="col-md-3">
+                                                    <!-- <label class="form-label">Designation</label>
+                                                    <input name="designation_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Désignation de l'activité" /> -->
+                                                    <div class="form-floating">
+                                                        <input name="designation_activite_client" type="text" class="form-control" placeholder="Désignation de l'activité"/>
+                                                        <label>Designation</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <!-- <label class="form-label">Nomenclature</label>
+                                                    <input name="code_nomenclature_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Code nomenclature d'activité" /> -->
+                                                    <div class="form-floating">
+                                                        <input name="code_nomenclature_activite_client" type="text" class="form-control" placeholder="Code nomenclature d'activité"/>
+                                                        <label>Nomenclature</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <!-- <label class="form-label">Chiffre d'affaires HT</label>
+                                                    <input name="chiffre_affaires_ht_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="Chiffre d'affaires HT" /> -->
+                                                    <div class="form-floating">
+                                                        <input name="chiffre_affaires_ht_activite_client" type="number" class="form-control" placeholder="Chiffre d'affaires HT"/>
+                                                        <label>Chiffre d'affaires HT</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <!-- <label class="form-label">% activité dans le CA</label>
+                                                    <input name="percent_activite_in_ca_activite_client" type="text" class="form-control mb-2 mb-md-0" placeholder="% activité dans le CA HT" /> -->
+                                                    <div class="form-floating">
+                                                        <input name="percent_activite_in_ca_activite_client" type="number" class="form-control" placeholder="% activité dans le CA HT"/>
+                                                        <label>% activité dans le CA</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                        <i class="la la-trash-o fs-1"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    $('#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').html('');
+                                    for (let i = 0; i < data.length; i++) {
+                                        $('#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').append($template);
+                                        parent = '#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"] div[data-repeater-item]:last-child';
+
+                                        $(parent + ' ' + 'input[name="designation_activite_client"]').val(data[i].designation_activite_client);
+                                        $(parent + ' ' + 'input[name="code_nomenclature_activite_client"]').val(data[i].code_nomenclature_activite_client);
+                                        $(parent + ' ' + 'input[name="chiffre_affaires_ht_activite_client"]').val(data[i].chiffre_affaires_ht_activite_client);
+                                        $(parent + ' ' + 'input[name="percent_activite_in_ca_activite_client"]').val(data[i].percent_activite_in_ca_activite_client);
+
+                                    }
+
+                                    $('#table_doc_fiche_id_client_activite_client_repeater').repeater({
+                                        initEmpty: false,
+
+                                        show: function() {
+                                            $(this).slideDown();
+                                        },
+
+                                        hide: function(deleteElement) {
+                                            $(this).slideUp(deleteElement);
+                                        },
+                                    });
+
+
+                                }
+                            });
+
+                            // Fetch data for dirigeant_client (Repeater)
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    table: 'dirigeant_client',
+                                    condition: 'id_client = ' + id_client,
+                                    action: 'fetch_table'
+                                },
+                                dataType: "JSON",
+                                success: function(data) {
+
+                                    $template = `
+                                        <div data-repeater-item>
+                                            <div class="form-group row mb-5">
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="nom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                        <label>Nom</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="prenom_dirigeant_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                        <label>Prénom</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="qualite_dirigeant_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                        <label>Qualité</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="id_fiscal_dirigeant_client" type="number" class="form-control mb-2" placeholder="N° identification fiscale"/>
+                                                        <label>N° identification fiscale</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="tel_dirigeant_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                        <label>Téléphone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="mail_dirigeant_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                        <label>Mail</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="adresse_dirigeant_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                        <label>Adresse</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                        <i class="la la-trash-o fs-1"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    $('#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').html('');
+                                    for (let i = 0; i < data.length; i++) {
+                                        $('#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').append($template);
+                                        parent = '#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"] div[data-repeater-item]:last-child';
+
+                                        $(parent + ' ' + 'input[name="nom_dirigeant_client"]').val(data[i].nom_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="prenom_dirigeant_client"]').val(data[i].prenom_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="qualite_dirigeant_client"]').val(data[i].qualite_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="id_fiscal_dirigeant_client"]').val(data[i].id_fiscal_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="tel_dirigeant_client"]').val(data[i].tel_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="mail_dirigeant_client"]').val(data[i].mail_dirigeant_client);
+                                        $(parent + ' ' + 'input[name="adresse_dirigeant_client"]').val(data[i].adresse_dirigeant_client);
+
+                                    }
+
+                                    $('#table_doc_fiche_id_client_dirigeant_client_repeater').repeater({
+                                        initEmpty: false,
+
+                                        show: function() {
+                                            $(this).slideDown();
+                                        },
+
+                                        hide: function(deleteElement) {
+                                            $(this).slideUp(deleteElement);
+                                        },
+                                    });
+
+                                }
+                            });
+
+                            // Fetch data for membre_conseil_client (Repeater)
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    table: 'membre_conseil_client',
+                                    condition: 'id_client = ' + id_client,
+                                    action: 'fetch_table'
+                                },
+                                dataType: "JSON",
+                                success: function(data) {
+
+                                    $template = `
+                                        <div data-repeater-item>
+                                            <div class="form-group row mb-5">
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="nom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Nom"/>
+                                                        <label>Nom</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="prenom_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Prénom"/>
+                                                        <label>Prénom</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="qualite_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Qualité"/>
+                                                        <label>Qualité</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="tel_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Téléphone"/>
+                                                        <label>Téléphone</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="mail_membre_conseil_client" type="email" class="form-control mb-2" placeholder="Mail"/>
+                                                        <label>Mail</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <input name="adresse_membre_conseil_client" type="text" class="form-control mb-2" placeholder="Adresse"/>
+                                                        <label>Adresse</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-floating">
+                                                        <textarea name="fonction_membre_conseil_client" class="form-control mb-2" placeholder="Fonction"></textarea>
+                                                        <label>Fonction</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3">
+                                                        <i class="la la-trash-o fs-1"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    $('#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').html('');
+                                    for (let i = 0; i < data.length; i++) {
+                                        $('#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').append($template);
+                                        parent = '#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"] div[data-repeater-item]:last-child';
+
+                                        $(parent + ' ' + 'input[name="nom_membre_conseil_client"]').val(data[i].nom_membre_conseil_client);
+                                        $(parent + ' ' + 'input[name="prenom_membre_conseil_client"]').val(data[i].prenom_membre_conseil_client);
+                                        $(parent + ' ' + 'input[name="qualite_membre_conseil_client"]').val(data[i].qualite_membre_conseil_client);
+                                        $(parent + ' ' + 'input[name="tel_membre_conseil_client"]').val(data[i].tel_membre_conseil_client);
+                                        $(parent + ' ' + 'input[name="mail_membre_conseil_client"]').val(data[i].mail_membre_conseil_client);
+                                        $(parent + ' ' + 'input[name="adresse_membre_conseil_client"]').val(data[i].adresse_membre_conseil_client);
+                                        $(parent + ' ' + 'textarea[name="fonction_membre_conseil_client"]').val(data[i].fonction_membre_conseil_client);
+
+                                    }
+
+                                    $('#table_doc_fiche_id_client_membre_conseil_client_repeater').repeater({
+                                        initEmpty: false,
+
+                                        show: function() {
+                                            $(this).slideDown();
+                                        },
+
+                                        hide: function(deleteElement) {
+                                            $(this).slideUp(deleteElement);
+                                        },
+                                    });
+
+                                }
+                            });
                         }
 
                     }

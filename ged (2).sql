@@ -424,7 +424,7 @@ CREATE TABLE `membre_conseil_client` (
   `tel_membre_conseil_client` varchar(255) NOT NULL,
   `mail_membre_conseil_client` varchar(255) NOT NULL,
   `adresse_membre_conseil_client` varchar(255) NOT NULL,
-  `observation_membre_conseil_client` varchar(255) NOT NULL,
+  `fonction_membre_conseil_client` varchar(255) NOT NULL,
   `id_client` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -432,7 +432,7 @@ CREATE TABLE `membre_conseil_client` (
 -- Déchargement des données de la table `membre_conseil_client`
 --
 
-INSERT INTO `membre_conseil_client` (`id_membre_conseil_client`, `nom_membre_conseil_client`, `prenom_membre_conseil_client`, `qualite_membre_conseil_client`, `tel_membre_conseil_client`, `mail_membre_conseil_client`, `adresse_membre_conseil_client`, `observation_membre_conseil_client`, `id_client`) VALUES
+INSERT INTO `membre_conseil_client` (`id_membre_conseil_client`, `nom_membre_conseil_client`, `prenom_membre_conseil_client`, `qualite_membre_conseil_client`, `tel_membre_conseil_client`, `mail_membre_conseil_client`, `adresse_membre_conseil_client`, `fonction_membre_conseil_client`, `id_client`) VALUES
 (4, '', '', '', '', '', '', '', 7);
 
 -- --------------------------------------------------------

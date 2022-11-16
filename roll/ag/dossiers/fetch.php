@@ -996,6 +996,17 @@ if (isset($_POST['action'])) {
             );
         }
     }
+    if ($_POST['action'] == 'fetch_table') {
+        $table = $_POST['table'];
+        $condition = $_POST['condition'];
+
+        $query = "SELECT * FROM $table WHERE $condition";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = $result;
+    }
 
     if ($_POST['action'] == 'view_detail_document') {
 
@@ -1373,6 +1384,20 @@ if (isset($_POST['action'])) {
         $prem_annee_exercice_in = $_POST['prem_annee_exercice_in'];
         $controle_entite = $_POST['controle_entite'];
 
+        $duree_vie_societe = $_POST['duree_vie_societe']; 
+        $date_dissolution = si_funct($_POST['date_dissolution'], "", NULL, $_POST['date_dissolution']);
+        $capital_social = $_POST['capital_social']; 
+        $siege_social = $_POST['siege_social']; 
+        $site_internet = $_POST['site_internet']; 
+        $nombre_de_salarie = $_POST['nombre_de_salarie']; 
+        $ca_3_derniers_exercices_n_1 = $_POST['ca_3_derniers_exercices_n_1'];
+        $ca_3_derniers_exercices_n_2 = $_POST['ca_3_derniers_exercices_n_2'];
+        $ca_3_derniers_exercices_n_3 = $_POST['ca_3_derniers_exercices_n_3'];
+
+        $date_ouverture_dossier = si_funct($_POST['date_ouverture_dossier'], "", NULL, $_POST['date_ouverture_dossier']);
+        $nom_cabinet_confrere = $_POST['nom_cabinet_confrere'];
+        $dossier_herite_confrere = $_POST['dossier_herite_confrere'];
+
 
         $query = "SELECT * FROM document WHERE id_document = $id_document";
         $statement = $db->prepare($query);
@@ -1440,6 +1465,18 @@ if (isset($_POST['action'])) {
                 'nbr_etablissement_out' => $nbr_etablissement_out,
                 'prem_annee_exercice_in' => $prem_annee_exercice_in,
                 'controle_entite' => $controle_entite,
+                'duree_vie_societe' => $duree_vie_societe,
+                'date_dissolution' => $date_dissolution,
+                'capital_social' => $capital_social,
+                'siege_social' => $siege_social,
+                'site_internet' => $site_internet,
+                'nombre_de_salarie' => $nombre_de_salarie,
+                'ca_3_derniers_exercices_n_1' => $ca_3_derniers_exercices_n_1,
+                'ca_3_derniers_exercices_n_2' => $ca_3_derniers_exercices_n_2,
+                'ca_3_derniers_exercices_n_3' => $ca_3_derniers_exercices_n_3,
+                'date_ouverture_dossier' => $date_ouverture_dossier,
+                'nom_cabinet_confrere' => $nom_cabinet_confrere,
+                'dossier_herite_confrere' => $dossier_herite_confrere
             ],
             "id_document = $id_document",
             $db
@@ -1512,7 +1549,7 @@ if (isset($_POST['action'])) {
                         'tel_membre_conseil_client' => $membre_conseil_client['tel_membre_conseil_client'],
                         'mail_membre_conseil_client' => $membre_conseil_client['mail_membre_conseil_client'],
                         'adresse_membre_conseil_client' => $membre_conseil_client['adresse_membre_conseil_client'],
-                        'observation_membre_conseil_client' => $membre_conseil_client['observation_membre_conseil_client'],
+                        'fonction_membre_conseil_client' => $membre_conseil_client['fonction_membre_conseil_client'],
                         'id_client' => $id_client
                     ],
                     $db
