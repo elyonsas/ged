@@ -136,7 +136,7 @@ function compte_exists($email, PDO $db)
 
 
 
-function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db)
+function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $db)
 {
     $id_document = $_POST['id_document'];
 
@@ -252,14 +252,14 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                 <col width="18">
                 <col width="51">
                 <col width="9">
-                <col width="18">
+                <col width="35">
                 <col width="18">
                 <col width="18">
                 <col width="9">
                 <col width="56">
                 <col width="19">
                 <col width="18">
-                <col width="18">
+                <col width="25">
                 <col width="19">
                 <col width="21">
                 <col width="45">
@@ -4277,7 +4277,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                         &nbsp;</td>
                 </tr>
             </tbody>
-        </table>
+        </table><br>
     HTML;
 
     // Sous-doc 8-1 (Partie 2)
@@ -5378,7 +5378,8 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                 <tr style="height: 21px;"></tr>
             </tbody>
         </table>
-        <br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
     HTML;
 
     // Sous-doc 8-1 (Partie 3)
@@ -5694,7 +5695,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                 </tr>
             </tbody>
         </table>
-        <br><br><br><br><br>
+        <br><br><br>
     HTML;
 
     // Sous-doc 8-2
@@ -5919,7 +5920,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
                 </tr>
             </tbody>
         </table>
-        <br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
     HTML;
 
     // Sous-doc 8-3
@@ -6408,7 +6409,7 @@ function update_contenu_document_table_doc_fiche_id_client($id_document, PDO $db
     HTML;
 
     $update1 = update(
-        'doc_fiche_id_client',
+        'doc_8_fiche_id_client',
         [
             'contenu_document' => $contenu_document
         ],

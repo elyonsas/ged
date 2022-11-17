@@ -961,12 +961,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal edit_doc_generate -->
 
     <!-- begin::Modal edit_doc_file -->
-    <div class="modal fade" id="edit_form_doc_generate_table_doc_fiche_id_client_modal" tabindex="-1">
+    <div class="modal fade" id="edit_form_doc_generate_table_doc_8_fiche_id_client_modal" tabindex="-1">
 
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <!--begin::Modal content-->
-            <form id="form_edit_form_doc_generate_table_doc_fiche_id_client" method="POST" class="modal-content h-100" action="">
+            <form id="form_edit_form_doc_generate_table_doc_8_fiche_id_client" method="POST" class="modal-content h-100" action="">
                 <!--begin::Modal header-->
                 <div class="modal-header justify-content-between border-0 py-3">
                     <h4 class="modal-title">--</h4>
@@ -993,146 +993,146 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Adresse</label>
-                                <input id="table_doc_fiche_id_client_adresse" type="text" class="form-control form-control-solid" placeholder="Entrez l'adresse du client" name="adresse">
+                                <input id="table_doc_8_fiche_id_client_adresse" type="text" class="form-control form-control-solid" placeholder="Entrez l'adresse du client" name="adresse">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-12 col-lg-4 form-group">
                                 <label class="fs-5 mb-2">N° d'identification fiscal</label>
-                                <input id="table_doc_fiche_id_client_id_fiscale_client" type="text" class="form-control form-control-solid" placeholder="N° d'identification fiscal" name="id_fiscale_client">
+                                <input id="table_doc_8_fiche_id_client_id_fiscale_client" type="text" class="form-control form-control-solid" placeholder="N° d'identification fiscal" name="id_fiscale_client">
                             </div>
                             <div class="col-md-6 col-lg-4 form-group">
                                 <label class="fs-5 mb-2">Exercice clos le</label>
-                                <input id="table_doc_fiche_id_client_exercice_clos_le" type="date" class="form-control form-control-solid" placeholder="Exercice clos le" name="exercice_clos_le">
+                                <input id="table_doc_8_fiche_id_client_exercice_clos_le" type="date" class="form-control form-control-solid" placeholder="Exercice clos le" name="exercice_clos_le">
                             </div>
                             <div class="col-md-6 col-lg-4 form-group">
                                 <label class="fs-5 mb-2">Durée de l'exercice</label>
-                                <input id="table_doc_fiche_id_client_duree_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_en_mois">
+                                <input id="table_doc_8_fiche_id_client_duree_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_en_mois">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <label class="fs-5 mb-2">Exercice comptable du</label>
                             <div class="input-group">
-                                <input id="table_doc_fiche_id_client_exercice_compta_du" type="date" class="form-control" placeholder="" name="exercice_compta_du">
+                                <input id="table_doc_8_fiche_id_client_exercice_compta_du" type="date" class="form-control" placeholder="" name="exercice_compta_du">
                                 <span class="input-group-text">au</span>
-                                <input id="table_doc_fiche_id_client_exercice_compta_au" type="date" class="form-control" placeholder="" name="exercice_compta_au">
+                                <input id="table_doc_8_fiche_id_client_exercice_compta_au" type="date" class="form-control" placeholder="" name="exercice_compta_au">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-4 form-group">
                                 <label class="fs-5 mb-2">Date d'arrêté des comptes</label>
-                                <input id="table_doc_fiche_id_client_date_arret_compta" type="date" class="form-control form-control-solid" placeholder="" name="date_arret_compta">
+                                <input id="table_doc_8_fiche_id_client_date_arret_compta" type="date" class="form-control form-control-solid" placeholder="" name="date_arret_compta">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="fs-5 mb-2">Exercice précédent clos le</label>
-                                <input id="table_doc_fiche_id_client_exercice_prev_clos_le" type="date" class="form-control form-control-solid" placeholder="" name="exercice_prev_clos_le">
+                                <input id="table_doc_8_fiche_id_client_exercice_prev_clos_le" type="date" class="form-control form-control-solid" placeholder="" name="exercice_prev_clos_le">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="fs-5 mb-2">Durée de l'exercice précédent</label>
-                                <input id="table_doc_fiche_id_client_duree_exercice_prev_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_exercice_prev_en_mois">
+                                <input id="table_doc_8_fiche_id_client_duree_exercice_prev_en_mois" type="number" step="1" class="form-control form-control-solid" placeholder="Durée (en mois)" name="duree_exercice_prev_en_mois">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-4 col-md-4 form-group">
                                 <label class="fs-5 mb-2">Greffe</label>
-                                <input id="table_doc_fiche_id_client_greffe" type="int" class="form-control form-control-solid" placeholder="Greffe" name="greffe">
+                                <input id="table_doc_8_fiche_id_client_greffe" type="int" class="form-control form-control-solid" placeholder="Greffe" name="greffe">
                             </div>
                             <div class="col-8 col-md-4 form-group">
                                 <label class="fs-5 mb-2">N° Registre du commerce</label>
-                                <input id="table_doc_fiche_id_client_num_registre_commerce" type="text" class="form-control form-control-solid" placeholder="N° Registre du commerce" name="num_registre_commerce">
+                                <input id="table_doc_8_fiche_id_client_num_registre_commerce" type="text" class="form-control form-control-solid" placeholder="N° Registre du commerce" name="num_registre_commerce">
                             </div>
                             <div class="col-12 col-md-4 form-group">
                                 <label class="fs-5 mb-2">N° Répertoire des entités</label>
-                                <input id="table_doc_fiche_id_client_num_repertoire_entite" type="text" class="form-control form-control-solid" placeholder="N° Répertoire des entités" name="num_repertoire_entite">
+                                <input id="table_doc_8_fiche_id_client_num_repertoire_entite" type="text" class="form-control form-control-solid" placeholder="N° Répertoire des entités" name="num_repertoire_entite">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-6 col-md-4 form-group">
                                 <label class="fs-5 mb-2">N° de caisse sociale</label>
-                                <input id="table_doc_fiche_id_client_num_caisse_sociale" type="int" class="form-control form-control-solid" placeholder="N° de caisse sociale" name="num_caisse_sociale">
+                                <input id="table_doc_8_fiche_id_client_num_caisse_sociale" type="int" class="form-control form-control-solid" placeholder="N° de caisse sociale" name="num_caisse_sociale">
                             </div>
                             <div class="col-6 col-md-4 form-group">
                                 <label class="fs-5 mb-2">N° Code Importateur</label>
-                                <input id="table_doc_fiche_id_client_num_code_importateur" type="text" class="form-control form-control-solid" placeholder="N° Code Importateur" name="num_code_importateur">
+                                <input id="table_doc_8_fiche_id_client_num_code_importateur" type="text" class="form-control form-control-solid" placeholder="N° Code Importateur" name="num_code_importateur">
                             </div>
                             <div class="col-12 col-md-4 form-group">
                                 <label class="fs-5 mb-2">Code activité principale</label>
-                                <input id="table_doc_fiche_id_client_code_activite_principale" type="text" class="form-control form-control-solid" placeholder="Code activité principale" name="code_activite_principale">
+                                <input id="table_doc_8_fiche_id_client_code_activite_principale" type="text" class="form-control form-control-solid" placeholder="Code activité principale" name="code_activite_principale">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-8 form-group">
                                 <label class="fs-5 mb-2">Désignation de l'entité</label>
-                                <input id="table_doc_fiche_id_client_designation_entite" type="int" class="form-control form-control-solid" placeholder="Désignation de l'entité" name="designation_entite">
+                                <input id="table_doc_8_fiche_id_client_designation_entite" type="int" class="form-control form-control-solid" placeholder="Désignation de l'entité" name="designation_entite">
                             </div>
                             <div class="col-4 form-group">
                                 <label class="fs-5 mb-2">Sigle</label>
-                                <input id="table_doc_fiche_id_client_sigle" type="text" class="form-control form-control-solid" placeholder="Sigle" name="sigle">
+                                <input id="table_doc_8_fiche_id_client_sigle" type="text" class="form-control form-control-solid" placeholder="Sigle" name="sigle">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-5 form-group">
                                 <label class="fs-5 mb-2">N° de téléphone</label>
-                                <input id="table_doc_fiche_id_client_telephone" type="int" class="form-control form-control-solid" placeholder="N° de téléphone" name="telephone">
+                                <input id="table_doc_8_fiche_id_client_telephone" type="int" class="form-control form-control-solid" placeholder="N° de téléphone" name="telephone">
                             </div>
                             <div class="col-7 form-group">
                                 <label class="fs-5 mb-2">Email</label>
-                                <input id="table_doc_fiche_id_client_email" type="text" class="form-control form-control-solid" placeholder="Email" name="email">
+                                <input id="table_doc_8_fiche_id_client_email" type="text" class="form-control form-control-solid" placeholder="Email" name="email">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <label class="fs-5 mb-2">Boite postal</label>
                             <div class="input-group">
-                                <input id="table_doc_fiche_id_client_num_code" type="text" class="form-control" placeholder="" name="num_code">
+                                <input id="table_doc_8_fiche_id_client_num_code" type="text" class="form-control" placeholder="" name="num_code">
                                 <span class="input-group-text">-</span>
-                                <input id="table_doc_fiche_id_client_code" type="text" class="form-control" placeholder="Code" name="code">
+                                <input id="table_doc_8_fiche_id_client_code" type="text" class="form-control" placeholder="Code" name="code">
                                 <span class="input-group-text">-</span>
-                                <input id="table_doc_fiche_id_client_boite_postal" type="text" class="form-control" placeholder="Boite postale" name="boite_postal">
+                                <input id="table_doc_8_fiche_id_client_boite_postal" type="text" class="form-control" placeholder="Boite postale" name="boite_postal">
                                 <span class="input-group-text">-</span>
-                                <input id="table_doc_fiche_id_client_ville" type="text" class="form-control" placeholder="Boite postale" name="ville">
+                                <input id="table_doc_8_fiche_id_client_ville" type="text" class="form-control" placeholder="Boite postale" name="ville">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Adresse géographique complète</label>
-                                <textarea id="table_doc_fiche_id_client_adresse_geo_complete" class="form-control form-control-solid" placeholder="Adresse géographique complète (Immeuble, rue, quartier, ville, pays)" rows="3" name="adresse_geo_complete"></textarea>
+                                <textarea id="table_doc_8_fiche_id_client_adresse_geo_complete" class="form-control form-control-solid" placeholder="Adresse géographique complète (Immeuble, rue, quartier, ville, pays)" rows="3" name="adresse_geo_complete"></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Désignation précise de l'activité principale</label>
-                                <textarea id="table_doc_fiche_id_client_designation_activite_principale" class="form-control form-control-solid" placeholder="Désignation précise de l'activité principale exercée par l'entité" rows="3" name="designation_activite_principale"></textarea>
+                                <textarea id="table_doc_8_fiche_id_client_designation_activite_principale" class="form-control form-control-solid" placeholder="Désignation précise de l'activité principale exercée par l'entité" rows="3" name="designation_activite_principale"></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Personne à contacter pour renseignement</label>
-                                <input id="table_doc_fiche_id_client_personne_a_contacter" type="text" class="form-control form-control-solid" placeholder="Nom, adresse et qualité de la personne à contacter" name="personne_a_contacter">
+                                <input id="table_doc_8_fiche_id_client_personne_a_contacter" type="text" class="form-control form-control-solid" placeholder="Nom, adresse et qualité de la personne à contacter" name="personne_a_contacter">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Professionnel salarié ou Cabinet</label>
-                                <textarea id="table_doc_fiche_id_client_professionnel_salarie_ou_cabinet" class="form-control form-control-solid" placeholder="Nom du professionnel salarié de l'entité ou Nom, adresse et téléphone du cabinet comptable ou du professionnel INSCRIT A L'ORDRE NATIONAL DES EXPERTS COMPTABLES ET DES COMPTABLES AGREES ayant établi les états financiers" rows="3" name="professionnel_salarie_ou_cabinet"></textarea>
+                                <textarea id="table_doc_8_fiche_id_client_professionnel_salarie_ou_cabinet" class="form-control form-control-solid" placeholder="Nom du professionnel salarié de l'entité ou Nom, adresse et téléphone du cabinet comptable ou du professionnel INSCRIT A L'ORDRE NATIONAL DES EXPERTS COMPTABLES ET DES COMPTABLES AGREES ayant établi les états financiers" rows="3" name="professionnel_salarie_ou_cabinet"></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-6 form-group d-none">
                                 <label class="fs-5 mb-2">Visa de l'expert comptable</label>
-                                <input id="table_doc_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="visa_expert">
+                                <input id="table_doc_8_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="visa_expert">
                             </div>
 
                             <div class="col-md-12 form-group justify-content-end">
@@ -1141,11 +1141,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 </div>
                                 <div class="form-check form-check-custom form-check-solid form-check-lg justify-content-end">
                                     <div class="d-flex flex-column">
-                                        <input id="table_doc_fiche_id_client_etats_financiers_approuves_oui" class="form-check-input" type="radio" value="oui" name="etats_financiers_approuves">
+                                        <input id="table_doc_8_fiche_id_client_etats_financiers_approuves_oui" class="form-check-input" type="radio" value="oui" name="etats_financiers_approuves">
                                         <label class="form-check-label m-0 mt-2 text-center" for="etats_financiers_approuves_oui">Oui</label>
                                     </div>
                                     <div class="d-flex flex-column ms-5">
-                                        <input id="table_doc_fiche_id_client_etats_financiers_approuves_non" class="form-check-input" type="radio" value="non" name="etats_financiers_approuves">
+                                        <input id="table_doc_8_fiche_id_client_etats_financiers_approuves_non" class="form-check-input" type="radio" value="non" name="etats_financiers_approuves">
                                         <label class="form-check-label m-0 mt-2 text-center" for="etats_financiers_approuves_non">Non</label>
                                     </div>
                                 </div>
@@ -1158,30 +1158,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="input-group">
                                 <span class="input-group-text">Forme juridique :</span>
-                                <input id="table_doc_fiche_id_client_forme_juridique_1" type="number" class="form-control" placeholder="" name="forme_juridique_1">
-                                <input id="table_doc_fiche_id_client_forme_juridique_2" type="number" class="form-control" placeholder="" name="forme_juridique_2">
+                                <input id="table_doc_8_fiche_id_client_forme_juridique_1" type="number" class="form-control" placeholder="" name="forme_juridique_1">
+                                <input id="table_doc_8_fiche_id_client_forme_juridique_2" type="number" class="form-control" placeholder="" name="forme_juridique_2">
                                 <span class="input-group-text">Régime fiscal :</span>
-                                <input id="table_doc_fiche_id_client_regime_fiscal_1" type="number" class="form-control" placeholder="" name="regime_fiscal_1">
-                                <input id="table_doc_fiche_id_client_regime_fiscal_2" type="number" class="form-control" placeholder="" name="regime_fiscal_2">
+                                <input id="table_doc_8_fiche_id_client_regime_fiscal_1" type="number" class="form-control" placeholder="" name="regime_fiscal_1">
+                                <input id="table_doc_8_fiche_id_client_regime_fiscal_2" type="number" class="form-control" placeholder="" name="regime_fiscal_2">
                                 <span class="input-group-text">Pays du siège social :</span>
-                                <input id="table_doc_fiche_id_client_pays_siege_social_1" type="number" class="form-control" placeholder="" name="pays_siege_social_1">
-                                <input id="table_doc_fiche_id_client_pays_siege_social_2" type="number" class="form-control" placeholder="" name="pays_siege_social_2">
+                                <input id="table_doc_8_fiche_id_client_pays_siege_social_1" type="number" class="form-control" placeholder="" name="pays_siege_social_1">
+                                <input id="table_doc_8_fiche_id_client_pays_siege_social_2" type="number" class="form-control" placeholder="" name="pays_siege_social_2">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="input-group">
                                 <span class="input-group-text">Nombre d'établissement dans le pays :</span>
-                                <input id="table_doc_fiche_id_client_nbr_etablissement_in" type="number" class="form-control" placeholder="" name="nbr_etablissement_in">
+                                <input id="table_doc_8_fiche_id_client_nbr_etablissement_in" type="number" class="form-control" placeholder="" name="nbr_etablissement_in">
                                 <span class="input-group-text">Hors du pays :</span>
-                                <input id="table_doc_fiche_id_client_nbr_etablissement_out" type="number" class="form-control" placeholder="" name="nbr_etablissement_out">
+                                <input id="table_doc_8_fiche_id_client_nbr_etablissement_out" type="number" class="form-control" placeholder="" name="nbr_etablissement_out">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="d-flex form-group align-center">
                                 <label class="fs-5 p-3 ps-0">Première année d'exercice dans le pays :</label>
-                                <input id="table_doc_fiche_id_client_prem_annee_exercice_in" class="form-control mw-250px ms-3" type="number" min="1800" max="<?= date('Y') ?>" step="1" value="" name="prem_annee_exercice_in">
+                                <input id="table_doc_8_fiche_id_client_prem_annee_exercice_in" class="form-control mw-250px ms-3" type="number" min="1800" max="<?= date('Y') ?>" step="1" value="" name="prem_annee_exercice_in">
                             </div>
                         </div>
 
@@ -1191,7 +1191,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="form-group col-4">
                                 <!--begin::Col-->
                                 <label class="form-check-clip text-center w-100">
-                                    <input id="table_doc_fiche_id_client_controle_entite_public" class="btn-check" type="radio" value="public" checked name="controle_entite" />
+                                    <input id="table_doc_8_fiche_id_client_controle_entite_public" class="btn-check" type="radio" value="public" checked name="controle_entite" />
                                     <div class="form-check-wrapper w-100">
                                         <div class="form-check-indicator"></div>
                                         <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
@@ -1206,7 +1206,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="form-group col-4">
                                 <!--begin::Col-->
                                 <label class="form-check-clip text-center w-100">
-                                    <input id="table_doc_fiche_id_client_controle_entite_prive_national" class="btn-check" type="radio" value="prive_national" checked name="controle_entite" />
+                                    <input id="table_doc_8_fiche_id_client_controle_entite_prive_national" class="btn-check" type="radio" value="prive_national" checked name="controle_entite" />
                                     <div class="form-check-wrapper w-100">
                                         <div class="form-check-indicator"></div>
                                         <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
@@ -1221,7 +1221,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="form-group col-4">
                                 <!--begin::Col-->
                                 <label class="form-check-clip text-center w-100">
-                                    <input id="table_doc_fiche_id_client_controle_entite_prive_etranger" class="btn-check" type="radio" value="prive_etranger" name="controle_entite" />
+                                    <input id="table_doc_8_fiche_id_client_controle_entite_prive_etranger" class="btn-check" type="radio" value="prive_etranger" name="controle_entite" />
                                     <div class="form-check-wrapper w-100">
                                         <div class="form-check-indicator"></div>
                                         <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
@@ -1239,7 +1239,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
 
                         <!--begin::Repeater-->
-                        <div id="table_doc_fiche_id_client_activite_client_repeater">
+                        <div id="table_doc_8_fiche_id_client_activite_client_repeater">
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <div data-repeater-list="activite_client">
@@ -1310,7 +1310,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
 
                         <!--begin::Repeater-->
-                        <div id="table_doc_fiche_id_client_dirigeant_client_repeater">
+                        <div id="table_doc_8_fiche_id_client_dirigeant_client_repeater">
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <div data-repeater-list="dirigeant_client">
@@ -1388,7 +1388,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
 
                         <!--begin::Repeater-->
-                        <div id="table_doc_fiche_id_client_membre_conseil_client_repeater">
+                        <div id="table_doc_8_fiche_id_client_membre_conseil_client_repeater">
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <div data-repeater-list="membre_conseil_client">
@@ -1467,33 +1467,33 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Durée de vie de la société :</label>
-                                <input id="table_doc_fiche_id_client_duree_vie_societe" type="number" class="form-control form-control-solid" placeholder="Entrez le nombre d'année" name="duree_vie_societe">
+                                <input id="table_doc_8_fiche_id_client_duree_vie_societe" type="number" class="form-control form-control-solid" placeholder="Entrez le nombre d'année" name="duree_vie_societe">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Date de dissolution prévisible :</label>
-                                <input id="table_doc_fiche_id_client_date_dissolution" type="date" class="form-control form-control-solid" placeholder="Date de dissolution prévisible" name="date_dissolution">
+                                <input id="table_doc_8_fiche_id_client_date_dissolution" type="date" class="form-control form-control-solid" placeholder="Date de dissolution prévisible" name="date_dissolution">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Capital Social :</label>
-                                <input id="table_doc_fiche_id_client_capital_social" type="number" class="form-control form-control-solid" placeholder="Capital Social" name="capital_social">
+                                <input id="table_doc_8_fiche_id_client_capital_social" type="number" class="form-control form-control-solid" placeholder="Capital Social" name="capital_social">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Siège Social :</label>
-                                <input id="table_doc_fiche_id_client_siege_social" type="text" class="form-control form-control-solid" placeholder="Siège Social" name="siege_social">
+                                <input id="table_doc_8_fiche_id_client_siege_social" type="text" class="form-control form-control-solid" placeholder="Siège Social" name="siege_social">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Site internet :</label>
-                                <input id="table_doc_fiche_id_client_site_internet" type="text" class="form-control form-control-solid" placeholder="Site internet" name="site_internet">
+                                <input id="table_doc_8_fiche_id_client_site_internet" type="text" class="form-control form-control-solid" placeholder="Site internet" name="site_internet">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Nombre de salariés :</label>
-                                <input id="table_doc_fiche_id_client_nombre_de_salarie" type="number" class="form-control form-control-solid" placeholder="Nombre de salariés" name="nombre_de_salarie">
+                                <input id="table_doc_8_fiche_id_client_nombre_de_salarie" type="number" class="form-control form-control-solid" placeholder="Nombre de salariés" name="nombre_de_salarie">
                             </div>
                         </div>
 
@@ -1501,11 +1501,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <label class="fs-5 mb-2">Chiffre d'affaires des 3 derniers exercices :</label>
                             <div class="input-group">
                                 <span class="input-group-text">N-1</span>
-                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_1" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_1">
+                                <input id="table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_1" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_1">
                                 <span class="input-group-text">N-2</span>
-                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_2" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_2">
+                                <input id="table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_2" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_2">
                                 <span class="input-group-text">N-3</span>
-                                <input id="table_doc_fiche_id_client_ca_3_derniers_exercices_n_3" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_3">
+                                <input id="table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_3" type="number" class="form-control" placeholder="" name="ca_3_derniers_exercices_n_3">
                             </div>
                         </div>
 
@@ -1515,18 +1515,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Date ouverture du dossier du client :</label>
-                                <input id="table_doc_fiche_id_client_date_ouverture_dossier" type="date" class="form-control form-control-solid" placeholder="Date ouverture du dossier du client" name="date_ouverture_dossier">
+                                <input id="table_doc_8_fiche_id_client_date_ouverture_dossier" type="date" class="form-control form-control-solid" placeholder="Date ouverture du dossier du client" name="date_ouverture_dossier">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Nom du Cabinet du confrère ou de l'Expert :</label>
-                                <input id="table_doc_fiche_id_client_nom_cabinet_confrere" type="text" class="form-control form-control-solid" placeholder="Nom du Cabinet du confrère ou de l'Expert" name="nom_cabinet_confrere">
+                                <input id="table_doc_8_fiche_id_client_nom_cabinet_confrere" type="text" class="form-control form-control-solid" placeholder="Nom du Cabinet du confrère ou de l'Expert" name="nom_cabinet_confrere">
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Dossier hérité du confrère :</label>
-                                <input id="table_doc_fiche_id_client_dossier_herite_confrere" type="text" class="form-control form-control-solid" placeholder="Dossier hérité du confrère" name="dossier_herite_confrere">
+                                <input id="table_doc_8_fiche_id_client_dossier_herite_confrere" type="text" class="form-control form-control-solid" placeholder="Dossier hérité du confrère" name="dossier_herite_confrere">
                             </div>
                         </div>
 
@@ -1536,10 +1536,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <!--end::Modal body-->
                 <!--begin::Modal footer-->
                 <div class="modal-footer">
-                    <input type="hidden" name="action" value="edit_table_doc_fiche_id_client">
+                    <input type="hidden" name="action" value="edit_table_doc_8_fiche_id_client">
                     <input type="hidden" name="id_document" value="">
                     <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
-                    <button id="btn_edit_form_doc_generate_table_doc_fiche_id_client" type="submit" class="btn btn-lg btn-primary ms-2">
+                    <button id="btn_edit_form_doc_generate_table_doc_8_fiche_id_client" type="submit" class="btn btn-lg btn-primary ms-2">
                         <span class="indicator-label">Valider</span>
                         <span class="indicator-progress">Veuillez patienter...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -2315,7 +2315,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 menubar: false,
                 language: 'fr_FR',
                 content_css: 'document',
-                content_style: 'body { padding: 25px !important; max-width: 90% !important; min-height: 75% !important;}',
+                content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
                 plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
                 toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
                 save_onsavecallback: save_doc_generate,
@@ -2647,7 +2647,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 dataType: "JSON",
                 success: function(data) {
 
-                    if (data.table_document == 'doc_fiche_id_client') {
+                    if (data.table_document == 'doc_8_fiche_id_client') {
 
                         id_document = data.id_document;
                         id_client = data.id_client;
@@ -2708,75 +2708,75 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dossier_herite_confrere = data.dossier_herite_confrere;
 
 
-                        $('#edit_form_doc_generate_table_doc_fiche_id_client_modal input[name="id_document"]').val(id_document);
-                        $('#edit_form_doc_generate_table_doc_fiche_id_client_modal .modal-title').html(titre_document);
+                        $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal input[name="id_document"]').val(id_document);
+                        $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal .modal-title').html(titre_document);
 
-                        $('#table_doc_fiche_id_client_adresse').val(adresse);
-                        $('#table_doc_fiche_id_client_id_fiscale_client').val(id_fiscale_client);
-                        $('#table_doc_fiche_id_client_exercice_clos_le').val(exercice_clos_le);
-                        $('#table_doc_fiche_id_client_duree_en_mois').val(duree_en_mois);
-                        $('#table_doc_fiche_id_client_exercice_compta_du').val(exercice_compta_du);
-                        $('#table_doc_fiche_id_client_exercice_compta_au').val(exercice_compta_au);
-                        $('#table_doc_fiche_id_client_date_arret_compta').val(date_arret_compta);
-                        $('#table_doc_fiche_id_client_exercice_prev_clos_le').val(exercice_prev_clos_le);
-                        $('#table_doc_fiche_id_client_duree_exercice_prev_en_mois').val(duree_exercice_prev_en_mois);
-                        $('#table_doc_fiche_id_client_greffe').val(greffe);
-                        $('#table_doc_fiche_id_client_num_registre_commerce').val(num_registre_commerce);
-                        $('#table_doc_fiche_id_client_num_repertoire_entite').val(num_repertoire_entite);
-                        $('#table_doc_fiche_id_client_num_caisse_sociale').val(num_caisse_sociale);
-                        $('#table_doc_fiche_id_client_num_code_importateur').val(num_code_importateur);
-                        $('#table_doc_fiche_id_client_code_activite_principale').val(code_activite_principale);
-                        $('#table_doc_fiche_id_client_designation_entite').val(designation_entite);
-                        $('#table_doc_fiche_id_client_sigle').val(sigle);
-                        $('#table_doc_fiche_id_client_telephone').val(telephone);
-                        $('#table_doc_fiche_id_client_email').val(email);
-                        $('#table_doc_fiche_id_client_num_code').val(num_code);
-                        $('#table_doc_fiche_id_client_code').val(code);
-                        $('#table_doc_fiche_id_client_boite_postal').val(boite_postal);
-                        $('#table_doc_fiche_id_client_ville').val(ville);
-                        $('#table_doc_fiche_id_client_adresse_geo_complete').val(adresse_geo_complete);
-                        $('#table_doc_fiche_id_client_designation_activite_principale').val(designation_activite_principale);
-                        $('#table_doc_fiche_id_client_personne_a_contacter').val(personne_a_contacter);
-                        $('#table_doc_fiche_id_client_professionnel_salarie_ou_cabinet').val(professionnel_salarie_ou_cabinet);
-                        $('#table_doc_fiche_id_client_visa_expert').val(visa_expert);
+                        $('#table_doc_8_fiche_id_client_adresse').val(adresse);
+                        $('#table_doc_8_fiche_id_client_id_fiscale_client').val(id_fiscale_client);
+                        $('#table_doc_8_fiche_id_client_exercice_clos_le').val(exercice_clos_le);
+                        $('#table_doc_8_fiche_id_client_duree_en_mois').val(duree_en_mois);
+                        $('#table_doc_8_fiche_id_client_exercice_compta_du').val(exercice_compta_du);
+                        $('#table_doc_8_fiche_id_client_exercice_compta_au').val(exercice_compta_au);
+                        $('#table_doc_8_fiche_id_client_date_arret_compta').val(date_arret_compta);
+                        $('#table_doc_8_fiche_id_client_exercice_prev_clos_le').val(exercice_prev_clos_le);
+                        $('#table_doc_8_fiche_id_client_duree_exercice_prev_en_mois').val(duree_exercice_prev_en_mois);
+                        $('#table_doc_8_fiche_id_client_greffe').val(greffe);
+                        $('#table_doc_8_fiche_id_client_num_registre_commerce').val(num_registre_commerce);
+                        $('#table_doc_8_fiche_id_client_num_repertoire_entite').val(num_repertoire_entite);
+                        $('#table_doc_8_fiche_id_client_num_caisse_sociale').val(num_caisse_sociale);
+                        $('#table_doc_8_fiche_id_client_num_code_importateur').val(num_code_importateur);
+                        $('#table_doc_8_fiche_id_client_code_activite_principale').val(code_activite_principale);
+                        $('#table_doc_8_fiche_id_client_designation_entite').val(designation_entite);
+                        $('#table_doc_8_fiche_id_client_sigle').val(sigle);
+                        $('#table_doc_8_fiche_id_client_telephone').val(telephone);
+                        $('#table_doc_8_fiche_id_client_email').val(email);
+                        $('#table_doc_8_fiche_id_client_num_code').val(num_code);
+                        $('#table_doc_8_fiche_id_client_code').val(code);
+                        $('#table_doc_8_fiche_id_client_boite_postal').val(boite_postal);
+                        $('#table_doc_8_fiche_id_client_ville').val(ville);
+                        $('#table_doc_8_fiche_id_client_adresse_geo_complete').val(adresse_geo_complete);
+                        $('#table_doc_8_fiche_id_client_designation_activite_principale').val(designation_activite_principale);
+                        $('#table_doc_8_fiche_id_client_personne_a_contacter').val(personne_a_contacter);
+                        $('#table_doc_8_fiche_id_client_professionnel_salarie_ou_cabinet').val(professionnel_salarie_ou_cabinet);
+                        $('#table_doc_8_fiche_id_client_visa_expert').val(visa_expert);
                         if (etats_financiers_approuves == 'oui') {
-                            $('#table_doc_fiche_id_client_etats_financiers_approuves_oui').prop('checked', true);
+                            $('#table_doc_8_fiche_id_client_etats_financiers_approuves_oui').prop('checked', true);
                         } else {
-                            $('#table_doc_fiche_id_client_etats_financiers_approuves_non').prop('checked', true);
+                            $('#table_doc_8_fiche_id_client_etats_financiers_approuves_non').prop('checked', true);
                         }
 
 
-                        $('#table_doc_fiche_id_client_forme_juridique_1').val(forme_juridique_1);
-                        $('#table_doc_fiche_id_client_forme_juridique_2').val(forme_juridique_2);
-                        $('#table_doc_fiche_id_client_regime_fiscal_1').val(regime_fiscal_1);
-                        $('#table_doc_fiche_id_client_regime_fiscal_2').val(regime_fiscal_2);
-                        $('#table_doc_fiche_id_client_pays_siege_social_1').val(pays_siege_social_1);
-                        $('#table_doc_fiche_id_client_pays_siege_social_2').val(pays_siege_social_2);
-                        $('#table_doc_fiche_id_client_nbr_etablissement_in').val(nbr_etablissement_in);
-                        $('#table_doc_fiche_id_client_nbr_etablissement_out').val(nbr_etablissement_out);
-                        $('#table_doc_fiche_id_client_prem_annee_exercice_in').val(prem_annee_exercice_in);
+                        $('#table_doc_8_fiche_id_client_forme_juridique_1').val(forme_juridique_1);
+                        $('#table_doc_8_fiche_id_client_forme_juridique_2').val(forme_juridique_2);
+                        $('#table_doc_8_fiche_id_client_regime_fiscal_1').val(regime_fiscal_1);
+                        $('#table_doc_8_fiche_id_client_regime_fiscal_2').val(regime_fiscal_2);
+                        $('#table_doc_8_fiche_id_client_pays_siege_social_1').val(pays_siege_social_1);
+                        $('#table_doc_8_fiche_id_client_pays_siege_social_2').val(pays_siege_social_2);
+                        $('#table_doc_8_fiche_id_client_nbr_etablissement_in').val(nbr_etablissement_in);
+                        $('#table_doc_8_fiche_id_client_nbr_etablissement_out').val(nbr_etablissement_out);
+                        $('#table_doc_8_fiche_id_client_prem_annee_exercice_in').val(prem_annee_exercice_in);
                         if (controle_entite == 'public') {
-                            $('#table_doc_fiche_id_client_controle_entite_public').prop('checked', true);
+                            $('#table_doc_8_fiche_id_client_controle_entite_public').prop('checked', true);
                         } else if (controle_entite == 'prive_national') {
-                            $('#table_doc_fiche_id_client_controle_entite_prive_national').prop('checked', true);
+                            $('#table_doc_8_fiche_id_client_controle_entite_prive_national').prop('checked', true);
                         } else if (controle_entite == 'prive_etranger') {
-                            $('#table_doc_fiche_id_client_controle_entite_prive_etranger').prop('checked', true);
+                            $('#table_doc_8_fiche_id_client_controle_entite_prive_etranger').prop('checked', true);
                         }
 
-                        $('#table_doc_fiche_id_client_duree_vie_societe').val(duree_vie_societe);
-                        $('#table_doc_fiche_id_client_date_dissolution').val(date_dissolution);
-                        $('#table_doc_fiche_id_client_capital_social').val(capital_social);
-                        $('#table_doc_fiche_id_client_siege_social').val(siege_social);
-                        $('#table_doc_fiche_id_client_site_internet').val(site_internet);
-                        $('#table_doc_fiche_id_client_nombre_de_salarie').val(nombre_de_salarie);
-                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_1').val(ca_3_derniers_exercices_n_1);
-                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_2').val(ca_3_derniers_exercices_n_2);
-                        $('#table_doc_fiche_id_client_ca_3_derniers_exercices_n_3').val(ca_3_derniers_exercices_n_3);
+                        $('#table_doc_8_fiche_id_client_duree_vie_societe').val(duree_vie_societe);
+                        $('#table_doc_8_fiche_id_client_date_dissolution').val(date_dissolution);
+                        $('#table_doc_8_fiche_id_client_capital_social').val(capital_social);
+                        $('#table_doc_8_fiche_id_client_siege_social').val(siege_social);
+                        $('#table_doc_8_fiche_id_client_site_internet').val(site_internet);
+                        $('#table_doc_8_fiche_id_client_nombre_de_salarie').val(nombre_de_salarie);
+                        $('#table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_1').val(ca_3_derniers_exercices_n_1);
+                        $('#table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_2').val(ca_3_derniers_exercices_n_2);
+                        $('#table_doc_8_fiche_id_client_ca_3_derniers_exercices_n_3').val(ca_3_derniers_exercices_n_3);
 
 
-                        $('#table_doc_fiche_id_client_date_ouverture_dossier').val(date_ouverture_dossier);
-                        $('#table_doc_fiche_id_client_nom_cabinet_confrere').val(nom_cabinet_confrere);
-                        $('#table_doc_fiche_id_client_dossier_herite_confrere').val(dossier_herite_confrere);
+                        $('#table_doc_8_fiche_id_client_date_ouverture_dossier').val(date_ouverture_dossier);
+                        $('#table_doc_8_fiche_id_client_nom_cabinet_confrere').val(nom_cabinet_confrere);
+                        $('#table_doc_8_fiche_id_client_dossier_herite_confrere').val(dossier_herite_confrere);
 
                         init_repeater_count++;
                         if (init_repeater_count == 1) {
@@ -2836,10 +2836,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                     `;
 
-                                    $('#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').html('');
+                                    $('#table_doc_8_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').html('');
                                     for (let i = 0; i < data.length; i++) {
-                                        $('#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').append($template);
-                                        parent = '#table_doc_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"] div[data-repeater-item]:last-child';
+                                        $('#table_doc_8_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"]').append($template);
+                                        parent = '#table_doc_8_fiche_id_client_activite_client_repeater div[data-repeater-list="activite_client"] div[data-repeater-item]:last-child';
 
                                         $(parent + ' ' + 'input[name="designation_activite_client"]').val(data[i].designation_activite_client);
                                         $(parent + ' ' + 'input[name="code_nomenclature_activite_client"]').val(data[i].code_nomenclature_activite_client);
@@ -2848,7 +2848,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                     }
 
-                                    $('#table_doc_fiche_id_client_activite_client_repeater').repeater({
+                                    $('#table_doc_8_fiche_id_client_activite_client_repeater').repeater({
                                         initEmpty: false,
 
                                         show: function() {
@@ -2930,10 +2930,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                     `;
 
-                                    $('#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').html('');
+                                    $('#table_doc_8_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').html('');
                                     for (let i = 0; i < data.length; i++) {
-                                        $('#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').append($template);
-                                        parent = '#table_doc_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"] div[data-repeater-item]:last-child';
+                                        $('#table_doc_8_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"]').append($template);
+                                        parent = '#table_doc_8_fiche_id_client_dirigeant_client_repeater div[data-repeater-list="dirigeant_client"] div[data-repeater-item]:last-child';
 
                                         $(parent + ' ' + 'input[name="nom_dirigeant_client"]').val(data[i].nom_dirigeant_client);
                                         $(parent + ' ' + 'input[name="prenom_dirigeant_client"]').val(data[i].prenom_dirigeant_client);
@@ -2945,7 +2945,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                     }
 
-                                    $('#table_doc_fiche_id_client_dirigeant_client_repeater').repeater({
+                                    $('#table_doc_8_fiche_id_client_dirigeant_client_repeater').repeater({
                                         initEmpty: false,
 
                                         show: function() {
@@ -3026,10 +3026,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                     `;
 
-                                    $('#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').html('');
+                                    $('#table_doc_8_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').html('');
                                     for (let i = 0; i < data.length; i++) {
-                                        $('#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').append($template);
-                                        parent = '#table_doc_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"] div[data-repeater-item]:last-child';
+                                        $('#table_doc_8_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"]').append($template);
+                                        parent = '#table_doc_8_fiche_id_client_membre_conseil_client_repeater div[data-repeater-list="membre_conseil_client"] div[data-repeater-item]:last-child';
 
                                         $(parent + ' ' + 'input[name="nom_membre_conseil_client"]').val(data[i].nom_membre_conseil_client);
                                         $(parent + ' ' + 'input[name="prenom_membre_conseil_client"]').val(data[i].prenom_membre_conseil_client);
@@ -3041,7 +3041,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                     }
 
-                                    $('#table_doc_fiche_id_client_membre_conseil_client_repeater').repeater({
+                                    $('#table_doc_8_fiche_id_client_membre_conseil_client_repeater').repeater({
                                         initEmpty: false,
 
                                         show: function() {
@@ -3063,12 +3063,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_fiche_id_client
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_fiche_id_client', function() {
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_8_fiche_id_client
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_8_fiche_id_client', function() {
             event.preventDefault();
 
             // Show loading indication
-            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_fiche_id_client');
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_8_fiche_id_client');
             formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
             $.ajax({
@@ -3083,7 +3083,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                         if (data.success) {
 
-                            $('#edit_form_doc_generate_table_doc_fiche_id_client_modal').modal('hide');
+                            $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal').modal('hide');
 
                             // swal
                             Swal.fire({

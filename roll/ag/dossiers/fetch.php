@@ -366,7 +366,7 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="" class="edit_form_doc_generate menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_form_doc_generate_table_doc_fiche_id_client_modal" 
+                                            <a href="" class="edit_form_doc_generate menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_form_doc_generate_table_doc_8_fiche_id_client_modal" 
                                             data-id_document="{$id_document}">Modifier le formulaire</a>
                                         </div>
                                         <!--end::Menu item-->
@@ -1385,7 +1385,7 @@ if (isset($_POST['action'])) {
             ];
         }
     }
-    if ($_POST['action'] == 'edit_table_doc_fiche_id_client') {
+    if ($_POST['action'] == 'edit_table_doc_8_fiche_id_client') {
 
         $id_document = $_POST['id_document'];
         $adresse = $_POST['adresse'];
@@ -1466,9 +1466,9 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        // update table doc_fiche_id_client
+        // update table doc_8_fiche_id_client
         $update2 = update(
-            'doc_fiche_id_client',
+            'doc_8_fiche_id_client',
             [
                 'adresse' => $adresse,
                 'id_fiscale_client' => $id_fiscale_client,
@@ -1604,7 +1604,7 @@ if (isset($_POST['action'])) {
             $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
         }
         
-        $update6 = update_contenu_document_table_doc_fiche_id_client($id_document, $db);
+        $update6 = update_contenu_document_table_doc_8_fiche_id_client($id_document, $db);
 
         if ($update1 && $update2 && $update3 && $update4 && $update5 && $update6) {
             $output = [
