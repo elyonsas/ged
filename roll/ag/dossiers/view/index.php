@@ -609,9 +609,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     box-shadow: 0 0 4px rgba(0, 0, 0, .15);
                     box-sizing: border-box;
                     margin: 15px auto 0;
-                    max-width: 90%;
+                    max-width: 1050px;
                     min-height: 75%;
-                    padding: 5px;
+                    padding: 15px;
                 }
 
                 #preview_doc_generate_modal .document-top-shadow {
