@@ -3668,12 +3668,204 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     if (data.table_document == 'doc_3_accept_mission') {
 
+                        // Show modal
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('show');
+
                         id_document = data.id_document;
                         id_client = data.id_client;
                         titre_document = data.titre_document;
+                        
+                        // quiz1
+                        if (data.quiz1 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz1_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz1_non').prop('checked', false);
+                        }
+                        // observ1
+                        $('#table_doc_3_accept_mission_observ1').val(data.observ1);
 
-                        // Show modal
-                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('show');
+                        // quiz2
+                        if (data.quiz2 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz2_e').prop('checked', true);
+                        } else if (data.quiz2 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz2_m').prop('checked', false);
+                        } else if (data.quiz2 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz2_f').prop('checked', false);
+                        }
+
+                        // quiz3
+                        if (data.quiz3 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz3_e').prop('checked', true);
+                        } else if (data.quiz3 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz3_m').prop('checked', false);
+                        } else if (data.quiz3 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz3_f').prop('checked', false);
+                        }
+
+                        // quiz4
+                        if (data.quiz4 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz4_e').prop('checked', true);
+                        } else if (data.quiz4 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz4_m').prop('checked', false);
+                        } else if (data.quiz4 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz4_f').prop('checked', false);
+                        }
+
+                        // quiz5
+                        if (data.quiz5 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz5_e').prop('checked', true);
+                        } else if (data.quiz5 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz5_m').prop('checked', false);
+                        } else if (data.quiz5 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz5_f').prop('checked', false);
+                        }
+                        
+                        // quiz6
+                        if (data.quiz6 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz6_e').prop('checked', true);
+                        } else if (data.quiz6 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz6_m').prop('checked', false);
+                        } else if (data.quiz6 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz6_f').prop('checked', false);
+                        }
+
+                        // quiz7
+                        if (data.quiz7 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz7_e').prop('checked', true);
+                        } else if (data.quiz7 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz7_m').prop('checked', false);
+                        } else if (data.quiz7 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz7_f').prop('checked', false);
+                        }
+
+                        // quiz8
+                        if (data.quiz8 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz8_e').prop('checked', true);
+                        } else if (data.quiz8 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz8_m').prop('checked', false);
+                        } else if (data.quiz8 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz8_f').prop('checked', false);
+                        }
+
+                        // quiz9
+                        if (data.quiz9 == 'e') {
+                            $('#table_doc_3_accept_mission_quiz9_e').prop('checked', true);
+                        } else if (data.quiz9 == 'm') {
+                            $('#table_doc_3_accept_mission_quiz9_m').prop('checked', false);
+                        } else if (data.quiz9 == 'f') {
+                            $('#table_doc_3_accept_mission_quiz9_f').prop('checked', false);
+                        }
+
+                        // quiz10
+                        if (data.quiz10 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz10_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz10_non').prop('checked', false);
+                        }
+                        // observ10
+                        $('#table_doc_3_accept_mission_observ10').val(data.observ10);
+
+                        // quiz11
+                        if (data.quiz11 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz11_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz11_non').prop('checked', false);
+                        }
+                        // observ11
+                        $('#table_doc_3_accept_mission_observ11').val(data.observ11);
+                        
+                        // quiz12
+                        if (data.quiz12 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz12_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz12_non').prop('checked', false);
+                        }
+                        // observ12
+                        $('#table_doc_3_accept_mission_observ12').val(data.observ12);
+
+                        // quiz13
+                        if (data.quiz13 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz13_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz13_non').prop('checked', false);
+                        }
+                        // observ13
+                        $('#table_doc_3_accept_mission_observ13').val(data.observ13);
+
+                        // quiz14
+                        if (data.quiz14 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz14_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz14_non').prop('checked', false);
+                        }
+                        // observ14
+                        $('#table_doc_3_accept_mission_observ14').val(data.observ14);
+
+                        // quiz15
+                        if (data.quiz15 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz15_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz15_non').prop('checked', false);
+                        }
+                        // observ15
+                        $('#table_doc_3_accept_mission_observ15').val(data.observ15);
+
+                        // quiz16
+                        if (data.quiz16 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz16_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz16_non').prop('checked', false);
+                        }
+                        // observ16
+                        $('#table_doc_3_accept_mission_observ16').val(data.observ16);
+
+                        // quiz17
+                        if (data.quiz17 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz17_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz17_non').prop('checked', false);
+                        }
+                        // observ17
+                        $('#table_doc_3_accept_mission_observ17').val(data.observ17);
+
+                        // quiz18
+                        if (data.quiz18 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz18_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz18_non').prop('checked', false);
+                        }
+                        // observ18
+                        $('#table_doc_3_accept_mission_observ18').val(data.observ18);
+
+                        // quiz19
+                        if (data.quiz19 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz19_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz19_non').prop('checked', false);
+                        }
+                        // observ19
+                        $('#table_doc_3_accept_mission_observ19').val(data.observ19);
+
+                        // quiz20
+                        if (data.quiz20 == 'oui') {
+                            $('#table_doc_3_accept_mission_quiz20_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_quiz20_non').prop('checked', false);
+                        }
+                        // observ20
+                        $('#table_doc_3_accept_mission_observ20').val(data.observ20);
+
+                        // accept_mission
+                        if (data.accept_mission == 'oui') {
+                            $('#table_doc_3_accept_mission_accept_mission_oui').prop('checked', true);
+                        } else {
+                            $('#table_doc_3_accept_mission_accept_mission_non').prop('checked', false);
+                        }
+                        // observation
+                        $('#table_doc_3_accept_mission_observation').val(data.observation);
+
+
+                        
 
 
 
