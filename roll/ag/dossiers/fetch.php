@@ -1620,59 +1620,41 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'edit_table_doc_3_accept_mission') {
 
         $id_document = $_POST['id_document'];
-        $adresse = $_POST['adresse'];
-        $id_fiscale_client = $_POST['id_fiscale_client'];
-        $exercice_clos_le = si_funct($_POST['exercice_clos_le'], "", NULL, $_POST['exercice_clos_le']);
-        $duree_en_mois = $_POST['duree_en_mois'];
-        $exercice_compta_du = si_funct($_POST['exercice_compta_du'], "", NULL, $_POST['exercice_compta_du']);
-        $exercice_compta_au = si_funct($_POST['exercice_compta_au'], "", NULL, $_POST['exercice_compta_au']);
-        $date_arret_compta = si_funct($_POST['date_arret_compta'], "", NULL, $_POST['date_arret_compta']);
-        $exercice_prev_clos_le = si_funct($_POST['exercice_prev_clos_le'], "", NULL, $_POST['exercice_prev_clos_le']);
-        $duree_exercice_prev_en_mois = $_POST['duree_exercice_prev_en_mois'];
-        $greffe = $_POST['greffe'];
-        $num_registre_commerce = $_POST['num_registre_commerce'];
-        $num_repertoire_entite = $_POST['num_repertoire_entite'];
-        $num_caisse_sociale = $_POST['num_caisse_sociale'];
-        $num_code_importateur = $_POST['num_code_importateur'];
-        $code_activite_principale = $_POST['code_activite_principale'];
-        $designation_entite = $_POST['designation_entite'];
-        $sigle = $_POST['sigle'];
-        $telephone = $_POST['telephone'];
-        $email = $_POST['email'];
-        $num_code = $_POST['num_code'];
-        $code = $_POST['code'];
-        $boite_postal = $_POST['boite_postal'];
-        $ville = $_POST['ville'];
-        $adresse_geo_complete = $_POST['adresse_geo_complete'];
-        $designation_activite_principale = $_POST['designation_activite_principale'];
-        $personne_a_contacter = $_POST['personne_a_contacter'];
-        $professionnel_salarie_ou_cabinet = $_POST['professionnel_salarie_ou_cabinet'];
-        // $visa_expert = $_POST['visa_expert'];
-        $etats_financiers_approuves = $_POST['etats_financiers_approuves'];
-        $forme_juridique_1 = $_POST['forme_juridique_1'];
-        $forme_juridique_2 = $_POST['forme_juridique_2'];
-        $regime_fiscal_1 = $_POST['regime_fiscal_1'];
-        $regime_fiscal_2 = $_POST['regime_fiscal_2'];
-        $pays_siege_social_1 = $_POST['pays_siege_social_1'];
-        $pays_siege_social_2 = $_POST['pays_siege_social_2'];
-        $nbr_etablissement_in = $_POST['nbr_etablissement_in'];
-        $nbr_etablissement_out = $_POST['nbr_etablissement_out'];
-        $prem_annee_exercice_in = $_POST['prem_annee_exercice_in'];
-        $controle_entite = $_POST['controle_entite'];
-
-        $duree_vie_societe = $_POST['duree_vie_societe']; 
-        $date_dissolution = si_funct($_POST['date_dissolution'], "", NULL, $_POST['date_dissolution']);
-        $capital_social = $_POST['capital_social']; 
-        $siege_social = $_POST['siege_social']; 
-        $site_internet = $_POST['site_internet']; 
-        $nombre_de_salarie = $_POST['nombre_de_salarie']; 
-        $ca_3_derniers_exercices_n_1 = $_POST['ca_3_derniers_exercices_n_1'];
-        $ca_3_derniers_exercices_n_2 = $_POST['ca_3_derniers_exercices_n_2'];
-        $ca_3_derniers_exercices_n_3 = $_POST['ca_3_derniers_exercices_n_3'];
-
-        $date_ouverture_dossier = si_funct($_POST['date_ouverture_dossier'], "", NULL, $_POST['date_ouverture_dossier']);
-        $nom_cabinet_confrere = $_POST['nom_cabinet_confrere'];
-        $dossier_herite_confrere = $_POST['dossier_herite_confrere'];
+        $quiz1 = $_POST['quiz1']?? NULL;
+        $observ1 = $_POST['observ1'];
+        $quiz2 = $_POST['quiz2']?? NULL;
+        $quiz3 = $_POST['quiz3']?? NULL;
+        $quiz4 = $_POST['quiz4']?? NULL;
+        $quiz5 = $_POST['quiz5']?? NULL;
+        $quiz6 = $_POST['quiz6']?? NULL;
+        $quiz7 = $_POST['quiz7']?? NULL;
+        $quiz8 = $_POST['quiz8']?? NULL;
+        $quiz9 = $_POST['quiz9']?? NULL;
+        $quiz10 = $_POST['quiz10']?? NULL;
+        $observ10 = $_POST['observ10'];
+        $quiz11 = $_POST['quiz11']?? NULL;
+        $observ11 = $_POST['observ11'];
+        $quiz12 = $_POST['quiz12']?? NULL;
+        $observ12 = $_POST['observ12'];
+        $quiz13 = $_POST['quiz13']?? NULL;
+        $observ13 = $_POST['observ13'];
+        $quiz14 = $_POST['quiz14']?? NULL;
+        $observ14 = $_POST['observ14'];
+        $quiz15 = $_POST['quiz15']?? NULL;
+        $observ15 = $_POST['observ15'];
+        $quiz16 = $_POST['quiz16']?? NULL;
+        $observ16 = $_POST['observ16'];
+        $quiz17 = $_POST['quiz17']?? NULL;
+        $observ17 = $_POST['observ17'];
+        $quiz18 = $_POST['quiz18']?? NULL;
+        $observ18 = $_POST['observ18'];
+        $quiz19 = $_POST['quiz19']?? NULL;
+        $observ19 = $_POST['observ19'];
+        $quiz20 = $_POST['quiz20']?? NULL;
+        $observ20 = $_POST['observ20'];
+        $accept_mission = $_POST['accept_mission']?? NULL;
+        // $signature_responsable = $_POST['signature_responsable'];
+        $observation = $_POST['observation'];
 
 
         $query = "SELECT * FROM document WHERE id_document = $id_document";
@@ -1683,9 +1665,6 @@ if (isset($_POST['action'])) {
         $id_client = $result['id_client'];
         $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
         $titre_document = $result['titre_document'];
-
-        
-        
 
         // update table document
         $update1 = update(
@@ -1698,150 +1677,57 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        // update table doc_8_fiche_id_client
+        // update table doc_3_accept_mission
         $update2 = update(
-            'doc_8_fiche_id_client',
+            'doc_3_accept_mission',
             [
-                'adresse' => $adresse,
-                'id_fiscale_client' => $id_fiscale_client,
-                'exercice_clos_le' => $exercice_clos_le,
-                'duree_en_mois' => $duree_en_mois,
-                'exercice_compta_du' => $exercice_compta_du,
-                'exercice_compta_au' => $exercice_compta_au,
-                'date_arret_compta' => $date_arret_compta,
-                'exercice_prev_clos_le' => $exercice_prev_clos_le,
-                'duree_exercice_prev_en_mois' => $duree_exercice_prev_en_mois,
-                'greffe' => $greffe,
-                'num_registre_commerce' => $num_registre_commerce,
-                'num_repertoire_entite' => $num_repertoire_entite,
-                'num_caisse_sociale' => $num_caisse_sociale,
-                'num_code_importateur' => $num_code_importateur,
-                'code_activite_principale' => $code_activite_principale,
-                'designation_entite' => $designation_entite,
-                'sigle' => $sigle,
-                'telephone' => $telephone,
-                'email' => $email,
-                'num_code' => $num_code,
-                'code' => $code,
-                'boite_postal' => $boite_postal,
-                'ville' => $ville,
-                'adresse_geo_complete' => $adresse_geo_complete,
-                'designation_activite_principale' => $designation_activite_principale,
-                'personne_a_contacter' => $personne_a_contacter,
-                'professionnel_salarie_ou_cabinet' => $professionnel_salarie_ou_cabinet,
-                // 'visa_expert' => $visa_expert,
-                'etats_financiers_approuves' => $etats_financiers_approuves,
-                'forme_juridique_1' => $forme_juridique_1,
-                'forme_juridique_2' => $forme_juridique_2,
-                'regime_fiscal_1' => $regime_fiscal_1,
-                'regime_fiscal_2' => $regime_fiscal_2,
-                'pays_siege_social_1' => $pays_siege_social_1,
-                'pays_siege_social_2' => $pays_siege_social_2,
-                'nbr_etablissement_in' => $nbr_etablissement_in,
-                'nbr_etablissement_out' => $nbr_etablissement_out,
-                'prem_annee_exercice_in' => $prem_annee_exercice_in,
-                'controle_entite' => $controle_entite,
-                'duree_vie_societe' => $duree_vie_societe,
-                'date_dissolution' => $date_dissolution,
-                'capital_social' => $capital_social,
-                'siege_social' => $siege_social,
-                'site_internet' => $site_internet,
-                'nombre_de_salarie' => $nombre_de_salarie,
-                'ca_3_derniers_exercices_n_1' => $ca_3_derniers_exercices_n_1,
-                'ca_3_derniers_exercices_n_2' => $ca_3_derniers_exercices_n_2,
-                'ca_3_derniers_exercices_n_3' => $ca_3_derniers_exercices_n_3,
-                'date_ouverture_dossier' => $date_ouverture_dossier,
-                'nom_cabinet_confrere' => $nom_cabinet_confrere,
-                'dossier_herite_confrere' => $dossier_herite_confrere
+                'quiz1' => $quiz1,
+                'observ1' => $observ1,
+                'quiz2' => $quiz2,
+                'quiz3' => $quiz3,
+                'quiz4' => $quiz4,
+                'quiz5' => $quiz5,
+                'quiz6' => $quiz6,
+                'quiz7' => $quiz7,
+                'quiz8' => $quiz8,
+                'quiz9' => $quiz9,
+                'quiz10' => $quiz10,
+                'observ10' => $observ10,
+                'quiz11' => $quiz11,
+                'observ11' => $observ11,
+                'quiz12' => $quiz12,
+                'observ12' => $observ12,
+                'quiz13' => $quiz13,
+                'observ13' => $observ13,
+                'quiz14' => $quiz14,
+                'observ14' => $observ14,
+                'quiz15' => $quiz15,
+                'observ15' => $observ15,
+                'quiz16' => $quiz16,
+                'observ16' => $observ16,
+                'quiz17' => $quiz17,
+                'observ17' => $observ17,
+                'quiz18' => $quiz18,
+                'observ18' => $observ18,
+                'quiz19' => $quiz19,
+                'observ19' => $observ19,
+                'quiz20' => $quiz20,
+                'observ20' => $observ20,
+                'accept_mission' => $accept_mission,
+                // 'signature_responsable' => $signature_responsable,
+                'observation' => $observation,
             ],
             "id_document = $id_document",
             $db
         );
 
-        // update table activite_client
-        $update3 = false;
-        if(isset($_POST['activite_client'])){
-            $activites_clients = $_POST['activite_client'];
-
-            $delete = delete('activite_client', "id_client = $id_client", $db);
-            foreach ($activites_clients as $activite_client) {
-                $update3 = insert(
-                    'activite_client',
-                    [
-                        'designation_activite_client' => $activite_client['designation_activite_client'],
-                        'code_nomenclature_activite_client' => $activite_client['code_nomenclature_activite_client'],
-                        'chiffre_affaires_ht_activite_client' => $activite_client['chiffre_affaires_ht_activite_client'],
-                        'percent_activite_in_ca_activite_client' => $activite_client['percent_activite_in_ca_activite_client'],
-                        'id_client' => $id_client
-                    ],
-                    $db
-                );
-            }
-        }else{
-            $update3 = true;
-            $delete = delete('activite_client', "id_client = $id_client", $db);
-        }
-
-        // update table dirigeant_client
-        $update4 = false;
-        if(isset($_POST['dirigeant_client'])){
-            $dirigeants_clients = $_POST['dirigeant_client'];
-
-            $delete = delete('dirigeant_client', "id_client = $id_client", $db);
-            foreach ($dirigeants_clients as $dirigeant_client) {
-                $update4 = insert(
-                    'dirigeant_client',
-                    [
-                        'nom_dirigeant_client' => $dirigeant_client['nom_dirigeant_client'],
-                        'prenom_dirigeant_client' => $dirigeant_client['prenom_dirigeant_client'],
-                        'qualite_dirigeant_client' => $dirigeant_client['qualite_dirigeant_client'],
-                        'id_fiscal_dirigeant_client' => $dirigeant_client['id_fiscal_dirigeant_client'],
-                        'tel_dirigeant_client' => $dirigeant_client['tel_dirigeant_client'],
-                        'mail_dirigeant_client' => $dirigeant_client['mail_dirigeant_client'],
-                        'adresse_dirigeant_client' => $dirigeant_client['adresse_dirigeant_client'],
-                        'id_client' => $id_client
-                    ],
-                    $db
-                );
-            }
-        }else{
-            $update4 = true;
-            $delete = delete('dirigeant_client', "id_client = $id_client", $db);
-        }
-
-        // update table membre_conseil_client
-        $update5 = false;
-        if(isset($_POST['membre_conseil_client'])){
-            $membres_conseils_clients = $_POST['membre_conseil_client'];
-
-            $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
-            foreach ($membres_conseils_clients as $membre_conseil_client) {
-                $update5 = insert(
-                    'membre_conseil_client',
-                    [
-                        'nom_membre_conseil_client' => $membre_conseil_client['nom_membre_conseil_client'],
-                        'prenom_membre_conseil_client' => $membre_conseil_client['prenom_membre_conseil_client'],
-                        'qualite_membre_conseil_client' => $membre_conseil_client['qualite_membre_conseil_client'],
-                        'tel_membre_conseil_client' => $membre_conseil_client['tel_membre_conseil_client'],
-                        'mail_membre_conseil_client' => $membre_conseil_client['mail_membre_conseil_client'],
-                        'adresse_membre_conseil_client' => $membre_conseil_client['adresse_membre_conseil_client'],
-                        'fonction_membre_conseil_client' => $membre_conseil_client['fonction_membre_conseil_client'],
-                        'id_client' => $id_client
-                    ],
-                    $db
-                );
-            }
-        }else{
-            $update5 = true;
-            $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
-        }
         
-        $update6 = update_contenu_document_table_doc_8_fiche_id_client($id_document, $db);
+        $update3 = update_contenu_document_table_doc_3_accept_mission($id_document, $db);
 
-        if ($update1 && $update2 && $update3 && $update4 && $update5 && $update6) {
+        if ($update1 && $update2 && $update3) {
             $output = [
                 'success' => true,
-                'message' => "La fiche d'identification de <b>$nom_client</b> à été mise à jour !"
+                'message' => "Le Questionnaire à été mise à jour !"
             ];
         } else {
             $output = [

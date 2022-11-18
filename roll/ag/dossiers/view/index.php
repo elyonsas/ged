@@ -751,6 +751,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     width: 100%;
                     height: 100%;
                 }
+
+                #edit_doc_write_modal .loader{
+                    background-color: white;
+                    position: absolute;
+                    opacity: 0.95;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 100;
+                }
             }
         </style>
         <!--begin::Modal dialog-->
@@ -777,6 +786,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <div class="document-top-shadow w-100"></div>
                 <!--begin::Modal body-->
                 <div class="modal-body">
+                    <div class="loader">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img src="assets/media/loaders/elyon_loader.gif" alt="loader">
+                        </div>
+                    </div>
                     <div class="doc-content">
                         <!--begin::Input group-->
                         <div class="fv-row row">
@@ -914,6 +928,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     width: 100%;
                     height: 100%;
                 }
+
+                #edit_doc_generate_modal .loader{
+                    background-color: white;
+                    position: absolute;
+                    opacity: 0.95;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 100;
+                }
             }
         </style>
         <!--begin::Modal dialog-->
@@ -940,6 +963,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <div class="document-top-shadow w-100"></div>
                 <!--begin::Modal body-->
                 <div class="modal-body">
+                    <div class="loader">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img src="assets/media/loaders/elyon_loader.gif" alt="loader">
+                        </div>
+                    </div>
                     <div class="doc-content">
                         <!--begin::Input group-->
                         <div class="fv-row row">
@@ -2116,11 +2144,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="col-lg-6 form-group">
                                 <div class="form-check form-check-custom form-check-solid form-check-lg justify-content-end flex-column">
                                     <div class="decision_oui mb-10">
-                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_oui">Nous décidons d’accepter la mission de présentation</label>
+                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_oui">Nous décidons d’accepter la mission</label>
                                         <input id="table_doc_3_accept_mission_accept_mission_oui" class="form-check-input ms-2" type="radio" value="oui" name="accept_mission">
                                     </div>
                                     <div class="decision_non">
-                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_non">Nous décidons de refuser la mission de présentation</label>
+                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_non">Nous décidons de refuser la mission</label>
                                         <input id="table_doc_3_accept_mission_accept_mission_non" class="form-check-input ms-2" type="radio" value="non" name="accept_mission">
                                     </div>
                                 </div>
@@ -2888,24 +2916,34 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
-                    $('#edit_doc_write_modal .modal-body #id_edit_doc_write').html(data.contenu_document);
 
-                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
-                    tinymce.init({
-                        selector: '#id_edit_doc_write',
-                        menubar: false,
-                        language: 'fr_FR',
-                        content_css: 'document',
-                        plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                        toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-                        save_onsavecallback: save_doc_write,
-                    });
-                    // Prevent Bootstrap dialog from blocking focusin for TinyMCE
-                    document.addEventListener('focusin', (e) => {
-                        if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                            e.stopImmediatePropagation();
-                        }
-                    });
+                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
+                    if (typeof tinymce_generate == 'undefined') {
+                        $('#edit_doc_write_modal .modal-body #id_edit_doc_write').html(data.contenu_document);
+                        
+                        tinymce_generate = tinymce.init({
+                            selector: '#id_edit_doc_write',
+                            menubar: false,
+                            language: 'fr_FR',
+                            content_css: 'document',
+                            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                            save_onsavecallback: save_doc_write,
+                        });
+                        // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+                        document.addEventListener('focusin', (e) => {
+                            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                                e.stopImmediatePropagation();
+                            }
+                        });
+
+                        setTimeout(function() {
+                            $('#edit_doc_write_modal .loader').hide();
+                        }, 2000);
+                    } else {
+                        // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (plusieurs fois)
+                        tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+                    }
 
                 }
             })
@@ -2927,25 +2965,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#edit_doc_generate_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_generate_modal .modal-title').html(data.titre_document);
-                    $('#edit_doc_generate_modal .modal-body #id_edit_doc_generate').html(data.contenu_document);
 
-                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate
-                    tinymce.init({
-                        selector: '#id_edit_doc_generate',
-                        menubar: false,
-                        language: 'fr_FR',
-                        content_css: 'document',
-                        content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
-                        plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                        toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-                        save_onsavecallback: save_doc_generate,
-                    });
-                    // Prevent Bootstrap dialog from blocking focusin for TinyMCE
-                    document.addEventListener('focusin', (e) => {
-                        if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                            e.stopImmediatePropagation();
-                        }
-                    });
+                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
+                    if (typeof tinymce_generate == 'undefined') {
+                        $('#edit_doc_generate_modal .modal-body #id_edit_doc_generate').html(data.contenu_document);
+                        
+                        tinymce_generate = tinymce.init({
+                            selector: '#id_edit_doc_generate',
+                            menubar: false,
+                            language: 'fr_FR',
+                            content_css: 'document',
+                            content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
+                            plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                            save_onsavecallback: save_doc_generate,
+                        });
+                        // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+                        document.addEventListener('focusin', (e) => {
+                            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                                e.stopImmediatePropagation();
+                            }
+                        });
+
+                        setTimeout(function() {
+                            $('#edit_doc_generate_modal .loader').hide();
+                        }, 2000);
+                    } else {
+                        // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (plusieurs fois)
+                        tinymce.get('id_edit_doc_generate').setContent(data.contenu_document);
+                    }
 
                 }
             })
@@ -3674,12 +3722,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         id_document = data.id_document;
                         id_client = data.id_client;
                         titre_document = data.titre_document;
-                        
+
                         // quiz1
                         if (data.quiz1 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz1_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz1_non').prop('checked', false);
+                        } else if(data.quiz1 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz1_non').prop('checked', true);
                         }
                         // observ1
                         $('#table_doc_3_accept_mission_observ1').val(data.observ1);
@@ -3688,79 +3736,79 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         if (data.quiz2 == 'e') {
                             $('#table_doc_3_accept_mission_quiz2_e').prop('checked', true);
                         } else if (data.quiz2 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz2_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz2_m').prop('checked', true);
                         } else if (data.quiz2 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz2_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz2_f').prop('checked', true);
                         }
 
                         // quiz3
                         if (data.quiz3 == 'e') {
                             $('#table_doc_3_accept_mission_quiz3_e').prop('checked', true);
                         } else if (data.quiz3 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz3_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz3_m').prop('checked', true);
                         } else if (data.quiz3 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz3_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz3_f').prop('checked', true);
                         }
 
                         // quiz4
                         if (data.quiz4 == 'e') {
                             $('#table_doc_3_accept_mission_quiz4_e').prop('checked', true);
                         } else if (data.quiz4 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz4_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz4_m').prop('checked', true);
                         } else if (data.quiz4 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz4_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz4_f').prop('checked', true);
                         }
 
                         // quiz5
                         if (data.quiz5 == 'e') {
                             $('#table_doc_3_accept_mission_quiz5_e').prop('checked', true);
                         } else if (data.quiz5 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz5_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz5_m').prop('checked', true);
                         } else if (data.quiz5 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz5_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz5_f').prop('checked', true);
                         }
                         
                         // quiz6
                         if (data.quiz6 == 'e') {
                             $('#table_doc_3_accept_mission_quiz6_e').prop('checked', true);
                         } else if (data.quiz6 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz6_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz6_m').prop('checked', true);
                         } else if (data.quiz6 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz6_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz6_f').prop('checked', true);
                         }
 
                         // quiz7
                         if (data.quiz7 == 'e') {
                             $('#table_doc_3_accept_mission_quiz7_e').prop('checked', true);
                         } else if (data.quiz7 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz7_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz7_m').prop('checked', true);
                         } else if (data.quiz7 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz7_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz7_f').prop('checked', true);
                         }
 
                         // quiz8
                         if (data.quiz8 == 'e') {
                             $('#table_doc_3_accept_mission_quiz8_e').prop('checked', true);
                         } else if (data.quiz8 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz8_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz8_m').prop('checked', true);
                         } else if (data.quiz8 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz8_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz8_f').prop('checked', true);
                         }
 
                         // quiz9
                         if (data.quiz9 == 'e') {
                             $('#table_doc_3_accept_mission_quiz9_e').prop('checked', true);
                         } else if (data.quiz9 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz9_m').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz9_m').prop('checked', true);
                         } else if (data.quiz9 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz9_f').prop('checked', false);
+                            $('#table_doc_3_accept_mission_quiz9_f').prop('checked', true);
                         }
 
                         // quiz10
                         if (data.quiz10 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz10_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz10_non').prop('checked', false);
+                        } else if(data.quiz10 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz10_non').prop('checked', true);
                         }
                         // observ10
                         $('#table_doc_3_accept_mission_observ10').val(data.observ10);
@@ -3768,8 +3816,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz11
                         if (data.quiz11 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz11_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz11_non').prop('checked', false);
+                        } else if(data.quiz11 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz11_non').prop('checked', true);
                         }
                         // observ11
                         $('#table_doc_3_accept_mission_observ11').val(data.observ11);
@@ -3777,8 +3825,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz12
                         if (data.quiz12 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz12_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz12_non').prop('checked', false);
+                        } else if(data.quiz12 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz12_non').prop('checked', true);
                         }
                         // observ12
                         $('#table_doc_3_accept_mission_observ12').val(data.observ12);
@@ -3786,8 +3834,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz13
                         if (data.quiz13 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz13_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz13_non').prop('checked', false);
+                        } else if(data.quiz13 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz13_non').prop('checked', true);
                         }
                         // observ13
                         $('#table_doc_3_accept_mission_observ13').val(data.observ13);
@@ -3795,8 +3843,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz14
                         if (data.quiz14 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz14_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz14_non').prop('checked', false);
+                        } else if(data.quiz14 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz14_non').prop('checked', true);
                         }
                         // observ14
                         $('#table_doc_3_accept_mission_observ14').val(data.observ14);
@@ -3804,8 +3852,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz15
                         if (data.quiz15 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz15_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz15_non').prop('checked', false);
+                        } else if(data.quiz15 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz15_non').prop('checked', true);
                         }
                         // observ15
                         $('#table_doc_3_accept_mission_observ15').val(data.observ15);
@@ -3813,8 +3861,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz16
                         if (data.quiz16 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz16_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz16_non').prop('checked', false);
+                        } else if(data.quiz16 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz16_non').prop('checked', true);
                         }
                         // observ16
                         $('#table_doc_3_accept_mission_observ16').val(data.observ16);
@@ -3822,8 +3870,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz17
                         if (data.quiz17 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz17_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz17_non').prop('checked', false);
+                        } else if(data.quiz17 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz17_non').prop('checked', true);
                         }
                         // observ17
                         $('#table_doc_3_accept_mission_observ17').val(data.observ17);
@@ -3831,8 +3879,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz18
                         if (data.quiz18 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz18_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz18_non').prop('checked', false);
+                        } else if(data.quiz18 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz18_non').prop('checked', true);
                         }
                         // observ18
                         $('#table_doc_3_accept_mission_observ18').val(data.observ18);
@@ -3840,8 +3888,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz19
                         if (data.quiz19 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz19_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz19_non').prop('checked', false);
+                        } else if(data.quiz19 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz19_non').prop('checked', true);
                         }
                         // observ19
                         $('#table_doc_3_accept_mission_observ19').val(data.observ19);
@@ -3849,8 +3897,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz20
                         if (data.quiz20 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz20_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_quiz20_non').prop('checked', false);
+                        } else if(data.quiz20 == 'non') {
+                            $('#table_doc_3_accept_mission_quiz20_non').prop('checked', true);
                         }
                         // observ20
                         $('#table_doc_3_accept_mission_observ20').val(data.observ20);
@@ -3858,8 +3906,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // accept_mission
                         if (data.accept_mission == 'oui') {
                             $('#table_doc_3_accept_mission_accept_mission_oui').prop('checked', true);
-                        } else {
-                            $('#table_doc_3_accept_mission_accept_mission_non').prop('checked', false);
+                        } else if(data.accept_mission == 'non') {
+                            $('#table_doc_3_accept_mission_accept_mission_non').prop('checked', true);
                         }
                         // observation
                         $('#table_doc_3_accept_mission_observation').val(data.observation);
@@ -3906,6 +3954,54 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             // swal
                             Swal.fire({
                                 title: "Fiche enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_3_accept_mission
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_3_accept_mission', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_3_accept_mission');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Questionnaire enregistré !",
                                 html: data.message,
                                 icon: "success",
                                 buttonsStyling: false,

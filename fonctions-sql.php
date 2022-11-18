@@ -138,8 +138,6 @@ function compte_exists($email, PDO $db)
 
 function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $db)
 {
-    $id_document = $_POST['id_document'];
-
     $query = "SELECT * FROM document WHERE id_document = $id_document";
     $statement = $db->prepare($query);
     $statement->execute();
@@ -6409,6 +6407,3963 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
 
     $update1 = update(
         'doc_8_fiche_id_client',
+        [
+            'contenu_document' => $contenu_document
+        ],
+        "id_document = $id_document",
+        $db
+    );
+
+    $update2 = update(
+        'document',
+        [
+            'updated_at_document' => date('Y-m-d H:i:s'),
+            'updated_by_document' => $_SESSION['id_utilisateur']
+        ],
+        "id_document = $id_document",
+        $db
+    );
+
+    if ($update1 && $update2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function update_contenu_document_table_doc_3_accept_mission($id_document, PDO $db)
+{
+    $query = "SELECT * FROM document WHERE id_document = $id_document";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch();
+
+    $id_client = $result['id_client'];
+    $table_document = $result['table_document'];
+
+    $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch();
+
+    $quiz1 = $result['quiz1'];
+    if ($quiz1 == 'oui') {
+        $quiz1_oui = 'X';
+        $quiz1_non = '';
+    } else if($quiz1 == 'non') {
+        $quiz1_oui = '';
+        $quiz1_non = 'X';
+    } else {
+        $quiz1_oui = '';
+        $quiz1_non = '';
+    }
+    $observ1 = $result['observ1'];
+    $quiz2 = $result['quiz2'];
+    if ($quiz2 == 'e') {
+        $quiz2_e = 'X';
+        $quiz2_m = '';
+        $quiz2_f = '';
+    } else if($quiz2 == 'm') {
+        $quiz2_e = '';
+        $quiz2_m = 'X';
+        $quiz2_f = '';
+    } else if($quiz2 == 'f') {
+        $quiz2_e = '';
+        $quiz2_m = '';
+        $quiz2_f = 'X';
+    } else {
+        $quiz2_e = '';
+        $quiz2_m = '';
+        $quiz2_f = '';
+    }
+    $quiz3 = $result['quiz3'];
+    if ($quiz3 == 'e') {
+        $quiz3_e = 'X';
+        $quiz3_m = '';
+        $quiz3_f = '';
+    } else if($quiz3 == 'm') {
+        $quiz3_e = '';
+        $quiz3_m = 'X';
+        $quiz3_f = '';
+    } else if($quiz3 == 'f') {
+        $quiz3_e = '';
+        $quiz3_m = '';
+        $quiz3_f = 'X';
+    } else {
+        $quiz3_e = '';
+        $quiz3_m = '';
+        $quiz3_f = '';
+    }
+    $quiz4 = $result['quiz4'];
+    if ($quiz4 == 'e') {
+        $quiz4_e = 'X';
+        $quiz4_m = '';
+        $quiz4_f = '';
+    } else if($quiz4 == 'm') {
+        $quiz4_e = '';
+        $quiz4_m = 'X';
+        $quiz4_f = '';
+    } else if($quiz4 == 'f') {
+        $quiz4_e = '';
+        $quiz4_m = '';
+        $quiz4_f = 'X';
+    } else {
+        $quiz4_e = '';
+        $quiz4_m = '';
+        $quiz4_f = '';
+    }
+    $quiz5 = $result['quiz5'];
+    if ($quiz5 == 'e') {
+        $quiz5_e = 'X';
+        $quiz5_m = '';
+        $quiz5_f = '';
+    } else if($quiz5 == 'm') {
+        $quiz5_e = '';
+        $quiz5_m = 'X';
+        $quiz5_f = '';
+    } else if($quiz5 == 'f') {
+        $quiz5_e = '';
+        $quiz5_m = '';
+        $quiz5_f = 'X';
+    } else {
+        $quiz5_e = '';
+        $quiz5_m = '';
+        $quiz5_f = '';
+    }
+    $quiz6 = $result['quiz6'];
+    if ($quiz6 == 'e') {
+        $quiz6_e = 'X';
+        $quiz6_m = '';
+        $quiz6_f = '';
+    } else if($quiz6 == 'm') {
+        $quiz6_e = '';
+        $quiz6_m = 'X';
+        $quiz6_f = '';
+    } else if($quiz6 == 'f') {
+        $quiz6_e = '';
+        $quiz6_m = '';
+        $quiz6_f = 'X';
+    } else {
+        $quiz6_e = '';
+        $quiz6_m = '';
+        $quiz6_f = '';
+    }
+    $quiz7 = $result['quiz7'];
+    if ($quiz7 == 'e') {
+        $quiz7_e = 'X';
+        $quiz7_m = '';
+        $quiz7_f = '';
+    } else if($quiz7 == 'm') {
+        $quiz7_e = '';
+        $quiz7_m = 'X';
+        $quiz7_f = '';
+    } else if($quiz7 == 'f') {
+        $quiz7_e = '';
+        $quiz7_m = '';
+        $quiz7_f = 'X';
+    } else {
+        $quiz7_e = '';
+        $quiz7_m = '';
+        $quiz7_f = '';
+    }
+    $quiz8 = $result['quiz8'];
+    if ($quiz8 == 'e') {
+        $quiz8_e = 'X';
+        $quiz8_m = '';
+        $quiz8_f = '';
+    } else if($quiz8 == 'm') {
+        $quiz8_e = '';
+        $quiz8_m = 'X';
+        $quiz8_f = '';
+    } else if($quiz8 == 'f') {
+        $quiz8_e = '';
+        $quiz8_m = '';
+        $quiz8_f = 'X';
+    } else {
+        $quiz8_e = '';
+        $quiz8_m = '';
+        $quiz8_f = '';
+    }
+    $quiz9 = $result['quiz9'];
+    if ($quiz9 == 'e') {
+        $quiz9_e = 'X';
+        $quiz9_m = '';
+        $quiz9_f = '';
+    } else if($quiz9 == 'm') {
+        $quiz9_e = '';
+        $quiz9_m = 'X';
+        $quiz9_f = '';
+    } else if($quiz9 == 'f') {
+        $quiz9_e = '';
+        $quiz9_m = '';
+        $quiz9_f = 'X';
+    } else {
+        $quiz9_e = '';
+        $quiz9_m = '';
+        $quiz9_f = '';
+    }
+    $quiz10 = $result['quiz10'];
+    if ($quiz10 == 'oui') {
+        $quiz10_oui = 'X';
+        $quiz10_non = '';
+    } else if($quiz10 == 'non') {
+        $quiz10_oui = '';
+        $quiz10_non = 'X';
+    } else {
+        $quiz10_oui = '';
+        $quiz10_non = '';
+    }
+    $observ10 = $result['observ10'];
+    $quiz11 = $result['quiz11'];
+    if ($quiz11 == 'oui') {
+        $quiz11_oui = 'X';
+        $quiz11_non = '';
+    } else if($quiz11 == 'non') {
+        $quiz11_oui = '';
+        $quiz11_non = 'X';
+    } else {
+        $quiz11_oui = '';
+        $quiz11_non = '';
+    }
+    $observ11 = $result['observ11'];
+    $quiz12 = $result['quiz12'];
+    if ($quiz12 == 'oui') {
+        $quiz12_oui = 'X';
+        $quiz12_non = '';
+    } else if($quiz12 == 'non') {
+        $quiz12_oui = '';
+        $quiz12_non = 'X';
+    } else {
+        $quiz12_oui = '';
+        $quiz12_non = '';
+    }
+    $observ12 = $result['observ12'];
+    $quiz13 = $result['quiz13'];
+    if ($quiz13 == 'oui') {
+        $quiz13_oui = 'X';
+        $quiz13_non = '';
+    } else if($quiz13 == 'non') {
+        $quiz13_oui = '';
+        $quiz13_non = 'X';
+    } else {
+        $quiz13_oui = '';
+        $quiz13_non = '';
+    }
+    $observ13 = $result['observ13'];
+    $quiz14 = $result['quiz14'];
+    if ($quiz14 == 'oui') {
+        $quiz14_oui = 'X';
+        $quiz14_non = '';
+    } else if($quiz14 == 'non') {
+        $quiz14_oui = '';
+        $quiz14_non = 'X';
+    } else {
+        $quiz14_oui = '';
+        $quiz14_non = '';
+    }
+    $observ14 = $result['observ14'];
+    $quiz15 = $result['quiz15'];
+    if ($quiz15 == 'oui') {
+        $quiz15_oui = 'X';
+        $quiz15_non = '';
+    } else if($quiz15 == 'non') {
+        $quiz15_oui = '';
+        $quiz15_non = 'X';
+    } else {
+        $quiz15_oui = '';
+        $quiz15_non = '';
+    }
+    $observ15 = $result['observ15'];
+    $quiz16 = $result['quiz16'];
+    if ($quiz16 == 'oui') {
+        $quiz16_oui = 'X';
+        $quiz16_non = '';
+    } else if($quiz16 == 'non') {
+        $quiz16_oui = '';
+        $quiz16_non = 'X';
+    } else {
+        $quiz16_oui = '';
+        $quiz16_non = '';
+    }
+    $observ16 = $result['observ16'];
+    $quiz17 = $result['quiz17'];
+    if ($quiz17 == 'oui') {
+        $quiz17_oui = 'X';
+        $quiz17_non = '';
+    } else if($quiz17 == 'non') {
+        $quiz17_oui = '';
+        $quiz17_non = 'X';
+    } else {
+        $quiz17_oui = '';
+        $quiz17_non = '';
+    }
+    $observ17 = $result['observ17'];
+    $quiz18 = $result['quiz18'];
+    if ($quiz18 == 'oui') {
+        $quiz18_oui = 'X';
+        $quiz18_non = '';
+    } else if($quiz18 == 'non') {
+        $quiz18_oui = '';
+        $quiz18_non = 'X';
+    } else {
+        $quiz18_oui = '';
+        $quiz18_non = '';
+    }
+    $observ18 = $result['observ18'];
+    $quiz19 = $result['quiz19'];
+    if ($quiz19 == 'oui') {
+        $quiz19_oui = 'X';
+        $quiz19_non = '';
+    } else if($quiz19 == 'non') {
+        $quiz19_oui = '';
+        $quiz19_non = 'X';
+    } else {
+        $quiz19_oui = '';
+        $quiz19_non = '';
+    }
+    $observ19 = $result['observ19'];
+    $quiz20 = $result['quiz20'];
+    if ($quiz20 == 'oui') {
+        $quiz20_oui = 'X';
+        $quiz20_non = '';
+    } else if($quiz20 == 'non') {
+        $quiz20_oui = '';
+        $quiz20_non = 'X';
+    } else {
+        $quiz20_oui = '';
+        $quiz20_non = '';
+    }
+    $observ20 = $result['observ20'];
+    $accept_mission = $result['accept_mission'];
+    if ($accept_mission == 'oui') {
+        $accept_mission_oui = 'X';
+        $accept_mission_non = '';
+    } else if($accept_mission == 'non') {
+        $accept_mission_oui = '';
+        $accept_mission_non = 'X';
+    } else {
+        $accept_mission_oui = '';
+        $accept_mission_non = '';
+    }
+    $signature_responsable = $result['signature_responsable'];
+    $observation = $result['observation'];
+
+    $contenu_document = <<<HTML
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; margin: auto;" cellspacing="0"
+            cellpadding="0">
+            <colgroup>
+                <col width="18">
+                <col width="423">
+                <col width="5">
+                <col width="32">
+                <col width="18">
+                <col width="34">
+                <col width="5">
+                <col width="25">
+                <col width="18">
+                <col width="25">
+                <col width="5">
+                <col width="25">
+                <col width="18">
+                <col width="26">
+                <col width="5">
+                <col width="6">
+                <col width="25">
+                <col width="6">
+                <col width="89">
+                <col width="18">
+            </colgroup>
+            <tbody>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-size: 16pt; font-weight: bold; text-align: center;"
+                        colspan="18" rowspan="1" >DOC
+                        N&deg;3</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 16pt; font-weight: bold; overflow-wrap: break-word; color: rgb(255, 192, 0); text-align: center;"
+                        colspan="18" rowspan="3"
+                        >
+                        <div style="max-height: 60px;">Questionnaire d'acceptation et de maintien d'une mission au
+                            D&eacute;partement d'Expertise Comptable</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; font-weight: bold; font-style: italic; color: rgb(109, 170, 45); text-align: center;"
+                        colspan="18" rowspan="1"
+                        data-sheets-textstyleruns="{&quot;1&quot;:0,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:7186989},&quot;3&quot;:&quot;Calibri&quot;,&quot;4&quot;:12,&quot;5&quot;:1,&quot;6&quot;:1}}{&quot;1&quot;:1,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:7186989},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:12,&quot;5&quot;:1,&quot;6&quot;:1}}{&quot;1&quot;:25,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:7186989},&quot;3&quot;:&quot;Calibri&quot;,&quot;4&quot;:12,&quot;5&quot;:1,&quot;6&quot;:1}}"
+                        ><span
+                            style="font-size: 12pt; font-family: Calibri, Arial; font-weight: bold; font-style: italic; color: rgb(109, 170, 45);">[</span><span
+                            style="font-size: 12pt; font-family: 'Times New Roman'; font-weight: bold; font-style: italic; color: rgb(109, 170, 45);">Mode
+                            d'emploi du DOC N&deg;3</span><span
+                            style="font-size: 12pt; font-family: Calibri, Arial; font-weight: bold; font-style: italic; color: rgb(109, 170, 45);">]</span>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; font-weight: bold; text-decoration-line: underline; color: rgb(255, 0, 0);"
+                        >
+                        <div style="white-space: nowrap; overflow: hidden; position: relative; width: 437px; left: 3px;">
+                            <div style="float: left;">Objectifs du DOC N&deg;3</div>
+                        </div>
+                    </td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;"
+                        colspan="20" rowspan="3"
+                        >
+                        <div style="max-height: 58px;">Ce questionnaire, applicable &agrave; toutes les missions que rend le
+                            D&eacute;partement d'Expertise Comptable du Cabinet ELYON, doit permettre d'appprecier la
+                            possibilit&eacute; d'accepter la mission ou de se maintenir s'il s'agit d'un ancien client.</div>
+                    </td>
+                </tr>
+                <tr style="height: 19px;"></tr>
+                <tr style="height: 20px;"></tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; font-weight: bold; text-decoration-line: underline; color: rgb(255, 0, 0);"
+                        >
+                        <div style="white-space: nowrap; overflow: hidden; position: relative; width: 437px; left: 3px;">
+                            <div style="float: left;">Organisation et utilisation du fichier</div>
+                        </div>
+                    </td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: visible; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);"
+                        >
+                        <div style="white-space: nowrap; overflow: hidden; position: relative; width: 685px; left: 3px;">
+                            <div style="float: left;">Les questions &agrave; se poser (conf&egrave;re ci-dessous) avant
+                                d'accepter ou de se maintenir sur une mission du DEC.</div>
+                        </div>
+                    </td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: top; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt;"
+                        colspan="19" rowspan="2"
+                        >
+                        <div style="max-height: 40px;">Cette feuille comporte la liste des principales questions &agrave; se
+                            poser avant d'accepter ou de se maintenir sur un dossier.</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;"
+                        colspan="20" rowspan="2"
+                        data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:220,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:12,&quot;5&quot;:1}}{&quot;1&quot;:237,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:12}}"
+                        >
+                        <div style="max-height: 40px;"><span
+                                style="font-size: 12pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">Pour chaque
+                                question pos&eacute;e, il faut y r&eacute;pondre en inscrivant une croix "x". Une colonne
+                                "Observation" est laiss&eacute;e pour es compl&eacute;ments d'informations ou des renvois aux
+                                feuilles de travail utilis&eacute;es et regroup&eacute;es dans le </span><span
+                                style="font-size: 12pt; font-family: 'Times New Roman'; font-weight: bold; color: rgb(0, 0, 0);">dossier
+                                permanent</span><span
+                                style="font-size: 12pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);"> du Client.</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 20px;"></tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: top; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;"
+                        colspan="20" rowspan="2"
+                        >
+                        <div style="max-height: 40px;">Cette liste n'est pas exhaustive et doit &ecirc;tre au besoin
+                            compl&egrave;t&eacute;e avec une feuille Word identifi&eacute;e comme compl&eacute;ment du document
+                            N&deg;3.</div>
+                    </td>
+                </tr>
+                <tr style="height: 20px;"></tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; font-weight: bold; text-decoration-line: underline; color: rgb(255, 0, 0);"
+                        >
+                        <div style="white-space: nowrap; overflow: hidden; position: relative; width: 437px; left: 3px;">
+                            <div style="float: left;">Protection du fichier et modification</div>
+                        </div>
+                    </td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255);">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: top; background-color: rgb(255, 255, 255); font-family: 'Times New Roman'; font-size: 12pt; overflow-wrap: break-word;"
+                        colspan="20" rowspan="2"
+                        >
+                        <div style="max-height: 40px;">La feuille Excel est, par d&eacute;faut, prot&eacute;g&eacute;e afin que
+                            les formules automatiques ne soient pas supprim&eacute;es par erreur.</div>
+                    </td>
+                </tr>
+                <tr style="height: 20px;"></tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(106, 107, 109); font-family: 'Times New Roman'; font-size: 14pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        colspan="18" rowspan="1"
+                        >
+                        Acceptation et maintien de la mission</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold;"
+                        data-sheets-textstyleruns="{&quot;1&quot;:0,&quot;2&quot;:{&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1,&quot;9&quot;:1}}{&quot;1&quot;:6,&quot;2&quot;:{&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1}}"
+                        ><span
+                            style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold; text-decoration-line: underline; text-decoration-skip-ink: none;">Client</span><span
+                            style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold;"> : </span></td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >
+                        Prise de connaissance (conf&egrave;re DOC N&deg;2)</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >
+                        Observations<br>ou renvoyer sur feuille de travail</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Le cabinet a-t-il rencontr&eacute; le client pour prendre connaissance de
+                            ses besoins et d&eacute;couvrir l'entreprise ?</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz1_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz1_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ1</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        data-sheets-textstyleruns="{&quot;1&quot;:0,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1,&quot;9&quot;:1}}{&quot;1&quot;:9,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11}}"
+                        >
+                        <span
+                            style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold; text-decoration-line: underline; text-decoration-skip-ink: none; color: rgb(0, 0, 0);">Nota
+                            Bene</span><span style="font-size: 11pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">:
+                            Joindre au dossier permanent une pr&eacute;sentation de l'entit&eacute; (plaquette, les notes prises
+                            lors de l'entretien avec le client, budgets ou tableaux de bord&hellip;)</span></td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >
+                        Analyse des risques du client (conf&egrave;re DOC N&deg;9)</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="15" rowspan="1"
+                        >
+                        Niveau de risque<br>E : &eacute;lev&eacute; &ndash; M : moyen &ndash; F : faible</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Activit&eacute;</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz2_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz2_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz2_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Caract&eacute;ristiques juridiques (Structure juridique,
+                            d&eacute;tenteurs du capital, dirigeants de l'entit&eacute;&hellip;)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz3_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz3_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz3_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Syst&egrave;me d&rsquo;information (Fiabilit&eacute;, conformit&eacute;
+                            par rapport &agrave; la l&eacute;gislation, s&eacute;curit&eacute;&hellip;)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz4_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz4_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz4_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Organisation comptable (Existence et importance de la fonction comptable
+                            &ndash; qualification du personnel comptable - nature et qualit&eacute; des travaux pris en
+                            charge&hellip;)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz5_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz5_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz5_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: top; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        >
+                        Clients (les clients les plus importants, d&eacute;lais de r&egrave;glement des clients&hellip;)</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz6_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz6_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz6_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="2"
+                        >
+                        <div style="max-height: 40px;">Fournisseurs (les fournisseurs les plus importants, d&eacute;lais de
+                            r&egrave;glement des fournisseurs)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz7_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz7_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz7_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="2"
+                        >
+                        <div style="max-height: 40px;">Tr&eacute;sorerie (Existence de syst&egrave;me de contr&ocirc;le interne
+                            autour de la tr&eacute;sorerie, inventaire p&eacute;riodique de la banque et de la caisse,&hellip;)
+                        </div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz8_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz8_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz8_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Historique fiscal et social du client (Contr&ocirc;les fiscaux,
+                            contr&ocirc;les CNSS&hellip;)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz9_e</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >E</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz9_m</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >M</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz9_f</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >F</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >Analyse
+                        des besoins du client</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >
+                        Observations<br>ou renvoyer sur feuille de travail</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word;"
+                        >
+                        Les informations suivantes ont-elles &eacute;t&eacute; collect&eacute;es ?</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >
+                        La r&eacute;partition des travaux comptables entre le client et le cabinet</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz10_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz10_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ10</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Le volume d'&eacute;critures comptables</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz11_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz11_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ11</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;" colspan="1" rowspan="2">
+                        <div style="max-height: 42px;">&nbsp;</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="4"
+                        >
+                        <div style="max-height: 82px;">Les sp&eacute;cificit&eacute;s comptables, fiscales et sociales relatives
+                            &agrave; l'activit&eacute; et pouvant n&eacute;cessiter des travaux approfondis ou
+                            sp&eacute;cifiques : valorisation, d&eacute;termination de provisions, etc(conf&egrave;re la partie
+                            Organisation comptable dans le logiciel GED-ELYON)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz12_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz12_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ12</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Les d&eacute;lais sp&eacute;cifiques &agrave; respecter (Demande
+                            particuli&egrave;re du client&hellip;)</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz13_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz13_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ13</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >
+                        Analyse de la faisabilit&eacute; de la mission</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >
+                        Observations<br>ou renvoyer sur feuille de travail</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >
+                        Le cabinet est-il ind&eacute;pendant vis-&agrave;-vis du client ?</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz14_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz14_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ14</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Le cabinet a-t-il la comp&eacute;tence pour r&eacute;aliser cette mission
+                            ?</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz15_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz15_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ15</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 62px;">Le cabinet dispose-t-il des moyens ad&eacute;quats pour assurer cette
+                            mission dans de bonnes conditions (notamment de d&eacute;lai) ?</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz16_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz16_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ16</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >
+                        Analyse des dispositions de la loi anti blanchiment</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >
+                        Observations<br>ou renvoyer sur feuille de travail</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >
+                        Le questionnaire sur la lutte anti blanchiment a-t-il &eacute;t&eacute; compl&eacute;t&eacute; ?</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz17_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz17_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ17</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 46px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255);"
+                        >
+                        Lettre au confr&egrave;re (conf&egrave;re DOC N&deg;4)</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        >Non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; overflow-wrap: break-word; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >
+                        Observations<br>ou renvoyer sur feuille de travail</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 49px;">Le client fait-il d&eacute;j&agrave; appel aux services d'un
+                            professionnel de l'expertise comptable ?</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz18_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz18_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ18</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        >Si oui&hellip;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 26px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="3"
+                        >
+                        <div style="max-height: 74px;">&hellip;la lettre au confr&egrave;re (pr&eacute;vue au Code de
+                            d&eacute;ontologie de la profession d'expertise comptable) a-t-elle &eacute;t&eacute; envoy&eacute;e
+                            ?</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz19_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz19_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ19</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 26px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 8px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 26px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="1" rowspan="2"
+                        >
+                        <div style="max-height: 48px;">&hellip;existe-t-il une opposition &agrave; notre entr&eacute;e en
+                            fonction ou des remarques ont-elles &eacute;t&eacute; formul&eacute;es par le confr&egrave;re ?
+                        </div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 22px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz20_oui</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $quiz20_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="1">$observ20</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(220, 41, 30); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255); text-align: center;"
+                        colspan="18" rowspan="1"
+                        >
+                        D&eacute;cision d&rsquo;acception de la mission (partie r&eacute;serv&eacute;e au responsable du DEC)
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 9px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 69px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;"
+                        colspan="7" rowspan="1"
+                        >
+                        Apr&egrave;s avoir pris connaissance des r&eacute;ponses formul&eacute;es sur cette page, compte tenu de
+                        la connaissance que nous avons acquise de l'entit&eacute; et notamment des zones et des niveaux de
+                        risque identifi&eacute;s dans le cadre de la prise de connaissance,</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; overflow-wrap: break-word;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; text-align: right;"
+                        >
+                        Nous d&eacute;cidons d&rsquo;accepter la mission de pr&eacute;sentation</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-top: 1px dotted rgb(0, 0, 0); border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $accept_mission_oui</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; text-align: right;"
+                        >
+                        Nous d&eacute;cidons de refuser la mission de pr&eacute;sentation</td>
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        $accept_mission_non</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; text-align: right;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold; text-align: center;"
+                        colspan="12" rowspan="1"
+                        >Signature
+                        du Responsable DEC</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        colspan="12" rowspan="2">
+                        <div style="max-height: 38px;">$signature_responsable</div>
+                    </td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 28px;">
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td
+                        style="border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 19px;">
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(143, 144, 146); font-family: 'Times New Roman'; font-weight: bold; color: rgb(255, 255, 255); text-align: center;"
+                        colspan="18" rowspan="1"
+                        >
+                        Observations g&eacute;n&eacute;rales</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+                <tr style="height: 97px;">
+                    <td
+                        style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                        &nbsp;</td>
+                    <td style="font-size: 11px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: top;"
+                        colspan="18" rowspan="1">$observation</td>
+                    <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    HTML;
+
+    $update1 = update(
+        'doc_3_accept_mission',
         [
             'contenu_document' => $contenu_document
         ],
