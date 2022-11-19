@@ -10163,7 +10163,7 @@ function update_contenu_document_table_doc_3_accept_mission($id_document, PDO $d
                     <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; text-align: right;"
                         >
-                        Nous d&eacute;cidons d&rsquo;accepter la mission de pr&eacute;sentation</td>
+                        Nous d&eacute;cidons d&rsquo;accepter la mission</td>
                     <td
                         style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                         &nbsp;</td>
@@ -10191,7 +10191,7 @@ function update_contenu_document_table_doc_3_accept_mission($id_document, PDO $d
                     <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; text-align: right;"
                         >
-                        Nous d&eacute;cidons de refuser la mission de pr&eacute;sentation</td>
+                        Nous d&eacute;cidons de refuser la mission</td>
                     <td
                         style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                         &nbsp;</td>
