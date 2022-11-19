@@ -64,6 +64,9 @@ if (isset($_POST['credential'])) {
             $_SESSION['tel_utilisateur'] = $result['tel_utilisateur'];
             $_SESSION['avatar_utilisateur'] = $result['avatar_utilisateur'];
 
+            // Variable de session pour les paramètres
+            $_SESSION['param_sidebar_minimize'] = 'off';
+
 
             if ($result['type_compte'] == "ag") {
                 $message = "parametres corrects - ag";

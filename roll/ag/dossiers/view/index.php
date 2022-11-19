@@ -899,7 +899,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_doc_file -->
 
-    <!-- begin::Modal edit_doc_write -->
+    <!-- begin::Modal edit_doc_generate -->
     <div class="modal fade" id="edit_doc_generate_modal" tabindex="-1">
         <style>
             @media screen {
@@ -960,7 +960,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_doc_generate -->
 
-    <!-- begin::Modal edit_doc_file -->
+    <!-- begin::Modal edit_form_doc_generate -->
     <div class="modal fade" id="edit_form_doc_generate_table_doc_8_fiche_id_client_modal" tabindex="-1">
 
         <!--begin::Modal dialog-->
@@ -1135,7 +1135,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <input id="table_doc_8_fiche_id_client_visa_expert" type="text" class="form-control form-control-solid" placeholder="" value="" name="visa_expert">
                             </div>
 
-                            <div class="col-md-12 form-group justify-content-end">
+                            <div class="col-md-12 form-group">
                                 <div class="text-end">
                                     <label class="fs-5 mb-2">Etats financiers approuvés</label>
                                 </div>
@@ -1552,7 +1552,616 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         </div>
         <!--end::Modal dialog-->
     </div>
-    <!-- end::Modal edit_doc_file -->
+    <!-- end::Modal edit_form_doc_generate -->
+
+    <!-- begin::Modal edit_form_doc_generate -->
+    <div class="modal fade" id="edit_form_doc_generate_table_doc_3_accept_mission_modal" tabindex="-1">
+
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <!--begin::Modal content-->
+            <form id="form_edit_form_doc_generate_table_doc_3_accept_mission" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Prise de connaissance (confère DOC N°2)</span>
+                        </div>
+                        <!-- quiz1 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le cabinet a-t-il rencontré le client pour prendre connaissance de ses besoins et découvrir l'entreprise ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz1_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz1_oui" class="form-check-input" type="radio" value="oui" name="quiz1">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz1_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz1_non" class="form-check-input" type="radio" value="non" name="quiz1">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ1" type="" class="form-control form-control-solid" placeholder="" name="observ1"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infos_quiz1">
+                            <span class="fst-italic fw-semibold text-muted fs-6">
+                                <span class="fw-bold text-decoration-underline text-dark">Nota Bene</span>: Joindre au dossier permanent une présentation de l'entité (plaquette, les notes prises lors de l'entretien avec le client, budgets ou tableaux de bord…)
+                            </span>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse des risques du client (confère DOC N°9)</span>
+                        </div>
+                        <!-- quiz2 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Activité</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz2_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz2_e" class="form-check-input" type="radio" value="e" name="quiz2">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz2_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz2_m" class="form-check-input" type="radio" value="m" name="quiz2">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz2_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz2_f" class="form-check-input" type="radio" value="f" name="quiz2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz3 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Caractéristiques juridiques (Structure juridique, détenteurs du capital, dirigeants de l'entité…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz3_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz3_e" class="form-check-input" type="radio" value="e" name="quiz3">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz3_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz3_m" class="form-check-input" type="radio" value="m" name="quiz3">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz3_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz3_f" class="form-check-input" type="radio" value="f" name="quiz3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz4 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Système d’information (Fiabilité, conformité par rapport à la législation, sécurité…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz4_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz4_e" class="form-check-input" type="radio" value="e" name="quiz4">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz4_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz4_m" class="form-check-input" type="radio" value="m" name="quiz4">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz4_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz4_f" class="form-check-input" type="radio" value="f" name="quiz4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz5 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Organisation comptable (Existence et importance de la fonction comptable – qualification du personnel comptable - nature et qualité des travaux pris en charge…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz5_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz5_e" class="form-check-input" type="radio" value="e" name="quiz5">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz5_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz5_m" class="form-check-input" type="radio" value="m" name="quiz5">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz5_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz5_f" class="form-check-input" type="radio" value="f" name="quiz5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz6 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Clients (les clients les plus importants, délais de règlement des clients…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz6_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz6_e" class="form-check-input" type="radio" value="e" name="quiz6">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz6_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz6_m" class="form-check-input" type="radio" value="m" name="quiz6">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz6_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz6_f" class="form-check-input" type="radio" value="f" name="quiz6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz7 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Fournisseurs (les fournisseurs les plus importants, délais de règlement des fournisseurs)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz7_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz7_e" class="form-check-input" type="radio" value="e" name="quiz7">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz7_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz7_m" class="form-check-input" type="radio" value="m" name="quiz7">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz7_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz7_f" class="form-check-input" type="radio" value="f" name="quiz7">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz8 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Trésorerie (Existence de système de contrôle interne autour de la trésorerie, inventaire périodique de la banque et de la caisse,…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz8_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz8_e" class="form-check-input" type="radio" value="e" name="quiz8">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz8_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz8_m" class="form-check-input" type="radio" value="m" name="quiz8">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz8_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz8_f" class="form-check-input" type="radio" value="f" name="quiz8">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz9 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Historique fiscal et social du client (Contrôles fiscaux, contrôles CNSS…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz9_e">Élevé</label>
+                                            <input id="table_doc_3_accept_mission_quiz9_e" class="form-check-input" type="radio" value="e" name="quiz9">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz9_m">Moyen</label>
+                                            <input id="table_doc_3_accept_mission_quiz9_m" class="form-check-input" type="radio" value="m" name="quiz9">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz9_f">Faible</label>
+                                            <input id="table_doc_3_accept_mission_quiz9_f" class="form-check-input" type="radio" value="f" name="quiz9">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse des besoins du client</span>
+                        </div>
+                        <h4>Les informations suivantes ont-elles été collectées ?</h4>
+                        <!-- quiz10 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">La répartition des travaux comptables entre le client et le cabinet</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz10_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz10_oui" class="form-check-input" type="radio" value="oui" name="quiz10">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz10_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz10_non" class="form-check-input" type="radio" value="non" name="quiz10">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ10" type="" class="form-control form-control-solid" placeholder="" name="observ10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz11 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le volume d'écritures comptables</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz11_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz11_oui" class="form-check-input" type="radio" value="oui" name="quiz11">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz11_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz11_non" class="form-check-input" type="radio" value="non" name="quiz11">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ11" type="" class="form-control form-control-solid" placeholder="" name="observ11"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz12 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Les spécificités comptables, fiscales et sociales relatives à l'activité et pouvant nécessiter des travaux approfondis ou spécifiques : valorisation, détermination de provisions, etc(confère la partie Organisation comptable dans le logiciel GED-ELYON)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz12_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz12_oui" class="form-check-input" type="radio" value="oui" name="quiz12">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz12_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz12_non" class="form-check-input" type="radio" value="non" name="quiz12">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ12" type="" class="form-control form-control-solid" placeholder="" name="observ12"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz13 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Les délais spécifiques à respecter (Demande particulière du client…)</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz13_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz13_oui" class="form-check-input" type="radio" value="oui" name="quiz13">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz13_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz13_non" class="form-check-input" type="radio" value="non" name="quiz13">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ13" type="" class="form-control form-control-solid" placeholder="" name="observ13"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse de la faisabilité de la mission</span>
+                        </div>
+                        <!-- quiz14 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le cabinet est-il indépendant vis-à-vis du client ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz14_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz14_oui" class="form-check-input" type="radio" value="oui" name="quiz14">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz14_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz14_non" class="form-check-input" type="radio" value="non" name="quiz14">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ14" type="" class="form-control form-control-solid" placeholder="" name="observ14"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz15 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le cabinet a-t-il la compétence pour réaliser cette mission ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz15_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz15_oui" class="form-check-input" type="radio" value="oui" name="quiz15">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz15_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz15_non" class="form-check-input" type="radio" value="non" name="quiz15">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ15" type="" class="form-control form-control-solid" placeholder="" name="observ15"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz16 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le cabinet dispose-t-il des moyens adéquats pour assurer cette mission dans de bonnes conditions (notamment de délai) ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz16_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz16_oui" class="form-check-input" type="radio" value="oui" name="quiz16">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz16_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz16_non" class="form-check-input" type="radio" value="non" name="quiz16">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ16" type="" class="form-control form-control-solid" placeholder="" name="observ16"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse des dispositions de la loi anti blanchiment</span>
+                        </div>
+                        <!-- quiz17 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le questionnaire sur la lutte anti blanchiment a-t-il été complété ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz17_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz17_oui" class="form-check-input" type="radio" value="oui" name="quiz17">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz17_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz17_non" class="form-check-input" type="radio" value="non" name="quiz17">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ17" type="" class="form-control form-control-solid" placeholder="" name="observ17"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Lettre au confrère (confère DOC N°4)</span>
+                        </div>
+                        <!-- quiz18 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le client fait-il déjà appel aux services d'un professionnel de l'expertise comptable ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz18_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz18_oui" class="form-check-input" type="radio" value="oui" name="quiz18">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz18_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz18_non" class="form-check-input" type="radio" value="non" name="quiz18">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ18" type="" class="form-control form-control-solid" placeholder="" name="observ18"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz19 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">…la lettre au confrère (prévue au Code de déontologie de la profession d'expertise comptable) a-t-elle été envoyée ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz19_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz19_oui" class="form-check-input" type="radio" value="oui" name="quiz19">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz19_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz19_non" class="form-check-input" type="radio" value="non" name="quiz19">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ19" type="" class="form-control form-control-solid" placeholder="" name="observ19"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- quiz20 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">…existe-t-il une opposition à notre entrée en fonction ou des remarques ont-elles été formulées par le confrère ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz20_oui">Oui</label>
+                                            <input id="table_doc_3_accept_mission_quiz20_oui" class="form-check-input" type="radio" value="oui" name="quiz20">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_3_accept_mission_quiz20_non">Non</label>
+                                            <input id="table_doc_3_accept_mission_quiz20_non" class="form-check-input" type="radio" value="non" name="quiz20">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_3_accept_mission_observ20" type="" class="form-control form-control-solid" placeholder="" name="observ20"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Décision d’acception de la mission</span>
+                        </div>
+                        <!-- Décision final -->
+                        <div class="row mb-10">
+                            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                                <label class="fs-6 mb-2">Après avoir pris connaissance des réponses formulées sur cette page, compte tenu de la connaissance que nous avons acquise de l'entité et notamment des zones et des niveaux de risque identifiés dans le cadre de la prise de connaissance,</label>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <div class="form-check form-check-custom form-check-solid form-check-lg justify-content-end flex-column">
+                                    <div class="decision_oui mb-10">
+                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_oui">Nous décidons d’accepter la mission de présentation</label>
+                                        <input id="table_doc_3_accept_mission_accept_mission_oui" class="form-check-input ms-2" type="radio" value="oui" name="accept_mission">
+                                    </div>
+                                    <div class="decision_non">
+                                        <label class="form-check-label m-0 mt-2 text-center" for="table_doc_3_accept_mission_accept_mission_non">Nous décidons de refuser la mission de présentation</label>
+                                        <input id="table_doc_3_accept_mission_accept_mission_non" class="form-check-input ms-2" type="radio" value="non" name="accept_mission">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Observation générale</span>
+                        </div>
+                        <!-- quiz19 -->
+                        <div class="row mb-10 px-5 px-md-20">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Observations :</label>
+                                <textarea id="table_doc_3_accept_mission_observation" rows="3" class="form-control form-control-solid w-100" placeholder="" name="observation"></textarea>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!--end::Modal body-->
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_table_doc_3_accept_mission">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_form_doc_generate_table_doc_3_accept_mission" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_form_doc_generate -->
 
 </div>
 <!--end::Content wrapper-->
@@ -1594,6 +2203,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
 <script src="assets/plugins/custom/tinymce/tinymce.bundle.js"></script>
 <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/pages_script.php'); ?>
 
 <script>
     $(document).ready(function() {
@@ -2116,6 +2727,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         }
+
         function save_doc_generate() {
 
             // Récupérer les données text tinymce du briefing et mettre dans un textarea
@@ -2263,25 +2875,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         /* -----------------Modification d'un document write---------------- */
         //Lorsqu'on clique sur .edit_doc_write
         $(document).on('click', '.edit_doc_write', function() {
-            // Détruire toutes les instances tinymce
-            // tinymce.remove();
-
-            // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
-            tinymce.init({
-                selector: '#id_edit_doc_write',
-                menubar: false,
-                language: 'fr_FR',
-                content_css: 'document',
-                plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-                save_onsavecallback: save_doc_write,
-            });
-            // Prevent Bootstrap dialog from blocking focusin for TinyMCE
-            document.addEventListener('focusin', (e) => {
-                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                    e.stopImmediatePropagation();
-                }
-            });
 
             var id_document = $(this).data('id_document');
             $.ajax({
@@ -2295,9 +2888,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
-                    setTimeout(function() {
-                        tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
-                    }, 1000);
+                    $('#edit_doc_write_modal .modal-body #id_edit_doc_write').html(data.contenu_document);
+
+                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document write
+                    tinymce.init({
+                        selector: '#id_edit_doc_write',
+                        menubar: false,
+                        language: 'fr_FR',
+                        content_css: 'document',
+                        plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                        toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                        save_onsavecallback: save_doc_write,
+                    });
+                    // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+                    document.addEventListener('focusin', (e) => {
+                        if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                            e.stopImmediatePropagation();
+                        }
+                    });
 
                 }
             })
@@ -2306,26 +2914,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         /* -----------------Modification d'un document generate---------------- */
         //Lorsqu'on clique sur .edit_doc_generate
         $(document).on('click', '.edit_doc_generate', function() {
-            // Détruire toutes les instances tinymce
-            // tinymce.remove();
-
-            // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate
-            tinymce.init({
-                selector: '#id_edit_doc_generate',
-                menubar: false,
-                language: 'fr_FR',
-                content_css: 'document',
-                content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
-                plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
-                save_onsavecallback: save_doc_generate,
-            });
-            // Prevent Bootstrap dialog from blocking focusin for TinyMCE
-            document.addEventListener('focusin', (e) => {
-                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-                    e.stopImmediatePropagation();
-                }
-            });
 
             var id_document = $(this).data('id_document');
             $.ajax({
@@ -2339,9 +2927,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#edit_doc_generate_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_generate_modal .modal-title').html(data.titre_document);
-                    setTimeout(function() {
-                        tinymce.get('id_edit_doc_generate').setContent(data.contenu_document);
-                    }, 1000);
+                    $('#edit_doc_generate_modal .modal-body #id_edit_doc_generate').html(data.contenu_document);
+
+                    // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate
+                    tinymce.init({
+                        selector: '#id_edit_doc_generate',
+                        menubar: false,
+                        language: 'fr_FR',
+                        content_css: 'document',
+                        content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
+                        plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                        toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                        save_onsavecallback: save_doc_generate,
+                    });
+                    // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+                    document.addEventListener('focusin', (e) => {
+                        if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                            e.stopImmediatePropagation();
+                        }
+                    });
 
                 }
             })
@@ -2633,8 +3237,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Lorsqu'on clique sur .edit_form_doc_generate
         init_repeater_count = 0;
-        $(document).on('click', '.edit_form_doc_generate', function() {
-
+        $(document).on('click', '.edit_form_doc_generate', function(e) {
+            e.preventDefault();
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -2648,6 +3252,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
 
                     if (data.table_document == 'doc_8_fiche_id_client') {
+
+                        // Show modal
+                        $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal').modal('show');
 
                         id_document = data.id_document;
                         id_client = data.id_client;
@@ -3059,6 +3666,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     }
 
+                    if (data.table_document == 'doc_3_accept_mission') {
+
+                        id_document = data.id_document;
+                        id_client = data.id_client;
+                        titre_document = data.titre_document;
+
+                        // Show modal
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('show');
+
+
+
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal input[name="id_document"]').val(id_document);
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal .modal-title').html(titre_document);
+
+
+                    }
+
+
+
                 }
             })
         });
@@ -3116,6 +3742,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
     })
 </script>
+
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 </body>

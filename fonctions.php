@@ -11,6 +11,7 @@
             $deceive_uri_rand_str = $uuid->toString();
 
             header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
+            exit();
         }
     }
     ////////// dump avec des pre pour saut de ligne

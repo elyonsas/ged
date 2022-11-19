@@ -4277,7 +4277,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
                         &nbsp;</td>
                 </tr>
             </tbody>
-        </table><br><br>
+        </table><br>
     HTML;
 
     // Sous-doc 8-1 (Partie 2)
@@ -5378,11 +5378,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
                 <tr style="height: 21px;"></tr>
             </tbody>
         </table>
-        <br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br>
-        <br><br><br><br>
+        <br><br><br><br><br>
     HTML;
 
     // Sous-doc 8-1 (Partie 3)
@@ -5923,9 +5919,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
                 </tr>
             </tbody>
         </table>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
-        <br><br><br><br><br><br>
+        <br><br><br><br><br>
     HTML;
 
     // Sous-doc 8-3
