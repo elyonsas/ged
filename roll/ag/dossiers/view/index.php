@@ -2191,6 +2191,133 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_form_doc_generate -->
 
+    <!-- begin::Modal edit_form_doc_generate -->
+    <div class="modal fade" id="edit_form_doc_generate_table_doc_19_quiz_lcb_modal" tabindex="-1">
+
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <!--begin::Modal content-->
+            <form id="form_edit_form_doc_generate_table_doc_19_quiz_lcb" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Prise de connaissance (confère DOC N°2)</span>
+                        </div>
+                        <!-- quiz1 -->
+                        <div class="row mb-10">
+                            <div class="row px-5 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le cabinet a-t-il rencontré le client pour prendre connaissance de ses besoins et découvrir l'entreprise ?</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz1_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz1_oui" class="form-check-input" type="radio" value="oui" name="quiz1">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz1_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz1_non" class="form-check-input" type="radio" value="non" name="quiz1">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-observ ms-10">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ1" type="" class="form-control form-control-solid" placeholder="" name="observ1"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infos_quiz1">
+                            <span class="fst-italic fw-semibold text-muted fs-6">
+                                <span class="fw-bold text-decoration-underline text-dark">Nota Bene</span>: Joindre au dossier permanent une présentation de l'entité (plaquette, les notes prises lors de l'entretien avec le client, budgets ou tableaux de bord…)
+                            </span>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse des risques du client (confère DOC N°9)</span>
+                        </div>
+                        <!-- quiz2 -->
+                        <div class="row mb-10">
+                            <div class="row px-10 px-md-20">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Activité</label>
+                                </div>
+                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_e">Élevé</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_e" class="form-check-input" type="radio" value="e" name="quiz2">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_m">Moyen</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_m" class="form-check-input" type="radio" value="m" name="quiz2">
+                                        </div>
+                                        <div class="d-flex flex-column ms-10">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_f">Faible</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_f" class="form-check-input" type="radio" value="f" name="quiz2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Observation générale</span>
+                        </div>
+                        <!-- Observation -->
+                        <div class="row mb-10 px-5 px-md-20">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Observations :</label>
+                                <textarea id="table_doc_19_quiz_lcb_observation" rows="3" class="form-control form-control-solid w-100" placeholder="" name="observation"></textarea>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!--end::Modal body-->
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_table_doc_19_quiz_lcb">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_form_doc_generate_table_doc_19_quiz_lcb" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_form_doc_generate -->
+
 </div>
 <!--end::Content wrapper-->
 
@@ -2923,11 +3050,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         
                         tinymce_write = tinymce.init({
                             selector: '#id_edit_doc_write',
-                            menubar: false,
+                            menubar: true,
                             language: 'fr_FR',
                             content_css: 'document',
                             plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | pagebreak | table',
+                            pagebreak_separator: '<div style="page-break-after: always;"></div>',
                             save_onsavecallback: save_doc_write,
                         });
                         // Prevent Bootstrap dialog from blocking focusin for TinyMCE
@@ -2977,7 +3105,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             content_css: 'document',
                             content_style: 'body { padding: 25px !important; max-width: 1050px !important; min-height: 75% !important;}',
                             plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
-                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | table',
+                            toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | pagebreak | table',
+                            pagebreak_separator: '<div style="page-break-after: always;"></div>',
                             save_onsavecallback: save_doc_generate,
                         });
                         // Prevent Bootstrap dialog from blocking focusin for TinyMCE
@@ -3919,6 +4048,47 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                         $('#edit_form_doc_generate_table_doc_3_accept_mission_modal input[name="id_document"]').val(id_document);
                         $('#edit_form_doc_generate_table_doc_3_accept_mission_modal .modal-title').html(titre_document);
+
+
+                    }
+
+                    if (data.table_document == 'doc_19_quiz_lcb') {
+
+                        // Show modal
+                        $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal').modal('show');
+
+                        id_document = data.id_document;
+                        id_client = data.id_client;
+                        titre_document = data.titre_document;
+
+                        // quiz1
+                        if (data.quiz1 == 'oui') {
+                            $('#table_doc_19_quiz_lcb_quiz1_oui').prop('checked', true);
+                        } else if(data.quiz1 == 'non') {
+                            $('#table_doc_19_quiz_lcb_quiz1_non').prop('checked', true);
+                        }
+                        // observ1
+                        $('#table_doc_19_quiz_lcb_observ1').val(data.observ1);
+
+                        // quiz2
+                        if (data.quiz2 == 'e') {
+                            $('#table_doc_19_quiz_lcb_quiz2_e').prop('checked', true);
+                        } else if (data.quiz2 == 'm') {
+                            $('#table_doc_19_quiz_lcb_quiz2_m').prop('checked', true);
+                        } else if (data.quiz2 == 'f') {
+                            $('#table_doc_19_quiz_lcb_quiz2_f').prop('checked', true);
+                        }
+
+                        // observation
+                        $('#table_doc_19_quiz_lcb_observation').val(data.observation);
+
+
+                        
+
+
+
+                        $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal input[name="id_document"]').val(id_document);
+                        $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal .modal-title').html(titre_document);
 
 
                     }
