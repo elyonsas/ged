@@ -2918,10 +2918,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
 
                     // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
-                    if (typeof tinymce_generate == 'undefined') {
+                    if (typeof tinymce_write == 'undefined') {
                         $('#edit_doc_write_modal .modal-body #id_edit_doc_write').html(data.contenu_document);
                         
-                        tinymce_generate = tinymce.init({
+                        tinymce_write = tinymce.init({
                             selector: '#id_edit_doc_write',
                             menubar: false,
                             language: 'fr_FR',
@@ -2941,8 +2941,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#edit_doc_write_modal .loader').hide();
                         }, 2000);
                     } else {
-                        // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (plusieurs fois)
-                        tinymce.get('id_edit_doc_write').setContent(data.contenu_document);
+                        // Reset editor and set a new content
+                        tinymce.get('id_edit_doc_write').resetContent(data.contenu_document);
                     }
 
                 }
@@ -2991,8 +2991,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#edit_doc_generate_modal .loader').hide();
                         }, 2000);
                     } else {
-                        // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (plusieurs fois)
-                        tinymce.get('id_edit_doc_generate').setContent(data.contenu_document);
+                        // Reset editor and set a new content
+                        tinymce.get('id_edit_doc_generate').resetContent(data.contenu_document);
                     }
 
                 }
