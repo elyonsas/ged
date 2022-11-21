@@ -230,7 +230,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
     // Sous-doc 8-1 (Partie 1)
     $contenu_document = <<<HTML
         <table dir="ltr"
-            style="transform: scale(0.9); transform-origin: top left; table-layout: fixed; font-size: 11pt; font-family: Calibri; border-collapse: collapse; border-style: none; width: 100%;"
+            style="transform: scale(0.9); transform-origin: top left; table-layout: fixed; font-size: 11pt; font-family: Calibri; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="13">
@@ -4281,7 +4281,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
     // Sous-doc 8-1 (Partie 2)
     $contenu_document .= <<<HTML
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="18">
@@ -5260,7 +5260,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
             </tbody>
         </table><br>
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 10pt; font-family: Arial; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 10pt; font-family: Arial; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="280">
@@ -5382,7 +5382,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
     // Sous-doc 8-1 (Partie 3)
     $contenu_document .= <<<HTML
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="140">
@@ -5556,7 +5556,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
             </tbody>
         </table><br>
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 10pt; font-family: Arial; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 10pt; font-family: Arial; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="125">
@@ -5718,7 +5718,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
 
     $contenu_document .= <<<HTML
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="140">
@@ -5923,7 +5923,7 @@ function update_contenu_document_table_doc_8_fiche_id_client($id_document, PDO $
     // Sous-doc 8-3
     $contenu_document .= <<<HTML
         <table dir="ltr"
-            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%;"
+            style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border-style: none; width: 100%; color: black;"
             border="0" cellspacing="0" cellpadding="0">
             <colgroup>
                 <col width="394">
@@ -6749,7 +6749,7 @@ function update_contenu_document_table_doc_3_accept_mission($id_document, PDO $d
     $observation = $result['observation'];
 
     $contenu_document = <<<HTML
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; margin: auto;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; margin: auto; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="18">
@@ -10440,7 +10440,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
     $conclusion = $result['conclusion'];
 
     $contenu_document = <<<HTML
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="18">
@@ -14108,7 +14108,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
         <br><br><br><br><br>
         <div style="page-break-after: always;"></div>
 
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="39">
@@ -14719,7 +14719,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
         <br><br><br><br><br>
         <div style="page-break-after: always;"></div>
 
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="39">
@@ -15230,7 +15230,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
         <br><br><br><br><br>
         <div style="page-break-after: always;"></div>
 
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="39">
@@ -15889,7 +15889,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
         <br><br><br><br><br>
         <div style="page-break-after: always;"></div>
 
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="39">
@@ -16523,7 +16523,7 @@ function update_contenu_document_table_doc_19_quiz_lcb($id_document, PDO $db)
         <br><br><br><br><br>
         <div style="page-break-after: always;"></div>
 
-        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px;" cellspacing="0"
+        <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
             cellpadding="0">
             <colgroup>
                 <col width="39">
