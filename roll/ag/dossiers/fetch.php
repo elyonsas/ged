@@ -1160,7 +1160,12 @@ if (isset($_POST['action'])) {
             $output['iframe_html'] .= <<<HTML
                 <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
-        } else {
+        } else if ($type_document == '.pdf') {
+            $output['iframe_html'] .= <<<HTML
+                <iframe class="iframe_html" src="assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+            HTML;
+        }
+        else {
             $output['iframe_html'] = <<<HTML
                 <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;

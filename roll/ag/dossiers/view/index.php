@@ -520,7 +520,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     margin: 1rem auto 0;
                     min-width: 25%;
                     max-width: 90%;
-                    background-color: #fff;
                     box-shadow: 0 0 4px rgba(0, 0, 0, .15);
                 }
 
@@ -600,7 +599,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     margin: 1rem auto 0;
                     min-width: 25%;
                     max-width: 90%;
-                    background-color: #fff;
                     box-shadow: 0 0 4px rgba(0, 0, 0, .15);
                 }
 
@@ -666,7 +664,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     margin: 1rem auto 0;
                     min-width: 25%;
                     max-width: 90%;
-                    background-color: #fff;
                     box-shadow: 0 0 4px rgba(0, 0, 0, .15);
                 }
 
