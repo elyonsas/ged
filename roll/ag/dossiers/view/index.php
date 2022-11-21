@@ -2155,7 +2155,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="separator d-flex flex-center my-8">
                             <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Observation générale</span>
                         </div>
-                        <!-- quiz19 -->
+                        <!-- observation -->
                         <div class="row mb-10 px-5 px-md-20">
                             <div class="form-group">
                                 <label class="fs-5 mb-2">Observations :</label>
@@ -2218,79 +2218,873 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="doc-content">
 
                         <div class="separator d-flex flex-center my-8">
-                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Prise de connaissance (confère DOC N°2)</span>
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Vigilance vis-à-vis de l'entité</span>
                         </div>
                         <!-- quiz1 -->
                         <div class="row mb-10">
-                            <div class="row px-5 px-md-20">
-                                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                    <label class="fs-6 mb-2">Le cabinet a-t-il rencontré le client pour prendre connaissance de ses besoins et découvrir l'entreprise ?</label>
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Le dossier contient-il des documents officiels d'identité actualisés (IFU, RCCM et autres) ?</label>
                                 </div>
-                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                <div class="col-md-5 form-group d-flex justify-content-center">
                                     <div class="form-check form-check-custom form-check-solid form-check-lg">
                                         <div class="d-flex flex-column">
                                             <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz1_oui">Oui</label>
                                             <input id="table_doc_19_quiz_lcb_quiz1_oui" class="form-check-input" type="radio" value="oui" name="quiz1">
                                         </div>
-                                        <div class="d-flex flex-column ms-10">
+                                        <div class="d-flex flex-column ms-5">
                                             <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz1_non">Non</label>
                                             <input id="table_doc_19_quiz_lcb_quiz1_non" class="form-check-input" type="radio" value="non" name="quiz1">
                                         </div>
-
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz1_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz1_na" class="form-check-input" type="radio" value="na" name="quiz1">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact1" name="impact1" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
                                     </div>
-                                    <div class="form-observ ms-10">
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
                                         <label class="fs-5 mb-2">Observations :</label>
                                         <textarea id="table_doc_19_quiz_lcb_observ1" type="" class="form-control form-control-solid" placeholder="" name="observ1"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="infos_quiz1">
-                            <span class="fst-italic fw-semibold text-muted fs-6">
-                                <span class="fw-bold text-decoration-underline text-dark">Nota Bene</span>: Joindre au dossier permanent une présentation de l'entité (plaquette, les notes prises lors de l'entretien avec le client, budgets ou tableaux de bord…)
-                            </span>
-                        </div>
 
-                        <div class="separator d-flex flex-center my-8">
-                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Analyse des risques du client (confère DOC N°9)</span>
-                        </div>
                         <!-- quiz2 -->
                         <div class="row mb-10">
-                            <div class="row px-10 px-md-20">
-                                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                    <label class="fs-6 mb-2">Activité</label>
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des changements juridiques fréquents de structures ou d'associés/dirigeants ?</label>
                                 </div>
-                                <div class="col-md-6 form-group d-flex justify-content-center">
+                                <div class="col-md-5 form-group d-flex justify-content-center">
                                     <div class="form-check form-check-custom form-check-solid form-check-lg">
                                         <div class="d-flex flex-column">
-                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_e">Élevé</label>
-                                            <input id="table_doc_19_quiz_lcb_quiz2_e" class="form-check-input" type="radio" value="e" name="quiz2">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_oui" class="form-check-input" type="radio" value="oui" name="quiz2">
                                         </div>
-                                        <div class="d-flex flex-column ms-10">
-                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_m">Moyen</label>
-                                            <input id="table_doc_19_quiz_lcb_quiz2_m" class="form-check-input" type="radio" value="m" name="quiz2">
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_non" class="form-check-input" type="radio" value="non" name="quiz2">
                                         </div>
-                                        <div class="d-flex flex-column ms-10">
-                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_f">Faible</label>
-                                            <input id="table_doc_19_quiz_lcb_quiz2_f" class="form-check-input" type="radio" value="f" name="quiz2">
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz2_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz2_na" class="form-check-input" type="radio" value="na" name="quiz2">
                                         </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact2" name="impact2" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-2">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ2" type="" class="form-control form-control-solid" placeholder="" name="observ2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz3 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">L'entité a-t-elle subi un contrôle fiscal avec des redressements importants ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz3_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz3_oui" class="form-check-input" type="radio" value="oui" name="quiz3">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz3_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz3_non" class="form-check-input" type="radio" value="non" name="quiz3">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz3_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz3_na" class="form-check-input" type="radio" value="na" name="quiz3">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact3" name="impact3" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ3" type="" class="form-control form-control-solid" placeholder="" name="observ3"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="separator d-flex flex-center my-8">
-                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Observation générale</span>
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Vigilance vis-à-vis du bénéficiaire</span>
                         </div>
-                        <!-- Observation -->
-                        <div class="row mb-10 px-5 px-md-20">
-                            <div class="form-group">
-                                <label class="fs-5 mb-2">Observations :</label>
-                                <textarea id="table_doc_19_quiz_lcb_observation" rows="3" class="form-control form-control-solid w-100" placeholder="" name="observation"></textarea>
+                        <!-- quiz4 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Connaissons-nous les associés directs détenant plus de 25% des droits de vote ou du capital ou les dirigeants ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz4_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz4_oui" class="form-check-input" type="radio" value="oui" name="quiz4">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz4_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz4_non" class="form-check-input" type="radio" value="non" name="quiz4">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz4_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz4_na" class="form-check-input" type="radio" value="na" name="quiz4">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact4" name="impact4" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ4" type="" class="form-control form-control-solid" placeholder="" name="observ4"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- quiz5 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Avons-nous rencontré le(s) dirigeants effectif(s) ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz5_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz5_oui" class="form-check-input" type="radio" value="oui" name="quiz5">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz5_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz5_non" class="form-check-input" type="radio" value="non" name="quiz5">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz5_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz5_na" class="form-check-input" type="radio" value="na" name="quiz5">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact5" name="impact5" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ5" type="" class="form-control form-control-solid" placeholder="" name="observ5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- quiz6 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il fréquemment des changements de représentant légal ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz6_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz6_oui" class="form-check-input" type="radio" value="oui" name="quiz6">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz6_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz6_non" class="form-check-input" type="radio" value="non" name="quiz6">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz6_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz6_na" class="form-check-input" type="radio" value="na" name="quiz6">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact6" name="impact6" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ6" type="" class="form-control form-control-solid" placeholder="" name="observ6"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Informations sur l'actionnariat</span>
+                        </div>
+                        <!-- quiz7 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il parmi les actionnaires ou dirigeants des personnes politiquement exposées (PPE) ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz7_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz7_oui" class="form-check-input" type="radio" value="oui" name="quiz7">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz7_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz7_non" class="form-check-input" type="radio" value="non" name="quiz7">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz7_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz7_na" class="form-check-input" type="radio" value="na" name="quiz7">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact7" name="impact7" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ7" type="" class="form-control form-control-solid" placeholder="" name="observ7"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz8 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il une part de capital détenue par des actionnaires inconnus et/ou physiquement absents ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz8_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz8_oui" class="form-check-input" type="radio" value="oui" name="quiz8">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz8_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz8_non" class="form-check-input" type="radio" value="non" name="quiz8">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz8_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz8_na" class="form-check-input" type="radio" value="na" name="quiz8">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact8" name="impact8" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ8" type="" class="form-control form-control-solid" placeholder="" name="observ8"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz9 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des doutes sur l'intégrité et la réputation des actionnaires ou dirigeants ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz9_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz9_oui" class="form-check-input" type="radio" value="oui" name="quiz9">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz9_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz9_non" class="form-check-input" type="radio" value="non" name="quiz9">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz9_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz9_na" class="form-check-input" type="radio" value="na" name="quiz9">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact9" name="impact9" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ9" type="" class="form-control form-control-solid" placeholder="" name="observ9"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Informations sur les dirigeants</span>
+                        </div>
+                        <!-- quiz10 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des éléments ou des indices permettant de penser que la direction pourrait être amenée à fausser délibérément les résultats de l'entité ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz10_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz10_oui" class="form-check-input" type="radio" value="oui" name="quiz10">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz10_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz10_non" class="form-check-input" type="radio" value="non" name="quiz10">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz10_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz10_na" class="form-check-input" type="radio" value="na" name="quiz10">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact10" name="impact10" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ10" type="" class="form-control form-control-solid" placeholder="" name="observ10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz11 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Des personnes clés ont-elles quitté l'entité récemment ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz11_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz11_oui" class="form-check-input" type="radio" value="oui" name="quiz11">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz11_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz11_non" class="form-check-input" type="radio" value="non" name="quiz11">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz11_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz11_na" class="form-check-input" type="radio" value="na" name="quiz11">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact11" name="impact11" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ11" type="" class="form-control form-control-solid" placeholder="" name="observ11"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz12 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Les dirigeants changent-ils souvent de banque, d'avocat, d'expert-comptable ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz12_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz12_oui" class="form-check-input" type="radio" value="oui" name="quiz12">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz12_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz12_non" class="form-check-input" type="radio" value="non" name="quiz12">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz12_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz12_na" class="form-check-input" type="radio" value="na" name="quiz12">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact12" name="impact12" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ12" type="" class="form-control form-control-solid" placeholder="" name="observ12"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Structure de l'entité</span>
+                        </div>
+                        <!-- quiz13 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">La structure de l'entité est-elle complexe ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz13_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz13_oui" class="form-check-input" type="radio" value="oui" name="quiz13">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz13_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz13_non" class="form-check-input" type="radio" value="non" name="quiz13">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz13_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz13_na" class="form-check-input" type="radio" value="na" name="quiz13">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact13" name="impact13" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ13" type="" class="form-control form-control-solid" placeholder="" name="observ13"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz14 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des opérations, des filiales ou des comptes bancaires significatifs dans des pays étrangers qui n'ont en apparence aucun lien commercial évident avec l'entité ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz14_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz14_oui" class="form-check-input" type="radio" value="oui" name="quiz14">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz14_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz14_non" class="form-check-input" type="radio" value="non" name="quiz14">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz14_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz14_na" class="form-check-input" type="radio" value="na" name="quiz14">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact14" name="impact14" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ14" type="" class="form-control form-control-solid" placeholder="" name="observ14"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Vigilance liée aux opérations</span>
+                        </div>
+                        <!-- quiz15 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des opérations complexes ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz15_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz15_oui" class="form-check-input" type="radio" value="oui" name="quiz15">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz15_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz15_non" class="form-check-input" type="radio" value="non" name="quiz15">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz15_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz15_na" class="form-check-input" type="radio" value="na" name="quiz15">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact15" name="impact15" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ15" type="" class="form-control form-control-solid" placeholder="" name="observ15"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz16 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">L'entité exerce-t-elle une activité générant d'importants mouvements d'argent liquide ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz16_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz16_oui" class="form-check-input" type="radio" value="oui" name="quiz16">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz16_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz16_non" class="form-check-input" type="radio" value="non" name="quiz16">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz16_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz16_na" class="form-check-input" type="radio" value="na" name="quiz16">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact16" name="impact16" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ16" type="" class="form-control form-control-solid" placeholder="" name="observ16"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz17 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">L'entité exerce-t-elle dans un secteur sensible/favorable au blanchiment (<span style="font-size: 10px;">immobilier, négoce de pierres précieuses, antiquités ou œuvres d'arts, opérateurs de jeux ou de paris autorisés, secteur associatifs etc.</span>)</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz17_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz17_oui" class="form-check-input" type="radio" value="oui" name="quiz17">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz17_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz17_non" class="form-check-input" type="radio" value="non" name="quiz17">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz17_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz17_na" class="form-check-input" type="radio" value="na" name="quiz17">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact17" name="impact17" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ17" type="" class="form-control form-control-solid" placeholder="" name="observ17"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz18 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des montants anormalement élevés ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz18_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz18_oui" class="form-check-input" type="radio" value="oui" name="quiz18">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz18_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz18_non" class="form-check-input" type="radio" value="non" name="quiz18">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz18_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz18_na" class="form-check-input" type="radio" value="na" name="quiz18">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact18" name="impact18" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ18" type="" class="form-control form-control-solid" placeholder="" name="observ18"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz19 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des opérations sans justification économique ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz19_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz19_oui" class="form-check-input" type="radio" value="oui" name="quiz19">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz19_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz19_non" class="form-check-input" type="radio" value="non" name="quiz19">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz19_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz19_na" class="form-check-input" type="radio" value="na" name="quiz19">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact19" name="impact19" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ19" type="" class="form-control form-control-solid" placeholder="" name="observ19"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz20 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">L'origine des fonds est-elle suffisamment justifiée ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz20_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz20_oui" class="form-check-input" type="radio" value="oui" name="quiz20">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz20_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz20_non" class="form-check-input" type="radio" value="non" name="quiz20">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz20_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz20_na" class="form-check-input" type="radio" value="na" name="quiz20">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact20" name="impact20" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ20" type="" class="form-control form-control-solid" placeholder="" name="observ20"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quiz21 -->
+                        <div class="row mb-10">
+                            <div class="row">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <label class="fs-6 mb-2">Existe-t-il des transactions avec des pays faisant partie de la liste des pays nécessitant une vigilance ?</label>
+                                </div>
+                                <div class="col-md-5 form-group d-flex justify-content-center">
+                                    <div class="form-check form-check-custom form-check-solid form-check-lg">
+                                        <div class="d-flex flex-column">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz21_oui">Oui</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz21_oui" class="form-check-input" type="radio" value="oui" name="quiz21">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz21_non">Non</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz21_non" class="form-check-input" type="radio" value="non" name="quiz21">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                            <label class="form-check-label m-0 mb-5 text-center fs-5" for="table_doc_19_quiz_lcb_quiz21_na">NA</label>
+                                            <input id="table_doc_19_quiz_lcb_quiz21_na" class="form-check-input" type="radio" value="na" name="quiz21">
+                                        </div>
+                                        <div class="d-flex flex-column ms-5">
+                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                        <select id="table_doc_19_quiz_lcb_impact21" name="impact21" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                            <option></option>
+                                            <option value="e">Élevé</option>
+                                            <option value="m">Moyen</option>
+                                            <option value="f">Faible</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group d-flex justify-content-center">
+                                    <div class="form-observ">
+                                        <label class="fs-5 mb-3">Observations :</label>
+                                        <textarea id="table_doc_19_quiz_lcb_observ21" type="" class="form-control form-control-solid" placeholder="" name="observ21"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Conclusion</span>
+                        </div>
+                        <!-- conclusion -->
+                        <div class="row mb-10 px-5 px-md-20">
+                            <div class="form-group">
+                                <label class="fs-5 mb-2">Conclusion :</label>
+                                <textarea id="table_doc_19_quiz_lcb_conclusion" rows="3" class="form-control form-control-solid w-100" placeholder="" name="conclusion"></textarea>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -3849,6 +4643,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         id_client = data.id_client;
                         titre_document = data.titre_document;
 
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal input[name="id_document"]').val(id_document);
+                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal .modal-title').html(titre_document);
+
                         // quiz1
                         if (data.quiz1 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz1_oui').prop('checked', true);
@@ -3858,176 +4655,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // observ1
                         $('#table_doc_3_accept_mission_observ1').val(data.observ1);
 
-                        // quiz2
-                        if (data.quiz2 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz2_e').prop('checked', true);
-                        } else if (data.quiz2 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz2_m').prop('checked', true);
-                        } else if (data.quiz2 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz2_f').prop('checked', true);
+                        // quiz2 à 9
+                        for (let i = 2; i <= 9; i++) {
+                            if (data['quiz' + i] == 'e') {
+                                $('#table_doc_3_accept_mission_quiz' + i + '_e').prop('checked', true);
+                            } else if (data['quiz' + i] == 'm') {
+                                $('#table_doc_3_accept_mission_quiz' + i + '_m').prop('checked', true);
+                            } else if (data['quiz' + i] == 'f') {
+                                $('#table_doc_3_accept_mission_quiz' + i + '_f').prop('checked', true);
+                            }
                         }
 
-                        // quiz3
-                        if (data.quiz3 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz3_e').prop('checked', true);
-                        } else if (data.quiz3 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz3_m').prop('checked', true);
-                        } else if (data.quiz3 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz3_f').prop('checked', true);
-                        }
+                        // quiz10 à 20
+                        for (let i = 10; i <= 20; i++) {
+                            // quiz
+                            if (data['quiz' + i] == 'oui') {
+                                $('#table_doc_3_accept_mission_quiz' + i + '_oui').prop('checked', true);
+                            } else if (data['quiz' + i] == 'non') {
+                                $('#table_doc_3_accept_mission_quiz' + i + '_non').prop('checked', true);
+                            }
 
-                        // quiz4
-                        if (data.quiz4 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz4_e').prop('checked', true);
-                        } else if (data.quiz4 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz4_m').prop('checked', true);
-                        } else if (data.quiz4 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz4_f').prop('checked', true);
+                            // observ
+                            $('#table_doc_3_accept_mission_observ' + i).val(data['observ' + i]);
                         }
-
-                        // quiz5
-                        if (data.quiz5 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz5_e').prop('checked', true);
-                        } else if (data.quiz5 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz5_m').prop('checked', true);
-                        } else if (data.quiz5 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz5_f').prop('checked', true);
-                        }
-                        
-                        // quiz6
-                        if (data.quiz6 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz6_e').prop('checked', true);
-                        } else if (data.quiz6 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz6_m').prop('checked', true);
-                        } else if (data.quiz6 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz6_f').prop('checked', true);
-                        }
-
-                        // quiz7
-                        if (data.quiz7 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz7_e').prop('checked', true);
-                        } else if (data.quiz7 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz7_m').prop('checked', true);
-                        } else if (data.quiz7 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz7_f').prop('checked', true);
-                        }
-
-                        // quiz8
-                        if (data.quiz8 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz8_e').prop('checked', true);
-                        } else if (data.quiz8 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz8_m').prop('checked', true);
-                        } else if (data.quiz8 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz8_f').prop('checked', true);
-                        }
-
-                        // quiz9
-                        if (data.quiz9 == 'e') {
-                            $('#table_doc_3_accept_mission_quiz9_e').prop('checked', true);
-                        } else if (data.quiz9 == 'm') {
-                            $('#table_doc_3_accept_mission_quiz9_m').prop('checked', true);
-                        } else if (data.quiz9 == 'f') {
-                            $('#table_doc_3_accept_mission_quiz9_f').prop('checked', true);
-                        }
-
-                        // quiz10
-                        if (data.quiz10 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz10_oui').prop('checked', true);
-                        } else if(data.quiz10 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz10_non').prop('checked', true);
-                        }
-                        // observ10
-                        $('#table_doc_3_accept_mission_observ10').val(data.observ10);
-
-                        // quiz11
-                        if (data.quiz11 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz11_oui').prop('checked', true);
-                        } else if(data.quiz11 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz11_non').prop('checked', true);
-                        }
-                        // observ11
-                        $('#table_doc_3_accept_mission_observ11').val(data.observ11);
-                        
-                        // quiz12
-                        if (data.quiz12 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz12_oui').prop('checked', true);
-                        } else if(data.quiz12 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz12_non').prop('checked', true);
-                        }
-                        // observ12
-                        $('#table_doc_3_accept_mission_observ12').val(data.observ12);
-
-                        // quiz13
-                        if (data.quiz13 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz13_oui').prop('checked', true);
-                        } else if(data.quiz13 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz13_non').prop('checked', true);
-                        }
-                        // observ13
-                        $('#table_doc_3_accept_mission_observ13').val(data.observ13);
-
-                        // quiz14
-                        if (data.quiz14 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz14_oui').prop('checked', true);
-                        } else if(data.quiz14 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz14_non').prop('checked', true);
-                        }
-                        // observ14
-                        $('#table_doc_3_accept_mission_observ14').val(data.observ14);
-
-                        // quiz15
-                        if (data.quiz15 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz15_oui').prop('checked', true);
-                        } else if(data.quiz15 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz15_non').prop('checked', true);
-                        }
-                        // observ15
-                        $('#table_doc_3_accept_mission_observ15').val(data.observ15);
-
-                        // quiz16
-                        if (data.quiz16 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz16_oui').prop('checked', true);
-                        } else if(data.quiz16 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz16_non').prop('checked', true);
-                        }
-                        // observ16
-                        $('#table_doc_3_accept_mission_observ16').val(data.observ16);
-
-                        // quiz17
-                        if (data.quiz17 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz17_oui').prop('checked', true);
-                        } else if(data.quiz17 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz17_non').prop('checked', true);
-                        }
-                        // observ17
-                        $('#table_doc_3_accept_mission_observ17').val(data.observ17);
-
-                        // quiz18
-                        if (data.quiz18 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz18_oui').prop('checked', true);
-                        } else if(data.quiz18 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz18_non').prop('checked', true);
-                        }
-                        // observ18
-                        $('#table_doc_3_accept_mission_observ18').val(data.observ18);
-
-                        // quiz19
-                        if (data.quiz19 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz19_oui').prop('checked', true);
-                        } else if(data.quiz19 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz19_non').prop('checked', true);
-                        }
-                        // observ19
-                        $('#table_doc_3_accept_mission_observ19').val(data.observ19);
-
-                        // quiz20
-                        if (data.quiz20 == 'oui') {
-                            $('#table_doc_3_accept_mission_quiz20_oui').prop('checked', true);
-                        } else if(data.quiz20 == 'non') {
-                            $('#table_doc_3_accept_mission_quiz20_non').prop('checked', true);
-                        }
-                        // observ20
-                        $('#table_doc_3_accept_mission_observ20').val(data.observ20);
 
                         // accept_mission
                         if (data.accept_mission == 'oui') {
@@ -4037,14 +4687,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         }
                         // observation
                         $('#table_doc_3_accept_mission_observation').val(data.observation);
-
-
-                        
-
-
-
-                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal input[name="id_document"]').val(id_document);
-                        $('#edit_form_doc_generate_table_doc_3_accept_mission_modal .modal-title').html(titre_document);
 
 
                     }
@@ -4058,34 +4700,33 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         id_client = data.id_client;
                         titre_document = data.titre_document;
 
-                        // quiz1
-                        if (data.quiz1 == 'oui') {
-                            $('#table_doc_19_quiz_lcb_quiz1_oui').prop('checked', true);
-                        } else if(data.quiz1 == 'non') {
-                            $('#table_doc_19_quiz_lcb_quiz1_non').prop('checked', true);
-                        }
-                        // observ1
-                        $('#table_doc_19_quiz_lcb_observ1').val(data.observ1);
-
-                        // quiz2
-                        if (data.quiz2 == 'e') {
-                            $('#table_doc_19_quiz_lcb_quiz2_e').prop('checked', true);
-                        } else if (data.quiz2 == 'm') {
-                            $('#table_doc_19_quiz_lcb_quiz2_m').prop('checked', true);
-                        } else if (data.quiz2 == 'f') {
-                            $('#table_doc_19_quiz_lcb_quiz2_f').prop('checked', true);
-                        }
-
-                        // observation
-                        $('#table_doc_19_quiz_lcb_observation').val(data.observation);
-
-
-                        
-
-
-
                         $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal input[name="id_document"]').val(id_document);
                         $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal .modal-title').html(titre_document);
+
+                        // quiz1 à 21
+                        for (let i = 1; i <= 21; i++) {
+                            // quiz
+                            if (data['quiz'+i] == 'oui') {
+                                $('#table_doc_19_quiz_lcb_quiz'+i+'_oui').prop('checked', true);
+                            } else if(data['quiz'+i] == 'non') {
+                                $('#table_doc_19_quiz_lcb_quiz'+i+'_non').prop('checked', true);
+                            } else if(data['quiz'+i] == 'na') {
+                                $('#table_doc_19_quiz_lcb_quiz'+i+'_na').prop('checked', true);
+                            }
+                            // impact
+                            if(data['impact'+i] == 'e'){
+                                $('#table_doc_19_quiz_lcb_impact'+i).val('e').trigger('change');
+                            } else if(data['impact'+i] == 'm'){
+                                $('#table_doc_19_quiz_lcb_impact'+i).val('m').trigger('change');
+                            } else if(data['impact'+i] == 'f'){
+                                $('#table_doc_19_quiz_lcb_impact'+i).val('f').trigger('change');
+                            }
+                            // observ
+                            $('#table_doc_19_quiz_lcb_observ'+i).val(data['observ'+i]);
+                        }
+
+                        // conclusion
+                        $('#table_doc_19_quiz_lcb_conclusion').val(data.conclusion);
 
 
                     }
@@ -4165,6 +4806,54 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         if (data.success) {
 
                             $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Questionnaire enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_19_quiz_lcb
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_19_quiz_lcb', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_19_quiz_lcb');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal').modal('hide');
 
                             // swal
                             Swal.fire({

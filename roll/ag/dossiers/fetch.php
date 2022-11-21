@@ -233,7 +233,7 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY titre_document ASC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY ordre_document ASC";
 
 
         // // pour la recherche
@@ -1732,7 +1732,184 @@ if (isset($_POST['action'])) {
         if ($update1 && $update2 && $update3) {
             $output = [
                 'success' => true,
-                'message' => "Le Questionnaire à été mise à jour !"
+                'message' => "Le questionnaire à été mise à jour !"
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+    }
+    if ($_POST['action'] == 'edit_table_doc_19_quiz_lcb') {
+
+        $id_document = $_POST['id_document'];
+        $quiz1 = $_POST['quiz1']?? NULL;
+        $impact1 = $_POST['impact1']?? NULL;
+        $observ1 = $_POST['observ1'];
+        $quiz2 = $_POST['quiz2']?? NULL;
+        $impact2 = $_POST['impact2']?? NULL;
+        $observ2 = $_POST['observ2'];
+        $quiz3 = $_POST['quiz3']?? NULL;
+        $impact3 = $_POST['impact3']?? NULL;
+        $observ3 = $_POST['observ3'];
+        $quiz4 = $_POST['quiz4']?? NULL;
+        $impact4 = $_POST['impact4']?? NULL;
+        $observ4 = $_POST['observ4'];
+        $quiz5 = $_POST['quiz5']?? NULL;
+        $impact5 = $_POST['impact5']?? NULL;
+        $observ5 = $_POST['observ5'];
+        $quiz6 = $_POST['quiz6']?? NULL;
+        $impact6 = $_POST['impact6']?? NULL;
+        $observ6 = $_POST['observ6'];
+        $quiz7 = $_POST['quiz7']?? NULL;
+        $impact7 = $_POST['impact7']?? NULL;
+        $observ7 = $_POST['observ7'];
+        $quiz8 = $_POST['quiz8']?? NULL;
+        $impact8 = $_POST['impact8']?? NULL;
+        $observ8 = $_POST['observ8'];
+        $quiz9 = $_POST['quiz9']?? NULL;
+        $impact9 = $_POST['impact9']?? NULL;
+        $observ9 = $_POST['observ9'];
+        $quiz10 = $_POST['quiz10']?? NULL;
+        $impact10 = $_POST['impact10']?? NULL;
+        $observ10 = $_POST['observ10'];
+        $quiz11 = $_POST['quiz11']?? NULL;
+        $impact11 = $_POST['impact11']?? NULL;
+        $observ11 = $_POST['observ11'];
+        $quiz12 = $_POST['quiz12']?? NULL;
+        $impact12 = $_POST['impact12']?? NULL;
+        $observ12 = $_POST['observ12'];
+        $quiz13 = $_POST['quiz13']?? NULL;
+        $impact13 = $_POST['impact13']?? NULL;
+        $observ13 = $_POST['observ13'];
+        $quiz14 = $_POST['quiz14']?? NULL;
+        $impact14 = $_POST['impact14']?? NULL;
+        $observ14 = $_POST['observ14'];
+        $quiz15 = $_POST['quiz15']?? NULL;
+        $impact15 = $_POST['impact15']?? NULL;
+        $observ15 = $_POST['observ15'];
+        $quiz16 = $_POST['quiz16']?? NULL;
+        $impact16 = $_POST['impact16']?? NULL;
+        $observ16 = $_POST['observ16'];
+        $quiz17 = $_POST['quiz17']?? NULL;
+        $impact17 = $_POST['impact17']?? NULL;
+        $observ17 = $_POST['observ17'];
+        $quiz18 = $_POST['quiz18']?? NULL;
+        $impact18 = $_POST['impact18']?? NULL;
+        $observ18 = $_POST['observ18'];
+        $quiz19 = $_POST['quiz19']?? NULL;
+        $impact19 = $_POST['impact19']?? NULL;
+        $observ19 = $_POST['observ19'];
+        $quiz20 = $_POST['quiz20']?? NULL;
+        $impact20 = $_POST['impact20']?? NULL;
+        $observ20 = $_POST['observ20'];
+        $quiz21 = $_POST['quiz21']?? NULL;
+        $impact21 = $_POST['impact21']?? NULL;
+        $observ21 = $_POST['observ21'];
+        $conclusion = $_POST['conclusion'];
+
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
+        $titre_document = $result['titre_document'];
+
+        // update table document
+        $update1 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        // update table doc_19_quiz_lcb
+        $update2 = update(
+            'doc_19_quiz_lcb',
+            [
+                'quiz1' => $quiz1,
+                'impact1' => $impact1,
+                'observ1' => $observ1,
+                'quiz2' => $quiz2,
+                'impact2' => $impact2,
+                'observ2' => $observ2,
+                'quiz3' => $quiz3,
+                'impact3' => $impact3,
+                'observ3' => $observ3,
+                'quiz4' => $quiz4,
+                'impact4' => $impact4,
+                'observ4' => $observ4,
+                'quiz5' => $quiz5,
+                'impact5' => $impact5,
+                'observ5' => $observ5,
+                'quiz6' => $quiz6,
+                'impact6' => $impact6,
+                'observ6' => $observ6,
+                'quiz7' => $quiz7,
+                'impact7' => $impact7,
+                'observ7' => $observ7,
+                'quiz8' => $quiz8,
+                'impact8' => $impact8,
+                'observ8' => $observ8,
+                'quiz9' => $quiz9,
+                'impact9' => $impact9,
+                'observ9' => $observ9,
+                'quiz10' => $quiz10,
+                'impact10' => $impact10,
+                'observ10' => $observ10,
+                'quiz11' => $quiz11,
+                'impact11' => $impact11,
+                'observ11' => $observ11,
+                'quiz12' => $quiz12,
+                'impact12' => $impact12,
+                'observ12' => $observ12,
+                'quiz13' => $quiz13,
+                'impact13' => $impact13,
+                'observ13' => $observ13,
+                'quiz14' => $quiz14,
+                'impact14' => $impact14,
+                'observ14' => $observ14,
+                'quiz15' => $quiz15,
+                'impact15' => $impact15,
+                'observ15' => $observ15,
+                'quiz16' => $quiz16,
+                'impact16' => $impact16,
+                'observ16' => $observ16,
+                'quiz17' => $quiz17,
+                'impact17' => $impact17,
+                'observ17' => $observ17,
+                'quiz18' => $quiz18,
+                'impact18' => $impact18,
+                'observ18' => $observ18,
+                'quiz19' => $quiz19,
+                'impact19' => $impact19,
+                'observ19' => $observ19,
+                'quiz20' => $quiz20,
+                'impact20' => $impact20,
+                'observ20' => $observ20,
+                'quiz21' => $quiz21,
+                'impact21' => $impact21,
+                'observ21' => $observ21,
+                'conclusion' => $conclusion,
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        
+        $update3 = update_contenu_document_table_doc_19_quiz_lcb($id_document, $db);
+
+        if ($update1 && $update2 && $update3) {
+            $output = [
+                'success' => true,
+                'message' => "Le questionnaire à été mise à jour !"
             ];
         } else {
             $output = [
