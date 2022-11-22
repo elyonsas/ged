@@ -376,6 +376,12 @@ if (isset($_POST['datatable'])) {
                                             data-id_document="{$id_document}">Modifier le document</a>
                                         </div>
                                         <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
+                                        </div>
+                                        <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu 3-->
                                 </div>

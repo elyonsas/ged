@@ -2,6 +2,7 @@
     "require": {
         "symfony/var-dumper": "^5.4",
         "ramsey/uuid": "^4.2",
-        "google/apiclient": "2.12.1"
+        "google/apiclient": "2.12.1",
+        "dompdf/dompdf": "^2.0"
     }
 }
