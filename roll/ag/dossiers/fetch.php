@@ -424,6 +424,12 @@ if (isset($_POST['datatable'])) {
                                                 <a href="" class="supprimer_doc_autre menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer</a>
                                             </div>
                                             <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
+                                            </div>
+                                            <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu 3-->
                                     </div>
@@ -457,6 +463,12 @@ if (isset($_POST['datatable'])) {
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
                                                 <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

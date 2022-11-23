@@ -3823,6 +3823,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         $(document).on('click', '.edit_doc_write', function() {
 
             var id_document = $(this).data('id_document');
+            $('#edit_doc_write_modal .loader').show();
+
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -3841,7 +3843,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         
                         tinymce_write = tinymce.init({
                             selector: '#id_edit_doc_write',
-                            menubar: true,
+                            menubar: false,
                             language: 'fr_FR',
                             content_css: 'document',
                             plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
@@ -3860,8 +3862,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#edit_doc_write_modal .loader').hide();
                         }, 2000);
                     } else {
+
                         // Reset editor and set a new content
                         tinymce.get('id_edit_doc_write').resetContent(data.contenu_document);
+
+                        setTimeout(function() {
+                            $('#edit_doc_write_modal .loader').hide();
+                        }, 2000);
                     }
 
                 }
@@ -3873,6 +3880,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         $(document).on('click', '.edit_doc_generate', function() {
 
             var id_document = $(this).data('id_document');
+            $('#edit_doc_generate_modal .loader').show();
+
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -3911,8 +3920,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#edit_doc_generate_modal .loader').hide();
                         }, 2000);
                     } else {
+                        
                         // Reset editor and set a new content
                         tinymce.get('id_edit_doc_generate').resetContent(data.contenu_document);
+
+                        setTimeout(function() {
+                            $('#edit_doc_generate_modal .loader').hide();
+                        }, 2000);
                     }
 
                 }
