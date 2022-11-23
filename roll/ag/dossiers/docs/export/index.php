@@ -30,46 +30,45 @@ $snappy->setOption('enable-local-file-access', true);
 
 $snappy->setOption('title', $result['titre_document']);
 
-if($type_document == 'generate'){
+if ($type_document == 'generate') {
 
-    $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $result = $statement->fetch();
-    // html style
-    $htmlTemplate = <<<HTML
+  $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+  $statement = $db->prepare($query);
+  $statement->execute();
+  $result = $statement->fetch();
+  // html style
+  $htmlTemplate = <<<HTML
         <style>
         *{
-            max-height: 100% !important;
+          max-height: 100% !important;
         }
         body{
-            color: #000;
+          color: #000;
         }
         </style>
     HTML;
 
-    // html content
-    $htmlTemplate .= $result['contenu_document'];
+  // html content
+  $htmlTemplate .= $result['contenu_document'];
 
 
-    // $snappy->setOption('margin-top', '25mm');
-    // $snappy->setOption('margin-right', '15mm');
-    // $snappy->setOption('margin-bottom', '25mm');
-    // $snappy->setOption('margin-left', '15mm');
+  // $snappy->setOption('margin-top', '25mm');
+  // $snappy->setOption('margin-right', '15mm');
+  // $snappy->setOption('margin-bottom', '25mm');
+  // $snappy->setOption('margin-left', '15mm');
 
-    $snappy->setOption('footer-font-size', 10);
+  $snappy->setOption('footer-font-size', 10);
 
-    $snappy->setOption('footer-html','footer.html');
-    $snappy->setOption('header-html','header.html');
+  $snappy->setOption('footer-html', 'footer.html');
+  $snappy->setOption('header-html', 'header.html');
+} else if ($type_document == 'write') {
 
-} else if ($type_document == 'write'){
-
-    $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $result = $statement->fetch();
-    // html style
-    $htmlTemplate = <<<HTML
+  $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+  $statement = $db->prepare($query);
+  $statement->execute();
+  $result = $statement->fetch();
+  // html style
+  $htmlTemplate = <<<HTML
       <style>
         body{
           color: #000;
@@ -79,19 +78,19 @@ if($type_document == 'generate'){
         }
       </style>
     HTML;
-  
-    // html content
-    $htmlTemplate .= $result['contenu_document'];
 
-    // $snappy->setOption('margin-top', '25mm');
-    // $snappy->setOption('margin-right', '15mm');
-    // $snappy->setOption('margin-bottom', '25mm');
-    // $snappy->setOption('margin-left', '15mm');
+  // html content
+  $htmlTemplate .= $result['contenu_document'];
 
-    $snappy->setOption('footer-font-size', 10);
+  // $snappy->setOption('margin-top', '25mm');
+  // $snappy->setOption('margin-right', '15mm');
+  // $snappy->setOption('margin-bottom', '25mm');
+  // $snappy->setOption('margin-left', '15mm');
 
-    $snappy->setOption('footer-html','footer.html');
-    $snappy->setOption('header-html','header.html');
+  $snappy->setOption('footer-font-size', 10);
+
+  $snappy->setOption('footer-html', 'footer.html');
+  $snappy->setOption('header-html', 'header.html');
 }
 
 // echo $htmlTemplate;
@@ -99,3 +98,15 @@ if($type_document == 'generate'){
 
 header('Content-Type: application/pdf');
 echo $snappy->getOutputFromHtml($htmlTemplate);
+
+
+/* Les paramètres qu'on pourrait mettre avant l'esportation */
+
+/* 
+
+- En-tête et pied de page
+- Le titre du document
+- Le graphique d'arrière plan
+- filigrane ou pas3
+
+*/

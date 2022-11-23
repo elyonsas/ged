@@ -377,7 +377,7 @@
                     <tr style="height: 22px;">
                         <td colspan="7" style="border-right: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: middle; font-family: Arial; font-size: 14pt; font-weight: bold;"
                             >
-                            <div style="white-space: nowrap; overflow: hidden; position: relative; width: 481px; left: 3px;">
+                            <div style="white-space: nowrap; overflow: hidden; position: relative; width: 500px; left: 3px;">
                                 <div style="float: left;">Sous-doc N&deg;8-1 : Informations g&eacute;n&eacute;rales sur le client
                                 </div>
                             </div>
@@ -3918,142 +3918,6 @@
                         <td
                             style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td
-                            style="border-right: 2px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
-                    </tr>
-                    <tr style="height: 21px;">
-                        <td
-                            style="border-right: 2px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td
-                            style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
-                            data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
-                        <td
-                            style="border-right: 2px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
-                    </tr>
-                    <tr style="height: 21px;">
-                        <td
-                            style="border-right: 2px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td
-                            style="border-right: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
-                            &nbsp;</td>
                         <td style="border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             data-sheets-numberformat="{&quot;1&quot;:1}">&nbsp;</td>
                         <td style="border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
@@ -4325,7 +4189,7 @@
                     <tr style="height: 22px;">
                         <td colspan="2" style="border-right: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: middle; font-family: Arial; font-size: 14pt; font-weight: bold;"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sous-doc N&deg;8-1 : Informations g&eacute;n&eacute;rales sur le client (Suite)&quot;}">
-                            <div style="white-space: nowrap; overflow: hidden; position: relative; width: 537px; left: 3px;">
+                            <div style="white-space: nowrap; overflow: hidden; position: relative; width: 600px; left: 3px;">
                                 <div style="float: left;">Sous-doc N&deg;8-1 : Informations g&eacute;n&eacute;rales sur le client
                                     (Suite)</div>
                             </div>
