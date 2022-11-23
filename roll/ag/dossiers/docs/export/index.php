@@ -10,6 +10,8 @@ connected('ag');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+use Knp\Snappy\Pdf;
+
 $id_document = $_GET['id_document'];
 
 $query = "SELECT * FROM document WHERE id_document = $id_document";
@@ -27,9 +29,7 @@ if($type_document == 'generate'){
   $statement->execute();
   $result = $statement->fetch();
 
-  $htmlTemplate = $result['contenu_document'];
-
-  $htmlTemplate .= <<<HTML
+  $htmlTemplate = <<<HTML
 
             <!-- <style>
               /* colgroup with width in % */
@@ -3693,40 +3693,57 @@ if($type_document == 'generate'){
         </table> -->
         
   HTML;
+  // html style
+  $htmlTemplate = <<<HTML
+    <style>
+      *{
+        max-height: 100% !important;
+      }
+      body{
+        color: #000;
+      }
+    </style>
+  HTML;
+
+  // html content
+  $htmlTemplate .= $result['contenu_document'];
 }
-
-
-
-
-
-
-
-
 
 // echo $htmlTemplate;
 // die;
 
-$dompdf = new Dompdf();
-$options = new Options();
-$options->set('isRemoteEnabled', true);
-$dompdf = new Dompdf($options);
-$dompdf->loadHtml($htmlTemplate);
-$dompdf->setPaper('A4', 'portrait');
-$dompdf->render();
+$snappy = new Pdf($_SERVER['DOCUMENT_ROOT'] . '/ged/assets/plugins/custom/wkhtmltopdf/bin/wkhtmltopdf');
+header('Content-Type: application/pdf');
+$snappy->setOption('margin-top', '25mm');
+$snappy->setOption('margin-right', '15mm');
+$snappy->setOption('margin-bottom', '25mm');
+$snappy->setOption('margin-left', '15mm');
+$snappy->setOption('encoding', 'UTF-8');
+$snappy->setOption('page-offset', '0');
+echo $snappy->getOutputFromHtml($htmlTemplate);
 
-$canvas = $dompdf->getCanvas();
-// chemin relatif de l'image
-$img_filigrane_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
 
-$head1_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon.png';
-$head2_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon_texte.png';
+// $dompdf = new Dompdf();
+// $options = new Options();
+// $options->set('isRemoteEnabled', true);
+// $dompdf = new Dompdf($options);
+// $dompdf->loadHtml($htmlTemplate);
+// $dompdf->setPaper('A4', 'portrait');
+// $dompdf->render();
 
-$foot1_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
-$foot2_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
-$canvas->page_script('
-  $pdf->image("' . $img_filigrane_path . '", 50, 100, 500, 500);
-  $pdf->image("' . $head1_page . '", 15, -10, 100, 100);
-  $pdf->image("' . $head2_page . '", 200, 0, 300, 36);
-');
+// $canvas = $dompdf->getCanvas();
+// // chemin relatif de l'image
+// $img_filigrane_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
 
-$dompdf->stream('Facture', array("Attachment" => false));
+// $head1_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon.png';
+// $head2_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon_texte.png';
+
+// $foot1_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
+// $foot2_page = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/logos/logo_elyon1.png';
+// $canvas->page_script('
+//   $pdf->image("' . $img_filigrane_path . '", 50, 100, 500, 500);
+//   $pdf->image("' . $head1_page . '", 15, -10, 100, 100);
+//   $pdf->image("' . $head2_page . '", 200, 0, 300, 36);
+// ');
+
+// $dompdf->stream('Facture', array("Attachment" => false));
