@@ -73,6 +73,7 @@ if ($type_document == 'generate') {
       <style>
         body{
           color: #000;
+          padding: 0px 15px;
         }
         li{
             white-space: nowrap !important;
