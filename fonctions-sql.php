@@ -105,6 +105,40 @@
         return $result["$info"];
     }
 
+    function find_id_collabo_by_id_utilisateur($id_utilisateur, PDO $db)
+    {
+        $query = "SELECT id_collaborateur FROM collaborateur WHERE id_utilisateur = :id_utilisateur";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_utilisateur' => $id_utilisateur
+        ]);
+        $result = $statement->fetch();
+
+        return $result['id_collaborateur'];
+    }
+
+    function find_ag_cabinet(PDO $db)
+    {
+        $query = "SELECT * FROM utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.type_compte = 'ag'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        return $result;
+    }
+
+    function find_dd_dec(PDO $db)
+    {
+        $query = "SELECT * FROM utilisateur, compte, collaborateur, departement WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND collaborateur.id_utilisateur = utilisateur.id_utilisateur AND collaborateur.id_departement = departement.id_departement 
+        AND compte.type_compte = 'dd' AND departement.id_departement = 1";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        return $result;
+    }
+
     function find_info_client($info, $id_client, PDO $db)
     {
 

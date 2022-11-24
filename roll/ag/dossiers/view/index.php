@@ -3220,8 +3220,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
-
-        function reload_datatables1() {
+        function reload_datatable1() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -3235,8 +3234,49 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        // Datatable2 = datatable docs juridico admin
+        // Datatable2 = datatable collabo
         function update_data_datatable2(data) {
+
+            $("#collabos_dossier").DataTable().destroy();
+            var collabos_dossier = $('#collabos_dossier').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "paging": false,
+                "bInfo": false,
+                "bFilter": false,
+                "bSort": false,
+                "order": [],
+                "data": data,
+                "initComplete": function(settings, json) {
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }
+            });
+
+            $('.sorting').click(function() {
+                setTimeout(() => {
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }, 1000);
+            })
+        }
+
+        function reload_datatable2() {
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    datatable: 'collabos_dossier',
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    update_data_datatable2(data);
+                }
+            })
+        }
+
+        // Datatable3 = datatable docs juridico admin
+        function update_data_datatable3(data) {
 
             $("#documents_juridico_admin").DataTable().destroy();
             var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
@@ -3266,8 +3306,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
-
-        function reload_datatables2() {
+        function reload_datatable3() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -3276,10 +3315,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    update_data_datatable1(data);
+                    update_data_datatable3(data);
                 }
             })
         }
+
+        
 
         // Reload all data pages and datatable
         function reloadPage() {
@@ -3347,6 +3388,39 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+            }
+        });
+
+        // Datatable for collabos dossier
+        $.ajax({
+            url: "roll/ag/dossiers/fetch.php",
+            method: "POST",
+            data: {
+                datatable: 'collabos_dossier',
+            },
+            dataType: "JSON",
+            success: function(data) {
+                var collabos_dossier = $('#collabos_dossier').DataTable({
+                    "processing": true,
+                    "serverSide": false,
+                    "paging": false,
+                    "bInfo": false,
+                    "bFilter": false,
+                    "bSort": false,
+                    "order": [],
+                    "data": data,
+                    "initComplete": function(settings, json) {
+                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                    }
+                });
+
+                $('.sorting').click(function() {
+                    setTimeout(() => {
+                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                    }, 1000);
+                })
             }
         });
 

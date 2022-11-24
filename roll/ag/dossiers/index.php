@@ -316,7 +316,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        function reload_datatables(datatable) {
+        function reload_datatable(datatable) {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -403,7 +403,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reload_datatables('all_dossiers'); // On recharge le datatable
+                                reload_datatable('all_dossiers'); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -448,7 +448,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reload_datatables('all_dossiers'); // On recharge le datatable
+                                reload_datatable('all_dossiers'); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -466,8 +466,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Lorsqu'on clique sur .detail_dossier
-        $(document).on('click', '.detail_dossier', function(e) {
+        // Lorsqu'on clique sur .view_detail_dossier
+        $(document).on('click', '.view_detail_dossier', function(e) {
             e.preventDefault();
             var id_client = $(this).data('id_client');
 
@@ -476,7 +476,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     id_client: id_client,
-                    action: 'detail_dossier'
+                    action: 'view_detail_dossier'
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -545,7 +545,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reload_datatables('all_dossiers'); // On recharge le datatable
+                            reload_datatable('all_dossiers'); // On recharge le datatable
 
 						} else {
 							$('#attribuer_modal').modal('hide');

@@ -228,6 +228,236 @@ if (isset($_POST['datatable'])) {
         );
     }
 
+    if ($_POST['datatable'] == 'collabos_dossier') {
+
+        $id_client = $_SESSION['id_view_client'];
+
+        $query = "SELECT * FROM assoc_client_collabo, client, collaborateur, utilisateur 
+        WHERE assoc_client_collabo.id_client = client.id_client AND assoc_client_collabo.id_collaborateur = collaborateur.id_collaborateur 
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND client.id_client = $id_client 
+        AND statut_assoc_client_collabo = 'actif' ORDER BY updated_at_assoc_client_collabo DESC";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $data = array();
+        $filtered_rows = $statement->rowCount();
+        $i = 1;
+
+        // Ajouter l'associé-gérant et le directeur de département
+        $ag = find_ag_cabinet($db);
+        foreach ($ag as $row) {
+            $sub_array = array();
+
+            $id_utilisateur = $row['id_utilisateur'];
+            $id_collaborateur = find_id_collabo_by_id_utilisateur($id_utilisateur, $db);
+            $nom_collaborateur = $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur'];
+            $email_collaborateur = $row['email_utilisateur'];
+            $telephone_collaborateur = $row['tel_utilisateur'];
+            $role = "Associé-Gérant";
+
+            // #
+            $sub_array[] = $i;
+
+            // Collaborateur
+            $sub_array[] = <<<HTML
+                <div class="d-flex flex-column justify-content-center">
+                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    class="fs-6 text-gray-800 text-hover-primary">$nom_collaborateur</a>
+                </div>
+            HTML;
+
+            // Téléphone
+            $sub_array[] = <<<HTML
+                $telephone_collaborateur
+            HTML;
+
+            // Rôle
+            $sub_array[] = <<<HTML
+                $role
+            HTML;
+
+            // Actions
+            $action = <<<HTML
+
+                <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+
+                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="bi bi-three-dots fs-3"></i>
+                        </button>
+                        <!--begin::Menu 3-->
+                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
+                            </div>
+                            <!--end::Menu item-->
+                        </div>
+                        <!--end::Menu 3-->
+                    </div>
+                </td>
+
+            HTML;
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
+            $i++;
+        }
+
+        $dd = find_dd_dec($db);
+        foreach ($dd as $row) {
+            $sub_array = array();
+
+            $id_utilisateur = $row['id_utilisateur'];
+            $id_collaborateur = find_id_collabo_by_id_utilisateur($id_utilisateur, $db);
+            $nom_collaborateur = $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur'];
+            $email_collaborateur = $row['email_utilisateur'];
+            $telephone_collaborateur = $row['tel_utilisateur'];
+            $role = "Directeur de département";
+
+            // #
+            $sub_array[] = $i;
+
+            // Collaborateur
+            $sub_array[] = <<<HTML
+                <div class="d-flex flex-column justify-content-center">
+                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    class="fs-6 text-gray-800 text-hover-primary">$nom_collaborateur</a>
+                </div>
+            HTML;
+
+            // Téléphone
+            $sub_array[] = <<<HTML
+                $telephone_collaborateur
+            HTML;
+
+            // Rôle
+            $sub_array[] = <<<HTML
+                $role
+            HTML;
+
+            // Actions
+            $action = <<<HTML
+
+                <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+
+                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="bi bi-three-dots fs-3"></i>
+                        </button>
+                        <!--begin::Menu 3-->
+                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
+                            </div>
+                            <!--end::Menu item-->
+                        </div>
+                        <!--end::Menu 3-->
+                    </div>
+                </td>
+
+            HTML;
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
+            $i++;
+        }
+
+        foreach ($result as $row) {
+
+            $sub_array = array();
+
+            $id_client = $row['id_client'];
+            $id_collaborateur = $row['id_collaborateur'];
+            $nom_collaborateur = $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur'];
+            $email_collaborateur = $row['email_utilisateur'];
+            $telephone_collaborateur = $row['tel_utilisateur'];
+            $role_client = $row['role_assoc_client_collabo'];
+
+            // #
+            $sub_array[] = $i;
+
+            // Collaborateur
+            $sub_array[] = <<<HTML
+                <div class="d-flex flex-column justify-content-center">
+                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    class="fs-6 text-gray-800 text-hover-primary">$nom_collaborateur</a>
+                </div>
+            HTML;
+
+            // Téléphone
+            $sub_array[] = <<<HTML
+                $telephone_collaborateur
+            HTML;
+
+            // Rôle
+            switch ($role_client) {
+                case 'cm':
+                    $role_client = 'Chef de mission';
+                    break;
+
+                case 'am':
+                    $role_client = 'Assistant mission';
+                    break;
+            }
+            $sub_array[] = <<<HTML
+                $role_client
+            HTML;
+
+            // Actions
+            $action = <<<HTML
+
+                <td>
+                    <div class="d-flex justify-content-end flex-shrink-0">
+
+                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="bi bi-three-dots fs-3"></i>
+                        </button>
+                        <!--begin::Menu 3-->
+                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
+                            </div>
+                            <!--end::Menu item-->
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <a href="" class="retirer_dossier menu-link text-hover-danger px-3" data-id_client="{$id_client}" data-id_collaborateur="{$id_collaborateur}">Retirer ce dossier</a>
+                            </div>
+                            <!--end::Menu item-->
+
+                            <!--begin::Menu separator-->
+                            <!-- <div class="separator mt-3 opacity-75"></div> -->
+                            <!--end::Menu separator-->
+
+                            <!--begin::Menu item-->
+                            <!-- <div class="menu-item">
+                                <div class="menu-content px-3 py-3">
+                                    <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
+                                </div>
+                            </div> -->
+                            <!--end::Menu item-->
+                        </div>
+                        <!--end::Menu 3-->
+                    </div>
+                </td>
+
+            HTML;
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
+            $i++;
+        }
+
+
+        $output = $data;
+    }
+
     if ($_POST['datatable'] == 'documents_juridico_admin') {
 
         $output = array();
@@ -919,7 +1149,7 @@ if (isset($_POST['action'])) {
             $adresse_client = $row['adresse_utilisateur'];
 
             $designation_entite = $result['designation_entite']??$nom_client;
-            $boite_postal = $result['boite_postal']??'--';
+            $boite_postal = isset($result['boite_postal']) ? $result['num_code'] . ' ' . $result['code'] . ' ' . $result['boite_postal'] : '--';
             $designation_activite_principale = $result['designation_activite_principale']??'--';
             $adresse_geo_complete = $result['adresse_geo_complete']??'--';
 

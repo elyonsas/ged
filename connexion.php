@@ -92,6 +92,10 @@ if (isset($_POST['credential'])) {
                 $message = "parametres corrects - stg";
             }
 
+            if ($result['type_compte'] == "admin") {
+                $message = "parametres corrects - admin";
+            }
+
         } else {
             $message = 'compte inexistant';
         }
@@ -163,6 +167,10 @@ if (isset($_POST['credential'])) {
 
                 if ($data['type_compte'] == "stg") {
                     $message = "parametres corrects - stg";
+                }
+
+                if ($result['type_compte'] == "admin") {
+                    $message = "parametres corrects - admin";
                 }
                 
             } else {

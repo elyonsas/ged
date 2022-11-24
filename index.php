@@ -27,6 +27,10 @@ if (isset($_SESSION['id_compte'])) {
 	if ($_SESSION['type_compte'] == "stg") {
 		header("Location:/ged/roll/stg");
 	}
+
+	if ($_SESSION['type_compte'] == "admin") {
+		header("Location:/ged/roll/ag");
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -307,6 +311,14 @@ License: For each use you must have a valid license purchased only from above li
 								window.location = "roll/stg/";
 							}
 						}
+
+						if (data == "parametres corrects - admin") {
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/ag/";
+							}
+						}	
 					}
 				},
 			});
@@ -451,6 +463,14 @@ License: For each use you must have a valid license purchased only from above li
 												window.location = redirect;
 											} else {
 												window.location = "roll/stg/";
+											}
+										}
+
+										if (data == "parametres corrects - admin") {
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/ag/";
 											}
 										}
 

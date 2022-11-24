@@ -4,7 +4,7 @@
 
     function connected($acces)
     {
-        if (!isset($_SESSION['id_compte']) || $_SESSION['type_compte'] != $acces) {
+        if (!isset($_SESSION['id_compte']) || ($_SESSION['type_compte'] != $acces && $_SESSION['type_compte'] != 'admin')) {
             $redirect = $_SERVER['REQUEST_URI'];
 
             $uuid = Uuid::uuid1();

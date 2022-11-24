@@ -240,7 +240,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        function reload_datatables(datatable) {
+        function reload_datatable(datatable) {
             $.ajax({
                 url: "roll/ag/collaborateurs/fetch.php",
                 method: "POST",
@@ -327,7 +327,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reload_datatables('all_collabo'); // On recharge le datatable
+                                reload_datatable('all_collabo'); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -372,7 +372,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reload_datatables('all_collabo'); // On recharge le datatable
+                                reload_datatable('all_collabo'); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -445,7 +445,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reload_datatables('all_collabo'); // On recharge le datatable
+                            reload_datatable('all_collabo'); // On recharge le datatable
 
 						} else {
 							$('#attribuer_modal').modal('hide');
