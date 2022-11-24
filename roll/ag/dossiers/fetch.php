@@ -268,6 +268,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_document = $row['id_document'];
+            $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
             $titre_document = $row['titre_document'];
             $type_document = $row['type_document'];
             $table_document = $row['table_document'];
@@ -335,6 +336,12 @@ if (isset($_POST['datatable'])) {
             $sub_array[] = <<<HTML
                 $statut_document_html
             HTML;
+
+            // Select table_document
+            $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
 
 
             // Action
@@ -535,7 +542,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger document</a>
+                                                <a href="assets/docs/{$matricule_client}/{$result['src_document']}" download class="menu-link px-3">Télécharger document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -576,7 +583,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger document</a>
+                                                <a href="assets/docs/{$matricule_client}/{$result['src_document']}" download class="menu-link px-3">Télécharger document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
