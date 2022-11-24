@@ -169,7 +169,7 @@ if (isset($_POST['credential'])) {
                     $message = "parametres corrects - stg";
                 }
 
-                if ($result['type_compte'] == "admin") {
+                if ($data['type_compte'] == "admin") {
                     $message = "parametres corrects - admin";
                 }
                 
