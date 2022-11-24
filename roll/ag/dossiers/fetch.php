@@ -901,6 +901,12 @@ if (isset($_POST['action'])) {
 
         foreach ($result as $row) {
 
+            $query = "SELECT * FROM document, doc_8_fiche_id_client, client WHERE document.id_document = doc_8_fiche_id_client.id_document
+            AND document.id_client = client.id_client AND document.id_client = $id_client";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
             $id_utilisateur = $row['id_utilisateur'];
             $avatar_client = <<<HTML
                 <img src="assets/media/avatars/{$row['avatar_utilisateur']}" alt="image">
@@ -911,6 +917,11 @@ if (isset($_POST['action'])) {
             $date_naiss_client = si_funct1($row['date_naiss_utilisateur'], date('d-m-Y', strtotime($row['date_naiss_utilisateur'])), '--');
             $tel_client = $row['tel_utilisateur'];
             $adresse_client = $row['adresse_utilisateur'];
+
+            $designation_entite = $result['designation_entite']??$nom_client;
+            $boite_postal = $result['boite_postal']??'--';
+            $designation_activite_principale = $result['designation_activite_principale']??'--';
+            $adresse_geo_complete = $result['adresse_geo_complete']??'--';
 
             $statut_client = $row['statut_compte'];
             switch ($statut_client) {
@@ -1044,6 +1055,12 @@ if (isset($_POST['action'])) {
                 'date_naiss_client' => $date_naiss_client,
                 'tel_client' => $tel_client,
                 'adresse_client' => $adresse_client,
+
+                'designation_entite' => $designation_entite,
+                'boite_postal' => $boite_postal,
+                'designation_activite_principale' => $designation_activite_principale,
+                'adresse_geo_complete' => $adresse_geo_complete,
+
                 'statut_client' => $statut_client_html,
                 'prise_en_charge_client' => $prise_en_charge_client,
                 'action_client' => $action_client,

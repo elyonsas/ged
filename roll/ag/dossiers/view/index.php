@@ -57,8 +57,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Info-->
-                                        <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                            <a id="" href="" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                        <div class="d-flex flex-column fw-semibold fs-6 mb-4 pe-2">
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                                 <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +68,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 </span>
                                                 <!--end::Svg Icon-->
                                                 <span id="email_client">--</span>
-                                            </a>
+                                            </div>
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-24-050857/core/html/src/media/icons/duotune/general/gen018.svg-->
+                                                <span class="svg-icon svg-icon-4 me-1">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.3" d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z" fill="currentColor" />
+                                                        <path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="currentColor" />
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                                <span id="adresse_client">--</span>
+                                            </div>
                                         </div>
                                         <!--end::Info-->
                                         <!-- begin:niveau -->
@@ -133,6 +144,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 </div>
                                 <!--end::Header-->
                                 <div class="d-flex flex-column">
+                                    <div class="d-flex flex-wrap mb-5">
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Désignation de l'entité : 
+                                            <span id="designation_entite" class="text-gray-400 fw-bold"></span>
+                                        </div>
+                                    </div>
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
                                             Matricule :
@@ -141,7 +158,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--begin::copy-btn-->
                                         <button id="matricule_client_copy_btn" type="button" data-clipboard-target="#matricule_client" data-bs-toggle="popover" data-bs-placement="top" title="" data-bs-content="Copié !" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary">
                                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-07-151451/core/html/src/media/icons/duotune/general/gen054.svg-->
-                                            <span id="code_article_copy_icon" class="svg-icon svg-icon-muted svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <span id="code_article_copy_icon" class="svg-icon svg-icon-muted svg-icon-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor" />
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor" />
                                                 </svg>
@@ -151,12 +169,28 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--end::copy-btn-->
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
-                                        <div class="text-gray-900 fs-3 fw-bold">Téléphone : </div>
-                                        <div id="tel_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Téléphone : 
+                                            <span id="tel_client" class="text-gray-400 fw-bold"></span>
+                                        </div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
-                                        <div class="text-gray-900 fs-3 fw-bold">Adresse : </div>
-                                        <div id="adresse_client" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Boîte postale : 
+                                            <span id="boite_postal" class="text-gray-400 fw-bold"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-wrap mb-5">
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Activité principale : 
+                                            <span id="designation_activite_principale" class="text-gray-400 fw-bold"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-wrap mb-5">
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Adresse géographique complète : 
+                                            <span id="adresse_geo_complete" class="text-gray-400 fw-bold"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -749,7 +783,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     height: 100%;
                 }
 
-                #edit_doc_write_modal .loader{
+                #edit_doc_write_modal .loader {
                     background-color: white;
                     position: absolute;
                     opacity: 0.95;
@@ -926,7 +960,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     height: 100%;
                 }
 
-                #edit_doc_generate_modal .loader{
+                #edit_doc_generate_modal .loader {
                     background-color: white;
                     position: absolute;
                     opacity: 0.95;
@@ -2241,13 +2275,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz1_na" class="form-check-input" type="radio" value="na" name="quiz1">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact1" name="impact1" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact1" name="impact1" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2281,13 +2315,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz2_na" class="form-check-input" type="radio" value="na" name="quiz2">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact2" name="impact2" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact2" name="impact2" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2321,13 +2355,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz3_na" class="form-check-input" type="radio" value="na" name="quiz3">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact3" name="impact3" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact3" name="impact3" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2364,13 +2398,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz4_na" class="form-check-input" type="radio" value="na" name="quiz4">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact4" name="impact4" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact4" name="impact4" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2404,13 +2438,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz5_na" class="form-check-input" type="radio" value="na" name="quiz5">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact5" name="impact5" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact5" name="impact5" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2444,13 +2478,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz6_na" class="form-check-input" type="radio" value="na" name="quiz6">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact6" name="impact6" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact6" name="impact6" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2487,13 +2521,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz7_na" class="form-check-input" type="radio" value="na" name="quiz7">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact7" name="impact7" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact7" name="impact7" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2527,13 +2561,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz8_na" class="form-check-input" type="radio" value="na" name="quiz8">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact8" name="impact8" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact8" name="impact8" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2567,13 +2601,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz9_na" class="form-check-input" type="radio" value="na" name="quiz9">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact9" name="impact9" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact9" name="impact9" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2610,13 +2644,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz10_na" class="form-check-input" type="radio" value="na" name="quiz10">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact10" name="impact10" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact10" name="impact10" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2650,13 +2684,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz11_na" class="form-check-input" type="radio" value="na" name="quiz11">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact11" name="impact11" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact11" name="impact11" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2690,13 +2724,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz12_na" class="form-check-input" type="radio" value="na" name="quiz12">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact12" name="impact12" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact12" name="impact12" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2733,13 +2767,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz13_na" class="form-check-input" type="radio" value="na" name="quiz13">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact13" name="impact13" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact13" name="impact13" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2773,13 +2807,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz14_na" class="form-check-input" type="radio" value="na" name="quiz14">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact14" name="impact14" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact14" name="impact14" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2816,13 +2850,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz15_na" class="form-check-input" type="radio" value="na" name="quiz15">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact15" name="impact15" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact15" name="impact15" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2856,13 +2890,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz16_na" class="form-check-input" type="radio" value="na" name="quiz16">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact16" name="impact16" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact16" name="impact16" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2896,13 +2930,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz17_na" class="form-check-input" type="radio" value="na" name="quiz17">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact17" name="impact17" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact17" name="impact17" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2936,13 +2970,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz18_na" class="form-check-input" type="radio" value="na" name="quiz18">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact18" name="impact18" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact18" name="impact18" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -2976,13 +3010,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz19_na" class="form-check-input" type="radio" value="na" name="quiz19">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact19" name="impact19" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact19" name="impact19" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -3016,13 +3050,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz20_na" class="form-check-input" type="radio" value="na" name="quiz20">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact20" name="impact20" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact20" name="impact20" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -3056,13 +3090,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <input id="table_doc_19_quiz_lcb_quiz21_na" class="form-check-input" type="radio" value="na" name="quiz21">
                                         </div>
                                         <div class="d-flex flex-column ms-5">
-                                        <label class="m-0 mb-5 text-center fs-5">Impact</label>
-                                        <select id="table_doc_19_quiz_lcb_impact21" name="impact21" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
-                                            <option></option>
-                                            <option value="e">Élevé</option>
-                                            <option value="m">Moyen</option>
-                                            <option value="f">Faible</option>
-                                        </select>
+                                            <label class="m-0 mb-5 text-center fs-5">Impact</label>
+                                            <select id="table_doc_19_quiz_lcb_impact21" name="impact21" class="form-select form-select-solid" data-control="select2" data-placeholder="Impact" data-hide-search="true">
+                                                <option></option>
+                                                <option value="e">Élevé</option>
+                                                <option value="m">Moyen</option>
+                                                <option value="f">Faible</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -3264,10 +3298,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#avatar_client').html(data.avatar_client);
                     $('#nom_client').html(data.nom_client);
                     $('#email_client').html(data.email_client);
-                    $('#matricule_client').html(data.matricule_client);
-                    $('#date_naiss_client').html(data.date_naiss_client);
-                    $('#tel_client').html(data.tel_client);
                     $('#adresse_client').html(data.adresse_client);
+                    $('#matricule_client').html(data.matricule_client);
+                    $('#tel_client').html(data.tel_client);
+
+                    $('#designation_entite').html(data.designation_entite);
+                    $('#boite_postal').html(data.boite_postal);
+                    $('#designation_activite_principale').html(data.designation_activite_principale);
+                    $('#adresse_geo_complete').html(data.adresse_geo_complete);
+
                     $('#statut_client').html(data.statut_client);
                     $('#action_client').html(data.action_client);
                     $('#niveau_client').html(data.niveau_client);
@@ -3293,10 +3332,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#avatar_client').html(data.avatar_client);
                 $('#nom_client').html(data.nom_client);
                 $('#email_client').html(data.email_client);
-                $('#matricule_client').html(data.matricule_client);
-                $('#date_naiss_client').html(data.date_naiss_client);
-                $('#tel_client').html(data.tel_client);
                 $('#adresse_client').html(data.adresse_client);
+                $('#matricule_client').html(data.matricule_client);
+                $('#tel_client').html(data.tel_client);
+
+                $('#designation_entite').html(data.designation_entite);
+                $('#boite_postal').html(data.boite_postal);
+                $('#designation_activite_principale').html(data.designation_activite_principale);
+                $('#adresse_geo_complete').html(data.adresse_geo_complete);
+
                 $('#statut_client').html(data.statut_client);
                 $('#action_client').html(data.action_client);
                 $('#niveau_client').html(data.niveau_client);
@@ -3840,7 +3884,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
                     if (typeof tinymce_write == 'undefined') {
                         $('#edit_doc_write_modal .modal-body #id_edit_doc_write').html(data.contenu_document);
-                        
+
                         tinymce_write = tinymce.init({
                             selector: '#id_edit_doc_write',
                             menubar: false,
@@ -3897,7 +3941,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
                     if (typeof tinymce_generate == 'undefined') {
                         $('#edit_doc_generate_modal .modal-body #id_edit_doc_generate').html(data.contenu_document);
-                        
+
                         tinymce_generate = tinymce.init({
                             selector: '#id_edit_doc_generate',
                             menubar: false,
@@ -3920,7 +3964,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             $('#edit_doc_generate_modal .loader').hide();
                         }, 2000);
                     } else {
-                        
+
                         // Reset editor and set a new content
                         tinymce.get('id_edit_doc_generate').resetContent(data.contenu_document);
 
@@ -4663,7 +4707,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz1
                         if (data.quiz1 == 'oui') {
                             $('#table_doc_3_accept_mission_quiz1_oui').prop('checked', true);
-                        } else if(data.quiz1 == 'non') {
+                        } else if (data.quiz1 == 'non') {
                             $('#table_doc_3_accept_mission_quiz1_non').prop('checked', true);
                         }
                         // observ1
@@ -4696,7 +4740,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // accept_mission
                         if (data.accept_mission == 'oui') {
                             $('#table_doc_3_accept_mission_accept_mission_oui').prop('checked', true);
-                        } else if(data.accept_mission == 'non') {
+                        } else if (data.accept_mission == 'non') {
                             $('#table_doc_3_accept_mission_accept_mission_non').prop('checked', true);
                         }
                         // observation
@@ -4720,23 +4764,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // quiz1 à 21
                         for (let i = 1; i <= 21; i++) {
                             // quiz
-                            if (data['quiz'+i] == 'oui') {
-                                $('#table_doc_19_quiz_lcb_quiz'+i+'_oui').prop('checked', true);
-                            } else if(data['quiz'+i] == 'non') {
-                                $('#table_doc_19_quiz_lcb_quiz'+i+'_non').prop('checked', true);
-                            } else if(data['quiz'+i] == 'na') {
-                                $('#table_doc_19_quiz_lcb_quiz'+i+'_na').prop('checked', true);
+                            if (data['quiz' + i] == 'oui') {
+                                $('#table_doc_19_quiz_lcb_quiz' + i + '_oui').prop('checked', true);
+                            } else if (data['quiz' + i] == 'non') {
+                                $('#table_doc_19_quiz_lcb_quiz' + i + '_non').prop('checked', true);
+                            } else if (data['quiz' + i] == 'na') {
+                                $('#table_doc_19_quiz_lcb_quiz' + i + '_na').prop('checked', true);
                             }
                             // impact
-                            if(data['impact'+i] == 'e'){
-                                $('#table_doc_19_quiz_lcb_impact'+i).val('e').trigger('change');
-                            } else if(data['impact'+i] == 'm'){
-                                $('#table_doc_19_quiz_lcb_impact'+i).val('m').trigger('change');
-                            } else if(data['impact'+i] == 'f'){
-                                $('#table_doc_19_quiz_lcb_impact'+i).val('f').trigger('change');
+                            if (data['impact' + i] == 'e') {
+                                $('#table_doc_19_quiz_lcb_impact' + i).val('e').trigger('change');
+                            } else if (data['impact' + i] == 'm') {
+                                $('#table_doc_19_quiz_lcb_impact' + i).val('m').trigger('change');
+                            } else if (data['impact' + i] == 'f') {
+                                $('#table_doc_19_quiz_lcb_impact' + i).val('f').trigger('change');
                             }
                             // observ
-                            $('#table_doc_19_quiz_lcb_observ'+i).val(data['observ'+i]);
+                            $('#table_doc_19_quiz_lcb_observ' + i).val(data['observ' + i]);
                         }
 
                         // conclusion
@@ -4894,9 +4938,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         });
-
-
-
 
     })
 </script>
