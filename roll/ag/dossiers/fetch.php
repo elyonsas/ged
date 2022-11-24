@@ -379,7 +379,13 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
+                                            <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
@@ -427,7 +433,13 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
+                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -468,7 +480,13 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter</a>
+                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -480,7 +498,7 @@ if (isset($_POST['datatable'])) {
                         }
                     } else if ($type_document == 'file') {
                         if ($table_document != 'document_file') {
-                            $action = <<<HTML
+                        $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
@@ -511,7 +529,13 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="supprimer_doc_autre menu-link px-3" data-id_document="{$id_document}">Supprimer</a>
+                                                <a href="" class="supprimer_doc_autre menu-link px-3" data-id_document="{$id_document}">Supprimer le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -547,6 +571,12 @@ if (isset($_POST['datatable'])) {
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
                                                 <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

@@ -45,6 +45,7 @@ if ($type_document == 'generate') {
         body{
           color: #000;
         }
+
         </style>
     HTML;
 
@@ -107,6 +108,7 @@ echo $snappy->getOutputFromHtml($htmlTemplate);
 - En-tête et pied de page
 - Le titre du document
 - Le graphique d'arrière plan
-- filigrane ou pas3
+- filigrane ou pas
+- Mode de visualisation (portrait ou paysage)
 
 */

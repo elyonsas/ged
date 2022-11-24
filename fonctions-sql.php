@@ -4140,6 +4140,7 @@
                     </tr>
                 </tbody>
             </table><br>
+            <div style="page-break-after: always;"></div>
         HTML;
 
         // Sous-doc 8-1 (Partie 2)
@@ -5241,6 +5242,7 @@
                 </tbody>
             </table>
             <br><br><br><br><br>
+            <div style="page-break-after: always;"></div>
         HTML;
 
         // Sous-doc 8-1 (Partie 3)
@@ -5782,6 +5784,7 @@
                 </tbody>
             </table>
             <br><br><br><br><br>
+            <div style="page-break-after: always;"></div>
         HTML;
 
         // Sous-doc 8-3
