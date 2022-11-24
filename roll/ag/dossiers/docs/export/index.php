@@ -23,6 +23,7 @@ $table_document = $result['table_document'];
 $type_document = $result['type_document'];
 
 $snappy = new Pdf($_SERVER['DOCUMENT_ROOT'] . '/ged/assets/plugins/custom/wkhtmltopdf/bin/wkhtmltopdf');
+// $snappy = new Pdf($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64');
 
 $snappy->setOption('encoding', 'UTF-8');
 $snappy->setOption('image-quality', 100);

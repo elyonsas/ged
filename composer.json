@@ -4,6 +4,10 @@
         "ramsey/uuid": "^4.2",
         "google/apiclient": "2.12.1",
         "dompdf/dompdf": "^2.0",
-        "knplabs/knp-snappy": "^1.4"
+        "knplabs/knp-snappy": "^1.4",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-i386": "0.12.x",
+        "h4cc/wkhtmltoimage-i386": "0.12.x"
     }
 }
