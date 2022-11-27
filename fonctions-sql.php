@@ -13724,7 +13724,7 @@
             <br><br><br><br><br>
             <div style="page-break-after: always;"></div>
 
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="39">
@@ -13741,7 +13741,7 @@
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 12pt; font-weight: bold; text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 14pt; font-weight: bold; text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)&quot;}">
                             DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)</td>
@@ -13830,7 +13830,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 18pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Identification du client Personne Physique&quot;}">
                             Identification du client Personne Physique</td>
@@ -14335,7 +14335,7 @@
             <br><br><br><br><br>
             <div style="page-break-after: always;"></div>
 
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="39">
@@ -14351,7 +14351,7 @@
                 <tbody>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 12pt; font-weight: bold; text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 14pt; font-weight: bold; text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)&quot;}">
                             DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)</td>
@@ -14441,7 +14441,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 18pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Identification du client Personne Morale&quot;}">
                             Identification du client Personne Morale</td>
@@ -14808,7 +14808,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="border-right: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: bottom; font-size: 10pt; font-style: italic;"
+                        <td style="border-right: 1px solid transparent; overflow: visible; padding: 0px; vertical-align: bottom; font-size: 12pt; font-style: italic;"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;*ou document &eacute;quivalent si le client n&rsquo;est pas une soci&eacute;t&eacute; commerciale (association, syndicat, &hellip;)&quot;}">
                             <div style="white-space: nowrap; overflow: hidden; position: relative; width: 519px; left: 3px;">
                                 <div style="float: left;">*ou document &eacute;quivalent si le client n&rsquo;est pas une
@@ -14846,7 +14846,7 @@
             <br><br><br><br><br>
             <div style="page-break-after: always;"></div>
 
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="39">
@@ -14862,7 +14862,7 @@
                 <tbody>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 12pt; font-weight: bold; text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 14pt; font-weight: bold; text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)&quot;}">
                             DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)</td>
@@ -14941,7 +14941,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 18pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Identification du b&eacute;n&eacute;ficiaire effectif XXX&quot;}">
                             Identification du b&eacute;n&eacute;ficiaire effectif XXX</td>
@@ -14993,7 +14993,7 @@
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-size: 10pt; font-style: italic; overflow-wrap: break-word;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-size: 12pt; font-style: italic; overflow-wrap: break-word;"
                             colspan="3" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;S&eacute;lectionner la cellule et choisir la r&eacute;ponse dans la liste propos&eacute;e par le menu d&eacute;roulant&quot;}">
                             S&eacute;lectionner la cellule et choisir la r&eacute;ponse dans la liste propos&eacute;e par le menu
@@ -15032,8 +15032,8 @@
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;"
                             data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:7,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Calibri&quot;,&quot;4&quot;:11,&quot;5&quot;:1}}"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1 / Si OUI&quot;}"><span
-                                style="font-size: 11pt; font-family: Calibri, Arial; color: rgb(0, 0, 0);">1 / Si </span><span
-                                style="font-size: 11pt; font-family: Calibri, Arial; font-weight: bold; color: rgb(0, 0, 0);">OUI</span>
+                                style="font-size: 13pt; font-family: Calibri, Arial; color: rgb(0, 0, 0);">1 / Si </span><span
+                                style="font-size: 13pt; font-family: Calibri, Arial; font-weight: bold; color: rgb(0, 0, 0);">OUI</span>
                         </td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
@@ -15404,8 +15404,8 @@
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;"
                             data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:7,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Calibri&quot;,&quot;4&quot;:11,&quot;5&quot;:1}}"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2 / Si NON&quot;}"><span
-                                style="font-size: 11pt; font-family: Calibri, Arial; color: rgb(0, 0, 0);">2 / Si </span><span
-                                style="font-size: 11pt; font-family: Calibri, Arial; font-weight: bold; color: rgb(0, 0, 0);">NON</span>
+                                style="font-size: 13pt; font-family: Calibri, Arial; color: rgb(0, 0, 0);">2 / Si </span><span
+                                style="font-size: 13pt; font-family: Calibri, Arial; font-weight: bold; color: rgb(0, 0, 0);">NON</span>
                         </td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
@@ -15505,7 +15505,7 @@
             <br><br><br><br><br>
             <div style="page-break-after: always;"></div>
 
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="39">
@@ -15521,7 +15521,7 @@
                 <tbody>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 12pt; font-weight: bold; text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 14pt; font-weight: bold; text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)&quot;}">
                             DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)</td>
@@ -15611,7 +15611,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 18pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;D&eacute;termination du niveau de risque de Blanchiment de Capitaux&quot;}">
                             D&eacute;termination du niveau de risque de Blanchiment de Capitaux</td>
@@ -16139,7 +16139,7 @@
             <br><br><br><br><br>
             <div style="page-break-after: always;"></div>
 
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="39">
@@ -16155,7 +16155,7 @@
                 <tbody>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 12pt; font-weight: bold; text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 14pt; font-weight: bold; text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)&quot;}">
                             DOC N&deg;19: Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)(Suite)</td>
@@ -16245,7 +16245,7 @@
                     </tr>
                     <tr style="height: 19px;">
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom;">&nbsp;</td>
-                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-size: 18pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="7" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Revue ind&eacute;pendante&quot;}">Revue
                             ind&eacute;pendante</td>

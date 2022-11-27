@@ -42,6 +42,7 @@ if ($type_document == 'generate') {
       <style>
         *{
           max-height: 100% !important;
+          white-space: normal !important;
         }
         body{
           color: #000;
