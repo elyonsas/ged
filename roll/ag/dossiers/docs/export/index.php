@@ -30,7 +30,6 @@ $snappy->setOption('image-quality', 100);
 $snappy->setOption('enable-local-file-access', true);
 
 $snappy->setOption('title', $result['titre_document']);
-$snappy->setOption('minimum-font-size', 15);
 
 if ($type_document == 'generate') {
 
@@ -92,6 +91,7 @@ if ($type_document == 'generate') {
   // $snappy->setOption('margin-left', '15mm');
 
   $snappy->setOption('footer-font-size', 10);
+  $snappy->setOption('minimum-font-size', 20);
 
   $snappy->setOption('footer-html', 'footer.html');
   $snappy->setOption('header-html', 'header.html');
