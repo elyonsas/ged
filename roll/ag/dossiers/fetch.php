@@ -455,7 +455,9 @@ if (isset($_POST['datatable'])) {
         }
 
 
-        $output = $data;
+        $output = array(
+            "data" => $data
+        );
     }
 
     if ($_POST['datatable'] == 'documents_juridico_admin') {
@@ -1309,6 +1311,24 @@ if (isset($_POST['action'])) {
         $output = $result;
     }
 
+    if ($_POST['action'] == 'view_detail_collabo') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+
+        $query = "SELECT * FROM utilisateur, collaborateur WHERE utilisateur.id_utilisateur = collaborateur.id_utilisateur 
+        AND collaborateur.id_collaborateur = $id_collaborateur";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'collaborateur' => $result['prenom_utilisateur'] . ' ' . $result['nom_utilisateur'],
+            'code_collaborateur' => $result['code_collaborateur'],
+            'telephone_collaborateur' => $result['email_utilisateur'],
+            'email_collaborateur' => $result['tel_utilisateur'],
+            'adresse_collaborateur' => $result['adresse_utilisateur'],
+        ];
+    }
     if ($_POST['action'] == 'view_detail_document') {
 
         $id_document = $_POST['id_document'];
@@ -1316,59 +1336,55 @@ if (isset($_POST['action'])) {
         $query = "SELECT * FROM document WHERE id_document = $id_document";
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
 
         $output = array();
 
-        foreach ($result as $row) {
-
-            $aspect_document = $row['aspect_document'];
-            switch ($aspect_document) {
-                case 'juridiques_et_administratifs':
-                    $aspect_document = 'Juridiques et administratifs';
-                    break;
-                case 'techniques':
-                    $aspect_document = 'Techniques';
-                    break;
-                case 'comptables_et_financiers':
-                    $aspect_document = 'Comptables et financiers';
-                    break;
-            }
-
-
-            $code_document = $row['code_document'];
-            $titre_document = $row['titre_document'];
-
-            $statut_document = $row['statut_document'];
-            switch ($statut_document) {
-                case 'valide':
-                    $statut_document = <<<HTML
-                        <span class="badge badge-light-success">Validé</span>
-                    HTML;
-                    break;
-                case 'invalide':
-                    $statut_document = <<<HTML
-                        <span class="badge badge-light-danger">Invalidé</span>
-                    HTML;
-                    break;
-            }
-
-            $created_by_document = find_info_utilisateur('prenom_utilisateur', $row['created_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $row['created_by_document'], $db);
-            $created_at_document = si_funct1($row['created_at_document'], date('d/m/Y H:i:s', strtotime($row['created_at_document'])), '');
-            $updated_by_document = find_info_utilisateur('prenom_utilisateur', $row['updated_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $row['updated_by_document'], $db);
-            $updated_at_document = si_funct1($row['updated_at_document'], date('d/m/Y H:i:s', strtotime($row['updated_at_document'])), '');
-
-            $output = [
-                'aspect_document' => $aspect_document,
-                'code_document' => $code_document,
-                'titre_document' => $titre_document,
-                'statut_document' => $statut_document,
-                'created_by_document' => $created_by_document,
-                'created_at_document' => $created_at_document,
-                'updated_by_document' => $updated_by_document,
-                'updated_at_document' => $updated_at_document
-            ];
+        $aspect_document = $result['aspect_document'];
+        switch ($aspect_document) {
+            case 'juridiques_et_administratifs':
+                $aspect_document = 'Juridiques et administratifs';
+                break;
+            case 'techniques':
+                $aspect_document = 'Techniques';
+                break;
+            case 'comptables_et_financiers':
+                $aspect_document = 'Comptables et financiers';
+                break;
         }
+
+        $code_document = $result['code_document'];
+        $titre_document = $result['titre_document'];
+
+        $statut_document = $result['statut_document'];
+        switch ($statut_document) {
+            case 'valide':
+                $statut_document = <<<HTML
+                    <span class="badge badge-light-success">Validé</span>
+                HTML;
+                break;
+            case 'invalide':
+                $statut_document = <<<HTML
+                    <span class="badge badge-light-danger">Invalidé</span>
+                HTML;
+                break;
+        }
+
+        $created_by_document = find_info_utilisateur('prenom_utilisateur', $result['created_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['created_by_document'], $db);
+        $created_at_document = si_funct1($result['created_at_document'], date('d/m/Y H:i:s', strtotime($result['created_at_document'])), '');
+        $updated_by_document = find_info_utilisateur('prenom_utilisateur', $result['updated_by_document'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['updated_by_document'], $db);
+        $updated_at_document = si_funct1($result['updated_at_document'], date('d/m/Y H:i:s', strtotime($result['updated_at_document'])), '');
+
+        $output = [
+            'aspect_document' => $aspect_document,
+            'code_document' => $code_document,
+            'titre_document' => $titre_document,
+            'statut_document' => $statut_document,
+            'created_by_document' => $created_by_document,
+            'created_at_document' => $created_at_document,
+            'updated_by_document' => $updated_by_document,
+            'updated_at_document' => $updated_at_document
+        ];
     }
     if ($_POST['action'] == 'view_detail_dossier') {
 
@@ -2218,6 +2234,44 @@ if (isset($_POST['action'])) {
                 'success' => false,
                 'message' => 'Une erreur s\'est produite !'
             ];
+        }
+    }
+
+    if ($_POST['action'] == 'retirer_dossier') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+        $id_client = $_POST['id_client'];
+
+        $update1 = update(
+            'assoc_client_collabo',
+            [
+                'statut_assoc_client_collabo' => 'inactif',
+                'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
+            ],
+            "id_collaborateur = $id_collaborateur AND role_assoc_client_collabo = 'cm' AND id_client = $id_client",
+            $db
+        );
+
+        $update2 = update(
+            'client',
+            [
+                'prise_en_charge_client' => 'non',
+            ],
+            "id_client = $id_client",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => 'Dossier retiré au collaborateur !',
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !',
+            );
         }
     }
 

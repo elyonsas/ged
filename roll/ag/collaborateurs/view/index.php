@@ -276,12 +276,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal attribuer dossier-->
 
-    	<!-- begin::Modal detail-->
+    <!-- begin::Modal detail-->
 	<div class="modal fade" id="detail_dossier_modal" tabindex="-1" role="dialog" aria-labelledby="detail_dossier_modal_title" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable" role="document">
 			<form method="POST" class="form modal-content" action="">
 				<div class="modal-header p-5">
-					<h4 class="modal-title">Détails</h4>
+					<h4 class="modal-title">Détails client</h4>
 					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
 						<span class="svg-icon svg-icon-1">

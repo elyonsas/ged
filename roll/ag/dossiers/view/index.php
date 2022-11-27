@@ -146,7 +146,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Désignation de l'entité : 
+                                            Désignation de l'entité :
                                             <span id="designation_entite" class="text-gray-400 fw-bold"></span>
                                         </div>
                                     </div>
@@ -170,25 +170,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Téléphone : 
+                                            Téléphone :
                                             <span id="tel_client" class="text-gray-400 fw-bold"></span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Boîte postale : 
+                                            Boîte postale :
                                             <span id="boite_postal" class="text-gray-400 fw-bold"></span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Activité principale : 
+                                            Activité principale :
                                             <span id="designation_activite_principale" class="text-gray-400 fw-bold"></span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
-                                            Adresse géographique complète : 
+                                            Adresse géographique complète :
                                             <span id="adresse_geo_complete" class="text-gray-400 fw-bold"></span>
                                         </div>
                                     </div>
@@ -404,7 +404,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <form method="POST" class="form modal-content" action="">
                 <div class="modal-header p-5">
-                    <h4 class="modal-title">Détails</h4>
+                    <h4 class="modal-title">Détails client</h4>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-1">
@@ -456,6 +456,73 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <div class="me-5 fw-semibold">
                                 <label class="fs-3 fw-bold">ADRESSE</label>
                                 <div id="detail_adresse_client" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal detail-->
+
+    <!-- begin::Modal detail-->
+    <div class="modal fade" id="detail_collabo_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Détails collaborateur</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <div class="modal-body">
+
+                    <div class="">
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">COLLABORATEUR</label>
+                                <div id="detail_collaborateur" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">CODE COLLABORATEUR</label>
+                                <div id="detail_code_collaborateur" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">TELEPHONE</label>
+                                <div id="detail_telephone_collaborateur" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">EMAIL</label>
+                                <div id="detail_email_collaborateur" class="fs-5 text-muted"></div>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">ADRESSE</label>
+                                <div id="detail_adresse_collaborateur" class="fs-5 text-muted"></div>
                             </div>
                             <!--end::item-->
                         </div>
@@ -3220,6 +3287,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
+
         function reload_datatable1() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -3229,54 +3297,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    update_data_datatable1(data);
+                    update_data_datatable1(data.data);
                 }
             })
         }
 
-        // Datatable2 = datatable collabo
+        // Datatable2 = datatable docs juridico admin
         function update_data_datatable2(data) {
-
-            $("#collabos_dossier").DataTable().destroy();
-            var collabos_dossier = $('#collabos_dossier').DataTable({
-                "processing": true,
-                "serverSide": false,
-                "paging": false,
-                "bInfo": false,
-                "bFilter": false,
-                "bSort": false,
-                "order": [],
-                "data": data,
-                "initComplete": function(settings, json) {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }
-            });
-
-            $('.sorting').click(function() {
-                setTimeout(() => {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }, 1000);
-            })
-        }
-
-        function reload_datatable2() {
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: {
-                    datatable: 'collabos_dossier',
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    update_data_datatable2(data);
-                }
-            })
-        }
-
-        // Datatable3 = datatable docs juridico admin
-        function update_data_datatable3(data) {
 
             $("#documents_juridico_admin").DataTable().destroy();
             var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
@@ -3294,6 +3321,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
 
+            $('#kt_filter_search2').keyup(function() {
+                documents_juridico_admin.search($(this).val()).draw();
+                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+            })
+
             $('.dataTables_paginate').click(function() {
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
@@ -3306,7 +3339,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }, 1000);
             })
         }
-        function reload_datatable3() {
+
+        function reload_datatable2() {
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -3315,12 +3349,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    update_data_datatable3(data);
+                    update_data_datatable2(data.data);
                 }
             })
         }
 
-        
+
 
         // Reload all data pages and datatable
         function reloadPage() {
@@ -3356,6 +3390,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
+
+            reload_datatable1();
+            reload_datatable2();
 
         }
 
@@ -3408,7 +3445,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "bFilter": false,
                     "bSort": false,
                     "order": [],
-                    "data": data,
+                    "data": data.data,
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -3689,6 +3726,78 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#detail_telephone_client').html(data.tel_client);
                     $('#detail_email_client').html(data.email_client);
                     $('#detail_adresse_client').html(data.adresse_client);
+                }
+            });
+
+        });
+
+        // Lorsqu'on clique sur .view_detail_collabo
+        $(document).on('click', '.view_detail_collabo', function(e) {
+            e.preventDefault();
+            var id_collaborateur = $(this).data('id_collaborateur');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_collaborateur: id_collaborateur,
+                    action: 'view_detail_collabo'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    $('#detail_collaborateur').html(data.collaborateur);
+                    $('#detail_code_collaborateur').html(data.code_collaborateur);
+                    $('#detail_telephone_collaborateur').html(data.telephone_collaborateur);
+                    $('#detail_email_collaborateur').html(data.email_collaborateur);
+                    $('#detail_adresse_collaborateur').html(data.adresse_collaborateur);
+                }
+            });
+
+        });
+
+        // Lorsqu'on clique sur .retirer_dossier
+        $(document).on('click', '.retirer_dossier', function(e) {
+            e.preventDefault();
+            var id_collaborateur = $(this).data('id_collaborateur');
+            var id_client = $(this).data('id_client');
+
+            // Voulez-vous vraiment retirer ce dossier ?
+            Swal.fire({
+                title: "Voulez-vous vraiment retirer ce dossier ?",
+                text: "Ce dossier ne sera plus pris en charge par ce collaborateur !",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui, retirer !",
+                cancelButtonText: "Non, annuler !",
+                reverseButtons: true
+            }).then(function(result) {
+                if (result.value) {
+
+                    $.ajax({
+                        url: "roll/ag/dossiers/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_collaborateur: id_collaborateur,
+                            id_client: id_client,
+                            action: 'retirer_dossier'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                reloadPage(); // On recharge le datatable
+
+                                toastr.success(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+
                 }
             });
 

@@ -80,21 +80,45 @@
 
     //// Pour les stats tableau de bord fournisseur
 
-    function stat_client(PDO $db, $id_departement = null)
+    function stat_client(PDO $db, $id_departement = null, $id_secteur_activite = null)
     {
 
         if ($id_departement != null) {
 
-            $query = "SELECT COUNT(*) stat_client FROM client, departement WHERE departement.id_departement = client.id_departement AND client.id_departement = '$id_departement'";
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $result = $statement->fetch();
+            if ($id_secteur_activite != null) {
+
+                $query = "SELECT COUNT(*) stat_client FROM client, utilisateur, compte, departement, secteur_activite WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+                AND utilisateur.id_utilisateur = client.id_utilisateur AND departement.id_departement = client.id_departement 
+                AND secteur_activite.id_secteur_activite = client.id_secteur_activite AND client.id_departement = '$id_departement' 
+                AND statut_compte != 'supprime' AND client.id_secteur_activite = '$id_secteur_activite'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+            }else{
+                $query = "SELECT COUNT(*) stat_client FROM client, utilisateur, compte, departement WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+                AND utilisateur.id_utilisateur = client.id_utilisateur AND departement.id_departement = client.id_departement 
+                AND statut_compte != 'supprime' AND client.id_departement = '$id_departement'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+            }
         } else {
 
-            $query = "SELECT COUNT(*) stat_client FROM client, departement WHERE departement.id_departement = client.id_departement";
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $result = $statement->fetch();
+            if ($id_secteur_activite != null) {
+
+                $query = "SELECT COUNT(*) stat_client FROM client, utilisateur, compte, secteur_activite WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+                AND utilisateur.id_utilisateur = client.id_utilisateur AND secteur_activite.id_secteur_activite = client.id_secteur_activite 
+                AND  statut_compte != 'supprime' AND client.id_secteur_activite = '$id_secteur_activite'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+            }else{
+                $query = "SELECT COUNT(*) stat_client FROM client, utilisateur, compte  WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+                AND utilisateur.id_utilisateur = client.id_utilisateur  AND statut_compte != 'supprime'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+            }
         }
 
         return $result['stat_client'];

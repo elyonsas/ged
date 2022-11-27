@@ -102,6 +102,14 @@
             return $c;
     }
 
+    function end_s($a)
+    {
+        if ($a > 1)
+            return 's';
+        else
+            return '';
+    }
+
     function user($info)
     {
         $key = $info . '_utilisateur';

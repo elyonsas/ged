@@ -630,7 +630,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<span class="text-muted mt-1 fw-semibold fs-7">plus de 25 secteurs d'activités</span>
 								</h3>
 								<div class="card-toolbar">
-									<a href="#" class="btn btn-sm btn-light btn-active-primary">
+									<a id="add_secteur_activite_client" data-bs-toggle="modal" data-bs-target="#add_secteur_activite_client_modal" href="#" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -648,7 +648,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 								<!--begin::Table container-->
 								<div class="table-responsive">
 									<!--begin::Table-->
-									<table id="redacteur_classement_datatable" class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+									<table id="secteur_activite_client" class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 										<!--begin::Table head-->
 										<thead>
 											<tr class="fw-bold text-muted">
@@ -658,107 +658,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										</thead>
 										<!--end::Table head-->
 										<tbody>
-											<tr class="odd">
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><a href="http://localhost/ged/#" class="text-dark fw-bold text-hover-primary fs-6" style="--bs-text-opacity:1;">Projets et Programmes</a><br></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><span style="font-size: 13.975px;">50 clients</span></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-											</tr>
-											<tr class="even">
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><a href="http://localhost/ged/#" class="text-dark fw-bold text-hover-primary fs-6" style="--bs-text-opacity:1;">Postes &amp; télécommunications</a><br></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><span style="font-size: 13.975px;">5 clients</span></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-											</tr>
-											<tr class="odd">
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><a href="http://localhost/ged/#" class="text-dark fw-bold text-hover-primary fs-6" style="--bs-text-opacity:1;">Education &amp; Formation</a><br></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><span style="font-size: 13.975px;">15 clients</span></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-											</tr>
-											<tr class="even">
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><a href="http://localhost/ged/#" class="text-dark fw-bold text-hover-primary fs-6" style="--bs-text-opacity:1;">Industrie agroalimentaire
-															</a><br></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="symbol symbol-45px me-5"><span style="font-size: 13.975px;">7 clients</span></div>
-														<div class="d-flex justify-content-start flex-column">
-														</div>
-													</div>
-
-												</td>
-											</tr>
-											<tr class="odd">
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="d-flex justify-content-start flex-column"><a href="#" class="text-dark fw-bold text-hover-primary fs-6">Administrations publiques&nbsp;<br></a>
-															<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" class="text-muted fw-semibold text-muted d-block fs-7" data-kt-initialized="1"><br></span>
-														</div>
-													</div>
-
-												</td>
-												<td>
-
-													<div class="d-flex align-items-center">
-														<div class="d-flex justify-content-start flex-column"><a href="#" class="text-dark fw-bold text-hover-primary fs-6"><span style="font-weight: 400;">10 clients</span><br></a>
-															<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" class="text-muted fw-semibold text-muted d-block fs-7" data-kt-initialized="1"><br></span>
-														</div>
-													</div>
-
-												</td>
-											</tr>
 										</tbody>
 										<!--end::Table body-->
 									</table>
@@ -778,6 +677,62 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 		<!--end::Content container-->
 	</div>
 	<!--end::Content-->
+
+	<!-- begin::Modal Ajouter un secteur d'activité-->
+    <div class="modal fade" id="add_secteur_activite_client_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_add_secteur_activite_client" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Ajouter un secteur d'activité</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+				<!--begin::Modal body-->
+                <div class="modal-body">
+
+					<div class="row mb-5">
+						<div class="form-group">
+							<label class="fs-5 mb-2">Secteur d'activité</label>
+							<input id="id_nom_secteur_activite" type="text" class="form-control form-control-solid" placeholder="Désignation" name="nom_secteur_activite">
+						</div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="form-group">
+							<label class="fs-5 mb-2">Description</label>
+							<textarea id="id_description_secteur_activite" class="form-control form-control-solid" rows="3"
+							placeholder="Entrez une description du secteur d'activité" name="description_secteur_activite"></textarea>
+						</div>
+					</div>
+
+                </div>
+				<!--end::Modal body-->
+
+				<!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="add_secteur_activite_client">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_add_secteur_activite_client" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Ajouter un secteur d'activité-->
 </div>
 <!--end::Content wrapper-->
 
@@ -819,7 +774,143 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/pages_script.php'); ?>
 
+<script>
+	$(document).ready(function() {
 
+		function update_data_datatable(data) {
+
+			$("#secteur_activite_client").DataTable().destroy();
+			var secteur_activite_client = $('#secteur_activite_client').DataTable({
+				"processing": true,
+				"serverSide": false,
+				"paging": true,
+				"bInfo": false,
+				"bFilter": false,
+				"bSort": true,
+				"order": [],
+				"data": data,
+				"initComplete": function(settings, json) {
+					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+					KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+				}
+			});
+
+			$('.dataTables_paginate').click(function() {
+				KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+				KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
+			})
+
+			$('.sorting').click(function() {
+				setTimeout(() => {
+					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+					KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+				}, 1000);
+			})
+		}
+
+		function reload_datatable(datatable) {
+			$.ajax({
+				url: "roll/ag/fetch.php",
+				method: "POST",
+				data: {
+					datatable: datatable,
+				},
+				dataType: "JSON",
+				success: function(data) {
+					update_data_datatable(data.data);
+				}
+			})
+		}
+
+		// Datatable for all dossiers
+		$.ajax({
+			url: "roll/ag/fetch.php",
+			method: "POST",
+			data: {
+				datatable: 'secteur_activite_client',
+			},
+			dataType: "JSON",
+			success: function(data) {
+				var secteur_activite_client = $('#secteur_activite_client').DataTable({
+					"processing": true,
+					"serverSide": false,
+					"paging": true,
+					"bInfo": false,
+					"bFilter": false,
+					"bSort": true,
+					"order": [],
+					"data": data.data,
+					"initComplete": function(settings, json) {
+						KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+						KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+					}
+				});
+
+				$('.dataTables_paginate').click(function() {
+					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+					KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
+				})
+
+				$('.sorting').click(function() {
+					setTimeout(() => {
+						KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+						KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+					}, 1000);
+				})
+			}
+		});
+
+		// Pour l'ajout d'un nouveau secteur d'activité
+		$(document).on('submit', '#form_add_secteur_activite_client', function(event) {
+			event.preventDefault();
+
+			// Show loading indication
+			formSubmitButton = document.querySelector('#btn_add_secteur_activite_client');
+			formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+			$.ajax({
+				url: "roll/ag/fetch.php",
+				method: "POST",
+				data: $(this).serialize(),
+				dataType: "JSON",
+				success: function(data) {
+					setTimeout(function() {
+						// Hide loading indication
+						formSubmitButton.removeAttribute('data-kt-indicator');
+
+						if (data.success) {
+							$('#add_secteur_activite_client_modal').modal('hide');
+
+							// swal
+                            Swal.fire({
+                                title: "Secteur d'activité ajouté !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reload_datatable('secteur_activite_client'); // On recharge le datatable
+
+						} else {
+							$('#add_secteur_activite_client_modal').modal('hide');
+
+							toastr.error('une erreur s\'est produite', '', {
+								positionClass: "toastr-bottom-left",
+							});
+						}
+					}, 2000);
+
+				}
+			})
+		});
+
+
+	})
+</script>
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 </body>
