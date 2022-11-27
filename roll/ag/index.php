@@ -47,7 +47,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Nbr client-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">50</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2"><?= stat_client($db) ?></span>
 										<span class="text-dark pt-1 fw-bold fs-15">Clients</span>
 										<!--end::Nbr client-->
 									</div>
@@ -74,7 +74,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<div class="text-gray-500 flex-grow-1 me-2">DEC</div>
 										<!--end::Label-->
 										<!--begin::Stats-->
-										<div class="fw-bolder text-gray-700 text-xxl-end">15</div>
+										<div class="fw-bolder text-gray-700 text-xxl-end"><?= stat_client($db, 1) ?></div>
 										<!--end::Stats-->
 									</div>
 									<!--end::Label-->
@@ -87,7 +87,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<div class="text-gray-500 flex-grow-1 me-2">DAC</div>
 										<!--end::Label-->
 										<!--begin::Stats-->
-										<div class="fw-bolder text-gray-700 text-xxl-end">15</div>
+										<div class="fw-bolder text-gray-700 text-xxl-end"><?= stat_client($db, 2) ?></div>
 										<!--end::Stats-->
 									</div>
 									<!--end::Label-->
@@ -100,7 +100,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<div class="text-gray-500 flex-grow-1 me-2">DC</div>
 										<!--end::Label-->
 										<!--begin::Stats-->
-										<div class="fw-bolder text-gray-700 text-xxl-end">20</div>
+										<div class="fw-bolder text-gray-700 text-xxl-end"><?= stat_client($db, 3) ?></div>
 										<!--end::Stats-->
 									</div>
 									<!--end::Label-->
@@ -156,7 +156,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">9.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6">27.000.000</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -173,7 +173,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6">30.000.000</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -190,7 +190,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">15.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6">45.000.000</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -207,7 +207,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6">30.000.000</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->

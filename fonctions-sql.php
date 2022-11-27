@@ -78,6 +78,29 @@
     }
 
 
+    //// Pour les stats tableau de bord fournisseur
+
+    function stat_client(PDO $db, $id_departement = null)
+    {
+
+        if ($id_departement != null) {
+
+            $query = "SELECT COUNT(*) stat_client FROM client, departement WHERE departement.id_departement = client.id_departement AND client.id_departement = '$id_departement'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+
+            $query = "SELECT COUNT(*) stat_client FROM client, departement WHERE departement.id_departement = client.id_departement";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
+
+        return $result['stat_client'];
+    }
+
+
 
     function select_all_actifs_dossiers_collabo($id_collabo, PDO $db)
     {
