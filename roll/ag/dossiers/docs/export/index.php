@@ -30,6 +30,7 @@ $snappy->setOption('image-quality', 100);
 $snappy->setOption('enable-local-file-access', true);
 
 $snappy->setOption('title', $result['titre_document']);
+$snappy->setOption('minimum-font-size', 15);
 
 if ($type_document == 'generate') {
 
@@ -39,7 +40,7 @@ if ($type_document == 'generate') {
   $result = $statement->fetch();
   // html style
   $htmlTemplate = <<<HTML
-        <style>
+      <style>
         *{
           max-height: 100% !important;
         }
@@ -47,8 +48,8 @@ if ($type_document == 'generate') {
           color: #000;
         }
 
-        </style>
-    HTML;
+      </style>
+  HTML;
 
   // html content
   $htmlTemplate .= $result['contenu_document'];
@@ -71,16 +72,16 @@ if ($type_document == 'generate') {
   $result = $statement->fetch();
   // html style
   $htmlTemplate = <<<HTML
-      <style>
-        body{
-          color: #000;
-          padding: 0px 15px;
-        }
-        li{
-            white-space: nowrap !important;
-        }
-      </style>
-    HTML;
+    <style>
+      body{
+        color: #000;
+        padding: 0px 15px;
+      }
+      li{
+          white-space: nowrap !important;
+      }
+    </style>
+  HTML;
 
   // html content
   $htmlTemplate .= $result['contenu_document'];

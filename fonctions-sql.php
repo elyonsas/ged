@@ -10056,7 +10056,7 @@
         $conclusion = $result['conclusion'];
 
         $contenu_document = <<<HTML
-            <table dir="ltr" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
+            <table dir="ltr" style="table-layout: fixed; font-size: 13pt; font-family: Calibri; width: 0px; color: black;" cellspacing="0"
                 cellpadding="0">
                 <colgroup>
                     <col width="18">
@@ -10162,7 +10162,7 @@
                         <td
                             style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
-                        <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(127, 127, 127); font-family: 'Times New Roman'; font-size: 14pt; font-weight: bold; overflow-wrap: break-word; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(127, 127, 127); font-family: 'Times New Roman'; font-size: 16pt; font-weight: bold; overflow-wrap: break-word; color: rgb(255, 192, 0); text-align: center;"
                             colspan="22" rowspan="3"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;DOC N&deg;19                                                                                                                                                                      Questionnaire en mati&egrave;re de lutte contre le blanchiment (LCB)\n&quot;}">
                             <div style="max-height: 59px;">DOC N&deg;19 Questionnaire en mati&egrave;re de lutte contre le
@@ -10315,11 +10315,11 @@
                             data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:54,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:6974317},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1}}{&quot;1&quot;:85,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:2,&quot;2&quot;:6974317},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11}}"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Ce questionnaire, applicable &agrave; toutes les missions du D&eacute;partement Expertise Comptable, liste les questions indispensables &agrave; se poser en mati&egrave;re de lutte contre le blanchiment et fait le point sur les informations &agrave; r&eacute;cuperer en ce qui concerne tant le client que le b&eacute;n&eacute;ficiaire effectif.&quot;}">
                             <div style="max-height: 58px;"><span
-                                    style="font-size: 11pt; font-family: 'Times New Roman'; color: rgb(106, 107, 109);">Ce
+                                    style="font-size: 13pt; font-family: 'Times New Roman'; color: rgb(106, 107, 109);">Ce
                                     questionnaire, applicable &agrave; toutes les missions du </span><span
-                                    style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold; color: rgb(106, 107, 109);">D&eacute;partement
+                                    style="font-size: 13pt; font-family: 'Times New Roman'; font-weight: bold; color: rgb(106, 107, 109);">D&eacute;partement
                                     Expertise Comptable</span><span
-                                    style="font-size: 11pt; font-family: 'Times New Roman'; color: rgb(106, 107, 109);">, liste les
+                                    style="font-size: 13pt; font-family: 'Times New Roman'; color: rgb(106, 107, 109);">, liste les
                                     questions indispensables &agrave; se poser en mati&egrave;re de lutte contre le blanchiment et
                                     fait le point sur les informations &agrave; r&eacute;cuperer en ce qui concerne tant le client
                                     que le b&eacute;n&eacute;ficiaire effectif.</span></div>
@@ -10626,7 +10626,7 @@
                         <td
                             style="border-right: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
-                        <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(127, 127, 127); font-family: 'Times New Roman'; font-size: 14pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
+                        <td style="border-right: 1px solid transparent; border-bottom: 1px solid transparent; overflow: hidden; padding: 0px 3px; vertical-align: middle; background-color: rgb(127, 127, 127); font-family: 'Times New Roman'; font-size: 16pt; font-weight: bold; color: rgb(255, 192, 0); text-align: center;"
                             colspan="22" rowspan="1"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Questionnaire en mati&egrave;re de lutte contre le blanchiment&quot;}">
                             Questionnaire en mati&egrave;re de lutte contre le blanchiment</td>
@@ -10692,8 +10692,8 @@
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle; font-family: 'Times New Roman'; font-weight: bold;"
                             data-sheets-textstyleruns="{&quot;1&quot;:0,&quot;2&quot;:{&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1,&quot;9&quot;:1}}{&quot;1&quot;:6,&quot;2&quot;:{&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:11,&quot;5&quot;:1}}"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Client : &quot;}"><span
-                                style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold; text-decoration-line: underline; text-decoration-skip-ink: none;">Client</span><span
-                                style="font-size: 11pt; font-family: 'Times New Roman'; font-weight: bold;"> : </span></td>
+                                style="font-size: 13pt; font-family: 'Times New Roman'; font-weight: bold; text-decoration-line: underline; text-decoration-skip-ink: none;">Client</span><span
+                                style="font-size: 13pt; font-family: 'Times New Roman'; font-weight: bold;"> : </span></td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
@@ -10874,28 +10874,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz1_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz1_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz1_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact1</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ1</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -10999,28 +10999,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz2_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz2_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz2_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact2</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ2</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11124,28 +11124,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz3_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz3_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz3_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact3</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ3</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11332,28 +11332,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz4_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz4_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz4_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact4</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ4</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11456,28 +11456,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz5_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz5_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz5_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact5</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ5</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11581,28 +11581,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz6_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz6_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz6_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact6</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ6</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11789,28 +11789,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz7_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz7_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz7_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact7</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ7</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11887,28 +11887,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz8_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz8_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz8_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact8</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ8</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -11985,28 +11985,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz9_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz9_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz9_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact9</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ9</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12194,28 +12194,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz10_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz10_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz10_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact10</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ10</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12292,28 +12292,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz11_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz11_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz11_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact11</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ11</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12390,28 +12390,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz12_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz12_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz12_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact12</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ12</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12597,28 +12597,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz13_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz13_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz13_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact13</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ13</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12696,28 +12696,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz14_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz14_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz14_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact14</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ14</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -12930,28 +12930,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz15_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz15_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz15_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact15</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ15</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13028,28 +13028,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz16_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz16_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz16_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact16</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ16</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13087,9 +13087,9 @@
                             data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:73,&quot;2&quot;:{&quot;2&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;3&quot;:&quot;Times New Roman&quot;,&quot;4&quot;:9}}"
                             data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;L'entit&eacute; exerce-t-elle dans un secteur sensible/favorable au blanchiment (immobilier, n&eacute;goce de pierres pr&eacute;cieuses, antiquit&eacute;s ou &oelig;uvres d'arts, op&eacute;rateurs de jeux ou de paris autoris&eacute;s, secteur associatifs etc.)&quot;}">
                             <div style="max-height: 73px;"><span
-                                    style="font-size: 11pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">L'entit&eacute;
+                                    style="font-size: 13pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">L'entit&eacute;
                                     exerce-t-elle dans un secteur sensible/favorable au blanchiment </span><span
-                                    style="font-size: 9pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">(immobilier,
+                                    style="font-size: 11pt; font-family: 'Times New Roman'; color: rgb(0, 0, 0);">(immobilier,
                                     n&eacute;goce de pierres pr&eacute;cieuses, antiquit&eacute;s ou &oelig;uvres d'arts,
                                     op&eacute;rateurs de jeux ou de paris autoris&eacute;s, secteur associatifs etc.)</span></div>
                         </td>
@@ -13131,28 +13131,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz17_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz17_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz17_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact17</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ17</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13228,28 +13228,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz18_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz18_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz18_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact18</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ18</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13326,28 +13326,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz19_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz19_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz19_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact19</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ19</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13423,28 +13423,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz20_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz20_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz20_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact20</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ20</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
@@ -13521,28 +13521,28 @@
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz21_oui</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz21_non</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $quiz21_na</td>
                         <td
                             style="border-right: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             &nbsp;</td>
                         <td
-                            style="font-weight: bold; text-align: center; font-size: 15px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
+                            style="font-weight: bold; text-align: center; font-size: 17px; border-right: 1px dotted rgb(0, 0, 0); border-bottom: 1px dotted rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;">
                             $impact21</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
-                        <td style="font-size: 11px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
+                        <td style="font-size: 13px; border-bottom: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 0px 3px; vertical-align: middle;"
                             colspan="12" rowspan="1">$observ21</td>
                         <td style="overflow: hidden; padding: 0px 3px; vertical-align: middle;">&nbsp;</td>
                     </tr>
