@@ -144,12 +144,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 </div>
                                 <!--end::Header-->
                                 <div class="d-flex flex-column">
-                                    <div class="d-flex flex-wrap mb-5">
-                                        <div class="text-gray-900 fs-3 fw-bold">
-                                            Désignation de l'entité :
-                                            <span id="designation_entite" class="text-gray-400 fw-bold"></span>
-                                        </div>
-                                    </div>
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
                                             Matricule :
@@ -167,6 +161,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <!--end::Svg Icon-->
                                         </button>
                                         <!--end::copy-btn-->
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            IFU :
+                                            <span id="ifu_entite" class="text-gray-400 fw-bold">--</span>
+                                        </div>
+                                        <!--begin::copy-btn-->
+                                        <button id="ifu_entite_copy_btn" type="button" data-clipboard-target="#ifu_entite" data-bs-toggle="popover" data-bs-placement="top" title="" data-bs-content="Copié !" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary">
+                                            <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-07-151451/core/html/src/media/icons/duotune/general/gen054.svg-->
+                                            <span id="code_article_copy_icon" class="svg-icon svg-icon-muted svg-icon-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                        <!--end::copy-btn-->
+                                    </div>
+                                    <div class="d-flex flex-wrap mb-5">
+                                        <div class="text-gray-900 fs-3 fw-bold">
+                                            Désignation de l'entité :
+                                            <span id="designation_entite" class="text-gray-400 fw-bold"></span>
+                                        </div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">
@@ -3377,6 +3395,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#matricule_client').html(data.matricule_client);
                     $('#tel_client').html(data.tel_client);
 
+                    $('#ifu_entite').html(data.ifu_entite);
                     $('#designation_entite').html(data.designation_entite);
                     $('#boite_postal').html(data.boite_postal);
                     $('#designation_activite_principale').html(data.designation_activite_principale);
@@ -3414,6 +3433,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#matricule_client').html(data.matricule_client);
                 $('#tel_client').html(data.tel_client);
 
+                $('#ifu_entite').html(data.ifu_entite);
                 $('#designation_entite').html(data.designation_entite);
                 $('#boite_postal').html(data.boite_postal);
                 $('#designation_activite_principale').html(data.designation_activite_principale);
@@ -3585,9 +3605,27 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Pour la copie du code document
         var KTModalShareEarn = function() {
             // Private functions
-            var handleForm = function() {
+            var handleForm1 = function() {
                 var button = document.querySelector('#matricule_client_copy_btn');
                 var input = document.querySelector('#matricule_client');
+                var clipboard = new ClipboardJS(button);
+
+                if (!clipboard) {
+                    return;
+                }
+
+                //  Copy text to clipboard. For more info check the plugin's documentation: https://clipboardjs.com/
+                clipboard.on('success', function(e) {
+
+                    console.log("Copied: " + e.text);
+
+                    e.clearSelection();
+                });
+            }
+
+            var handleForm2 = function() {
+                var button = document.querySelector('#ifu_entite_copy_btn');
+                var input = document.querySelector('#ifu_entite');
                 var clipboard = new ClipboardJS(button);
 
                 if (!clipboard) {
@@ -3606,7 +3644,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             // Public methods
             return {
                 init: function() {
-                    handleForm();
+                    handleForm1();
+                    handleForm2();
                 }
             }
         }();

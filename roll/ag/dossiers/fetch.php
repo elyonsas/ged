@@ -1151,6 +1151,7 @@ if (isset($_POST['action'])) {
             $adresse_client = $row['adresse_utilisateur'];
 
             $designation_entite = $result['designation_entite']??$nom_client;
+            $ifu_entite = $result['id_fiscale_client']??'--';
             $boite_postal = isset($result['boite_postal']) ? $result['num_code'] . ' ' . $result['code'] . ' ' . $result['boite_postal'] : '--';
             $designation_activite_principale = $result['designation_activite_principale']??'--';
             $adresse_geo_complete = $result['adresse_geo_complete']??'--';
@@ -1289,6 +1290,7 @@ if (isset($_POST['action'])) {
                 'adresse_client' => $adresse_client,
 
                 'designation_entite' => $designation_entite,
+                'ifu_entite' => $ifu_entite,
                 'boite_postal' => $boite_postal,
                 'designation_activite_principale' => $designation_activite_principale,
                 'adresse_geo_complete' => $adresse_geo_complete,
