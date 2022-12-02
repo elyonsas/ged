@@ -405,8 +405,9 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Info-->
 									<div class="mb-0">
 										<!--begin::Value-->
+										<!-- js path : assets\js\scripts.bundle.js::2165 -->
 										<div class="fs-lg-2hx fs-2x fw-bold text-white d-flex flex-center">
-											<div class="min-w-70px" data-kt-countup="true" data-kt-countup-value="700" data-kt-countup-suffix="+">0</div>
+											<div class="min-w-70px" data-kt-countup="true" data-kt-countup-value="700" data-kt-countup-separator="." data-kt-countup-suffix="+">0</div>
 										</div>
 										<!--end::Value-->
 										<!--begin::Label-->

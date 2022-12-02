@@ -47,7 +47,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Nbr client-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2"><?= stat_client($db) ?></span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" 
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) ?>">0</span>
 										<span class="text-dark pt-1 fw-bold fs-15">Clients</span>
 										<!--end::Nbr client-->
 									</div>
@@ -156,7 +157,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">27.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="27000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -173,7 +175,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">30.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="30000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -190,7 +193,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">45.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="45000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -207,7 +211,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">30.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="30000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -260,7 +265,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">9.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -274,7 +280,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -288,7 +295,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">15.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -302,7 +310,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -355,7 +364,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">9.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -369,7 +379,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -383,7 +394,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">15.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -397,7 +409,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -450,7 +463,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">9.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -464,7 +478,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -478,7 +493,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">15.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -492,7 +508,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6">10.000.000</span>
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
