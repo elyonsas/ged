@@ -254,6 +254,18 @@ if (isset($_POST['datatable'])) {
 
             // Rôle
             switch ($role_client) {
+                case 'ag':
+                    $role_client = 'Associé Gérant';
+                    break;
+
+                case 'dd':
+                    $role_client = 'Directeur de département';
+                    break;
+
+                case 'dm':
+                    $role_client = 'Directeur de mission';
+                    break;
+
                 case 'cm':
                     $role_client = 'Chef de mission';
                     break;
@@ -261,7 +273,12 @@ if (isset($_POST['datatable'])) {
                 case 'am':
                     $role_client = 'Assistant mission';
                     break;
+
+                case 'stg':
+                    $role_client = 'Stagiaire';
+                    break;
             }
+
             $sub_array[] = <<<HTML
                 $role_client
             HTML;
@@ -622,11 +639,38 @@ if (isset($_POST['action'])) {
                     break;
             }
 
+            $role_collaborateur = $row['type_compte'];
+            switch ($role_collaborateur) {
+                case 'ag':
+                    $role_collaborateur = 'Associé Gérant';
+                    break;
+
+                case 'dd':
+                    $role_collaborateur = 'Directeur de département';
+                    break;
+
+                case 'dm':
+                    $role_collaborateur = 'Directeur de mission';
+                    break;
+
+                case 'cm':
+                    $role_collaborateur = 'Chef de mission';
+                    break;
+
+                case 'am':
+                    $role_collaborateur = 'Assistant mission';
+                    break;
+
+                case 'stg':
+                    $role_collaborateur = 'Stagiaire';
+                    break;
+            }
 
             $output = array(
                 'avatar_collaborateur' => $avatar_collaborateur,
                 'nom_prenom_collaborateur' => $nom_collaborateur . ' ' . $prenom_collaborateur,
                 'email_collaborateur' => $email_collaborateur,
+                'role_collaborateur' => $role_collaborateur,
                 'code_collaborateur' => $code_collaborateur,
                 'date_naiss_collaborateur' => $date_naiss_collaborateur,
                 'tel_collaborateur' => $tel_collaborateur,

@@ -57,8 +57,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                         <!--end::Name-->
                                         <!--begin::Info-->
-                                        <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                            <a id="" href="" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                        <div class="d-flex flex-column fw-semibold fs-6 mb-4 pe-2">
+                                            <div class="d-flex align-items-center text-gray text-hover-primary mb-2 fs-5">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-24-050857/core/html/src/media/icons/duotune/communication/com013.svg-->
+                                                <span class="svg-icon svg-icon-4 me-1">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="currentColor"/>
+                                                        <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                                <span id="role_collaborateur">--</span>
+                                            </div>
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                                 <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +79,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 </span>
                                                 <!--end::Svg Icon-->
                                                 <span id="email_collaborateur">--</span>
-                                            </a>
+                                            </div>
                                         </div>
                                         <!--end::Info-->
                                         <!-- begin:niveau -->
@@ -427,6 +438,40 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
+        function reloadPage() {
+
+            // Fait une réquête AJAX pour récupérer les données
+            $.ajax({
+                url: "roll/ag/collaborateurs/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'fetch_page_collaborateur'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    // Affiche les données dans la page
+                    $('#avatar_collaborateur').html(data.avatar_collaborateur);
+                    $('#nom_prenom_collaborateur').html(data.nom_prenom_collaborateur);
+                    $('#email_collaborateur').html(data.email_collaborateur);
+                    $('#role_collaborateur').html(data.role_collaborateur);
+                    $('#code_collaborateur').html(data.code_collaborateur);
+                    $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
+                    $('#tel_collaborateur').html(data.tel_collaborateur);
+                    $('#adresse_collaborateur').html(data.adresse_collaborateur);
+                    $('#statut_collaborateur').html(data.statut_collaborateur);
+                    $('#action_collaborateur').html(data.action_collaborateur);
+                    $('#niveau_collaborateur').html(data.niveau_collaborateur);
+
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }
+            });
+
+            reload_datatable('dossiers_collabo');
+
+        }
+
         // Fait une réquête AJAX pour récupérer les données
         $.ajax({
             url: "roll/ag/collaborateurs/fetch.php",
@@ -441,6 +486,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#avatar_collaborateur').html(data.avatar_collaborateur);
                 $('#nom_prenom_collaborateur').html(data.nom_prenom_collaborateur);
                 $('#email_collaborateur').html(data.email_collaborateur);
+                $('#role_collaborateur').html(data.role_collaborateur);
                 $('#code_collaborateur').html(data.code_collaborateur);
                 $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
                 $('#tel_collaborateur').html(data.tel_collaborateur);
@@ -486,39 +532,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 })
             }
         });
-
-        function reloadPage() {
-
-            // Fait une réquête AJAX pour récupérer les données
-            $.ajax({
-                url: "roll/ag/collaborateurs/fetch.php",
-                method: "POST",
-                data: {
-                    action: 'fetch_page_collaborateur'
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    // Affiche les données dans la page
-                    $('#avatar_collaborateur').html(data.avatar_collaborateur);
-                    $('#nom_prenom_collaborateur').html(data.nom_prenom_collaborateur);
-                    $('#email_collaborateur').html(data.email_collaborateur);
-                    $('#code_collaborateur').html(data.code_collaborateur);
-                    $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
-                    $('#tel_collaborateur').html(data.tel_collaborateur);
-                    $('#adresse_collaborateur').html(data.adresse_collaborateur);
-                    $('#statut_collaborateur').html(data.statut_collaborateur);
-                    $('#action_collaborateur').html(data.action_collaborateur);
-                    $('#niveau_collaborateur').html(data.niveau_collaborateur);
-
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }
-            });
-
-            reload_datatable('dossiers_collabo');
-
-        }
 
         // Afficher les infos selon la zone cliquée (generale, avance)
         $(document).on('click', '#generale_area_btn', function(e) {
