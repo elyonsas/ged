@@ -150,8 +150,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--end::copy-btn-->
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
-                                        <div class="text-gray-900 fs-3 fw-bold">Date de naissance : </div>
-                                        <div id="date_naiss_collaborateur" class="text-gray-400 fs-3 fw-bold ms-3"></div>
+                                        <div class="text-gray-900 fs-3 fw-bold">Date d'embauche : </div>
+                                        <div id="date_embauche_collaborateur" class="text-gray-400 fs-3 fw-bold ms-3"></div>
                                     </div>
                                     <div class="d-flex flex-wrap mb-5">
                                         <div class="text-gray-900 fs-3 fw-bold">Téléphone : </div>
@@ -353,7 +353,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 		</div>
 	</div>
 	<!-- end::Modal detail-->
-
 </div>
 <!--end::Content wrapper-->
 
@@ -456,7 +455,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#email_collaborateur').html(data.email_collaborateur);
                     $('#role_collaborateur').html(data.role_collaborateur);
                     $('#code_collaborateur').html(data.code_collaborateur);
-                    $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
+                    $('#date_embauche_collaborateur').html(data.date_embauche_collaborateur);
                     $('#tel_collaborateur').html(data.tel_collaborateur);
                     $('#adresse_collaborateur').html(data.adresse_collaborateur);
                     $('#statut_collaborateur').html(data.statut_collaborateur);
@@ -488,7 +487,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#email_collaborateur').html(data.email_collaborateur);
                 $('#role_collaborateur').html(data.role_collaborateur);
                 $('#code_collaborateur').html(data.code_collaborateur);
-                $('#date_naiss_collaborateur').html(data.date_naiss_collaborateur);
+                $('#date_embauche_collaborateur').html(data.date_embauche_collaborateur);
                 $('#tel_collaborateur').html(data.tel_collaborateur);
                 $('#adresse_collaborateur').html(data.adresse_collaborateur);
                 $('#statut_collaborateur').html(data.statut_collaborateur);

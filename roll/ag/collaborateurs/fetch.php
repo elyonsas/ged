@@ -539,7 +539,7 @@ if (isset($_POST['action'])) {
             $prenom_collaborateur = $row['prenom_utilisateur'];
             $email_collaborateur = $row['email_utilisateur'];
             $code_collaborateur = $row['code_collaborateur'];
-            $date_naiss_collaborateur = si_funct1($row['date_naiss_utilisateur'], date('d-m-Y', strtotime($row['date_naiss_utilisateur'])), '--');
+            $date_embauche_collaborateur = si_funct1($row['date_embauche_collaborateur'], date('d/m/Y', strtotime($row['date_embauche_collaborateur'])), '--');
             $tel_collaborateur = $row['tel_utilisateur'];
             $adresse_collaborateur = $row['adresse_utilisateur'];
 
@@ -672,7 +672,7 @@ if (isset($_POST['action'])) {
                 'email_collaborateur' => $email_collaborateur,
                 'role_collaborateur' => $role_collaborateur,
                 'code_collaborateur' => $code_collaborateur,
-                'date_naiss_collaborateur' => $date_naiss_collaborateur,
+                'date_embauche_collaborateur' => $date_embauche_collaborateur,
                 'tel_collaborateur' => $tel_collaborateur,
                 'adresse_collaborateur' => $adresse_collaborateur,
                 'statut_collaborateur' => $statut_collaborateur_html,
