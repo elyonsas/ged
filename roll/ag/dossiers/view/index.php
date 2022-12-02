@@ -3334,10 +3334,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
                 "processing": true,
                 "serverSide": false,
-                "paging": false,
-                "bInfo": false,
-                "bFilter": false,
-                "bSort": false,
+                "paging": true,
+                "bInfo": true,
+                "bFilter": true,
+                "bSort": true,
                 "order": [],
                 "data": data,
                 "initComplete": function(settings, json) {
@@ -3535,8 +3535,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         $('#filter_type_dossier_document2').on('change', function(event) {
-			reload_datatable2();
-		})
+            reload_datatable2();
+        })
 
         // Afficher les infos selon la zone cliquée (generale, avance)
         $(document).on('click', '#generale_area_btn', function(e) {
