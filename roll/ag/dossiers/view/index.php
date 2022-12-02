@@ -279,10 +279,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--begin::Header-->
                             <div class="card-header border-0 pt-5">
                                 <!--begin::Title-->
-                                <h3 class="card-title align-items-start flex-column">
-                                    <!-- <span class="card-label fw-bold fs-3 mb-1">Documents client</span> -->
-                                    <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
-                                </h3>
+                                <div class="align-items-start flex-column">
+                                    <!--begin::Select-->
+                                    <div class="me-6 my-1">
+                                        <select id="filter_type_dossier_document2" name="year" data-control="select2" data-hide-search="true" class="w-150px form-select form-select-solid form-select-sm">
+                                            <option value="all" selected="selected">Tous les documents</option>
+                                            <option value="permanent">Dossier permanent</option>
+                                            <option value="general">Dossier général de contrôle annuel</option>
+                                        </select>
+                                    </div>
+                                    <!--end::Select-->
+                                </div>
                                 <!--end::Title-->
 
                                 <!--begin::Card toolbar-->
@@ -3364,6 +3371,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: 'documents_juridico_admin',
+                    type_dossier_document: $('#filter_type_dossier_document2').val()
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -3487,6 +3495,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             method: "POST",
             data: {
                 datatable: 'documents_juridico_admin',
+                type_dossier_document: $('#filter_type_dossier_document2').val()
             },
             dataType: "JSON",
             success: function(data) {
@@ -3524,6 +3533,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 })
             }
         });
+
+        $('#filter_type_dossier_document2').on('change', function(event) {
+			reload_datatable2();
+		})
 
         // Afficher les infos selon la zone cliquée (generale, avance)
         $(document).on('click', '#generale_area_btn', function(e) {

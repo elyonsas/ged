@@ -465,7 +465,14 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} ORDER BY ordre_document ASC";
+        $type_dossier_document = $_POST['type_dossier_document'];
+        if ($type_dossier_document == 'all') {
+            $type_dossier_document_query = "";
+        } else {
+            $type_dossier_document_query = "AND type_dossier_document = '$type_dossier_document'";
+        }
+
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query ORDER BY ordre_document ASC";
 
 
         // // pour la recherche
