@@ -538,7 +538,7 @@ if (isset($_POST['datatable'])) {
                     if ($type_document == 'generate') {
 
                         $sub_array[] = <<<HTML
-                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_generate_modal">
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
                                 <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
@@ -546,7 +546,7 @@ if (isset($_POST['datatable'])) {
                     } else if ($type_document == 'write') {
 
                         $sub_array[] = <<<HTML
-                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal">
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
                                 <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
@@ -668,6 +668,13 @@ if (isset($_POST['datatable'])) {
                                             <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                         </div>
                                         <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
+                                            data-id_document="{$id_document}">Modifier le scan</a>
+                                        </div>
+                                        <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu 3-->
                                 </div>
@@ -722,6 +729,13 @@ if (isset($_POST['datatable'])) {
                                                 <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                             </div>
                                             <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
+                                                data-id_document="{$id_document}">Modifier le scan</a>
+                                            </div>
+                                            <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu 3-->
                                     </div>
@@ -767,6 +781,13 @@ if (isset($_POST['datatable'])) {
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
                                                 <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
+                                                data-id_document="{$id_document}">Modifier le scan</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -1595,9 +1616,14 @@ if (isset($_POST['action'])) {
         $statement->execute();
         $result = $statement->fetch();
 
-        $table_document = $result['table_document'];
+        $output = [
+            'titre_document' => $result['titre_document'],
+        ];
+    }
+    if ($_POST['action'] == 'fetch_edit_doc_scan') {
+        $id_document = $_POST['id_document'];
 
-        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -1754,37 +1780,30 @@ if (isset($_POST['action'])) {
         $table_document = $result['table_document'];
         $titre_document = $result['titre_document'];
 
-        $src_document = $result['src_scan_document'];
+        $src_scan_document = $result['src_scan_document'];
+        $src_scan_temp_document = $result['src_scan_temp_document'];
 
-        if ($src_temp_document == '') {
+        if ($src_scan_temp_document == '') {
             $output = [
                 'success' => false,
                 'message' => 'Vous devez sélectionner un fichier !'
             ];
         } else {
 
-            $infoPath = pathinfo($src_temp_document);
-            $type_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
+            $infoPath = pathinfo($src_scan_temp_document);
+            $type_scan_document = '.' . $infoPath['extension'];
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_scan_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
             }
 
-            $update1 = update(
-                $table_document,
-                [
-                    'src_document' => $src_temp_document,
-                    'src_temp_document' => '',
-                    'type_document' => $type_document
-                ],
-                "id_document = $id_document",
-                $db
-            );
-
-            $update2 = update(
+            $update = update(
                 'document',
                 [
+                    'src_scan_document' => $src_scan_temp_document,
+                    'src_scan_temp_document' => '',
+                    'type_scan_document' => $type_scan_document,
                     'updated_at_document' => date('Y-m-d H:i:s'),
                     'updated_by_document' => $_SESSION['id_utilisateur']
                 ],
@@ -1792,10 +1811,10 @@ if (isset($_POST['action'])) {
                 $db
             );
 
-            if ($update1 && $update2) {
+            if ($update) {
                 $output = [
                     'success' => true,
-                    'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
+                    'message' => "Un nouveau document scanné <b>$titre_document</b> à été bien enregistré !"
                 ];
             } else {
                 $output = [
@@ -2442,6 +2461,29 @@ if (isset($_POST['action'])) {
             unlink($file_path);
         }
     }
+    if ($_POST['action'] == 'delete_doc_scan') {
+
+        $id_document = $_POST['id_document'];
+        $file_path = $_POST['file_path'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $update = update(
+            'document',
+            [
+                'src_scan_temp_document' => '',
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if (is_file($file_path)) {
+            unlink($file_path);
+        }
+    }
 }
 
 if (isset($_FILES['file'])) {
@@ -2479,6 +2521,40 @@ if (isset($_FILES['file'])) {
             $table_document,
             [
                 'src_temp_document' => $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+    }
+
+    if ($_GET['action'] == 'doc_scan_upload') {
+
+        $id_document = $_GET['id_document'];
+        $titre_document = $_GET['titre_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
+
+        $tempFile = $_FILES['file']['tmp_name'];
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+
+        $uuid = Uuid::uuid1();
+        $uniq_str = $uuid->toString();
+        $infoPath = pathinfo($_FILES['file']['name']);
+
+        $targetFile =  $targetPath . 'SCAN_' .  $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'];
+        move_uploaded_file($tempFile, $targetFile);
+
+        $update = update(
+            'document',
+            [
+                'src_scan_temp_document' =>     'SCAN_' . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
             ],
             "id_document = $id_document",
             $db

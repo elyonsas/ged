@@ -1036,6 +1036,107 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_doc_file -->
 
+    <!-- begin::Modal edit_doc_scan -->
+    <div class="modal fade" id="edit_doc_scan_modal" tabindex="-1">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_scan" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="form-group row">
+                            <!--begin::Dropzone-->
+                            <style>
+                                #scan_upload_zone .dropzone-select {
+                                    min-height: auto;
+                                    padding: 1.5rem 1.75rem !important;
+                                    text-align: center !important;
+                                    border: 1px dashed var(--kt-primary);
+                                    background-color: var(--kt-primary-light) !important;
+                                    border-radius: 0.475rem !important;
+                                }
+
+                                .dz-drag-hover {
+                                    opacity: 0.5;
+                                }
+
+                                .dz-drag-hover .dropzone-select {
+                                    border-style: solid !important;
+                                }
+                            </style>
+                            <div class="dropzone dropzone-queue mb-2" id="scan_upload_zone">
+                                <!--begin::Controls-->
+                                <div class="dropzone-panel mb-lg-0 mb-2">
+                                    <div class="dropzone-select">
+                                        <!--begin::Icon-->
+                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                        <!--end::Icon-->
+
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Glissez déposez un fichier ici ou cliquez pour importer.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-400">Importer un seul fichier</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
+                                </div>
+                                <!--end::Controls-->
+
+                                <!--begin::Items-->
+                                <div class="dropzone-items wm-200px">
+
+                                </div>
+                                <!--end::Items-->
+                            </div>
+                            <!--end::Dropzone-->
+
+                            <!--begin::Hint-->
+                            <span class="form-text text-muted">Choisissez un document pdf, word, excel ou une image. </br> (Tailles maximal de fichier : 10MB)</span>
+                            <!--end::Hint-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                    <div class="opt d-flex justify-content-end">
+                        <input type="hidden" name="action" value="edit_doc_scan">
+                        <input type="hidden" name="id_document" value="">
+                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                        <button id="btn_edit_doc_scan" type="submit" class="btn btn-lg btn-primary ms-2">
+                            <span class="indicator-label">Valider</span>
+                            <span class="indicator-progress">Veuillez patienter...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_scan -->
+
     <!-- begin::Modal edit_doc_generate -->
     <div class="modal fade" id="edit_doc_generate_modal" tabindex="-1">
         <style>
@@ -4243,8 +4344,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         fileListPath = [];
         fileListName = [];
         // set the dropzone container id
-        const id = "#file_upload_zone";
-        const dropzone = document.querySelector(id);
+        var id = "#file_upload_zone";
+        var dropzone = document.querySelector(id);
 
         // Lorsqu'on clique sur .edit_doc_file
         $(document).on('click', '.edit_doc_file', function() {
@@ -4452,6 +4553,253 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                         if (data.success) {
                             $('#edit_doc_file_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Document enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            // Vider les fileLists
+                            fileList = [];
+                            fileListPath = [];
+                            fileListName = [];
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        /* -----------------Modification d'un document scan---------------- */
+        //Variable contenant les fichiers joint
+        fileList = [];
+        fileListPath = [];
+        fileListName = [];
+        // set the dropzone container id
+        var id = "#scan_upload_zone";
+        var dropzone = document.querySelector(id);
+
+        // Lorsqu'on clique sur .edit_doc_scan
+        $(document).on('click', '.edit_doc_scan', function () {
+
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_doc_scan'
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    $('#edit_doc_scan_modal input[name="id_document"]').val(id_document);
+                    $('#edit_doc_scan_modal .modal-title').html(data.titre_document);
+
+
+                    /* -----------------Mise en place du plugin dropzonejs---------------- */
+                    // set the preview element template
+                    var previewTemplate = `
+                                <div class="dropzone-item">
+                                    <!--begin::File-->
+                                    <div class="dropzone-file">
+                                        <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                            <span data-dz-name>some_image_file_name.jpg</span>
+                                            <strong>(<span data-dz-size>340kb</span>)</strong>
+                                        </div>
+
+                                        <div class="dropzone-error" data-dz-errormessage></div>
+                                    </div>
+                                    <!--end::File-->
+
+                                    <!--begin::Progress-->
+                                    <div class="dropzone-progress">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Progress-->
+
+                                    <!--begin::Toolbar-->
+                                    <div class="dropzone-toolbar">
+                                        <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                                    </div>
+                                    <!--end::Toolbar-->
+                                </div>
+                            `;
+                    var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
+                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_scan_upload", // Set the url for your upload script location
+                        parallelUploads: 20,
+                        maxFilesize: 10, // Max filesize in MB
+                        maxFiles: 1,
+                        previewTemplate: previewTemplate,
+                        previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+                        clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
+                    });
+
+                    // When added file
+                    myDropzone.on("addedfile", function (file) {
+                        // Hookup the start button
+                        const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
+                        dropzoneItems.forEach(dropzoneItem => {
+                            dropzoneItem.style.display = '';
+                        });
+                    });
+                    // Packaging of files in array
+                    myDropzone.on("success", function (file, serverFileName) {
+                        fileList.push({
+                            "serverPath": serverFileName,
+                            "uploadId": file.upload.uuid
+                        });
+                        fileListPath.push(serverFileName);
+                        fileListName.push(file.name);
+
+                    });
+                    // Remove file from the list
+                    myDropzone.on("removedfile", function (file) {
+                        for (let i = 0; i < fileList.length; i++) {
+                            if (file.upload.uuid == fileList[i].uploadId) {
+                                $.ajax({
+                                    url: "roll/ag/dossiers/fetch.php",
+                                    method: "POST",
+                                    data: {
+                                        action: 'delete_doc_scan',
+                                        id_document: id_document,
+                                        file_path: fileList[i].serverPath,
+                                    },
+                                    dataType: "json",
+                                    success: function (data) {
+                                        // do something
+                                    }
+                                })
+                                fileList.splice(i, 1)
+                                fileListPath.splice(i, 1)
+                                fileListName.splice(i, 1)
+                            }
+                        }
+
+                        // var server_file = $(file.previewTemplate).children('.server_file').text();
+                        // alert(server_file);
+                        // // Do a post request and pass this path and use server-side language to delete the file
+                        // $.post("delete.php", {
+                        // 	file_to_be_deleted: server_file
+                        // });
+                    });
+                    // Update the total progress bar
+                    myDropzone.on("totaluploadprogress", function (progress) {
+                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.width = progress + "%";
+                        });
+                    });
+                    // Sending files to server
+                    myDropzone.on("sending", function (file) {
+                        // Show the total progress bar when upload starts
+                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.opacity = "1";
+                        });
+                    });
+                    // Hide the total progress bar when nothing"s uploading anymore
+                    myDropzone.on("complete", function (progress) {
+                        const progressBars = dropzone.querySelectorAll('.dz-complete');
+
+                        setTimeout(function () {
+                            progressBars.forEach(progressBar => {
+                                progressBar.querySelector('.progress-bar').style.opacity = "0";
+                                progressBar.querySelector('.progress').style.opacity = "0";
+                            });
+                        }, 300);
+                    });
+
+                    // Si on quitte le modal
+                    $('#edit_doc_scan_modal').on('hidden.bs.modal', function () {
+                        // Supprimer l'instance de dropzone
+                        myDropzone.destroy();
+
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_doc_scan',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+                    });
+
+                    //Lorsque l'utilisateur tente de quitter la page
+                    $(window).on('beforeunload', function () {
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_doc_scan',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+                    });
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire d'édition d'un document file
+        $(document).on('submit', '#form_edit_doc_scan', function () {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_doc_scan');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function (data) {
+                    setTimeout(function () {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#edit_doc_scan_modal').modal('hide');
 
                             // swal
                             Swal.fire({
