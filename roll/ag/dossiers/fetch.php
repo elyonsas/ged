@@ -514,6 +514,7 @@ if (isset($_POST['datatable'])) {
             $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
+            $src_scan_document = $row['src_scan_document'];
 
             $statut_document = $row['statut_document'];
             switch ($statut_document) {
@@ -531,30 +532,63 @@ if (isset($_POST['datatable'])) {
 
             // Document
             if ($statut_document == 'valide') {
-                if ($type_document == 'generate') {
 
-                    $sub_array[] = <<<HTML
-                        <div class="preview_doc_generate d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_generate_modal">
-                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
-                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
-                        </div>
-                    HTML;
-                } else if ($type_document == 'write') {
+                if ($src_scan_document != NULL) {
 
-                    $sub_array[] = <<<HTML
-                        <div class="preview_doc_write d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal">
-                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
-                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
-                        </div>
-                    HTML;
-                } else if ($type_document == 'file') {
+                    if ($type_document == 'generate') {
 
-                    $sub_array[] = <<<HTML
-                        <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
-                            <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
-                            class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
-                        </div>
-                    HTML;
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_generate_modal">
+                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_write_modal">
+                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+
+                } else {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+
                 }
             } else {
 
@@ -744,7 +778,7 @@ if (isset($_POST['datatable'])) {
                         }
                     } else if ($type_document == 'file') {
                         if ($table_document != 'document_file') {
-                        $action = <<<HTML
+                            $action = <<<HTML
 
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
@@ -1157,11 +1191,11 @@ if (isset($_POST['action'])) {
             $tel_client = $row['tel_utilisateur'];
             $adresse_client = $row['adresse_utilisateur'];
 
-            $designation_entite = $result['designation_entite']??$nom_client;
-            $ifu_entite = $result['id_fiscale_client']??'--';
+            $designation_entite = $result['designation_entite'] ?? $nom_client;
+            $ifu_entite = $result['id_fiscale_client'] ?? '--';
             $boite_postal = isset($result['boite_postal']) ? $result['num_code'] . ' ' . $result['code'] . ' ' . $result['boite_postal'] : '--';
-            $designation_activite_principale = $result['designation_activite_principale']??'--';
-            $adresse_geo_complete = $result['adresse_geo_complete']??'--';
+            $designation_activite_principale = $result['designation_activite_principale'] ?? '--';
+            $adresse_geo_complete = $result['adresse_geo_complete'] ?? '--';
 
             $statut_client = $row['statut_compte'];
             switch ($statut_client) {
@@ -1491,8 +1525,42 @@ if (isset($_POST['action'])) {
             $output['iframe_html'] .= <<<HTML
                 <iframe class="iframe_html" src="assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
+        } else {
+            $output['iframe_html'] = <<<HTML
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+            HTML;
         }
-        else {
+    }
+
+    if ($_POST['action'] == 'preview_doc_scan') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
+        $output = [
+            'titre_document' => $result['titre_document'],
+            'iframe_html' => ''
+        ];
+
+        $src_document = $result['src_scan_document'];
+        $type_document = $result['type_scan_document'];
+
+        // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
+        if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
+            $output['iframe_html'] .= <<<HTML
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+            HTML;
+        } else if ($type_document == '.pdf') {
+            $output['iframe_html'] .= <<<HTML
+                <iframe class="iframe_html" src="assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+            HTML;
+        } else {
             $output['iframe_html'] = <<<HTML
                 <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
@@ -1759,12 +1827,12 @@ if (isset($_POST['action'])) {
         $prem_annee_exercice_in = $_POST['prem_annee_exercice_in'];
         $controle_entite = $_POST['controle_entite'];
 
-        $duree_vie_societe = $_POST['duree_vie_societe']; 
+        $duree_vie_societe = $_POST['duree_vie_societe'];
         $date_dissolution = si_funct($_POST['date_dissolution'], "", NULL, $_POST['date_dissolution']);
-        $capital_social = $_POST['capital_social']; 
-        $siege_social = $_POST['siege_social']; 
-        $site_internet = $_POST['site_internet']; 
-        $nombre_de_salarie = $_POST['nombre_de_salarie']; 
+        $capital_social = $_POST['capital_social'];
+        $siege_social = $_POST['siege_social'];
+        $site_internet = $_POST['site_internet'];
+        $nombre_de_salarie = $_POST['nombre_de_salarie'];
         $ca_3_derniers_exercices_n_1 = $_POST['ca_3_derniers_exercices_n_1'];
         $ca_3_derniers_exercices_n_2 = $_POST['ca_3_derniers_exercices_n_2'];
         $ca_3_derniers_exercices_n_3 = $_POST['ca_3_derniers_exercices_n_3'];
@@ -1783,8 +1851,8 @@ if (isset($_POST['action'])) {
         $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
         $titre_document = $result['titre_document'];
 
-        
-        
+
+
 
         // update table document
         $update1 = update(
@@ -1859,7 +1927,7 @@ if (isset($_POST['action'])) {
 
         // update table activite_client
         $update3 = false;
-        if(isset($_POST['activite_client'])){
+        if (isset($_POST['activite_client'])) {
             $activites_clients = $_POST['activite_client'];
 
             $delete = delete('activite_client', "id_client = $id_client", $db);
@@ -1876,14 +1944,14 @@ if (isset($_POST['action'])) {
                     $db
                 );
             }
-        }else{
+        } else {
             $update3 = true;
             $delete = delete('activite_client', "id_client = $id_client", $db);
         }
 
         // update table dirigeant_client
         $update4 = false;
-        if(isset($_POST['dirigeant_client'])){
+        if (isset($_POST['dirigeant_client'])) {
             $dirigeants_clients = $_POST['dirigeant_client'];
 
             $delete = delete('dirigeant_client', "id_client = $id_client", $db);
@@ -1903,14 +1971,14 @@ if (isset($_POST['action'])) {
                     $db
                 );
             }
-        }else{
+        } else {
             $update4 = true;
             $delete = delete('dirigeant_client', "id_client = $id_client", $db);
         }
 
         // update table membre_conseil_client
         $update5 = false;
-        if(isset($_POST['membre_conseil_client'])){
+        if (isset($_POST['membre_conseil_client'])) {
             $membres_conseils_clients = $_POST['membre_conseil_client'];
 
             $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
@@ -1930,11 +1998,11 @@ if (isset($_POST['action'])) {
                     $db
                 );
             }
-        }else{
+        } else {
             $update5 = true;
             $delete = delete('membre_conseil_client', "id_client = $id_client", $db);
         }
-        
+
         $update6 = update_contenu_document_table_doc_8_fiche_id_client($id_document, $db);
 
         if ($update1 && $update2 && $update3 && $update4 && $update5 && $update6) {
@@ -1952,39 +2020,39 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'edit_table_doc_3_accept_mission') {
 
         $id_document = $_POST['id_document'];
-        $quiz1 = $_POST['quiz1']?? NULL;
+        $quiz1 = $_POST['quiz1'] ?? NULL;
         $observ1 = $_POST['observ1'];
-        $quiz2 = $_POST['quiz2']?? NULL;
-        $quiz3 = $_POST['quiz3']?? NULL;
-        $quiz4 = $_POST['quiz4']?? NULL;
-        $quiz5 = $_POST['quiz5']?? NULL;
-        $quiz6 = $_POST['quiz6']?? NULL;
-        $quiz7 = $_POST['quiz7']?? NULL;
-        $quiz8 = $_POST['quiz8']?? NULL;
-        $quiz9 = $_POST['quiz9']?? NULL;
-        $quiz10 = $_POST['quiz10']?? NULL;
+        $quiz2 = $_POST['quiz2'] ?? NULL;
+        $quiz3 = $_POST['quiz3'] ?? NULL;
+        $quiz4 = $_POST['quiz4'] ?? NULL;
+        $quiz5 = $_POST['quiz5'] ?? NULL;
+        $quiz6 = $_POST['quiz6'] ?? NULL;
+        $quiz7 = $_POST['quiz7'] ?? NULL;
+        $quiz8 = $_POST['quiz8'] ?? NULL;
+        $quiz9 = $_POST['quiz9'] ?? NULL;
+        $quiz10 = $_POST['quiz10'] ?? NULL;
         $observ10 = $_POST['observ10'];
-        $quiz11 = $_POST['quiz11']?? NULL;
+        $quiz11 = $_POST['quiz11'] ?? NULL;
         $observ11 = $_POST['observ11'];
-        $quiz12 = $_POST['quiz12']?? NULL;
+        $quiz12 = $_POST['quiz12'] ?? NULL;
         $observ12 = $_POST['observ12'];
-        $quiz13 = $_POST['quiz13']?? NULL;
+        $quiz13 = $_POST['quiz13'] ?? NULL;
         $observ13 = $_POST['observ13'];
-        $quiz14 = $_POST['quiz14']?? NULL;
+        $quiz14 = $_POST['quiz14'] ?? NULL;
         $observ14 = $_POST['observ14'];
-        $quiz15 = $_POST['quiz15']?? NULL;
+        $quiz15 = $_POST['quiz15'] ?? NULL;
         $observ15 = $_POST['observ15'];
-        $quiz16 = $_POST['quiz16']?? NULL;
+        $quiz16 = $_POST['quiz16'] ?? NULL;
         $observ16 = $_POST['observ16'];
-        $quiz17 = $_POST['quiz17']?? NULL;
+        $quiz17 = $_POST['quiz17'] ?? NULL;
         $observ17 = $_POST['observ17'];
-        $quiz18 = $_POST['quiz18']?? NULL;
+        $quiz18 = $_POST['quiz18'] ?? NULL;
         $observ18 = $_POST['observ18'];
-        $quiz19 = $_POST['quiz19']?? NULL;
+        $quiz19 = $_POST['quiz19'] ?? NULL;
         $observ19 = $_POST['observ19'];
-        $quiz20 = $_POST['quiz20']?? NULL;
+        $quiz20 = $_POST['quiz20'] ?? NULL;
         $observ20 = $_POST['observ20'];
-        $accept_mission = $_POST['accept_mission']?? NULL;
+        $accept_mission = $_POST['accept_mission'] ?? NULL;
         // $signature_responsable = $_POST['signature_responsable'];
         $observation = $_POST['observation'];
 
@@ -2053,7 +2121,7 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        
+
         $update3 = update_contenu_document_table_doc_3_accept_mission($id_document, $db);
 
         if ($update1 && $update2 && $update3) {
@@ -2071,68 +2139,68 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'edit_table_doc_19_quiz_lcb') {
 
         $id_document = $_POST['id_document'];
-        $quiz1 = $_POST['quiz1']?? NULL;
-        $impact1 = $_POST['impact1']?? NULL;
+        $quiz1 = $_POST['quiz1'] ?? NULL;
+        $impact1 = $_POST['impact1'] ?? NULL;
         $observ1 = $_POST['observ1'];
-        $quiz2 = $_POST['quiz2']?? NULL;
-        $impact2 = $_POST['impact2']?? NULL;
+        $quiz2 = $_POST['quiz2'] ?? NULL;
+        $impact2 = $_POST['impact2'] ?? NULL;
         $observ2 = $_POST['observ2'];
-        $quiz3 = $_POST['quiz3']?? NULL;
-        $impact3 = $_POST['impact3']?? NULL;
+        $quiz3 = $_POST['quiz3'] ?? NULL;
+        $impact3 = $_POST['impact3'] ?? NULL;
         $observ3 = $_POST['observ3'];
-        $quiz4 = $_POST['quiz4']?? NULL;
-        $impact4 = $_POST['impact4']?? NULL;
+        $quiz4 = $_POST['quiz4'] ?? NULL;
+        $impact4 = $_POST['impact4'] ?? NULL;
         $observ4 = $_POST['observ4'];
-        $quiz5 = $_POST['quiz5']?? NULL;
-        $impact5 = $_POST['impact5']?? NULL;
+        $quiz5 = $_POST['quiz5'] ?? NULL;
+        $impact5 = $_POST['impact5'] ?? NULL;
         $observ5 = $_POST['observ5'];
-        $quiz6 = $_POST['quiz6']?? NULL;
-        $impact6 = $_POST['impact6']?? NULL;
+        $quiz6 = $_POST['quiz6'] ?? NULL;
+        $impact6 = $_POST['impact6'] ?? NULL;
         $observ6 = $_POST['observ6'];
-        $quiz7 = $_POST['quiz7']?? NULL;
-        $impact7 = $_POST['impact7']?? NULL;
+        $quiz7 = $_POST['quiz7'] ?? NULL;
+        $impact7 = $_POST['impact7'] ?? NULL;
         $observ7 = $_POST['observ7'];
-        $quiz8 = $_POST['quiz8']?? NULL;
-        $impact8 = $_POST['impact8']?? NULL;
+        $quiz8 = $_POST['quiz8'] ?? NULL;
+        $impact8 = $_POST['impact8'] ?? NULL;
         $observ8 = $_POST['observ8'];
-        $quiz9 = $_POST['quiz9']?? NULL;
-        $impact9 = $_POST['impact9']?? NULL;
+        $quiz9 = $_POST['quiz9'] ?? NULL;
+        $impact9 = $_POST['impact9'] ?? NULL;
         $observ9 = $_POST['observ9'];
-        $quiz10 = $_POST['quiz10']?? NULL;
-        $impact10 = $_POST['impact10']?? NULL;
+        $quiz10 = $_POST['quiz10'] ?? NULL;
+        $impact10 = $_POST['impact10'] ?? NULL;
         $observ10 = $_POST['observ10'];
-        $quiz11 = $_POST['quiz11']?? NULL;
-        $impact11 = $_POST['impact11']?? NULL;
+        $quiz11 = $_POST['quiz11'] ?? NULL;
+        $impact11 = $_POST['impact11'] ?? NULL;
         $observ11 = $_POST['observ11'];
-        $quiz12 = $_POST['quiz12']?? NULL;
-        $impact12 = $_POST['impact12']?? NULL;
+        $quiz12 = $_POST['quiz12'] ?? NULL;
+        $impact12 = $_POST['impact12'] ?? NULL;
         $observ12 = $_POST['observ12'];
-        $quiz13 = $_POST['quiz13']?? NULL;
-        $impact13 = $_POST['impact13']?? NULL;
+        $quiz13 = $_POST['quiz13'] ?? NULL;
+        $impact13 = $_POST['impact13'] ?? NULL;
         $observ13 = $_POST['observ13'];
-        $quiz14 = $_POST['quiz14']?? NULL;
-        $impact14 = $_POST['impact14']?? NULL;
+        $quiz14 = $_POST['quiz14'] ?? NULL;
+        $impact14 = $_POST['impact14'] ?? NULL;
         $observ14 = $_POST['observ14'];
-        $quiz15 = $_POST['quiz15']?? NULL;
-        $impact15 = $_POST['impact15']?? NULL;
+        $quiz15 = $_POST['quiz15'] ?? NULL;
+        $impact15 = $_POST['impact15'] ?? NULL;
         $observ15 = $_POST['observ15'];
-        $quiz16 = $_POST['quiz16']?? NULL;
-        $impact16 = $_POST['impact16']?? NULL;
+        $quiz16 = $_POST['quiz16'] ?? NULL;
+        $impact16 = $_POST['impact16'] ?? NULL;
         $observ16 = $_POST['observ16'];
-        $quiz17 = $_POST['quiz17']?? NULL;
-        $impact17 = $_POST['impact17']?? NULL;
+        $quiz17 = $_POST['quiz17'] ?? NULL;
+        $impact17 = $_POST['impact17'] ?? NULL;
         $observ17 = $_POST['observ17'];
-        $quiz18 = $_POST['quiz18']?? NULL;
-        $impact18 = $_POST['impact18']?? NULL;
+        $quiz18 = $_POST['quiz18'] ?? NULL;
+        $impact18 = $_POST['impact18'] ?? NULL;
         $observ18 = $_POST['observ18'];
-        $quiz19 = $_POST['quiz19']?? NULL;
-        $impact19 = $_POST['impact19']?? NULL;
+        $quiz19 = $_POST['quiz19'] ?? NULL;
+        $impact19 = $_POST['impact19'] ?? NULL;
         $observ19 = $_POST['observ19'];
-        $quiz20 = $_POST['quiz20']?? NULL;
-        $impact20 = $_POST['impact20']?? NULL;
+        $quiz20 = $_POST['quiz20'] ?? NULL;
+        $impact20 = $_POST['impact20'] ?? NULL;
         $observ20 = $_POST['observ20'];
-        $quiz21 = $_POST['quiz21']?? NULL;
-        $impact21 = $_POST['impact21']?? NULL;
+        $quiz21 = $_POST['quiz21'] ?? NULL;
+        $impact21 = $_POST['impact21'] ?? NULL;
         $observ21 = $_POST['observ21'];
         $conclusion = $_POST['conclusion'];
 
@@ -2230,7 +2298,7 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        
+
         $update3 = update_contenu_document_table_doc_19_quiz_lcb($id_document, $db);
 
         if ($update1 && $update2 && $update3) {

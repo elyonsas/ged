@@ -4013,7 +4013,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        // Pour voir l'arperçu d'un document write
+        // Pour voir l'aperçu d'un document write
         $(document).on('click', '.preview_doc_write', function(e) {
 
             var id_document = $(this).data('id_document');
@@ -4034,7 +4034,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour voir l'arperçu d'un document generate
+        // Pour voir l'aperçu d'un document generate
         $(document).on('click', '.preview_doc_generate', function(e) {
 
             var id_document = $(this).data('id_document');
@@ -4055,11 +4055,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour voir l'arperçu d'un document file
+        // Pour voir l'aperçu d'un document file
         $(document).on('click', '.preview_doc_file', function(e) {
 
             var id_document = $(this).data('id_document');
             $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
+            $('#preview_doc_file_modal .refresh-preview').data('action', 'preview_doc_file');
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -4077,9 +4078,33 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
+        // Pour voir l'aperçu d'un document file
+        $(document).on('click', '.preview_doc_scan', function(e) {
+
+            var id_document = $(this).data('id_document');
+            $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
+            $('#preview_doc_file_modal .refresh-preview').data('action', 'preview_doc_scan');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_scan'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_file_modal .modal-title').html(data.titre_document);
+                }
+            })
+
+        });
+
         // Quand on clique sur .preview_doc_file_modal .refresh-preview
         $(document).on('click', '#preview_doc_file_modal .refresh-preview', function(e) {
             var id_document = $(this).data('id_document');
+            var action = $(this).data('action');
             console.log(id_document);
 
             $.ajax({
@@ -4087,7 +4112,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     id_document: id_document,
-                    action: 'preview_doc_file'
+                    action: action
                 },
                 dataType: "JSON",
                 success: function(data) {
