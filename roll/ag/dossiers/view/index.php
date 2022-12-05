@@ -859,6 +859,83 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!--end::Modal - preview-->
 
+    <!--begin::Modal - preview-->
+    <div class="modal fade" id="preview_doc_scan_modal" tabindex="-1">
+        <style>
+            @media screen {
+                #preview_doc_scan_modal .modal-header {
+                    margin: 1rem auto 0;
+                    min-width: 25%;
+                    max-width: 90%;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                }
+
+                #preview_doc_scan_modal .modal-body {
+                    background: #d1d1d1;
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #preview_doc_scan_modal .doc-content {
+                    height: 100%;
+                }
+            }
+
+            #preview_doc_scan_modal .refresh-preview {
+                position: relative;
+                left: 75px;
+                cursor: pointer;
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <div class="modal-content h-100">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+
+                    <div class="refresh-preview btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualiser">
+                        <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/arrows/arr029.svg-->
+                        <span class="svg-icon svg-icon-muted svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z" fill="currentColor" />
+                                <path opacity="0.3" d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <!--begin::Modal body-->
+                    <div class="doc-content">
+
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - preview-->
+
     <!-- begin::Modal edit_doc_write -->
     <div class="modal fade" id="edit_doc_write_modal" tabindex="-1">
         <style>
@@ -4161,7 +4238,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             var id_document = $(this).data('id_document');
             $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
-            $('#preview_doc_file_modal .refresh-preview').data('action', 'preview_doc_file');
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -4179,12 +4255,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour voir l'aperçu d'un document file
+        // Pour voir l'aperçu d'un document scan
         $(document).on('click', '.preview_doc_scan', function(e) {
 
             var id_document = $(this).data('id_document');
-            $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
-            $('#preview_doc_file_modal .refresh-preview').data('action', 'preview_doc_scan');
+            $('#preview_doc_scan_modal .refresh-preview').data('id_document', id_document);
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -4195,8 +4270,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
-                    $('#preview_doc_file_modal .modal-title').html(data.titre_document);
+                    $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
                 }
             })
 
@@ -4205,20 +4280,37 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Quand on clique sur .preview_doc_file_modal .refresh-preview
         $(document).on('click', '#preview_doc_file_modal .refresh-preview', function(e) {
             var id_document = $(this).data('id_document');
-            var action = $(this).data('action');
-            console.log(id_document);
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
                 data: {
                     id_document: id_document,
-                    action: action
+                    action: 'preview_doc_file'
                 },
                 dataType: "JSON",
                 success: function(data) {
                     $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_file_modal .modal-title').html(data.titre_document);
+                }
+            })
+        });
+
+        // Quand on clique sur .preview_doc_scan_modal .refresh-preview
+        $(document).on('click', '#preview_doc_scan_modal .refresh-preview', function(e) {
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_scan'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
                 }
             })
         });
