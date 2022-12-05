@@ -3413,6 +3413,125 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_form_doc_generate -->
 
+    <!-- begin::Modal edit_info_doc_file -->
+    <div class="modal fade" id="edit_info_doc_file_table_doc_6_info_lettre_mission_modal" tabindex="-1">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <!--begin::Modal content-->
+            <form id="form_edit_info_doc_file_table_doc_6_info_lettre_mission" method="POST" class="modal-content" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Durée de la lettre de mission</label>
+                                <input id="table_doc_6_info_lettre_mission_duree" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="duree">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Renouvellement</label>
+                                <input id="table_doc_6_info_lettre_mission_renouvellement" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="renouvellement">
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Renseignez les missions de la lettre de mission</span>
+                        </div>
+
+                        <!--begin::Repeater-->
+                        <div class="row mb-5" id="table_doc_6_info_lettre_mission_repeater">
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <div data-repeater-list="mission">
+                                    <div data-repeater-item>
+                                        <div class="form-group row mb-5">
+                                            <div class="col-md-10">
+                                                <label class="fs-5 form-label">Nature de la mission</label>
+                                                <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+                                                    <i class="la la-trash-o fs-3"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-10 ms-10 mt-5">
+                                                <div class="inner-repeater">
+                                                    <div data-repeater-list="sous_mission" class="mb-5">
+                                                        <div data-repeater-item>
+                                                            <label class="fs-6 form-label">Nature de la sous mission</label>
+                                                            <div class="input-group pb-3">
+                                                                <input type="email" class="form-control" placeholder="Précisez la nature de la sous mission" />
+                                                                <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                                    <i class="la la-trash-o fs-3"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-light-primary" data-repeater-create type="button">
+                                                        <i class="la la-plus"></i> Ajouter une sous mission
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form group-->
+
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+                                    <i class="la la-plus"></i>Ajouter une mission
+                                </a>
+                            </div>
+                            <!--end::Form group-->
+                        </div>
+                        <!--end::Repeater-->
+
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_table_doc_6_info_lettre_mission">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_info_doc_file_table_doc_6_info_lettre_mission" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_info_doc_file -->
+
+    
+
 </div>
 <!--end::Content wrapper-->
 
@@ -5638,6 +5757,123 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         });
+
+        // Lorsqu'on clique sur .edit_info_doc_file
+        init_repeater_count = 0;
+        $(document).on('click', '.edit_info_doc_file', function(e) {
+            e.preventDefault();
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_info_doc_file'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    console.log(data.table_info_document)
+
+                    if (data.table_info_document == 'doc_6_info_lettre_mission') {
+
+                        // Show modal
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal').modal('show');
+
+                        id_document = data.id_document;
+                        titre_document = data.titre_document;
+                        duree = data.duree;
+                        renouvellement = data.renouvellement;
+
+                        // On rempli les champs du modal
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal input[name="id_document"]').val(id_document);
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal .modal-title').html(titre_document);
+
+                        $('#table_doc_6_info_lettre_mission_duree').val(duree);
+                        $('#table_doc_6_info_lettre_mission_renouvellement').val(renouvellement);
+
+                        $('#table_doc_6_info_lettre_mission_repeater').repeater({
+                            initEmpty: true,
+
+                            repeaters: [{
+                                initEmpty: true,
+
+                                selector: '.inner-repeater',
+                                show: function () {
+                                    $(this).slideDown();
+                                },
+
+                                hide: function (deleteElement) {
+                                    $(this).slideUp(deleteElement);
+                                }
+                            }],
+
+                            show: function () {
+                                $(this).slideDown();
+                            },
+
+                            hide: function (deleteElement) {
+                                $(this).slideUp(deleteElement);
+                            }
+                        });
+
+                    }
+
+
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_info_doc_file_table_doc_6_info_lettre_mission
+        $(document).on('submit', '#form_edit_info_doc_file_table_doc_6_info_lettre_mission', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_info_doc_file_table_doc_6_info_lettre_mission');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Informations modifié !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+        
 
     })
 </script>

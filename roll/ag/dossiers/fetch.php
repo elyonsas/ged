@@ -511,6 +511,7 @@ if (isset($_POST['datatable'])) {
             $titre_document = $row['titre_document'];
             $type_document = $row['type_document'];
             $table_document = $row['table_document'];
+            $table_info_document = $row['table_info_document'];
             $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
@@ -846,46 +847,97 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         } else {
-                            $action = <<<HTML
+                            if ($table_info_document != NULL){
 
-                                <td>
-                                    <div class="d-flex justify-content-end flex-shrink-0">
-                                        
-                                        <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal" 
-                                        class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
-                                        </a>
-                                        <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                        <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                        </a> -->
-                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                            <i class="bi bi-three-dots fs-3"></i>
-                                        </button>
-                                        <!--begin::Menu 3-->
-                                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
-                                                <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
-                                            </div>
-                                            <!--end::Menu item-->
+                                $action = <<<HTML
 
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
-                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
-                                            </div>
-                                            <!--end::Menu item-->
+                                    <td>
+                                        <div class="d-flex justify-content-end flex-shrink-0">
+                                            
+                                            <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal" 
+                                            class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                            </a>
+                                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                            </a> -->
+                                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                <i class="bi bi-three-dots fs-3"></i>
+                                            </button>
+                                            <!--begin::Menu 3-->
+                                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                                </div>
+                                                <!--end::Menu item-->
 
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
-                                                <a href="assets/docs/{$matricule_client}/{$result['src_document']}" download class="menu-link px-3">Télécharger document</a>
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="edit_info_doc_file menu-link px-3" data-id_document="{$id_document}">Modifier informations</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="assets/docs/{$matricule_client}/{$result['src_document']}" download class="menu-link px-3">Télécharger document</a>
+                                                </div>
+                                                <!--end::Menu item-->
                                             </div>
-                                            <!--end::Menu item-->
+                                            <!--end::Menu 3-->
                                         </div>
-                                        <!--end::Menu 3-->
-                                    </div>
-                                </td>
+                                    </td>
 
-                            HTML;
+                                HTML;
+
+                            }else{
+                                $action = <<<HTML
+
+                                    <td>
+                                        <div class="d-flex justify-content-end flex-shrink-0">
+                                            
+                                            <a href="" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal" 
+                                            class="preview_doc_file btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="bi bi-eye-fill fs-3"></i>
+                                            </a>
+                                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                            </a> -->
+                                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                <i class="bi bi-three-dots fs-3"></i>
+                                            </button>
+                                            <!--begin::Menu 3-->
+                                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Modifier le document</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="assets/docs/{$matricule_client}/{$result['src_document']}" download class="menu-link px-3">Télécharger document</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 3-->
+                                        </div>
+                                    </td>
+
+                                HTML;
+                            }
                         }
                     }
                     break;
@@ -1649,6 +1701,25 @@ if (isset($_POST['action'])) {
 
         $output = $result;
     }
+    if ($_POST['action'] == 'fetch_edit_info_doc_file'){
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_info_document = $result['table_info_document'];
+
+        $query = "SELECT * FROM document, $table_info_document WHERE document.id_document = $table_info_document.id_document AND $table_info_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+
+    }
 
     if ($_POST['action'] == 'edit_doc_write') {
 
@@ -2396,6 +2467,10 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
+    }
+    if ($_POST['action'] == 'edit_table_doc_6_info_lettre_mission'){
+
+        dump($_POST);
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
