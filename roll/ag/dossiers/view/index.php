@@ -4436,8 +4436,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         fileListPath = [];
         fileListName = [];
         // set the dropzone container id
-        var id = "#file_upload_zone";
-        var dropzone = document.querySelector(id);
+        const id = "#file_upload_zone";
+        const dropzone = document.querySelector(id);
 
         // Lorsqu'on clique sur .edit_doc_file
         $(document).on('click', '.edit_doc_file', function() {
@@ -4683,8 +4683,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         fileListPath = [];
         fileListName = [];
         // set the dropzone container id
-        var id = "#scan_upload_zone";
-        var dropzone = document.querySelector(id);
+        const id1 = "#scan_upload_zone";
+        const dropzone1 = document.querySelector(id1);
 
         // Lorsqu'on clique sur .edit_doc_scan
         $(document).on('click', '.edit_doc_scan', function () {
@@ -4706,35 +4706,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     /* -----------------Mise en place du plugin dropzonejs---------------- */
                     // set the preview element template
                     var previewTemplate = `
-                                <div class="dropzone-item">
-                                    <!--begin::File-->
-                                    <div class="dropzone-file">
-                                        <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                            <span data-dz-name>some_image_file_name.jpg</span>
-                                            <strong>(<span data-dz-size>340kb</span>)</strong>
-                                        </div>
-
-                                        <div class="dropzone-error" data-dz-errormessage></div>
-                                    </div>
-                                    <!--end::File-->
-
-                                    <!--begin::Progress-->
-                                    <div class="dropzone-progress">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::Progress-->
-
-                                    <!--begin::Toolbar-->
-                                    <div class="dropzone-toolbar">
-                                        <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
-                                    </div>
-                                    <!--end::Toolbar-->
+                        <div class="dropzone-item">
+                            <!--begin::File-->
+                            <div class="dropzone-file">
+                                <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                    <span data-dz-name>some_image_file_name.jpg</span>
+                                    <strong>(<span data-dz-size>340kb</span>)</strong>
                                 </div>
-                            `;
-                    var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
+
+                                <div class="dropzone-error" data-dz-errormessage></div>
+                            </div>
+                            <!--end::File-->
+
+                            <!--begin::Progress-->
+                            <div class="dropzone-progress">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Progress-->
+
+                            <!--begin::Toolbar-->
+                            <div class="dropzone-toolbar">
+                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                    `;
+                    var myDropzone = new Dropzone(id1, { // Make the whole body a dropzone
                         url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_scan_upload", // Set the url for your upload script location
                         parallelUploads: 20,
                         maxFilesize: 10, // Max filesize in MB
@@ -4747,7 +4747,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     // When added file
                     myDropzone.on("addedfile", function (file) {
                         // Hookup the start button
-                        const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
+                        const dropzoneItems = dropzone1.querySelectorAll('.dropzone-item');
                         dropzoneItems.forEach(dropzoneItem => {
                             dropzoneItem.style.display = '';
                         });
@@ -4794,7 +4794,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
                     // Update the total progress bar
                     myDropzone.on("totaluploadprogress", function (progress) {
-                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        const progressBars = dropzone1.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
                             progressBar.style.width = progress + "%";
                         });
@@ -4802,14 +4802,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     // Sending files to server
                     myDropzone.on("sending", function (file) {
                         // Show the total progress bar when upload starts
-                        const progressBars = dropzone.querySelectorAll('.progress-bar');
+                        const progressBars = dropzone1.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
                             progressBar.style.opacity = "1";
                         });
                     });
                     // Hide the total progress bar when nothing"s uploading anymore
                     myDropzone.on("complete", function (progress) {
-                        const progressBars = dropzone.querySelectorAll('.dz-complete');
+                        const progressBars = dropzone1.querySelectorAll('.dz-complete');
 
                         setTimeout(function () {
                             progressBars.forEach(progressBar => {
