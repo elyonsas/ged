@@ -3444,7 +3444,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="row mb-5">
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Durée de la lettre de mission</label>
-                                <input id="table_doc_6_info_lettre_mission_duree" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="duree">
+                                <input id="table_doc_6_info_lettre_mission_duree" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="duree" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Renouvellement</label>
@@ -3465,7 +3465,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="form-group row mb-5">
                                             <div class="col-md-10">
                                                 <label class="fs-5 form-label">Nature de la mission</label>
-                                                <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" />
+                                                <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" name="nature_mission" />
                                             </div>
                                             <div class="col-md-2">
                                                 <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-9">
@@ -3478,7 +3478,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                         <div data-repeater-item>
                                                             <label class="fs-6 form-label">Nature de la sous mission</label>
                                                             <div class="input-group pb-3">
-                                                                <input type="email" class="form-control" placeholder="Précisez la nature de la sous mission" />
+                                                                <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
                                                                 <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
                                                                     <i class="la la-trash-o fs-3"></i>
                                                                 </button>

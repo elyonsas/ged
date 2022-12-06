@@ -2470,7 +2470,100 @@ if (isset($_POST['action'])) {
     }
     if ($_POST['action'] == 'edit_table_doc_6_info_lettre_mission'){
 
-        dump($_POST);
+        $id_document = $_POST['id_document'];
+        $duree = si_funct($_POST['duree'], "", NULL, $_POST['duree']);
+        $renouvellement = si_funct($_POST['renouvellement'], "", NULL, $_POST['renouvellement']);
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
+        $titre_document = $result['titre_document'];
+
+        // update table document
+        $update1 = update(
+            'document',
+            [
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        // update table doc_6_info_lettre_mission
+        $update2 = update(
+            'doc_6_info_lettre_mission',
+            [
+                'duree' => $duree,
+                'renouvellement' => $renouvellement,
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        // update table mission_client
+        $update3 = false;
+        if (isset($_POST['mission'])) {
+
+            $mission = $_POST['mission'];
+            $delete = delete('mission_client', "id_client = $id_client", $db);
+
+            foreach ($mission as $mission_item) {
+
+                $update3 = insert(
+                    'mission_client',
+                    [
+                        'nature_mission' => $mission_item['nature_mission'],
+                        'sous_mission' => 'non',
+                        'id_client' => $id_client
+                    ],
+                    $db
+                );
+
+                // last insert id
+                $id_mission = $db->lastInsertId();
+
+                if (isset($mission_item['sous_mission'])) {
+
+                    $sous_mission = $mission_item['sous_mission'];
+
+                    foreach ($sous_mission as $sous_mission_item) {
+
+                        $update3 = insert(
+                            'mission_client',
+                            [
+                                'nature_mission' => $sous_mission_item['nature_sous_mission'],
+                                'sous_mission' => 'oui',
+                                'id_parent_mission' => $id_mission,
+                                'id_client' => $id_client,
+                            ],
+                            $db
+                        );
+                    }
+                }
+            }
+
+        } else {
+            $update3 = true;
+            $delete = delete('mission_client', "id_client = $id_client", $db);
+        }
+
+        if ($update1 && $update2 && $update3) {
+            $output = [
+                'success' => true,
+                'message' => "La lettre de mission de <b>$nom_client</b> à été mise à jour !"
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+        
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
