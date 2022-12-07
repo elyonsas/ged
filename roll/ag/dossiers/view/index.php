@@ -4295,7 +4295,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                     `;
                     var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
-                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
+                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_file_upload", // Set the url for your upload script location
                         parallelUploads: 20,
                         maxFilesize: 10, // Max filesize in MB
                         maxFiles: 1,

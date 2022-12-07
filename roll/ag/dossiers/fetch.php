@@ -1740,6 +1740,71 @@ if (isset($_POST['action'])) {
             }
         }
     }
+    if ($_POST['action'] == 'edit_doc_scan') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
+        $table_document = $result['table_document'];
+        $titre_document = $result['titre_document'];
+
+        $src_document = $result['src_scan_document'];
+
+        if ($src_temp_document == '') {
+            $output = [
+                'success' => false,
+                'message' => 'Vous devez sélectionner un fichier !'
+            ];
+        } else {
+
+            $infoPath = pathinfo($src_temp_document);
+            $type_document = '.' . $infoPath['extension'];
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
+
+            if (is_file($file_path)) {
+                unlink($file_path);
+            }
+
+            $update1 = update(
+                $table_document,
+                [
+                    'src_document' => $src_temp_document,
+                    'src_temp_document' => '',
+                    'type_document' => $type_document
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            $update2 = update(
+                'document',
+                [
+                    'updated_at_document' => date('Y-m-d H:i:s'),
+                    'updated_by_document' => $_SESSION['id_utilisateur']
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            if ($update1 && $update2) {
+                $output = [
+                    'success' => true,
+                    'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
+                ];
+            } else {
+                $output = [
+                    'success' => false,
+                    'message' => 'Une erreur s\'est produite !'
+                ];
+            }
+        }
+    }
     if ($_POST['action'] == 'edit_doc_generate') {
 
         $id_document = $_POST['id_document'];
@@ -2381,41 +2446,45 @@ if (isset($_POST['action'])) {
 
 if (isset($_FILES['file'])) {
 
-    $id_document = $_GET['id_document'];
-    $titre_document = $_GET['titre_document'];
+    if ($_GET['action'] == 'doc_file_upload'){
 
-    $query = "SELECT * FROM document WHERE id_document = $id_document";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $result = $statement->fetch();
+        $id_document = $_GET['id_document'];
+        $titre_document = $_GET['titre_document'];
 
-    $id_client = $result['id_client'];
-    $matricule_client = find_info_client('matricule_client', $id_client, $db);
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
 
-    $tempFile = $_FILES['file']['tmp_name'];
-    $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
 
-    $uuid = Uuid::uuid1();
-    $uniq_str = $uuid->toString();
-    $infoPath = pathinfo($_FILES['file']['name']);
+        $tempFile = $_FILES['file']['tmp_name'];
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
 
-    $targetFile =  $targetPath . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'];
-    move_uploaded_file($tempFile, $targetFile);
+        $uuid = Uuid::uuid1();
+        $uniq_str = $uuid->toString();
+        $infoPath = pathinfo($_FILES['file']['name']);
 
-    $query = "SELECT * FROM document WHERE id_document = $id_document";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $result = $statement->fetch();
+        $targetFile =  $targetPath . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'];
+        move_uploaded_file($tempFile, $targetFile);
 
-    $table_document = $result['table_document'];
-    $update = update(
-        $table_document,
-        [
-            'src_temp_document' => $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
-        ],
-        "id_document = $id_document",
-        $db
-    );
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+        $update = update(
+            $table_document,
+            [
+                'src_temp_document' => $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+    }
 
     $output = $targetFile;
     echo $output;
