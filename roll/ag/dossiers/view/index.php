@@ -5081,7 +5081,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }
 
         // Lorsqu'on clique sur .edit_form_doc_generate
-        init_repeater_count = 0;
+        init_repeater_count_edit_form_doc_generate = 0;
         $(document).on('click', '.edit_form_doc_generate', function(e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
@@ -5230,8 +5230,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         $('#table_doc_8_fiche_id_client_nom_cabinet_confrere').val(nom_cabinet_confrere);
                         $('#table_doc_8_fiche_id_client_dossier_herite_confrere').val(dossier_herite_confrere);
 
-                        init_repeater_count++;
-                        if (init_repeater_count == 1) {
+                        init_repeater_count_edit_form_doc_generate++;
+                        if (init_repeater_count_edit_form_doc_generate == 1) {
                             // Fetch data for activite_client (Repeater)
                             $.ajax({
                                 url: "roll/ag/dossiers/fetch.php",
@@ -5759,7 +5759,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .edit_info_doc_file
-        init_repeater_count = 0;
+        init_repeater_count_edit_info_doc_file = 0;
         $(document).on('click', '.edit_info_doc_file', function(e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
@@ -5774,14 +5774,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 dataType: "JSON",
                 success: function(data) {
 
-                    console.log(data.table_info_document)
-
                     if (data.table_info_document == 'doc_6_info_lettre_mission') {
 
                         // Show modal
                         $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal').modal('show');
 
                         id_document = data.id_document;
+                        id_client = data.id_client;
                         titre_document = data.titre_document;
                         duree = data.duree;
                         renouvellement = data.renouvellement;
@@ -5793,30 +5792,127 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         $('#table_doc_6_info_lettre_mission_duree').val(duree);
                         $('#table_doc_6_info_lettre_mission_renouvellement').val(renouvellement);
 
-                        $('#table_doc_6_info_lettre_mission_repeater').repeater({
-                            initEmpty: true,
-
-                            repeaters: [{
-                                initEmpty: true,
-
-                                selector: '.inner-repeater',
-                                show: function () {
-                                    $(this).slideDown();
+                        init_repeater_count_edit_info_doc_file++;
+                        if (init_repeater_count_edit_info_doc_file == 1) {
+                            // Fetch data for mission_client (Repeater)
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    table: 'mission_client',
+                                    condition: 'id_client = ' + id_client,
+                                    action: 'fetch_table'
                                 },
+                                dataType: "JSON",
+                                success: function(data) {
 
-                                hide: function (deleteElement) {
-                                    $(this).slideUp(deleteElement);
+                                    $template = `
+                                        <div data-repeater-item>
+                                            <div class="form-group row mb-5">
+                                                <div class="col-md-10">
+                                                    <label class="fs-5 form-label">Nature de la mission</label>
+                                                    <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" name="nature_mission" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+                                                        <i class="la la-trash-o fs-3"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-10 ms-10 mt-5">
+                                                    <div class="inner-repeater">
+                                                        <div data-repeater-list="sous_mission" class="mb-5">
+                                                            <div data-repeater-item>
+                                                                <label class="fs-6 form-label">Nature de la sous mission</label>
+                                                                <div class="input-group pb-3">
+                                                                    <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
+                                                                    <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                                        <i class="la la-trash-o fs-3"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-light-primary" data-repeater-create type="button">
+                                                            <i class="la la-plus"></i> Ajouter une sous mission
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    $template_inner = `
+                                    
+                                        <div data-repeater-item>
+                                            <label class="fs-6 form-label">Nature de la sous mission</label>
+                                            <div class="input-group pb-3">
+                                                <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
+                                                <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                    <i class="la la-trash-o fs-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    `;
+
+                                    // vider le contenu de #table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission
+                                    $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"]').html('');
+                                    init_repeater_inner_count_edit_info_doc_file = 0;
+                                    for (let i = 0; i < data.length; i++) {
+                                        if (data[i].sous_mission == 'non'){
+
+                                            $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"]').append($template);
+                                            parent = '#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"] div[data-repeater-item]:last-child';
+
+                                            $(parent + ' ' + 'input[name="nature_mission"]').val(data[i].nature_mission);
+
+                                            init_repeater_inner_count_edit_info_doc_file = 0;
+                                        }else {
+                                    
+                                            if (init_repeater_inner_count_edit_info_doc_file == 0){
+                                                $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last').html('');
+                                            }
+
+                                            $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last').append($template_inner);
+                                            parent = '#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last div[data-repeater-item]:last-child';
+
+                                            $(parent + ' ' + 'input[name="nature_sous_mission"]').val(data[i].nature_mission);
+
+                                            init_repeater_inner_count_edit_info_doc_file++;
+
+                                        }
+                                    }
+
+
+
+                                    $('#table_doc_6_info_lettre_mission_repeater').repeater({
+                                        initEmpty: false,
+
+                                        repeaters: [{
+                                            initEmpty: false,
+
+                                            selector: '.inner-repeater',
+                                            show: function () {
+                                                $(this).slideDown();
+                                            },
+
+                                            hide: function (deleteElement) {
+                                                $(this).slideUp(deleteElement);
+                                            }
+                                        }],
+
+                                        show: function () {
+                                            $(this).slideDown();
+                                        },
+
+                                        hide: function (deleteElement) {
+                                            $(this).slideUp(deleteElement);
+                                        }
+                                    });
+
+
                                 }
-                            }],
-
-                            show: function () {
-                                $(this).slideDown();
-                            },
-
-                            hide: function (deleteElement) {
-                                $(this).slideUp(deleteElement);
-                            }
-                        });
+                            });
+                        }
 
                     }
 
