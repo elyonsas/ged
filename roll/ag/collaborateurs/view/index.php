@@ -14,6 +14,7 @@ HTML;
 $menu_tb = "";
 
 $menu_dt = "";
+$menu_interlo = "";
 $menu_collabo = "active";
 $menu_compta = "";
 

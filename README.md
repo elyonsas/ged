@@ -7,3 +7,4 @@ Code collaborateur : 11000 + id
 Code client : DEC + 12000 + id
 Code document : 13000 + id
 Secteur activité : 14000 + id
+Interlocuteur : 15000 + id

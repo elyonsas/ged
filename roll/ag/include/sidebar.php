@@ -91,6 +91,28 @@
                     $icon = <<<HTML
 
                                 <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-24-050857/core/html/src/media/icons/duotune/communication/com013.svg-->
+                                    <span class="svg-icon svg-icon-muted svg-icon-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="currentColor"/>
+                                            <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+
+                            HTML;
+                    ?>
+                    <?= single_menu('Interlocuteurs', $icon, 'roll/ag/interlocuteurs', $menu_interlo) ?>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <?php
+                    $icon = <<<HTML
+
+                                <span class="menu-icon">
                                     <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/communication/com014.svg-->
                                     <span class="svg-icon svg-icon-muted svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16.0173 9H15.3945C14.2833 9 13.263 9.61425 12.7431 10.5963L12.154 11.7091C12.0645 11.8781 12.1072 12.0868 12.2559 12.2071L12.6402 12.5183C13.2631 13.0225 13.7556 13.6691 14.0764 14.4035L14.2321 14.7601C14.2957 14.9058 14.4396 15 14.5987 15H18.6747C19.7297 15 20.4057 13.8774 19.912 12.945L18.6686 10.5963C18.1487 9.61425 17.1285 9 16.0173 9Z" fill="currentColor" />
@@ -108,6 +130,7 @@
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
+
                     <?php
                     $icon = <<<HTML
 
