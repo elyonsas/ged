@@ -2473,6 +2473,11 @@ if (isset($_POST['action'])) {
         $id_document = $_POST['id_document'];
         $duree = si_funct($_POST['duree'], "", NULL, $_POST['duree']);
         $renouvellement = si_funct($_POST['renouvellement'], "", NULL, $_POST['renouvellement']);
+        $date_debut_duree = si_funct($_POST['date_debut_duree'], "", NULL, $_POST['date_debut_duree']);
+        $date_debut_renouvellement = si_funct($_POST['date_debut_renouvellement'], "", NULL, $_POST['date_debut_renouvellement']);
+        $frais_ouverture = si_funct($_POST['frais_ouverture'], "", NULL, $_POST['frais_ouverture']);
+        $montant_honoraires_ht = si_funct($_POST['montant_honoraires_ht'], "", NULL, $_POST['montant_honoraires_ht']);
+        $montant_honoraires_ttc = si_funct($_POST['montant_honoraires_ttc'], "", NULL, $_POST['montant_honoraires_ttc']);
 
         $query = "SELECT * FROM document WHERE id_document = $id_document";
         $statement = $db->prepare($query);
@@ -2500,6 +2505,11 @@ if (isset($_POST['action'])) {
             [
                 'duree' => $duree,
                 'renouvellement' => $renouvellement,
+                'date_debut_duree' => $date_debut_duree,
+                'date_debut_renouvellement' => $date_debut_renouvellement,
+                'frais_ouverture' => $frais_ouverture,
+                'montant_honoraires_ht' => $montant_honoraires_ht,
+                'montant_honoraires_ttc' => $montant_honoraires_ttc,
             ],
             "id_document = $id_document",
             $db

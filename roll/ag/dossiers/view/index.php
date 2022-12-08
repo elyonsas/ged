@@ -3447,8 +3447,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <input id="table_doc_6_info_lettre_mission_duree" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="duree" required>
                             </div>
                             <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">À partir de</label>
+                                <input id="table_doc_6_info_lettre_mission_date_debut_duree" type="date" class="form-control form-control-solid" placeholder="" name="date_debut_duree" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
                                 <label class="fs-5 mb-2">Renouvellement</label>
                                 <input id="table_doc_6_info_lettre_mission_renouvellement" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="renouvellement">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">À partir de</label>
+                                <input id="table_doc_6_info_lettre_mission_date_debut_renouvellement" type="date" class="form-control form-control-solid" placeholder="" name="date_debut_renouvellement">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Montant hors taxes et TTC des honoraires</label>
+                            <div class="input-group">
+                                <input id="table_doc_6_info_lettre_mission_frais_ouverture" type="text" class="form-control" placeholder="Frais d'ouverture de dossier" name="frais_ouverture">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_6_info_lettre_mission_montant_honoraires_ht" type="text" class="form-control" placeholder="Montant hors taxes" name="montant_honoraires_ht">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_6_info_lettre_mission_montant_honoraires_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_honoraires_ttc">
                             </div>
                         </div>
 
@@ -5784,6 +5806,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         titre_document = data.titre_document;
                         duree = data.duree;
                         renouvellement = data.renouvellement;
+                        date_debut_duree = date_formatter(data.date_debut_duree, 'yyyy-mm-dd');
+                        date_debut_renouvellement = date_formatter(data.date_debut_renouvellement, 'yyyy-mm-dd');
+                        frais_ouverture = data.frais_ouverture;
+                        montant_honoraires_ht = data.montant_honoraires_ht;
+                        montant_honoraires_ttc = data.montant_honoraires_ttc;
+
 
                         // On rempli les champs du modal
                         $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal input[name="id_document"]').val(id_document);
@@ -5791,6 +5819,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                         $('#table_doc_6_info_lettre_mission_duree').val(duree);
                         $('#table_doc_6_info_lettre_mission_renouvellement').val(renouvellement);
+                        $('#table_doc_6_info_lettre_mission_date_debut_duree').val(date_debut_duree);
+                        $('#table_doc_6_info_lettre_mission_date_debut_renouvellement').val(date_debut_renouvellement);
+                        $('#table_doc_6_info_lettre_mission_frais_ouverture').val(frais_ouverture);
+                        $('#table_doc_6_info_lettre_mission_montant_honoraires_ht').val(montant_honoraires_ht);
+                        $('#table_doc_6_info_lettre_mission_montant_honoraires_ttc').val(montant_honoraires_ttc);
 
                         init_repeater_count_edit_info_doc_file++;
                         if (init_repeater_count_edit_info_doc_file == 1) {
