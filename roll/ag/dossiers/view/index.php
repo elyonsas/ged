@@ -860,6 +860,83 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!--end::Modal - preview-->
 
+    <!--begin::Modal - preview-->
+    <div class="modal fade" id="preview_doc_scan_modal" tabindex="-1">
+        <style>
+            @media screen {
+                #preview_doc_scan_modal .modal-header {
+                    margin: 1rem auto 0;
+                    min-width: 25%;
+                    max-width: 90%;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, .15);
+                }
+
+                #preview_doc_scan_modal .modal-body {
+                    background: #d1d1d1;
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #preview_doc_scan_modal .doc-content {
+                    height: 100%;
+                }
+            }
+
+            #preview_doc_scan_modal .refresh-preview {
+                position: relative;
+                left: 75px;
+                cursor: pointer;
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <div class="modal-content h-100">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+
+                    <div class="refresh-preview btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualiser">
+                        <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-10-09-043348/core/html/src/media/icons/duotune/arrows/arr029.svg-->
+                        <span class="svg-icon svg-icon-muted svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5 20.7259C14.6 21.2259 14.2 21.826 13.7 21.926C13.2 22.026 12.6 22.0259 12.1 22.0259C9.5 22.0259 6.9 21.0259 5 19.1259C1.4 15.5259 1.09998 9.72592 4.29998 5.82592L5.70001 7.22595C3.30001 10.3259 3.59999 14.8259 6.39999 17.7259C8.19999 19.5259 10.8 20.426 13.4 19.926C13.9 19.826 14.4 20.2259 14.5 20.7259ZM18.4 16.8259L19.8 18.2259C22.9 14.3259 22.7 8.52593 19 4.92593C16.7 2.62593 13.5 1.62594 10.3 2.12594C9.79998 2.22594 9.4 2.72595 9.5 3.22595C9.6 3.72595 10.1 4.12594 10.6 4.02594C13.1 3.62594 15.7 4.42595 17.6 6.22595C20.5 9.22595 20.7 13.7259 18.4 16.8259Z" fill="currentColor" />
+                                <path opacity="0.3" d="M2 3.62592H7C7.6 3.62592 8 4.02592 8 4.62592V9.62589L2 3.62592ZM16 14.4259V19.4259C16 20.0259 16.4 20.4259 17 20.4259H22L16 14.4259Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <!--begin::Modal body-->
+                    <div class="doc-content">
+
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - preview-->
+
     <!-- begin::Modal edit_doc_write -->
     <div class="modal fade" id="edit_doc_write_modal" tabindex="-1">
         <style>
@@ -1036,6 +1113,107 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Modal dialog-->
     </div>
     <!-- end::Modal edit_doc_file -->
+
+    <!-- begin::Modal edit_doc_scan -->
+    <div class="modal fade" id="edit_doc_scan_modal" tabindex="-1">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_scan" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="form-group row">
+                            <!--begin::Dropzone-->
+                            <style>
+                                #scan_upload_zone .dropzone-select {
+                                    min-height: auto;
+                                    padding: 1.5rem 1.75rem !important;
+                                    text-align: center !important;
+                                    border: 1px dashed var(--kt-primary);
+                                    background-color: var(--kt-primary-light) !important;
+                                    border-radius: 0.475rem !important;
+                                }
+
+                                .dz-drag-hover {
+                                    opacity: 0.5;
+                                }
+
+                                .dz-drag-hover .dropzone-select {
+                                    border-style: solid !important;
+                                }
+                            </style>
+                            <div class="dropzone dropzone-queue mb-2" id="scan_upload_zone">
+                                <!--begin::Controls-->
+                                <div class="dropzone-panel mb-lg-0 mb-2">
+                                    <div class="dropzone-select">
+                                        <!--begin::Icon-->
+                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                        <!--end::Icon-->
+
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Glissez déposez un fichier ici ou cliquez pour importer.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-400">Importer un seul fichier</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
+                                </div>
+                                <!--end::Controls-->
+
+                                <!--begin::Items-->
+                                <div class="dropzone-items wm-200px">
+
+                                </div>
+                                <!--end::Items-->
+                            </div>
+                            <!--end::Dropzone-->
+
+                            <!--begin::Hint-->
+                            <span class="form-text text-muted">Choisissez un document pdf, word, excel ou une image. </br> (Tailles maximal de fichier : 10MB)</span>
+                            <!--end::Hint-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                    <div class="opt d-flex justify-content-end">
+                        <input type="hidden" name="action" value="edit_doc_scan">
+                        <input type="hidden" name="id_document" value="">
+                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                        <button id="btn_edit_doc_scan" type="submit" class="btn btn-lg btn-primary ms-2">
+                            <span class="indicator-label">Valider</span>
+                            <span class="indicator-progress">Veuillez patienter...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_scan -->
 
     <!-- begin::Modal edit_doc_generate -->
     <div class="modal fade" id="edit_doc_generate_modal" tabindex="-1">
@@ -3236,6 +3414,147 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_form_doc_generate -->
 
+    <!-- begin::Modal edit_info_doc_file -->
+    <div class="modal fade" id="edit_info_doc_file_table_doc_6_info_lettre_mission_modal" tabindex="-1">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <!--begin::Modal content-->
+            <form id="form_edit_info_doc_file_table_doc_6_info_lettre_mission" method="POST" class="modal-content" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="doc-content">
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Durée de la lettre de mission</label>
+                                <input id="table_doc_6_info_lettre_mission_duree" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="duree" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">À partir de</label>
+                                <input id="table_doc_6_info_lettre_mission_date_debut_duree" type="date" class="form-control form-control-solid" placeholder="" name="date_debut_duree" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Renouvellement</label>
+                                <input id="table_doc_6_info_lettre_mission_renouvellement" type="number" class="form-control form-control-solid" placeholder="Durée (en année)" name="renouvellement">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">À partir de</label>
+                                <input id="table_doc_6_info_lettre_mission_date_debut_renouvellement" type="date" class="form-control form-control-solid" placeholder="" name="date_debut_renouvellement">
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <label class="fs-5 mb-2">Montant hors taxes et TTC des honoraires</label>
+                            <div class="input-group">
+                                <input id="table_doc_6_info_lettre_mission_frais_ouverture" type="text" class="form-control" placeholder="Frais d'ouverture de dossier" name="frais_ouverture">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_6_info_lettre_mission_montant_honoraires_ht" type="text" class="form-control" placeholder="Montant hors taxes" name="montant_honoraires_ht">
+                                <span class="input-group-text">-</span>
+                                <input id="table_doc_6_info_lettre_mission_montant_honoraires_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_honoraires_ttc">
+                            </div>
+                        </div>
+
+                        <div class="separator d-flex flex-center my-8">
+                            <span class="text-uppercase bg-body fs-7 fw-semibold text-muted px-3">Renseignez les missions de la lettre de mission</span>
+                        </div>
+
+                        <!--begin::Repeater-->
+                        <div class="row mb-5" id="table_doc_6_info_lettre_mission_repeater">
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <div data-repeater-list="mission">
+                                    <div data-repeater-item>
+                                        <div class="form-group row mb-5">
+                                            <div class="col-md-10">
+                                                <label class="fs-5 form-label">Nature de la mission</label>
+                                                <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" name="nature_mission" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+                                                    <i class="la la-trash-o fs-3"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-10 ms-10 mt-5">
+                                                <div class="inner-repeater">
+                                                    <div data-repeater-list="sous_mission" class="mb-5">
+                                                        <div data-repeater-item>
+                                                            <label class="fs-6 form-label">Nature de la sous mission</label>
+                                                            <div class="input-group pb-3">
+                                                                <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
+                                                                <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                                    <i class="la la-trash-o fs-3"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-light-primary" data-repeater-create type="button">
+                                                        <i class="la la-plus"></i> Ajouter une sous mission
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form group-->
+
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+                                    <i class="la la-plus"></i>Ajouter une mission
+                                </a>
+                            </div>
+                            <!--end::Form group-->
+                        </div>
+                        <!--end::Repeater-->
+
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_table_doc_6_info_lettre_mission">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_info_doc_file_table_doc_6_info_lettre_mission" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_info_doc_file -->
+
+    
+
 </div>
 <!--end::Content wrapper-->
 
@@ -4014,7 +4333,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        // Pour voir l'arperçu d'un document write
+        // Pour voir l'aperçu d'un document write
         $(document).on('click', '.preview_doc_write', function(e) {
 
             var id_document = $(this).data('id_document');
@@ -4035,7 +4354,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour voir l'arperçu d'un document generate
+        // Pour voir l'aperçu d'un document generate
         $(document).on('click', '.preview_doc_generate', function(e) {
 
             var id_document = $(this).data('id_document');
@@ -4056,7 +4375,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
-        // Pour voir l'arperçu d'un document file
+        // Pour voir l'aperçu d'un document file
         $(document).on('click', '.preview_doc_file', function(e) {
 
             var id_document = $(this).data('id_document');
@@ -4078,10 +4397,31 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         });
 
+        // Pour voir l'aperçu d'un document scan
+        $(document).on('click', '.preview_doc_scan', function(e) {
+
+            var id_document = $(this).data('id_document');
+            $('#preview_doc_scan_modal .refresh-preview').data('id_document', id_document);
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_scan'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
+                }
+            })
+
+        });
+
         // Quand on clique sur .preview_doc_file_modal .refresh-preview
         $(document).on('click', '#preview_doc_file_modal .refresh-preview', function(e) {
             var id_document = $(this).data('id_document');
-            console.log(id_document);
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -4094,6 +4434,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
                     $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_file_modal .modal-title').html(data.titre_document);
+                }
+            })
+        });
+
+        // Quand on clique sur .preview_doc_scan_modal .refresh-preview
+        $(document).on('click', '#preview_doc_scan_modal .refresh-preview', function(e) {
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'preview_doc_scan'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
+                    $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
                 }
             })
         });
@@ -4271,7 +4630,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                     `;
                     var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
-                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document, // Set the url for your upload script location
+                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_file_upload", // Set the url for your upload script location
                         parallelUploads: 20,
                         maxFilesize: 10, // Max filesize in MB
                         maxFiles: 1,
@@ -4460,6 +4819,253 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
+        /* -----------------Modification d'un document scan---------------- */
+        //Variable contenant les fichiers joint
+        fileList = [];
+        fileListPath = [];
+        fileListName = [];
+        // set the dropzone container id
+        const id1 = "#scan_upload_zone";
+        const dropzone1 = document.querySelector(id1);
+
+        // Lorsqu'on clique sur .edit_doc_scan
+        $(document).on('click', '.edit_doc_scan', function () {
+
+            var id_document = $(this).data('id_document');
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_doc_scan'
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    $('#edit_doc_scan_modal input[name="id_document"]').val(id_document);
+                    $('#edit_doc_scan_modal .modal-title').html(data.titre_document);
+
+
+                    /* -----------------Mise en place du plugin dropzonejs---------------- */
+                    // set the preview element template
+                    var previewTemplate = `
+                        <div class="dropzone-item">
+                            <!--begin::File-->
+                            <div class="dropzone-file">
+                                <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                    <span data-dz-name>some_image_file_name.jpg</span>
+                                    <strong>(<span data-dz-size>340kb</span>)</strong>
+                                </div>
+
+                                <div class="dropzone-error" data-dz-errormessage></div>
+                            </div>
+                            <!--end::File-->
+
+                            <!--begin::Progress-->
+                            <div class="dropzone-progress">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Progress-->
+
+                            <!--begin::Toolbar-->
+                            <div class="dropzone-toolbar">
+                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                    `;
+                    var myDropzone = new Dropzone(id1, { // Make the whole body a dropzone
+                        url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_scan_upload", // Set the url for your upload script location
+                        parallelUploads: 20,
+                        maxFilesize: 10, // Max filesize in MB
+                        maxFiles: 1,
+                        previewTemplate: previewTemplate,
+                        previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+                        clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
+                    });
+
+                    // When added file
+                    myDropzone.on("addedfile", function (file) {
+                        // Hookup the start button
+                        const dropzoneItems = dropzone1.querySelectorAll('.dropzone-item');
+                        dropzoneItems.forEach(dropzoneItem => {
+                            dropzoneItem.style.display = '';
+                        });
+                    });
+                    // Packaging of files in array
+                    myDropzone.on("success", function (file, serverFileName) {
+                        fileList.push({
+                            "serverPath": serverFileName,
+                            "uploadId": file.upload.uuid
+                        });
+                        fileListPath.push(serverFileName);
+                        fileListName.push(file.name);
+
+                    });
+                    // Remove file from the list
+                    myDropzone.on("removedfile", function (file) {
+                        for (let i = 0; i < fileList.length; i++) {
+                            if (file.upload.uuid == fileList[i].uploadId) {
+                                $.ajax({
+                                    url: "roll/ag/dossiers/fetch.php",
+                                    method: "POST",
+                                    data: {
+                                        action: 'delete_doc_scan',
+                                        id_document: id_document,
+                                        file_path: fileList[i].serverPath,
+                                    },
+                                    dataType: "json",
+                                    success: function (data) {
+                                        // do something
+                                    }
+                                })
+                                fileList.splice(i, 1)
+                                fileListPath.splice(i, 1)
+                                fileListName.splice(i, 1)
+                            }
+                        }
+
+                        // var server_file = $(file.previewTemplate).children('.server_file').text();
+                        // alert(server_file);
+                        // // Do a post request and pass this path and use server-side language to delete the file
+                        // $.post("delete.php", {
+                        // 	file_to_be_deleted: server_file
+                        // });
+                    });
+                    // Update the total progress bar
+                    myDropzone.on("totaluploadprogress", function (progress) {
+                        const progressBars = dropzone1.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.width = progress + "%";
+                        });
+                    });
+                    // Sending files to server
+                    myDropzone.on("sending", function (file) {
+                        // Show the total progress bar when upload starts
+                        const progressBars = dropzone1.querySelectorAll('.progress-bar');
+                        progressBars.forEach(progressBar => {
+                            progressBar.style.opacity = "1";
+                        });
+                    });
+                    // Hide the total progress bar when nothing"s uploading anymore
+                    myDropzone.on("complete", function (progress) {
+                        const progressBars = dropzone1.querySelectorAll('.dz-complete');
+
+                        setTimeout(function () {
+                            progressBars.forEach(progressBar => {
+                                progressBar.querySelector('.progress-bar').style.opacity = "0";
+                                progressBar.querySelector('.progress').style.opacity = "0";
+                            });
+                        }, 300);
+                    });
+
+                    // Si on quitte le modal
+                    $('#edit_doc_scan_modal').on('hidden.bs.modal', function () {
+                        // Supprimer l'instance de dropzone
+                        myDropzone.destroy();
+
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_doc_scan',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+                    });
+
+                    //Lorsque l'utilisateur tente de quitter la page
+                    $(window).on('beforeunload', function () {
+                        // Remove file from the list
+                        for (let i = 0; i < fileList.length; i++) {
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    action: 'delete_doc_scan',
+                                    id_document: id_document,
+                                    file_path: fileList[i].serverPath,
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    // do something
+                                }
+                            })
+                            fileList.splice(i, 1)
+                            fileListPath.splice(i, 1)
+                            fileListName.splice(i, 1)
+                        }
+                    });
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire d'édition d'un document file
+        $(document).on('submit', '#form_edit_doc_scan', function () {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_doc_scan');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function (data) {
+                    setTimeout(function () {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#edit_doc_scan_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Document enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            // Vider les fileLists
+                            fileList = [];
+                            fileListPath = [];
+                            fileListName = [];
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
         /* -----------------Modification d'un formulaire docs generate---------------- */
         function date_formatter(date, format) {
             if (date == null) {
@@ -4498,7 +5104,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }
 
         // Lorsqu'on clique sur .edit_form_doc_generate
-        init_repeater_count = 0;
+        init_repeater_count_edit_form_doc_generate = 0;
         $(document).on('click', '.edit_form_doc_generate', function(e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
@@ -4647,8 +5253,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         $('#table_doc_8_fiche_id_client_nom_cabinet_confrere').val(nom_cabinet_confrere);
                         $('#table_doc_8_fiche_id_client_dossier_herite_confrere').val(dossier_herite_confrere);
 
-                        init_repeater_count++;
-                        if (init_repeater_count == 1) {
+                        init_repeater_count_edit_form_doc_generate++;
+                        if (init_repeater_count_edit_form_doc_generate == 1) {
                             // Fetch data for activite_client (Repeater)
                             $.ajax({
                                 url: "roll/ag/dossiers/fetch.php",
@@ -5174,6 +5780,228 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             })
         });
+
+        // Lorsqu'on clique sur .edit_info_doc_file
+        init_repeater_count_edit_info_doc_file = 0;
+        $(document).on('click', '.edit_info_doc_file', function(e) {
+            e.preventDefault();
+            var id_document = $(this).data('id_document');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    id_document: id_document,
+                    action: 'fetch_edit_info_doc_file'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    if (data.table_info_document == 'doc_6_info_lettre_mission') {
+
+                        // Show modal
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal').modal('show');
+
+                        id_document = data.id_document;
+                        id_client = data.id_client;
+                        titre_document = data.titre_document;
+                        duree = data.duree;
+                        renouvellement = data.renouvellement;
+                        date_debut_duree = date_formatter(data.date_debut_duree, 'yyyy-mm-dd');
+                        date_debut_renouvellement = date_formatter(data.date_debut_renouvellement, 'yyyy-mm-dd');
+                        frais_ouverture = data.frais_ouverture;
+                        montant_honoraires_ht = data.montant_honoraires_ht;
+                        montant_honoraires_ttc = data.montant_honoraires_ttc;
+
+
+                        // On rempli les champs du modal
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal input[name="id_document"]').val(id_document);
+                        $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal .modal-title').html(titre_document);
+
+                        $('#table_doc_6_info_lettre_mission_duree').val(duree);
+                        $('#table_doc_6_info_lettre_mission_renouvellement').val(renouvellement);
+                        $('#table_doc_6_info_lettre_mission_date_debut_duree').val(date_debut_duree);
+                        $('#table_doc_6_info_lettre_mission_date_debut_renouvellement').val(date_debut_renouvellement);
+                        $('#table_doc_6_info_lettre_mission_frais_ouverture').val(frais_ouverture);
+                        $('#table_doc_6_info_lettre_mission_montant_honoraires_ht').val(montant_honoraires_ht);
+                        $('#table_doc_6_info_lettre_mission_montant_honoraires_ttc').val(montant_honoraires_ttc);
+
+                        init_repeater_count_edit_info_doc_file++;
+                        if (init_repeater_count_edit_info_doc_file == 1) {
+                            // Fetch data for mission_client (Repeater)
+                            $.ajax({
+                                url: "roll/ag/dossiers/fetch.php",
+                                method: "POST",
+                                data: {
+                                    table: 'mission_client',
+                                    condition: 'id_client = ' + id_client,
+                                    action: 'fetch_table'
+                                },
+                                dataType: "JSON",
+                                success: function(data) {
+
+                                    $template = `
+                                        <div data-repeater-item>
+                                            <div class="form-group row mb-5">
+                                                <div class="col-md-10">
+                                                    <label class="fs-5 form-label">Nature de la mission</label>
+                                                    <input type="text" class="form-control mb-2 mb-md-0" placeholder="Précisez la nature de la mission en se référant au prospectus du cabinet" name="nature_mission" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+                                                        <i class="la la-trash-o fs-3"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-10 ms-10 mt-5">
+                                                    <div class="inner-repeater">
+                                                        <div data-repeater-list="sous_mission" class="mb-5">
+                                                            <div data-repeater-item>
+                                                                <label class="fs-6 form-label">Nature de la sous mission</label>
+                                                                <div class="input-group pb-3">
+                                                                    <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
+                                                                    <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                                        <i class="la la-trash-o fs-3"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-light-primary" data-repeater-create type="button">
+                                                            <i class="la la-plus"></i> Ajouter une sous mission
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    $template_inner = `
+                                    
+                                        <div data-repeater-item>
+                                            <label class="fs-6 form-label">Nature de la sous mission</label>
+                                            <div class="input-group pb-3">
+                                                <input type="text" class="form-control" placeholder="Précisez la nature de la sous mission" name="nature_sous_mission" />
+                                                <button class="border border-secondary btn btn-icon btn-light-danger" data-repeater-delete type="button">
+                                                    <i class="la la-trash-o fs-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    `;
+
+                                    // vider le contenu de #table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission
+                                    $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"]').html('');
+                                    init_repeater_inner_count_edit_info_doc_file = 0;
+                                    for (let i = 0; i < data.length; i++) {
+                                        if (data[i].sous_mission == 'non'){
+
+                                            $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"]').append($template);
+                                            parent = '#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="mission"] div[data-repeater-item]:last-child';
+
+                                            $(parent + ' ' + 'input[name="nature_mission"]').val(data[i].nature_mission);
+
+                                            init_repeater_inner_count_edit_info_doc_file = 0;
+                                        }else {
+                                    
+                                            if (init_repeater_inner_count_edit_info_doc_file == 0){
+                                                $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last').html('');
+                                            }
+
+                                            $('#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last').append($template_inner);
+                                            parent = '#table_doc_6_info_lettre_mission_repeater div[data-repeater-list="sous_mission"]:last div[data-repeater-item]:last-child';
+
+                                            $(parent + ' ' + 'input[name="nature_sous_mission"]').val(data[i].nature_mission);
+
+                                            init_repeater_inner_count_edit_info_doc_file++;
+
+                                        }
+                                    }
+
+
+
+                                    $('#table_doc_6_info_lettre_mission_repeater').repeater({
+                                        initEmpty: false,
+
+                                        repeaters: [{
+                                            initEmpty: false,
+
+                                            selector: '.inner-repeater',
+                                            show: function () {
+                                                $(this).slideDown();
+                                            },
+
+                                            hide: function (deleteElement) {
+                                                $(this).slideUp(deleteElement);
+                                            }
+                                        }],
+
+                                        show: function () {
+                                            $(this).slideDown();
+                                        },
+
+                                        hide: function (deleteElement) {
+                                            $(this).slideUp(deleteElement);
+                                        }
+                                    });
+
+
+                                }
+                            });
+                        }
+
+                    }
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_info_doc_file_table_doc_6_info_lettre_mission
+        $(document).on('submit', '#form_edit_info_doc_file_table_doc_6_info_lettre_mission', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_info_doc_file_table_doc_6_info_lettre_mission');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_info_doc_file_table_doc_6_info_lettre_mission_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Informations modifié !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+        
 
     })
 </script>
