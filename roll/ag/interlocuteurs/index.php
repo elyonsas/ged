@@ -70,16 +70,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Table container-->
                         <div class="table-responsive">
                             <!--begin::Table-->
-                            <table id="all_collabo" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                            <table id="all_interlo" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
                                 <!--begin::Head-->
                                 <thead class="fs-7 text-gray-400 text-uppercase">
                                     <tr>
                                         <th class="min-w-100px">Interlocuteur</th>
                                         <th class="min-w-200px">Email</th>
                                         <th class="min-w-75px">Téléphone</th>
-                                        <th class="min-w-50px">Dossier en charge</th>
+                                        <th class="min-w-100px">Fonction</th>
+                                        <th class="min-w-100px">Client</th>
                                         <th class="min-w-75px">Statut</th>
-                                        <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
                                 <!--end::Head-->
@@ -103,59 +103,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Content container-->
     </div>
     <!--end::Content-->
-
-    <!-- begin::Modal attribuer dossier-->
-	<div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<form id="form_attribuer" method="POST" class="form modal-content" action="">
-				<div class="modal-header p-5">
-					<h4 class="modal-title">Attribution de dossier</h4>
-					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-						<span class="svg-icon svg-icon-1">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-							</svg>
-						</span>
-						<!--end::Svg Icon-->
-					</div>
-				</div>
-				<div class="modal-body">
-
-					<div class="">
-						<div class="d-flex fw-semibold me-5 mb-5 align-items-center">
-							<div class="fs-5">
-								Interlocuteur : 
-							</div>
-							<div id="attribuer_nom_interlocuteur" class="fs-5 text-muted ms-3">
-                                Ismael Badarou
-							</div>
-						</div>
-						<!--begin::Input group-->
-						<div id="choisir_dossier" class="fv-row row mb-10">
-							<select id="attribuer_dossier" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un dossier" name="id_client" required>
-								
-							</select>
-						</div>
-					</div>
-					<div class="opt d-flex justify-content-end">
-						<input type="hidden" name="action" value="edit_attribuer_dossier">
-						<input id="attribuer_id_interlocuteur" type="hidden" name="id_interlocuteur" value="">
-						<button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
-						<button id="btn_attribuer" type="submit" class="btn btn-lg btn-primary ms-2">
-							<span class="indicator-label">Valider</span>
-							<span class="indicator-progress">Veuillez patienter...
-								<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-							</span>
-						</button>
-					</div>
-
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- end::Modal attribuer dossier-->
     
 </div>
 <!--end::Content wrapper-->
@@ -203,8 +150,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function update_data_datatable(data) {
 
-            $("#all_collabo").DataTable().destroy();
-            var all_collabo = $('#all_collabo').DataTable({
+            $("#all_interlo").DataTable().destroy();
+            var all_interlo = $('#all_interlo').DataTable({
                 "processing": true,
                 "serverSide": false,
                 "paging": true,
@@ -213,17 +160,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "bSort": true,
                 "order": [],
                 "data": data,
-                "columnDefs": [{
-                    "targets": [5],
-                    "orderable": false,
-                }, ],
+                "columnDefs": [],
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
             $('#kt_filter_search').keyup(function() {
-                all_collabo.search($(this).val()).draw();
+                all_interlo.search($(this).val()).draw();
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
             })
@@ -260,11 +204,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             url: "roll/ag/interlocuteurs/fetch.php",
             method: "POST",
             data: {
-                datatable: 'all_collabo',
+                datatable: 'all_interlo',
             },
             dataType: "JSON",
             success: function(data) {
-                var all_collabo = $('#all_collabo').DataTable({
+                var all_interlo = $('#all_interlo').DataTable({
                     "processing": true,
                     "serverSide": false,
                     "paging": true,
@@ -273,17 +217,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "bSort": true,
                     "order": [],
                     "data": data.data,
-                    "columnDefs": [{
-                        "targets": [5],
-                        "orderable": false,
-                    }, ],
+                    "columnDefs": [],
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
                 $('#kt_filter_search').keyup(function() {
-                    all_collabo.search($(this).val()).draw();
+                    all_interlo.search($(this).val()).draw();
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 })
@@ -301,165 +242,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 })
             }
         });
-
-        // Lorsqu'on clique sur .activer_compte
-        $(document).on('click', '.activer_compte', function(e) {
-            e.preventDefault();
-            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment activer ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment activer ce compte ?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, activer !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/interlocuteurs/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_interlocuteur: id_interlocuteur,
-                            action: 'activer_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_collabo'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .desactiver_compte
-        $(document).on('click', '.desactiver_compte', function(e) {
-            e.preventDefault();
-            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment désactiver ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment désactiver ce compte ?",
-                text: "Tous les dossiers de ce interlocuteur ne seront plus pris en charge !",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, désactiver !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/interlocuteurs/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_interlocuteur: id_interlocuteur,
-                            action: 'desactiver_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_collabo'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .attribuer_dossier
-        $(document).on('click', '.attribuer_dossier', function(e) {
-            e.preventDefault();
-            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
-
-            $.ajax({
-				url: "roll/ag/interlocuteurs/fetch.php",
-				method: "POST",
-				data: {
-                    id_interlocuteur: id_interlocuteur,
-                    action: 'fetch_attribuer_dossier'
-				},
-				dataType: "JSON",
-				success: function(data) {
-                    $('#attribuer_nom_interlocuteur').html(data.nom_interlocuteur);
-                    $('#attribuer_dossier').html(data.dossier_html);
-                    $('#attribuer_id_interlocuteur').val(data.id_interlocuteur);
-				}
-			});
-
-        });
-
-        // Pour l'attribution un dossier à un interlocuteur
-		$(document).on('submit', '#form_attribuer', function(event) {
-			event.preventDefault();
-
-			// Show loading indication
-			formSubmitButton = document.querySelector('#btn_attribuer');
-			formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-			$.ajax({
-				url: "roll/ag/interlocuteurs/fetch.php",
-				method: "POST",
-				data: $(this).serialize(),
-				dataType: "JSON",
-				success: function(data) {
-					setTimeout(function() {
-						// Hide loading indication
-						formSubmitButton.removeAttribute('data-kt-indicator');
-
-						if (data.success) {
-							$('#attribuer_modal').modal('hide');
-
-							// swal
-                            Swal.fire({
-                                title: "Dossier attribué !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reload_datatable('all_collabo'); // On recharge le datatable
-
-						} else {
-							$('#attribuer_modal').modal('hide');
-
-							toastr.error('une erreur s\'est produite', '', {
-								positionClass: "toastr-bottom-left",
-							});
-						}
-					}, 2000);
-
-				}
-			})
-		});
 
 
     })

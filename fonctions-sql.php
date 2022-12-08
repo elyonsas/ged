@@ -164,6 +164,18 @@
         return $result['id_collaborateur'];
     }
 
+    function find_id_utilisateur_by_id_client($id_client, PDO $db)
+    {
+        $query = "SELECT id_utilisateur FROM client WHERE id_client = :id_client";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_client' => $id_client
+        ]);
+        $result = $statement->fetch();
+
+        return $result['id_utilisateur'];
+    }
+
     function find_ag_cabinet(PDO $db)
     {
         $query = "SELECT * FROM utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.type_compte = 'ag'";

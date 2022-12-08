@@ -194,18 +194,7 @@ if (isset($_POST['datatable'])) {
             $data[] = $sub_array;
         }
 
-        function get_total_all_records($db)
-        {
-            $statement = $db->prepare("SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = collaborateur.id_utilisateur ORDER BY statut_compte ASC"); // same query as above
-            $statement->execute();
-            return $statement->rowCount();
-        }
-
-
         $output = array(
-            "recordsTotal"      =>  $filtered_rows,
-            "recordsFiltered"     =>     get_total_all_records($db),
             "data"                =>    $data
         );
     }
