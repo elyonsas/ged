@@ -472,7 +472,7 @@ if (isset($_POST['datatable'])) {
             $type_dossier_document_query = "AND type_dossier_document = '$type_dossier_document'";
         }
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query ORDER BY ordre_document ASC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query ORDER BY updated_at_document DESC";
 
 
         // // pour la recherche
@@ -1066,6 +1066,78 @@ if (isset($_POST['datatable'])) {
 if (isset($_POST['action'])) {
 
     // espace datatables
+
+    if ($_POST['action'] == 'add_doc') {
+
+        $id_client = $_SESSION['id_view_client'];
+
+        $titre_document = $_POST['titre_document'];
+        $description_document = $_POST['description_document'];
+        $type_document = $_POST['type_document'];
+        $table_document = si_funct($type_document, "file", "document_file", "document_write");
+        $aspect_document = $_POST['aspect'];
+        $type_dossier_document = $_POST['type_dossier'];
+        $rubrique_document = $_POST['rubrique'];
+
+        $insert1 = insert(
+            'document',
+            [
+                'titre_document' => $titre_document,
+                'type_document' => $type_document,
+                'table_document' => $table_document,
+                'note_aspect_document' => 0,
+                'statut_document' => 'invalide',
+                'aspect_document' => $aspect_document,
+                'type_dossier_document' => $type_dossier_document,
+                'rubrique_document' => $rubrique_document,
+                'created_at_document' => date('Y-m-d H:i:s'),
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'created_by_document' => $_SESSION['id_utilisateur'],
+                'updated_by_document' => $_SESSION['id_utilisateur'],
+                'id_client' => $id_client
+            ],
+            $db
+        );
+
+        // id_document
+        $id_document = $db->lastInsertId();
+
+        $update = update(
+            'document',
+            [
+                'code_document' => 13000 + $id_document
+            ],
+            "id_document = '$id_document'",
+            $db
+        );
+
+        $insert2 = insert(
+            'document_autre',
+            [
+                'description_document' => $description_document,
+                'id_document' => $id_document
+            ],
+            $db
+        );
+
+        
+        if ($insert1 && $insert2 && $update) {
+            $output = [
+                'success' => true,
+                'message' => 'Document ajouté !',
+                'id_document' => $id_document,
+                'type_document' => $type_document,
+                'titre_document' => $titre_document,
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+
+    }
+
     if ($_POST['action'] == 'activer_compte') {
         $id_client = $_POST['id_client'];
 
@@ -1672,6 +1744,18 @@ if (isset($_POST['action'])) {
             'titre_document' => $result['titre_document'],
         ];
     }
+    if ($_POST['action'] == 'fetch_edit_doc_other_file') {
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'titre_document' => $result['titre_document'],
+        ];
+    }
     if ($_POST['action'] == 'fetch_edit_doc_scan') {
         $id_document = $_POST['id_document'];
 
@@ -1762,11 +1846,82 @@ if (isset($_POST['action'])) {
         } else {
             $output = [
                 'success' => false,
-                'message' => 'Une s\'est produite !'
+                'message' => 'Une erreur s\'est produite !'
             ];
         }
     }
     if ($_POST['action'] == 'edit_doc_file') {
+
+        $id_document = $_POST['id_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
+        $table_document = $result['table_document'];
+        $titre_document = $result['titre_document'];
+
+        $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $src_document = $result['src_document'];
+        $src_temp_document = $result['src_temp_document'];
+
+        if ($src_temp_document == '') {
+            $output = [
+                'success' => false,
+                'message' => 'Vous devez sélectionner un fichier !'
+            ];
+        } else {
+
+            $infoPath = pathinfo($src_temp_document);
+            $type_document = '.' . $infoPath['extension'];
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
+
+            if (is_file($file_path)) {
+                unlink($file_path);
+            }
+
+            $update1 = update(
+                $table_document,
+                [
+                    'src_document' => $src_temp_document,
+                    'src_temp_document' => '',
+                    'type_document' => $type_document
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            $update2 = update(
+                'document',
+                [
+                    'updated_at_document' => date('Y-m-d H:i:s'),
+                    'updated_by_document' => $_SESSION['id_utilisateur']
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            if ($update1 && $update2) {
+                $output = [
+                    'success' => true,
+                    'message' => "Un nouveau document <b>$titre_document</b> à été bien enregistré !"
+                ];
+            } else {
+                $output = [
+                    'success' => false,
+                    'message' => 'Une erreur s\'est produite !'
+                ];
+            }
+        }
+    }
+    if ($_POST['action'] == 'edit_doc_other_file') {
 
         $id_document = $_POST['id_document'];
 
@@ -1935,7 +2090,7 @@ if (isset($_POST['action'])) {
         } else {
             $output = [
                 'success' => false,
-                'message' => 'Une s\'est produite !'
+                'message' => 'Une erreur s\'est produite !'
             ];
         }
     }
@@ -2662,6 +2817,31 @@ if (isset($_POST['action'])) {
             unlink($file_path);
         }
     }
+    if ($_POST['action'] == 'delete_doc_other_file') {
+
+        $id_document = $_POST['id_document'];
+        $file_path = $_POST['file_path'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+
+        $update = update(
+            $table_document,
+            [
+                'src_temp_document' => '',
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if (is_file($file_path)) {
+            unlink($file_path);
+        }
+    }
 }
 
 if (isset($_FILES['file'])) {
@@ -2733,6 +2913,46 @@ if (isset($_FILES['file'])) {
             'document',
             [
                 'src_scan_temp_document' =>     'SCAN_' . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+    }
+
+    if ($_GET['action'] == 'doc_other_file_upload'){
+
+        $id_document = $_GET['id_document'];
+        $titre_document = $_GET['titre_document'];
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_client = $result['id_client'];
+        $matricule_client = find_info_client('matricule_client', $id_client, $db);
+
+        $tempFile = $_FILES['file']['tmp_name'];
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+
+        $uuid = Uuid::uuid1();
+        $uniq_str = $uuid->toString();
+        $infoPath = pathinfo($_FILES['file']['name']);
+
+        $targetFile =  $targetPath . $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'];
+        move_uploaded_file($tempFile, $targetFile);
+
+        $query = "SELECT * FROM document WHERE id_document = $id_document";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $table_document = $result['table_document'];
+        $update = update(
+            $table_document,
+            [
+                'src_temp_document' => $titre_document . '_' .  $uniq_str . '.' . $infoPath['extension'],
             ],
             "id_document = $id_document",
             $db

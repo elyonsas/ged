@@ -648,7 +648,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<span class="text-muted mt-1 fw-semibold fs-7">plus de 25 secteurs d'activités</span>
 								</h3>
 								<div class="card-toolbar">
-									<a id="add_secteur_activite_client" data-bs-toggle="modal" data-bs-target="#add_secteur_activite_client_modal" href="#" class="btn btn-sm btn-light btn-active-primary">
+									<div id="add_secteur_activite_client" data-bs-toggle="modal" data-bs-target="#add_secteur_activite_client_modal" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -657,7 +657,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 											</svg>
 										</span>Ajouter un secteur d'activité
 										<!--end::Svg Icon-->
-									</a>
+									</div>
 								</div>
 							</div>
 							<!--end::Header-->
@@ -914,8 +914,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             reload_datatable('secteur_activite_client'); // On recharge le datatable
 
 						} else {
-							$('#add_secteur_activite_client_modal').modal('hide');
-
 							toastr.error('une erreur s\'est produite', '', {
 								positionClass: "toastr-bottom-left",
 							});
