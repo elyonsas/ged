@@ -613,7 +613,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="form-group col-6">
                             <!--begin::Col-->
                             <label class="form-check-clip text-center w-100">
-                                <input id="id_add_doc_type_document_file" class="btn-check" type="radio" value="file" name="type_document" />
+                                <input id="id_add_doc_type_document_file" class="btn-check" type="radio" value="file" required name="type_document" />
                                 <div class="form-check-wrapper w-100">
                                     <div class="form-check-indicator"></div>
                                     <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
@@ -628,7 +628,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="form-group col-6">
                             <!--begin::Col-->
                             <label class="form-check-clip text-center w-100">
-                                <input id="id_add_doc_type_document_write" class="btn-check" type="radio" value="write" name="type_document" />
+                                <input id="id_add_doc_type_document_write" class="btn-check" type="radio" value="write" required name="type_document" />
                                 <div class="form-check-wrapper w-100">
                                     <div class="form-check-indicator"></div>
                                     <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
@@ -651,7 +651,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                         <div class="form-group col-6">
                             <label class="fs-5 mb-2">Rubrique (Facultative)</label>
-                            <select id="id_add_doc_rubrique" class="form-select form-select-solid" data-control="select2" data-placeholder="" data-hide-search="true" name="rubrique">
+                            <select id="id_add_doc_rubrique" class="form-select form-select-solid" data-control="select2" data-placeholder="Selectionnez une rubrique" data-hide-search="true" name="rubrique">
+                                <option></option>
                                 <option value="connaissance_generale_client">Connaissance générale du Client</option>
                                 <option value="documents_juridiques_client">Documents juridiques sur le Client</option>
                                 <option value="organisation_comptable_client">Organisation comptable du Client</option>
@@ -1140,6 +1141,81 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_doc_write -->
 
+    <!-- begin::Modal edit_doc_other_write -->
+    <div class="modal fade" id="edit_doc_other_write_modal" tabindex="-1">
+        <style>
+            @media screen {
+                #edit_doc_other_write_modal .modal-body {
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px;
+                    overflow: hidden;
+                }
+
+                #edit_doc_other_write_modal .doc-content {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                #edit_doc_other_write_modal .loader {
+                    background-color: white;
+                    position: absolute;
+                    opacity: 0.95;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 100;
+                }
+            }
+        </style>
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!--begin::Modal content-->
+            <form id="form_edit_doc_other_write" method="POST" class="modal-content h-100" action="">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-between border-0 py-3">
+                    <h4 class="modal-title">--</h4>
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary ms-5" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <div class="document-top-shadow w-100"></div>
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <div class="loader">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img src="assets/media/loaders/elyon_loader.gif" alt="loader">
+                        </div>
+                    </div>
+                    <div class="doc-content">
+                        <!--begin::Input group-->
+                        <div class="fv-row row">
+                            <textarea id="id_edit_doc_other_write" class="edit_doc_tinymce form-control form-control-solid" rows="3" placeholder="" name="contenu_document"></textarea>
+                            <textarea id="id_edit_doc_other_write_text" name="contenu_text_document" hidden></textarea>
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+
+                    <input type="hidden" name="action" value="edit_doc_write">
+                    <input type="hidden" name="id_document" value="">
+                </div>
+                <!--end::Modal body-->
+            </form>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!-- end::Modal edit_doc_other_write -->
+
     <!-- begin::Modal edit_doc_file -->
     <div class="modal fade" id="edit_doc_file_modal" tabindex="-1">
 
@@ -1325,7 +1401,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--end::Input group-->
                     </div>
                     <div class="opt d-flex justify-content-end">
-                        <input type="hidden" name="action" value="edit_doc_other_file">
+                        <input type="hidden" name="action" value="edit_doc_file">
                         <input type="hidden" name="id_document" value="">
                         <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
                         <button id="btn_edit_doc_other_file" type="submit" class="btn btn-lg btn-primary ms-2">
@@ -4503,6 +4579,34 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
+        function save_doc_other_write() {
+
+            // Récupérer les données text tinymce du briefing et mettre dans un textarea
+            var docs_write = tinymce.get('id_edit_doc_other_write').getContent({
+                format: 'text'
+            });
+            $('#id_edit_doc_other_write_text').val(docs_write);
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $('#form_edit_doc_other_write').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.success) {
+                        toastr.success(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                        reloadPage();
+                    } else {
+                        toastr.error(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    }
+                }
+            })
+        }
+
         function save_doc_generate() {
 
             // Récupérer les données text tinymce du briefing et mettre dans un textarea
@@ -4538,6 +4642,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             formSubmitButton = document.querySelector('#btn_add_doc');
             formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
+            if ($('#generale_area_btn').hasClass('active')) {
+                $('#add_doc_modal .modal-footer input[name="aspect"]').val('generale');
+            }else if ($('#juridico_admin_area_btn').hasClass('active')) {
+                $('#add_doc_modal .modal-footer input[name="aspect"]').val('juridiques_et_administratifs');
+            }else if ($('#technique_area_btn').hasClass('active')) {
+                $('#add_doc_modal .modal-footer input[name="aspect"]').val('techniques');
+            }else if ($('#compta_finance_area_btn').hasClass('active')) {
+                $('#add_doc_modal .modal-footer input[name="aspect"]').val('comptables_et_financiers');
+            }
+                
+
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
                 method: "POST",
@@ -4550,18 +4665,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                         if (data.success) {
                             $('#add_doc_modal').modal('hide');
+                            $('#form_add_doc')[0].reset();
+                            reloadPage();
 
                             if (data.type_document == 'file') {
                                 $('#edit_doc_other_file_modal').modal('show');
 
-                                /* -----------------Modification d'un document other file---------------- */
                                 // Variable contenant les fichiers joint
                                 fileList = [];
                                 fileListPath = [];
                                 fileListName = [];
                                 // set the dropzone container id
                                 var id = "#other_file_upload_zone";
-                                var dropzone = document.querySelector(id1);
+                                var dropzone = document.querySelector(id);
 
                                 var id_document = data.id_document;
                                 $.ajax({
@@ -4569,7 +4685,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     method: "POST",
                                     data: {
                                         id_document: id_document,
-                                        action: 'fetch_edit_doc_other_file'
+                                        action: 'fetch_edit_doc_file'
                                     },
                                     dataType: "JSON",
                                     success: function(data) {
@@ -4609,7 +4725,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             </div>
                                         `;
                                         var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
-                                            url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_other_file_upload", // Set the url for your upload script location
+                                            url: "roll/ag/dossiers/fetch.php?titre_document=" + data.titre_document + "&id_document=" + id_document + "&action=doc_file_upload", // Set the url for your upload script location
                                             parallelUploads: 20,
                                             maxFilesize: 10, // Max filesize in MB
                                             maxFiles: 1,
@@ -4644,7 +4760,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                         url: "roll/ag/dossiers/fetch.php",
                                                         method: "POST",
                                                         data: {
-                                                            action: 'delete_doc_other_file',
+                                                            action: 'delete_doc_file',
                                                             id_document: id_document,
                                                             file_path: fileList[i].serverPath,
                                                         },
@@ -4694,7 +4810,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         });
 
                                         // Si on quitte le modal
-                                        $('#edit_doc_file_modal').on('hidden.bs.modal', function() {
+                                        $('#edit_doc_other_file_modal').on('hidden.bs.modal', function() {
                                             // Supprimer l'instance de dropzone
                                             myDropzone.destroy();
 
@@ -4704,7 +4820,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     url: "roll/ag/dossiers/fetch.php",
                                                     method: "POST",
                                                     data: {
-                                                        action: 'delete_doc_other_file',
+                                                        action: 'delete_doc_file',
                                                         id_document: id_document,
                                                         file_path: fileList[i].serverPath,
                                                     },
@@ -4727,7 +4843,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     url: "roll/ag/dossiers/fetch.php",
                                                     method: "POST",
                                                     data: {
-                                                        action: 'delete_doc_other_file',
+                                                        action: 'delete_doc_file',
                                                         id_document: id_document,
                                                         file_path: fileList[i].serverPath,
                                                     },
@@ -4746,7 +4862,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 })
 
                                 // Lorsqu'on soumet le formulaire d'édition d'un document file
-                                $(document).on('submit', '#form_edit_doc_other_file', function() {
+                                $(document).on('submit', '#form_edit_doc_other_file', function(event) {
                                     event.preventDefault();
 
                                     // Show loading indication
@@ -4796,8 +4912,62 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         }
                                     })
                                 });
-                            } else {
+                            } else if (data.type_document == 'write') {
 
+                                $('#edit_doc_other_write_modal').modal('show');
+
+                                var id_document = data.id_document;
+                                $('#edit_doc_other_write_modal .loader').show();
+
+                                $.ajax({
+                                    url: "roll/ag/dossiers/fetch.php",
+                                    method: "POST",
+                                    data: {
+                                        id_document: id_document,
+                                        action: 'fetch_edit_doc_write'
+                                    },
+                                    dataType: "JSON",
+                                    success: function(data) {
+                                        $('#edit_doc_other_write_modal input[name="id_document"]').val(id_document);
+                                        $('#edit_doc_other_write_modal .modal-title').html(data.titre_document);
+
+                                        // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
+                                        if (typeof tinymce_write == 'undefined') {
+                                            $('#edit_doc_other_write_modal .modal-body #id_edit_doc_other_write').html(data.contenu_document);
+
+                                            tinymce_write = tinymce.init({
+                                                selector: '#id_edit_doc_other_write',
+                                                menubar: false,
+                                                language: 'fr_FR',
+                                                content_css: 'document',
+                                                plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                                                toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | numlist bullist | outdent indent | pagebreak | table',
+                                                pagebreak_separator: '<div style="page-break-after: always;"></div>',
+                                                save_onsavecallback: save_doc_other_write,
+                                            });
+                                            // Prevent Bootstrap dialog from blocking focusin for TinyMCE
+                                            document.addEventListener('focusin', (e) => {
+                                                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                                                    e.stopImmediatePropagation();
+                                                }
+                                            });
+
+                                            setTimeout(function() {
+                                                $('#edit_doc_other_write_modal .loader').hide();
+                                            }, 2000);
+                                        } else {
+
+                                            // Reset editor and set a new content
+                                            tinymce.get('id_edit_doc_other_write').resetContent(data.contenu_document);
+
+                                            setTimeout(function() {
+                                                $('#edit_doc_other_write_modal .loader').hide();
+                                            }, 2000);
+                                        }
+
+                                    }
+                                })
+                                
                             }
 
                         } else {
@@ -5279,7 +5449,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire d'édition d'un document file
-        $(document).on('submit', '#form_edit_doc_file', function() {
+        $(document).on('submit', '#form_edit_doc_file', function(event) {
             event.preventDefault();
 
             // Show loading indication
