@@ -4933,7 +4933,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                         // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
                                         if (typeof tinymce_write == 'undefined') {
-                                            $('#edit_doc_other_write_modal .modal-body #id_edit_doc_other_write').html(data.contenu_document);
+                                            $('#edit_doc_other_write_modal .modal-body #id_edit_doc_other_write').html("");
 
                                             tinymce_write = tinymce.init({
                                                 selector: '#id_edit_doc_other_write',
@@ -4958,7 +4958,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         } else {
 
                                             // Reset editor and set a new content
-                                            tinymce.get('id_edit_doc_other_write').resetContent(data.contenu_document);
+                                            tinymce.get('id_edit_doc_other_write').resetContent("");
 
                                             setTimeout(function() {
                                                 $('#edit_doc_other_write_modal .loader').hide();
