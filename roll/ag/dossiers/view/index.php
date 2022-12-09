@@ -5563,8 +5563,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         maxFilesize: 10, // Max filesize in MB
                         maxFiles: 1,
                         previewTemplate: previewTemplate,
-                        previewsContainer: id + " .dropzone-items", // Define the container to display the previews
-                        clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
+                        previewsContainer: id1 + " .dropzone-items", // Define the container to display the previews
+                        clickable: id1 + " .dropzone-select" // Define the element that should be used as click trigger to select files.
                     });
 
                     // When added file
