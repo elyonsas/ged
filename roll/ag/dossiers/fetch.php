@@ -472,7 +472,7 @@ if (isset($_POST['datatable'])) {
             $type_dossier_document_query = "AND type_dossier_document = '$type_dossier_document'";
         }
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query ORDER BY updated_at_document DESC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query AND statut_document != 'supprime' ORDER BY updated_at_document DESC";
 
 
         // // pour la recherche
@@ -715,7 +715,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="supprimer_doc_autre menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer</a>
+                                                <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -831,7 +831,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="supprimer_doc_autre menu-link px-3" data-id_document="{$id_document}">Supprimer le document</a>
+                                                <a href="" class="delete_doc menu-link px-3" data-id_document="{$id_document}">Supprimer le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -2688,7 +2688,35 @@ if (isset($_POST['action'])) {
             );
         }
     }
-    if ($_POST['action'] == 'delete_doc_file') {
+    if ($_POST['action'] == 'delete_doc') {
+            
+        $id_document = $_POST['id_document'];
+
+        $update = update(
+            'document',
+            [
+                'statut_document' => 'supprime',
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'updated_by_document' => $_SESSION['id_utilisateur']
+            ],
+            "id_document = $id_document",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Document supprimé !',
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !',
+            );
+        }
+            
+    }
+    if ($_POST['action'] == 'delete_doc_file_upload') {
 
         $id_document = $_POST['id_document'];
         $file_path = $_POST['file_path'];
@@ -2713,7 +2741,7 @@ if (isset($_POST['action'])) {
             unlink($file_path);
         }
     }
-    if ($_POST['action'] == 'delete_doc_scan') {
+    if ($_POST['action'] == 'delete_doc_scan_upload') {
 
         $id_document = $_POST['id_document'];
         $file_path = $_POST['file_path'];

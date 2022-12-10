@@ -4760,7 +4760,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                         url: "roll/ag/dossiers/fetch.php",
                                                         method: "POST",
                                                         data: {
-                                                            action: 'delete_doc_file',
+                                                            action: 'delete_doc_file_upload',
                                                             id_document: id_document,
                                                             file_path: fileList[i].serverPath,
                                                         },
@@ -4820,7 +4820,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     url: "roll/ag/dossiers/fetch.php",
                                                     method: "POST",
                                                     data: {
-                                                        action: 'delete_doc_file',
+                                                        action: 'delete_doc_file_upload',
                                                         id_document: id_document,
                                                         file_path: fileList[i].serverPath,
                                                     },
@@ -4843,7 +4843,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     url: "roll/ag/dossiers/fetch.php",
                                                     method: "POST",
                                                     data: {
-                                                        action: 'delete_doc_file',
+                                                        action: 'delete_doc_file_upload',
                                                         id_document: id_document,
                                                         file_path: fileList[i].serverPath,
                                                     },
@@ -5346,7 +5346,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     url: "roll/ag/dossiers/fetch.php",
                                     method: "POST",
                                     data: {
-                                        action: 'delete_doc_file',
+                                        action: 'delete_doc_file_upload',
                                         id_document: id_document,
                                         file_path: fileList[i].serverPath,
                                     },
@@ -5406,7 +5406,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_doc_file',
+                                    action: 'delete_doc_file_upload',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -5429,7 +5429,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_doc_file',
+                                    action: 'delete_doc_file_upload',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -5593,7 +5593,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     url: "roll/ag/dossiers/fetch.php",
                                     method: "POST",
                                     data: {
-                                        action: 'delete_doc_scan',
+                                        action: 'delete_doc_scan_upload',
                                         id_document: id_document,
                                         file_path: fileList[i].serverPath,
                                     },
@@ -5653,7 +5653,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_doc_scan',
+                                    action: 'delete_doc_scan_upload',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -5676,7 +5676,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 url: "roll/ag/dossiers/fetch.php",
                                 method: "POST",
                                 data: {
-                                    action: 'delete_doc_scan',
+                                    action: 'delete_doc_scan_upload',
                                     id_document: id_document,
                                     file_path: fileList[i].serverPath,
                                 },
@@ -6319,150 +6319,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
-        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_8_fiche_id_client
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_8_fiche_id_client', function() {
-            event.preventDefault();
-
-            // Show loading indication
-            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_8_fiche_id_client');
-            formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
-                        // Hide loading indication
-                        formSubmitButton.removeAttribute('data-kt-indicator');
-
-                        if (data.success) {
-
-                            $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal').modal('hide');
-
-                            // swal
-                            Swal.fire({
-                                title: "Fiche enregistré !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reloadPage(); // On recharge le datatable
-
-                        } else {
-                            toastr.error(data.message, '', {
-                                positionClass: "toastr-bottom-left",
-                            });
-                        }
-
-                    }, 2000);
-
-                }
-            })
-        });
-
-        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_3_accept_mission
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_3_accept_mission', function() {
-            event.preventDefault();
-
-            // Show loading indication
-            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_3_accept_mission');
-            formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
-                        // Hide loading indication
-                        formSubmitButton.removeAttribute('data-kt-indicator');
-
-                        if (data.success) {
-
-                            $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('hide');
-
-                            // swal
-                            Swal.fire({
-                                title: "Questionnaire enregistré !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reloadPage(); // On recharge le datatable
-
-                        } else {
-                            toastr.error(data.message, '', {
-                                positionClass: "toastr-bottom-left",
-                            });
-                        }
-
-                    }, 2000);
-
-                }
-            })
-        });
-
-        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_19_quiz_lcb
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_19_quiz_lcb', function() {
-            event.preventDefault();
-
-            // Show loading indication
-            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_19_quiz_lcb');
-            formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
-                        // Hide loading indication
-                        formSubmitButton.removeAttribute('data-kt-indicator');
-
-                        if (data.success) {
-
-                            $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal').modal('hide');
-
-                            // swal
-                            Swal.fire({
-                                title: "Questionnaire enregistré !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reloadPage(); // On recharge le datatable
-
-                        } else {
-                            toastr.error(data.message, '', {
-                                positionClass: "toastr-bottom-left",
-                            });
-                        }
-
-                    }, 2000);
-
-                }
-            })
-        });
-
         // Lorsqu'on clique sur .edit_info_doc_file
         init_repeater_count_edit_info_doc_file = 0;
         $(document).on('click', '.edit_info_doc_file', function(e) {
@@ -6682,6 +6538,204 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 }
             })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_8_fiche_id_client
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_8_fiche_id_client', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_8_fiche_id_client');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_8_fiche_id_client_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Fiche enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_3_accept_mission
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_3_accept_mission', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_3_accept_mission');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_3_accept_mission_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Questionnaire enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_19_quiz_lcb
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_19_quiz_lcb', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_form_doc_generate_table_doc_19_quiz_lcb');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_form_doc_generate_table_doc_19_quiz_lcb_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Questionnaire enregistré !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
+        /* -----------------Suppression des documents---------------- */
+        // Lorsqu'on clique sur .delete_doc
+        $(document).on('click', '.delete_doc', function(e) {+
+            e.preventDefault();
+            var id_document = $(this).data('id_document');
+
+            Swal.fire({
+                title: "Êtes-vous sûr ?",
+                text: "Vous ne pourrez pas revenir en arrière !",
+                icon: "warning",
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonText: "Oui, supprimer !",
+                cancelButtonText: "Non, annuler !",
+                customClass: {
+                    confirmButton: "btn fw-bold btn-danger",
+                    cancelButton: "btn btn-light fw-bold btn-active-light-primary"
+                }
+            }).then(function(result) {
+                if (result.value) {
+                    $.ajax({
+                        url: "roll/ag/dossiers/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_document: id_document,
+                            action: 'delete_doc'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                Swal.fire({
+                                    title: "Supprimé !",
+                                    text: data.message,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, j'ai compris !",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary"
+                                    }
+                                });
+
+                                reloadPage(); // On recharge le datatable
+
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+                }
+            });
         });
 
 
