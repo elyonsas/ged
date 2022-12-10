@@ -2591,6 +2591,7 @@ if (isset($_POST['action'])) {
 
         // update table mission_client
         $update3 = false;
+        $delete = false;
         if (isset($_POST['mission'])) {
 
             $mission = $_POST['mission'];
@@ -2636,7 +2637,7 @@ if (isset($_POST['action'])) {
             $delete = delete('mission_client', "id_client = $id_client", $db);
         }
 
-        if ($update1 && $update2 && $update3) {
+        if ($update1 && $update2 && $update3 && $delete) {
             $output = [
                 'success' => true,
                 'message' => "La lettre de mission de <b>$nom_client</b> à été mise à jour !"
