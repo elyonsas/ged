@@ -4570,6 +4570,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
                         });
+                        reloadPage();
                     } else {
                         toastr.error(data.message, '', {
                             positionClass: "toastr-bottom-left",

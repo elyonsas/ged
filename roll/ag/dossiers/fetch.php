@@ -1810,7 +1810,8 @@ if (isset($_POST['action'])) {
             $table_document,
             [
                 'contenu_document' => $contenu_document,
-                'contenu_text_document' => $contenu_text_document
+                'contenu_text_document' => $contenu_text_document,
+                'contenu_modele_document' => $contenu_document
             ],
             "id_document = $id_document",
             $db
