@@ -3965,6 +3965,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "bFilter": true,
                 "bSort": true,
                 "order": [],
+                "columnDefs": [{
+                    "targets": [3],
+                    "orderable": false,
+                }, ],
                 "data": data,
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -4133,6 +4137,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "bFilter": true,
                     "bSort": true,
                     "order": [],
+                    "columnDefs": [{
+                        "targets": [3],
+                        "orderable": false,
+                    }, ],
                     "data": data.data,
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -4933,10 +4941,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         $('#edit_doc_other_write_modal .modal-title').html(data.titre_document);
 
                                         // Initialiser l'éditeur graphique tinymce pour la modification d'un document generate (une fois)
-                                        if (typeof tinymce_write == 'undefined') {
+                                        if (typeof tinymce_other_write == 'undefined') {
                                             $('#edit_doc_other_write_modal .modal-body #id_edit_doc_other_write').html("");
 
-                                            tinymce_write = tinymce.init({
+                                            tinymce_other_write = tinymce.init({
                                                 selector: '#id_edit_doc_other_write',
                                                 menubar: false,
                                                 language: 'fr_FR',
