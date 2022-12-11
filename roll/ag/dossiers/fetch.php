@@ -1183,7 +1183,14 @@ if (isset($_POST['datatable'])) {
             $type_dossier_document_query = "AND type_dossier_document = '$type_dossier_document'";
         }
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query AND aspect_document = 'techniques' AND statut_document != 'supprime' ORDER BY updated_at_document DESC";
+        $rubrique_document = $_POST['rubrique_document'];
+        if ($rubrique_document == 'all') {
+            $rubrique_document_query = "";
+        } else {
+            $rubrique_document_query = "AND rubrique_document = '$rubrique_document'";
+        }
+
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query $rubrique_document_query AND aspect_document = 'techniques' AND statut_document != 'supprime' ORDER BY updated_at_document DESC";
 
 
         // // pour la recherche

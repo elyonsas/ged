@@ -283,7 +283,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <div class="align-items-start flex-column">
                                     <!--begin::Select-->
                                     <div class="me-6 my-1">
-                                        <select id="filter_type_dossier_document2" name="year" data-control="select2" data-hide-search="true" class="w-150px form-select form-select-solid form-select-sm">
+                                        <select id="filter_type_dossier_document2" data-control="select2" data-hide-search="true" class="form-select form-select-solid form-select-sm">
                                             <option value="all" selected="selected">Tous les documents</option>
                                             <option value="permanent">Dossier permanent</option>
                                             <option value="general">Dossier général de contrôle annuel</option>
@@ -370,13 +370,31 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--begin::Header-->
                             <div class="card-header border-0 pt-5">
                                 <!--begin::Title-->
-                                <div class="align-items-start flex-column">
+                                <div class="d-flex">
                                     <!--begin::Select-->
-                                    <div class="me-6 my-1">
-                                        <select id="filter_type_dossier_document3" name="year" data-control="select2" data-hide-search="true" class="w-150px form-select form-select-solid form-select-sm">
+                                    <div class="me-3 my-1">
+                                        <select id="filter_type_dossier_document3" data-control="select2" data-hide-search="true" class="form-select form-select-solid form-select-sm">
                                             <option value="all" selected="selected">Tous les documents</option>
                                             <option value="permanent">Dossier permanent</option>
                                             <option value="general">Dossier général de contrôle annuel</option>
+                                        </select>
+                                    </div>
+                                    <!--end::Select-->
+
+                                    <!--begin::Select-->
+                                    <div class="me-3 my-1">
+                                        <select id="filter_rubrique_document3" data-control="select2" data-hide-search="true" class="form-select form-select-solid form-select-sm">
+                                            <option value="all" selected="selected">Toutes les rubriques</option>
+                                            <option value="connaissance_generale_client">Connaissance générale du Client</option>
+                                            <option value="documents_juridiques_client">Documents juridiques sur le Client</option>
+                                            <option value="organisation_comptable_client">Organisation comptable du Client</option>
+                                            <option value="documents_comptables_client">Documents comptables du Client</option>
+                                            <option value="documents_fiscaux_client">Documents fiscaux du Client</option>
+                                            <option value="documents_sociaux_client">Documents sociaux du Client</option>
+                                            <option value="documents_gestion_client">Documents de Gestion du Client</option>
+                                            <option value="prepare_mission_annee">Préparation de la mission au titre de la nouvelle année</option>
+                                            <option value="exam_coherence_vraisemblance">Examen de cohérence et de vraisemblance</option>
+                                            <option value="synthese_mission_rapport">Synthèse de la mission et rapports</option>
                                         </select>
                                     </div>
                                     <!--end::Select-->
@@ -4143,7 +4161,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: 'documents_techniques',
-                    type_dossier_document: $('#filter_type_dossier_document3').val()
+                    type_dossier_document: $('#filter_type_dossier_document3').val(),
+                    rubrique_document: $('#filter_rubrique_document3').val()
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -4317,7 +4336,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             method: "POST",
             data: {
                 datatable: 'documents_techniques',
-                type_dossier_document: $('#filter_type_dossier_document3').val()
+                type_dossier_document: $('#filter_type_dossier_document3').val(),
+                rubrique_document: $('#filter_rubrique_document3').val()
             },
             dataType: "JSON",
             success: function(data) {
@@ -4367,6 +4387,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         $('#filter_type_dossier_document3').on('change', function(event) {
             reload_datatable3();
         })
+
+        $('#filter_rubrique_document3').on('change', function(event) {
+            reload_datatable3();
+        })
+
+
 
         // Afficher les infos selon la zone cliquée (generale, avance)
         $(document).on('click', '#generale_area_btn', function(e) {
