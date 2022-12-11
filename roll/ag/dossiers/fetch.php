@@ -968,6 +968,12 @@ if (isset($_POST['datatable'])) {
                                             <a href="" class="edit_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Remplir le formulaire</a>
                                         </div>
                                         <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu 3-->
                                 </div>
@@ -1001,6 +1007,12 @@ if (isset($_POST['datatable'])) {
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
                                             <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Rédiger le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
@@ -1037,7 +1049,13 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -1074,13 +1092,19 @@ if (isset($_POST['datatable'])) {
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
-                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
                                                     <a href="" class="edit_info_doc_file menu-link px-3" data-id_document="{$id_document}">Ajouter informations</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -1115,7 +1139,13 @@ if (isset($_POST['datatable'])) {
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
-                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -1649,6 +1679,12 @@ if (isset($_POST['datatable'])) {
                                             <a href="" class="edit_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Remplir le formulaire</a>
                                         </div>
                                         <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu 3-->
                                 </div>
@@ -1682,6 +1718,12 @@ if (isset($_POST['datatable'])) {
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
                                             <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Rédiger le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
@@ -1718,7 +1760,13 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                            </div>
+                                            <!--end::Menu item-->
+
+                                            <!-- begin::Menu item -->
+                                            <div class="menu-item px-3">
+                                                <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -1755,13 +1803,19 @@ if (isset($_POST['datatable'])) {
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
-                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
                                                     <a href="" class="edit_info_doc_file menu-link px-3" data-id_document="{$id_document}">Ajouter informations</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
@@ -1796,7 +1850,13 @@ if (isset($_POST['datatable'])) {
 
                                                 <!-- begin::Menu item -->
                                                 <div class="menu-item px-3">
-                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer</a>
+                                                    <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                                </div>
+                                                <!--end::Menu item-->
+
+                                                <!-- begin::Menu item -->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="delete_doc menu-link px-3 text-hover-danger" data-id_document="{$id_document}">Supprimer le document</a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
