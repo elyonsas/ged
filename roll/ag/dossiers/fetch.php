@@ -561,7 +561,6 @@ if (isset($_POST['datatable'])) {
                             </div>
                         HTML;
                     }
-
                 } else {
 
                     if ($type_document == 'generate') {
@@ -589,7 +588,6 @@ if (isset($_POST['datatable'])) {
                             </div>
                         HTML;
                     }
-
                 }
             } else {
 
@@ -847,7 +845,7 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         } else {
-                            if ($table_info_document != NULL){
+                            if ($table_info_document != NULL) {
 
                                 $action = <<<HTML
 
@@ -895,8 +893,7 @@ if (isset($_POST['datatable'])) {
                                     </td>
 
                                 HTML;
-
-                            }else{
+                            } else {
                                 $action = <<<HTML
 
                                     <td>
@@ -1050,7 +1047,7 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         } else {
-                            if ($table_info_document != NULL){
+                            if ($table_info_document != NULL) {
 
                                 $action = <<<HTML
 
@@ -1092,8 +1089,7 @@ if (isset($_POST['datatable'])) {
                                     </td>
 
                                 HTML;
-
-                            }else{
+                            } else {
                                 $action = <<<HTML
 
                                     <td>
@@ -1246,7 +1242,6 @@ if (isset($_POST['datatable'])) {
                             </div>
                         HTML;
                     }
-
                 } else {
 
                     if ($type_document == 'generate') {
@@ -1274,7 +1269,6 @@ if (isset($_POST['datatable'])) {
                             </div>
                         HTML;
                     }
-
                 }
             } else {
 
@@ -1532,7 +1526,7 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         } else {
-                            if ($table_info_document != NULL){
+                            if ($table_info_document != NULL) {
 
                                 $action = <<<HTML
 
@@ -1580,8 +1574,7 @@ if (isset($_POST['datatable'])) {
                                     </td>
 
                                 HTML;
-
-                            }else{
+                            } else {
                                 $action = <<<HTML
 
                                     <td>
@@ -1735,7 +1728,7 @@ if (isset($_POST['datatable'])) {
 
                             HTML;
                         } else {
-                            if ($table_info_document != NULL){
+                            if ($table_info_document != NULL) {
 
                                 $action = <<<HTML
 
@@ -1777,8 +1770,7 @@ if (isset($_POST['datatable'])) {
                                     </td>
 
                                 HTML;
-
-                            }else{
+                            } else {
                                 $action = <<<HTML
 
                                     <td>
@@ -1823,7 +1815,6 @@ if (isset($_POST['datatable'])) {
 
             $data[] = $sub_array;
         }
-
 
         $output = array(
             "data" => $data
@@ -1908,7 +1899,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
-
     }
 
     if ($_POST['action'] == 'activer_compte') {
@@ -2546,7 +2536,7 @@ if (isset($_POST['action'])) {
 
         $output = $result;
     }
-    if ($_POST['action'] == 'fetch_edit_info_doc_file'){
+    if ($_POST['action'] == 'fetch_edit_info_doc_file') {
 
         $id_document = $_POST['id_document'];
 
@@ -2563,7 +2553,6 @@ if (isset($_POST['action'])) {
         $result = $statement->fetch();
 
         $output = $result;
-
     }
 
     if ($_POST['action'] == 'edit_doc_write') {
@@ -3320,7 +3309,7 @@ if (isset($_POST['action'])) {
             ];
         }
     }
-    if ($_POST['action'] == 'edit_table_doc_6_info_lettre_mission'){
+    if ($_POST['action'] == 'edit_table_doc_6_info_lettre_mission') {
 
         $id_document = $_POST['id_document'];
         $duree = si_funct($_POST['duree'], "", NULL, $_POST['duree']);
@@ -3409,7 +3398,6 @@ if (isset($_POST['action'])) {
                     }
                 }
             }
-
         } else {
             $update3 = true;
             $delete = delete('mission_client', "id_client = $id_client", $db);
@@ -3426,7 +3414,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
-        
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
@@ -3467,7 +3454,7 @@ if (isset($_POST['action'])) {
         }
     }
     if ($_POST['action'] == 'delete_doc') {
-            
+
         $id_document = $_POST['id_document'];
 
         $update = update(
@@ -3492,7 +3479,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !',
             );
         }
-            
     }
     if ($_POST['action'] == 'delete_doc_file_upload') {
 
@@ -3546,7 +3532,7 @@ if (isset($_POST['action'])) {
 
 if (isset($_FILES['file'])) {
 
-    if ($_GET['action'] == 'doc_file_upload'){
+    if ($_GET['action'] == 'doc_file_upload') {
 
         $id_document = $_GET['id_document'];
         $titre_document = $_GET['titre_document'];
@@ -3583,7 +3569,6 @@ if (isset($_FILES['file'])) {
             "id_document = $id_document",
             $db
         );
-
     }
 
     if ($_GET['action'] == 'doc_scan_upload') {
@@ -3617,7 +3602,6 @@ if (isset($_FILES['file'])) {
             "id_document = $id_document",
             $db
         );
-
     }
 
     $output = $targetFile;
