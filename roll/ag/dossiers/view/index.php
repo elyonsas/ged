@@ -383,7 +383,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                     <!--begin::Select-->
                                     <div class="me-3 my-1">
-                                        <select id="filter_rubrique_document3" data-control="select2" data-hide-search="true" class="form-select form-select-solid form-select-sm">
+                                        <select id="filter_rubrique_document3" data-control="select2" class="form-select form-select-solid form-select-sm">
                                             <option value="all" selected="selected">Toutes les rubriques</option>
                                             <option value="connaissance_generale_client">Connaissance générale du Client</option>
                                             <option value="documents_juridiques_client">Documents juridiques sur le Client</option>
