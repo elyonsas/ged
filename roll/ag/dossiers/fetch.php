@@ -2162,7 +2162,7 @@ if (isset($_POST['action'])) {
             $nom_client = $row['nom_utilisateur'];
             $email_client = $row['email_utilisateur'];
             $matricule_client = $row['matricule_client'];
-            $date_naiss_client = si_funct1($row['date_naiss_utilisateur'], date('d-m-Y', strtotime($row['date_naiss_utilisateur'])), '--');
+            $date_naiss_client = si_funct1($row['date_naiss_utilisateur'], date('d/m/Y', strtotime($row['date_naiss_utilisateur'])), '--');
             $tel_client = $row['tel_utilisateur'];
             $adresse_client = $row['adresse_utilisateur'];
 

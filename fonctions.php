@@ -110,6 +110,11 @@
             return '';
     }
 
+    function format_am($amount)
+    {
+        return number_format($amount, 0, ',', ' ');
+    }
+
     function user($info)
     {
         $key = $info . '_utilisateur';
