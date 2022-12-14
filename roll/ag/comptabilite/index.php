@@ -351,6 +351,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 var all_factures = $('#all_factures').DataTable({
                     "processing": true,
                     "serverSide": false,
+                    "responsive": true,
                     "paging": true,
                     "bInfo": true,
                     "bFilter": true,
