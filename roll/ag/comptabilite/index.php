@@ -88,15 +88,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     <tr>
                                         <th class="">N° Facture</th>
                                         <th class="">Date de créaction</th>
-                                        <th class="">Date d'émission</th>
+                                        <!-- <th class="">Date d'émission</th> -->
                                         <th class="">Client</th>
                                         <th class="">Echéance</th>
-                                        <th class="">Date d'échéance</th>
-                                        <th class="min-w-75px">Montant HT</th>
-                                        <th class="min-w-75px">TVA</th>
+                                        <!-- <th class="">Date d'échéance</th> -->
+                                        <!-- <th class="min-w-75px">Montant HT</th> -->
+                                        <!-- <th class="min-w-75px">TVA</th> -->
                                         <th class="min-w-75px">Montant TTC</th>
                                         <th class="min-w-75px">Montant réglé</th>
-                                        <th class="min-w-75px">Solde</th>
+                                        <!-- <th class="min-w-75px">Solde</th> -->
                                         <th class="">Statut</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
@@ -351,7 +351,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 var all_factures = $('#all_factures').DataTable({
                     "processing": true,
                     "serverSide": false,
-                    "responsive": true,
                     "paging": true,
                     "bInfo": true,
                     "bFilter": true,

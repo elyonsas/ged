@@ -54,9 +54,14 @@ if (isset($_POST['datatable'])) {
 
             $statut_facture = $row['statut_facture'];
             switch ($statut_facture) {
+                case 'en attente':
+                    $statut_facture_html = <<<HTML
+                        <span class="badge badge-light-dark">En attente</span>
+                    HTML;
+                    break;
                 case 'en cour':
                     $statut_facture_html = <<<HTML
-                        <span class="badge badge-light-dark">En cours</span>
+                        <span class="badge badge-light-primary">En cours</span>
                     HTML;
                     break;
                 case 'paye':
@@ -85,9 +90,9 @@ if (isset($_POST['datatable'])) {
             HTML;
 
             // Date d'émission
-            $sub_array[] = <<<HTML
-                <div style="font-size: 11px;">$date_emission_facture</div>
-            HTML;
+            // $sub_array[] = <<<HTML
+            //     <div style="font-size: 11px;">$date_emission_facture</div>
+            // HTML;
 
             // Client
             $sub_array[] = <<<HTML
@@ -100,19 +105,19 @@ if (isset($_POST['datatable'])) {
             HTML;
 
             // Date d'échéance
-            $sub_array[] = <<<HTML
-                <div style="font-size: 11px;">$date_echeance_facture</div>
-            HTML;
+            // $sub_array[] = <<<HTML
+            //     <div style="font-size: 11px;">$date_echeance_facture</div>
+            // HTML;
 
             // Montant HT
-            $sub_array[] = <<<HTML
-                <div style="font-size: 11px;">$montant_ht_facture</div>
-            HTML;
+            // $sub_array[] = <<<HTML
+            //     <div style="font-size: 11px;">$montant_ht_facture</div>
+            // HTML;
 
             // TVA
-            $sub_array[] = <<<HTML
-                <div style="font-size: 11px;">$tva_facture</div>
-            HTML;
+            // $sub_array[] = <<<HTML
+            //     <div style="font-size: 11px;">$tva_facture</div>
+            // HTML;
 
             // Montant TTC
             $sub_array[] = <<<HTML
@@ -125,9 +130,9 @@ if (isset($_POST['datatable'])) {
             HTML;
 
             // Solde
-            $sub_array[] = <<<HTML
-                <div style="font-size: 11px;">$solde_facture</div>
-            HTML;
+            // $sub_array[] = <<<HTML
+            //     <div style="font-size: 11px;">$solde_facture</div>
+            // HTML;
 
             // Statut
             $sub_array[] = <<<HTML
@@ -137,19 +142,40 @@ if (isset($_POST['datatable'])) {
 
             // Action
             switch ($statut_facture) {
+                case 'en attente':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">                            
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_client="{$id_client}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="modifier_facture menu-link px-3" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
                 case 'en cour':
                     $action = <<<HTML
 
                         <td>
-                            <div class="d-flex justify-content-end flex-shrink-0">
-                                
-                                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
-                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                </a> -->
+                            <div class="d-flex justify-content-end flex-shrink-0">                            
                                 <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
@@ -179,14 +205,6 @@ if (isset($_POST['datatable'])) {
 
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
-                                
-                                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
-                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                </a> -->
                                 <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
@@ -216,14 +234,6 @@ if (isset($_POST['datatable'])) {
 
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
-                                
-                                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
-                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
-                                </a> -->
                                 <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                     <i class="bi bi-three-dots fs-3"></i>
                                 </button>
