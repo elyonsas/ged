@@ -176,6 +176,18 @@
         return $result['id_utilisateur'];
     }
 
+    function find_dep_client($id_client, PDO $db)
+    {
+        $query = "SELECT * FROM departement, client WHERE departement.id_departement = client.id_departement AND client.id_client = :id_client";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_client' => $id_client
+        ]);
+        $result = $statement->fetch();
+
+        return $result['sigle_departement'];
+    }
+
     function find_ag_cabinet(PDO $db)
     {
         $query = "SELECT * FROM utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.type_compte = 'ag'";

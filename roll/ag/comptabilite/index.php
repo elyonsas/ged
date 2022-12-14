@@ -49,7 +49,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar my-1">
                             <!-- begin::add btn facture -->
-                            <a href="#" class="btn btn-sm btn-light btn-active-primary me-3">
+                            <div id="add_facture" data-bs-toggle="modal" data-bs-target="#add_facture_modal" class="btn btn-sm btn-light btn-active-primary me-3">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </svg>
                                 </span>Ajouter une facture
                                 <!--end::Svg Icon-->
-                            </a>
+                            </div>
                             <!-- end::add btn facture -->
                             <!--begin::Search-->
                             <div class="d-flex align-items-center position-relative my-1">
@@ -90,7 +90,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <th class="">Date de créaction</th>
                                         <!-- <th class="">Date d'émission</th> -->
                                         <th class="">Client</th>
-                                        <th class="">Echéance</th>
+                                        <th class="">Échéance</th>
                                         <!-- <th class="">Date d'échéance</th> -->
                                         <!-- <th class="min-w-75px">Montant HT</th> -->
                                         <!-- <th class="min-w-75px">TVA</th> -->
@@ -122,57 +122,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Content container-->
     </div>
     <!--end::Content-->
-
-    <!-- begin::Modal attribuer collaborateur-->
-    <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <form id="form_attribuer" method="POST" class="form modal-content" action="">
-                <div class="modal-header p-5">
-                    <h4 class="modal-title">Attribuer collaborateur</h4>
-                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-1">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </div>
-                </div>
-                <div class="modal-body">
-
-                    <div class="">
-                        <div class="d-flex fw-semibold me-5 mb-5 align-items-center">
-                            <div class="fs-5">
-                                Client :
-                            </div>
-                            <div id="attribuer_nom_client" class="fs-5 text-muted ms-3">--</div>
-                        </div>
-                        <!--begin::Input group-->
-                        <div id="choisir_facture" class="fv-row row mb-10">
-                            <select id="attribuer_collabo" class="form-select form-select-solid" data-dropdown-parent="#attribuer_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un collaborateur" name="id_collaborateur" required>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="opt d-flex justify-content-end">
-                        <input type="hidden" name="action" value="edit_attribuer_collabo">
-                        <input id="attribuer_id_client" type="hidden" name="id_client" value="">
-                        <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
-                        <button id="btn_attribuer" type="submit" class="btn btn-lg btn-primary ms-2">
-                            <span class="indicator-label">Valider</span>
-                            <span class="indicator-progress">Veuillez patienter...
-                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                            </span>
-                        </button>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- end::Modal attribuer collaborateur-->
 
     <!-- begin::Modal detail-->
 	<div class="modal fade" id="detail_facture_modal" tabindex="-1" role="dialog" aria-labelledby="detail_facture_modal_title" aria-hidden="true">
@@ -240,6 +189,80 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 		</div>
 	</div>
 	<!-- end::Modal detail-->
+
+    <!-- begin::Modal Ajouter une facture-->
+    <div class="modal fade" id="add_facture_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_add_facture" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Ajouter une facture</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+				<!--begin::Modal body-->
+                <div class="modal-body">
+
+					<div class="row mb-5">
+						<div class="form-group">
+							<label class="fs-5 mb-2">Client</label>
+							<select id="add_facture_client" class="form-select form-select-solid" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un client" name="id_client" required></select>
+						</div>
+					</div>
+
+					<div class="row mb-5">
+                        <div class="col-6 form-group">
+							<label class="fs-5 mb-2">Type de facture</label>
+							<select id="add_facture_type" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Type de facture" name="type_facture" required>
+                                <option value="contrat">Contrat</option>
+                                <option value="formation">Formation</option>
+                                <option value="autre">Autres</option>
+                            </select>
+						</div>
+                        <div class="col-6 form-group">
+							<label class="fs-5 mb-2">Échéance</label>
+							<input id="add_facture_echeance" type="number" class="form-control form-control-solid" placeholder="Échéance en (jour)" name="echeance_facture" required>
+						</div>
+					</div>
+
+                    <div class="row mb-5">
+                        <label class="fs-5 mb-2">Montant</label>
+                        <div class="input-group">
+                            <input id="add_facture_montant_ht" type="text" class="form-control" placeholder="Montant HT" name="montant_ht_facture" required>
+                            <span class="input-group-text">-</span>
+                            <input id="add_facture_tva" type="text" class="form-control" placeholder="TVA" name="tva_facture" required>
+                            <span class="input-group-text">-</span>
+                            <input id="add_facture_montant_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_ttc_facture" required>
+                        </div>
+                    </div>
+
+                </div>
+				<!--end::Modal body-->
+
+				<!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="add_facture">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_add_facture" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Ajouter une facture-->
     
 </div>
 <!--end::Content wrapper-->
@@ -386,147 +409,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        // Lorsqu'on clique sur .activer_compte
-        $(document).on('click', '.activer_compte', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment activer ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment activer ce compte ?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, activer !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/comptabilite/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_client: id_client,
-                            action: 'activer_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_factures'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .desactiver_compte
-        $(document).on('click', '.desactiver_compte', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment désactiver ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment désactiver ce compte ?",
-                text: "Vous ne pouvez plus revenir en arrière !",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, désactiver !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/comptabilite/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_client: id_client,
-                            action: 'desactiver_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_factures'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .view_detail_facture
-        $(document).on('click', '.view_detail_facture', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client');
+        // Lorsqu'on clique sur #add_facture
+        $(document).on('click', '#add_facture', function() {
+            $('#form_add_facture')[0].reset();
 
             $.ajax({
-                url: "roll/ag/comptabilite/fetch.php",
-                method: "POST",
-                data: {
-                    id_client: id_client,
-                    action: 'view_detail_facture'
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    $('#detail_nom_client').html(data.nom_client);
-                    $('#detail_matricule_client').html(data.matricule_client);
-                    $('#detail_telephone_client').html(data.tel_client);
-                    $('#detail_email_client').html(data.email_client);
-                    $('#detail_adresse_client').html(data.adresse_client);
-                }
-            });
-
+            url: "roll/ag/comptabilite/fetch.php",
+            method: "POST",
+            data: {
+                action: 'fetch_client',
+            },
+            dataType: "JSON",
+            success: function(data) {
+                $('#add_facture_client').html(data);
+            }
+        });
         });
 
-        // Lorsqu'on clique sur .attribuer_collabo
-        $(document).on('click', '.attribuer_collabo', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            $.ajax({
-				url: "roll/ag/comptabilite/fetch.php",
-				method: "POST",
-				data: {
-                    id_client: id_client,
-                    action: 'fetch_attribuer_collabo'
-				},
-				dataType: "JSON",
-				success: function(data) {
-                    $('#attribuer_nom_client').html(data.nom_client);
-                    $('#attribuer_collabo').html(data.facture_html);
-                    $('#attribuer_id_client').val(data.id_client);
-				}
-			});
-
-        });
-
-        // Pour l'attribution un collaborateur à un client
-		$(document).on('submit', '#form_attribuer', function(event) {
+        // Pour l'ajout d'un nouveau secteur d'activité
+		$(document).on('submit', '#form_add_facture', function(event) {
 			event.preventDefault();
 
 			// Show loading indication
-			formSubmitButton = document.querySelector('#btn_attribuer');
+			formSubmitButton = document.querySelector('#btn_add_facture');
 			formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
 			$.ajax({
@@ -540,11 +445,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 						formSubmitButton.removeAttribute('data-kt-indicator');
 
 						if (data.success) {
-							$('#attribuer_modal').modal('hide');
+							$('#add_facture_modal').modal('hide');
 
 							// swal
                             Swal.fire({
-                                title: "facture prise en charge !",
+                                title: "Facture ajoutée !",
                                 html: data.message,
                                 icon: "success",
                                 buttonsStyling: false,
@@ -557,8 +462,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             reload_datatable('all_factures'); // On recharge le datatable
 
 						} else {
-							$('#attribuer_modal').modal('hide');
-
 							toastr.error('une erreur s\'est produite', '', {
 								positionClass: "toastr-bottom-left",
 							});
