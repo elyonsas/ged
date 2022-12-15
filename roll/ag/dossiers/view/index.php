@@ -5224,16 +5224,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    /*aspect_document
-                    code_document
-                    titre_document
-                    statut_document
-                    created_by_document
-                    created_at_document
-                    updated_by_document
-                    updated_at_document */
-
-
+                    
                     $('#detail_doc_aspect').html(data.aspect_document);
                     $('#detail_doc_code').html(data.code_document);
                     $('#detail_doc_titre').html(data.titre_document);

@@ -190,7 +190,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -219,7 +219,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -248,7 +248,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -281,7 +281,7 @@ if (isset($_POST['datatable'])) {
 if (isset($_POST['action'])) {
 
     // espace datatables
-    if($_POST['action'] == 'add_facture'){
+    if ($_POST['action'] == 'add_facture') {
     
         $n_facture = '';
         $type_facture = $_POST['type_facture'];
@@ -363,6 +363,22 @@ if (isset($_POST['action'])) {
                 <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
             HTML;
         }
+    }
+    if ($_POST['action'] == 'view_detail_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+
+        $created_by_facture = find_info_utilisateur('prenom_utilisateur', $result['created_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['created_by_facture'], $db);
+        $updated_by_facture = find_info_utilisateur('prenom_utilisateur', $result['updated_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['updated_by_facture'], $db);
+
+        $output['created_by_user'] = $created_by_facture;
+        $output['updated_by_user'] = $updated_by_facture;
     }
 
 }
