@@ -161,7 +161,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="emettre_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#emettre_facture_modal" data-id_facture="{$id_facture}">Émettre la facture</a>
+                                        <a href="" class="emettre_facture menu-link px-3" data-id_facture="{$id_facture}">Émettre la facture</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -349,6 +349,36 @@ if (isset($_POST['action'])) {
             );
         }
     }
+
+    if ($_POST['action'] == 'emettre_facture') {
+            
+        $id_facture = $_POST['id_facture'];
+        $date_emission_facture = date('Y-m-d H:i:s');
+        $statut_facture = 'en cour';
+
+        $update = update(
+            'facture',
+            [
+                'date_emission_facture' => $date_emission_facture,
+                'statut_facture' => $statut_facture
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'La facture a été émise !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
     if ($_POST['action'] == 'fetch_client') {
         
         $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur
@@ -364,6 +394,7 @@ if (isset($_POST['action'])) {
             HTML;
         }
     }
+
     if ($_POST['action'] == 'view_detail_facture') {
         $id_facture = $_POST['id_facture'];
 
@@ -380,6 +411,7 @@ if (isset($_POST['action'])) {
         $output['created_by_user'] = $created_by_facture;
         $output['updated_by_user'] = $updated_by_facture;
     }
+    
 
 }
 
