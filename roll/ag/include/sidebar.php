@@ -146,7 +146,12 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Comptabilité', $icon, 'roll/ag/comptabilite', $menu_compta) ?>
+                    <?= single_sub_menu('Comptabilité', $icon, 
+                    [
+                        ['Factures client', 'roll/ag/comptabilite/facture', $menu_compta_facture],
+                        ['Finances cabinet', 'roll/ag/comptabilite/finance', $menu_compta_finance],
+
+                    ] , $menu_compta) ?>
                     <!--end:Menu item-->
 
                 </div>

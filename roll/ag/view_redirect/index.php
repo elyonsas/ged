@@ -23,4 +23,12 @@ if (isset($_GET['action'])) {
 
         header('Location: /ged/roll/ag/dossiers/view');
     }
+
+    if ($_GET['action'] == 'view_facture') {
+
+        $id_facture = $_GET['id_view_facture'];
+        $_SESSION['id_view_facture'] = $id_facture;
+
+        header('Location: /ged/roll/ag/comptabilite/facture/view');
+    }
 }

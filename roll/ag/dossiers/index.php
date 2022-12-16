@@ -17,6 +17,8 @@ $menu_dt = "active";
 $menu_interlo = "";
 $menu_collabo = "";
 $menu_compta = "";
+$menu_compta_facture = "";
+$menu_compta_finance = "";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 

@@ -17,6 +17,8 @@ $menu_dt = "";
 $menu_interlo = "";
 $menu_collabo = "";
 $menu_compta = "active";
+$menu_compta_facture = "active";
+$menu_compta_finance = "";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 
@@ -292,7 +294,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             // Fait une réquête AJAX pour récupérer les données de la page
             $.ajax({
-                url: "roll/ag/comptabilte/fetch.php",
+                url: "roll/ag/comptabilite/facture/fetch.php",
                 method: "POST",
                 data: {
                     action: 'fetch_page_facture'
@@ -301,22 +303,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
 
                     // Affiche les données dans la page
-                    $('#avatar_client').html(data.avatar_client);
-                    $('#nom_client').html(data.nom_client);
-                    $('#email_client').html(data.email_client);
-                    $('#adresse_client').html(data.adresse_client);
-                    $('#matricule_client').html(data.matricule_client);
-                    $('#tel_client').html(data.tel_client);
-
-                    $('#ifu_entite').html(data.ifu_entite);
-                    $('#designation_entite').html(data.designation_entite);
-                    $('#boite_postal').html(data.boite_postal);
-                    $('#designation_activite_principale').html(data.designation_activite_principale);
-                    $('#adresse_geo_complete').html(data.adresse_geo_complete);
-
-                    $('#statut_client').html(data.statut_client);
-                    $('#action_client').html(data.action_client);
-                    $('#niveau_client').html(data.niveau_client);
 
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -327,7 +313,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
-            url: "roll/ag/comptabilte/fetch.php",
+            url: "roll/ag/comptabilite/facture/fetch.php",
             method: "POST",
             data: {
                 action: 'fetch_page_facture'
@@ -336,25 +322,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             success: function(data) {
 
                 // Affiche les données dans la page
-                $('#avatar_client').html(data.avatar_client);
-                $('#nom_client').html(data.nom_client);
-                $('#email_client').html(data.email_client);
-                $('#adresse_client').html(data.adresse_client);
-                $('#matricule_client').html(data.matricule_client);
-                $('#tel_client').html(data.tel_client);
+                console.log(data);
 
-                $('#ifu_entite').html(data.ifu_entite);
-                $('#designation_entite').html(data.designation_entite);
-                $('#boite_postal').html(data.boite_postal);
-                $('#designation_activite_principale').html(data.designation_activite_principale);
-                $('#adresse_geo_complete').html(data.adresse_geo_complete);
-
-                $('#statut_client').html(data.statut_client);
-                $('#action_client').html(data.action_client);
-                $('#niveau_client').html(data.niveau_client);
-
-                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                
             }
         });
 
