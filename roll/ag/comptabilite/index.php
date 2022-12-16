@@ -141,30 +141,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     </div>
                 </div>
 
-				<!--begin::Modal body-->
+                <!--begin::Modal body-->
                 <div class="modal-body">
 
-					<div class="row mb-5">
-						<div class="form-group">
-							<label class="fs-5 mb-2">Client</label>
-							<select id="add_facture_client" class="form-select form-select-solid" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un client" name="id_client" required></select>
-						</div>
-					</div>
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Client</label>
+                            <select id="add_facture_client" class="form-select form-select-solid" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Choisissez un client" name="id_client" required></select>
+                        </div>
+                    </div>
 
-					<div class="row mb-5">
+                    <div class="row mb-5">
                         <div class="col-6 form-group">
-							<label class="fs-5 mb-2">Type de facture</label>
-							<select id="add_facture_type" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Type de facture" name="type_facture" required>
+                            <label class="fs-5 mb-2">Type de facture</label>
+                            <select id="add_facture_type" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Type de facture" name="type_facture" required>
                                 <option value="contrat">Contrat</option>
                                 <option value="formation">Formation</option>
                                 <option value="autre">Autres</option>
                             </select>
-						</div>
+                        </div>
                         <div class="col-6 form-group">
-							<label class="fs-5 mb-2">Échéance</label>
-							<input id="add_facture_echeance" type="number" class="form-control form-control-solid" placeholder="Échéance en (jour)" name="echeance_facture" required>
-						</div>
-					</div>
+                            <label class="fs-5 mb-2">Échéance</label>
+                            <input id="add_facture_echeance" type="number" class="form-control form-control-solid" placeholder="Échéance en (jour)" name="echeance_facture" required>
+                        </div>
+                    </div>
 
                     <div class="row mb-5">
                         <label class="fs-5 mb-2">Montant</label>
@@ -178,9 +178,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     </div>
 
                 </div>
-				<!--end::Modal body-->
+                <!--end::Modal body-->
 
-				<!--begin::Modal footer-->
+                <!--begin::Modal footer-->
                 <div class="modal-footer">
                     <input type="hidden" name="action" value="add_facture">
                     <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
@@ -198,121 +198,129 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     <!-- end::Modal Ajouter une facture-->
 
     <!-- begin::Modal detail-->
-	<div class="modal fade" id="detail_facture_modal" tabindex="-1" role="dialog" aria-labelledby="detail_facture_modal_title" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-scrollable" role="document">
-			<form method="POST" class="form modal-content" action="">
-				<div class="modal-header p-5">
-					<h4 class="modal-title">Détails facture</h4>
-					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-						<span class="svg-icon svg-icon-1">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-							</svg>
-						</span>
-						<!--end::Svg Icon-->
-					</div>
-				</div>
-				<div class="modal-body">
+    <div class="modal fade" id="detail_facture_modal" tabindex="-1" role="dialog" aria-labelledby="detail_facture_modal_title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Détails facture</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+                <div class="modal-body">
 
-					<div class="">
-						<div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">N° Facture :</label>
-								<span id="detail_n_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                    <div class="">
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Date de création :</label>
-								<span id="detail_created_at_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">N° Facture :</label>
+                                <span id="detail_n_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Date d'émission :</label>
-								<span id="detail_date_emission_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Type de facture :</label>
+                                <span id="detail_type_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Client :</label>
-								<span id="detail_client_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Date de création :</label>
+                                <span id="detail_created_at_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Échéance :</label>
-								<span id="detail_echeance_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Date d'émission :</label>
+                                <span id="detail_date_emission_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Date de l'échéance :</label>
-								<span id="detail_date_echeance_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Client :</label>
+                                <span id="detail_client_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Montant HT :</label>
-								<span id="detail_montant_ht_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Échéance :</label>
+                                <span id="detail_echeance_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">TVA :</label>
-								<span id="detail_tva_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Date de l'échéance :</label>
+                                <span id="detail_date_echeance_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Montant TTC :</label>
-								<span id="detail_montant_ttc_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Montant HT :</label>
+                                <span id="detail_montant_ht_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Montant réglé :</label>
-								<span id="detail_montant_regle_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">TVA :</label>
+                                <span id="detail_tva_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Solde :</label>
-								<span id="detail_solde_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Montant TTC :</label>
+                                <span id="detail_montant_ttc_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
-							<!--begin::item-->
-							<div class="me-5 fw-semibold">
-								<label class="fs-3 fw-bold">Statut :</label>
-								<span id="detail_statut_facture" class="fs-5 text-muted"></span>
-							</div>
-							<!--end::item-->
-						</div>
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Montant réglé :</label>
+                                <span id="detail_montant_regle_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Solde :</label>
+                                <span id="detail_solde_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Statut :</label>
+                                <span id="detail_statut_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
                         <div class="d-flex flex-stack mb-5">
                             <!--begin::item-->
                             <div class="me-5 fw-semibold">
@@ -329,13 +337,81 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             </div>
                             <!--end::item-->
                         </div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- end::Modal detail-->
-    
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal detail-->
+
+    <!-- begin::Modal Modifier une facture-->
+    <div class="modal fade" id="modifier_facture_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_modifier_facture" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Modifier facture</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="col-6 form-group">
+                            <label class="fs-5 mb-2">Type de facture</label>
+                            <select id="modifier_facture_type" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#modifier_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Type de facture" name="type_facture" required>
+                                <option value="contrat">Contrat</option>
+                                <option value="formation">Formation</option>
+                                <option value="autre">Autres</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label class="fs-5 mb-2">Échéance</label>
+                            <input id="modifier_facture_echeance" type="number" class="form-control form-control-solid" placeholder="Échéance en (jour)" name="echeance_facture" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <label class="fs-5 mb-2">Montant</label>
+                        <div class="input-group">
+                            <input id="modifier_facture_montant_ht" type="text" class="form-control" placeholder="Montant HT" name="montant_ht_facture" required>
+                            <span class="input-group-text">-</span>
+                            <input id="modifier_facture_tva" type="text" class="form-control" placeholder="TVA" name="tva_facture" required>
+                            <span class="input-group-text">-</span>
+                            <input id="modifier_facture_montant_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_ttc_facture" required>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="modifier_facture">
+                    <input type="hidden" name="id_facture" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_modifier_facture" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Modifier une facture-->
+
 </div>
 <!--end::Content wrapper-->
 
@@ -470,7 +546,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 return [year, month, day].join('-');
             } else if (format == 'yyyy-dd-mm') {
                 return [year, day, month].join('-');
-            }else if (format == 'dd/mm/yyyy hh:mm') {
+            } else if (format == 'dd/mm/yyyy hh:mm') {
                 return [day, month, year].join('/') + ' ' + hour + ':' + minute;
             } else if (format == 'mm/dd/yyyy hh:mm') {
                 return [month, day, year].join('/') + ' ' + hour + ':' + minute;
@@ -519,7 +595,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             var delimitter_str = "$1" + delimitter;
             return amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, delimitter_str);
-            
+
         }
 
         // Datatable for all factures
@@ -574,40 +650,40 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             $('#form_add_facture')[0].reset();
 
             $.ajax({
-            url: "roll/ag/comptabilite/fetch.php",
-            method: "POST",
-            data: {
-                action: 'fetch_client',
-            },
-            dataType: "JSON",
-            success: function(data) {
-                $('#add_facture_client').html(data);
-            }
-        });
+                url: "roll/ag/comptabilite/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'fetch_client',
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#add_facture_client').html(data);
+                }
+            });
         });
 
         // Pour l'ajout d'une nouvelle facture
-		$(document).on('submit', '#form_add_facture', function(event) {
-			event.preventDefault();
+        $(document).on('submit', '#form_add_facture', function(event) {
+            event.preventDefault();
 
-			// Show loading indication
-			formSubmitButton = document.querySelector('#btn_add_facture');
-			formSubmitButton.setAttribute('data-kt-indicator', 'on');
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_add_facture');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
-			$.ajax({
-				url: "roll/ag/comptabilite/fetch.php",
-				method: "POST",
-				data: $(this).serialize(),
-				dataType: "JSON",
-				success: function(data) {
-					setTimeout(function() {
-						// Hide loading indication
-						formSubmitButton.removeAttribute('data-kt-indicator');
+            $.ajax({
+                url: "roll/ag/comptabilite/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
 
-						if (data.success) {
-							$('#add_facture_modal').modal('hide');
+                        if (data.success) {
+                            $('#add_facture_modal').modal('hide');
 
-							// swal
+                            // swal
                             Swal.fire({
                                 title: "Facture ajoutée !",
                                 html: data.message,
@@ -621,16 +697,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                             reload_datatable('all_factures'); // On recharge le datatable
 
-						} else {
-							toastr.error('une erreur s\'est produite', '', {
-								positionClass: "toastr-bottom-left",
-							});
-						}
-					}, 2000);
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
 
-				}
-			})
-		});
+                }
+            })
+        });
 
         // Lorsqu'on clique sur .view_detail_facture
         $(document).on('click', '.view_detail_facture', function(e) {
@@ -648,6 +724,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
 
                     n_facture = data.n_facture;
+
+                    type_facture = data.type_facture;
+                    switch (type_facture) {
+                        case 'contrat':
+                            type_facture = 'Contrat';
+                            break;
+                        case 'formation':
+                            type_facture = 'Formation';
+                            break;
+                        case 'autre':
+                            type_facture = 'Autres';
+                            break;
+                    }
+
                     created_at_facture = date_formatter(data.created_at_facture, 'dd/mm/yyyy hh:mm');
                     date_emission_facture = date_formatter(data.date_emission_facture, 'dd/mm/yyyy hh:mm');
                     client_facture = data.nom_utilisateur;
@@ -685,8 +775,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             `;
                             break;
                     }
-                    
+
                     $('#detail_n_facture').html(n_facture);
+                    $('#detail_type_facture').html(type_facture);
                     $('#detail_created_at_facture').html(created_at_facture);
                     $('#detail_date_emission_facture').html(date_emission_facture);
                     $('#detail_client_facture').html(client_facture);
@@ -765,6 +856,76 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
 
+        });
+
+        // Lorsqu'on clique sur .modifier_facture
+        $(document).on('click', '.modifier_facture', function(e) {
+            e.preventDefault();
+            var id_facture = $(this).data('id_facture');
+            $('#form_modifier_facture input[name="id_facture"]').val(id_facture);
+
+            // On vide le formulaire
+            $('#form_modifier_facture')[0].reset();
+
+            // On récupère les données de la facture
+            $.ajax({
+                url: "roll/ag/comptabilite/fetch.php",
+                method: "POST",
+                data: {
+                    id_facture: id_facture,
+                    action: 'fetch_modifier_facture'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    // On remplit le formulaire
+                    $('#modifier_facture_type').val(data.type_facture).trigger('change');
+                    $('#modifier_facture_echeance').val(data.echeance_facture);
+                    $('#modifier_facture_montant_ht').val(data.montant_ht_facture);
+                    $('#modifier_facture_tva').val(data.tva_facture);
+                    $('#modifier_facture_montant_ttc').val(data.montant_ttc_facture);
+                }
+            });
+
+        });
+
+        // Pour la modification d'une facture
+        $(document).on('submit', '#form_modifier_facture', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_modifier_facture');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/comptabilite/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#modifier_facture_modal').modal('hide');
+
+                            // toastr
+                            toastr.success(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+
+                            reload_datatable('all_factures'); // On recharge le datatable
+
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
         });
 
 

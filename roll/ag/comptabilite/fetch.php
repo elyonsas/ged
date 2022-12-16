@@ -167,7 +167,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="modifier_facture menu-link px-3" data-id_facture="{$id_facture}">Modifier facture</a>
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -196,7 +196,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="modifier_facture menu-link px-3" data-id_facture="{$id_facture}">Modifier facture</a>
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -225,7 +225,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="modifier_facture menu-link px-3" data-id_facture="{$id_facture}">Modifier facture</a>
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -254,7 +254,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="modifier_facture menu-link px-3" data-id_facture="{$id_facture}">Modifier facture</a>
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -287,7 +287,7 @@ if (isset($_POST['action'])) {
         $type_facture = $_POST['type_facture'];
         $date_emission_facture = date('Y-m-d H:i:s');
         $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days") );
+        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
         $tva_facture = $_POST['tva_facture'];
         $montant_ttc_facture = $_POST['montant_ttc_facture'];
@@ -410,6 +410,65 @@ if (isset($_POST['action'])) {
 
         $output['created_by_user'] = $created_by_facture;
         $output['updated_by_user'] = $updated_by_facture;
+    }
+
+    if ($_POST['action'] == 'fetch_modifier_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
+
+    if ($_POST['action'] == 'modifier_facture') {
+
+        $query = "SELECT * FROM facture WHERE id_facture = :id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute([':id_facture' => $_POST['id_facture']]);
+        $result = $statement->fetch();
+
+        $id_facture = $_POST['id_facture'];
+        $type_facture = $_POST['type_facture'];
+        $echeance_facture = $_POST['echeance_facture'];
+        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
+        $montant_ht_facture = $_POST['montant_ht_facture'];
+        $tva_facture = $_POST['tva_facture'];
+        $montant_ttc_facture = $_POST['montant_ttc_facture'];
+        $solde_facture = $_POST['montant_ttc_facture'] - $result['montant_regle_facture'];
+        $updated_at_facture = date('Y-m-d H:i:s');
+        $updated_by_facture = $_SESSION['id_utilisateur'];
+
+        $update = update(
+            'facture',
+            [
+                'type_facture' => $type_facture,
+                'echeance_facture' => $echeance_facture,
+                'date_echeance_facture' => $date_echeance_facture,
+                'montant_ht_facture' => $montant_ht_facture,
+                'tva_facture' => $tva_facture,
+                'montant_ttc_facture' => $montant_ttc_facture,
+                'solde_facture' => $solde_facture,
+                'updated_at_facture' => $updated_at_facture,
+                'updated_by_facture' => $updated_by_facture
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'La facture a été modifiée !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
     }
     
 
