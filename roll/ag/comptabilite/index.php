@@ -152,6 +152,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     </div>
 
                     <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Objet de la facture</label>
+                            <textarea id="add_facture_objet" class="form-control form-control-solid" name="objet_facture" 
+                            rows="3" placeholder="Entrez l'objet de la facture"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
                         <div class="col-6 form-group">
                             <label class="fs-5 mb-2">Type de facture</label>
                             <select id="add_facture_type" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#add_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="Type de facture" name="type_facture" required>
@@ -364,6 +372,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 <!--begin::Modal body-->
                 <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Objet de la facture</label>
+                            <textarea id="modifier_facture_objet" class="form-control form-control-solid" name="objet_facture" 
+                            rows="3" placeholder="Entrez l'objet de la facture"></textarea>
+                        </div>
+                    </div>
 
                     <div class="row mb-5">
                         <div class="col-6 form-group">
@@ -880,6 +896,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     // On remplit le formulaire
                     $('#modifier_facture_type').val(data.type_facture).trigger('change');
+                    $('#modifier_facture_objet').val(data.objet_facture);
                     $('#modifier_facture_echeance').val(data.echeance_facture);
                     $('#modifier_facture_montant_ht').val(data.montant_ht_facture);
                     $('#modifier_facture_tva').val(data.tva_facture);

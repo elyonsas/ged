@@ -309,6 +309,7 @@ if (isset($_POST['action'])) {
     
         $n_facture = '';
         $type_facture = $_POST['type_facture'];
+        $objet_facture = $_POST['objet_facture'];
         $date_emission_facture = date('Y-m-d H:i:s');
         $echeance_facture = $_POST['echeance_facture'];
         $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
@@ -328,6 +329,7 @@ if (isset($_POST['action'])) {
             'facture',
             [
                 'type_facture' => $type_facture,
+                'objet_facture' => $objet_facture,
                 'date_emission_facture' => $date_emission_facture,
                 'echeance_facture' => $echeance_facture,
                 'date_echeance_facture' => $date_echeance_facture,
@@ -456,6 +458,7 @@ if (isset($_POST['action'])) {
 
         $id_facture = $_POST['id_facture'];
         $type_facture = $_POST['type_facture'];
+        $objet_facture = $_POST['objet_facture'];
         $echeance_facture = $_POST['echeance_facture'];
         $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
@@ -469,6 +472,7 @@ if (isset($_POST['action'])) {
             'facture',
             [
                 'type_facture' => $type_facture,
+                'objet_facture' => $objet_facture,
                 'echeance_facture' => $echeance_facture,
                 'date_echeance_facture' => $date_echeance_facture,
                 'montant_ht_facture' => $montant_ht_facture,
