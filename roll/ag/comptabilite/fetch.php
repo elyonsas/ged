@@ -19,7 +19,7 @@ if (isset($_POST['datatable'])) {
         $query = '';
 
         $query .= "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_compte <> 'supprime' ORDER BY updated_at_facture DESC";
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
 
 
         $statement = $db->prepare($query);
@@ -170,6 +170,12 @@ if (isset($_POST['datatable'])) {
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
                                 </div>
                                 <!--end::Menu 3-->
                             </div>
@@ -197,6 +203,12 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -228,6 +240,12 @@ if (isset($_POST['datatable'])) {
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
                                 </div>
                                 <!--end::Menu 3-->
                             </div>
@@ -255,6 +273,12 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -462,6 +486,31 @@ if (isset($_POST['action'])) {
             $output = array(
                 'success' => true,
                 'message' => 'La facture a été modifiée !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'supprimer_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $update = update(
+            'facture',
+            [
+                'statut_facture' => 'supprime'
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'La facture a été supprimée !'
             );
         } else {
             $output = array(

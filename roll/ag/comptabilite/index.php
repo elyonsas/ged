@@ -928,6 +928,67 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         });
 
+        // Lorsqu'on clique sur .supprimer_facture
+        $(document).on('click', '.supprimer_facture', function(e) {
+            e.preventDefault();
+            var id_facture = $(this).data('id_facture');
+
+            // Voulez-vous vraiment supprimer cette facture ?
+            Swal.fire({
+                text: "Voulez-vous vraiment supprimer cette facture ?",
+                icon: "warning",
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonText: "Oui, supprimer !",
+                cancelButtonText: "Non, annuler !",
+                customClass: {
+                    confirmButton: "btn fw-bold btn-primary",
+                    cancelButton: "btn fw-bold btn-light btn-active-light-primary"
+                }
+            }).then(function(result) {
+                if (result.value) {
+                    $.ajax({
+                        url: "roll/ag/comptabilite/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_facture: id_facture,
+                            action: 'supprimer_facture'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                // On recharge le datatable
+                                reload_datatable('all_factures');
+
+                                // On affiche un message de succès
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, j'ai compris !",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary"
+                                    }
+                                });
+                            } else {
+                                // On affiche un message d'erreur
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, j'ai compris !",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary"
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+
 
     })
 </script>
