@@ -155,7 +155,13 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_client="{$id_client}">Détails</a>
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="emettre_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#emettre_facture_modal" data-id_facture="{$id_facture}">Émettre la facture</a>
                                     </div>
                                     <!--end::Menu item-->
 
