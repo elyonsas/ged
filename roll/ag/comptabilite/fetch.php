@@ -304,224 +304,188 @@ if (isset($_POST['datatable'])) {
 
 if (isset($_POST['action'])) {
 
-    // espace datatables
-    if ($_POST['action'] == 'add_facture') {
-    
-        $n_facture = '';
-        $type_facture = $_POST['type_facture'];
-        $objet_facture = $_POST['objet_facture'];
-        $date_emission_facture = date('Y-m-d H:i:s');
-        $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
-        $montant_ht_facture = $_POST['montant_ht_facture'];
-        $tva_facture = $_POST['tva_facture'];
-        $montant_ttc_facture = $_POST['montant_ttc_facture'];
-        $montant_regle_facture = 0;
-        $solde_facture = $_POST['montant_ttc_facture'];
-        $statut_facture = 'en attente';
-        $created_at_facture = date('Y-m-d H:i:s');
-        $updated_at_facture = date('Y-m-d H:i:s');
-        $created_by_facture = $_SESSION['id_utilisateur'];
-        $updated_by_facture = $_SESSION['id_utilisateur'];
-        $id_client = $_POST['id_client'];
+    // espace facture
+    if ($_POST['action'] == 'fetch_page_facture') {
 
-        $insert = insert(
-            'facture',
-            [
-                'type_facture' => $type_facture,
-                'objet_facture' => $objet_facture,
-                'date_emission_facture' => $date_emission_facture,
-                'echeance_facture' => $echeance_facture,
-                'date_echeance_facture' => $date_echeance_facture,
-                'montant_ht_facture' => $montant_ht_facture,
-                'tva_facture' => $tva_facture,
-                'montant_ttc_facture' => $montant_ttc_facture,
-                'montant_regle_facture' => $montant_regle_facture,
-                'solde_facture' => $solde_facture,
-                'statut_facture' => $statut_facture,
-                'created_at_facture' => $created_at_facture,
-                'updated_at_facture' => $updated_at_facture,
-                'created_by_facture' => $created_by_facture,
-                'updated_by_facture' => $updated_by_facture,
-                'id_client' => $id_client
-            ],
-            $db
-        );
+        $id_client = $_SESSION['id_view_client'];
 
-        $id = $db->lastInsertId();
-        $DEP = find_dep_client($id_client, $db);
-        $AN = date('Y');
-
-        $n_facture = "CLI{$DEP}{$AN}/{$id}";
-
-        $update = update(
-            'facture',
-            [
-                'n_facture' => $n_facture
-            ],
-            "id_facture = $id",
-            $db
-        );
-
-        if ($insert && $update) {
-            $output = array(
-                'success' => true,
-                'message' => "La facture $n_facture a été ajoutée !"
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'emettre_facture') {
-            
-        $id_facture = $_POST['id_facture'];
-        $date_emission_facture = date('Y-m-d H:i:s');
-        $statut_facture = 'en cour';
-
-        $update = update(
-            'facture',
-            [
-                'date_emission_facture' => $date_emission_facture,
-                'statut_facture' => $statut_facture
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'La facture a été émise !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_client') {
-        
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND prise_en_charge_client = 'oui' AND statut_compte = 'actif'";
+        // Récupérer les informations de la base de données
+        $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_client = $id_client ";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
 
-        $output = '<option></option>';
         foreach ($result as $row) {
-            $output .= <<<HTML
-                <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
+
+            $query = "SELECT * FROM document, doc_8_fiche_id_client, client WHERE document.id_document = doc_8_fiche_id_client.id_document
+            AND document.id_client = client.id_client AND document.id_client = $id_client";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            $id_utilisateur = $row['id_utilisateur'];
+            $avatar_client = <<<HTML
+                <img src="assets/media/avatars/{$row['avatar_utilisateur']}" alt="image">
             HTML;
+            $nom_client = $row['nom_utilisateur'];
+            $email_client = $row['email_utilisateur'];
+            $matricule_client = $row['matricule_client'];
+            $date_naiss_client = si_funct1($row['date_naiss_utilisateur'], date('d/m/Y', strtotime($row['date_naiss_utilisateur'])), '--');
+            $tel_client = $row['tel_utilisateur'];
+            $adresse_client = $row['adresse_utilisateur'];
+
+            $designation_entite = $result['designation_entite'] ?? $nom_client;
+            $ifu_entite = $result['id_fiscale_client'] ?? '--';
+            $boite_postal = isset($result['boite_postal']) ? $result['num_code'] . ' ' . $result['code'] . ' ' . $result['boite_postal'] : '--';
+            $designation_activite_principale = $result['designation_activite_principale'] ?? '--';
+            $adresse_geo_complete = $result['adresse_geo_complete'] ?? '--';
+
+            $statut_client = $row['statut_compte'];
+            switch ($statut_client) {
+                case 'actif':
+                    $statut_client_html = <<<HTML
+                        <span class="badge badge-light-success">Actif</span>
+                    HTML;
+                    break;
+                case 'inactif':
+                    $statut_client_html = <<<HTML
+                        <span class="badge badge-light-danger">Inactif</span>
+                    HTML;
+                    break;
+            }
+
+            $prise_en_charge_client = $row['prise_en_charge_client'];
+            $attribuer_a = '';
+            switch ($prise_en_charge_client) {
+                case 'oui':
+                    $prise_en_charge_client = '<span class="badge badge-success">Oui</span>';
+                    $attribuer_a = '';
+                    break;
+
+                case 'non':
+                    $prise_en_charge_client = '<span class="badge badge-danger">Non</span>';
+                    $attribuer_a = <<<HTML
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="" class="attribuer_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_client="{$id_client}">Attribuer à</a>
+                        </div>
+                        <!--end::Menu item-->
+                    HTML;
+                    break;
+            }
+
+            $action_client = '';
+            switch ($statut_client) {
+                case 'actif':
+                    $action_client = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    $attribuer_a
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
+
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_client="{$id_client}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+                case 'inactif':
+                    $action_client = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="activer_compte menu-link px-3" data-id_client="{$id_client}">Activer ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
+
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_client="{$id_client}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+            }
+
+
+            $output = array(
+                'avatar_client' => $avatar_client,
+                'nom_client' => $nom_client,
+                'email_client' => $email_client,
+                'matricule_client' => $matricule_client,
+                'date_naiss_client' => $date_naiss_client,
+                'tel_client' => $tel_client,
+                'adresse_client' => $adresse_client,
+
+                'designation_entite' => $designation_entite,
+                'ifu_entite' => $ifu_entite,
+                'boite_postal' => $boite_postal,
+                'designation_activite_principale' => $designation_activite_principale,
+                'adresse_geo_complete' => $adresse_geo_complete,
+
+                'statut_client' => $statut_client_html,
+                'prise_en_charge_client' => $prise_en_charge_client,
+                'action_client' => $action_client,
+            );
         }
-    }
 
-    if ($_POST['action'] == 'view_detail_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-
-        $created_by_facture = find_info_utilisateur('prenom_utilisateur', $result['created_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['created_by_facture'], $db);
-        $updated_by_facture = find_info_utilisateur('prenom_utilisateur', $result['updated_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['updated_by_facture'], $db);
-
-        $output['created_by_user'] = $created_by_facture;
-        $output['updated_by_user'] = $updated_by_facture;
-    }
-
-    if ($_POST['action'] == 'fetch_modifier_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-    }
-
-    if ($_POST['action'] == 'modifier_facture') {
-
-        $query = "SELECT * FROM facture WHERE id_facture = :id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute([':id_facture' => $_POST['id_facture']]);
-        $result = $statement->fetch();
-
-        $id_facture = $_POST['id_facture'];
-        $type_facture = $_POST['type_facture'];
-        $objet_facture = $_POST['objet_facture'];
-        $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
-        $montant_ht_facture = $_POST['montant_ht_facture'];
-        $tva_facture = $_POST['tva_facture'];
-        $montant_ttc_facture = $_POST['montant_ttc_facture'];
-        $solde_facture = $_POST['montant_ttc_facture'] - $result['montant_regle_facture'];
-        $updated_at_facture = date('Y-m-d H:i:s');
-        $updated_by_facture = $_SESSION['id_utilisateur'];
-
-        $update = update(
-            'facture',
-            [
-                'type_facture' => $type_facture,
-                'objet_facture' => $objet_facture,
-                'echeance_facture' => $echeance_facture,
-                'date_echeance_facture' => $date_echeance_facture,
-                'montant_ht_facture' => $montant_ht_facture,
-                'tva_facture' => $tva_facture,
-                'montant_ttc_facture' => $montant_ttc_facture,
-                'solde_facture' => $solde_facture,
-                'updated_at_facture' => $updated_at_facture,
-                'updated_by_facture' => $updated_by_facture
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'La facture a été modifiée !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'supprimer_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $update = update(
-            'facture',
-            [
-                'statut_facture' => 'supprime'
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'La facture a été supprimée !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
     }
     
 
