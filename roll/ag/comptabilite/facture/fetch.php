@@ -612,17 +612,32 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        $update = update(
-            'facture',
-            [
-                'montant_regle_facture' => $montant_regle_facture,
-                'solde_facture' => $solde_facture,
-                'updated_at_facture' => $updated_at_facture,
-                'updated_by_facture' => $updated_by_facture
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
+        if($solde_facture == 0){
+            $update = update(
+                'facture',
+                [
+                    'montant_regle_facture' => $montant_regle_facture,
+                    'statut_facture' => 'paye',
+                    'solde_facture' => $solde_facture,
+                    'updated_at_facture' => $updated_at_facture,
+                    'updated_by_facture' => $updated_by_facture
+                ],
+                "id_facture = $id_facture",
+                $db
+            );
+        } else {
+            $update = update(
+                'facture',
+                [
+                    'montant_regle_facture' => $montant_regle_facture,
+                    'solde_facture' => $solde_facture,
+                    'updated_at_facture' => $updated_at_facture,
+                    'updated_by_facture' => $updated_by_facture
+                ],
+                "id_facture = $id_facture",
+                $db
+            );
+        }
 
         if ($insert && $update) {
             $output = array(
