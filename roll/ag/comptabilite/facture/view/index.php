@@ -40,6 +40,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             <div class="d-flex flex-column flex-lg-row">
                 <!--begin::Content-->
                 <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
+                    <div class="row">
+                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                            <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
+                                <div class="text-white text-center fs-2 fw-bold">Facture échues</div>
+                                <div class="text-center">
+                                    <span id="view_facture_total_echue" class="text-light fw-bold fs-1 d-block">--</span>
+                                    <span id="view_facture_nb_echue" class="text-dark fw-semibold fs-3">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                            <div class="card card-flush bg-primary flex-column flex-stack py-5" style="background: linear-gradient(#009ef7 60%, #f5f8fa);">
+                                <div class="text-white text-center fs-2 fw-bold">Facture en cours</div>
+                                <div class="text-center">
+                                    <span id="view_facture_total_en_cour" class="text-light fw-bold fs-1 d-block">--</span>
+                                    <span id="view_facture_nb_en_cour" class="text-dark fw-semibold fs-3">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                            <div class="card card-flush bg-success flex-column flex-stack py-5" style="background: linear-gradient(#50cd89 60%, #f5f8fa);">
+                                <div class="text-white text-center fs-2 fw-bold">Facture soldés</div>
+                                <div class="text-center">
+                                    <span id="view_facture_total_solde" class="text-light fw-bold fs-1 d-block">--</span>
+                                    <span id="view_facture_nb_solde" class="text-dark fw-semibold fs-3">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--begin::Card-->
                     <div class="card card-flush pt-3 mb-5 mb-xl-10">
                         <!--begin::Card header-->
@@ -243,28 +272,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <!--begin::Details-->
                                 <div class="mb-0">
                                     <span id="view_facture_total_regle" class="fw-bold fs-1">--</span>
-                                </div>
-                                <!--end::Details-->
-                            </div>
-                            <!--end::Section-->
-                            <!--begin::Seperator-->
-                            <div class="separator separator-dashed mb-7"></div>
-                            <!--end::Seperator-->
-                            <!--begin::Section-->
-                            <div class="mb-10">
-                                <!--begin::Title-->
-                                <h5 class="mb-4">Moyen de paiement</h5>
-                                <!--end::Title-->
-                                <!--begin::Details-->
-                                <div class="mb-0">
-                                    <!--begin::Card info-->
-                                    <div class="fw-semibold text-gray-600 d-flex align-items-center">Mastercard
-                                        <img src="assets/media/svg/card-logos/mastercard.svg" class="w-35px ms-2" alt="" />
-                                    </div>
-                                    <!--end::Card info-->
-                                    <!--begin::Card expiry-->
-                                    <div class="fw-semibold text-gray-600">Expires Dec 2024</div>
-                                    <!--end::Card expiry-->
                                 </div>
                                 <!--end::Details-->
                             </div>
@@ -491,6 +498,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     `;
                     client_facture = data.nom_utilisateur;
                     client_email_facture = data.email_utilisateur;
+                    taux_recouvrement = data.taux_recouvrement;
+                    total_facture = amount_format(data.total_facture);
+                    total_regle = amount_format(data.total_regle);
+
+                    total_echue = amount_format(data.total_echue);
+                    nb_facture_echue = data.nb_facture_echue;
+                    total_en_cour = amount_format(data.total_en_cour);
+                    nb_facture_en_cour = data.nb_facture_en_cour;
+                    total_solde = amount_format(data.total_solde);
+                    nb_facture_solde = data.nb_facture_solde;
 
                     n_facture = data.n_facture;
 
@@ -675,6 +692,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     $('#view_facture_client').html(client_facture);
                     $('#view_facture_email_client').html(client_email_facture);
+                    $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
+                    $('#view_facture_total_facture').html(total_facture);
+                    $('#view_facture_total_regle').html(total_regle);
+
+                    $('#view_facture_total_echue').html(total_echue);
+                    $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
+                    $('#view_facture_total_en_cour').html(total_en_cour);
+                    $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
+                    $('#view_facture_total_solde').html(total_solde);
+                    $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
 
                     $('#actions_detail_facture').html(action);
 
@@ -766,8 +793,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function amount_format(amount, delimitter = ' ') {
 
-            if (amount == null || amount == '') {
-                return '';
+            if (amount == null || amount == '' || isNaN(amount)) {
+                return '--';
             }
 
             var delimitter_str = "$1" + delimitter;
@@ -792,8 +819,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 client_facture = data.nom_utilisateur;
                 client_email_facture = data.email_utilisateur;
                 taux_recouvrement = data.taux_recouvrement;
-                total_facture = data.total_facture;
-                total_regle = data.total_regle;
+                total_facture = amount_format(data.total_facture);
+                total_regle = amount_format(data.total_regle);
+
+                total_echue = amount_format(data.total_echue);
+                nb_facture_echue = data.nb_facture_echue;
+                total_en_cour = amount_format(data.total_en_cour);
+                nb_facture_en_cour = data.nb_facture_en_cour;
+                total_solde = amount_format(data.total_solde);
+                nb_facture_solde = data.nb_facture_solde;
 
                 n_facture = data.n_facture;
 
@@ -981,7 +1015,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
                 $('#view_facture_total_facture').html(total_facture);
                 $('#view_facture_total_regle').html(total_regle);
-                
+
+                $('#view_facture_total_echue').html(total_echue);
+                $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
+                $('#view_facture_total_en_cour').html(total_en_cour);
+                $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
+                $('#view_facture_total_solde').html(total_solde);
+                $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
 
                 $('#actions_detail_facture').html(action);
 
@@ -1166,6 +1206,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         confirmButton: "btn fw-bold btn-primary"
                                     }
                                 });
+
+                                // redirect
+                                window.location.href = "roll/ag/comptabilite/facture/";
                             } else {
                                 // On affiche un message d'erreur
                                 Swal.fire({

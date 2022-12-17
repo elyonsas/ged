@@ -139,6 +139,19 @@
         return $result['dossiers'];
     }
 
+    function select_info($info, $table, $id, $id_value, PDO $db)
+    {
+
+        $query = "SELECT $info FROM $table WHERE $id = :id_value";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_value' => $id_value
+        ]);
+        $result = $statement->fetch();
+
+        return $result["$info"];
+    }
+
     function find_info_utilisateur($info, $id_utilisateur, PDO $db)
     {
 

@@ -309,6 +309,7 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'fetch_page_facture') {
 
         $id_facture = $_SESSION['id_view_facture'];
+        $id_client = select_info('id_client', 'facture', 'id_facture', $id_facture, $db);
 
         // Récupérer les informations de la base de données
         $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
@@ -321,7 +322,7 @@ if (isset($_POST['action'])) {
 
         // Récupérer les informations de la base de données
         $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-        FROM facture WHERE id_client = {$result['id_client']} AND statut_facture <> 'supprimer'";
+        FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -329,6 +330,36 @@ if (isset($_POST['action'])) {
         $output['total_facture'] = $result['total_facture'];
         $output['total_regle'] = $result['total_regle'];
         $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_echue, COUNT(*) as nb_facture_echue 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'relance'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_echue'] = $result['total_echue']??'--';
+        $output['nb_facture_echue'] = $result['nb_facture_echue'];
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_en_cour, COUNT(*) as nb_facture_en_cour 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'en cour'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_en_cour'] = $result['total_en_cour']??'--';
+        $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_solde, COUNT(*) as nb_facture_solde 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'paye'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_solde'] = $result['total_solde']??'--';
+        $output['nb_facture_solde'] = $result['nb_facture_solde'];
 
     }
 
@@ -339,7 +370,7 @@ if (isset($_POST['action'])) {
         $objet_facture = $_POST['objet_facture'];
         $date_emission_facture = date('Y-m-d H:i:s');
         $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
+        $date_echeance_facture = date('Y-m-d H:i:s', strtotime($date_emission_facture . " + $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
         $tva_facture = $_POST['tva_facture'];
         $montant_ttc_facture = $_POST['montant_ttc_facture'];
@@ -413,7 +444,9 @@ if (isset($_POST['action'])) {
             'facture',
             [
                 'date_emission_facture' => $date_emission_facture,
-                'statut_facture' => $statut_facture
+                'statut_facture' => $statut_facture,
+                'updated_at_facture' => date('Y-m-d H:i:s'),
+                'updated_by_facture' => $_SESSION['id_utilisateur']
             ],
             "id_facture = $id_facture",
             $db
@@ -487,7 +520,7 @@ if (isset($_POST['action'])) {
         $type_facture = $_POST['type_facture'];
         $objet_facture = $_POST['objet_facture'];
         $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime("+ $echeance_facture days"));
+        $date_echeance_facture = date('Y-m-d H:i:s', strtotime($result['date_emission_facture'] . " + $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
         $tva_facture = $_POST['tva_facture'];
         $montant_ttc_facture = $_POST['montant_ttc_facture'];
