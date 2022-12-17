@@ -319,6 +319,17 @@ if (isset($_POST['action'])) {
 
         $output = $result;
 
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
+        FROM facture WHERE id_client = {$result['id_client']} AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_facture'] = $result['total_facture'];
+        $output['total_regle'] = $result['total_regle'];
+        $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
+
     }
 
     if ($_POST['action'] == 'add_facture') {
