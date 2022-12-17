@@ -208,6 +208,12 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
+                                        <a href="" class="encaisser_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#encaisser_facture_modal" data-id_facture="{$id_facture}">Encaisser facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
                                         <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
                                     </div>
                                     <!--end::Menu item-->
@@ -232,12 +238,6 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
                                     </div>
                                     <!--end::Menu item-->
 

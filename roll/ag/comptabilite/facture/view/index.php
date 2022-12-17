@@ -77,6 +77,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
+                                                <td class="text-gray-400">Objet de la facture :</td>
+                                                <td id="view_facture_objet" class="text-gray-800">--</td>
+                                            </tr>
+                                            <!--end::Row-->
+                                            <!--begin::Row-->
+                                            <tr>
                                                 <td class="text-gray-400">Date de creation :</td>
                                                 <td id="view_facture_created_at" class="text-gray-800">--</td>
                                             </tr>
@@ -428,6 +434,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         break;
                 }
 
+                objet_facture = data.objet_facture;
                 created_at_facture = date_formatter(data.created_at_facture, 'dd/mm/yyyy hh:mm');
                 date_emission_facture = date_formatter(data.date_emission_facture, 'dd/mm/yyyy hh:mm');
                 echeance_facture = data.echeance_facture + ' jours';
@@ -469,6 +476,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#view_facture_avatar').html(avatar_client);
                 $('#view_facture_n').html(n_facture);
                 $('#view_facture_type').html(type_facture);
+                $('#view_facture_objet').html(objet_facture);
                 $('#view_facture_created_at').html(created_at_facture);
                 $('#view_facture_date_emission').html(date_emission_facture);
                 $('#view_facture_echeance').html(echeance_facture);
