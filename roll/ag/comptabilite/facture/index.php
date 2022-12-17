@@ -438,6 +438,76 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal Modifier une facture-->
 
+    <!-- begin::Modal Encaisser une facture-->
+    <div class="modal fade" id="encaisser_facture_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_encaisser_facture" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Encaisser facture</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">N° Facture</label>
+                            <select id="encaisser_facture_n" class="not-allowed form-select form-select-solid" data-dropdown-parent="#encaisser_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="N° Facture" name="n_facture" required disabled></select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Références</label>
+                            <input id="encaisser_paiement_reference" type="text" class="form-control form-control-solid" placeholder="Références" name="reference_paiement" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-6 form-group">
+                            <label class="fs-5 mb-2">Mode de paiement</label>
+                            <select id="encaisser_paiement_mode" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#encaisser_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="N° Facture" name="mode_paiement" required>
+                                <option value="versement">Versement</option>
+                                <option value="espece">Espèce</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label class="fs-5 mb-2">Montant TTC</label>
+                            <input id="encaisser_paiement_montant_ttc" type="text" class="form-control form-control-solid" placeholder="Références" name="montant_ttc_paiement" required>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="encaisser_facture">
+                    <input type="hidden" name="id_facture" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_encaisser_facture" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Encaisser une facture-->
+
 </div>
 <!--end::Content wrapper-->
 
@@ -889,7 +959,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         // Lorsqu'on clique sur .modifier_facture
         $(document).on('click', '.modifier_facture', function(e) {
             e.preventDefault();
-            var id_facture = $(this).data('id_facture');
+            id_facture = $(this).data('id_facture');
             $('#form_modifier_facture input[name="id_facture"]').val(id_facture);
 
             // On vide le formulaire
@@ -1016,6 +1086,65 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
 
+        });
+
+        // Lorsqu'on clique sur .encaisser_facture
+        $(document).on('click', '.encaisser_facture', function() {
+            $('#form_encaisser_facture')[0].reset();
+            id_facture = $(this).data('id_facture');
+            $('#form_encaisser_facture input[name="id_facture"]').val(id_facture);
+
+            $.ajax({
+                url: "roll/ag/comptabilite/facture/fetch.php",
+                method: "POST",
+                data: {
+                    id_facture: id_facture,
+                    action: 'fetch_n_facture',
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    $('#encaisser_facture_n').html(data);
+                }
+            });
+        });
+
+        // Pour l'ensaissement d'un paiement
+        $(document).on('submit', '#form_encaisser_facture', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_encaisser_facture');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/comptabilite/facture/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#encaisser_facture_modal').modal('hide');
+
+                            // toastr
+                            toastr.success(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+
+                            reload_datatable('all_factures'); // On recharge le datatable
+
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
         });
 
 

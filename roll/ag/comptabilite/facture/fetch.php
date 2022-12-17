@@ -515,6 +515,84 @@ if (isset($_POST['action'])) {
         }
     }
 
+    if ($_POST['action'] == 'fetch_n_facture') {
+
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = '<option></option>';
+        foreach ($result as $row) {
+            if ($row['id_facture'] == $id_facture) {
+                $output .= <<<HTML
+                    <option value="{$row['id_facture']}" selected>{$row['n_facture']}</option>
+                HTML;
+            } else{
+                $output .= <<<HTML
+                    <option value="{$row['id_facture']}">{$row['n_facture']}</option>
+                HTML;
+            }
+            
+        }
+    }
+
+    if ($_POST['action'] == 'encaisser_facture') {
+            
+        $id_facture = $_POST['id_facture'];
+        $reference_paiement = $_POST['reference_paiement'];
+        $mode_paiement = $_POST['mode_paiement'];
+        $montant_ttc_paiement = $_POST['montant_ttc_paiement'];
+
+        $query = "SELECT * FROM facture WHERE id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $n_facture = $result['n_facture'];
+        $montant_regle_facture = $result['montant_regle_facture'] + $montant_ttc_paiement;
+        $solde_facture = $result['montant_ttc_facture'] - $montant_regle_facture;
+        $updated_at_facture = date('Y-m-d H:i:s');
+        $updated_by_facture = $_SESSION['id_utilisateur'];
+
+        $insert = insert(
+            'paiement',
+            [
+                'mode_paiement' => $mode_paiement,
+                'reference_paiement' => $reference_paiement,
+                'montant_ttc_paiement' => $montant_ttc_paiement,
+                'id_facture' => $id_facture
+            ],
+            $db
+        );
+
+        $update = update(
+            'facture',
+            [
+                'montant_regle_facture' => $montant_regle_facture,
+                'solde_facture' => $solde_facture,
+                'updated_at_facture' => $updated_at_facture,
+                'updated_by_facture' => $updated_by_facture
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($insert && $update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Paiement ajouté !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
     if ($_POST['action'] == 'supprimer_facture') {
         $id_facture = $_POST['id_facture'];
 

@@ -56,6 +56,10 @@ License: For each use you must have a valid license purchased only from above li
 		.tox-statusbar__branding {
 			display: none !important;
 		}
+
+		.not-allowed {
+			cursor: not-allowed !important;
+		}
 	</style>
 </head>
 <!--end::Head-->
