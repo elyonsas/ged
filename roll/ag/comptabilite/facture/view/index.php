@@ -65,38 +65,38 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <tr>
                                                 <td class="text-gray-400 min-w-175px w-175px">N° Facture :</td>
                                                 <td class="text-gray-800 min-w-200px">
-                                                    <a id="view_facture_n_facture" href="#" class="text-gray-800 text-hover-primary">--</a>
+                                                    <a id="view_facture_n" href="#" class="text-gray-800 text-hover-primary">--</a>
                                                 </td>
                                             </tr>
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
                                                 <td class="text-gray-400">Type de facture :</td>
-                                                <td id="view_facture_type_facture" class="text-gray-800">--</td>
+                                                <td id="view_facture_type" class="text-gray-800">--</td>
                                             </tr>
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
                                                 <td class="text-gray-400">Date de creation :</td>
-                                                <td id="view_facture_created_at_facture" class="text-gray-800">--</td>
+                                                <td id="view_facture_created_at" class="text-gray-800">--</td>
                                             </tr>
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
                                                 <td class="text-gray-400">Date d'emission :</td>
-                                                <td id="view_facture_date_emission_facture" class="text-gray-800">--</td>
+                                                <td id="view_facture_date_emission" class="text-gray-800">--</td>
                                             </tr>
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
                                                 <td class="text-gray-400">Echéance :</td>
-                                                <td id="view_facture_echeance_facture" class="text-gray-800">--</td>
+                                                <td id="view_facture_echeance" class="text-gray-800">--</td>
                                             </tr>
                                             <!--end::Row-->
                                             <!--begin::Row-->
                                             <tr>
                                                 <td class="text-gray-400">Date d'échance :</td>
-                                                <td id="view_facture_date_echeance_facture" class="text-gray-800">--</td>
+                                                <td id="view_facture_date_echeance" class="text-gray-800">--</td>
                                             </tr>
                                             <!--end::Row-->
                                         </table>
@@ -177,8 +177,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <!--begin::Details-->
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
-                                    <div class="symbol symbol-60px symbol-circle me-3">
-                                        <img alt="Pic" src="assets/media/avatars/300-5.jpg" />
+                                    <div id="view_facture_avatar" class="symbol symbol-60px symbol-circle me-3">
+                                        
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Info-->
@@ -311,6 +311,94 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         }
 
+        function date_formatter(date, format) {
+            if (date == null) {
+                return '--';
+            }
+
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear(),
+                hour = ('0' + d.getHours()).slice(-2),
+                minute = ('0' + d.getMinutes()).slice(-2),
+                second = ('0' + d.getSeconds()).slice(-2);
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            if (format == 'dd/mm/yyyy') {
+                return [day, month, year].join('/');
+            } else if (format == 'mm/dd/yyyy') {
+                return [month, day, year].join('/');
+            } else if (format == 'yyyy/mm/dd') {
+                return [year, month, day].join('/');
+            } else if (format == 'yyyy/dd/mm') {
+                return [year, day, month].join('/');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'dd-mm-yyyy') {
+                return [day, month, year].join('-');
+            } else if (format == 'mm-dd-yyyy') {
+                return [month, day, year].join('-');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'yyyy-dd-mm') {
+                return [year, day, month].join('-');
+            } else if (format == 'dd/mm/yyyy hh:mm') {
+                return [day, month, year].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'mm/dd/yyyy hh:mm') {
+                return [month, day, year].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy/mm/dd hh:mm') {
+                return [year, month, day].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy/dd/mm hh:mm') {
+                return [year, day, month].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-mm-dd hh:mm') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'dd-mm-yyyy hh:mm') {
+                return [day, month, year].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'mm-dd-yyyy hh:mm') {
+                return [month, day, year].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-mm-dd hh:mm') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-dd-mm hh:mm') {
+                return [year, day, month].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'dd/mm/yyyy hh:mm:ss') {
+                return [day, month, year].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'mm/dd/yyyy hh:mm:ss') {
+                return [month, day, year].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy/mm/dd hh:mm:ss') {
+                return [year, month, day].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy/dd/mm hh:mm:ss') {
+                return [year, day, month].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-mm-dd hh:mm:ss') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'dd-mm-yyyy hh:mm:ss') {
+                return [day, month, year].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'mm-dd-yyyy hh:mm:ss') {
+                return [month, day, year].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-mm-dd hh:mm:ss') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-dd-mm hh:mm:ss') {
+                return [year, day, month].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else {
+                return [day, month, year].join('/');
+            }
+        }
+
+        function amount_format(amount, delimitter = ' ') {
+
+            if (amount == null || amount == '') {
+                return '';
+            }
+
+            var delimitter_str = "$1" + delimitter;
+            return amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, delimitter_str);
+
+        }
+
         // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
             url: "roll/ag/comptabilite/facture/fetch.php",
@@ -321,8 +409,82 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             dataType: "JSON",
             success: function(data) {
 
+                avatar_client = `
+                    <img alt="Pic" src="assets/media/avatars/${data.avatar_utilisateur}" />
+                `;
+                client_facture = data.nom_utilisateur;
+                client_email_facture = data.email_utilisateur;
+
+                n_facture = data.n_facture;
+
+                type_facture = data.type_facture;
+                switch (type_facture) {
+                    case 'contrat':
+                        type_facture = 'Contrat';
+                        break;
+                    case 'formation':
+                        type_facture = 'Formation';
+                        break;
+                    case 'autre':
+                        type_facture = 'Autres';
+                        break;
+                }
+
+                created_at_facture = date_formatter(data.created_at_facture, 'dd/mm/yyyy hh:mm');
+                date_emission_facture = date_formatter(data.date_emission_facture, 'dd/mm/yyyy hh:mm');
+                echeance_facture = data.echeance_facture + ' jours';
+                date_echeance_facture = date_formatter(data.date_echeance_facture, 'dd/mm/yyyy hh:mm');
+                montant_ht_facture = amount_format(data.montant_ht_facture);
+                tva_facture = amount_format(data.tva_facture);
+                montant_ttc_facture = amount_format(data.montant_ttc_facture);
+                montant_regle_facture = amount_format(data.montant_regle_facture);
+                solde_facture = amount_format(data.solde_facture);
+                created_at_facture = date_formatter(data.created_at_facture, 'dd/mm/yyyy hh:mm:ss');
+                updated_at_facture = date_formatter(data.updated_at_facture, 'dd/mm/yyyy hh:mm:ss');
+
+                statut_facture = data.statut_facture;
+                switch (statut_facture) {
+                    case 'en attente':
+                        statut_facture = `
+                            <span class="badge badge-light-dark">En attente</span>
+                        `;
+                        break;
+                    case 'en cour':
+                        statut_facture = `
+                            <span class="badge badge-light-primary">En cours</span>
+                        `;
+                        break;
+                    case 'paye':
+                        statut_facture = `
+                            <span class="badge badge-light-success">Payé</span>
+                        `;
+                        break;
+
+                    case 'relance':
+                        statut_facture = `
+                            <span class="badge badge-light-danger">Relance</span>
+                        `;
+                        break;
+                }
+
                 // Affiche les données dans la page
-                console.log(data);
+                $('#view_facture_avatar').html(avatar_client);
+                $('#view_facture_n').html(n_facture);
+                $('#view_facture_type').html(type_facture);
+                $('#view_facture_created_at').html(created_at_facture);
+                $('#view_facture_date_emission').html(date_emission_facture);
+                $('#view_facture_echeance').html(echeance_facture);
+                $('#view_facture_date_echeance').html(date_echeance_facture);
+
+                $('#view_facture_montant_ht').html(montant_ht_facture);
+                $('#view_facture_tva').html(tva_facture);
+                $('#view_facture_montant_ttc').html(montant_ttc_facture);
+                $('#view_facture_montant_regle').html(montant_regle_facture);
+                $('#view_facture_solde').html(solde_facture);
+                $('#view_facture_statut').html(statut_facture);
+
+                $('#view_facture_client').html(client_facture);
+                $('#view_facture_email_client').html(client_email_facture);
 
                 
             }

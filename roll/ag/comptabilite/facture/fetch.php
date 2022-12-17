@@ -80,7 +80,7 @@ if (isset($_POST['datatable'])) {
             // N° facture
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a href="" class="fs-6 text-gray-800 text-hover-primary">$n_facture</a>
+                    <a href="roll/ag/view_redirect/?action=view_facture&id_view_facture={$id_facture}" class="fs-6 text-gray-800 text-hover-primary">$n_facture</a>
                 </div>
             HTML;
 
@@ -315,7 +315,7 @@ if (isset($_POST['action'])) {
         AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND facture.id_facture = $id_facture ";
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
 
         $output = $result;
 
