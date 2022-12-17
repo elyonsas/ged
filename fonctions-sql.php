@@ -124,8 +124,82 @@
         return $result['stat_client'];
     }
 
+    function stat_ca_contrat(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture, client WHERE client.id_client = facture.id_client 
+            AND id_departement = $id_departement AND type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture 
+            WHERE type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
 
+        return $result['stat_ca_contrat'];
+    }
 
+    function stat_ca_facture(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture, client WHERE client.id_client = facture.id_client 
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture 
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
+
+        return $result['stat_ca_facture'];
+    }
+
+    function stat_ca_encaisse(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+            $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture, client WHERE client.id_client = facture.id_client 
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+            $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture 
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
+
+        return $result['stat_ca_encaisse'];
+    }
+
+    function stat_ca_creance(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+            $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture, client WHERE client.id_client = facture.id_client 
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+            $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture 
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
+
+        return $result['stat_ca_creance'];
+    }
+        
     function select_all_actifs_dossiers_collabo($id_collabo, PDO $db)
     {
         $query = "SELECT COUNT(*) as dossiers FROM client, collaborateur, assoc_client_collabo WHERE client.id_client = assoc_client_collabo.id_client 

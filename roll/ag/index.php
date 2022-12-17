@@ -161,7 +161,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="27000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -179,7 +179,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="30000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -197,7 +197,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="45000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -215,7 +215,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="30000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -269,7 +269,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -284,7 +284,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -299,7 +299,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -314,7 +314,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -368,7 +368,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -383,7 +383,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -398,7 +398,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -413,7 +413,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -467,7 +467,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="9000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -482,7 +482,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -497,7 +497,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="15000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -512,7 +512,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="10000000">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
