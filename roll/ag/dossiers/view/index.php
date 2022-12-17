@@ -474,6 +474,88 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 <!--begin::Row compta_finance-->
                 <div id="infos_compta_finance" class="row g-5 g-xxl-8 d-none">
+                    <!--begin::Col-->
+                    <div class="col-xl-12">
+                        <!--begin::Engage widget 10-->
+                        <div class="card card-flush h-md-100">
+                            <!--begin::Body-->
+                            <div class="card-body d-flex flex-column justify-content-between bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('assets/media/stock/900x600/42.png')">
+                                <!--begin::Wrapper-->
+                                <div class="mb-10">
+                                    <div class="d-flex justify-content-between flex-wrap fs-2hx fw-bold text-gray-800 text-center mb-13">
+                                        <div class="me-2">Taux de recouvrement<br>
+                                            <span class="position-relative d-inline-block text-danger">
+                                                <a id="view_facture_taux_recouvrement" href="#" class="text-dark opacity-75-hover">--</a>
+                                                <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-primary border-bottom w-100"></span>
+                                            </span>
+                                        </div>
+                                        <div class="mb-7 min-w-250px p-3" style="background-color: #abfdd0;">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Total facturé</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_facture_total_facture" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                        <div class="mb-7 min-w-250px p-3" style="background-color: #abe5fd;">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Total réglé</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_facture_total_regle" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                                            <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
+                                                <div class="text-white text-center fs-2 fw-bold">Facture échues</div>
+                                                <div class="text-center">
+                                                    <span id="view_facture_total_echue" class="text-light fw-bold fs-1 d-block">--</span>
+                                                    <span id="view_facture_nb_echue" class="text-dark fw-semibold fs-3">--</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                                            <div class="card card-flush bg-primary flex-column flex-stack py-5" style="background: linear-gradient(#009ef7 60%, #f5f8fa);">
+                                                <div class="text-white text-center fs-2 fw-bold">Facture en cours</div>
+                                                <div class="text-center">
+                                                    <span id="view_facture_total_en_cour" class="text-light fw-bold fs-1 d-block">--</span>
+                                                    <span id="view_facture_nb_en_cour" class="text-dark fw-semibold fs-3">--</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 rounded-3 p-3 mb-5">
+                                            <div class="card card-flush bg-success flex-column flex-stack py-5" style="background: linear-gradient(#50cd89 60%, #f5f8fa);">
+                                                <div class="text-white text-center fs-2 fw-bold">Facture soldés</div>
+                                                <div class="text-center">
+                                                    <span id="view_facture_total_solde" class="text-light fw-bold fs-1 d-block">--</span>
+                                                    <span id="view_facture_nb_solde" class="text-dark fw-semibold fs-3">--</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--begin::Action-->
+                                    <div class="text-center">
+                                        <a href='roll/ag/comptabilite/facture' class="btn btn-sm btn-dark fw-bold">Voir les factures</a>
+                                    </div>
+                                    <!--begin::Action-->
+                                </div>
+                                <!--begin::Wrapper-->
+                                <!--begin::Illustration-->
+                                <img class="mx-auto h-150px h-lg-250px theme-light-show" src="assets/media/illustrations/misc/upgrade.svg" alt="" />
+                                <img class="mx-auto h-150px h-lg-250px theme-dark-show" src="assets/media/illustrations/misc/upgrade-dark.svg" alt="" />
+                                <!--end::Illustration-->
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Engage widget 10-->
+                    </div>
+                    <!--end::Col-->
                 </div>
                 <!--end::Row compta_finance-->
             </div>
@@ -4216,6 +4298,93 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             reload_datatable3();
 
         }
+        function date_formatter(date, format) {
+            if (date == null) {
+                return '--';
+            }
+
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear(),
+                hour = ('0' + d.getHours()).slice(-2),
+                minute = ('0' + d.getMinutes()).slice(-2),
+                second = ('0' + d.getSeconds()).slice(-2);
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            if (format == 'dd/mm/yyyy') {
+                return [day, month, year].join('/');
+            } else if (format == 'mm/dd/yyyy') {
+                return [month, day, year].join('/');
+            } else if (format == 'yyyy/mm/dd') {
+                return [year, month, day].join('/');
+            } else if (format == 'yyyy/dd/mm') {
+                return [year, day, month].join('/');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'dd-mm-yyyy') {
+                return [day, month, year].join('-');
+            } else if (format == 'mm-dd-yyyy') {
+                return [month, day, year].join('-');
+            } else if (format == 'yyyy-mm-dd') {
+                return [year, month, day].join('-');
+            } else if (format == 'yyyy-dd-mm') {
+                return [year, day, month].join('-');
+            } else if (format == 'dd/mm/yyyy hh:mm') {
+                return [day, month, year].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'mm/dd/yyyy hh:mm') {
+                return [month, day, year].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy/mm/dd hh:mm') {
+                return [year, month, day].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy/dd/mm hh:mm') {
+                return [year, day, month].join('/') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-mm-dd hh:mm') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'dd-mm-yyyy hh:mm') {
+                return [day, month, year].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'mm-dd-yyyy hh:mm') {
+                return [month, day, year].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-mm-dd hh:mm') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'yyyy-dd-mm hh:mm') {
+                return [year, day, month].join('-') + ' ' + hour + ':' + minute;
+            } else if (format == 'dd/mm/yyyy hh:mm:ss') {
+                return [day, month, year].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'mm/dd/yyyy hh:mm:ss') {
+                return [month, day, year].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy/mm/dd hh:mm:ss') {
+                return [year, month, day].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy/dd/mm hh:mm:ss') {
+                return [year, day, month].join('/') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-mm-dd hh:mm:ss') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'dd-mm-yyyy hh:mm:ss') {
+                return [day, month, year].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'mm-dd-yyyy hh:mm:ss') {
+                return [month, day, year].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-mm-dd hh:mm:ss') {
+                return [year, month, day].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else if (format == 'yyyy-dd-mm hh:mm:ss') {
+                return [year, day, month].join('-') + ' ' + hour + ':' + minute + ':' + second;
+            } else {
+                return [day, month, year].join('/');
+            }
+        }
+
+        function amount_format(amount, delimitter = ' ') {
+
+            if (amount == null || amount == '' || isNaN(amount)) {
+                return '--';
+            }
+
+            var delimitter_str = "$1" + delimitter;
+            return amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, delimitter_str);
+
+        }
 
         // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
@@ -4244,6 +4413,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#statut_client').html(data.statut_client);
                 $('#action_client').html(data.action_client);
                 $('#niveau_client').html(data.niveau_client);
+
+                taux_recouvrement = data.taux_recouvrement;
+                total_facture = amount_format(data.total_facture);
+                total_regle = amount_format(data.total_regle);
+
+                total_echue = amount_format(data.total_echue);
+                nb_facture_echue = data.nb_facture_echue;
+                total_en_cour = amount_format(data.total_en_cour);
+                nb_facture_en_cour = data.nb_facture_en_cour;
+                total_solde = amount_format(data.total_solde);
+                nb_facture_solde = data.nb_facture_solde;
+
+                $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
+                $('#view_facture_total_facture').html(total_facture);
+                $('#view_facture_total_regle').html(total_regle);
+
+                $('#view_facture_total_echue').html(total_echue);
+                $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
+                $('#view_facture_total_en_cour').html(total_en_cour);
+                $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
+                $('#view_facture_total_solde').html(total_solde);
+                $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+
 
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4877,14 +5069,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             if ($('#generale_area_btn').hasClass('active')) {
                 $('#add_doc_modal .modal-footer input[name="aspect"]').val('generale');
-            }else if ($('#juridico_admin_area_btn').hasClass('active')) {
+            } else if ($('#juridico_admin_area_btn').hasClass('active')) {
                 $('#add_doc_modal .modal-footer input[name="aspect"]').val('juridiques_et_administratifs');
-            }else if ($('#technique_area_btn').hasClass('active')) {
+            } else if ($('#technique_area_btn').hasClass('active')) {
                 $('#add_doc_modal .modal-footer input[name="aspect"]').val('techniques');
-            }else if ($('#compta_finance_area_btn').hasClass('active')) {
+            } else if ($('#compta_finance_area_btn').hasClass('active')) {
                 $('#add_doc_modal .modal-footer input[name="aspect"]').val('comptables_et_financiers');
             }
-                
+
 
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -5200,7 +5392,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                     }
                                 })
-                                
+
                             }
 
                         } else {
@@ -5226,7 +5418,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    
+
                     $('#detail_doc_aspect').html(data.aspect_document);
                     $('#detail_doc_code').html(data.code_document);
                     $('#detail_doc_titre').html(data.titre_document);
@@ -6910,7 +7102,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* -----------------Suppression des documents---------------- */
         // Lorsqu'on clique sur .delete_doc
-        $(document).on('click', '.delete_doc', function(e) {+
+        $(document).on('click', '.delete_doc', function(e) {
+            +
             e.preventDefault();
             var id_document = $(this).data('id_document');
 

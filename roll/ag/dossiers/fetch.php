@@ -2315,6 +2315,47 @@ if (isset($_POST['action'])) {
                 'prise_en_charge_client' => $prise_en_charge_client,
                 'action_client' => $action_client,
             );
+
+            // Récupérer les informations de la base de données
+            $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
+            FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            $output['total_facture'] = $result['total_facture'];
+            $output['total_regle'] = $result['total_regle'];
+            $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
+
+            // Récupérer les informations de la base de données
+            $query = "SELECT SUM(montant_ttc_facture) as total_echue, COUNT(*) as nb_facture_echue 
+            FROM facture WHERE id_client = $id_client AND statut_facture = 'relance'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            $output['total_echue'] = $result['total_echue']??'--';
+            $output['nb_facture_echue'] = $result['nb_facture_echue'];
+
+            // Récupérer les informations de la base de données
+            $query = "SELECT SUM(montant_ttc_facture) as total_en_cour, COUNT(*) as nb_facture_en_cour 
+            FROM facture WHERE id_client = $id_client AND statut_facture = 'en cour'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            $output['total_en_cour'] = $result['total_en_cour']??'--';
+            $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
+
+            // Récupérer les informations de la base de données
+            $query = "SELECT SUM(montant_ttc_facture) as total_solde, COUNT(*) as nb_facture_solde 
+            FROM facture WHERE id_client = $id_client AND statut_facture = 'paye'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            $output['total_solde'] = $result['total_solde']??'--';
+            $output['nb_facture_solde'] = $result['nb_facture_solde'];
         }
     }
     if ($_POST['action'] == 'fetch_table') {
