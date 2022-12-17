@@ -246,6 +246,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="d-flex flex-stack mb-5">
                             <!--begin::item-->
                             <div class="me-5 fw-semibold">
+                                <label class="fs-3 fw-bold">Objet de la facture :</label>
+                                <span id="detail_objet_facture" class="fs-5 text-muted"></span>
+                            </div>
+                            <!--end::item-->
+                        </div>
+                        <div class="d-flex flex-stack mb-5">
+                            <!--begin::item-->
+                            <div class="me-5 fw-semibold">
                                 <label class="fs-3 fw-bold">Date de création :</label>
                                 <span id="detail_created_at_facture" class="fs-5 text-muted"></span>
                             </div>
@@ -755,7 +763,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             type_facture = 'Autres';
                             break;
                     }
-
+                    
+                    objet_facture = data.objet_facture;
                     created_at_facture = date_formatter(data.created_at_facture, 'dd/mm/yyyy hh:mm');
                     date_emission_facture = date_formatter(data.date_emission_facture, 'dd/mm/yyyy hh:mm');
                     client_facture = data.nom_utilisateur;
@@ -796,6 +805,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     $('#detail_n_facture').html(n_facture);
                     $('#detail_type_facture').html(type_facture);
+                    $('#detail_objet_facture').html(objet_facture);
                     $('#detail_created_at_facture').html(created_at_facture);
                     $('#detail_date_emission_facture').html(date_emission_facture);
                     $('#detail_client_facture').html(client_facture);

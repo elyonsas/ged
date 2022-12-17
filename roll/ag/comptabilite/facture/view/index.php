@@ -177,9 +177,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <!--begin::Details-->
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
-                                    <div id="view_facture_avatar" class="symbol symbol-60px symbol-circle me-3">
-                                        
-                                    </div>
+                                    <div id="view_facture_avatar" class="symbol symbol-60px symbol-circle me-3"></div>
                                     <!--end::Avatar-->
                                     <!--begin::Info-->
                                     <div class="d-flex flex-column">
