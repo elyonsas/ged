@@ -16,7 +16,7 @@ $menu_tb = "";
 $menu_dt = "";
 $menu_interlo = "";
 $menu_collabo = "";
-$menu_compta = "active";
+$menu_compta = "here show";
 $menu_compta_facture = "active";
 $menu_compta_finance = "";
 
