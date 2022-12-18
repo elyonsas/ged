@@ -24,7 +24,7 @@ if (isset($_POST['datatable'])) {
         $result = $statement->fetchAll();
 
         foreach ($result as $row) {
-            if ($row['date_echeance_facture'] < date('Y-m-d H:i:s')) {
+            if ($row['statut_facture'] == 'en cour' && $row['date_echeance_facture'] < date('Y-m-d H:i:s')) {
                 $id_facture = $row['id_facture'];
 
                 $update = update(
@@ -35,7 +35,9 @@ if (isset($_POST['datatable'])) {
                     "id_facture = '$id_facture'",
                     $db
                 );
-            }else{
+            }
+            
+            if($row['statut_facture'] == 'relance' && $row['date_echeance_facture'] > date('Y-m-d H:i:s')) {
                 $id_facture = $row['id_facture'];
 
                 $update = update(
