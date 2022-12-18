@@ -16,21 +16,46 @@ if (isset($_POST['datatable'])) {
     if ($_POST['datatable'] == 'all_factures') {
 
         $output = array();
-        $query = '';
 
-        $query .= "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
-
-
+        // Vérification de relance client
+        $query = "SELECT * FROM facture WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
-
         $statement->execute();
+        $result = $statement->fetchAll();
 
+        foreach ($result as $row) {
+            if ($row['date_echeance_facture'] < date('Y-m-d H:i:s')) {
+                $id_facture = $row['id_facture'];
+
+                $update = update(
+                    'facture',
+                    [
+                        'statut_facture' => 'relance',
+                    ],
+                    "id_facture = '$id_facture'",
+                    $db
+                );
+            }else{
+                $id_facture = $row['id_facture'];
+
+                $update = update(
+                    'facture',
+                    [
+                        'statut_facture' => 'en cour',
+                    ],
+                    "id_facture = '$id_facture'",
+                    $db
+                );
+            }
+        }
+
+        $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
+        $statement = $db->prepare($query);
+        $statement->execute();
         $result = $statement->fetchAll();
 
         $data = array();
-
-
         foreach ($result as $row) {
 
             $sub_array = array();
