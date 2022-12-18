@@ -445,7 +445,7 @@ if (isset($_POST['action'])) {
 
         if ($result) {
             $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND prise_en_charge_client = 'oui' AND statut_compte = 'actif'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND prise_en_charge_client = 'non' AND statut_compte = 'actif'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();
