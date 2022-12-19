@@ -477,7 +477,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="col-6 form-group">
                             <label class="fs-5 mb-2">Mode de paiement</label>
                             <select id="encaisser_paiement_mode" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#encaisser_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="N° Facture" name="mode_paiement" required>
-                                <option value="versement">Versement</option>
+                                <option value="cheque">Chèque</option>
+                                <option value="virement">Virement</option>
                                 <option value="espece">Espèce</option>
                             </select>
                         </div>
