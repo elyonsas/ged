@@ -2,6 +2,11 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
     use Ramsey\Uuid\Uuid;
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+
     function connected($acces)
     {
         if (!isset($_SESSION['id_compte']) || ($_SESSION['type_compte'] != $acces && $_SESSION['type_compte'] != 'admin')) {
@@ -508,4 +513,90 @@
         }
 
         return $output;
+    }
+
+    function send_mail($to, $from, $subject, $message, $attachment)
+    {
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.mail.yahoo.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'c_elyon@yahoo.fr';                     //SMTP username
+            $mail->Password   = 'iixialwiovbjnwlt';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+            //Recipients
+            $mail->setFrom($from, 'Cabinet Elyon');
+
+            foreach ($to['to'] as $row) {
+                if(isset($row[1]))
+                    $mail->addAddress($row[0], $row[1]);
+                else
+                    $mail->addAddress($row[0]);
+                
+            }
+
+            if (isset($to['cc'])) {
+                foreach ($to['cc'] as $row) {
+                    if(isset($row[1]))
+                        $mail->addCC($row[0], $row[1]);
+                    else
+                        $mail->addCC($row[0]);
+                }
+            }
+
+            if (isset($to['bcc'])) {
+                foreach ($to['bcc'] as $row) {
+                    if(isset($row[1]))
+                        $mail->addBCC($row[0], $row[1]);
+                    else
+                        $mail->addBCC($row[0]);
+                }
+            }
+
+            if (isset($to['reply_to'])) {
+                foreach ($to['reply_to'] as $row) {
+                    if(isset($row[1]))
+                        $mail->addReplyTo($row[0], $row[1]);
+                    else
+                        $mail->addReplyTo($row[0]);
+                }
+            }
+
+            // $mail->addAddress('dest@example.com', 'Joe User');     //Add a recipient
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+        
+            //Attachments
+
+            if (isset($attachment)) {
+                foreach ($attachment as $row) {
+                    if (isset($row[1]))
+                        $mail->addAttachment($row[0], $row[1]);
+                    else
+                        $mail->addAttachment($row[0]);
+                }
+            }
+
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+        
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body   = $message;
+            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     }
