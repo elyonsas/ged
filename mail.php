@@ -373,7 +373,7 @@ $message = <<<HTML
                                     <td>
                                         <div class="text" style="padding: 0 2.5em; text-align: center;">
                                             <h2>Nom du document</h2>
-                                            <h3>Le document ... à été supprimé dans <strong>GED-ELYON</strong> par ...</h3>
+                                            <h3>Le document ... à été supprimé du dossier client <strong>APAV-BENIN</strong> par ...</h3>
                                             <p><a href="#" class="btn btn-primary">Cliquez pour consulter</a></p>
                                         </div>
                                     </td>

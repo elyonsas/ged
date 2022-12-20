@@ -239,6 +239,20 @@
         return $result["$info"];
     }
 
+    function find_info_client($info, $id_client, PDO $db)
+    {
+
+        $query = "SELECT $info FROM client, utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = :id_client";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_client' => $id_client
+        ]);
+        $result = $statement->fetch();
+
+        return $result["$info"];
+    }
+
     function find_id_collabo_by_id_utilisateur($id_utilisateur, PDO $db)
     {
         $query = "SELECT id_collaborateur FROM collaborateur WHERE id_utilisateur = :id_utilisateur";
@@ -295,20 +309,6 @@
         $result = $statement->fetchAll();
 
         return $result;
-    }
-
-    function find_info_client($info, $id_client, PDO $db)
-    {
-
-        $query = "SELECT $info FROM client, utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = :id_client";
-        $statement = $db->prepare($query);
-        $statement->execute([
-            ':id_client' => $id_client
-        ]);
-        $result = $statement->fetch();
-
-        return $result["$info"];
     }
 
     function compte_exists($email, PDO $db)

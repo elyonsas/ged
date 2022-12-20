@@ -3584,6 +3584,9 @@ if (isset($_POST['action'])) {
             $result = $statement->fetch();
 
             $titre_document = $result['titre_document'];
+            $code_document = $result['code_document'];
+            $matricule_client = find_info_client('matricule_client', $result['id_client'], $db);
+            $nom_client = find_info_client('nom_utilisateur', $result['id_client'], $db);
             $delete_by = $_SESSION['prenom_utilisateur'] . ' ' . $_SESSION['nom_utilisateur'];
 
             $to = [
@@ -3821,14 +3824,14 @@ if (isset($_POST['action'])) {
             
                         .hero .text h2 {
                             color: #000;
-                            font-size: 20px;
+                            font-size: 25px;
                             margin-bottom: 0;
                             font-weight: 400;
                             line-height: 1.4;
                         }
             
                         .hero .text h3 {
-                            font-size: 14px;
+                            font-size: 20px;
                             font-weight: 300;
                         }
             
@@ -3954,7 +3957,7 @@ if (isset($_POST['action'])) {
                                                 <td>
                                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                                                         <h2>$titre_document</h2>
-                                                        <h3>Le document <b><u>$titre_document<u></b> à été supprimé dans <strong>GED-ELYON</strong> par <b><u>$delete_by<u></b></h3>
+                                                        <h3>Le document #<b>$code_document</b> <strong><u>$titre_document<u></strong> à été supprimé du dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$delete_by<u></b></h3>
                                                         <p><a href="#" class="btn btn-primary">Cliquez pour consulter</a></p>
                                                     </div>
                                                 </td>
