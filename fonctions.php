@@ -515,7 +515,7 @@
         return $output;
     }
 
-    function send_mail($to, $from, $subject, $message, $attachment)
+    function send_mail($to, $from, $subject, $message, $attachment = null)
     {
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
@@ -530,6 +530,7 @@
             $mail->Password   = 'iixialwiovbjnwlt';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->CharSet = 'utf-8';
         
             //Recipients
             $mail->setFrom($from, 'Cabinet Elyon');
