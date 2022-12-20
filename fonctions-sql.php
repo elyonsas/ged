@@ -306,7 +306,7 @@
         AND compte.type_compte = 'dd' AND departement.id_departement = 1";
         $statement = $db->prepare($query);
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
 
         return $result;
     }

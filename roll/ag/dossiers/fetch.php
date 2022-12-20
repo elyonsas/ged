@@ -307,65 +307,66 @@ if (isset($_POST['datatable'])) {
         }
 
         $dd = find_dd_dec($db);
-        foreach ($dd as $row) {
-            $sub_array = array();
 
-            $id_utilisateur = $row['id_utilisateur'];
-            $id_collaborateur = find_id_collabo_by_id_utilisateur($id_utilisateur, $db);
-            $nom_collaborateur = $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur'];
-            $email_collaborateur = $row['email_utilisateur'];
-            $telephone_collaborateur = $row['tel_utilisateur'];
-            $role = "Directeur de département";
+        // Begin::Directeur de département row
+        $sub_array = array();
 
-            // #
-            $sub_array[] = $i;
+        $id_utilisateur = $dd['id_utilisateur'];
+        $id_collaborateur = find_id_collabo_by_id_utilisateur($id_utilisateur, $db);
+        $nom_collaborateur = $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur'];
+        $email_collaborateur = $dd['email_utilisateur'];
+        $telephone_collaborateur = $dd['tel_utilisateur'];
+        $role = "Directeur de département";
 
-            // Collaborateur
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
-                    class="fs-6 text-gray-800 text-hover-primary">$nom_collaborateur</a>
-                </div>
-            HTML;
+        // #
+        $sub_array[] = $i;
 
-            // Téléphone
-            $sub_array[] = <<<HTML
-                $telephone_collaborateur
-            HTML;
+        // Collaborateur
+        $sub_array[] = <<<HTML
+            <div class="d-flex flex-column justify-content-center">
+                <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                class="fs-6 text-gray-800 text-hover-primary">$nom_collaborateur</a>
+            </div>
+        HTML;
 
-            // Rôle
-            $sub_array[] = <<<HTML
-                $role
-            HTML;
+        // Téléphone
+        $sub_array[] = <<<HTML
+            $telephone_collaborateur
+        HTML;
 
-            // Actions
-            $action = <<<HTML
+        // Rôle
+        $sub_array[] = <<<HTML
+            $role
+        HTML;
 
-                <td>
-                    <div class="d-flex justify-content-end flex-shrink-0">
+        // Actions
+        $action = <<<HTML
 
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="bi bi-three-dots fs-3"></i>
-                        </button>
-                        <!--begin::Menu 3-->
-                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+            <td>
+                <div class="d-flex justify-content-end flex-shrink-0">
 
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
-                            </div>
-                            <!--end::Menu item-->
+                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                        <i class="bi bi-three-dots fs-3"></i>
+                    </button>
+                    <!--begin::Menu 3-->
+                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-3">
+                            <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
                         </div>
-                        <!--end::Menu 3-->
+                        <!--end::Menu item-->
                     </div>
-                </td>
+                    <!--end::Menu 3-->
+                </div>
+            </td>
 
-            HTML;
-            $sub_array[] = $action;
+        HTML;
+        $sub_array[] = $action;
 
-            $data[] = $sub_array;
-            $i++;
-        }
+        $data[] = $sub_array;
+
+        // End::Directeur de département row
 
         foreach ($result as $row) {
 
@@ -1967,28 +1968,27 @@ if (isset($_POST['action'])) {
             $url = "";
 
             $to = [
-                'to' => [
-                    ['arnaudadjovi274@gmail.com', 'Arnaud'],
-                ],
-                'cc' => [
-                    ['arnaud2adjovi276@gmail.com'],
-                ],
-                'bcc' => [
-                    ['arnaud3adjovi278@gmail.com'],
-                ],
-                'reply_to' => [
-                    ['c_elyon@yahoo.fr'],
-                ],
+                'to' => [],
             ];
+
+            // Ajouter les AG
+            $ag = find_ag_cabinet($db);
+            foreach ($ag as $row) {
+                $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
+            }
+
+            // Ajouter le DD
+            $dd = find_dd_dec($db);
+            $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
             $from = 'c_elyon@yahoo.fr';
             
-            $subject = 'test';
+            $subject = 'Ajout de document dans GED-ELYON';
             
             $message = <<<HTML
             
                 <!DOCTYPE html>
-                <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+                <html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
                     xmlns:o="urn:schemas-microsoft-com:office:office">
             
                 <head>
@@ -4016,28 +4016,27 @@ if (isset($_POST['action'])) {
             $url = "";
 
             $to = [
-                'to' => [
-                    ['arnaudadjovi274@gmail.com', 'Arnaud'],
-                ],
-                'cc' => [
-                    ['arnaud2adjovi276@gmail.com'],
-                ],
-                'bcc' => [
-                    ['arnaud3adjovi278@gmail.com'],
-                ],
-                'reply_to' => [
-                    ['c_elyon@yahoo.fr'],
-                ],
+                'to' => [],
             ];
+
+            // Ajouter les AG
+            $ag = find_ag_cabinet($db);
+            foreach ($ag as $row) {
+                $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
+            }
+
+            // Ajouter le DD
+            $dd = find_dd_dec($db);
+            $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
             $from = 'c_elyon@yahoo.fr';
             
-            $subject = 'test';
+            $subject = 'Suppression de document dans GED-ELYON';
             
             $message = <<<HTML
             
                 <!DOCTYPE html>
-                <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+                <html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
                     xmlns:o="urn:schemas-microsoft-com:office:office">
             
                 <head>
