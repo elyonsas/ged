@@ -1964,7 +1964,7 @@ if (isset($_POST['action'])) {
             $code_document = $result['code_document'];
             $matricule_client = find_info_client('matricule_client', $result['id_client'], $db);
             $nom_client = find_info_client('nom_utilisateur', $result['id_client'], $db);
-            $delete_by = $_SESSION['prenom_utilisateur'] . ' ' . $_SESSION['nom_utilisateur'];
+            $add_by = $_SESSION['prenom_utilisateur'] . ' ' . $_SESSION['nom_utilisateur'];
             $url = "";
 
             $to = [
@@ -1977,7 +1977,7 @@ if (isset($_POST['action'])) {
                 $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
             }
 
-            // Ajouter le DD
+            // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
@@ -2335,7 +2335,7 @@ if (isset($_POST['action'])) {
                                                 <td>
                                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                                                         <h2>$titre_document</h2>
-                                                        <h3>Le document #<b>$code_document</b> <strong><u>$titre_document</u></strong> à été ajouté au dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$delete_by</u></b></h3>
+                                                        <h3>Le document #<b>$code_document</b> <strong><u>$titre_document</u></strong> à été ajouté au dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$add_by</u></b></h3>
                                                         <p><a href="{$url}" class="btn btn-primary">Cliquez pour consulter</a></p>
                                                     </div>
                                                 </td>
@@ -4025,7 +4025,7 @@ if (isset($_POST['action'])) {
                 $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
             }
 
-            // Ajouter le DD
+            // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
