@@ -71,31 +71,39 @@ foreach ($result as $row) {
         
         $message = <<<HTML
         
-        $mail_html_client
-        
-        <table width="100%" style="margin: auto;">
-            <tr>
-                <td valign="middle" class="bg_light footer">
-                    <table>
+            <div class="mail-parent" style="width: 100%; background-color: #f1f1f1;">
+                <div class="mail-container" style="max-width: 600px; background-color: #ffffff; margin: 0 auto;">
+
+                    <div class="mail-dinamique-container" style="padding: 25px;">
+                        $mail_html_client
+                    </div>
+            
+                    <table class="mail-footer" style="width: 100%; margin: auto;">
                         <tr>
-                            <td width="25%"
-                                class="padding-bottom-20 padding-left-20 padding-right-20 padding-top-20">
-                                <img width="130" height="130" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/logo_elyon.png" alt="elyon-icon">
-                            </td>
-                            <td width="75%" colspan="2"
-                                style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
-                                CABINET ÉLYÔN
-                                Audit, Expertise comptable, Commissariat aux comptes, Conseils
-                                09 BP 290 Saint Michel - Cotonou
-                                Tél: (+229) 21 32 77 78 / 21 03 35 32 / 97 22 19 85 / 90 94 07 99
-                                Email: c_elyon@yahoo.fr, contact@elyonsas.com
-                                Cotonou-Bénin
+                            <td valign="middle" style="background: #fafafa; border-top: 1px solid rgba(0, 0, 0, .05); color: rgba(0, 0, 0, .6);">
+                                <table>
+                                    <tr>
+                                        <td width="25%"
+                                            class="padding-bottom-20 padding-left-20 padding-right-20 padding-top-20">
+                                            <img width="130" height="130" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/logo_elyon.png" alt="elyon-icon">
+                                        </td>
+                                        <td width="75%" colspan="2"
+                                            style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
+                                            CABINET ÉLYÔN
+                                            Audit, Expertise comptable, Commissariat aux comptes, Conseils
+                                            09 BP 290 Saint Michel - Cotonou
+                                            Tél: (+229) 21 32 77 78 / 21 03 35 32 / 97 22 19 85 / 90 94 07 99
+                                            Email: c_elyon@yahoo.fr, contact@elyonsas.com
+                                            Cotonou-Bénin
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
-                </td>
-            </tr>
-        </table>
+
+                </div>
+            </div>
         
         HTML;
         
