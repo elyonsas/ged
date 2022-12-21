@@ -4074,29 +4074,40 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                     </div>
 
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-group">
-                            <label class="fs-5 mb-2">Nom responsable client</label>
-                            <input id="id_edit_info_relance_nom" type="text" class="form-control form-control-solid" placeholder="Entrez le nom du responsable client" name="nom_responsable_client">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="fs-5 mb-2">Prénom responsable client</label>
-                            <input id="id_edit_info_relance_prenom" type="text" class="form-control form-control-solid" placeholder="Entrez le prenom du responsable client" name="prenom_responsable_client">
-                        </div>
+                    <div class="row ms-1 my-10">
+                        <label class="form-check form-switch form-check-custom form-check-solid">
+                            <input id="id_edit_info_relance_auto" class="form-check-input" type="radio" name="relance_auto_client">
+                            <span class="form-check-label">
+                                Relance automatique
+                            </span>
+                        </label>
                     </div>
 
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-group">
-                            <label class="fs-5 mb-2">Civilité</label>
-                            <select id="id_edit_info_relance_civilite" class="form-select form-select-solid" data-control="select2" data-placeholder="Sélectionnez une civilité" data-hide-search="true" name="civilite_responsable_client">
-                                <option></option>
-                                <option value="Monsieur">Monsieur</option>
-                                <option value="Madame">Madame</option>
-                            </select>
+                    <div class="relance-info-option">
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Nom responsable client</label>
+                                <input id="id_edit_info_relance_nom" type="text" class="form-control form-control-solid" placeholder="Entrez le nom du responsable client" name="nom_responsable_client">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Prénom responsable client</label>
+                                <input id="id_edit_info_relance_prenom" type="text" class="form-control form-control-solid" placeholder="Entrez le prenom du responsable client" name="prenom_responsable_client">
+                            </div>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label class="fs-5 mb-2">Fonction</label>
-                            <input id="id_edit_info_relance_fonction" type="text" class="form-control form-control-solid" placeholder="Entrez la fonction du responsable client" name="role_responsable_client">
+
+                        <div class="row mb-5">
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Civilité</label>
+                                <select id="id_edit_info_relance_civilite" class="form-select form-select-solid" data-control="select2" data-placeholder="Sélectionnez une civilité" data-hide-search="true" name="civilite_responsable_client">
+                                    <option></option>
+                                    <option value="Monsieur">Monsieur</option>
+                                    <option value="Madame">Madame</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="fs-5 mb-2">Fonction</label>
+                                <input id="id_edit_info_relance_fonction" type="text" class="form-control form-control-solid" placeholder="Entrez la fonction du responsable client" name="role_responsable_client">
+                            </div>
                         </div>
                     </div>
 
@@ -7244,12 +7255,28 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 dataType: "JSON",
                 success: function(data) {
 
+                    if(data.relance_auto_client == 'oui') {
+                        $('#id_edit_info_relance_auto').prop('checked', true);
+                        $('#form_edit_info_relance .relance-info-option').removeClass('d-none');
+                    } else {
+                        $('#id_edit_info_relance_auto').prop('checked', false);
+                        $('#form_edit_info_relance .relance-info-option').addClass('d-none');
+                    }
                     $('#id_edit_info_relance_nom').val(data.nom_responsable_client);
                     $('#id_edit_info_relance_prenom').val(data.prenom_responsable_client);
                     $('#id_edit_info_relance_civilite').val(data.civilite_responsable_client).trigger('change');
                     $('#id_edit_info_relance_fonction').val(data.role_responsable_client);
                 }
             })
+        });
+
+        // Lorsqu'on change le checkbox #id_edit_info_relance_auto
+        $(document).on('change', '#id_edit_info_relance_auto', function() {
+            if ($(this).is(':checked')) {
+                $('#form_edit_info_relance .relance-info-option').removeClass('d-none');
+            } else {
+                $('#form_edit_info_relance .relance-info-option').addClass('d-none');
+            }
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_info_relance
