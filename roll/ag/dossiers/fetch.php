@@ -3965,7 +3965,7 @@ if (isset($_POST['action'])) {
         $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
 
 
-        if (isset($_POST['date_relance'])) {
+        if (isset($_POST['relance_auto_client'])) {
             $update = update(
                 'client',
                 [
