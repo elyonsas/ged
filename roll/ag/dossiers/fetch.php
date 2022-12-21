@@ -3964,20 +3964,30 @@ if (isset($_POST['action'])) {
         $id_client = $_SESSION['id_view_client'];
         $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
 
-        dd($_POST);
 
-        $update = update(
-            'client',
-            [
-                'relance_auto_client' => $_POST['relance_auto_client'],
-                'nom_responsable_client' => $_POST['nom_responsable_client'],
-                'prenom_responsable_client' => $_POST['prenom_responsable_client'],
-                'civilite_responsable_client' => $_POST['civilite_responsable_client'],
-                'role_responsable_client' => $_POST['role_responsable_client'],
-            ],
-            "id_client = $id_client",
-            $db
-        );
+        if (isset($_POST['date_relance'])) {
+            $update = update(
+                'client',
+                [
+                    'relance_auto_client' => 'oui',
+                    'nom_responsable_client' => $_POST['nom_responsable_client'],
+                    'prenom_responsable_client' => $_POST['prenom_responsable_client'],
+                    'civilite_responsable_client' => $_POST['civilite_responsable_client'],
+                    'role_responsable_client' => $_POST['role_responsable_client'],
+                ],
+                "id_client = $id_client",
+                $db
+            );
+        } else {
+            $update = update(
+                'client',
+                [
+                    'relance_auto_client' => 'non',
+                ],
+                "id_client = $id_client",
+                $db
+            );
+        }
 
         if ($update) {
             $output = [

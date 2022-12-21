@@ -4076,7 +4076,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     <div class="row ms-1 my-10">
                         <label class="form-check form-switch form-check-custom form-check-solid">
-                            <input id="id_edit_info_relance_auto" class="form-check-input" type="radio" name="relance_auto_client">
+                            <input id="id_edit_info_relance_auto" class="form-check-input" type="checkbox" name="relance_auto_client">
                             <span class="form-check-label">
                                 Relance automatique
                             </span>
