@@ -110,7 +110,7 @@ foreach ($result as $row) {
         HTML;
         
         $send_mail = send_mail($to, $from, $subject, $message);
-    } else if(/*$row['relance_option_facture'] != 'after_30_days' && $date_echeance_plus_30_jours < date('Y-m-d H:i:s')*/ $id_client == 7) {
+    } else if($row['relance_option_facture'] != 'after_30_days' && $date_echeance_plus_30_jours < date('Y-m-d H:i:s')) {
         
         $update = update('facture', ['relance_option_facture' => 'after_30_days'], "id_facture = $id_facture", $db);
 
