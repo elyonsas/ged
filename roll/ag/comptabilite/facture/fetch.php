@@ -459,7 +459,7 @@ if (isset($_POST['action'])) {
             $n_facture = $result['n_facture'];
             $matricule_client = find_info_client('matricule_client', $result['id_client'], $db);
             $nom_client = find_info_client('nom_utilisateur', $result['id_client'], $db);
-            $delete_by = $_SESSION['prenom_utilisateur'] . ' ' . $_SESSION['nom_utilisateur'];
+            $add_by = $_SESSION['prenom_utilisateur'] . ' ' . $_SESSION['nom_utilisateur'];
             $url = "";
 
             $to = [
@@ -476,7 +476,7 @@ if (isset($_POST['action'])) {
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
-            $from = 'c_elyon@yahoo.fr';
+            $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
             
             $subject = 'Ajout d\'une facture dans GED-ELYON';
             
@@ -830,7 +830,7 @@ if (isset($_POST['action'])) {
                                                 <td>
                                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                                                         <h2>$titre_document</h2>
-                                                        <h3>La facture #<b>$n_facture</b> à été ajouté au dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$delete_by</u></b></h3>
+                                                        <h3>La facture #<b>$n_facture</b> à été ajouté au dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$add_by</u></b></h3>
                                                         <p><a href="{$url}" class="btn btn-primary">Cliquez pour consulter</a></p>
                                                     </div>
                                                 </td>
@@ -1142,7 +1142,7 @@ if (isset($_POST['action'])) {
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
-            $from = 'c_elyon@yahoo.fr';
+            $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
             
             $subject = 'Suppression d\'une facture dans GED-ELYON';
             

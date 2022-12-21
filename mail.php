@@ -20,7 +20,7 @@ $to = [
     ],
 ];
 
-$from = 'c_elyon@yahoo.fr';
+$from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
 
 $subject = 'test';
 

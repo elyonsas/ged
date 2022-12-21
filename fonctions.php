@@ -533,7 +533,7 @@
             $mail->CharSet = 'utf-8';
         
             //Recipients
-            $mail->setFrom($from, 'Cabinet Elyon');
+            $mail->setFrom($from[0], $from[1]);
 
             foreach ($to['to'] as $row) {
                 if(isset($row[1]))
@@ -596,8 +596,8 @@
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             $mail->send();
-            return 'Message has been sent';
+            return true;
         } catch (Exception $e) {
-            return "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return false;
         }
     }

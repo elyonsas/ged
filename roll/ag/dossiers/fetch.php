@@ -1981,7 +1981,7 @@ if (isset($_POST['action'])) {
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
-            $from = 'c_elyon@yahoo.fr';
+            $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
             
             $subject = 'Ajout de document dans GED-ELYON';
             
@@ -4029,7 +4029,7 @@ if (isset($_POST['action'])) {
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
             
-            $from = 'c_elyon@yahoo.fr';
+            $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
             
             $subject = 'Suppression de document dans GED-ELYON';
             
