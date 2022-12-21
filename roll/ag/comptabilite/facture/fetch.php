@@ -336,7 +336,7 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'fetch_page_facture') {
 
         $id_facture = $_SESSION['id_view_facture'];
-        $id_client = select_info('id_client', 'facture', 'id_facture', $id_facture, $db);
+        $id_client = select_info('id_client', 'facture', "id_facture = $id_facture", $db);
 
         // Récupérer les informations de la base de données
         $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
@@ -829,7 +829,6 @@ if (isset($_POST['action'])) {
                                             <tr>
                                                 <td>
                                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
-                                                        <h2>$titre_document</h2>
                                                         <h3>La facture #<b>$n_facture</b> à été ajouté au dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$add_by</u></b></h3>
                                                         <p><a href="{$url}" class="btn btn-primary">Cliquez pour consulter</a></p>
                                                     </div>
@@ -848,14 +847,21 @@ if (isset($_POST['action'])) {
                                                     class="padding-bottom-20 padding-left-20 padding-right-20 padding-top-20">
                                                     <img width="130" height="130" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/logo_elyon.png" alt="elyon-icon">
                                                 </td>
-                                                <td width="75%" colspan="2"
-                                                    style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
+                                                <td width="75%" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
                                                     CABINET ÉLYÔN
                                                     Audit, Expertise comptable, Commissariat aux comptes, Conseils
                                                     09 BP 290 Saint Michel - Cotonou
                                                     Tél: (+229) 21 32 77 78 / 21 03 35 32 / 97 22 19 85 / 90 94 07 99
                                                     Email: c_elyon@yahoo.fr, contact@elyonsas.com
                                                     Cotonou-Bénin
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="margin: 0px auto; border-collapse: collapse; border-top: 1px solid rgba(0, 0, 0, .05); font-size: 0px; padding: 16px 0px 8px; word-break: break-word;">
+                                                    <div style="font-family: system-ui, 'Segoe UI', sans-serif; font-size: 11px; line-height: 1.6; text-align: center; color: rgb(147, 149, 152);">
+                                                        Cet email à été automatiquement générer par le logiciel GED-ELYON.
+                                                        <a href="https://ged-elyon.com" style="color: rgb(0, 0, 0); text-decoration: none; background-color: transparent;">https://ged-elyon.com</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -874,6 +880,7 @@ if (isset($_POST['action'])) {
             
             $output = array(
                 'success' => true,
+                'send_mail' => $send_mail,
                 'message' => "La facture $n_facture a été ajoutée !"
             );
         } else {
@@ -1117,7 +1124,7 @@ if (isset($_POST['action'])) {
         if ($update) {
 
             // Send email
-            $query = "SELECT * FROM facture WHERE id_facture = $id";
+            $query = "SELECT * FROM facture WHERE id_facture = $id_facture";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -1485,7 +1492,7 @@ if (isset($_POST['action'])) {
                                 <tr>
                                     <td valign="middle" class="hero bg_white" style="padding: 2em 0 1em 0;">
                                         <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/files/fil007.svg-->
-                                        <img style="width: 200px; max-width: 600px; height: auto; margin: auto; display: block; opacity: 0.3;" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/add-doc.png" alt="add-icon">
+                                        <img style="width: 200px; max-width: 600px; height: auto; margin: auto; display: block; opacity: 0.3;" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/delete-doc.png" alt="delete-icon">
                                         <!--end::Svg Icon-->
                                     </td>
                                 </tr>
@@ -1495,7 +1502,6 @@ if (isset($_POST['action'])) {
                                             <tr>
                                                 <td>
                                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
-                                                        <h2>$titre_document</h2>
                                                         <h3>La facture #<b>$n_facture</b> à été supprimé du dossier client #<b>$matricule_client</b> <strong>$nom_client</strong> par <b><u>$delete_by</u></b></h3>
                                                         <p><a href="{$url}" class="btn btn-primary">Cliquez pour consulter</a></p>
                                                     </div>
@@ -1514,14 +1520,21 @@ if (isset($_POST['action'])) {
                                                     class="padding-bottom-20 padding-left-20 padding-right-20 padding-top-20">
                                                     <img width="130" height="130" src="https://elyonsas.github.io/ged-assets/assets/media/ged-mail/logo_elyon.png" alt="elyon-icon">
                                                 </td>
-                                                <td width="75%" colspan="2"
-                                                    style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
+                                                <td width="75%" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; text-align: left; line-height: 1.5;">
                                                     CABINET ÉLYÔN
                                                     Audit, Expertise comptable, Commissariat aux comptes, Conseils
                                                     09 BP 290 Saint Michel - Cotonou
                                                     Tél: (+229) 21 32 77 78 / 21 03 35 32 / 97 22 19 85 / 90 94 07 99
                                                     Email: c_elyon@yahoo.fr, contact@elyonsas.com
                                                     Cotonou-Bénin
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="margin: 0px auto; border-collapse: collapse; border-top: 1px solid rgba(0, 0, 0, .05); font-size: 0px; padding: 16px 0px 8px; word-break: break-word;">
+                                                    <div style="font-family: system-ui, 'Segoe UI', sans-serif; font-size: 11px; line-height: 1.6; text-align: center; color: rgb(147, 149, 152);">
+                                                        Cet email à été automatiquement générer par le logiciel GED-ELYON.
+                                                        <a href="https://ged-elyon.com" style="color: rgb(0, 0, 0); text-decoration: none; background-color: transparent;">https://ged-elyon.com</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -1540,6 +1553,7 @@ if (isset($_POST['action'])) {
 
             $output = array(
                 'success' => true,
+                'send_mail' => $send_mail,
                 'message' => 'La facture a été supprimée !'
             );
         } else {

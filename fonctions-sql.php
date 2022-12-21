@@ -213,14 +213,12 @@
         return $result['dossiers'];
     }
 
-    function select_info($info, $table, $id, $id_value, PDO $db)
+    function select_info($info, $table, $where, PDO $db)
     {
 
-        $query = "SELECT $info FROM $table WHERE $id = :id_value";
+        $query = "SELECT $info FROM $table WHERE $where";
         $statement = $db->prepare($query);
-        $statement->execute([
-            ':id_value' => $id_value
-        ]);
+        $statement->execute();
         $result = $statement->fetch();
 
         return $result["$info"];
