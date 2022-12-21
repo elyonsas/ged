@@ -3087,6 +3087,17 @@ if (isset($_POST['action'])) {
 
         $output = $result;
     }
+    if ($_POST['action'] == 'fetch_info_relance') {
+
+        $id_client = $_SESSION['id_view_client'];
+
+        $query = "SELECT * FROM client WHERE id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
 
     if ($_POST['action'] == 'edit_doc_write') {
 
@@ -3947,6 +3958,41 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
+    }
+    if ($_POST['action'] == 'edit_info_relance') {
+
+        $id_client = $_POST['id_client'];
+        $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
+
+        // nom_responsable_client
+        // prenom_responsable_client
+        // civilite_responsable_client
+        // role_responsable_client
+
+        $update = update(
+            'client',
+            [
+                'nom_responsable_client' => $_POST['nom_responsable_client'],
+                'prenom_responsable_client' => $_POST['prenom_responsable_client'],
+                'civilite_responsable_client' => $_POST['civilite_responsable_client'],
+                'role_responsable_client' => $_POST['role_responsable_client'],
+            ],
+            "id_client = $id_client",
+            $db
+        );
+
+        if ($update) {
+            $output = [
+                'success' => true,
+                'message' => "Les informations de relance de <b>$nom_client</b> à été mise à jour !"
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+
     }
 
     if ($_POST['action'] == 'retirer_dossier') {

@@ -541,7 +541,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </div>
                                     <!--begin::Action-->
                                     <div class="text-center">
-                                        <a href='roll/ag/comptabilite/facture' class="btn btn-sm btn-dark fw-bold">Voir les factures</a>
+                                        <div class="info_relance btn btn-sm btn-dark fw-bold" data-bs-toggle="modal" data-bs-target="#edit_info_relance_modal">Informations de relance</div>
                                     </div>
                                     <!--begin::Action-->
                                 </div>
@@ -4046,6 +4046,81 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_info_doc_file -->
 
+    <!-- begin::Modal Information relance-->
+    <div class="modal fade" id="edit_info_relance_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_edit_info_relance" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Modifier les informations de relance client</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="d-flex fw-semibold me-5 mb-5">
+                        <i class="fas fa-exclamation-circle ms-2 fs-5"></i>
+                        <div class="fs-6 text-muted ms-3 fst-italic">
+                            Les mails de relance seront envoyés à un représentant du client. Ce dernier peut-être, un associé gérant, le directeur général, le directeur des ressources humaines, etc.
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Nom responsable client</label>
+                            <input id="id_edit_info_relance_nom" type="text" class="form-control form-control-solid" placeholder="Entrez le nom du responsable client" name="nom_responsable_client">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Prénom responsable client</label>
+                            <input id="id_edit_info_relance_prenom" type="text" class="form-control form-control-solid" placeholder="Entrez le prenom du responsable client" name="prenom_responsable_client">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Civilité</label>
+                            <select id="id_edit_info_relance_civilite" class="form-select form-select-solid" data-control="select2" data-placeholder="Sélectionnez une civilité" data-hide-search="true" name="civilite_responsable_client">
+                                <option></option>
+                                <option value="Monsieur">Monsieur</option>
+                                <option value="Madame">Madame</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Fonction</label>
+                            <input id="id_edit_info_relance_fonction" type="text" class="form-control form-control-solid" placeholder="Entrez la fonction du responsable client" name="role_responsable_client">
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_info_relance">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_info_relance" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Information relance-->
+
 
 
 </div>
@@ -7154,6 +7229,77 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
         });
+
+        /* -----------------Information de relance client---------------- */
+        // Lorsqu'on clique sur .info_relance
+        $(document).on('click', '.info_relance', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'fetch_info_relance'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    $('#id_edit_info_relance_nom').val(data.nom_responsable_client);
+                    $('#id_edit_info_relance_prenom').val(data.prenom_responsable_client);
+                    $('#id_edit_info_relance_civilite').val(data.civilite_responsable_client).trigger('change');
+                    $('#id_edit_info_relance_fonction').val(data.role_responsable_client);
+                }
+            })
+        });
+
+        // Lorsqu'on soumet le formulaire #form_edit_info_relance
+        $(document).on('submit', '#form_edit_info_relance', function() {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_info_relance');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#edit_info_relance_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Informations enregistrées !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reloadPage(); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
+        });
+
 
 
     })
