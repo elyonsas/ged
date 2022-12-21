@@ -3961,13 +3961,8 @@ if (isset($_POST['action'])) {
     }
     if ($_POST['action'] == 'edit_info_relance') {
 
-        $id_client = $_POST['id_client'];
+        $id_client = $_SESSION['id_view_client'];
         $nom_client = find_info_client('nom_utilisateur', $id_client, $db);
-
-        // nom_responsable_client
-        // prenom_responsable_client
-        // civilite_responsable_client
-        // role_responsable_client
 
         $update = update(
             'client',
