@@ -149,7 +149,7 @@
                     <?= single_sub_menu('Comptabilité', $icon, 
                     [
                         ['Factures client', 'roll/ag/comptabilite/facture', $menu_compta_facture],
-                        ['Finances cabinet', 'roll/ag/comptabilite/finance', $menu_compta_finance],
+                        ['Relance client', 'roll/ag/comptabilite/relance', $menu_compta_relance],
 
                     ] , $menu_compta) ?>
                     <!--end:Menu item-->
