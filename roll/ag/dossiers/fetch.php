@@ -1952,7 +1952,7 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        
+
         if ($insert1 && $insert2 && $update) {
             // Send email
             $query = "SELECT * FROM document WHERE id_document = $id_document";
@@ -1980,11 +1980,11 @@ if (isset($_POST['action'])) {
             // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
-            
+
             $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
-            
+
             $subject = 'Ajout de document dans GED-ELYON';
-            
+
             $message = <<<HTML
             
                 <!DOCTYPE html>
@@ -2381,7 +2381,7 @@ if (isset($_POST['action'])) {
                 </html>
             
             HTML;
-            
+
             $send_mail = send_mail($to, $from, $subject, $message);
 
             $output = [
@@ -2727,6 +2727,110 @@ if (isset($_POST['action'])) {
                     break;
             }
 
+            // Validation des aspects
+            $nbr_doc_ready_juridiques_et_administratifs = 0;
+            $nbr_doc_ready_techniques = 0;
+            $nbr_doc_ready_comptables_et_financiers = 0;
+
+            $query = "SELECT * FROM document WHERE statut_document != 'supprime' AND id_client = '$id_client'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            foreach ($result as $row) {
+                $table_document = $row['table_document'];
+                $aspect_document = $row['aspect_document'];
+
+                if ($aspect_document == 'juridiques_et_administratifs') {
+                    switch ($table_document) {
+                        case 'doc_3_accept_mission':
+                            if ($row['statut_document'] == 'valide')
+                                $nbr_doc_ready_juridiques_et_administratifs++;
+                            break;
+    
+                        case 'doc_19_quiz_lcb':
+                            if ($row['statut_document'] == 'valide')
+                                $nbr_doc_ready_juridiques_et_administratifs++;
+                            break;
+    
+                        case 'doc_8_fiche_id_client':
+                            if ($row['statut_document'] == 'valide')
+                                $nbr_doc_ready_juridiques_et_administratifs++;
+                            break;
+    
+                        case 'document_file':
+                            if ($row['table_info_document'] == 'doc_6_info_lettre_mission')
+                                if ($row['statut_document'] == 'valide')
+                                    $nbr_doc_ready_juridiques_et_administratifs++;
+                            break;
+    
+                        default:
+                            # code...
+                            break;
+                    }
+                }else if ($aspect_document == 'techniques') {
+                    if ($row['statut_document'] == 'valide')
+                        $nbr_doc_ready_techniques++;
+                }
+                    
+            }
+
+            if ($nbr_doc_ready_juridiques_et_administratifs >= 4) {
+                $ready_icon_juridiques_et_administratifs = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+            }else{
+                $ready_icon_juridiques_et_administratifs = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-danger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+            }
+
+            if ($nbr_doc_ready_techniques >= 1) {
+                $ready_icon_techniques = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+                $ready_icon_comptables_et_financiers = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+            }else{
+                $ready_icon_techniques = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-danger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+                $ready_icon_comptables_et_financiers = <<<HTML
+                    <span class="svg-icon svg-icon-4 svg-icon-danger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+                            <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                HTML;
+            }
+
 
             $output = array(
                 'avatar_client' => $avatar_client,
@@ -2746,6 +2850,9 @@ if (isset($_POST['action'])) {
                 'statut_client' => $statut_client_html,
                 'prise_en_charge_client' => $prise_en_charge_client,
                 'action_client' => $action_client,
+                'ready_icon_juridiques_et_administratifs' => $ready_icon_juridiques_et_administratifs,
+                'ready_icon_techniques' => $ready_icon_techniques,
+                'ready_icon_comptables_et_financiers' => $ready_icon_comptables_et_financiers,
             );
 
             // Récupérer les informations de la base de données
@@ -2766,7 +2873,7 @@ if (isset($_POST['action'])) {
             $statement->execute();
             $result = $statement->fetch();
 
-            $output['total_echue'] = $result['total_echue']??'--';
+            $output['total_echue'] = $result['total_echue'] ?? '--';
             $output['nb_facture_echue'] = $result['nb_facture_echue'];
 
             // Récupérer les informations de la base de données
@@ -2776,7 +2883,7 @@ if (isset($_POST['action'])) {
             $statement->execute();
             $result = $statement->fetch();
 
-            $output['total_en_cour'] = $result['total_en_cour']??'--';
+            $output['total_en_cour'] = $result['total_en_cour'] ?? '--';
             $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
 
             // Récupérer les informations de la base de données
@@ -2786,7 +2893,7 @@ if (isset($_POST['action'])) {
             $statement->execute();
             $result = $statement->fetch();
 
-            $output['total_solde'] = $result['total_solde']??'--';
+            $output['total_solde'] = $result['total_solde'] ?? '--';
             $output['nb_facture_solde'] = $result['nb_facture_solde'];
         }
     }
@@ -4007,7 +4114,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
-
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
@@ -4089,11 +4195,11 @@ if (isset($_POST['action'])) {
             // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
-            
+
             $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
-            
+
             $subject = 'Suppression de document dans GED-ELYON';
-            
+
             $message = <<<HTML
             
                 <!DOCTYPE html>
@@ -4491,7 +4597,7 @@ if (isset($_POST['action'])) {
                 </html>
             
             HTML;
-            
+
             $send_mail = send_mail($to, $from, $subject, $message);
 
             $output = array(
