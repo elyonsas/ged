@@ -2854,6 +2854,8 @@ if (isset($_POST['action'])) {
                 'ready_icon_techniques' => $ready_icon_techniques,
                 'ready_icon_comptables_et_financiers' => $ready_icon_comptables_et_financiers,
                 'nbr_doc_ready_juridiques_et_administratifs' => $nbr_doc_ready_juridiques_et_administratifs,
+                'nbr_doc_ready_techniques' => $nbr_doc_ready_techniques,
+                'nbr_doc_ready_comptables_et_financiers' => $nbr_doc_ready_comptables_et_financiers,
             );
 
             // Récupérer les informations de la base de données
