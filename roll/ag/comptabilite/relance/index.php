@@ -109,6 +109,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         </div>
                                     </div>
 
+                                    <div class="w-100 d-flex flex-end">
+                                        <div class="btn btn-primary">Sauvegarder</div>
+                                    </div>
+
                                 </form>
                             </div>
                         </div>
@@ -117,7 +121,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="kt_accordion_1_header_2">
                             <button class="accordion-button fs-4 fw-semibold collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#kt_accordion_1_body_2" aria-expanded="false" aria-controls="kt_accordion_1_body_2">
-                                Première relance ( 5 jours après l'échéance )
+                                Deuxième relance ( 30 jours après l'échéance )
                             </button>
                         </h2>
                         <div id="kt_accordion_1_body_2" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_2" data-bs-parent="#kt_accordion_1">
@@ -209,6 +213,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     selector: '#relance_temp_1_mail_content',
                     menubar: false,
                     language: 'fr_FR',
+                    height: 450,
                     content_css: 'default',
                     plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
                     toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | fontselect fontsizeselect formatselect | numlist bullist | outdent indent | pagebreak | table',
