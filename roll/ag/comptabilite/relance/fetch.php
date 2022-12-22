@@ -28,7 +28,43 @@ if (isset($_POST['action'])) {
 
         $output = $result;
     }
-    
+    if ($_POST['action'] == 'edit_relance_temp_1') {
+        
+        $update = update(
+            'modele_mail_client',
+            [
+                'mail_objet' => $_POST['mail_objet'],
+                'mail_content' => $_POST['mail_content'],
+            ],
+            "relance_option_facture = 'after_5_days'",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => "Modèle sauvegarder !"
+            );
+        }
+    }
+    if ($_POST['action'] == 'edit_relance_temp_2') {
+        $update = update(
+            'modele_mail_client',
+            [
+                'mail_objet' => $_POST['mail_objet'],
+                'mail_content' => $_POST['mail_content'],
+            ],
+            "relance_option_facture = 'after_30_days'",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => "Modèle sauvegarder !"
+            );
+        }
+    }
 }
 
 if (isset($_FILES['file'])) {
