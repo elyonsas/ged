@@ -2795,7 +2795,7 @@ if (isset($_POST['action'])) {
                 HTML;
             }
 
-            if ($nbr_doc_ready_techniques >= 1) {
+            if ($nbr_doc_ready_juridiques_et_administratifs >= 4 && $nbr_doc_ready_techniques >= 1) {
                 $ready_icon_techniques = <<<HTML
                     <span class="svg-icon svg-icon-4 svg-icon-success">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2853,6 +2853,7 @@ if (isset($_POST['action'])) {
                 'ready_icon_juridiques_et_administratifs' => $ready_icon_juridiques_et_administratifs,
                 'ready_icon_techniques' => $ready_icon_techniques,
                 'ready_icon_comptables_et_financiers' => $ready_icon_comptables_et_financiers,
+                'nbr_doc_ready_juridiques_et_administratifs' => $nbr_doc_ready_juridiques_et_administratifs,
             );
 
             // Récupérer les informations de la base de données

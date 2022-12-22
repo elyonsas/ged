@@ -139,7 +139,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2">
-                                <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Générale</a>
+                                <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="" desabled>Générale</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
@@ -4431,6 +4431,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#view_facture_total_solde').html(total_solde);
                     $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
 
+                    // Validation des aspects
+                    if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
+                        $('#infos_technique').addClass('d-none');
+                    }
+
 
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4584,6 +4589,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
                 $('#view_facture_total_solde').html(total_solde);
                 $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+
+                // Validation des aspects
+                if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
+                    $('#infos_technique').addClass('d-none');
+                }
 
 
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
