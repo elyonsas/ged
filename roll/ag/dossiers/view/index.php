@@ -138,25 +138,33 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Navs-->
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="" desabled>Générale</a>
+                            <li class="nav-item mt-2 flex-column position-relative">
+                                <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Générale</a>
+                                <div style="cursor: not-allowed;" id="mask_generale_area_btn" class="w-100 h-100 position-absolute d-none" 
+                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Générale"></div>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
+                            <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="juridico_admin_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects juridiques et administratifs</a>
+                                <div style="cursor: not-allowed;" id="mask_juridico_admin_area_btn" class="w-100 h-100 position-absolute d-none" 
+                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Aspects juridiques et administratifs"></div>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
+                            <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="technique_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects techniques</a>
+                                <div style="cursor: not-allowed;" id="mask_technique_area_btn" class="w-100 h-100 position-absolute d-none" 
+                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect juridiques et administratifs de ce dossier client"></div>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
+                            <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="compta_finance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects comptables et financiers</a>
+                                <div style="cursor: not-allowed;" id="mask_compta_finance_area_btn" class="w-100 h-100 position-absolute d-none" 
+                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect technique de ce dossier client"></div>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -4433,7 +4441,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     // Validation des aspects
                     if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
-                        $('#infos_technique').addClass('d-none');
+                        $('#mask_technique_area_btn').removeClass('d-none');
+                        $('#mask_compta_finance_area_btn').removeClass('d-none');
+                    } else if (!(data.nbr_doc_ready_techniques >= 1)) {
+                        $('#mask_technique_area_btn').addClass('d-none');
+                        $('#mask_compta_finance_area_btn').removeClass('d-none');
+                    } else{
+                        $('#mask_technique_area_btn').addClass('d-none');
+                        $('#mask_compta_finance_area_btn').addClass('d-none');
                     }
 
 
@@ -4592,7 +4607,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 // Validation des aspects
                 if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
-                    $('#infos_technique').addClass('d-none');
+                    $('#mask_technique_area_btn').removeClass('d-none');
+                    $('#mask_compta_finance_area_btn').removeClass('d-none');
+                } else if (!(data.nbr_doc_ready_techniques >= 1)) {
+                    $('#mask_technique_area_btn').addClass('d-none');
+                    $('#mask_compta_finance_area_btn').removeClass('d-none');
+                } else{
+                    $('#mask_technique_area_btn').addClass('d-none');
+                    $('#mask_compta_finance_area_btn').addClass('d-none');
                 }
 
 
