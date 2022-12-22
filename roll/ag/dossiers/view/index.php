@@ -72,12 +72,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!--end::Svg Icon-->
                                                 <span id="email_client">--</span>
                                             </div>
-                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                            <div class="d-flex align-items-center text-gray-400 mb-1">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
-                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor" />
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor" />
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
@@ -86,12 +86,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     <div id="ready_icon_juridiques_et_administratifs">...</div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                            <div class="d-flex align-items-center text-gray-400 mb-1">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
-                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor" />
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor" />
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
@@ -100,12 +100,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     <div id="ready_icon_techniques">...</div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                            <div class="d-flex align-items-center text-gray-400 mb-1">
                                                 <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
-                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor" />
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor" />
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
@@ -4388,6 +4388,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 success: function(data) {
 
                     // Affiche les données dans la page
+
+                    $('#ready_icon_juridiques_et_administratifs').html(data.ready_icon_juridiques_et_administratifs);
+                    $('#ready_icon_techniques').html(data.ready_icon_techniques);
+                    $('#ready_icon_comptables_et_financiers').html(data.ready_icon_comptables_et_financiers);
+
                     $('#avatar_client').html(data.avatar_client);
                     $('#nom_client').html(data.nom_client);
                     $('#email_client').html(data.email_client);
@@ -4404,6 +4409,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#action_client').html(data.action_client);
                     $('#niveau_client').html(data.niveau_client);
 
+                    taux_recouvrement = data.taux_recouvrement;
+                    total_facture = amount_format(data.total_facture);
+                    total_regle = amount_format(data.total_regle);
+
+                    total_echue = amount_format(data.total_echue);
+                    nb_facture_echue = data.nb_facture_echue;
+                    total_en_cour = amount_format(data.total_en_cour);
+                    nb_facture_en_cour = data.nb_facture_en_cour;
+                    total_solde = amount_format(data.total_solde);
+                    nb_facture_solde = data.nb_facture_solde;
+
+                    $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
+                    $('#view_facture_total_facture').html(total_facture);
+                    $('#view_facture_total_regle').html(total_regle);
+
+                    $('#view_facture_total_echue').html(total_echue);
+                    $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
+                    $('#view_facture_total_en_cour').html(total_en_cour);
+                    $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
+                    $('#view_facture_total_solde').html(total_solde);
+                    $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+
+
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
@@ -4414,6 +4442,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             reload_datatable3();
 
         }
+
         function date_formatter(date, format) {
             if (date == null) {
                 return '--';
@@ -7289,7 +7318,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 dataType: "JSON",
                 success: function(data) {
 
-                    if(data.relance_auto_client == 'oui') {
+                    if (data.relance_auto_client == 'oui') {
                         $('#id_edit_info_relance_auto').prop('checked', true);
                         $('#form_edit_info_relance .relance-info-option').removeClass('d-none');
                     } else {
