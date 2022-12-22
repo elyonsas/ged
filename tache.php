@@ -13,11 +13,12 @@ $result = $statement->fetchAll();
 
 foreach ($result as $row) {
     $id_facture = $row['id_facture'];
-    $id_client = $row['id_client'];                                                                                                                                   
+    $id_client = $row['id_client'];
+    $relance_auto_client = find_info_client('relance_auto_client', $id_client, $db);                                                                                                                                  
     $date_echeance_plus_5_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +5 days'));
     $date_echeance_plus_30_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +30 days'));
 
-    if ($row['relance_option_facture'] != 'after_5_days' && $date_echeance_plus_5_jours < date('Y-m-d H:i:s')) {
+    if (/*$row['relance_option_facture'] != 'after_5_days' && $date_echeance_plus_5_jours < date('Y-m-d H:i:s')*/ $id_client == 7 && $relance_auto_client == 'oui') {
         
         $update = update('facture', ['relance_option_facture' => 'after_5_days'], "id_facture = $id_facture", $db);
 
@@ -102,6 +103,14 @@ foreach ($result as $row) {
                                 </table>
                             </td>
                         </tr>
+                        <tr>
+                            <td style="margin: 0px auto; border-collapse: collapse; border-top: 1px solid rgba(0, 0, 0, .05); font-size: 0px; padding: 16px 0px 8px; word-break: break-word;">
+                                <div style="font-family: system-ui, 'Segoe UI', sans-serif; font-size: 11px; line-height: 1.6; text-align: center; color: rgb(147, 149, 152);">
+                                    Cet email à été automatiquement générer par le logiciel GED-ELYON.
+                                    <a href="https://ged-elyon.com" style="color: rgb(0, 0, 0); text-decoration: none; background-color: transparent;">https://ged-elyon.com</a>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
 
                 </div>
@@ -110,7 +119,7 @@ foreach ($result as $row) {
         HTML;
         
         $send_mail = send_mail($to, $from, $subject, $message);
-    } else if($row['relance_option_facture'] != 'after_30_days' && $date_echeance_plus_30_jours < date('Y-m-d H:i:s')) {
+    } else if($row['relance_option_facture'] != 'after_30_days' && $date_echeance_plus_30_jours < date('Y-m-d H:i:s') && $relance_auto_client == 'oui') {
         
         $update = update('facture', ['relance_option_facture' => 'after_30_days'], "id_facture = $id_facture", $db);
 
