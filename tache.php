@@ -18,7 +18,7 @@ foreach ($result as $row) {
     $date_echeance_plus_5_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +5 days'));
     $date_echeance_plus_30_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +30 days'));
 
-    if (/*$row['relance_option_facture'] != 'after_5_days' && $date_echeance_plus_5_jours < date('Y-m-d H:i:s')*/ $id_client == 7 && $relance_auto_client == 'oui') {
+    if ($row['relance_option_facture'] != 'after_5_days' && $date_echeance_plus_5_jours < date('Y-m-d H:i:s') && $relance_auto_client == 'oui') {
         
         $update = update('facture', ['relance_option_facture' => 'after_5_days'], "id_facture = $id_facture", $db);
 

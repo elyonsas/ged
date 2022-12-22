@@ -37,7 +37,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-fluid">
             <!--begin::Container-->
-            <div class="container-xxl" id="kt_content_container">
+            <div class="container-xxl px-20" id="kt_content_container">
 
                 <!--begin::Alert-->
                 <div class="alert alert-primary d-flex align-items-center p-3 mt-10">
