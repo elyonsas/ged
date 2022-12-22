@@ -44,7 +44,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Details-->
                         <div class="d-flex flex-wrap flex-sm-nowrap">
                             <!--begin: Pic-->
-                            <div class="me-7 mb-4">
+                            <div class="me-7 mb-4 d-flex flex-center">
                                 <div id="avatar_client" class="symbol symbol-100px symbol-fixed position-relative"></div>
                             </div>
                             <!--end::Pic-->
@@ -72,16 +72,47 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <!--end::Svg Icon-->
                                                 <span id="email_client">--</span>
                                             </div>
-                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
-                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-24-050857/core/html/src/media/icons/duotune/general/gen018.svg-->
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
                                                 <span class="svg-icon svg-icon-4 me-1">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path opacity="0.3" d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z" fill="currentColor" />
-                                                        <path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="currentColor" />
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
                                                     </svg>
                                                 </span>
                                                 <!--end::Svg Icon-->
-                                                <span id="adresse_client">--</span>
+                                                <div class="d-flex">
+                                                    <span class="min-w-250px">Aspects juridiques et administratifs</span>
+                                                    <div id="ready_icon_juridiques_et_administratifs">...</div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
+                                                <span class="svg-icon svg-icon-4 me-1">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                                <div class="d-flex">
+                                                    <span class="min-w-250px">Aspects techniques</span>
+                                                    <div id="ready_icon_techniques">...</div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center text-gray-400 text-hover-primary mb-1">
+                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-11-29-094551/core/html/src/media/icons/duotune/arrows/arr024.svg-->
+                                                <span class="svg-icon svg-icon-4 me-1">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 4L18 12L10 20H14L21.3 12.7C21.7 12.3 21.7 11.7 21.3 11.3L14 4H10Z" fill="currentColor"/>
+                                                        <path opacity="0.3" d="M3 4L11 12L3 20H7L14.3 12.7C14.7 12.3 14.7 11.7 14.3 11.3L7 4H3Z" fill="currentColor"/>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                                <div class="d-flex">
+                                                    <span class="min-w-250px">Aspects comptables et financiers</span>
+                                                    <div id="ready_icon_comptables_et_financiers">...</div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--end::Info-->
@@ -4360,7 +4391,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#avatar_client').html(data.avatar_client);
                     $('#nom_client').html(data.nom_client);
                     $('#email_client').html(data.email_client);
-                    $('#adresse_client').html(data.adresse_client);
                     $('#matricule_client').html(data.matricule_client);
                     $('#tel_client').html(data.tel_client);
 
@@ -4483,10 +4513,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             success: function(data) {
 
                 // Affiche les données dans la page
+
+                $('#ready_icon_juridiques_et_administratifs').html(data.ready_icon_juridiques_et_administratifs);
+                $('#ready_icon_techniques').html(data.ready_icon_techniques);
+                $('#ready_icon_comptables_et_financiers').html(data.ready_icon_comptables_et_financiers);
+
                 $('#avatar_client').html(data.avatar_client);
                 $('#nom_client').html(data.nom_client);
                 $('#email_client').html(data.email_client);
-                $('#adresse_client').html(data.adresse_client);
                 $('#matricule_client').html(data.matricule_client);
                 $('#tel_client').html(data.tel_client);
 
