@@ -94,7 +94,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
                                 data-bs-dismiss="click" title="none">{article_apres_civilite}</span>
 
-                                <form id="relance_temp_form1" class="mt-5" method="POST" action="">
+                                <form id="relance_temp_1_form" class="mt-5" method="POST" action="">
                                     <div class="row mb-5">
                                         <div class="form-group">
                                             <label class="fs-5 mb-2">Objet du mail</label>
@@ -126,8 +126,48 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </h2>
                         <div id="kt_accordion_1_body_2" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_2" data-bs-parent="#kt_accordion_1">
                             <div class="accordion-body">
-                                ...
-                            </div>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{n_facture}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{date_emission_facture}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{montant_ttc_facture}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{matricule_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{nom_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{nom_responsable_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{prenom_responsable_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{role_responsable_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{civilite_responsable_client}</span>
+                                    <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
+                                    data-bs-dismiss="click" title="none">{article_apres_civilite}</span>
+
+                                    <form id="relance_temp_2_form" class="mt-5" method="POST" action="">
+                                        <div class="row mb-5">
+                                            <div class="form-group">
+                                                <label class="fs-5 mb-2">Objet du mail</label>
+                                                <input id="relance_temp_2_mail_objet" type="text" class="form-control" placeholder="Entrez l'objet du mail de relance" name="mail_objet">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-5">
+                                            <div class="form-group">
+                                                <label class="fs-5 mb-2">Contenu du mail</label>
+                                                <textarea id="relance_temp_2_mail_content" class="form-control" placeholder="Modèle de mail de relance" name="mail_content"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-100 d-flex flex-end">
+                                            <div class="btn btn-primary">Sauvegarder</div>
+                                        </div>
+
+                                    </form>
+                                </div>
                         </div>
                     </div>
                 </div>
