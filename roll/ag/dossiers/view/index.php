@@ -4344,7 +4344,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 
         // Reload all data pages and datatable
-        function reloadPage() {
+        function reload_page() {
 
             // Fait une réquête AJAX pour récupérer les données de la page
             $.ajax({
@@ -4832,7 +4832,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -4877,7 +4877,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -4973,7 +4973,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -5046,7 +5046,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             $('#attribuer_modal').modal('hide');
@@ -5080,7 +5080,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
                         });
-                        reloadPage();
+                        reload_page();
                     } else {
                         toastr.error(data.message, '', {
                             positionClass: "toastr-bottom-left",
@@ -5108,7 +5108,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
                         });
-                        reloadPage();
+                        reload_page();
                     } else {
                         toastr.error(data.message, '', {
                             positionClass: "toastr-bottom-left",
@@ -5177,7 +5177,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         if (data.success) {
                             $('#add_doc_modal').modal('hide');
                             $('#form_add_doc')[0].reset();
-                            reloadPage();
+                            reload_page();
 
                             if (data.type_document == 'file') {
                                 $('#edit_doc_other_file_modal').modal('show');
@@ -5410,7 +5410,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                     fileListPath = [];
                                                     fileListName = [];
 
-                                                    reloadPage(); // On recharge le datatable
+                                                    reload_page(); // On recharge le datatable
 
                                                 } else {
                                                     toastr.error(data.message, '', {
@@ -5988,7 +5988,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             fileListPath = [];
                             fileListName = [];
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -6235,7 +6235,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             fileListPath = [];
                             fileListName = [];
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -7028,7 +7028,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -7076,7 +7076,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -7124,7 +7124,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -7172,7 +7172,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {
@@ -7228,7 +7228,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     }
                                 });
 
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                             } else {
                                 toastr.error(data.message, '', {
@@ -7313,7 +7313,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error(data.message, '', {

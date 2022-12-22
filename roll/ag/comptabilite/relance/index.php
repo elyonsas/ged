@@ -94,7 +94,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <span class="fs-5 badge badge-light mb-5" data-bs-toggle="tooltip" data-bs-placement="top" 
                                 data-bs-dismiss="click" title="none">{article_apres_civilite}</span>
 
-                                <form id="relance_temp_1" class="mt-5" method="POST" action="">
+                                <form id="relance_temp_form1" class="mt-5" method="POST" action="">
                                     <div class="row mb-5">
                                         <div class="form-group">
                                             <label class="fs-5 mb-2">Objet du mail</label>
@@ -174,295 +174,49 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <script src="assets/js/custom/utilities/modals/create-app.js"></script>
 <script src="assets/js/custom/utilities/modals/new-target.js"></script>
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+<script src="assets/plugins/custom/tinymce/tinymce.bundle.js"></script>
 
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/pages_script.php'); ?>
 
 <script>
     $(document).ready(function() {
 
-        function update_data_datatable(data) {
-
-            $("#all_dossiers").DataTable().destroy();
-            var all_dossiers = $('#all_dossiers').DataTable({
-                "processing": true,
-                "serverSide": false,
-                "paging": true,
-                "bInfo": true,
-                "bFilter": true,
-                "bSort": true,
-                "order": [],
-                "data": data,
-                "columnDefs": [{
-                    "targets": [4],
-                    "orderable": false,
-                }, ],
-                "initComplete": function(settings, json) {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }
-            });
-            $('#kt_filter_search').keyup(function() {
-                all_dossiers.search($(this).val()).draw();
-                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-            })
-
-            $('.dataTables_paginate').click(function() {
-                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
-            })
-
-            $('.sorting').click(function() {
-                setTimeout(() => {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                }, 1000);
-            })
+        function reload_page() {
+            // Fait une réquête AJAX pour récupérer les données de la page
+            
         }
 
-        function reload_datatable(datatable) {
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: {
-                    datatable: datatable,
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    update_data_datatable(data.data);
-                }
-            })
-        }
-
-        // Datatable for all dossiers
+        // Fait une réquête AJAX pour récupérer les données de la page
         $.ajax({
-            url: "roll/ag/dossiers/fetch.php",
+            url: "roll/ag/comptabilite/relance/fetch.php",
             method: "POST",
             data: {
-                datatable: 'all_dossiers',
+                action: 'fetch_page_param_relance'
             },
             dataType: "JSON",
             success: function(data) {
-                var all_dossiers = $('#all_dossiers').DataTable({
-                    "processing": true,
-                    "serverSide": false,
-                    "paging": true,
-                    "bInfo": true,
-                    "bFilter": true,
-                    "bSort": true,
-                    "order": [],
-                    "data": data.data,
-                    "columnDefs": [{
-                        "targets": [4],
-                        "orderable": false,
-                    }, ],
-                    "initComplete": function(settings, json) {
-                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                    }
+
+                // Affiche les données dans la page (form 1)
+                $('#relance_temp_1_mail_objet').val(data[0].mail_objet);
+                $('#relance_temp_1_mail_content').html(data[0].mail_content);
+
+                // Affiche les données dans la page (form 2)
+                $('#relance_temp_2_mail_objet').val(data[1].mail_objet);
+                $('#relance_temp_2_mail_content').html(data[1].mail_content);
+
+                // Initialise les instances de tinymce
+                tinymce_other_write = tinymce.init({
+                    selector: '#relance_temp_1_mail_content',
+                    menubar: false,
+                    language: 'fr_FR',
+                    content_css: 'default',
+                    plugins: 'print importcss searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars export',
+                    toolbar: 'save undo redo | bold italic underline strikethrough | link image | forecolor backcolor | alignleft aligncenter alignright alignjustify | lineheight | fullscreen | fontselect fontsizeselect formatselect | numlist bullist | outdent indent | pagebreak | table',
+                    pagebreak_separator: '<div style="page-break-after: always;"></div>',
                 });
-                $('#kt_filter_search').keyup(function() {
-                    all_dossiers.search($(this).val()).draw();
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                })
 
-                $('.dataTables_paginate').click(function() {
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
-                })
-
-                $('.sorting').click(function() {
-                    setTimeout(() => {
-                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                    }, 1000);
-                })
             }
         });
-
-        // Lorsqu'on clique sur .activer_compte
-        $(document).on('click', '.activer_compte', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment activer ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment activer ce compte ?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, activer !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/dossiers/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_client: id_client,
-                            action: 'activer_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_dossiers'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .desactiver_compte
-        $(document).on('click', '.desactiver_compte', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            // Voulez-vous vraiment désactiver ce compte ?
-            Swal.fire({
-                title: "Voulez-vous vraiment désactiver ce compte ?",
-                text: "Vous ne pouvez plus revenir en arrière !",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui, désactiver !",
-                cancelButtonText: "Non, annuler !",
-                reverseButtons: true
-            }).then(function(result) {
-                if (result.value) {
-
-                    $.ajax({
-                        url: "roll/ag/dossiers/fetch.php",
-                        method: "POST",
-                        data: {
-                            id_client: id_client,
-                            action: 'desactiver_compte'
-                        },
-                        dataType: "JSON",
-                        success: function(data) {
-                            if (data.success) {
-                                reload_datatable('all_dossiers'); // On recharge le datatable
-
-                                toastr.success(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            } else {
-                                toastr.error(data.message, '', {
-                                    positionClass: "toastr-bottom-left",
-                                });
-                            }
-                        }
-                    })
-
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .view_detail_dossier
-        $(document).on('click', '.view_detail_dossier', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client');
-
-            $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
-                method: "POST",
-                data: {
-                    id_client: id_client,
-                    action: 'view_detail_dossier'
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    $('#detail_nom_client').html(data.nom_client);
-                    $('#detail_matricule_client').html(data.matricule_client);
-                    $('#detail_telephone_client').html(data.tel_client);
-                    $('#detail_email_client').html(data.email_client);
-                    $('#detail_adresse_client').html(data.adresse_client);
-                }
-            });
-
-        });
-
-        // Lorsqu'on clique sur .attribuer_collabo
-        $(document).on('click', '.attribuer_collabo', function(e) {
-            e.preventDefault();
-            var id_client = $(this).data('id_client'); // On récupère l'id de l'article
-
-            $.ajax({
-				url: "roll/ag/dossiers/fetch.php",
-				method: "POST",
-				data: {
-                    id_client: id_client,
-                    action: 'fetch_attribuer_collabo'
-				},
-				dataType: "JSON",
-				success: function(data) {
-                    $('#attribuer_nom_client').html(data.nom_client);
-                    $('#attribuer_collabo').html(data.dossier_html);
-                    $('#attribuer_id_client').val(data.id_client);
-				}
-			});
-
-        });
-
-        // Pour l'attribution un collaborateur à un client
-		$(document).on('submit', '#form_attribuer', function(event) {
-			event.preventDefault();
-
-			// Show loading indication
-			formSubmitButton = document.querySelector('#btn_attribuer');
-			formSubmitButton.setAttribute('data-kt-indicator', 'on');
-
-			$.ajax({
-				url: "roll/ag/dossiers/fetch.php",
-				method: "POST",
-				data: $(this).serialize(),
-				dataType: "JSON",
-				success: function(data) {
-					setTimeout(function() {
-						// Hide loading indication
-						formSubmitButton.removeAttribute('data-kt-indicator');
-
-						if (data.success) {
-							$('#attribuer_modal').modal('hide');
-
-							// swal
-                            Swal.fire({
-                                title: "Dossier prise en charge !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
-
-                            reload_datatable('all_dossiers'); // On recharge le datatable
-
-						} else {
-							$('#attribuer_modal').modal('hide');
-
-							toastr.error('une erreur s\'est produite', '', {
-								positionClass: "toastr-bottom-left",
-							});
-						}
-					}, 2000);
-
-				}
-			})
-		});
 
 
     })

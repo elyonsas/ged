@@ -440,7 +440,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        function reloadPage() {
+        function reload_page() {
 
             // Fait une réquête AJAX pour récupérer les données
             $.ajax({
@@ -624,7 +624,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -669,7 +669,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -742,7 +742,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             $('#attribuer_modal').modal('hide');
@@ -786,7 +786,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                reloadPage(); // On recharge le datatable
+                                reload_page(); // On recharge le datatable
 
                                 toastr.success(data.message, '', {
                                     positionClass: "toastr-bottom-left",

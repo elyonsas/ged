@@ -480,7 +480,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     $(document).ready(function() {
 
         // Reload all data pages and datatable
-        function reloadPage() {
+        function reload_page() {
 
             // Fait une réquête AJAX pour récupérer les données de la page
             $.ajax({
@@ -1062,7 +1062,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         success: function(data) {
                             if (data.success) {
                                 // On recharge le datatable
-                                reloadPage();
+                                reload_page();
 
                                 // On affiche un message de succès
                                 Swal.fire({
@@ -1151,7 +1151,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 positionClass: "toastr-bottom-left",
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error('une erreur s\'est produite', '', {
@@ -1194,7 +1194,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         success: function(data) {
                             if (data.success) {
                                 // On recharge le datatable
-                                reloadPage();
+                                reload_page();
 
                                 // On affiche un message de succès
                                 Swal.fire({
@@ -1274,7 +1274,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 positionClass: "toastr-bottom-left",
                             });
 
-                            reloadPage(); // On recharge le datatable
+                            reload_page(); // On recharge le datatable
 
                         } else {
                             toastr.error('une erreur s\'est produite', '', {
