@@ -140,31 +140,27 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Générale</a>
-                                <div style="cursor: not-allowed;" id="mask_generale_area_btn" class="w-100 h-100 position-absolute d-none" 
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Générale"></div>
+                                <div style="cursor: not-allowed;" id="mask_generale_area_btn" class="w-100 h-100 position-absolute d-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Générale"></div>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="juridico_admin_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects juridiques et administratifs</a>
-                                <div style="cursor: not-allowed;" id="mask_juridico_admin_area_btn" class="w-100 h-100 position-absolute d-none" 
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Aspects juridiques et administratifs"></div>
+                                <div style="cursor: not-allowed;" id="mask_juridico_admin_area_btn" class="w-100 h-100 position-absolute d-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Aspects juridiques et administratifs"></div>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="technique_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects techniques</a>
-                                <div style="cursor: not-allowed;" id="mask_technique_area_btn" class="w-100 h-100 position-absolute d-none" 
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect juridiques et administratifs de ce dossier client"></div>
+                                <div style="cursor: not-allowed;" id="mask_technique_area_btn" class="w-100 h-100 position-absolute d-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect juridiques et administratifs de ce dossier client"></div>
                             </li>
                             <!--end::Nav item-->
 
                             <!--begin::Nav item-->
                             <li class="nav-item mt-2 flex-column position-relative">
                                 <a id="compta_finance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Aspects comptables et financiers</a>
-                                <div style="cursor: not-allowed;" id="mask_compta_finance_area_btn" class="w-100 h-100 position-absolute d-none" 
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect technique de ce dossier client"></div>
+                                <div style="cursor: not-allowed;" id="mask_compta_finance_area_btn" class="w-100 h-100 position-absolute d-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="Vous devez valider l'aspect technique de ce dossier client"></div>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -4217,7 +4213,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/pages_script.php'); ?>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         // Datatable1 = datatable collabo
         function update_data_datatable1(data) {
@@ -4232,18 +4228,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "bSort": false,
                 "order": [],
                 "data": data,
-                "initComplete": function(settings, json) {
+                "initComplete": function (settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
 
-            $('.dataTables_paginate').click(function() {
+            $('.dataTables_paginate').click(function () {
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
             })
 
-            $('.sorting').click(function() {
+            $('.sorting').click(function () {
                 setTimeout(() => {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4259,7 +4255,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     datatable: 'collabos_dossier',
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     update_data_datatable1(data.data);
                 }
             })
@@ -4282,24 +4278,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "orderable": false,
                 }, ],
                 "data": data,
-                "initComplete": function(settings, json) {
+                "initComplete": function (settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
 
-            $('#kt_filter_search2').keyup(function() {
+            $('#kt_filter_search2').keyup(function () {
                 documents_juridico_admin.search($(this).val()).draw();
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
             })
 
-            $('.dataTables_paginate').click(function() {
+            $('.dataTables_paginate').click(function () {
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
             })
 
-            $('.sorting').click(function() {
+            $('.sorting').click(function () {
                 setTimeout(() => {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4316,7 +4312,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     type_dossier_document: $('#filter_type_dossier_document2').val()
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     update_data_datatable2(data.data);
                 }
             })
@@ -4339,24 +4335,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "orderable": false,
                 }, ],
                 "data": data,
-                "initComplete": function(settings, json) {
+                "initComplete": function (settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
 
-            $('#kt_filter_search3').keyup(function() {
+            $('#kt_filter_search3').keyup(function () {
                 documents_techniques.search($(this).val()).draw();
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
             })
 
-            $('.dataTables_paginate').click(function() {
+            $('.dataTables_paginate').click(function () {
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
             })
 
-            $('.sorting').click(function() {
+            $('.sorting').click(function () {
                 setTimeout(() => {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4374,7 +4370,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     rubrique_document: $('#filter_rubrique_document3').val()
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     update_data_datatable3(data.data);
                 }
             })
@@ -4393,7 +4389,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_page_client'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     // Affiche les données dans la page
 
@@ -4446,7 +4442,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     } else if (!(data.nbr_doc_ready_techniques >= 1)) {
                         $('#mask_technique_area_btn').addClass('d-none');
                         $('#mask_compta_finance_area_btn').removeClass('d-none');
-                    } else{
+                    } else {
                         $('#mask_technique_area_btn').addClass('d-none');
                         $('#mask_compta_finance_area_btn').addClass('d-none');
                     }
@@ -4559,7 +4555,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 action: 'fetch_page_client'
             },
             dataType: "JSON",
-            success: function(data) {
+            success: function (data) {
 
                 // Affiche les données dans la page
 
@@ -4612,7 +4608,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 } else if (!(data.nbr_doc_ready_techniques >= 1)) {
                     $('#mask_technique_area_btn').addClass('d-none');
                     $('#mask_compta_finance_area_btn').removeClass('d-none');
-                } else{
+                } else {
                     $('#mask_technique_area_btn').addClass('d-none');
                     $('#mask_compta_finance_area_btn').addClass('d-none');
                 }
@@ -4631,7 +4627,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 datatable: 'collabos_dossier',
             },
             dataType: "JSON",
-            success: function(data) {
+            success: function (data) {
                 var collabos_dossier = $('#collabos_dossier').DataTable({
                     "processing": true,
                     "serverSide": false,
@@ -4641,13 +4637,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "bSort": false,
                     "order": [],
                     "data": data.data,
-                    "initComplete": function(settings, json) {
+                    "initComplete": function (settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
 
-                $('.sorting').click(function() {
+                $('.sorting').click(function () {
                     setTimeout(() => {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4665,7 +4661,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 type_dossier_document: $('#filter_type_dossier_document2').val()
             },
             dataType: "JSON",
-            success: function(data) {
+            success: function (data) {
                 var documents_juridico_admin = $('#documents_juridico_admin').DataTable({
                     "processing": true,
                     "serverSide": false,
@@ -4679,24 +4675,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         "orderable": false,
                     }, ],
                     "data": data.data,
-                    "initComplete": function(settings, json) {
+                    "initComplete": function (settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
 
-                $('#kt_filter_search2').keyup(function() {
+                $('#kt_filter_search2').keyup(function () {
                     documents_juridico_admin.search($(this).val()).draw();
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 })
 
-                $('.dataTables_paginate').click(function() {
+                $('.dataTables_paginate').click(function () {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
                 })
 
-                $('.sorting').click(function() {
+                $('.sorting').click(function () {
                     setTimeout(() => {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4715,7 +4711,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 rubrique_document: $('#filter_rubrique_document3').val()
             },
             dataType: "JSON",
-            success: function(data) {
+            success: function (data) {
                 var documents_techniques = $('#documents_techniques').DataTable({
                     "processing": true,
                     "serverSide": false,
@@ -4729,24 +4725,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         "orderable": false,
                     }, ],
                     "data": data.data,
-                    "initComplete": function(settings, json) {
+                    "initComplete": function (settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
 
-                $('#kt_filter_search3').keyup(function() {
+                $('#kt_filter_search3').keyup(function () {
                     documents_techniques.search($(this).val()).draw();
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 })
 
-                $('.dataTables_paginate').click(function() {
+                $('.dataTables_paginate').click(function () {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
                 })
 
-                $('.sorting').click(function() {
+                $('.sorting').click(function () {
                     setTimeout(() => {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js)
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -4755,22 +4751,22 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        $('#filter_type_dossier_document2').on('change', function(event) {
+        $('#filter_type_dossier_document2').on('change', function (event) {
             reload_datatable2();
         })
 
-        $('#filter_type_dossier_document3').on('change', function(event) {
+        $('#filter_type_dossier_document3').on('change', function (event) {
             reload_datatable3();
         })
 
-        $('#filter_rubrique_document3').on('change', function(event) {
+        $('#filter_rubrique_document3').on('change', function (event) {
             reload_datatable3();
         })
 
 
 
         // Afficher les infos selon la zone cliquée (generale, avance)
-        $(document).on('click', '#generale_area_btn', function(e) {
+        $(document).on('click', '#generale_area_btn', function (e) {
             e.preventDefault();
 
             // suppression de la classe active des autres area
@@ -4789,7 +4785,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             $('#infos_compta_finance').addClass('d-none');
         })
 
-        $(document).on('click', '#juridico_admin_area_btn', function(e) {
+        $(document).on('click', '#juridico_admin_area_btn', function (e) {
             e.preventDefault();
 
             // suppression de la classe active des autres area
@@ -4808,7 +4804,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             $('#infos_compta_finance').addClass('d-none');
         })
 
-        $(document).on('click', '#technique_area_btn', function(e) {
+        $(document).on('click', '#technique_area_btn', function (e) {
             e.preventDefault();
 
             // suppression de la classe active des autres area
@@ -4827,7 +4823,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             $('#infos_compta_finance').addClass('d-none');
         })
 
-        $(document).on('click', '#compta_finance_area_btn', function(e) {
+        $(document).on('click', '#compta_finance_area_btn', function (e) {
             e.preventDefault();
 
             // suppression de la classe active des autres area
@@ -4847,9 +4843,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         })
 
         // Pour la copie du code document
-        var KTModalShareEarn = function() {
+        var KTModalShareEarn = function () {
             // Private functions
-            var handleForm1 = function() {
+            var handleForm1 = function () {
                 var button = document.querySelector('#matricule_client_copy_btn');
                 var input = document.querySelector('#matricule_client');
                 var clipboard = new ClipboardJS(button);
@@ -4859,7 +4855,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
 
                 //  Copy text to clipboard. For more info check the plugin's documentation: https://clipboardjs.com/
-                clipboard.on('success', function(e) {
+                clipboard.on('success', function (e) {
 
                     console.log("Copied: " + e.text);
 
@@ -4867,7 +4863,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 });
             }
 
-            var handleForm2 = function() {
+            var handleForm2 = function () {
                 var button = document.querySelector('#ifu_entite_copy_btn');
                 var input = document.querySelector('#ifu_entite');
                 var clipboard = new ClipboardJS(button);
@@ -4877,7 +4873,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
 
                 //  Copy text to clipboard. For more info check the plugin's documentation: https://clipboardjs.com/
-                clipboard.on('success', function(e) {
+                clipboard.on('success', function (e) {
 
                     console.log("Copied: " + e.text);
 
@@ -4887,7 +4883,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
             // Public methods
             return {
-                init: function() {
+                init: function () {
                     handleForm1();
                     handleForm2();
                 }
@@ -4895,14 +4891,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }();
 
         // On document ready
-        KTUtil.onDOMContentLoaded(function() {
+        KTUtil.onDOMContentLoaded(function () {
             KTModalShareEarn.init();
         });
 
         /* ---------------- Données Page dossier ----------------- */
 
         // Lorsqu'on clique sur .activer_compte
-        $(document).on('click', '.activer_compte', function(e) {
+        $(document).on('click', '.activer_compte', function (e) {
             e.preventDefault();
             var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
@@ -4914,7 +4910,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 confirmButtonText: "Oui, activer !",
                 cancelButtonText: "Non, annuler !",
                 reverseButtons: true
-            }).then(function(result) {
+            }).then(function (result) {
                 if (result.value) {
 
                     $.ajax({
@@ -4925,7 +4921,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             action: 'activer_compte'
                         },
                         dataType: "JSON",
-                        success: function(data) {
+                        success: function (data) {
                             if (data.success) {
                                 reload_page(); // On recharge le datatable
 
@@ -4946,7 +4942,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .desactiver_compte
-        $(document).on('click', '.desactiver_compte', function(e) {
+        $(document).on('click', '.desactiver_compte', function (e) {
             e.preventDefault();
             var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
@@ -4959,7 +4955,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 confirmButtonText: "Oui, désactiver !",
                 cancelButtonText: "Non, annuler !",
                 reverseButtons: true
-            }).then(function(result) {
+            }).then(function (result) {
                 if (result.value) {
 
                     $.ajax({
@@ -4970,7 +4966,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             action: 'desactiver_compte'
                         },
                         dataType: "JSON",
-                        success: function(data) {
+                        success: function (data) {
                             if (data.success) {
                                 reload_page(); // On recharge le datatable
 
@@ -4991,7 +4987,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .view_detail_dossier
-        $(document).on('click', '.view_detail_dossier', function(e) {
+        $(document).on('click', '.view_detail_dossier', function (e) {
             e.preventDefault();
             var id_client = $(this).data('id_client');
 
@@ -5003,7 +4999,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'view_detail_dossier'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#detail_nom_client').html(data.nom_client);
                     $('#detail_matricule_client').html(data.matricule_client);
                     $('#detail_telephone_client').html(data.tel_client);
@@ -5015,7 +5011,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .view_detail_collabo
-        $(document).on('click', '.view_detail_collabo', function(e) {
+        $(document).on('click', '.view_detail_collabo', function (e) {
             e.preventDefault();
             var id_collaborateur = $(this).data('id_collaborateur');
 
@@ -5027,7 +5023,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'view_detail_collabo'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     $('#detail_collaborateur').html(data.collaborateur);
                     $('#detail_code_collaborateur').html(data.code_collaborateur);
@@ -5040,7 +5036,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .retirer_dossier
-        $(document).on('click', '.retirer_dossier', function(e) {
+        $(document).on('click', '.retirer_dossier', function (e) {
             e.preventDefault();
             var id_collaborateur = $(this).data('id_collaborateur');
             var id_client = $(this).data('id_client');
@@ -5054,7 +5050,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 confirmButtonText: "Oui, retirer !",
                 cancelButtonText: "Non, annuler !",
                 reverseButtons: true
-            }).then(function(result) {
+            }).then(function (result) {
                 if (result.value) {
 
                     $.ajax({
@@ -5066,7 +5062,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             action: 'retirer_dossier'
                         },
                         dataType: "JSON",
-                        success: function(data) {
+                        success: function (data) {
                             if (data.success) {
                                 reload_page(); // On recharge le datatable
 
@@ -5087,7 +5083,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .attribuer_collabo
-        $(document).on('click', '.attribuer_collabo', function(e) {
+        $(document).on('click', '.attribuer_collabo', function (e) {
             e.preventDefault();
             var id_client = $(this).data('id_client'); // On récupère l'id de l'article
 
@@ -5099,7 +5095,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_attribuer_collabo'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#attribuer_nom_client').html(data.nom_client);
                     $('#attribuer_collabo').html(data.dossier_html);
                     $('#attribuer_id_client').val(data.id_client);
@@ -5109,7 +5105,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour l'attribution un collaborateur à un dossier
-        $(document).on('submit', '#form_attribuer', function(event) {
+        $(document).on('submit', '#form_attribuer', function (event) {
             event.preventDefault();
 
             // Show loading indication
@@ -5121,8 +5117,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -5170,7 +5166,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $('#form_edit_doc_write').serialize(),
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     if (data.success) {
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
@@ -5198,7 +5194,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $('#form_edit_doc_other_write').serialize(),
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     if (data.success) {
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
@@ -5226,7 +5222,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $('#form_edit_doc_generate').serialize(),
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     if (data.success) {
                         toastr.success(data.message, '', {
                             positionClass: "toastr-bottom-left",
@@ -5241,7 +5237,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         }
 
         // Pour l'ajout d'un nouveau Document
-        $(document).on('submit', '#form_add_doc', function(event) {
+        $(document).on('submit', '#form_add_doc', function (event) {
             event.preventDefault();
 
             // Show loading indication
@@ -5264,8 +5260,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -5294,7 +5290,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         action: 'fetch_edit_doc_file'
                                     },
                                     dataType: "JSON",
-                                    success: function(data) {
+                                    success: function (data) {
                                         $('#edit_doc_other_file_modal input[name="id_document"]').val(id_document);
                                         $('#edit_doc_other_file_modal .modal-title').html(data.titre_document);
 
@@ -5341,7 +5337,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         });
 
                                         // When added file
-                                        myDropzone.on("addedfile", function(file) {
+                                        myDropzone.on("addedfile", function (file) {
                                             // Hookup the start button
                                             const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
                                             dropzoneItems.forEach(dropzoneItem => {
@@ -5349,7 +5345,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             });
                                         });
                                         // Packaging of files in array
-                                        myDropzone.on("success", function(file, serverFileName) {
+                                        myDropzone.on("success", function (file, serverFileName) {
                                             fileList.push({
                                                 "serverPath": serverFileName,
                                                 "uploadId": file.upload.uuid
@@ -5359,7 +5355,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                         });
                                         // Remove file from the list
-                                        myDropzone.on("removedfile", function(file) {
+                                        myDropzone.on("removedfile", function (file) {
                                             for (let i = 0; i < fileList.length; i++) {
                                                 if (file.upload.uuid == fileList[i].uploadId) {
                                                     $.ajax({
@@ -5371,7 +5367,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                             file_path: fileList[i].serverPath,
                                                         },
                                                         dataType: "json",
-                                                        success: function(data) {
+                                                        success: function (data) {
                                                             // do something
                                                         }
                                                     })
@@ -5389,14 +5385,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             // });
                                         });
                                         // Update the total progress bar
-                                        myDropzone.on("totaluploadprogress", function(progress) {
+                                        myDropzone.on("totaluploadprogress", function (progress) {
                                             const progressBars = dropzone.querySelectorAll('.progress-bar');
                                             progressBars.forEach(progressBar => {
                                                 progressBar.style.width = progress + "%";
                                             });
                                         });
                                         // Sending files to server
-                                        myDropzone.on("sending", function(file) {
+                                        myDropzone.on("sending", function (file) {
                                             // Show the total progress bar when upload starts
                                             const progressBars = dropzone.querySelectorAll('.progress-bar');
                                             progressBars.forEach(progressBar => {
@@ -5404,10 +5400,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             });
                                         });
                                         // Hide the total progress bar when nothing"s uploading anymore
-                                        myDropzone.on("complete", function(progress) {
+                                        myDropzone.on("complete", function (progress) {
                                             const progressBars = dropzone.querySelectorAll('.dz-complete');
 
-                                            setTimeout(function() {
+                                            setTimeout(function () {
                                                 progressBars.forEach(progressBar => {
                                                     progressBar.querySelector('.progress-bar').style.opacity = "0";
                                                     progressBar.querySelector('.progress').style.opacity = "0";
@@ -5416,7 +5412,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         });
 
                                         // Si on quitte le modal
-                                        $('#edit_doc_other_file_modal').on('hidden.bs.modal', function() {
+                                        $('#edit_doc_other_file_modal').on('hidden.bs.modal', function () {
                                             // Supprimer l'instance de dropzone
                                             myDropzone.destroy();
 
@@ -5431,7 +5427,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                         file_path: fileList[i].serverPath,
                                                     },
                                                     dataType: "json",
-                                                    success: function(data) {
+                                                    success: function (data) {
                                                         // do something
                                                     }
                                                 })
@@ -5442,7 +5438,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         });
 
                                         //Lorsque l'utilisateur tente de quitter la page
-                                        $(window).on('beforeunload', function() {
+                                        $(window).on('beforeunload', function () {
                                             // Remove file from the list
                                             for (let i = 0; i < fileList.length; i++) {
                                                 $.ajax({
@@ -5454,7 +5450,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                         file_path: fileList[i].serverPath,
                                                     },
                                                     dataType: "json",
-                                                    success: function(data) {
+                                                    success: function (data) {
                                                         // do something
                                                     }
                                                 })
@@ -5468,7 +5464,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 })
 
                                 // Lorsqu'on soumet le formulaire d'édition d'un document file
-                                $(document).on('submit', '#form_edit_doc_other_file', function(event) {
+                                $(document).on('submit', '#form_edit_doc_other_file', function (event) {
                                     event.preventDefault();
 
                                     // Show loading indication
@@ -5480,8 +5476,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         method: "POST",
                                         data: $(this).serialize(),
                                         dataType: "JSON",
-                                        success: function(data) {
-                                            setTimeout(function() {
+                                        success: function (data) {
+                                            setTimeout(function () {
                                                 // Hide loading indication
                                                 formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -5533,7 +5529,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         action: 'fetch_edit_doc_write'
                                     },
                                     dataType: "JSON",
-                                    success: function(data) {
+                                    success: function (data) {
                                         $('#edit_doc_other_write_modal input[name="id_document"]').val(id_document);
                                         $('#edit_doc_other_write_modal .modal-title').html(data.titre_document);
 
@@ -5558,7 +5554,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 }
                                             });
 
-                                            setTimeout(function() {
+                                            setTimeout(function () {
                                                 $('#edit_doc_other_write_modal .loader').hide();
                                             }, 2000);
                                         } else {
@@ -5566,7 +5562,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             // Reset editor and set a new content
                                             tinymce.get('id_edit_doc_other_write').resetContent("");
 
-                                            setTimeout(function() {
+                                            setTimeout(function () {
                                                 $('#edit_doc_other_write_modal .loader').hide();
                                             }, 2000);
                                         }
@@ -5575,6 +5571,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 })
 
                             }
+
+                            // Envoi de mail
+                            $.ajax({
+                                url: 'roll/ag/dossiers/fetch.php',
+                                method: 'POST',
+                                data: {
+                                    action: 'send_mail',
+                                    id_document: data.id_document,
+                                    option: 'add_doc',
+                                },
+                                dataType: 'JSON',
+                                success: function (data) {
+                                    if (data.success) {
+                                        console.log(data.message);
+                                    } else {
+                                        console.log(data.message);
+                                    }
+                                }
+                            });
 
                         } else {
                             toastr.error('une erreur s\'est produite', '', {
@@ -5588,7 +5603,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour l'affichage des détails d'un document
-        $(document).on('click', '.view_detail_document', function() {
+        $(document).on('click', '.view_detail_document', function () {
             var id_document = $(this).data('id_document');
             $.ajax({
                 url: "roll/ag/dossiers/fetch.php",
@@ -5598,7 +5613,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'view_detail_document'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     $('#detail_doc_aspect').html(data.aspect_document);
                     $('#detail_doc_code').html(data.code_document);
@@ -5612,7 +5627,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour voir l'aperçu d'un document write
-        $(document).on('click', '.preview_doc_write', function(e) {
+        $(document).on('click', '.preview_doc_write', function (e) {
 
             var id_document = $(this).data('id_document');
 
@@ -5624,7 +5639,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_write'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_write_modal .doc-content').html(data.contenu_document);
                     $('#preview_doc_write_modal .modal-title').html(data.titre_document);
                 }
@@ -5633,7 +5648,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour voir l'aperçu d'un document generate
-        $(document).on('click', '.preview_doc_generate', function(e) {
+        $(document).on('click', '.preview_doc_generate', function (e) {
 
             var id_document = $(this).data('id_document');
 
@@ -5645,7 +5660,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_generate'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_generate_modal .doc-content').html(data.contenu_document);
                     $('#preview_doc_generate_modal .modal-title').html(data.titre_document);
                 }
@@ -5654,7 +5669,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour voir l'aperçu d'un document file
-        $(document).on('click', '.preview_doc_file', function(e) {
+        $(document).on('click', '.preview_doc_file', function (e) {
 
             var id_document = $(this).data('id_document');
             $('#preview_doc_file_modal .refresh-preview').data('id_document', id_document);
@@ -5667,7 +5682,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_file'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_file_modal .modal-title').html(data.titre_document);
                 }
@@ -5676,7 +5691,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Pour voir l'aperçu d'un document scan
-        $(document).on('click', '.preview_doc_scan', function(e) {
+        $(document).on('click', '.preview_doc_scan', function (e) {
 
             var id_document = $(this).data('id_document');
             $('#preview_doc_scan_modal .refresh-preview').data('id_document', id_document);
@@ -5689,7 +5704,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_scan'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
                 }
@@ -5698,7 +5713,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Quand on clique sur .preview_doc_file_modal .refresh-preview
-        $(document).on('click', '#preview_doc_file_modal .refresh-preview', function(e) {
+        $(document).on('click', '#preview_doc_file_modal .refresh-preview', function (e) {
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -5709,7 +5724,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_file'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_file_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_file_modal .modal-title').html(data.titre_document);
                 }
@@ -5717,7 +5732,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Quand on clique sur .preview_doc_scan_modal .refresh-preview
-        $(document).on('click', '#preview_doc_scan_modal .refresh-preview', function(e) {
+        $(document).on('click', '#preview_doc_scan_modal .refresh-preview', function (e) {
             var id_document = $(this).data('id_document');
 
             $.ajax({
@@ -5728,7 +5743,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'preview_doc_scan'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#preview_doc_scan_modal .doc-content').html(data.iframe_html);
                     $('#preview_doc_scan_modal .modal-title').html(data.titre_document);
                 }
@@ -5737,7 +5752,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* -----------------Modification d'un document write---------------- */
         //Lorsqu'on clique sur .edit_doc_write
-        $(document).on('click', '.edit_doc_write', function() {
+        $(document).on('click', '.edit_doc_write', function () {
 
             var id_document = $(this).data('id_document');
             $('#edit_doc_write_modal .loader').show();
@@ -5750,7 +5765,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_doc_write'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#edit_doc_write_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_write_modal .modal-title').html(data.titre_document);
 
@@ -5775,7 +5790,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             }
                         });
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#edit_doc_write_modal .loader').hide();
                         }, 2000);
                     } else {
@@ -5783,7 +5798,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // Reset editor and set a new content
                         tinymce.get('id_edit_doc_write').resetContent(data.contenu_document);
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#edit_doc_write_modal .loader').hide();
                         }, 2000);
                     }
@@ -5794,7 +5809,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* -----------------Modification d'un document generate---------------- */
         //Lorsqu'on clique sur .edit_doc_generate
-        $(document).on('click', '.edit_doc_generate', function() {
+        $(document).on('click', '.edit_doc_generate', function () {
 
             var id_document = $(this).data('id_document');
             $('#edit_doc_generate_modal .loader').show();
@@ -5807,7 +5822,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_doc_generate'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#edit_doc_generate_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_generate_modal .modal-title').html(data.titre_document);
 
@@ -5833,7 +5848,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             }
                         });
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#edit_doc_generate_modal .loader').hide();
                         }, 2000);
                     } else {
@@ -5841,7 +5856,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // Reset editor and set a new content
                         tinymce.get('id_edit_doc_generate').resetContent(data.contenu_document);
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#edit_doc_generate_modal .loader').hide();
                         }, 2000);
                     }
@@ -5860,7 +5875,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         const dropzone = document.querySelector(id);
 
         // Lorsqu'on clique sur .edit_doc_file
-        $(document).on('click', '.edit_doc_file', function() {
+        $(document).on('click', '.edit_doc_file', function () {
 
             var id_document = $(this).data('id_document');
             $.ajax({
@@ -5871,7 +5886,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_doc_file'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#edit_doc_file_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_file_modal .modal-title').html(data.titre_document);
 
@@ -5918,7 +5933,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     // When added file
-                    myDropzone.on("addedfile", function(file) {
+                    myDropzone.on("addedfile", function (file) {
                         // Hookup the start button
                         const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
                         dropzoneItems.forEach(dropzoneItem => {
@@ -5926,7 +5941,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         });
                     });
                     // Packaging of files in array
-                    myDropzone.on("success", function(file, serverFileName) {
+                    myDropzone.on("success", function (file, serverFileName) {
                         fileList.push({
                             "serverPath": serverFileName,
                             "uploadId": file.upload.uuid
@@ -5936,7 +5951,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     });
                     // Remove file from the list
-                    myDropzone.on("removedfile", function(file) {
+                    myDropzone.on("removedfile", function (file) {
                         for (let i = 0; i < fileList.length; i++) {
                             if (file.upload.uuid == fileList[i].uploadId) {
                                 $.ajax({
@@ -5948,7 +5963,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         file_path: fileList[i].serverPath,
                                     },
                                     dataType: "json",
-                                    success: function(data) {
+                                    success: function (data) {
                                         // do something
                                     }
                                 })
@@ -5966,14 +5981,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // });
                     });
                     // Update the total progress bar
-                    myDropzone.on("totaluploadprogress", function(progress) {
+                    myDropzone.on("totaluploadprogress", function (progress) {
                         const progressBars = dropzone.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
                             progressBar.style.width = progress + "%";
                         });
                     });
                     // Sending files to server
-                    myDropzone.on("sending", function(file) {
+                    myDropzone.on("sending", function (file) {
                         // Show the total progress bar when upload starts
                         const progressBars = dropzone.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
@@ -5981,10 +5996,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         });
                     });
                     // Hide the total progress bar when nothing"s uploading anymore
-                    myDropzone.on("complete", function(progress) {
+                    myDropzone.on("complete", function (progress) {
                         const progressBars = dropzone.querySelectorAll('.dz-complete');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             progressBars.forEach(progressBar => {
                                 progressBar.querySelector('.progress-bar').style.opacity = "0";
                                 progressBar.querySelector('.progress').style.opacity = "0";
@@ -5993,7 +6008,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     // Si on quitte le modal
-                    $('#edit_doc_file_modal').on('hidden.bs.modal', function() {
+                    $('#edit_doc_file_modal').on('hidden.bs.modal', function () {
                         // Supprimer l'instance de dropzone
                         myDropzone.destroy();
 
@@ -6008,7 +6023,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     file_path: fileList[i].serverPath,
                                 },
                                 dataType: "json",
-                                success: function(data) {
+                                success: function (data) {
                                     // do something
                                 }
                             })
@@ -6019,7 +6034,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     //Lorsque l'utilisateur tente de quitter la page
-                    $(window).on('beforeunload', function() {
+                    $(window).on('beforeunload', function () {
                         // Remove file from the list
                         for (let i = 0; i < fileList.length; i++) {
                             $.ajax({
@@ -6031,7 +6046,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     file_path: fileList[i].serverPath,
                                 },
                                 dataType: "json",
-                                success: function(data) {
+                                success: function (data) {
                                     // do something
                                 }
                             })
@@ -6046,7 +6061,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire d'édition d'un document file
-        $(document).on('submit', '#form_edit_doc_file', function(event) {
+        $(document).on('submit', '#form_edit_doc_file', function (event) {
             event.preventDefault();
 
             // Show loading indication
@@ -6058,8 +6073,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -6107,7 +6122,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         const dropzone1 = document.querySelector(id1);
 
         // Lorsqu'on clique sur .edit_doc_scan
-        $(document).on('click', '.edit_doc_scan', function() {
+        $(document).on('click', '.edit_doc_scan', function () {
 
             var id_document = $(this).data('id_document');
             $.ajax({
@@ -6118,7 +6133,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_doc_scan'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
                     $('#edit_doc_scan_modal input[name="id_document"]').val(id_document);
                     $('#edit_doc_scan_modal .modal-title').html(data.titre_document);
 
@@ -6165,7 +6180,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     // When added file
-                    myDropzone.on("addedfile", function(file) {
+                    myDropzone.on("addedfile", function (file) {
                         // Hookup the start button
                         const dropzoneItems = dropzone1.querySelectorAll('.dropzone-item');
                         dropzoneItems.forEach(dropzoneItem => {
@@ -6173,7 +6188,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         });
                     });
                     // Packaging of files in array
-                    myDropzone.on("success", function(file, serverFileName) {
+                    myDropzone.on("success", function (file, serverFileName) {
                         fileList.push({
                             "serverPath": serverFileName,
                             "uploadId": file.upload.uuid
@@ -6183,7 +6198,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     });
                     // Remove file from the list
-                    myDropzone.on("removedfile", function(file) {
+                    myDropzone.on("removedfile", function (file) {
                         for (let i = 0; i < fileList.length; i++) {
                             if (file.upload.uuid == fileList[i].uploadId) {
                                 $.ajax({
@@ -6195,7 +6210,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         file_path: fileList[i].serverPath,
                                     },
                                     dataType: "json",
-                                    success: function(data) {
+                                    success: function (data) {
                                         // do something
                                     }
                                 })
@@ -6213,14 +6228,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // });
                     });
                     // Update the total progress bar
-                    myDropzone.on("totaluploadprogress", function(progress) {
+                    myDropzone.on("totaluploadprogress", function (progress) {
                         const progressBars = dropzone1.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
                             progressBar.style.width = progress + "%";
                         });
                     });
                     // Sending files to server
-                    myDropzone.on("sending", function(file) {
+                    myDropzone.on("sending", function (file) {
                         // Show the total progress bar when upload starts
                         const progressBars = dropzone1.querySelectorAll('.progress-bar');
                         progressBars.forEach(progressBar => {
@@ -6228,10 +6243,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         });
                     });
                     // Hide the total progress bar when nothing"s uploading anymore
-                    myDropzone.on("complete", function(progress) {
+                    myDropzone.on("complete", function (progress) {
                         const progressBars = dropzone1.querySelectorAll('.dz-complete');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             progressBars.forEach(progressBar => {
                                 progressBar.querySelector('.progress-bar').style.opacity = "0";
                                 progressBar.querySelector('.progress').style.opacity = "0";
@@ -6240,7 +6255,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     // Si on quitte le modal
-                    $('#edit_doc_scan_modal').on('hidden.bs.modal', function() {
+                    $('#edit_doc_scan_modal').on('hidden.bs.modal', function () {
                         // Supprimer l'instance de dropzone
                         myDropzone.destroy();
 
@@ -6255,7 +6270,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     file_path: fileList[i].serverPath,
                                 },
                                 dataType: "json",
-                                success: function(data) {
+                                success: function (data) {
                                     // do something
                                 }
                             })
@@ -6266,7 +6281,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     });
 
                     //Lorsque l'utilisateur tente de quitter la page
-                    $(window).on('beforeunload', function() {
+                    $(window).on('beforeunload', function () {
                         // Remove file from the list
                         for (let i = 0; i < fileList.length; i++) {
                             $.ajax({
@@ -6278,7 +6293,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     file_path: fileList[i].serverPath,
                                 },
                                 dataType: "json",
-                                success: function(data) {
+                                success: function (data) {
                                     // do something
                                 }
                             })
@@ -6293,7 +6308,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire d'édition d'un document file
-        $(document).on('submit', '#form_edit_doc_scan', function() {
+        $(document).on('submit', '#form_edit_doc_scan', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -6305,8 +6320,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -6384,7 +6399,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Lorsqu'on clique sur .edit_form_doc_generate
         init_repeater_count_edit_form_doc_generate = 0;
-        $(document).on('click', '.edit_form_doc_generate', function(e) {
+        $(document).on('click', '.edit_form_doc_generate', function (e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
 
@@ -6396,7 +6411,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_doc_generate'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     if (data.table_document == 'doc_8_fiche_id_client') {
 
@@ -6544,7 +6559,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     action: 'fetch_table'
                                 },
                                 dataType: "JSON",
-                                success: function(data) {
+                                success: function (data) {
 
                                     $template = `
                                         <div data-repeater-item>
@@ -6605,11 +6620,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     $('#table_doc_8_fiche_id_client_activite_client_repeater').repeater({
                                         initEmpty: false,
 
-                                        show: function() {
+                                        show: function () {
                                             $(this).slideDown();
                                         },
 
-                                        hide: function(deleteElement) {
+                                        hide: function (deleteElement) {
                                             $(this).slideUp(deleteElement);
                                         },
                                     });
@@ -6628,7 +6643,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     action: 'fetch_table'
                                 },
                                 dataType: "JSON",
-                                success: function(data) {
+                                success: function (data) {
 
                                     $template = `
                                         <div data-repeater-item>
@@ -6702,11 +6717,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     $('#table_doc_8_fiche_id_client_dirigeant_client_repeater').repeater({
                                         initEmpty: false,
 
-                                        show: function() {
+                                        show: function () {
                                             $(this).slideDown();
                                         },
 
-                                        hide: function(deleteElement) {
+                                        hide: function (deleteElement) {
                                             $(this).slideUp(deleteElement);
                                         },
                                     });
@@ -6724,7 +6739,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     action: 'fetch_table'
                                 },
                                 dataType: "JSON",
-                                success: function(data) {
+                                success: function (data) {
 
                                     $template = `
                                         <div data-repeater-item>
@@ -6798,11 +6813,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     $('#table_doc_8_fiche_id_client_membre_conseil_client_repeater').repeater({
                                         initEmpty: false,
 
-                                        show: function() {
+                                        show: function () {
                                             $(this).slideDown();
                                         },
 
-                                        hide: function(deleteElement) {
+                                        hide: function (deleteElement) {
                                             $(this).slideUp(deleteElement);
                                         },
                                     });
@@ -6918,7 +6933,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         // Lorsqu'on clique sur .edit_info_doc_file
         init_repeater_count_edit_info_doc_file = 0;
-        $(document).on('click', '.edit_info_doc_file', function(e) {
+        $(document).on('click', '.edit_info_doc_file', function (e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
 
@@ -6930,7 +6945,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_edit_info_doc_file'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     if (data.table_info_document == 'doc_6_info_lettre_mission') {
 
@@ -6973,7 +6988,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     action: 'fetch_table'
                                 },
                                 dataType: "JSON",
-                                success: function(data) {
+                                success: function (data) {
 
                                     $template = `
                                         <div data-repeater-item>
@@ -7060,20 +7075,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             initEmpty: false,
 
                                             selector: '.inner-repeater',
-                                            show: function() {
+                                            show: function () {
                                                 $(this).slideDown();
                                             },
 
-                                            hide: function(deleteElement) {
+                                            hide: function (deleteElement) {
                                                 $(this).slideUp(deleteElement);
                                             }
                                         }],
 
-                                        show: function() {
+                                        show: function () {
                                             $(this).slideDown();
                                         },
 
-                                        hide: function(deleteElement) {
+                                        hide: function (deleteElement) {
                                             $(this).slideUp(deleteElement);
                                         }
                                     });
@@ -7090,7 +7105,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_info_doc_file_table_doc_6_info_lettre_mission
-        $(document).on('submit', '#form_edit_info_doc_file_table_doc_6_info_lettre_mission', function() {
+        $(document).on('submit', '#form_edit_info_doc_file_table_doc_6_info_lettre_mission', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -7102,8 +7117,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -7138,7 +7153,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_8_fiche_id_client
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_8_fiche_id_client', function() {
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_8_fiche_id_client', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -7150,8 +7165,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -7186,7 +7201,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_3_accept_mission
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_3_accept_mission', function() {
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_3_accept_mission', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -7198,8 +7213,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -7234,7 +7249,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_form_doc_generate_table_doc_19_quiz_lcb
-        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_19_quiz_lcb', function() {
+        $(document).on('submit', '#form_edit_form_doc_generate_table_doc_19_quiz_lcb', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -7246,8 +7261,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
@@ -7283,8 +7298,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* -----------------Suppression des documents---------------- */
         // Lorsqu'on clique sur .delete_doc
-        $(document).on('click', '.delete_doc', function(e) {
-            +
+        $(document).on('click', '.delete_doc', function (e) {
             e.preventDefault();
             var id_document = $(this).data('id_document');
 
@@ -7300,7 +7314,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     confirmButton: "btn fw-bold btn-danger",
                     cancelButton: "btn btn-light fw-bold btn-active-light-primary"
                 }
-            }).then(function(result) {
+            }).then(function (result) {
                 if (result.value) {
                     $.ajax({
                         url: "roll/ag/dossiers/fetch.php",
@@ -7310,7 +7324,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             action: 'delete_doc'
                         },
                         dataType: "JSON",
-                        success: function(data) {
+                        success: function (data) {
                             if (data.success) {
                                 Swal.fire({
                                     title: "Supprimé !",
@@ -7325,6 +7339,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                                 reload_page(); // On recharge le datatable
 
+                                // Envoi de mail
+                                $.ajax({
+                                    url: 'roll/ag/dossiers/fetch.php',
+                                    method: 'POST',
+                                    data: {
+                                        action: 'send_mail',
+                                        id_document: data.id_document,
+                                        option: 'delete_doc',
+                                    },
+                                    dataType: 'JSON',
+                                    success: function (data) {
+                                        if (data.success) {
+                                            console.log(data.message);
+                                        } else {
+                                            console.log(data.message);
+                                        }
+                                    }
+                                });
+
                             } else {
                                 toastr.error(data.message, '', {
                                     positionClass: "toastr-bottom-left",
@@ -7338,7 +7371,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         /* -----------------Information de relance client---------------- */
         // Lorsqu'on clique sur .info_relance
-        $(document).on('click', '.info_relance', function(e) {
+        $(document).on('click', '.info_relance', function (e) {
             e.preventDefault();
 
             $.ajax({
@@ -7348,7 +7381,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     action: 'fetch_info_relance'
                 },
                 dataType: "JSON",
-                success: function(data) {
+                success: function (data) {
 
                     if (data.relance_auto_client == 'oui') {
                         $('#id_edit_info_relance_auto').prop('checked', true);
@@ -7366,7 +7399,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on change le checkbox #id_edit_info_relance_auto
-        $(document).on('change', '#id_edit_info_relance_auto', function() {
+        $(document).on('change', '#id_edit_info_relance_auto', function () {
             if ($(this).is(':checked')) {
                 $('#form_edit_info_relance .relance-info-option').removeClass('d-none');
             } else {
@@ -7375,7 +7408,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on soumet le formulaire #form_edit_info_relance
-        $(document).on('submit', '#form_edit_info_relance', function() {
+        $(document).on('submit', '#form_edit_info_relance', function () {
             event.preventDefault();
 
             // Show loading indication
@@ -7387,8 +7420,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
-                success: function(data) {
-                    setTimeout(function() {
+                success: function (data) {
+                    setTimeout(function () {
                         // Hide loading indication
                         formSubmitButton.removeAttribute('data-kt-indicator');
 
