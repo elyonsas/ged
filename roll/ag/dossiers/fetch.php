@@ -511,10 +511,10 @@ if (isset($_POST['datatable'])) {
             $n_document = $row['n_document'];
             $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
             $titre_document = $row['titre_document'];
+            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $type_document = $row['type_document'];
             $table_document = $row['table_document'];
             $table_info_document = $row['table_info_document'];
-            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
             $src_scan_document = $row['src_scan_document'];
@@ -1235,10 +1235,10 @@ if (isset($_POST['datatable'])) {
             $n_document = $row['n_document'];
             $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
             $titre_document = $row['titre_document'];
+            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $type_document = $row['type_document'];
             $table_document = $row['table_document'];
             $table_info_document = $row['table_info_document'];
-            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
             $src_scan_document = $row['src_scan_document'];
@@ -1529,6 +1529,7 @@ if (isset($_POST['datatable'])) {
                         }
                     } else if ($type_document == 'file') {
                         if ($table_document != 'document_file') {
+                            dump($result['id_document']);
                             $action = <<<HTML
 
                                 <td>
@@ -1902,6 +1903,191 @@ if (isset($_POST['datatable'])) {
     }
 
     if ($_POST['datatable'] == 'documents_sommaire') {
+
+        $output = array();
+
+        $query = "SELECT * FROM document WHERE n_document >= 1 AND n_document <= 19 ORDER BY n_document ASC";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $data = array();
+
+        foreach ($result as $row) {
+            $sub_array = array();
+
+            $id_document = $row['id_document'];
+            $n_document = $row['n_document'];
+            $titre_document = $row['titre_document'];
+            // Recupérer la chaine de caractère regex (DOC N°\d*-?\d* ) dans le titre du document
+            $regex = preg_match('/DOC N°\d*-?\d* /', $titre_document, $document);
+            // remplacer regex (DOC N°\d*-?\d* ) par '' dans le titre du document
+            $titre_document = preg_replace('/DOC N°\d*-?\d* /', '', $titre_document);
+            $max_titre_document = (strlen($titre_document) > 100) ? mb_substr($titre_document, 0, 100) . '...' : $titre_document;
+            $type_document = $row['type_document'];
+            $table_document = $row['table_document'];
+            $table_info_document = $row['table_info_document'];
+            $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
+            $statut_document = $row['statut_document'];
+            $src_scan_document = $row['src_scan_document'];
+
+            $statut_document = $row['statut_document'];
+            switch ($statut_document) {
+                case 'valide':
+                    $statut_document_html = <<<HTML
+                        <span class="badge badge-light-success">Validé</span>
+                    HTML;
+                    break;
+                case 'invalide':
+                    $statut_document_html = <<<HTML
+                        <span class="badge badge-light-danger">Invalidé</span>
+                    HTML;
+                    break;
+            }
+
+            // Document
+            if ($statut_document == 'valide') {
+
+                if ($src_scan_document != NULL) {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    }
+                } else {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                            </div>
+                        HTML;
+                    }
+                }
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" class="d-flex" data-id_document="{$id_document}">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        class="fs-6 text-gray-800 text-hover-primary min-w-100px">$document[0]</span>
+                    </div>
+                HTML;
+            }
+
+            // Intitulé
+            if ($statut_document == 'valide') {
+
+                if ($src_scan_document != NULL) {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                } else {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                }
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                    </div>
+                HTML;
+            }
+
+            $data[] = $sub_array;
+        }
+
+        $output = array(
+            "data" => $data
+        );
 
     }
 }
@@ -2840,6 +3026,7 @@ if (isset($_POST['action'])) {
         $update = update(
             'document',
             [
+                'n_document' => $id_document,
                 'code_document' => 13000 + $id_document
             ],
             "id_document = '$id_document'",

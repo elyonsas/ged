@@ -316,7 +316,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <!--end::Row Générale-->
 
                 <!--begin::Row Générale-->
-                <div id="infos_sommaire" class="row g-5 g-xxl-8">
+                <div id="infos_sommaire" class="row g-5 g-xxl-8 d-none">
                     <div class="col-xl-12"> 
                         <!--begin::Card-->
                         <div class="card mb-5 mb-xxl-8">
@@ -353,14 +353,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <!--end::Chart-->
 
                                 <!--begin::Table container-->
-                                <div class="table-responsive mx-20">
+                                <div class="table-responsive" style="max-width: 600px; margin: 0 auto;">
                                     <!--begin::Table-->
                                     <table id="documents_sommaire" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
                                         <!--begin::Head-->
                                         <thead class="fs-7 text-gray-400 text-uppercase">
                                             <tr>
-                                                <th class="text-center">Documents</th>
-                                                <th class="text-center">Intitulés</th>
+                                                <th class="text-start">Documents</th>
+                                                <th class="min-w-350px text-center">Intitulés</th>
                                             </tr>
                                         </thead>
                                         <!--end::Head-->
@@ -4460,7 +4460,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "serverSide": false,
                 "paging": false,
                 "bInfo": false,
-                "bFilter": false,
+                "bFilter": true,
                 "bSort": false,
                 "order": [],
                 "columnDefs": [],
@@ -4894,7 +4894,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "serverSide": false,
                     "paging": false,
                     "bInfo": false,
-                    "bFilter": false,
+                    "bFilter": true,
                     "bSort": false,
                     "order": [],
                     "columnDefs": [],
