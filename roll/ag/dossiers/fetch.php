@@ -508,6 +508,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_document = $row['id_document'];
+            $n_document = $row['n_document'];
             $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
             $titre_document = $row['titre_document'];
             $type_document = $row['type_document'];
@@ -531,6 +532,11 @@ if (isset($_POST['datatable'])) {
                     HTML;
                     break;
             }
+
+            // N° Document
+            $sub_array[] = <<<HTML
+                $n_document
+            HTML;
 
             // Document
             if ($statut_document == 'valide') {
@@ -1226,6 +1232,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_document = $row['id_document'];
+            $n_document = $row['n_document'];
             $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
             $titre_document = $row['titre_document'];
             $type_document = $row['type_document'];
@@ -1249,6 +1256,11 @@ if (isset($_POST['datatable'])) {
                     HTML;
                     break;
             }
+
+            // N° Document
+            $sub_array[] = <<<HTML
+                $n_document
+            HTML;
 
             // Document
             if ($statut_document == 'valide') {

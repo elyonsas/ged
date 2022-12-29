@@ -447,6 +447,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--begin::Head-->
                                         <thead class="fs-7 text-gray-400 text-uppercase">
                                             <tr>
+                                                <th class="">#</th>
                                                 <th class="min-w-200px">Document</th>
                                                 <th class="">Dernière modification</th>
                                                 <th class="">statut</th>
@@ -555,6 +556,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <!--begin::Head-->
                                         <thead class="fs-7 text-gray-400 text-uppercase">
                                             <tr>
+                                                <th class="">#</th>
                                                 <th class="min-w-200px">Document</th>
                                                 <th class="">Dernière modification</th>
                                                 <th class="">statut</th>
