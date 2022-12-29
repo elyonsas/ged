@@ -199,6 +199,51 @@
 
         return $result['stat_ca_creance'];
     }
+
+    // Statistique client
+    function stat_ca_contrat_client(PDO $db, $id_client)
+    {
+        $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture 
+        WHERE id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result['stat_ca_contrat'];
+    }
+
+    function stat_ca_facture_client(PDO $db, $id_client)
+    {
+        $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture 
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result['stat_ca_facture'];
+    }
+
+    function stat_ca_encaisse_client(PDO $db, $id_client)
+    {
+        $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture 
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result['stat_ca_encaisse'];
+    }
+
+    function stat_ca_creance_client(PDO $db, $id_client)
+    {
+        $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture 
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result['stat_ca_creance'];
+    }
         
     function select_all_actifs_dossiers_collabo($id_collabo, PDO $db)
     {

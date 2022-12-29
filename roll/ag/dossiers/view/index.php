@@ -620,6 +620,58 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                             <!--end::Details-->
                                         </div>
                                     </div>
+                                    <div class="d-flex justify-content-between flex-wrap fs-2hx fw-bold text-gray-800 text-center mb-13">
+                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Contrat</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_stat_contrat" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Facturé</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_stat_facture" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Non Facturé</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_stat_non_facture" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Encaissé</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_stat_encaisse" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                            <!--begin::Title-->
+                                            <h5 class="mb-4">Créance</h5>
+                                            <!--end::Title-->
+                                            <!--begin::Details-->
+                                            <div class="mb-0">
+                                                <span id="view_stat_creance" class="fw-bold fs-1">--</span>
+                                            </div>
+                                            <!--end::Details-->
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
                                             <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
@@ -4545,6 +4597,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     total_facture = amount_format(data.total_facture);
                     total_regle = amount_format(data.total_regle);
 
+                    stat_contrat = data.stat_contrat;
+                    stat_facture = data.stat_facture;
+                    stat_non_facture = data.stat_non_facture;
+                    stat_encaisse = data.stat_encaisse;
+                    stat_creance = data.stat_creance;
+
                     total_echue = amount_format(data.total_echue);
                     nb_facture_echue = data.nb_facture_echue;
                     total_en_cour = amount_format(data.total_en_cour);
@@ -4562,6 +4620,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
                     $('#view_facture_total_solde').html(total_solde);
                     $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+
+                    $('#view_stat_contrat').html(stat_contrat);
+                    $('#view_stat_facture').html(stat_facture);
+                    $('#view_stat_non_facture').html(stat_non_facture);
+                    $('#view_stat_encaisse').html(stat_encaisse);
+                    $('#view_stat_creance').html(stat_creance);
 
                     // Validation des aspects
                     if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
@@ -4712,6 +4776,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 total_facture = amount_format(data.total_facture);
                 total_regle = amount_format(data.total_regle);
 
+                stat_contrat = data.stat_contrat;
+                stat_facture = data.stat_facture;
+                stat_non_facture = data.stat_non_facture;
+                stat_encaisse = data.stat_encaisse;
+                stat_creance = data.stat_creance;
+
                 total_echue = amount_format(data.total_echue);
                 nb_facture_echue = data.nb_facture_echue;
                 total_en_cour = amount_format(data.total_en_cour);
@@ -4729,6 +4799,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
                 $('#view_facture_total_solde').html(total_solde);
                 $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+
+                $('#view_stat_contrat').html(stat_contrat);
+                $('#view_stat_facture').html(stat_facture);
+                $('#view_stat_non_facture').html(stat_non_facture);
+                $('#view_stat_encaisse').html(stat_encaisse);
+                $('#view_stat_creance').html(stat_creance);
 
                 // Validation des aspects
                 if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {

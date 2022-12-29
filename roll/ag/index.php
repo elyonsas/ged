@@ -586,8 +586,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 						</div>
 						<!--end::LIst widget 25-->
 					</div>
-
-
+					
 				</div>
 				<!--end::Row-->
 

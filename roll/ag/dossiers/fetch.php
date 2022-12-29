@@ -3533,6 +3533,13 @@ if (isset($_POST['action'])) {
             $output['total_regle'] = $result['total_regle'];
             $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
 
+            $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
+            $output['stat_facture'] = stat_ca_facture_client($db, $id_client);
+            $output['stat_non_facture'] = stat_ca_contrat_client($db, $id_client) - stat_ca_facture_client($db, $id_client);
+            $output['stat_encaisse'] = stat_ca_encaisse_client($db, $id_client);
+            $output['stat_creance'] = stat_ca_creance_client($db, $id_client);
+
+
             // Récupérer les informations de la base de données
             $query = "SELECT SUM(montant_ttc_facture) as total_echue, COUNT(*) as nb_facture_echue 
             FROM facture WHERE id_client = $id_client AND statut_facture = 'relance'";
