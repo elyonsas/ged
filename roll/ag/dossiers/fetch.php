@@ -95,7 +95,7 @@ if (isset($_POST['datatable'])) {
             // Client
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a data-sorting="{$nom_client}" href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
                     class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                 </div>
             HTML;
@@ -541,7 +541,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -549,7 +549,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -557,7 +557,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -568,7 +568,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -576,7 +576,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -584,7 +584,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -594,7 +594,7 @@ if (isset($_POST['datatable'])) {
 
                 $sub_array[] = <<<HTML
                     <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                        <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                         class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                     </div>
                 HTML;
@@ -1259,7 +1259,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1267,7 +1267,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1275,7 +1275,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1286,7 +1286,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1294,7 +1294,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                                <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1302,7 +1302,7 @@ if (isset($_POST['datatable'])) {
 
                         $sub_array[] = <<<HTML
                             <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
-                                <span style="cursor: pointer;" data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                                 class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                             </div>
                         HTML;
@@ -1312,7 +1312,7 @@ if (isset($_POST['datatable'])) {
 
                 $sub_array[] = <<<HTML
                     <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
-                        <span data-sorting="{$titre_document}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
                         class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
                     </div>
                 HTML;
@@ -1887,6 +1887,10 @@ if (isset($_POST['datatable'])) {
         $output = array(
             "data" => $data
         );
+    }
+
+    if ($_POST['datatable'] == 'documents_sommaire') {
+
     }
 }
 
