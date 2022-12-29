@@ -42,7 +42,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 					<div class="col-md-4 col-lg-3 mb-5 mb-lg-0">
 						<!--begin::Card widget 17-->
-						<div class="card card-flush min-h-225px">
+						<div class="card card-flush min-h-250px">
 							<!--begin::Header-->
 							<div class="card-header pt-5">
 								<!--begin::Title-->
@@ -118,7 +118,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 					<div class="col-md-4 col-lg-3 mb-5 mb-lg-0">
 						<!--begin::List widget 25-->
-						<div class="card card-flush min-h-225px">
+						<div class="card card-flush min-h-250px">
 							<!--begin::Header-->
 							<div class="card-header pt-5">
 								<!--begin::Title-->
@@ -151,7 +151,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5 pb-3">
+							<div class="card-body pt-3 pb-3">
 								<!--begin::Item-->
 								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Section-->
@@ -180,6 +180,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
 										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db) ?>">0</span>
+										<!--end::Number-->
+									</div>
+									<!--end::Statistics-->
+								</div>
+								<!--end::Item-->
+								<!--begin::Separator-->
+								<div class="separator separator-dashed my-2"></div>
+								<!--end::Separator-->
+								<!--begin::Item-->
+								<div class="d-flex flex-stack flex-wrap">
+									<!--begin::Section-->
+									<div class="text-gray-700 fw-semibold fs-6 me-2">Non facturé</div>
+									<!--end::Section-->
+									<!--begin::Statistics-->
+									<div class="d-flex align-items-senter">
+										<!--begin::Number-->
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db) - stat_ca_facture($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -229,7 +247,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 					<div class="col-md-3 col-lg-2 mb-5 mb-lg-0">
 						<!--begin::List widget 25-->
-						<div class="card card-flush min-h-225px">
+						<div class="card card-flush min-h-250px">
 							<!--begin::Header-->
 							<div class="card-header pt-5">
 								<!--begin::Title-->
@@ -262,7 +280,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5 pb-3">
+							<div class="card-body pt-3 pb-3">
 								<!--begin::Item-->
 								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Statistics-->
@@ -285,6 +303,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
 										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 1) ?>">0</span>
+										<!--end::Number-->
+									</div>
+									<!--end::Statistics-->
+								</div>
+								<!--end::Item-->
+								<!--begin::Separator-->
+								<div class="separator separator-dashed my-2"></div>
+								<!--end::Separator-->
+								<!--begin::Item-->
+								<div class="d-flex flex-stack flex-wrap">
+									<!--begin::Statistics-->
+									<div class="d-flex align-items-senter">
+										<!--begin::Number-->
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 1) - stat_ca_facture($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -328,7 +361,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 					<div class="col-md-3 col-lg-2 mb-5 mb-lg-0">
 						<!--begin::List widget 25-->
-						<div class="card card-flush min-h-225px">
+						<div class="card card-flush min-h-250px">
 							<!--begin::Header-->
 							<div class="card-header pt-5">
 								<!--begin::Title-->
@@ -361,7 +394,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5 pb-3">
+							<div class="card-body pt-3 pb-3">
 								<!--begin::Item-->
 								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Statistics-->
@@ -384,6 +417,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
 										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 2) ?>">0</span>
+										<!--end::Number-->
+									</div>
+									<!--end::Statistics-->
+								</div>
+								<!--end::Item-->
+								<!--begin::Separator-->
+								<div class="separator separator-dashed my-2"></div>
+								<!--end::Separator-->
+								<!--begin::Item-->
+								<div class="d-flex flex-stack flex-wrap">
+									<!--begin::Statistics-->
+									<div class="d-flex align-items-senter">
+										<!--begin::Number-->
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 2) - stat_ca_facture($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -427,7 +475,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
 					<div class="col-md-3 col-lg-2 mb-5 mb-lg-0">
 						<!--begin::List widget 25-->
-						<div class="card card-flush min-h-225px">
+						<div class="card card-flush min-h-250px">
 							<!--begin::Header-->
 							<div class="card-header pt-5">
 								<!--begin::Title-->
@@ -460,7 +508,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5 pb-3">
+							<div class="card-body pt-3 pb-3">
 								<!--begin::Item-->
 								<div class="d-flex flex-stack flex-wrap">
 									<!--begin::Statistics-->
@@ -483,6 +531,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
 										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 3) ?>">0</span>
+										<!--end::Number-->
+									</div>
+									<!--end::Statistics-->
+								</div>
+								<!--end::Item-->
+								<!--begin::Separator-->
+								<div class="separator separator-dashed my-2"></div>
+								<!--end::Separator-->
+								<!--begin::Item-->
+								<div class="d-flex flex-stack flex-wrap">
+									<!--begin::Statistics-->
+									<div class="d-flex align-items-senter">
+										<!--begin::Number-->
+										<span class="text-gray-900 fw-bolder fs-6"
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 3) - stat_ca_facture($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
