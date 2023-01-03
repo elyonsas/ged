@@ -4609,15 +4609,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     taux_recouvrement = data.taux_recouvrement;
                     total_facture = amount_format(data.total_facture);
-                    query_total_facture = data.query_total_facture;
+                    query_total_facture = encodeURIComponent(data.query_total_facture);
                     total_regle = amount_format(data.total_regle);
-                    query_total_regle = data.query_total_regle;
+                    query_total_regle = encodeURIComponent(data.query_total_regle);
 
-                    stat_contrat = data.stat_contrat;
-                    stat_facture = data.stat_facture;
-                    stat_non_facture = data.stat_non_facture;
-                    stat_encaisse = data.stat_encaisse;
-                    stat_creance = data.stat_creance;
+                    stat_contrat = amount_format(data.stat_contrat);
+                    query_stat_contrat = encodeURIComponent(data.query_stat_contrat);
+                    stat_facture = amount_format(data.stat_facture);
+                    query_stat_facture = encodeURIComponent(data.query_stat_facture);
+                    stat_non_facture = amount_format(data.stat_non_facture);
+                    query_stat_non_facture = encodeURIComponent(data.query_stat_non_facture);
+                    stat_encaisse = amount_format(data.stat_encaisse);
+                    query_stat_encaisse = encodeURIComponent(data.query_stat_encaisse);
+                    stat_creance = amount_format(data.stat_creance);
+                    query_stat_creance = encodeURIComponent(data.query_stat_creance);
 
                     total_echue = amount_format(data.total_echue);
                     nb_facture_echue = data.nb_facture_echue;
@@ -4632,18 +4637,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     $('#view_facture_total_regle').html(total_regle);
                     $('#view_facture_total_regle_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_regle);
 
+                    $('#view_stat_contrat').html(stat_contrat);
+                    $('#view_stat_contrat_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_contrat);
+                    $('#view_stat_facture').html(stat_facture);
+                    $('#view_stat_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_facture);
+                    $('#view_stat_non_facture').html(stat_non_facture);
+                    $('#view_stat_non_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_non_facture);
+                    $('#view_stat_encaisse').html(stat_encaisse);
+                    $('#view_stat_encaisse_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_encaisse);
+                    $('#view_stat_creance').html(stat_creance);
+                    $('#view_stat_creance_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_creance);
+
                     $('#view_facture_total_echue').html(total_echue);
                     $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
                     $('#view_facture_total_en_cour').html(total_en_cour);
                     $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
                     $('#view_facture_total_solde').html(total_solde);
                     $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
-
-                    $('#view_stat_contrat').html(stat_contrat);
-                    $('#view_stat_facture').html(stat_facture);
-                    $('#view_stat_non_facture').html(stat_non_facture);
-                    $('#view_stat_encaisse').html(stat_encaisse);
-                    $('#view_stat_creance').html(stat_creance);
 
                     // Validation des aspects
                     if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {
@@ -4792,17 +4802,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 taux_recouvrement = data.taux_recouvrement;
                 total_facture = amount_format(data.total_facture);
-                query_total_facture = data.query_total_facture;
-                query_total_facture = encodeURIComponent(query_total_facture);
+                query_total_facture = encodeURIComponent(data.query_total_facture);
                 total_regle = amount_format(data.total_regle);
-                query_total_regle = data.query_total_regle;
-                query_total_regle = encodeURIComponent(query_total_regle);
+                query_total_regle = encodeURIComponent(data.query_total_regle);
 
-                stat_contrat = data.stat_contrat;
-                stat_facture = data.stat_facture;
-                stat_non_facture = data.stat_non_facture;
-                stat_encaisse = data.stat_encaisse;
-                stat_creance = data.stat_creance;
+                stat_contrat = amount_format(data.stat_contrat);
+                query_stat_contrat = encodeURIComponent(data.query_stat_contrat);
+                stat_facture = amount_format(data.stat_facture);
+                query_stat_facture = encodeURIComponent(data.query_stat_facture);
+                stat_non_facture = amount_format(data.stat_non_facture);
+                query_stat_non_facture = encodeURIComponent(data.query_stat_non_facture);
+                stat_encaisse = amount_format(data.stat_encaisse);
+                query_stat_encaisse = encodeURIComponent(data.query_stat_encaisse);
+                stat_creance = amount_format(data.stat_creance);
+                query_stat_creance = encodeURIComponent(data.query_stat_creance);
 
                 total_echue = amount_format(data.total_echue);
                 nb_facture_echue = data.nb_facture_echue;
@@ -4817,18 +4830,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 $('#view_facture_total_regle').html(total_regle);
                 $('#view_facture_total_regle_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_regle);
 
+                $('#view_stat_contrat').html(stat_contrat);
+                $('#view_stat_contrat_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_contrat);
+                $('#view_stat_facture').html(stat_facture);
+                $('#view_stat_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_facture);
+                $('#view_stat_non_facture').html(stat_non_facture);
+                $('#view_stat_non_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_non_facture);
+                $('#view_stat_encaisse').html(stat_encaisse);
+                $('#view_stat_encaisse_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_encaisse);
+                $('#view_stat_creance').html(stat_creance);
+                $('#view_stat_creance_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_stat_creance);
+
                 $('#view_facture_total_echue').html(total_echue);
                 $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
                 $('#view_facture_total_en_cour').html(total_en_cour);
                 $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
                 $('#view_facture_total_solde').html(total_solde);
                 $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
-
-                $('#view_stat_contrat').html(stat_contrat);
-                $('#view_stat_facture').html(stat_facture);
-                $('#view_stat_non_facture').html(stat_non_facture);
-                $('#view_stat_encaisse').html(stat_encaisse);
-                $('#view_stat_creance').html(stat_creance);
 
                 // Validation des aspects
                 if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {

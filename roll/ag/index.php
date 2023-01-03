@@ -197,7 +197,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db) - stat_ca_facture($db) ?>">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db) - stat_ca_facture($db) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -317,7 +317,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 1) - stat_ca_facture($db, 1) ?>">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db, 1) - stat_ca_facture($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -431,7 +431,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 2) - stat_ca_facture($db, 2) ?>">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db, 2) - stat_ca_facture($db, 2) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -545,7 +545,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
 										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 3) - stat_ca_facture($db, 3) ?>">0</span>
+										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db, 3) - stat_ca_facture($db, 3) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->

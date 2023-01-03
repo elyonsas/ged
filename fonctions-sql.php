@@ -124,6 +124,25 @@
         return $result['stat_client'];
     }
 
+    function stat_ca_all(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture, client WHERE client.id_client = facture.id_client 
+            AND id_departement = $id_departement AND statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        } else {
+            $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture 
+            WHERE statut_facture <> 'supprimer'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+        }
+
+        return $result['stat_ca_all'];
+    }
+
     function stat_ca_contrat(PDO $db, $id_departement = null)
     {
         if ($id_departement != null) {
@@ -201,6 +220,17 @@
     }
 
     // Statistique client
+    function stat_ca_all_client(PDO $db, $id_client)
+    {
+        $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture 
+        WHERE id_client = $id_client AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result['stat_ca_all'];
+    }
+
     function stat_ca_contrat_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture 
