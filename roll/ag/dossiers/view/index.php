@@ -688,31 +688,37 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
-                                            <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
-                                                <div class="text-white text-center fs-2 fw-bold">Facture échues</div>
-                                                <div class="text-center">
-                                                    <span id="view_facture_total_echue" class="text-light fw-bold fs-1 d-block">--</span>
-                                                    <span id="view_facture_nb_echue" class="text-dark fw-semibold fs-3">--</span>
+                                            <a id="view_facture_total_echue_query" href="#">
+                                                <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
+                                                    <div class="text-white text-center fs-2 fw-bold">Facture échues</div>
+                                                    <div class="text-center">
+                                                        <span id="view_facture_total_echue" class="text-light fw-bold fs-1 d-block">--</span>
+                                                        <span id="view_facture_nb_echue" class="text-dark fw-semibold fs-3">--</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
-                                            <div class="card card-flush bg-primary flex-column flex-stack py-5" style="background: linear-gradient(#009ef7 60%, #f5f8fa);">
-                                                <div class="text-white text-center fs-2 fw-bold">Facture en cours</div>
-                                                <div class="text-center">
-                                                    <span id="view_facture_total_en_cour" class="text-light fw-bold fs-1 d-block">--</span>
-                                                    <span id="view_facture_nb_en_cour" class="text-dark fw-semibold fs-3">--</span>
+                                            <a id="view_facture_total_en_cour_query" href="#">
+                                                <div class="card card-flush bg-primary flex-column flex-stack py-5" style="background: linear-gradient(#009ef7 60%, #f5f8fa);">
+                                                    <div class="text-white text-center fs-2 fw-bold">Facture en cours</div>
+                                                    <div class="text-center">
+                                                        <span id="view_facture_total_en_cour" class="text-light fw-bold fs-1 d-block">--</span>
+                                                        <span id="view_facture_nb_en_cour" class="text-dark fw-semibold fs-3">--</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
-                                            <div class="card card-flush bg-success flex-column flex-stack py-5" style="background: linear-gradient(#50cd89 60%, #f5f8fa);">
-                                                <div class="text-white text-center fs-2 fw-bold">Facture soldés</div>
-                                                <div class="text-center">
-                                                    <span id="view_facture_total_solde" class="text-light fw-bold fs-1 d-block">--</span>
-                                                    <span id="view_facture_nb_solde" class="text-dark fw-semibold fs-3">--</span>
+                                            <a id="view_facture_total_solde_query" href="#">
+                                                <div class="card card-flush bg-success flex-column flex-stack py-5" style="background: linear-gradient(#50cd89 60%, #f5f8fa);">
+                                                    <div class="text-white text-center fs-2 fw-bold">Facture soldés</div>
+                                                    <div class="text-center">
+                                                        <span id="view_facture_total_solde" class="text-light fw-bold fs-1 d-block">--</span>
+                                                        <span id="view_facture_nb_solde" class="text-dark fw-semibold fs-3">--</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <!--begin::Action-->
@@ -4819,10 +4825,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 total_echue = amount_format(data.total_echue);
                 nb_facture_echue = data.nb_facture_echue;
+                query_total_echue = encodeURIComponent(data.query_total_echue);
                 total_en_cour = amount_format(data.total_en_cour);
                 nb_facture_en_cour = data.nb_facture_en_cour;
+                query_total_en_cour = encodeURIComponent(data.query_total_en_cour);
                 total_solde = amount_format(data.total_solde);
                 nb_facture_solde = data.nb_facture_solde;
+                query_total_solde = encodeURIComponent(data.query_total_solde);
 
                 $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
                 $('#view_facture_total_facture').html(total_facture);
@@ -4843,10 +4852,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 $('#view_facture_total_echue').html(total_echue);
                 $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
+                $('#view_facture_total_echue_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_echue);
                 $('#view_facture_total_en_cour').html(total_en_cour);
                 $('#view_facture_nb_en_cour').html('(' + nb_facture_en_cour + ')');
+                $('#view_facture_total_en_cour_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_en_cour);
                 $('#view_facture_total_solde').html(total_solde);
                 $('#view_facture_nb_solde').html('(' + nb_facture_solde + ')');
+                $('#view_facture_total_solde_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_solde);
 
                 // Validation des aspects
                 if (!(data.nbr_doc_ready_juridiques_et_administratifs >= 4)) {

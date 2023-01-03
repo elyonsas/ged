@@ -3572,6 +3572,8 @@ if (isset($_POST['action'])) {
 
             $output['total_echue'] = $result['total_echue'] ?? '--';
             $output['nb_facture_echue'] = $result['nb_facture_echue'];
+            $output['query_total_echue'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'relance'";
 
             // Récupérer les informations de la base de données
             $query = "SELECT SUM(montant_ttc_facture) as total_en_cour, COUNT(*) as nb_facture_en_cour 
@@ -3582,6 +3584,8 @@ if (isset($_POST['action'])) {
 
             $output['total_en_cour'] = $result['total_en_cour'] ?? '--';
             $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
+            $output['query_total_en_cour'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'en cour'";
 
             // Récupérer les informations de la base de données
             $query = "SELECT SUM(montant_ttc_facture) as total_solde, COUNT(*) as nb_facture_solde 
@@ -3592,6 +3596,8 @@ if (isset($_POST['action'])) {
 
             $output['total_solde'] = $result['total_solde'] ?? '--';
             $output['nb_facture_solde'] = $result['nb_facture_solde'];
+            $output['query_total_solde'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'paye'";
         }
     }
     if ($_POST['action'] == 'fetch_table') {
