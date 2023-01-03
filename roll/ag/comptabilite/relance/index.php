@@ -53,10 +53,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-column">
                         <!--begin::Title-->
-                        <h5 class="mb-1 text-primary">Définissez ici les paramètres pour les relances automatiques client par mail</h5>
+                        <h5 class="mb-1 text-primary">Définissez ici les paramètres pour la relance automatique des clients par mail</h5>
                         <!--end::Title-->
                         <!--begin::Content-->
-                        <span>Utilisez les variables globals disponible pour construire votre template de relance. Vous avez aussi la possibilité d'activer ou de désactiver la relance automatique des clients dans l'<a href="roll/ag/dossiers"><u><span style="font-weight: 500;">aspect comptable et financière</span></u></a> de leurs dossier de travail</span>
+                        <span>Utilisez les variables globales disponible pour construire votre template de relance. Vous avez aussi la possibilité d'activer ou de désactiver la relance automatique des clients dans l'<a href="roll/ag/dossiers"><u><span style="font-weight: 500;">aspect comptable et financière</span></u></a> de leurs dossier de travail</span>
                         <!--end::Content-->
                     </div>
                     <!--end::Wrapper-->
