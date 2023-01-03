@@ -3533,9 +3533,11 @@ if (isset($_POST['action'])) {
             $result = $statement->fetch();
 
             $output['total_facture'] = $result['total_facture'];
-            $output['query_total_facture'] = $query;
+            $output['query_total_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
             $output['total_regle'] = $result['total_regle'];
-            $output['query_total_regle'] = $query;
+            $output['query_total_regle'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
             $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
 
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);

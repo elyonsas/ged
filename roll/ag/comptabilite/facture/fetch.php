@@ -51,8 +51,13 @@ if (isset($_POST['datatable'])) {
             }
         }
 
-        $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
+        // Récupération des factures
+        if ($_POST['query'] != ''){
+            $query = $_POST['query'];
+        }else{
+            $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
+        }
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -300,6 +305,12 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="encaisser_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#encaisser_facture_modal" data-id_facture="{$id_facture}">Encaisser facture</a>
                                     </div>
                                     <!--end::Menu item-->
 

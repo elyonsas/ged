@@ -404,13 +404,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="col-6 form-group">
                             <label class="fs-5 mb-2">Mode de paiement</label>
                             <select id="encaisser_paiement_mode" class="form-select form-select-solid" data-hide-search="true" data-dropdown-parent="#encaisser_facture_modal" data-allow-clear="true" data-control="select2" data-placeholder="N° Facture" name="mode_paiement" required>
+                                <option value="cheque">Chèque</option>
                                 <option value="versement">Versement</option>
                                 <option value="espece">Espèce</option>
                             </select>
                         </div>
                         <div class="col-6 form-group">
                             <label class="fs-5 mb-2">Montant TTC</label>
-                            <input id="encaisser_paiement_montant_ttc" type="text" class="form-control form-control-solid" placeholder="Références" name="montant_ttc_paiement" required>
+                            <input id="encaisser_paiement_montant_ttc" type="text" class="form-control form-control-solid" placeholder="Montant TTC" name="montant_ttc_paiement" required>
                         </div>
                     </div>
 
@@ -953,6 +954,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="${id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="encaisser_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#encaisser_facture_modal" data-id_facture="${id_facture}">Encaisser facture</a>
                                     </div>
                                     <!--end::Menu item-->
 

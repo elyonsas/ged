@@ -20,6 +20,8 @@ $menu_compta = "here show";
 $menu_compta_facture = "active";
 $menu_compta_relance = "";
 
+$query = $_GET['query'] ?? '';
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/header.php');
@@ -484,7 +486,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                         <div class="col-6 form-group">
                             <label class="fs-5 mb-2">Montant TTC</label>
-                            <input id="encaisser_paiement_montant_ttc" type="text" class="form-control form-control-solid" placeholder="Références" name="montant_ttc_paiement" required>
+                            <input id="encaisser_paiement_montant_ttc" type="text" class="form-control form-control-solid" placeholder="Montant TTC" name="montant_ttc_paiement" required>
                         </div>
                     </div>
 
@@ -599,7 +601,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: datatable,
-                    query: (window.location.search).replace('?', '')
+                    query: `<?= $query ?>`,
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -702,8 +704,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             method: "POST",
             data: {
                 datatable: 'all_factures',
-                // récupération du query en GET, s'il existe
-                query: (window.location.search).replace('?', '')
+                query: `<?= $query ?>`,
             },
             dataType: "JSON",
             success: function(data) {
