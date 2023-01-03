@@ -599,78 +599,92 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                                 <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-primary border-bottom w-100"></span>
                                             </span>
                                         </div>
-                                        <div class="mb-7 min-w-250px p-3" style="background-color: #abfdd0;">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Total facturé</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_facture_total_facture" class="fw-bold fs-1">--</span>
+                                        <a id="view_facture_total_facture_query" href="#">
+                                            <div class="mb-7 min-w-250px p-3" style="background-color: #abfdd0;">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Total facturé</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_facture_total_facture" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
-                                        <div class="mb-7 min-w-250px p-3" style="background-color: #abe5fd;">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Total réglé</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_facture_total_regle" class="fw-bold fs-1">--</span>
+                                        </a>
+                                        <a id="view_facture_total_regle_query" href="#">
+                                            <div class="mb-7 min-w-250px p-3" style="background-color: #abe5fd;">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Total réglé</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_facture_total_regle" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="d-flex justify-content-between flex-wrap fs-2hx fw-bold text-gray-800 text-center mb-13">
-                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Contrat</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_stat_contrat" class="fw-bold fs-1">--</span>
+                                        <a id="view_stat_contrat_query" href="#">
+                                            <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Contrat</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_stat_contrat" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
-                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Facturé</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_stat_facture" class="fw-bold fs-1">--</span>
+                                        </a>
+                                        <a id="view_stat_facture_query" href="#">
+                                            <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Facturé</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_stat_facture" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
-                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Non Facturé</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_stat_non_facture" class="fw-bold fs-1">--</span>
+                                        </a>
+                                        <a id="view_stat_non_facture_query" href="#">
+                                            <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Non Facturé</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_stat_non_facture" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
-                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Encaissé</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_stat_encaisse" class="fw-bold fs-1">--</span>
+                                        </a>
+                                        <a id="view_stat_encaisse_query" href="#">
+                                            <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Encaissé</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_stat_encaisse" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
-                                        <div class="mb-5 min-w-200px p-3 bg-secondary">
-                                            <!--begin::Title-->
-                                            <h5 class="mb-4">Créance</h5>
-                                            <!--end::Title-->
-                                            <!--begin::Details-->
-                                            <div class="mb-0">
-                                                <span id="view_stat_creance" class="fw-bold fs-1">--</span>
+                                        </a>
+                                        <a id="view_stat_creance_query" href="#">
+                                            <div class="mb-5 min-w-200px p-3 bg-secondary">
+                                                <!--begin::Title-->
+                                                <h5 class="mb-4">Créance</h5>
+                                                <!--end::Title-->
+                                                <!--begin::Details-->
+                                                <div class="mb-0">
+                                                    <span id="view_stat_creance" class="fw-bold fs-1 text-gray-800">--</span>
+                                                </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Details-->
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
@@ -4595,7 +4609,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     taux_recouvrement = data.taux_recouvrement;
                     total_facture = amount_format(data.total_facture);
+                    query_total_facture = data.query_total_facture;
                     total_regle = amount_format(data.total_regle);
+                    query_total_regle = data.query_total_regle;
 
                     stat_contrat = data.stat_contrat;
                     stat_facture = data.stat_facture;
@@ -4612,7 +4628,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                     $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
                     $('#view_facture_total_facture').html(total_facture);
+                    $('#view_facture_total_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_facture);
                     $('#view_facture_total_regle').html(total_regle);
+                    $('#view_facture_total_regle_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_regle);
 
                     $('#view_facture_total_echue').html(total_echue);
                     $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');
@@ -4774,7 +4792,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 taux_recouvrement = data.taux_recouvrement;
                 total_facture = amount_format(data.total_facture);
+                query_total_facture = data.query_total_facture;
+                query_total_facture = encodeURIComponent(query_total_facture);
                 total_regle = amount_format(data.total_regle);
+                query_total_regle = data.query_total_regle;
+                query_total_regle = encodeURIComponent(query_total_regle);
 
                 stat_contrat = data.stat_contrat;
                 stat_facture = data.stat_facture;
@@ -4791,7 +4813,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 $('#view_facture_taux_recouvrement').html(taux_recouvrement + '%');
                 $('#view_facture_total_facture').html(total_facture);
+                $('#view_facture_total_facture_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_facture);
                 $('#view_facture_total_regle').html(total_regle);
+                $('#view_facture_total_regle_query').attr('href', 'roll/ag/comptabilite/facture?query=' + query_total_regle);
 
                 $('#view_facture_total_echue').html(total_echue);
                 $('#view_facture_nb_echue').html('(' + nb_facture_echue + ')');

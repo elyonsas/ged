@@ -599,6 +599,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: datatable,
+                    query: (window.location.search).replace('?', '')
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -701,6 +702,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             method: "POST",
             data: {
                 datatable: 'all_factures',
+                // récupération du query en GET, s'il existe
+                query: (window.location.search).replace('?', '')
             },
             dataType: "JSON",
             success: function(data) {

@@ -3533,7 +3533,9 @@ if (isset($_POST['action'])) {
             $result = $statement->fetch();
 
             $output['total_facture'] = $result['total_facture'];
+            $output['query_total_facture'] = $query;
             $output['total_regle'] = $result['total_regle'];
+            $output['query_total_regle'] = $query;
             $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
 
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
