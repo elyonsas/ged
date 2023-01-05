@@ -16,6 +16,7 @@ $menu_tb = "";
 $menu_dt = "active";
 $menu_interlo = "";
 $menu_collabo = "";
+$menu_saisie_client = "";
 $menu_compta = "";
 $menu_compta_facture = "";
 $menu_compta_relance = "";

@@ -130,6 +130,28 @@
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
+                    <?php
+                    $icon = <<<HTML
+
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2022-12-26-231111/core/html/src/media/icons/duotune/general/gen032.svg-->
+                                    <span class="svg-icon svg-icon-muted svg-icon-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="8" y="9" width="3" height="10" rx="1.5" fill="currentColor"/>
+                                            <rect opacity="0.5" x="13" y="5" width="3" height="14" rx="1.5" fill="currentColor"/>
+                                            <rect x="18" y="11" width="3" height="8" rx="1.5" fill="currentColor"/>
+                                            <rect x="3" y="13" width="3" height="6" rx="1.5" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+
+                            HTML;
+                    ?>
+                    <?= single_menu('Saisies clients', $icon, 'roll/ag/saisies-clients', $menu_saisie_client) ?>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
 
                     <?php
                     $icon = <<<HTML
