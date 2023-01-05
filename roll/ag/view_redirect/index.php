@@ -24,6 +24,14 @@ if (isset($_GET['action'])) {
         header('Location: /ged/roll/ag/dossiers/view');
     }
 
+    if ($_GET['action'] == 'view_saisie_client') {
+
+        $id_client = $_GET['id_view_saisie_client'];
+        $_SESSION['id_view_saisie_client'] = $id_client;
+
+        header('Location: /ged/roll/ag/saisies-clients/view');
+    }
+
     if ($_GET['action'] == 'view_facture') {
 
         $id_facture = $_GET['id_view_facture'];

@@ -46,7 +46,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="card-header mt-5">
                         <!--begin::Card title-->
                         <div class="card-title flex-column">
-                            <h2>Clients</h2>
+                            <h2>Tous les collaborateurs</h2>
                         </div>
                         <!--begin::Card title-->
                         <!--begin::Card toolbar-->
@@ -73,13 +73,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Table container-->
                         <div class="table-responsive">
                             <!--begin::Table-->
-                            <table id="all_dossiers" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                            <table id="all_collabo" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
                                 <!--begin::Head-->
                                 <thead class="fs-7 text-gray-400 text-uppercase">
                                     <tr>
-                                        <th class="min-w-150px">Client</th>
-                                        <th class="min-w-75px">Matricule</th>
-                                        <th class="min-w-50px">Statut</th>
+                                        <th class="min-w-100px">Collaborateur</th>
+                                        <th class="min-w-200px">Email</th>
+                                        <th class="min-w-75px">Téléphone</th>
+                                        <th class="min-w-50px">Dossier en charge</th>
+                                        <th class="min-w-75px">Statut</th>
+                                        <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
                                 <!--end::Head-->
@@ -103,7 +106,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Content container-->
     </div>
     <!--end::Content-->
-
+    
 </div>
 <!--end::Content wrapper-->
 
@@ -150,8 +153,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function update_data_datatable(data) {
 
-            $("#all_dossiers").DataTable().destroy();
-            var all_dossiers = $('#all_dossiers').DataTable({
+            $("#all_interlo").DataTable().destroy();
+            var all_interlo = $('#all_interlo').DataTable({
                 "processing": true,
                 "serverSide": false,
                 "paging": true,
@@ -167,7 +170,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
             $('#kt_filter_search').keyup(function() {
-                all_dossiers.search($(this).val()).draw();
+                all_interlo.search($(this).val()).draw();
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                 KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
             })
@@ -187,7 +190,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function reload_datatable(datatable) {
             $.ajax({
-                url: "roll/ag/saisies-clients/fetch.php",
+                url: "roll/ag/interlocuteurs/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
@@ -199,16 +202,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        // Datatable for all dossiers
+        // Datatable for all interlocuteurs
         $.ajax({
-            url: "roll/ag/saisies-clients/fetch.php",
+            url: "roll/ag/interlocuteurs/fetch.php",
             method: "POST",
             data: {
-                datatable: 'all_dossiers',
+                datatable: 'all_interlo',
             },
             dataType: "JSON",
             success: function(data) {
-                var all_dossiers = $('#all_dossiers').DataTable({
+                var all_interlo = $('#all_interlo').DataTable({
                     "processing": true,
                     "serverSide": false,
                     "paging": true,
@@ -224,7 +227,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     }
                 });
                 $('#kt_filter_search').keyup(function() {
-                    all_dossiers.search($(this).val()).draw();
+                    all_interlo.search($(this).val()).draw();
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 })
