@@ -150,8 +150,8 @@ $opts = array(
 		// Items volume
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '../files/',                 // path to files (REQUIRED)
-			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../files/', // URL to files (REQUIRED)
+			'path'          => '../Documents/',                 // path to files (REQUIRED)
+			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../Documents/', // URL to files (REQUIRED)
 			'trashHash'     => 't1_Lw',                     // elFinder's hash of trash folder
 			'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
 			'uploadAllow'   => array('all'), // All Mimetypes allowed to upload
@@ -162,8 +162,8 @@ $opts = array(
 		array(
 			'id'            => '1',
 			'driver'        => 'Trash',
-			'path'          => '../files/.trash/',
-			'tmbURL'        => dirname($_SERVER['PHP_SELF']) . '/../files/.trash/.tmb/',
+			'path'          => '../Documents/.trash/',
+			'tmbURL'        => dirname($_SERVER['PHP_SELF']) . '/../Documents/.trash/.tmb/',
 			'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
 			'uploadAllow'   => array('all'), // Same as above
 			'uploadOrder'   => array('deny', 'allow'),      // Same as above
@@ -174,8 +174,8 @@ $opts = array(
 
 // // Thumbnail settings for cloud volumes
 // $tmbConfig = array(
-//     'tmbPath'          => '../files/.tmbCloud',
-//     'tmbURL'           => dirname($_SERVER['PHP_SELF']) . '/../files/.tmbCloud/',
+//     'tmbPath'          => '../Documents/.tmbCloud',
+//     'tmbURL'           => dirname($_SERVER['PHP_SELF']) . '/../Documents/.tmbCloud/',
 //     'tmbGcMaxlifeHour' => 2160, // 90 days
 //     'tmbGcPercentage'  => 5,    // 5 execute / 100 tmb querys
 // ); 
