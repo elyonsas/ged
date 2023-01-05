@@ -107,12 +107,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Navs-->
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
+                            <li class="nav-item mt-2 d-none">
                                 <a id="generale_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="">Générale</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
+                            <li class="nav-item mt-2 d-none">
                                 <a id="avance_area_btn" class="nav-link text-active-primary ms-0 me-10 py-5" href="">Avancé</a>
                             </li>
                             <!--end::Nav item-->
@@ -226,9 +226,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 <!--end::Row Générale-->
 
                 <!--begin::Row Avancé-->
-                <div id="infos_avance" class="row g-5 g-xxl-8">
-
-                </div>
+                <div id="infos_avance" class="row g-5 g-xxl-8"></div>
                 <!--end::Row Avancé-->
             </div>
             <!--end::Container-->
