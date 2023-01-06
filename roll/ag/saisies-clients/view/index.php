@@ -149,7 +149,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     width: 0;
                                 }
 
-                                .wrapper-saisie:hover .tooltip-saisie {
+                                /* .wrapper-saisie:hover .tooltip-saisie {
                                     opacity: 1;
                                     pointer-events: auto;
                                     -webkit-transform: translateY(0px);
@@ -157,7 +157,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     -ms-transform: translateY(0px);
                                     -o-transform: translateY(0px);
                                     transform: translateY(0px);
-                                }
+                                } */
 
                                 /* IE can just show/hide with no transition */
                                 .lte8 .wrapper-saisie .tooltip-saisie {
@@ -301,7 +301,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "paging": true,
                 "bInfo": true,
                 "bFilter": true,
-                "bSort": true,
+                "bSort": false,
                 "order": [],
                 "data": data,
                 "columnDefs": [],
@@ -353,7 +353,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "paging": true,
                     "bInfo": true,
                     "bFilter": true,
-                    "bSort": true,
+                    "bSort": false,
                     "order": [],
                     "data": data.data,
                     "columnDefs": [],
@@ -374,6 +374,36 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }, 1000);
                 })
+            }
+        });
+
+        // Lorsqu'on clique sur .wrapper-saisie
+        tooltip_showing = null;
+        $(document).on('click', '.wrapper-saisie', function (e) {
+            if (tooltip_showing == null) {
+                $(this).find('.tooltip-saisie').css({
+                    opacity: 1,
+                    pointerEvents: 'auto',
+                    transform: 'translateY(0px)',
+                    webkitTransform: 'translateY(0px)',
+                    mozTransform: 'translateY(0px)',
+                    msTransform: 'translateY(0px)',
+                    oTransform: 'translateY(0px)',
+                });
+
+                tooltip_showing = $(this).find('.tooltip-saisie');
+            } else{
+                tooltip_showing.css({
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    transform: 'translateY(10px)',
+                    webkitTransform: 'translateY(10px)',
+                    mozTransform: 'translateY(10px)',
+                    msTransform: 'translateY(10px)',
+                    oTransform: 'translateY(10px)',
+                });
+
+                tooltip_showing = null;
             }
         });
 

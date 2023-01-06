@@ -183,16 +183,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -201,7 +201,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value=""/>
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -218,16 +218,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -236,7 +236,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -253,16 +253,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -271,7 +271,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -288,16 +288,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -306,7 +306,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -323,16 +323,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -341,7 +341,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -358,16 +358,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -376,7 +376,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -393,16 +393,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -411,7 +411,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -428,16 +428,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -446,7 +446,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -463,16 +463,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -481,7 +481,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -498,16 +498,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -516,7 +516,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -533,16 +533,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -551,7 +551,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -568,16 +568,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -586,7 +586,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -603,16 +603,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -621,7 +621,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -638,16 +638,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -656,7 +656,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -673,16 +673,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -691,7 +691,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -708,16 +708,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -726,7 +726,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -743,16 +743,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -761,7 +761,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -778,16 +778,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -796,7 +796,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -813,16 +813,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -831,7 +831,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -848,16 +848,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -866,7 +866,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -883,16 +883,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -901,7 +901,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -918,16 +918,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -936,7 +936,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -953,16 +953,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -971,7 +971,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -988,16 +988,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1006,7 +1006,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1023,16 +1023,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1041,7 +1041,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1058,16 +1058,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1076,7 +1076,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1093,16 +1093,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1111,7 +1111,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1128,16 +1128,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1146,7 +1146,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1163,16 +1163,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1181,7 +1181,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1198,16 +1198,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1216,7 +1216,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1233,16 +1233,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1251,7 +1251,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1268,16 +1268,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1286,7 +1286,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1303,16 +1303,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1321,7 +1321,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1338,16 +1338,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1356,7 +1356,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1373,16 +1373,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1391,7 +1391,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1408,16 +1408,16 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <input class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <input class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
@@ -1426,7 +1426,7 @@ if (isset($_POST['datatable'])) {
                         <!--begin::Radio-->
                         <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <input class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
