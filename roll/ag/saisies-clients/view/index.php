@@ -71,11 +71,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
                         <!--end::option-->
 
-                        <!--begin::title-->
-                        <div class="text-dark">
-                            <h2 id="saisie_page_title">--</h2>
+                        <!--begin::Card toolbar-->
+                        <div class="card-toolbar my-1">
+                            <!-- begin::add btn rubrique -->
+                            <a href="#" class="btn btn-sm btn-light btn-active-primary me-3">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                                <span class="svg-icon svg-icon-3">
+                                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
+                                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
+                                    </svg>
+                                </span>Ajouter une rubrique
+                                <!--end::Svg Icon-->
+                            </a>
+                            <!-- end::add btn rubrique -->
                         </div>
-                        <!--begin::title-->
+                        <!--begin::Card toolbar-->
+
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
@@ -338,6 +350,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
+        // Fait une réquête AJAX pour récupérer les données
+        $.ajax({
+            url: "roll/ag/saisies-clients/fetch.php",
+            method: "POST",
+            data: {
+                action: 'fetch_page_saisie'
+            },
+            dataType: "JSON",
+            success: function(data) {
+
+                // Affiche les données dans la page
+                pageTitle = $('.page-title h1').html();
+                $('.page-title h1').html(pageTitle + ' (' + data.nom_utilisateur + ')');
+
+                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+            }
+        });
+
         // Datatable for saisies-clients
         $.ajax({
             url: "roll/ag/saisies-clients/fetch.php",
@@ -405,6 +436,47 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 tooltip_showing = null;
             }
+        });
+
+        $(document).click(function(e) {
+            if (!$(e.target).is('.wrapper-saisie') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
+                if (tooltip_showing != null) {
+                    tooltip_showing.css({
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        transform: 'translateY(10px)',
+                        webkitTransform: 'translateY(10px)',
+                        mozTransform: 'translateY(10px)',
+                        msTransform: 'translateY(10px)',
+                        oTransform: 'translateY(10px)',
+                    });
+
+                    tooltip_showing = null;
+                }
+            }
+        });
+
+        // Lorsqu'on clique sur .saisie-option
+        $(document).on('click', '.saisie-option', function (e) {
+            id_saisie = $(this).find('input').data('id_saisie');
+            option = $(this).find('input').data('option');
+            value = $(this).find('input').val();
+
+            $.ajax({
+                url: "roll/ag/saisies-clients/fetch.php",
+                method: "POST",
+                data: {
+                    id_saisie: id_saisie,
+                    option: option,
+                    value: value,
+                    action: 'update_saisie'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    reload_datatable('saisies_clients');
+                }
+            })
+
         });
 
 

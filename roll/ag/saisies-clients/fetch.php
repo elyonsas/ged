@@ -132,6 +132,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_client = $row['id_client'];
+            $id_saisie = $row['id_saisie'];
             $rubrique = $row['rubrique'];
             $janv_c = ($row['janv_c'] == '') ? '&nbsp;' : $row['janv_c'];
             $janv_i = ($row['janv_i'] == '') ? '&nbsp;' : $row['janv_i'];
@@ -181,27 +182,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value=""/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_c" class="btn-check" type="radio" name="method" value=""/>
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -216,27 +217,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -251,27 +252,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="janv_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -286,27 +287,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -321,27 +322,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -356,27 +357,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="fevr_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -391,27 +392,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -426,27 +427,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -461,27 +462,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mars_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -496,27 +497,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -531,27 +532,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -566,27 +567,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="avr_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -601,27 +602,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -636,27 +637,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -671,27 +672,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="mai_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -706,27 +707,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -741,27 +742,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -776,27 +777,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juin_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -811,27 +812,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -846,27 +847,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -881,27 +882,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="juil_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -916,27 +917,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -951,27 +952,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -986,27 +987,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="aout_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1021,27 +1022,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1056,27 +1057,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1091,27 +1092,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="sept_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1126,27 +1127,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1161,27 +1162,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1196,27 +1197,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="oct_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1231,27 +1232,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1266,27 +1267,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1301,27 +1302,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="nov_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1336,27 +1337,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_c" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_c" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_c" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1371,27 +1372,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_i" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_i" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_i" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1406,27 +1407,27 @@ if (isset($_POST['datatable'])) {
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="X"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_s" class="btn-check" type="radio" name="method" value="X"/>
                             <!--end::Input-->
                             X
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="N/A"/>
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_s" class="btn-check" type="radio" name="method" value="N/A"/>
                             <!--end::Input-->
                             N/A
                         </label>
                         <!--end::Radio-->
 
                         <!--begin::Radio-->
-                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                        <label class="saisie-option btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
                             <!--begin::Input-->
-                            <input class="btn-check" type="radio" name="method" value="" />
+                            <input data-id_saisie="{$id_saisie}" data-option="dec_s" class="btn-check" type="radio" name="method" value="" />
                             <!--end::Input-->
                         </label>
                         <!--end::Radio-->
@@ -1447,7 +1448,40 @@ if (isset($_POST['datatable'])) {
 
 if (isset($_POST['action'])) {
 
-    // some code
+    if ($_POST['action'] == 'update_saisie') {
+
+        $id_saisie = $_POST['id_saisie'];
+        $option = $_POST['option'];
+        $value = $_POST['value'];
+
+        // update
+        $update = update(
+            'saisie',
+            [$option => $value],
+            "id_saisie = $id_saisie",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => "Saisie modifiée !"
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_page_saisie') {
+
+        $id_client = $_SESSION['id_view_saisie_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
 
 }
 
