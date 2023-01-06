@@ -85,10 +85,87 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             <!--begin::Table-->
                             <style>
                                 .table>:not(caption)>*>* {
-                                    padding: 0.75rem 0.75rem !important;
+                                    padding: 0.3rem 0.3rem !important;
                                 }
                                 .table.table-bordered tr {
                                     border: 1px solid var(--kt-border-color);
+                                }
+
+                                .wrapper-saisie {
+                                    cursor: pointer;
+                                    position: relative;
+                                    box-sizing: border-box;
+                                    min-width: 20px;
+                                }
+
+                                .wrapper-saisie .tooltip-saisie {
+                                    min-width: 150px;
+                                    position: absolute;
+                                    bottom: 100%;
+                                    left: calc(-75px + 10px);
+                                    margin: 0px auto 15px;
+                                    opacity: 0;
+                                    pointer-events: none;
+                                    background: #fff;
+                                    -webkit-transform: translateY(10px);
+                                    -moz-transform: translateY(10px);
+                                    -ms-transform: translateY(10px);
+                                    -o-transform: translateY(10px);
+                                    transform: translateY(10px);
+                                    -webkit-transition: all .25s ease-out;
+                                    -moz-transition: all .25s ease-out;
+                                    -ms-transition: all .25s ease-out;
+                                    -o-transition: all .25s ease-out;
+                                    transition: all .25s ease-out;
+                                    -webkit-box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.28);
+                                    -moz-box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.28);
+                                    -ms-box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.28);
+                                    -o-box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.28);
+                                    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.28);
+                                }
+
+                                /* This bridges the gap so you can mouse into the tooltip-saisie without it disappearing */
+                                .wrapper-saisie .tooltip-saisie:before {
+                                    bottom: -20px;
+                                    content: " ";
+                                    display: block;
+                                    height: 20px;
+                                    left: 0;
+                                    position: absolute;
+                                    width: 100%;
+                                }
+
+                                /* CSS Triangles - see Trevor's post */
+                                .wrapper-saisie .tooltip-saisie:after {
+                                    border-left: solid transparent 10px;
+                                    border-right: solid transparent 10px;
+                                    border-top: solid #fff 10px;
+                                    bottom: -10px;
+                                    content: " ";
+                                    height: 0;
+                                    left: 50%;
+                                    margin-left: -13px;
+                                    position: absolute;
+                                    width: 0;
+                                }
+
+                                .wrapper-saisie:hover .tooltip-saisie {
+                                    opacity: 1;
+                                    pointer-events: auto;
+                                    -webkit-transform: translateY(0px);
+                                    -moz-transform: translateY(0px);
+                                    -ms-transform: translateY(0px);
+                                    -o-transform: translateY(0px);
+                                    transform: translateY(0px);
+                                }
+
+                                /* IE can just show/hide with no transition */
+                                .lte8 .wrapper-saisie .tooltip-saisie {
+                                    display: none;
+                                }
+
+                                .lte8 .wrapper-saisie:hover .tooltip-saisie {
+                                    display: block;
                                 }
                             </style>
                             <table id="saisies_clients" class="table table-bordered align-middle fw-bold">

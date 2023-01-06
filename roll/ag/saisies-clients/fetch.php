@@ -133,6 +133,42 @@ if (isset($_POST['datatable'])) {
 
             $id_client = $row['id_client'];
             $rubrique = $row['rubrique'];
+            $janv_c = ($row['janv_c'] == '') ? '&nbsp;' : $row['janv_c'];
+            $janv_i = ($row['janv_i'] == '') ? '&nbsp;' : $row['janv_i'];
+            $janv_s = ($row['janv_s'] == '') ? '&nbsp;' : $row['janv_s'];
+            $fevr_c = ($row['fevr_c'] == '') ? '&nbsp;' : $row['fevr_c'];
+            $fevr_i = ($row['fevr_i'] == '') ? '&nbsp;' : $row['fevr_i'];
+            $fevr_s = ($row['fevr_s'] == '') ? '&nbsp;' : $row['fevr_s'];
+            $mars_c = ($row['mars_c'] == '') ? '&nbsp;' : $row['mars_c'];
+            $mars_i = ($row['mars_i'] == '') ? '&nbsp;' : $row['mars_i'];
+            $mars_s = ($row['mars_s'] == '') ? '&nbsp;' : $row['mars_s'];
+            $avr_c = ($row['avr_c'] == '') ? '&nbsp;' : $row['avr_c'];
+            $avr_i = ($row['avr_i'] == '') ? '&nbsp;' : $row['avr_i'];
+            $avr_s = ($row['avr_s'] == '') ? '&nbsp;' : $row['avr_s'];
+            $mai_c = ($row['mai_c'] == '') ? '&nbsp;' : $row['mai_c'];
+            $mai_i = ($row['mai_i'] == '') ? '&nbsp;' : $row['mai_i'];
+            $mai_s = ($row['mai_s'] == '') ? '&nbsp;' : $row['mai_s'];
+            $juin_c = ($row['juin_c'] == '') ? '&nbsp;' : $row['juin_c'];
+            $juin_i = ($row['juin_i'] == '') ? '&nbsp;' : $row['juin_i'];
+            $juin_s = ($row['juin_s'] == '') ? '&nbsp;' : $row['juin_s'];
+            $juil_c = ($row['juil_c'] == '') ? '&nbsp;' : $row['juil_c'];
+            $juil_i = ($row['juil_i'] == '') ? '&nbsp;' : $row['juil_i'];
+            $juil_s = ($row['juil_s'] == '') ? '&nbsp;' : $row['juil_s'];
+            $aout_c = ($row['aout_c'] == '') ? '&nbsp;' : $row['aout_c'];
+            $aout_i = ($row['aout_i'] == '') ? '&nbsp;' : $row['aout_i'];
+            $aout_s = ($row['aout_s'] == '') ? '&nbsp;' : $row['aout_s'];
+            $sept_c = ($row['sept_c'] == '') ? '&nbsp;' : $row['sept_c'];
+            $sept_i = ($row['sept_i'] == '') ? '&nbsp;' : $row['sept_i'];
+            $sept_s = ($row['sept_s'] == '') ? '&nbsp;' : $row['sept_s'];
+            $oct_c = ($row['oct_c'] == '') ? '&nbsp;' : $row['oct_c'];
+            $oct_i = ($row['oct_i'] == '') ? '&nbsp;' : $row['oct_i'];
+            $oct_s = ($row['oct_s'] == '') ? '&nbsp;' : $row['oct_s'];
+            $nov_c = ($row['nov_c'] == '') ? '&nbsp;' : $row['nov_c'];
+            $nov_i = ($row['nov_i'] == '') ? '&nbsp;' : $row['nov_i'];
+            $nov_s = ($row['nov_s'] == '') ? '&nbsp;' : $row['nov_s'];
+            $dec_c = ($row['dec_c'] == '') ? '&nbsp;' : $row['dec_c'];
+            $dec_i = ($row['dec_i'] == '') ? '&nbsp;' : $row['dec_i'];
+            $dec_s = ($row['dec_s'] == '') ? '&nbsp;' : $row['dec_s'];
 
             // Rubrique
             $sub_array[] = <<<HTML
@@ -141,182 +177,1262 @@ if (isset($_POST['datatable'])) {
 
             //janv_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$janv_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //janv_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$janv_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //janv_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$janv_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //fevr_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$fevr_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //fevr_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$fevr_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //fevr_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$fevr_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mars_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mars_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mars_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mars_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mars_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mars_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //avr_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$avr_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //avr_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$avr_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //avr_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$avr_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mai_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mai_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mai_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mai_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //mai_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$mai_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juin_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juin_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juin_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juin_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juin_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juin_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juil_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juil_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juil_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juil_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //juil_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$juil_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //aout_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$aout_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //aout_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$aout_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //aout_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$aout_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //sept_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$sept_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //sept_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$sept_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //sept_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$sept_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //oct_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$oct_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //oct_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$oct_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //oct_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$oct_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //nov_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$nov_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //nov_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$nov_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //nov_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$nov_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //dec_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_c']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$dec_c
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //dec_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_i']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$dec_i
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             //dec_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_s']}</div>
+                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted">$dec_s
+                    <!--begin::Radio group-->
+                    <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="1"/>
+                            <!--end::Input-->
+                            X
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success active" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="2"/>
+                            <!--end::Input-->
+                            N/A
+                        </label>
+                        <!--end::Radio-->
+
+                        <!--begin::Radio-->
+                        <label class="btn btn-outline btn-color-muted btn-active-success" data-kt-button="true">
+                            <!--begin::Input-->
+                            <input class="btn-check" type="radio" name="method" value="3" />
+                            <!--end::Input-->
+                        </label>
+                        <!--end::Radio-->
+                    </div>
+                    <!--end::Radio group-->
+                </div>
             HTML;
 
             $data[] = $sub_array;
