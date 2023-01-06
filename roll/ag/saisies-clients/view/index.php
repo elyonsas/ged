@@ -83,7 +83,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Table container-->
                         <div class="table-responsive">
                             <!--begin::Table-->
-                            <table id="all_collabo" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                            <style>
+                                .table>:not(caption)>*>* {
+                                    padding: 0.75rem 0.75rem !important;
+                                }
+                                .table.table-bordered tr {
+                                    border: 1px solid var(--kt-border-color);
+                                }
+                            </style>
+                            <table id="saisies_clients" class="table table-bordered align-middle fw-bold">
                                 <!--begin::Head-->
                                 <thead class="fs-7 text-gray-400 text-uppercase">
                                     <tr>
@@ -143,7 +151,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 </thead>
                                 <!--end::Head-->
                                 <!--begin::Body-->
-                                <tbody class="fs-6">
+                                <tbody>
 
                                 </tbody>
                                 <!--end::Body-->
@@ -209,8 +217,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function update_data_datatable(data) {
 
-            $("#all_interlo").DataTable().destroy();
-            var all_interlo = $('#all_interlo').DataTable({
+            $("#saisies_clients").DataTable().destroy();
+            var saisies_clients = $('#saisies_clients').DataTable({
                 "processing": true,
                 "serverSide": false,
                 "paging": true,
@@ -225,11 +233,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                 }
             });
-            $('#kt_filter_search').keyup(function() {
-                all_interlo.search($(this).val()).draw();
-                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-            })
 
             $('.dataTables_paginate').click(function() {
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -246,7 +249,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
         function reload_datatable(datatable) {
             $.ajax({
-                url: "roll/ag/interlocuteurs/fetch.php",
+                url: "roll/ag/saisies-clients/fetch.php",
                 method: "POST",
                 data: {
                     datatable: datatable,
@@ -258,16 +261,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
-        // Datatable for all interlocuteurs
+        // Datatable for saisies-clients
         $.ajax({
-            url: "roll/ag/interlocuteurs/fetch.php",
+            url: "roll/ag/saisies-clients/fetch.php",
             method: "POST",
             data: {
-                datatable: 'all_interlo',
+                datatable: 'saisies_clients',
             },
             dataType: "JSON",
             success: function(data) {
-                var all_interlo = $('#all_interlo').DataTable({
+                var saisies_clients = $('#saisies_clients').DataTable({
                     "processing": true,
                     "serverSide": false,
                     "paging": true,
@@ -282,11 +285,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }
                 });
-                $('#kt_filter_search').keyup(function() {
-                    all_interlo.search($(this).val()).draw();
-                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
-                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
-                })
 
                 $('.dataTables_paginate').click(function() {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 

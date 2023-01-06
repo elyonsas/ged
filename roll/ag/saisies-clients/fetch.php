@@ -113,6 +113,220 @@ if (isset($_POST['datatable'])) {
             "data" => $data
         );
     }
+
+    if ($_POST['datatable'] == 'saisies_clients') {
+
+        $id_client = $_SESSION['id_view_saisie_client'];
+
+        $query = "SELECT * FROM saisie, client WHERE saisie.id_client = client.id_client 
+        AND saisie.id_client = $id_client ORDER BY created_at ASC";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $data = array();
+        $filtered_rows = $statement->rowCount();
+
+        foreach ($result as $row) {
+
+            $sub_array = array();
+
+            $id_client = $row['id_client'];
+            $rubrique = $row['rubrique'];
+
+            // Rubrique
+            $sub_array[] = <<<HTML
+                $rubrique
+            HTML;
+
+            //janv_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_c']}</div>
+            HTML;
+
+            //janv_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_i']}</div>
+            HTML;
+
+            //janv_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['janv_s']}</div>
+            HTML;
+
+            //fevr_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_c']}</div>
+            HTML;
+
+            //fevr_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_i']}</div>
+            HTML;
+
+            //fevr_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['fevr_s']}</div>
+            HTML;
+
+            //mars_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_c']}</div>
+            HTML;
+
+            //mars_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_i']}</div>
+            HTML;
+
+            //mars_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mars_s']}</div>
+            HTML;
+
+            //avr_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_c']}</div>
+            HTML;
+
+            //avr_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_i']}</div>
+            HTML;
+
+            //avr_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['avr_s']}</div>
+            HTML;
+
+            //mai_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_c']}</div>
+            HTML;
+
+            //mai_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_i']}</div>
+            HTML;
+
+            //mai_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['mai_s']}</div>
+            HTML;
+
+            //juin_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_c']}</div>
+            HTML;
+
+            //juin_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_i']}</div>
+            HTML;
+
+            //juin_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juin_s']}</div>
+            HTML;
+
+            //juil_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_c']}</div>
+            HTML;
+
+            //juil_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_i']}</div>
+            HTML;
+
+            //juil_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['juil_s']}</div>
+            HTML;
+
+            //aout_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_c']}</div>
+            HTML;
+
+            //aout_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_i']}</div>
+            HTML;
+
+            //aout_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['aout_s']}</div>
+            HTML;
+
+            //sept_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_c']}</div>
+            HTML;
+
+            //sept_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_i']}</div>
+            HTML;
+
+            //sept_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['sept_s']}</div>
+            HTML;
+
+            //oct_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_c']}</div>
+            HTML;
+
+            //oct_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_i']}</div>
+            HTML;
+
+            //oct_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['oct_s']}</div>
+            HTML;
+
+            //nov_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_c']}</div>
+            HTML;
+
+            //nov_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_i']}</div>
+            HTML;
+
+            //nov_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['nov_s']}</div>
+            HTML;
+
+            //dec_c
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_c']}</div>
+            HTML;
+
+            //dec_i
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_i']}</div>
+            HTML;
+
+            //dec_s
+            $sub_array[] = <<<HTML
+                <div style="font-size: 11px;" class="text-center text-muted">{$row['dec_s']}</div>
+            HTML;
+
+            $data[] = $sub_array;
+        }
+
+
+        $output = array(
+            "data" => $data
+        );
+    }
 }
 
 if (isset($_POST['action'])) {
