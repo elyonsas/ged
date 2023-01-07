@@ -510,7 +510,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             reload_datatable('all_dossiers'); // On recharge le datatable
 
                         } else {
-                            toastr.error('une erreur s\'est produite', '', {
+                            toastr.error(data.message, '', {
                                 positionClass: "toastr-bottom-left",
                             });
                         }

@@ -3080,6 +3080,18 @@ if (isset($_POST['action'])) {
     }
 
     if ($_POST['action'] == 'add_client') {
+
+        // Si le compte existe déjà alors exit
+        if (compte_exists($_POST['email_client'], $db)) {
+            $output = [
+                'success' => false,
+                'message' => 'Cet email existe déjà dans GED !'
+            ];
+            
+            echo json_encode($output);
+            exit();
+            
+        }
         
         // Insertion dans la table utilisateur
         $insert1 = insert(
@@ -3087,6 +3099,8 @@ if (isset($_POST['action'])) {
             [
                 'nom_utilisateur' => $_POST['nom_client'],
                 'adresse_utilisateur' => $_POST['adresse_client'],
+                'tel_utilisateur' => $_POST['tel_client'],
+                'avatar_utilisateur' => 'compagnie_blank.png',
                 'email_utilisateur' => $_POST['email_client'],
                 'created_at_utilisateur' => date('Y-m-d H:i:s'),
                 'updated_at_utilisateur' => date('Y-m-d H:i:s'),
@@ -3141,7 +3155,7 @@ if (isset($_POST['action'])) {
             $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
             $code = 12000 + $id_client;
 
-            $update = update(
+            $update1 = update(
                 'client',
                 [
                     'matricule_client' => $sigle_departement . '-' . $code,
@@ -3152,11 +3166,93 @@ if (isset($_POST['action'])) {
         }
 
         // Insertion dans la table document
+
+        // `id_document`, `code_document`, `n_document`, `titre_document`, `type_document`, `table_document`, 
+        // `table_info_document`, `note_aspect_document`, `statut_document`, `aspect_document`, 
+        // `type_dossier_document`, `rubrique_document`, `created_at_document`, `updated_at_document`, 
+        // `ordre_document`, `src_scan_document`, `src_scan_temp_document`, 
+        // `type_scan_document`, `created_by_document`, `updated_by_document`, `id_client`
         $documents = [
-            []
+            [NULL, NULL, 1, 'DOC N°1 Prospectus du cabinet', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-10 16:14:14', '2022-12-08 11:04:14', 0, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 2, 'DOC N°2 Résumé de la prise de connaissance générale du client', 'write', 'document_write', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:48:03', '2022-12-30 11:42:31', 1, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 3, 'DOC N°3 Questionnaire d\'acceptation et de maintien d\'une mission', 'generate', 'doc_3_accept_mission', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-17 01:08:24', '2022-11-23 15:23:34', 7, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 4, 'DOC N°4 Lettre au confrère pour un client le quittant', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:04:16', '2022-11-23 23:23:27', 4, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 5, 'DOC N°5 Lettre à un client hérité', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:52:28', '2022-12-08 10:50:40', 5, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 6, 'DOC N°6 Lettre de mission DEC Validé', 'file', 'document_file', 'doc_6_info_lettre_mission', 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:07:17', '2022-12-11 14:12:17', 8, NULL, NULL, NULL, 2, 2, 7],
+            [NULL, NULL, 7, 'DOC N°7 Avenant Lettre de mission DEC VALIDE', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:23:21', '2022-11-21 14:41:17', 9, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 8, 'DOC N°8 Fiche d\'identification client', 'generate', 'doc_8_fiche_id_client', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:19:23', '2022-12-23 12:15:17', 2, NULL, '', NULL, 2, 1, 7],
+            [NULL, NULL, 9, 'DOC N°9 Fiche de détermination du niveau de risque', 'write', 'document_write', NULL, 2, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-11-20 08:40:23', '2022-11-27 17:27:57', 3, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 9, 'DOC N°9 bis Lettre d’information au client des risques de son dossier', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-12-29 11:54:37', '2022-12-29 11:55:38', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-1 Modèle de chronogramme (échéancier) des impôts et taxes d’une entreprise relevant du régime normal', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:02:02', '2022-12-29 12:53:40', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-2 Modèle de chronogramme (échéancier) des impôts et taxes  d’une entreprise à la TPS', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:00', '2022-12-29 12:53:19', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-3 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de plus de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:20', '2022-12-29 12:52:38', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-4 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de moins de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:52', '2022-12-29 12:51:05', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 11, 'DOC N°11 Fiche de déclaration d’indépendance des collaborateurs', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:07:38', '2022-12-29 12:54:01', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 12, 'DOC N°12-1 Modèle de lettre aux clients au titre de l’intervention d’autres professionnels (notaire, commissaires-priseurs, etc.)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:24', '2022-12-29 12:54:29', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 12, 'DOC N°12-2 Modèle de lettre à la signature du client à adresser aux autres professionnels', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:56', '2022-12-29 12:54:15', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 13, 'DOC N°13-1 Nature des contrôles à effectuer', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:09:48', '2022-12-29 12:55:18', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 13, 'DOC N°13-2 Tableaux de revue de cohérence et de vraisemblance des éléments du bilan (avec les sous-tableaux N°13-2-1 à 13-2-8)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:10:19', '2022-12-29 17:59:09', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 14, 'DOC N°14 Tableau de revue de cohérence et de vraisemblance des éléments du compte de résultat avec les données extracomptables', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:11', '2022-12-29 12:55:34', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 15, 'DOC N°15 Tableau de revue de cohérence et de vraisemblance du TFT lui-même et du TFT avec les éléments du bilan, du compte de résultat et des notes annexes', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:55', '2022-12-29 12:55:57', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 16, 'DOC N°16 Note de Synthèse d’une Mission du DEC', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'general', 'synthese_mission_rapport', '2022-12-29 12:12:30', '2022-12-29 12:56:29', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 17, 'DOC N°17 Modèle d’attestation et de présentation des comptes annuels joints', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:14:10', '2022-12-29 12:56:51', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 18, 'DOC N°18 Modèle d’attestation de bonne fin d’exécution', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:15:51', '2022-12-29 12:57:12', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
         ];
 
-        if ($insert1 && $insert2 && $insert3 && $update) {
+        foreach ($documents as $key => $document) {
+
+            // Insérer les documents
+            $insert4 = insert(
+                'document',
+                [
+                    'n_document' => $document[2],
+                    'titre_document' => $document[3],
+                    'type_document' => $document[4],
+                    'table_document' => $document[5],
+                    'table_info_document' => $document[6],
+                    'note_aspect_document' => $document[7],
+                    'statut_document' => $document[8],
+                    'aspect_document' => $document[9],
+                    'type_dossier_document' => $document[10],
+                    'rubrique_document' => $document[11],
+                    'created_at_document' => date('Y-m-d H:i:s'),
+                    'updated_at_document' => date('Y-m-d H:i:s'),
+                    'created_by_document' => $_SESSION['id_utilisateur'],
+                    'updated_by_document' => $_SESSION['id_utilisateur'],
+                    'id_client' => $id_client
+                ],
+                $db
+            );
+
+            $id_document = $db->lastInsertId();
+
+            $update2 = update(
+                'document',
+                [
+                    'code_document' => 13000 + $id_document,
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            // S'il existe des table_document, les insérer
+            $insert5 = false;
+            if ($document[5] != NULL) {
+                $insert5 = insert(
+                    $document[5],
+                    [
+                        'id_document' => $id_document,
+                    ],
+                    $db
+                );
+            }
+
+
+        }
+
+        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
+        if ($insert4 && $insert5 && $update2) {
             $output = array(
                 'success' => true,
                 'message' => 'Le client ajouté avec succès'
@@ -3645,7 +3741,9 @@ if (isset($_POST['action'])) {
             $output['query_total_regle'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
             
-            $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
+            $total_regle = $result['total_regle'];
+            $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
+            $output['taux_recouvrement'] = round(($total_regle / $total_facture) * 100, 2);
 
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
             $output['query_stat_contrat'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
