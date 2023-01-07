@@ -185,7 +185,7 @@
         <!--begin::Footer-->
         <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
             <a href="elfinder" class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100" target="_blank"
-            data-bs-toggle="tooltip" data-bs-placement="top" title="Vous allez vous déconnecter de cette zone de travail et serez redirigé.">
+            data-bs-toggle="tooltip" data-bs-placement="top" title="Vous serez déconnecté de cet espace de travail et redirigé.">
                 <span class="btn-label">Documents archives</span>
                 <!--begin::Svg Icon | path: icons/duotune/general/gen005.svg-->
                 <span class="svg-icon btn-icon svg-icon-2 m-0">
