@@ -178,7 +178,7 @@ if (isset($_POST['datatable'])) {
 
             //janv_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><div class="saisie-value">$janv_c</div>
+                <td>$janv_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -208,12 +208,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //janv_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><div class="saisie-value">$janv_i</div>
+                <td>$janv_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -243,12 +243,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //janv_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><div class="saisie-value">$janv_s</div>
+                <td>$janv_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -278,12 +278,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //fevr_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$fevr_c</span>
+                <td>$fevr_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -313,12 +313,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //fevr_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$fevr_i</span>
+                <td>$fevr_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -348,12 +348,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //fevr_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$fevr_s</span>
+                <td>$fevr_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -383,12 +383,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mars_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mars_c</span>
+                <td>$mars_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -418,12 +418,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mars_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mars_i</span>
+                <td>$mars_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -453,12 +453,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mars_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mars_s</span>
+                <td>$mars_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -488,12 +488,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //avr_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$avr_c</span>
+                <td>$avr_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -523,12 +523,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //avr_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$avr_i</span>
+                <td>$avr_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -558,12 +558,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //avr_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$avr_s</span>
+                <td>$avr_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -593,12 +593,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mai_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mai_c</span>
+                <td>$mai_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -628,12 +628,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mai_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mai_i</span>
+                <td>$mai_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -663,12 +663,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //mai_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$mai_s</span>
+                <td>$mai_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -698,12 +698,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juin_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juin_c</span>
+                <td>$juin_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -733,12 +733,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juin_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juin_i</span>
+                <td>$juin_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -768,12 +768,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juin_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juin_s</span>
+                <td>$juin_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -803,12 +803,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juil_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juil_c</span>
+                <td>$juil_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -838,12 +838,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juil_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juil_i</span>
+                <td>$juil_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -873,12 +873,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //juil_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$juil_s</span>
+                <td>$juil_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -908,12 +908,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //aout_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$aout_c</span>
+                <td>$aout_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -943,12 +943,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //aout_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$aout_i</span>
+                <td>$aout_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -978,12 +978,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //aout_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$aout_s</span>
+                <td>$aout_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1013,12 +1013,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //sept_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$sept_c</span>
+                <td>$sept_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1048,12 +1048,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //sept_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$sept_i</span>
+                <td>$sept_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1083,12 +1083,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //sept_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$sept_s</span>
+                <td>$sept_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1118,12 +1118,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //oct_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$oct_c</span>
+                <td>$oct_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1153,12 +1153,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //oct_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$oct_i</span>
+                <td>$oct_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1188,12 +1188,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //oct_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$oct_s</span>
+                <td>$oct_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1223,12 +1223,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //nov_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$nov_c</span>
+                <td>$nov_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1258,12 +1258,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //nov_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$nov_i</span>
+                <td>$nov_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1293,12 +1293,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //nov_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$nov_s</span>
+                <td>$nov_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1328,12 +1328,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //dec_c
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$dec_c</span>
+                <td>$dec_c
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1363,12 +1363,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //dec_i
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$dec_i</span>
+                <td>$dec_i
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1398,12 +1398,12 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             //dec_s
             $sub_array[] = <<<HTML
-                <div style="font-size: 11px;" class="wrapper-saisie text-center text-muted"><span class="saisie-value">$dec_s</span>
+                <td>$dec_s
                     <!--begin::Radio group-->
                     <div class="tooltip-saisie btn-group" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                         <!--begin::Radio-->
@@ -1433,7 +1433,7 @@ if (isset($_POST['datatable'])) {
                         <!--end::Radio-->
                     </div>
                     <!--end::Radio group-->
-                </div>
+                </td>
             HTML;
 
             $data[] = $sub_array;

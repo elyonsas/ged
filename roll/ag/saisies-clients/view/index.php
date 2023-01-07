@@ -103,14 +103,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     border: 1px solid var(--kt-border-color);
                                 }
 
-                                .wrapper-saisie {
+                                /* select all td without the first td of line */
+                                td:not(:first-child) {
                                     cursor: pointer;
                                     position: relative;
                                     box-sizing: border-box;
                                     min-width: 20px;
+                                    font-size: 11px;
+                                    text-align: center;
+                                    color: var(--kt-text-muted);
                                 }
 
-                                .wrapper-saisie .tooltip-saisie {
+                                td .tooltip-saisie {
                                     min-width: 150px;
                                     position: absolute;
                                     bottom: 100%;
@@ -137,7 +141,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
 
                                 /* This bridges the gap so you can mouse into the tooltip-saisie without it disappearing */
-                                .wrapper-saisie .tooltip-saisie:before {
+                                td .tooltip-saisie:before {
                                     bottom: -20px;
                                     content: " ";
                                     display: block;
@@ -148,7 +152,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 }
 
                                 /* CSS Triangles - see Trevor's post */
-                                .wrapper-saisie .tooltip-saisie:after {
+                                td .tooltip-saisie:after {
                                     border-left: solid transparent 10px;
                                     border-right: solid transparent 10px;
                                     border-top: solid #fff 10px;
@@ -161,7 +165,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     width: 0;
                                 }
 
-                                /* .wrapper-saisie:hover .tooltip-saisie {
+                                /* td:hover .tooltip-saisie {
                                     opacity: 1;
                                     pointer-events: auto;
                                     -webkit-transform: translateY(0px);
@@ -172,11 +176,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 } */
 
                                 /* IE can just show/hide with no transition */
-                                .lte8 .wrapper-saisie .tooltip-saisie {
+                                .lte8 td .tooltip-saisie {
                                     display: none;
                                 }
 
-                                .lte8 .wrapper-saisie:hover .tooltip-saisie {
+                                .lte8 td:hover .tooltip-saisie {
                                     display: block;
                                 }
                             </style>
@@ -408,17 +412,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        $(document).on('click', '.wrapper-saisie .saisie-value', function (e) {
+        $(document).on('click', 'td:not(:first-child)', function (e) {
             // wrapperSaisie = $(e.target).parents('.wrapper-saisie');
             console.log($(e.target));
         });
 
-        // Lorsqu'on clique sur .wrapper-saisie
+        // Lorsqu'on clique sur td:not(:first-child)
         tooltip_showing = null;
-        $(document).on('click', '.wrapper-saisie .saisie-value', function (e) {
-            wrapperSaisie = $(e.target).parents('.wrapper-saisie');
+        $(document).on('click', 'td:not(:first-child)', function (e) {
             if (tooltip_showing == null) {
-                wrapperSaisie.find('.tooltip-saisie').css({
+                $(this).find('.tooltip-saisie').css({
                     opacity: 1,
                     pointerEvents: 'auto',
                     transform: 'translateY(0px)',
@@ -428,7 +431,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     oTransform: 'translateY(0px)',
                 });
 
-                tooltip_showing = wrapperSaisie.find('.tooltip-saisie');
+                tooltip_showing = $(this).find('.tooltip-saisie');
             } else{
                 tooltip_showing.css({
                     opacity: 0,
@@ -445,7 +448,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         $(document).click(function(e) {
-            if (!$(e.target).is('.wrapper-saisie .saisie-value') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
+            if (!$(e.target).is('td:not(:first-child)') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
                 if (tooltip_showing != null) {
                     tooltip_showing.css({
                         opacity: 0,
@@ -468,13 +471,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             option = $(this).data('option');
             value = $(this).val();
 
-            // Trouver son parent .wrapper-saisie
-            wrapperSaisie = $(e.target).parents('.wrapper-saisie');
-            // Cacher le .saisie-value
-            wrapperSaisie.find('.saisie-value').addClass('d-none');
+            // Trouver son parent td:not(:first-child)
+            wrapperSaisie = $(e.target).parents('td:not(:first-child)');
 
-            // Mettre un spinner dans le parent .wrapper-saisie (au début de la div)
-            wrapperSaisie.prepend('<div class="spinner-border spinner-border-sm align-middle ms-2"></div>');
+            // Cacher le texte qui est dans le td:not(:first-child)
+            wrapperSaisie_html = wrapperSaisie.find('.tooltip-saisie');
+            wrapperSaisie.html('');
+
+
+            // Mettre un spinner dans le td:not(:first-child)
+            wrapperSaisie.html('<div class="spinner-border spinner-border-sm align-middle ms-2"></div>');
 
 
 
@@ -494,9 +500,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // Supprimer le spinner
                         wrapperSaisie.find('.spinner-border').remove();
 
-                        // Afficher le .saisie-value
-                        wrapperSaisie.find('.saisie-value').removeClass('d-none');
-                        wrapperSaisie.find('.saisie-value').html(data.value);
+                        // Afficher la valeur saisie
+                        wrapperSaisie.html(data.value);
+                        wrapperSaisie.append(wrapperSaisie_html);
+                    
                     }
                     
                 }
