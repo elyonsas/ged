@@ -15,7 +15,7 @@ if (isset($_POST['datatable'])) {
         $query = '';
 
         $query .= "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
 
 
         // // pour la recherche
