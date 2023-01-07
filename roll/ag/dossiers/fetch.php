@@ -682,12 +682,6 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!-- begin::Menu item -->
-                                        <div class="menu-item px-3">
                                             <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
                                             data-id_document="{$id_document}">Modifier le scan</a>
                                         </div>
@@ -743,12 +737,6 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
-                                            </div>
-                                            <!--end::Menu item-->
-
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
                                                 <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
                                                 data-id_document="{$id_document}">Modifier le scan</a>
                                             </div>
@@ -792,12 +780,6 @@ if (isset($_POST['datatable'])) {
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
                                                 <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
-                                            </div>
-                                            <!--end::Menu item-->
-
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -1406,12 +1388,6 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!-- begin::Menu item -->
-                                        <div class="menu-item px-3">
                                             <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
                                             data-id_document="{$id_document}">Modifier le scan</a>
                                         </div>
@@ -1467,12 +1443,6 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
-                                            </div>
-                                            <!--end::Menu item-->
-
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
                                                 <a href="" class="edit_doc_scan menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_scan_modal" 
                                                 data-id_document="{$id_document}">Modifier le scan</a>
                                             </div>
@@ -1516,12 +1486,6 @@ if (isset($_POST['datatable'])) {
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
                                                 <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
-                                            </div>
-                                            <!--end::Menu item-->
-
-                                            <!-- begin::Menu item -->
-                                            <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/download/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Télécharger le modèle</a>
                                             </div>
                                             <!--end::Menu item-->
 
