@@ -74,7 +74,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar my-1">
                             <!-- begin::add btn rubrique -->
-                            <a href="#" class="btn btn-sm btn-light btn-active-primary me-3">
+                            <div id="add_rubrique_saisie" data-bs-toggle="modal" data-bs-target="#add_rubrique_saisie_modal" class="btn btn-sm btn-light btn-active-primary me-3">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +83,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </svg>
                                 </span>Ajouter une rubrique
                                 <!--end::Svg Icon-->
-                            </a>
+                            </div>
                             <!-- end::add btn rubrique -->
                         </div>
                         <!--begin::Card toolbar-->
@@ -103,23 +103,38 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     border: 1px solid var(--kt-border-color);
                                 }
 
+                                .table.table-bordered tr:last-child td {
+                                    border-bottom: 1px solid var(--kt-border-color) !important;
+                                }
+
+                                /* table{
+                                    overflow: hidden;
+                                } */
+
+                                /* select the first td of line*/
+                                td:first-child {
+                                    line-height: 1.2;
+                                }
+
                                 /* select all td without the first td of line */
                                 td:not(:first-child) {
                                     cursor: pointer;
                                     position: relative;
-                                    box-sizing: border-box;
-                                    min-width: 20px;
+                                    box-sizing: border-box !important;
+                                    min-width: 30px;
                                     font-size: 11px;
                                     text-align: center;
                                     color: var(--kt-text-muted);
                                 }
 
+                                /* le td doit apparaitre en premier plan de tout */
                                 td .tooltip-saisie {
                                     min-width: 150px;
                                     position: absolute;
+                                    z-index: 9999999;
                                     bottom: 100%;
-                                    left: calc(-75px + 10px);
-                                    margin: 0px auto 15px;
+                                    left: calc(-75px + 15px);
+                                    margin: 0px auto 10px;
                                     opacity: 0;
                                     pointer-events: none;
                                     background: #fff;
@@ -201,6 +216,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <th colspan="3" class="text-center">Oct</th>
                                         <th colspan="3" class="text-center">Nov</th>
                                         <th colspan="3" class="text-center">DEC</th>
+                                        <th rowspan="2" class="text-end align-middle">
+                                            <i class="la la-trash-o fs-3 text-danger"></i>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th class=""></th>
@@ -263,6 +281,55 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Content container-->
     </div>
     <!--end::Content-->
+
+    <!-- begin::Modal Ajouter une rubrique-->
+    <div class="modal fade" id="add_rubrique_saisie_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_add_rubrique_saisie" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Ajouter une rubrique</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Rubrique</label>
+                            <input id="add_rubrique_saisie_nom" type="text" class="form-control form-control-solid" placeholder="Entrez une rubrique" name="rubrique_saisie" required>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="add_rubrique_saisie">
+                    <input type="hidden" name="annee_saisie" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_add_rubrique_saisie" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Ajouter une rubrique-->
     
 </div>
 <!--end::Content wrapper-->
@@ -321,6 +388,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "order": [],
                 "data": data,
                 "columnDefs": [],
+                "pageLength": 15,
+                "lengthMenu": [15,20,25,50,100],
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -346,6 +415,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: datatable,
+                    annee_saisie: $('#filter_annee_saisie').val(),
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -373,12 +443,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
+        // Mettre la bonne année dans #filter_annee_saisie
+        var date = new Date();
+        var annee = date.getFullYear();
+        $('#filter_annee_saisie').val(annee).trigger('change');
+
         // Datatable for saisies-clients
         $.ajax({
             url: "roll/ag/saisies-clients/fetch.php",
             method: "POST",
             data: {
                 datatable: 'saisies_clients',
+                annee_saisie: $('#filter_annee_saisie').val(),
             },
             dataType: "JSON",
             success: function(data) {
@@ -392,6 +468,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "order": [],
                     "data": data.data,
                     "columnDefs": [],
+                    "pageLength": 15,
+                    "lengthMenu": [15,20,25,50,100],
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -412,15 +490,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        $(document).on('click', 'td:not(:first-child)', function (e) {
-            // wrapperSaisie = $(e.target).parents('.wrapper-saisie');
-            console.log($(e.target));
-        });
+        // Lorsqu'on change la valeur de #filter_annee_saisie
+        $('#filter_annee_saisie').on('change', function (event) {
+            reload_datatable('saisies_clients');
+        })
 
         // Lorsqu'on clique sur td:not(:first-child)
         tooltip_showing = null;
         $(document).on('click', 'td:not(:first-child)', function (e) {
-            if (tooltip_showing == null) {
+
+            if (tooltip_showing != null) {
+                tooltip_showing.css({
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    transform: 'translateY(10px)',
+                    webkitTransform: 'translateY(10px)',
+                    mozTransform: 'translateY(10px)',
+                    msTransform: 'translateY(10px)',
+                    oTransform: 'translateY(10px)',
+                });
+
                 $(this).find('.tooltip-saisie').css({
                     opacity: 1,
                     pointerEvents: 'auto',
@@ -432,23 +521,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 });
 
                 tooltip_showing = $(this).find('.tooltip-saisie');
-            } else{
-                tooltip_showing.css({
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    transform: 'translateY(10px)',
-                    webkitTransform: 'translateY(10px)',
-                    mozTransform: 'translateY(10px)',
-                    msTransform: 'translateY(10px)',
-                    oTransform: 'translateY(10px)',
+
+            }else if (tooltip_showing == null) {
+                $(this).find('.tooltip-saisie').css({
+                    opacity: 1,
+                    pointerEvents: 'auto',
+                    transform: 'translateY(0px)',
+                    webkitTransform: 'translateY(0px)',
+                    mozTransform: 'translateY(0px)',
+                    msTransform: 'translateY(0px)',
+                    oTransform: 'translateY(0px)',
                 });
 
-                tooltip_showing = null;
+                tooltip_showing = $(this).find('.tooltip-saisie');
             }
         });
 
         $(document).click(function(e) {
-            if (!$(e.target).is('td:not(:first-child)') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
+            if (!$(e.target).is('td:not(:first-child)')) {
                 if (tooltip_showing != null) {
                     tooltip_showing.css({
                         opacity: 0,
@@ -510,6 +600,85 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
 
         });
+
+        // Lorsqu'on clique sur #add_rubrique_saisie
+        $(document).on('click', '#add_rubrique_saisie', function() {
+            $('#form_add_rubrique_saisie')[0].reset();
+
+            annee_saisie = $('#filter_annee_saisie').val();
+            $('#form_add_rubrique_saisie input[name="annee_saisie"]').val(annee_saisie);
+        });
+
+        // Pour l'ajout d'une nouvelle rubrique de saisie
+        $(document).on('submit', '#form_add_rubrique_saisie', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_add_rubrique_saisie');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/saisies-clients/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#add_rubrique_saisie_modal').modal('hide');
+
+                            toastr.success(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+
+                            reload_datatable('saisies_clients'); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on clique sur .delete_saisie
+        $(document).on('click', '.delete_saisie', function (e) {
+            id_saisie = $(this).data('id_saisie');
+
+            $.ajax({
+                url: "roll/ag/saisies-clients/fetch.php",
+                method: "POST",
+                data: {
+                    id_saisie: id_saisie,
+                    action: 'delete_saisie'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    if (data.success) {
+                        reload_datatable('saisies_clients'); // On recharge le datatable
+
+                        toastr.success(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    } else {
+                        toastr.error(data.message, '', {
+                            positionClass: "toastr-bottom-left",
+                        });
+                    }
+                    
+                }
+            })
+
+        });
+
+        
 
 
     })

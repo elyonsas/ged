@@ -118,8 +118,11 @@ if (isset($_POST['datatable'])) {
 
         $id_client = $_SESSION['id_view_saisie_client'];
 
+        $annee_saisie = $_POST['annee_saisie'];
+        $annee_saisie_query = "AND annee = '$annee_saisie'";
+
         $query = "SELECT * FROM saisie, client WHERE saisie.id_client = client.id_client 
-        AND saisie.id_client = $id_client ORDER BY created_at ASC";
+        AND saisie.id_client = $id_client $annee_saisie_query ORDER BY created_at ASC";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -1436,6 +1439,11 @@ if (isset($_POST['datatable'])) {
                 </td>
             HTML;
 
+            // Action
+            $sub_array[] = <<<HTML
+                <i class="delete_saisie fas fa-times text-danger text-center" data-id_saisie="{$id_saisie}"></i>
+            HTML;
+
             $data[] = $sub_array;
         }
 
@@ -1447,6 +1455,19 @@ if (isset($_POST['datatable'])) {
 }
 
 if (isset($_POST['action'])) {
+
+    if ($_POST['action'] == 'fetch_page_saisie') {
+
+        $id_client = $_SESSION['id_view_saisie_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
 
     if ($_POST['action'] == 'update_saisie') {
 
@@ -1473,17 +1494,49 @@ if (isset($_POST['action'])) {
         }
     }
 
-    if ($_POST['action'] == 'fetch_page_saisie') {
-
+    if ($_POST['action'] == 'add_rubrique_saisie') {
         $id_client = $_SESSION['id_view_saisie_client'];
+        $rubrique = $_POST['rubrique_saisie'];
+        $annee = $_POST['annee_saisie'];
 
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = $id_client";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
+        // insert
+        $insert = insert(
+            'saisie',
+            [
+                'rubrique' => $rubrique,
+                'annee' => $annee,
+                'created_at' => date('Y-m-d H:i:s'),
+                'id_client' => $id_client
+            ],
+            $db
+        );
 
-        $output = $result;
+        if ($insert) {
+            $output = array(
+                'success' => true,
+                'message' => "Rubrique ajoutée !"
+            );
+        }
+
+    }
+
+    if ($_POST['action'] == 'delete_saisie') {
+
+        $id_saisie = $_POST['id_saisie'];
+
+        // delete
+        $delete = delete(
+            'saisie',
+            "id_saisie = $id_saisie",
+            $db
+        );
+
+        if ($delete) {
+            $output = array(
+                'success' => true,
+                'message' => "Saisie supprimée !"
+            );
+        }
     }
 
 }
