@@ -3064,6 +3064,111 @@ if (isset($_POST['action'])) {
         }
     }
 
+    if ($_POST['action'] == 'fetch_secteur_activite') {
+
+        $query = "SELECT * FROM secteur_activite";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = '<option></option>';
+        foreach ($result as $row) {
+            $output .= <<<HTML
+                <option value="{$row['id_secteur_activite']}">{$row['code_secteur_activite']} : {$row['nom_secteur_activite']}</option>
+            HTML;
+        }
+    }
+
+    if ($_POST['action'] == 'add_client') {
+        
+        // Insertion dans la table utilisateur
+        $insert1 = insert(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_client'],
+                'adresse_utilisateur' => $_POST['adresse_client'],
+                'email_utilisateur' => $_POST['email_client'],
+                'created_at_utilisateur' => date('Y-m-d H:i:s'),
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            $db
+        );
+
+        $id_utilisateur = $db->lastInsertId();
+
+        // Insertion dans la table compte
+        $insert2 = insert(
+            'compte',
+            [
+                'pseudo_compte' => $_POST['nom_client'],
+                'email_compte' => $_POST['email_client'],
+                'mdp_compte' => '12345',
+                'statut_compte' => 'inactif',
+                'type_compte' => 'client',
+                'created_at_compte' => date('Y-m-d H:i:s'),
+                'updated_at_compte' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur,
+            ],
+            $db
+        );
+
+        // Insertion dans la table client
+        $insert3 = false;
+        $update = false;
+        if ($insert1 && $insert2) {
+
+            $uuid = Uuid::uuid1();
+            $code_view_client = $uuid->toString();
+            $prise_en_charge_client = 'non';
+            $relance_auto_client = 'non';
+            $id_secteur_activite = $_POST['secteur_activite_client'];
+            $id_departement = 1;
+
+            $insert3 = insert(
+                'client',
+                [
+                    'code_view_client' => $code_view_client,
+                    'prise_en_charge_client' => $prise_en_charge_client,
+                    'relance_auto_client' => $relance_auto_client,
+                    'id_secteur_activite' => $id_secteur_activite,
+                    'id_departement' => $id_departement,
+                    'id_utilisateur' => $id_utilisateur,
+                ],
+                $db
+            );
+
+            $id_client = $db->lastInsertId();
+            $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
+            $code = 12000 + $id_client;
+
+            $update = update(
+                'client',
+                [
+                    'matricule_client' => $sigle_departement . '-' . $code,
+                ],
+                "id_client = $id_client",
+                $db
+            );
+        }
+
+        // Insertion dans la table document
+        $documents = [
+            []
+        ];
+
+        if ($insert1 && $insert2 && $insert3 && $update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Le client ajouté avec succès'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Erreur lors de l\'ajout du client'
+            );
+        }
+    }
+
     if ($_POST['action'] == 'activer_compte') {
         $id_client = $_POST['id_client'];
 

@@ -52,7 +52,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar my-1">
                             <!-- begin::add btn client -->
-                            <a href="#" class="btn btn-sm btn-light btn-active-primary me-3">
+                            <div id="add_btn_client" data-bs-toggle="modal" data-bs-target="#add_client_modal" class="btn btn-sm btn-light btn-active-primary me-3">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     </svg>
                                 </span>Ajouter un client
                                 <!--end::Svg Icon-->
-                            </a>
+                            </div>
                             <!-- end::add btn client -->
                             <!--begin::Search-->
                             <div class="d-flex align-items-center position-relative my-1">
@@ -117,6 +117,80 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         <!--end::Content container-->
     </div>
     <!--end::Content-->
+
+    <!-- begin::Modal Ajouter un client-->
+    <div class="modal fade" id="add_client_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_add_client" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Ajouter un client</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Nom du client</label>
+                            <input id="add_client_nom" type="text" class="form-control form-control-solid" name="nom_client" placeholder="Entrez le nom du client" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Adresse du client</label>
+                            <input id="add_client_adresse" type="text" class="form-control form-control-solid" name="adresse_client" placeholder="Entrez une adresse">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Téléphone du client</label>
+                            <input id="add_client_tel" type="text" class="form-control form-control-solid" name="tel_client" placeholder="Entrez une téléphone">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Email du client</label>
+                            <input id="add_client_email" type="email" class="form-control form-control-solid" name="email_client" placeholder="Entrez un email">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Secteur d'activité principal</label>
+                            <select id="add_client_secteur_activite" class="form-select form-select-solid" data-dropdown-parent="#add_client_modal" data-allow-clear="true" data-control="select2" data-placeholder="Sélectionnez le secteur d'activité du client" name="secteur_activite_client" required></select>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="add_client">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_add_client" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Ajouter un client-->
 
     <!-- begin::Modal attribuer collaborateur-->
     <div class="modal fade" id="attribuer_modal" tabindex="-1" role="dialog" aria-labelledby="attribuer_modal_title" aria-hidden="true">
@@ -379,6 +453,71 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     }, 1000);
                 })
             }
+        });
+
+        // fetch data secteur d'activité
+        $.ajax({
+            url: "roll/ag/dossiers/fetch.php",
+            method: "POST",
+            data: {
+                action: 'fetch_secteur_activite',
+            },
+            dataType: "JSON",
+            success: function(data) {
+                $('#add_client_secteur_activite').html(data);
+                $('#edit_client_secteur_activite').html(data);
+            }
+        });
+
+        // Lorsqu'on clique sur #add_btn_client
+        $(document).on('click', '#add_btn_client', function() {
+            $('#form_add_client')[0].reset();
+        });
+
+        // Pour l'ajout d'un nouveau client
+        $(document).on('submit', '#form_add_client', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_add_client');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#add_client_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Client ajouté !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reload_datatable('all_dossiers'); // On recharge le datatable
+
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
         });
 
         // Lorsqu'on clique sur .activer_compte
