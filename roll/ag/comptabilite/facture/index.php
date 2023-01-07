@@ -799,6 +799,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                             reload_datatable('all_factures'); // On recharge le datatable
 
+                            // Envoi de mail
+                            $.ajax({
+                                url: 'roll/ag/comptabilite/facture/fetch.php',
+                                method: 'POST',
+                                data: {
+                                    action: 'send_mail',
+                                    id_facture: data.id_facture,
+                                    option: 'add_facture',
+                                },
+                                dataType: 'JSON',
+                                success: function (data) {
+                                    if (data.success) {
+                                        console.log(data.message);
+                                    } else {
+                                        console.log(data.message);
+                                    }
+                                }
+                            });
+
                         } else {
                             toastr.error('une erreur s\'est produite', '', {
                                 positionClass: "toastr-bottom-left",
@@ -1062,9 +1081,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         dataType: "JSON",
                         success: function(data) {
                             if (data.success) {
-                                // On recharge le datatable
-                                reload_datatable('all_factures');
-
                                 // On affiche un message de succès
                                 Swal.fire({
                                     text: data.message,
@@ -1075,6 +1091,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         confirmButton: "btn fw-bold btn-primary"
                                     }
                                 });
+
+                                // On recharge le datatable
+                                reload_datatable('all_factures');
+
+                                // Envoi de mail
+                                $.ajax({
+                                    url: 'roll/ag/comptabilite/facture/fetch.php',
+                                    method: 'POST',
+                                    data: {
+                                        action: 'send_mail',
+                                        id_facture: data.id_facture,
+                                        option: 'supprimer_facture',
+                                    },
+                                    dataType: 'JSON',
+                                    success: function (data) {
+                                        if (data.success) {
+                                            console.log(data.message);
+                                        } else {
+                                            console.log(data.message);
+                                        }
+                                    }
+                                });
+
                             } else {
                                 // On affiche un message d'erreur
                                 Swal.fire({

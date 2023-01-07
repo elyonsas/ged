@@ -2071,6 +2071,507 @@ if (isset($_POST['action'])) {
 
     // espace datatables
 
+    if ($_POST['action'] == 'add_doc') {
+
+        $id_client = $_SESSION['id_view_client'];
+
+        $titre_document = $_POST['titre_document'];
+        $description_document = $_POST['description_document'];
+        $type_document = $_POST['type_document'];
+        $table_document = 'document_autre';
+        $aspect_document = $_POST['aspect'];
+        $type_dossier_document = $_POST['type_dossier'];
+        $rubrique_document = $_POST['rubrique'];
+
+        $insert1 = insert(
+            'document',
+            [
+                'titre_document' => $titre_document,
+                'type_document' => $type_document,
+                'table_document' => $table_document,
+                'note_aspect_document' => 0,
+                'statut_document' => 'invalide',
+                'aspect_document' => $aspect_document,
+                'type_dossier_document' => $type_dossier_document,
+                'rubrique_document' => $rubrique_document,
+                'created_at_document' => date('Y-m-d H:i:s'),
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'created_by_document' => $_SESSION['id_utilisateur'],
+                'updated_by_document' => $_SESSION['id_utilisateur'],
+                'id_client' => $id_client
+            ],
+            $db
+        );
+
+        // id_document
+        $id_document = $db->lastInsertId();
+
+        $update = update(
+            'document',
+            [
+                'n_document' => $id_document,
+                'code_document' => 13000 + $id_document
+            ],
+            "id_document = '$id_document'",
+            $db
+        );
+
+        $insert2 = insert(
+            'document_autre',
+            [
+                'src_document' => "",
+                'src_temp_document' => "",
+                'contenu_document' => "",
+                'contenu_text_document' => "",
+                'contenu_modele_document' => "",
+                'description_document' => $description_document,
+                'id_document' => $id_document
+            ],
+            $db
+        );
+
+
+        if ($insert1 && $insert2 && $update) {
+            $output = [
+                'success' => true,
+                'message' => 'Document ajouté !',
+                'id_document' => $id_document,
+                'type_document' => $type_document,
+                'titre_document' => $titre_document,
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_secteur_activite') {
+
+        $query = "SELECT * FROM secteur_activite";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = '<option></option>';
+        foreach ($result as $row) {
+            $output .= <<<HTML
+                <option value="{$row['id_secteur_activite']}">{$row['code_secteur_activite']} : {$row['nom_secteur_activite']}</option>
+            HTML;
+        }
+    }
+
+    if ($_POST['action'] == 'add_client') {
+
+        // Si le compte existe déjà alors exit
+        if (compte_exists($_POST['email_client'], $db)) {
+            $output = [
+                'success' => false,
+                'message' => 'Cet email existe déjà dans GED !'
+            ];
+            
+            echo json_encode($output);
+            exit();
+            
+        }
+        
+        // Insertion dans la table utilisateur
+        $insert1 = insert(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_client'],
+                'adresse_utilisateur' => $_POST['adresse_client'],
+                'tel_utilisateur' => $_POST['tel_client'],
+                'avatar_utilisateur' => 'compagnie_blank.png',
+                'email_utilisateur' => $_POST['email_client'],
+                'created_at_utilisateur' => date('Y-m-d H:i:s'),
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            $db
+        );
+
+        $id_utilisateur = $db->lastInsertId();
+
+        // Insertion dans la table compte
+        $insert2 = insert(
+            'compte',
+            [
+                'pseudo_compte' => $_POST['nom_client'],
+                'email_compte' => $_POST['email_client'],
+                'mdp_compte' => '12345',
+                'statut_compte' => 'inactif',
+                'type_compte' => 'client',
+                'created_at_compte' => date('Y-m-d H:i:s'),
+                'updated_at_compte' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur,
+            ],
+            $db
+        );
+
+        // Insertion dans la table client
+        $insert3 = false;
+        $update = false;
+        if ($insert1 && $insert2) {
+
+            $uuid = Uuid::uuid1();
+            $code_view_client = $uuid->toString();
+            $prise_en_charge_client = 'non';
+            $relance_auto_client = 'non';
+            $id_secteur_activite = $_POST['secteur_activite_client'];
+            $id_departement = 1;
+
+            $insert3 = insert(
+                'client',
+                [
+                    'code_view_client' => $code_view_client,
+                    'prise_en_charge_client' => $prise_en_charge_client,
+                    'relance_auto_client' => $relance_auto_client,
+                    'id_secteur_activite' => $id_secteur_activite,
+                    'id_departement' => $id_departement,
+                    'id_utilisateur' => $id_utilisateur,
+                ],
+                $db
+            );
+
+            $id_client = $db->lastInsertId();
+            $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
+            $code = 12000 + $id_client;
+
+            $update1 = update(
+                'client',
+                [
+                    'matricule_client' => $sigle_departement . '-' . $code,
+                ],
+                "id_client = $id_client",
+                $db
+            );
+        }
+
+        // Insertion dans la table document
+
+        // `id_document`, `code_document`, `n_document`, `titre_document`, `type_document`, `table_document`, 
+        // `table_info_document`, `note_aspect_document`, `statut_document`, `aspect_document`, 
+        // `type_dossier_document`, `rubrique_document`, `created_at_document`, `updated_at_document`, 
+        // `ordre_document`, `src_scan_document`, `src_scan_temp_document`, 
+        // `type_scan_document`, `created_by_document`, `updated_by_document`, `id_client`
+        $documents = [
+            [NULL, NULL, 1, 'DOC N°1 Prospectus du cabinet', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-10 16:14:14', '2022-12-08 11:04:14', 0, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 2, 'DOC N°2 Résumé de la prise de connaissance générale du client', 'write', 'document_write', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:48:03', '2022-12-30 11:42:31', 1, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 3, 'DOC N°3 Questionnaire d\'acceptation et de maintien d\'une mission', 'generate', 'doc_3_accept_mission', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-17 01:08:24', '2022-11-23 15:23:34', 7, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 4, 'DOC N°4 Lettre au confrère pour un client le quittant', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:04:16', '2022-11-23 23:23:27', 4, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 5, 'DOC N°5 Lettre à un client hérité', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:52:28', '2022-12-08 10:50:40', 5, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 6, 'DOC N°6 Lettre de mission DEC Validé', 'file', 'document_file', 'doc_6_info_lettre_mission', 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:07:17', '2022-12-11 14:12:17', 8, NULL, NULL, NULL, 2, 2, 7],
+            [NULL, NULL, 7, 'DOC N°7 Avenant Lettre de mission DEC VALIDE', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:23:21', '2022-11-21 14:41:17', 9, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 8, 'DOC N°8 Fiche d\'identification client', 'generate', 'doc_8_fiche_id_client', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:19:23', '2022-12-23 12:15:17', 2, NULL, '', NULL, 2, 1, 7],
+            [NULL, NULL, 9, 'DOC N°9 Fiche de détermination du niveau de risque', 'write', 'document_write', NULL, 2, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-11-20 08:40:23', '2022-11-27 17:27:57', 3, NULL, NULL, NULL, 2, 1, 7],
+            [NULL, NULL, 9, 'DOC N°9 bis Lettre d’information au client des risques de son dossier', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-12-29 11:54:37', '2022-12-29 11:55:38', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-1 Modèle de chronogramme (échéancier) des impôts et taxes d’une entreprise relevant du régime normal', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:02:02', '2022-12-29 12:53:40', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-2 Modèle de chronogramme (échéancier) des impôts et taxes  d’une entreprise à la TPS', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:00', '2022-12-29 12:53:19', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-3 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de plus de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:20', '2022-12-29 12:52:38', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 10, 'DOC N°10-4 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de moins de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:52', '2022-12-29 12:51:05', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 11, 'DOC N°11 Fiche de déclaration d’indépendance des collaborateurs', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:07:38', '2022-12-29 12:54:01', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 12, 'DOC N°12-1 Modèle de lettre aux clients au titre de l’intervention d’autres professionnels (notaire, commissaires-priseurs, etc.)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:24', '2022-12-29 12:54:29', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 12, 'DOC N°12-2 Modèle de lettre à la signature du client à adresser aux autres professionnels', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:56', '2022-12-29 12:54:15', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 13, 'DOC N°13-1 Nature des contrôles à effectuer', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:09:48', '2022-12-29 12:55:18', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 13, 'DOC N°13-2 Tableaux de revue de cohérence et de vraisemblance des éléments du bilan (avec les sous-tableaux N°13-2-1 à 13-2-8)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:10:19', '2022-12-29 17:59:09', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 14, 'DOC N°14 Tableau de revue de cohérence et de vraisemblance des éléments du compte de résultat avec les données extracomptables', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:11', '2022-12-29 12:55:34', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 15, 'DOC N°15 Tableau de revue de cohérence et de vraisemblance du TFT lui-même et du TFT avec les éléments du bilan, du compte de résultat et des notes annexes', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:55', '2022-12-29 12:55:57', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 16, 'DOC N°16 Note de Synthèse d’une Mission du DEC', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'general', 'synthese_mission_rapport', '2022-12-29 12:12:30', '2022-12-29 12:56:29', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 17, 'DOC N°17 Modèle d’attestation et de présentation des comptes annuels joints', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:14:10', '2022-12-29 12:56:51', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 18, 'DOC N°18 Modèle d’attestation de bonne fin d’exécution', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:15:51', '2022-12-29 12:57:12', NULL, NULL, NULL, NULL, 1, 1, 7],
+            [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
+        ];
+
+        foreach ($documents as $key => $document) {
+
+            // Insérer les documents
+            $insert4 = insert(
+                'document',
+                [
+                    'n_document' => $document[2],
+                    'titre_document' => $document[3],
+                    'type_document' => $document[4],
+                    'table_document' => $document[5],
+                    'table_info_document' => $document[6],
+                    'note_aspect_document' => $document[7],
+                    'statut_document' => $document[8],
+                    'aspect_document' => $document[9],
+                    'type_dossier_document' => $document[10],
+                    'rubrique_document' => $document[11],
+                    'created_at_document' => date('Y-m-d H:i:s'),
+                    'updated_at_document' => date('Y-m-d H:i:s'),
+                    'created_by_document' => $_SESSION['id_utilisateur'],
+                    'updated_by_document' => $_SESSION['id_utilisateur'],
+                    'id_client' => $id_client
+                ],
+                $db
+            );
+
+            $id_document = $db->lastInsertId();
+
+            $update2 = update(
+                'document',
+                [
+                    'code_document' => 13000 + $id_document,
+                ],
+                "id_document = $id_document",
+                $db
+            );
+
+            // S'il existe des table_document, les insérer
+            $insert5 = false;
+            if ($document[5] != NULL) {
+                $insert5 = insert(
+                    $document[5],
+                    [
+                        'id_document' => $id_document,
+                    ],
+                    $db
+                );
+            }
+
+
+        }
+
+        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
+        if ($insert4 && $insert5 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => 'Le client ajouté avec succès'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Erreur lors de l\'ajout du client'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_edit_client') {
+        $id_client = $_POST['id_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client, secteur_activite WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = client.id_utilisateur
+        AND client.id_secteur_activite = secteur_activite.id_secteur_activite AND client.id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
+
+    if ($_POST['action'] == 'edit_client'){
+        $id_client = $_POST['id_client'];
+        $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
+        $id_secteur_activite = select_info('id_secteur_activite', 'client', "id_client = $id_client", $db);
+        $nom_client = select_info('nom_utilisateur', 'utilisateur', "id_utilisateur = $id_utilisateur", $db);
+
+        $update1 = update(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_client'],
+                'adresse_utilisateur' => $_POST['adresse_client'],
+                'tel_utilisateur' => $_POST['tel_client'],
+                'email_utilisateur' => $_POST['email_client'],
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            "id_utilisateur = $id_utilisateur",
+            $db
+        );
+
+        $update2 = update(
+            'client',
+            [
+                'id_secteur_activite' => $id_secteur_activite,
+            ],
+            "id_client = $id_client",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => "Les informations du client <b>$nom_client</b> ont été modifiées !"
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+
+
+    }
+
+    if ($_POST['action'] == 'activer_compte') {
+        $id_client = $_POST['id_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update = update(
+            'compte',
+            ['statut_compte' => 'actif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Compte activé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'desactiver_compte') {
+        $id_client = $_POST['id_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update1 = update(
+            'compte',
+            ['statut_compte' => 'inactif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        $update2 = update(
+            'client',
+            ['prise_en_charge_client' => 'non'],
+            "id_client = '$id_client'",
+            $db
+        );
+
+        $update3 = update(
+            'assoc_client_collabo',
+            [
+                'statut_assoc_client_collabo' => 'inactif',
+                'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
+            ],
+            "id_client = $id_client",
+            $db
+        );
+
+
+        if ($update1 && $update2 && $update3) {
+            $output = array(
+                'success' => true,
+                'message' => 'Compte désactivé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_attribuer_collabo') {
+
+        $id_client = $_POST['id_client'];
+
+        // Récupérer les infos du client
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = [
+            'success' => true,
+            'id_client' => $result['id_client'],
+            'nom_client' => $result['nom_utilisateur'],
+            'dossier_html' => ''
+        ];
+
+        if ($result) {
+            $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+            AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND compte.statut_compte = 'actif'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $output['dossier_html'] .= '<option></option>';
+            foreach ($result as $row) {
+                $output['dossier_html'] .= <<<HTML
+                    <option value="{$row['id_collaborateur']}">collaborateur {$row['code_collaborateur']} : {$row['prenom_utilisateur']} {$row['nom_utilisateur']}</option>
+                HTML;
+            }
+        }
+    }
+
+    if ($_POST['action'] == 'edit_attribuer_collabo') {
+
+        $id_collaborateur = $_POST['id_collaborateur'];
+        $id_client = $_POST['id_client'];
+
+        $query1 = "SELECT * FROM utilisateur, collaborateur WHERE utilisateur.id_utilisateur = collaborateur.id_utilisateur
+        AND collaborateur.id_collaborateur = '$id_collaborateur'";
+        $statement1 = $db->prepare($query1);
+        $statement1->execute();
+        $result1 = $statement1->fetch();
+
+        $query2 = "SELECT * FROM utilisateur, client WHERE utilisateur.id_utilisateur = client.id_utilisateur
+        AND client.id_client = '$id_client'";
+        $statement2 = $db->prepare($query2);
+        $statement2->execute();
+        $result2 = $statement2->fetch();
+
+        // insert
+        $insert = insert(
+            'assoc_client_collabo',
+            [
+                'role_assoc_client_collabo' => 'cm',
+                'statut_assoc_client_collabo' => 'actif',
+                'date_debut_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'date_fin_assoc_client_collabo' => null,
+                'created_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
+                'id_client' => $id_client,
+                'id_collaborateur' => $id_collaborateur
+            ],
+            $db
+        );
+
+        // update
+        $update = update(
+            'client',
+            ['prise_en_charge_client' => 'oui'],
+            "id_client = '$id_client'",
+            $db
+        );
+
+        if ($insert && $update) {
+            $output = array(
+                'success' => true,
+                'message' => "Le dossier <b>{$result2['nom_utilisateur']}</b> a été attribué à <b>{$result1['prenom_utilisateur']} {$result1['nom_utilisateur']}</b> !"
+            );
+        }
+    }
+
+    // espace client
     if ($_POST['action'] == 'send_mail') {
 
         if ($_POST['option'] == 'add_doc') {
@@ -2963,507 +3464,6 @@ if (isset($_POST['action'])) {
         
     }
 
-    if ($_POST['action'] == 'add_doc') {
-
-        $id_client = $_SESSION['id_view_client'];
-
-        $titre_document = $_POST['titre_document'];
-        $description_document = $_POST['description_document'];
-        $type_document = $_POST['type_document'];
-        $table_document = 'document_autre';
-        $aspect_document = $_POST['aspect'];
-        $type_dossier_document = $_POST['type_dossier'];
-        $rubrique_document = $_POST['rubrique'];
-
-        $insert1 = insert(
-            'document',
-            [
-                'titre_document' => $titre_document,
-                'type_document' => $type_document,
-                'table_document' => $table_document,
-                'note_aspect_document' => 0,
-                'statut_document' => 'invalide',
-                'aspect_document' => $aspect_document,
-                'type_dossier_document' => $type_dossier_document,
-                'rubrique_document' => $rubrique_document,
-                'created_at_document' => date('Y-m-d H:i:s'),
-                'updated_at_document' => date('Y-m-d H:i:s'),
-                'created_by_document' => $_SESSION['id_utilisateur'],
-                'updated_by_document' => $_SESSION['id_utilisateur'],
-                'id_client' => $id_client
-            ],
-            $db
-        );
-
-        // id_document
-        $id_document = $db->lastInsertId();
-
-        $update = update(
-            'document',
-            [
-                'n_document' => $id_document,
-                'code_document' => 13000 + $id_document
-            ],
-            "id_document = '$id_document'",
-            $db
-        );
-
-        $insert2 = insert(
-            'document_autre',
-            [
-                'src_document' => "",
-                'src_temp_document' => "",
-                'contenu_document' => "",
-                'contenu_text_document' => "",
-                'contenu_modele_document' => "",
-                'description_document' => $description_document,
-                'id_document' => $id_document
-            ],
-            $db
-        );
-
-
-        if ($insert1 && $insert2 && $update) {
-            $output = [
-                'success' => true,
-                'message' => 'Document ajouté !',
-                'id_document' => $id_document,
-                'type_document' => $type_document,
-                'titre_document' => $titre_document,
-            ];
-        } else {
-            $output = [
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            ];
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_secteur_activite') {
-
-        $query = "SELECT * FROM secteur_activite";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-
-        $output = '<option></option>';
-        foreach ($result as $row) {
-            $output .= <<<HTML
-                <option value="{$row['id_secteur_activite']}">{$row['code_secteur_activite']} : {$row['nom_secteur_activite']}</option>
-            HTML;
-        }
-    }
-
-    if ($_POST['action'] == 'add_client') {
-
-        // Si le compte existe déjà alors exit
-        if (compte_exists($_POST['email_client'], $db)) {
-            $output = [
-                'success' => false,
-                'message' => 'Cet email existe déjà dans GED !'
-            ];
-            
-            echo json_encode($output);
-            exit();
-            
-        }
-        
-        // Insertion dans la table utilisateur
-        $insert1 = insert(
-            'utilisateur',
-            [
-                'nom_utilisateur' => $_POST['nom_client'],
-                'adresse_utilisateur' => $_POST['adresse_client'],
-                'tel_utilisateur' => $_POST['tel_client'],
-                'avatar_utilisateur' => 'compagnie_blank.png',
-                'email_utilisateur' => $_POST['email_client'],
-                'created_at_utilisateur' => date('Y-m-d H:i:s'),
-                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
-            ],
-            $db
-        );
-
-        $id_utilisateur = $db->lastInsertId();
-
-        // Insertion dans la table compte
-        $insert2 = insert(
-            'compte',
-            [
-                'pseudo_compte' => $_POST['nom_client'],
-                'email_compte' => $_POST['email_client'],
-                'mdp_compte' => '12345',
-                'statut_compte' => 'inactif',
-                'type_compte' => 'client',
-                'created_at_compte' => date('Y-m-d H:i:s'),
-                'updated_at_compte' => date('Y-m-d H:i:s'),
-                'id_utilisateur' => $id_utilisateur,
-            ],
-            $db
-        );
-
-        // Insertion dans la table client
-        $insert3 = false;
-        $update = false;
-        if ($insert1 && $insert2) {
-
-            $uuid = Uuid::uuid1();
-            $code_view_client = $uuid->toString();
-            $prise_en_charge_client = 'non';
-            $relance_auto_client = 'non';
-            $id_secteur_activite = $_POST['secteur_activite_client'];
-            $id_departement = 1;
-
-            $insert3 = insert(
-                'client',
-                [
-                    'code_view_client' => $code_view_client,
-                    'prise_en_charge_client' => $prise_en_charge_client,
-                    'relance_auto_client' => $relance_auto_client,
-                    'id_secteur_activite' => $id_secteur_activite,
-                    'id_departement' => $id_departement,
-                    'id_utilisateur' => $id_utilisateur,
-                ],
-                $db
-            );
-
-            $id_client = $db->lastInsertId();
-            $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
-            $code = 12000 + $id_client;
-
-            $update1 = update(
-                'client',
-                [
-                    'matricule_client' => $sigle_departement . '-' . $code,
-                ],
-                "id_client = $id_client",
-                $db
-            );
-        }
-
-        // Insertion dans la table document
-
-        // `id_document`, `code_document`, `n_document`, `titre_document`, `type_document`, `table_document`, 
-        // `table_info_document`, `note_aspect_document`, `statut_document`, `aspect_document`, 
-        // `type_dossier_document`, `rubrique_document`, `created_at_document`, `updated_at_document`, 
-        // `ordre_document`, `src_scan_document`, `src_scan_temp_document`, 
-        // `type_scan_document`, `created_by_document`, `updated_by_document`, `id_client`
-        $documents = [
-            [NULL, NULL, 1, 'DOC N°1 Prospectus du cabinet', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-10 16:14:14', '2022-12-08 11:04:14', 0, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 2, 'DOC N°2 Résumé de la prise de connaissance générale du client', 'write', 'document_write', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:48:03', '2022-12-30 11:42:31', 1, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 3, 'DOC N°3 Questionnaire d\'acceptation et de maintien d\'une mission', 'generate', 'doc_3_accept_mission', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-17 01:08:24', '2022-11-23 15:23:34', 7, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 4, 'DOC N°4 Lettre au confrère pour un client le quittant', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:04:16', '2022-11-23 23:23:27', 4, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 5, 'DOC N°5 Lettre à un client hérité', 'write', 'document_write', NULL, 1, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 09:52:28', '2022-12-08 10:50:40', 5, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 6, 'DOC N°6 Lettre de mission DEC Validé', 'file', 'document_file', 'doc_6_info_lettre_mission', 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:07:17', '2022-12-11 14:12:17', 8, NULL, NULL, NULL, 2, 2, 7],
-            [NULL, NULL, 7, 'DOC N°7 Avenant Lettre de mission DEC VALIDE', 'file', 'document_file', NULL, 0, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-21 14:23:21', '2022-11-21 14:41:17', 9, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 8, 'DOC N°8 Fiche d\'identification client', 'generate', 'doc_8_fiche_id_client', NULL, 3, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-09 18:19:23', '2022-12-23 12:15:17', 2, NULL, '', NULL, 2, 1, 7],
-            [NULL, NULL, 9, 'DOC N°9 Fiche de détermination du niveau de risque', 'write', 'document_write', NULL, 2, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-11-20 08:40:23', '2022-11-27 17:27:57', 3, NULL, NULL, NULL, 2, 1, 7],
-            [NULL, NULL, 9, 'DOC N°9 bis Lettre d’information au client des risques de son dossier', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', 'connaissance_generale_client', '2022-12-29 11:54:37', '2022-12-29 11:55:38', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 10, 'DOC N°10-1 Modèle de chronogramme (échéancier) des impôts et taxes d’une entreprise relevant du régime normal', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:02:02', '2022-12-29 12:53:40', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 10, 'DOC N°10-2 Modèle de chronogramme (échéancier) des impôts et taxes  d’une entreprise à la TPS', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:00', '2022-12-29 12:53:19', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 10, 'DOC N°10-3 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de plus de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:20', '2022-12-29 12:52:38', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 10, 'DOC N°10-4 Modèle de chronogramme (échéancier) des cotisations CNSS d’une entreprise de moins de 20 salariés', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:03:52', '2022-12-29 12:51:05', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 11, 'DOC N°11 Fiche de déclaration d’indépendance des collaborateurs', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:07:38', '2022-12-29 12:54:01', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 12, 'DOC N°12-1 Modèle de lettre aux clients au titre de l’intervention d’autres professionnels (notaire, commissaires-priseurs, etc.)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:24', '2022-12-29 12:54:29', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 12, 'DOC N°12-2 Modèle de lettre à la signature du client à adresser aux autres professionnels', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:08:56', '2022-12-29 12:54:15', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 13, 'DOC N°13-1 Nature des contrôles à effectuer', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:09:48', '2022-12-29 12:55:18', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 13, 'DOC N°13-2 Tableaux de revue de cohérence et de vraisemblance des éléments du bilan (avec les sous-tableaux N°13-2-1 à 13-2-8)', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:10:19', '2022-12-29 17:59:09', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 14, 'DOC N°14 Tableau de revue de cohérence et de vraisemblance des éléments du compte de résultat avec les données extracomptables', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:11', '2022-12-29 12:55:34', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 15, 'DOC N°15 Tableau de revue de cohérence et de vraisemblance du TFT lui-même et du TFT avec les éléments du bilan, du compte de résultat et des notes annexes', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'permanent', '', '2022-12-29 12:11:55', '2022-12-29 12:55:57', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 16, 'DOC N°16 Note de Synthèse d’une Mission du DEC', 'write', 'document_write', NULL, 0, 'invalide', 'techniques', 'general', 'synthese_mission_rapport', '2022-12-29 12:12:30', '2022-12-29 12:56:29', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 17, 'DOC N°17 Modèle d’attestation et de présentation des comptes annuels joints', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:14:10', '2022-12-29 12:56:51', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 18, 'DOC N°18 Modèle d’attestation de bonne fin d’exécution', 'file', 'document_file', NULL, 0, 'invalide', 'techniques', 'general', 'exam_coherence_vraisemblance', '2022-12-29 12:15:51', '2022-12-29 12:57:12', NULL, NULL, NULL, NULL, 1, 1, 7],
-            [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
-        ];
-
-        foreach ($documents as $key => $document) {
-
-            // Insérer les documents
-            $insert4 = insert(
-                'document',
-                [
-                    'n_document' => $document[2],
-                    'titre_document' => $document[3],
-                    'type_document' => $document[4],
-                    'table_document' => $document[5],
-                    'table_info_document' => $document[6],
-                    'note_aspect_document' => $document[7],
-                    'statut_document' => $document[8],
-                    'aspect_document' => $document[9],
-                    'type_dossier_document' => $document[10],
-                    'rubrique_document' => $document[11],
-                    'created_at_document' => date('Y-m-d H:i:s'),
-                    'updated_at_document' => date('Y-m-d H:i:s'),
-                    'created_by_document' => $_SESSION['id_utilisateur'],
-                    'updated_by_document' => $_SESSION['id_utilisateur'],
-                    'id_client' => $id_client
-                ],
-                $db
-            );
-
-            $id_document = $db->lastInsertId();
-
-            $update2 = update(
-                'document',
-                [
-                    'code_document' => 13000 + $id_document,
-                ],
-                "id_document = $id_document",
-                $db
-            );
-
-            // S'il existe des table_document, les insérer
-            $insert5 = false;
-            if ($document[5] != NULL) {
-                $insert5 = insert(
-                    $document[5],
-                    [
-                        'id_document' => $id_document,
-                    ],
-                    $db
-                );
-            }
-
-
-        }
-
-        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
-        if ($insert4 && $insert5 && $update2) {
-            $output = array(
-                'success' => true,
-                'message' => 'Le client ajouté avec succès'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Erreur lors de l\'ajout du client'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_edit_client') {
-        $id_client = $_POST['id_client'];
-
-        $query = "SELECT * FROM utilisateur, compte, client, secteur_activite WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = client.id_utilisateur
-        AND client.id_secteur_activite = secteur_activite.id_secteur_activite AND client.id_client = $id_client";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-    }
-
-    if ($_POST['action'] == 'edit_client'){
-        $id_client = $_POST['id_client'];
-        $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
-        $id_secteur_activite = select_info('id_secteur_activite', 'client', "id_client = $id_client", $db);
-        $nom_client = select_info('nom_utilisateur', 'utilisateur', "id_utilisateur = $id_utilisateur", $db);
-
-        $update1 = update(
-            'utilisateur',
-            [
-                'nom_utilisateur' => $_POST['nom_client'],
-                'adresse_utilisateur' => $_POST['adresse_client'],
-                'tel_utilisateur' => $_POST['tel_client'],
-                'email_utilisateur' => $_POST['email_client'],
-                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
-            ],
-            "id_utilisateur = $id_utilisateur",
-            $db
-        );
-
-        $update2 = update(
-            'client',
-            [
-                'id_secteur_activite' => $id_secteur_activite,
-            ],
-            "id_client = $id_client",
-            $db
-        );
-
-        if ($update1 && $update2) {
-            $output = array(
-                'success' => true,
-                'message' => "Les informations du client <b>$nom_client</b> ont été modifiées !"
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-
-
-    }
-
-    if ($_POST['action'] == 'activer_compte') {
-        $id_client = $_POST['id_client'];
-
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
-
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $id_utilisateur = $result['id_utilisateur'];
-        $statut_compte = $result['statut_compte'];
-
-        $update = update(
-            'compte',
-            ['statut_compte' => 'actif'],
-            "id_utilisateur = '$id_utilisateur'",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'Compte activé !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'desactiver_compte') {
-        $id_client = $_POST['id_client'];
-
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
-
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $id_utilisateur = $result['id_utilisateur'];
-        $statut_compte = $result['statut_compte'];
-
-        $update1 = update(
-            'compte',
-            ['statut_compte' => 'inactif'],
-            "id_utilisateur = '$id_utilisateur'",
-            $db
-        );
-
-        $update2 = update(
-            'client',
-            ['prise_en_charge_client' => 'non'],
-            "id_client = '$id_client'",
-            $db
-        );
-
-        $update3 = update(
-            'assoc_client_collabo',
-            [
-                'statut_assoc_client_collabo' => 'inactif',
-                'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
-                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
-            ],
-            "id_client = $id_client",
-            $db
-        );
-
-
-        if ($update1 && $update2 && $update3) {
-            $output = array(
-                'success' => true,
-                'message' => 'Compte désactivé !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_attribuer_collabo') {
-
-        $id_client = $_POST['id_client'];
-
-        // Récupérer les infos du client
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = '$id_client'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = [
-            'success' => true,
-            'id_client' => $result['id_client'],
-            'nom_client' => $result['nom_utilisateur'],
-            'dossier_html' => ''
-        ];
-
-        if ($result) {
-            $query = "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND compte.statut_compte = 'actif'";
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $result = $statement->fetchAll();
-
-            $output['dossier_html'] .= '<option></option>';
-            foreach ($result as $row) {
-                $output['dossier_html'] .= <<<HTML
-                    <option value="{$row['id_collaborateur']}">collaborateur {$row['code_collaborateur']} : {$row['prenom_utilisateur']} {$row['nom_utilisateur']}</option>
-                HTML;
-            }
-        }
-    }
-
-    if ($_POST['action'] == 'edit_attribuer_collabo') {
-
-        $id_collaborateur = $_POST['id_collaborateur'];
-        $id_client = $_POST['id_client'];
-
-        $query1 = "SELECT * FROM utilisateur, collaborateur WHERE utilisateur.id_utilisateur = collaborateur.id_utilisateur
-        AND collaborateur.id_collaborateur = '$id_collaborateur'";
-        $statement1 = $db->prepare($query1);
-        $statement1->execute();
-        $result1 = $statement1->fetch();
-
-        $query2 = "SELECT * FROM utilisateur, client WHERE utilisateur.id_utilisateur = client.id_utilisateur
-        AND client.id_client = '$id_client'";
-        $statement2 = $db->prepare($query2);
-        $statement2->execute();
-        $result2 = $statement2->fetch();
-
-        // insert
-        $insert = insert(
-            'assoc_client_collabo',
-            [
-                'role_assoc_client_collabo' => 'cm',
-                'statut_assoc_client_collabo' => 'actif',
-                'date_debut_assoc_client_collabo' => date('Y-m-d H:i:s'),
-                'date_fin_assoc_client_collabo' => null,
-                'created_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
-                'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s'),
-                'id_client' => $id_client,
-                'id_collaborateur' => $id_collaborateur
-            ],
-            $db
-        );
-
-        // update
-        $update = update(
-            'client',
-            ['prise_en_charge_client' => 'oui'],
-            "id_client = '$id_client'",
-            $db
-        );
-
-        if ($insert && $update) {
-            $output = array(
-                'success' => true,
-                'message' => "Le dossier <b>{$result2['nom_utilisateur']}</b> a été attribué à <b>{$result1['prenom_utilisateur']} {$result1['nom_utilisateur']}</b> !"
-            );
-        }
-    }
-
-    // espace client
     if ($_POST['action'] == 'fetch_page_client') {
         $id_client = $_SESSION['id_view_client'];
 

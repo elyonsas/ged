@@ -36,8 +36,8 @@ if (isset($_POST['datatable'])) {
                     $db
                 );
             }
-            
-            if($row['statut_facture'] == 'relance' && $row['date_echeance_facture'] > date('Y-m-d H:i:s')) {
+
+            if ($row['statut_facture'] == 'relance' && $row['date_echeance_facture'] > date('Y-m-d H:i:s')) {
                 $id_facture = $row['id_facture'];
 
                 $update = update(
@@ -52,9 +52,9 @@ if (isset($_POST['datatable'])) {
         }
 
         // Récupération des factures
-        if ($_POST['query'] != ''){
+        if ($_POST['query'] != '') {
             $query = $_POST['query'];
-        }else{
+        } else {
             $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND statut_facture <> 'supprime' ORDER BY updated_at_facture DESC";
         }
@@ -337,72 +337,14 @@ if (isset($_POST['datatable'])) {
             "data" => $data
         );
     }
-
 }
 
 if (isset($_POST['action'])) {
 
     // espace datatables
 
-    if ($_POST['action'] == 'fetch_page_facture') {
-
-        $id_facture = $_SESSION['id_view_facture'];
-        $id_client = select_info('id_client', 'facture', "id_facture = $id_facture", $db);
-
-        // Récupérer les informations de la base de données
-        $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND facture.id_facture = $id_facture ";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-
-        // Récupérer les informations de la base de données
-        $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-        FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output['total_facture'] = $result['total_facture'];
-        $output['total_regle'] = $result['total_regle'];
-        $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
-
-        // Récupérer les informations de la base de données
-        $query = "SELECT SUM(montant_ttc_facture) as total_echue, COUNT(*) as nb_facture_echue 
-        FROM facture WHERE id_client = $id_client AND statut_facture = 'relance'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output['total_echue'] = $result['total_echue']??'--';
-        $output['nb_facture_echue'] = $result['nb_facture_echue'];
-
-        // Récupérer les informations de la base de données
-        $query = "SELECT SUM(montant_ttc_facture) as total_en_cour, COUNT(*) as nb_facture_en_cour 
-        FROM facture WHERE id_client = $id_client AND statut_facture = 'en cour'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output['total_en_cour'] = $result['total_en_cour']??'--';
-        $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
-
-        // Récupérer les informations de la base de données
-        $query = "SELECT SUM(montant_ttc_facture) as total_solde, COUNT(*) as nb_facture_solde 
-        FROM facture WHERE id_client = $id_client AND statut_facture = 'paye'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output['total_solde'] = $result['total_solde']??'--';
-        $output['nb_facture_solde'] = $result['nb_facture_solde'];
-
-    }
-
     if ($_POST['action'] == 'add_facture') {
-    
+
         $n_facture = '';
         $type_facture = $_POST['type_facture'];
         $objet_facture = $_POST['objet_facture'];
@@ -460,9 +402,270 @@ if (isset($_POST['action'])) {
         );
 
         if ($insert && $update) {
+            $output = array(
+                'success' => true,
+                'id_facture' => $id,
+                'message' => "La facture $n_facture a été ajoutée !"
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'emettre_facture') {
+
+        $id_facture = $_POST['id_facture'];
+        $date_emission_facture = date('Y-m-d H:i:s');
+        $statut_facture = 'en cour';
+
+        $update = update(
+            'facture',
+            [
+                'date_emission_facture' => $date_emission_facture,
+                'statut_facture' => $statut_facture,
+                'updated_at_facture' => date('Y-m-d H:i:s'),
+                'updated_by_facture' => $_SESSION['id_utilisateur']
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'La facture a été émise !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_client') {
+
+        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND prise_en_charge_client = 'oui' AND statut_compte = 'actif'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = '<option></option>';
+        foreach ($result as $row) {
+            $output .= <<<HTML
+                <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
+            HTML;
+        }
+    }
+
+    if ($_POST['action'] == 'view_detail_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+
+        $created_by_facture = find_info_utilisateur('prenom_utilisateur', $result['created_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['created_by_facture'], $db);
+        $updated_by_facture = find_info_utilisateur('prenom_utilisateur', $result['updated_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['updated_by_facture'], $db);
+
+        $output['created_by_user'] = $created_by_facture;
+        $output['updated_by_user'] = $updated_by_facture;
+    }
+
+    if ($_POST['action'] == 'fetch_modifier_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
+
+    if ($_POST['action'] == 'modifier_facture') {
+
+        $query = "SELECT * FROM facture WHERE id_facture = :id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute([':id_facture' => $_POST['id_facture']]);
+        $result = $statement->fetch();
+
+        $id_facture = $_POST['id_facture'];
+        $type_facture = $_POST['type_facture'];
+        $objet_facture = $_POST['objet_facture'];
+        $echeance_facture = $_POST['echeance_facture'];
+        $date_echeance_facture = date('Y-m-d H:i:s', strtotime($result['date_emission_facture'] . " + $echeance_facture days"));
+        $montant_ht_facture = $_POST['montant_ht_facture'];
+        $tva_facture = $_POST['tva_facture'];
+        $montant_ttc_facture = $_POST['montant_ttc_facture'];
+        $solde_facture = $_POST['montant_ttc_facture'] - $result['montant_regle_facture'];
+        $updated_at_facture = date('Y-m-d H:i:s');
+        $updated_by_facture = $_SESSION['id_utilisateur'];
+
+        $update = update(
+            'facture',
+            [
+                'type_facture' => $type_facture,
+                'objet_facture' => $objet_facture,
+                'echeance_facture' => $echeance_facture,
+                'date_echeance_facture' => $date_echeance_facture,
+                'montant_ht_facture' => $montant_ht_facture,
+                'tva_facture' => $tva_facture,
+                'montant_ttc_facture' => $montant_ttc_facture,
+                'solde_facture' => $solde_facture,
+                'updated_at_facture' => $updated_at_facture,
+                'updated_by_facture' => $updated_by_facture
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'La facture a été modifiée !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'fetch_n_facture') {
+
+        $id_facture = $_POST['id_facture'];
+
+        $query = "SELECT * FROM facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $output = '<option></option>';
+        foreach ($result as $row) {
+            if ($row['id_facture'] == $id_facture) {
+                $output .= <<<HTML
+                    <option value="{$row['id_facture']}" selected>{$row['n_facture']}</option>
+                HTML;
+            } else {
+                $output .= <<<HTML
+                    <option value="{$row['id_facture']}">{$row['n_facture']}</option>
+                HTML;
+            }
+        }
+    }
+
+    if ($_POST['action'] == 'encaisser_facture') {
+
+        $id_facture = $_POST['id_facture'];
+        $reference_paiement = $_POST['reference_paiement'];
+        $mode_paiement = $_POST['mode_paiement'];
+        $montant_ttc_paiement = $_POST['montant_ttc_paiement'];
+
+        $query = "SELECT * FROM facture WHERE id_facture = $id_facture";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $n_facture = $result['n_facture'];
+        $montant_regle_facture = $result['montant_regle_facture'] + $montant_ttc_paiement;
+        $solde_facture = $result['montant_ttc_facture'] - $montant_regle_facture;
+        $updated_at_facture = date('Y-m-d H:i:s');
+        $updated_by_facture = $_SESSION['id_utilisateur'];
+
+        $insert = insert(
+            'paiement',
+            [
+                'mode_paiement' => $mode_paiement,
+                'reference_paiement' => $reference_paiement,
+                'montant_ttc_paiement' => $montant_ttc_paiement,
+                'id_facture' => $id_facture
+            ],
+            $db
+        );
+
+        if ($solde_facture == 0) {
+            $update = update(
+                'facture',
+                [
+                    'montant_regle_facture' => $montant_regle_facture,
+                    'statut_facture' => 'paye',
+                    'solde_facture' => $solde_facture,
+                    'updated_at_facture' => $updated_at_facture,
+                    'updated_by_facture' => $updated_by_facture
+                ],
+                "id_facture = $id_facture",
+                $db
+            );
+        } else {
+            $update = update(
+                'facture',
+                [
+                    'montant_regle_facture' => $montant_regle_facture,
+                    'solde_facture' => $solde_facture,
+                    'updated_at_facture' => $updated_at_facture,
+                    'updated_by_facture' => $updated_by_facture
+                ],
+                "id_facture = $id_facture",
+                $db
+            );
+        }
+
+        if ($insert && $update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Paiement ajouté !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    if ($_POST['action'] == 'supprimer_facture') {
+        $id_facture = $_POST['id_facture'];
+
+        $update = update(
+            'facture',
+            [
+                'statut_facture' => 'supprime'
+            ],
+            "id_facture = $id_facture",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'id_facture' => $id_facture,
+                'message' => 'La facture a été supprimée !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+
+    // espace facture
+
+    if ($_POST['action'] == 'send_mail') {
+
+        if ($_POST['option'] == 'add_facture') {
 
             // Send email
-            $query = "SELECT * FROM facture WHERE id_facture = $id";
+            $query = "SELECT * FROM facture WHERE id_facture = {$_POST['id_facture']}";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -486,11 +689,11 @@ if (isset($_POST['action'])) {
             // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
-            
+
             $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
-            
+
             $subject = 'Ajout d\'une facture dans GED-ELYON';
-            
+
             $message = <<<HTML
             
                 <!DOCTYPE html>
@@ -886,256 +1089,26 @@ if (isset($_POST['action'])) {
                 </html>
             
             HTML;
-            
+
             $send_mail = send_mail($to, $from, $subject, $message);
-            
-            $output = array(
-                'success' => true,
-                'send_mail' => $send_mail,
-                'message' => "La facture $n_facture a été ajoutée !"
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
 
-    if ($_POST['action'] == 'emettre_facture') {
-            
-        $id_facture = $_POST['id_facture'];
-        $date_emission_facture = date('Y-m-d H:i:s');
-        $statut_facture = 'en cour';
-
-        $update = update(
-            'facture',
-            [
-                'date_emission_facture' => $date_emission_facture,
-                'statut_facture' => $statut_facture,
-                'updated_at_facture' => date('Y-m-d H:i:s'),
-                'updated_by_facture' => $_SESSION['id_utilisateur']
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'La facture a été émise !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_client') {
-        
-        $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND prise_en_charge_client = 'oui' AND statut_compte = 'actif'";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-
-        $output = '<option></option>';
-        foreach ($result as $row) {
-            $output .= <<<HTML
-                <option value="{$row['id_client']}">Client {$row['matricule_client']} : {$row['nom_utilisateur']}</option>
-            HTML;
-        }
-    }
-
-    if ($_POST['action'] == 'view_detail_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-
-        $created_by_facture = find_info_utilisateur('prenom_utilisateur', $result['created_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['created_by_facture'], $db);
-        $updated_by_facture = find_info_utilisateur('prenom_utilisateur', $result['updated_by_facture'], $db) . ' ' . find_info_utilisateur('nom_utilisateur', $result['updated_by_facture'], $db);
-
-        $output['created_by_user'] = $created_by_facture;
-        $output['updated_by_user'] = $updated_by_facture;
-    }
-
-    if ($_POST['action'] == 'fetch_modifier_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $query = "SELECT * FROM utilisateur, client, facture WHERE utilisateur.id_utilisateur = client.id_utilisateur AND client.id_client = facture.id_client AND id_facture = $id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $output = $result;
-    }
-
-    if ($_POST['action'] == 'modifier_facture') {
-
-        $query = "SELECT * FROM facture WHERE id_facture = :id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute([':id_facture' => $_POST['id_facture']]);
-        $result = $statement->fetch();
-
-        $id_facture = $_POST['id_facture'];
-        $type_facture = $_POST['type_facture'];
-        $objet_facture = $_POST['objet_facture'];
-        $echeance_facture = $_POST['echeance_facture'];
-        $date_echeance_facture = date('Y-m-d H:i:s', strtotime($result['date_emission_facture'] . " + $echeance_facture days"));
-        $montant_ht_facture = $_POST['montant_ht_facture'];
-        $tva_facture = $_POST['tva_facture'];
-        $montant_ttc_facture = $_POST['montant_ttc_facture'];
-        $solde_facture = $_POST['montant_ttc_facture'] - $result['montant_regle_facture'];
-        $updated_at_facture = date('Y-m-d H:i:s');
-        $updated_by_facture = $_SESSION['id_utilisateur'];
-
-        $update = update(
-            'facture',
-            [
-                'type_facture' => $type_facture,
-                'objet_facture' => $objet_facture,
-                'echeance_facture' => $echeance_facture,
-                'date_echeance_facture' => $date_echeance_facture,
-                'montant_ht_facture' => $montant_ht_facture,
-                'tva_facture' => $tva_facture,
-                'montant_ttc_facture' => $montant_ttc_facture,
-                'solde_facture' => $solde_facture,
-                'updated_at_facture' => $updated_at_facture,
-                'updated_by_facture' => $updated_by_facture
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
-            $output = array(
-                'success' => true,
-                'message' => 'La facture a été modifiée !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'fetch_n_facture') {
-
-        $id_facture = $_POST['id_facture'];
-
-        $query = "SELECT * FROM facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-
-        $output = '<option></option>';
-        foreach ($result as $row) {
-            if ($row['id_facture'] == $id_facture) {
-                $output .= <<<HTML
-                    <option value="{$row['id_facture']}" selected>{$row['n_facture']}</option>
-                HTML;
-            } else{
-                $output .= <<<HTML
-                    <option value="{$row['id_facture']}">{$row['n_facture']}</option>
-                HTML;
+            if ($send_mail) {
+                $output = [
+                    'success' => true,
+                    'message' => 'Mail envoyé !',
+                ];
+            } else {
+                $output = [
+                    'success' => false,
+                    'message' => 'Une erreur s\'est produite ! !',
+                ];
             }
-            
-        }
-    }
-
-    if ($_POST['action'] == 'encaisser_facture') {
-            
-        $id_facture = $_POST['id_facture'];
-        $reference_paiement = $_POST['reference_paiement'];
-        $mode_paiement = $_POST['mode_paiement'];
-        $montant_ttc_paiement = $_POST['montant_ttc_paiement'];
-
-        $query = "SELECT * FROM facture WHERE id_facture = $id_facture";
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetch();
-
-        $n_facture = $result['n_facture'];
-        $montant_regle_facture = $result['montant_regle_facture'] + $montant_ttc_paiement;
-        $solde_facture = $result['montant_ttc_facture'] - $montant_regle_facture;
-        $updated_at_facture = date('Y-m-d H:i:s');
-        $updated_by_facture = $_SESSION['id_utilisateur'];
-
-        $insert = insert(
-            'paiement',
-            [
-                'mode_paiement' => $mode_paiement,
-                'reference_paiement' => $reference_paiement,
-                'montant_ttc_paiement' => $montant_ttc_paiement,
-                'id_facture' => $id_facture
-            ],
-            $db
-        );
-
-        if($solde_facture == 0){
-            $update = update(
-                'facture',
-                [
-                    'montant_regle_facture' => $montant_regle_facture,
-                    'statut_facture' => 'paye',
-                    'solde_facture' => $solde_facture,
-                    'updated_at_facture' => $updated_at_facture,
-                    'updated_by_facture' => $updated_by_facture
-                ],
-                "id_facture = $id_facture",
-                $db
-            );
-        } else {
-            $update = update(
-                'facture',
-                [
-                    'montant_regle_facture' => $montant_regle_facture,
-                    'solde_facture' => $solde_facture,
-                    'updated_at_facture' => $updated_at_facture,
-                    'updated_by_facture' => $updated_by_facture
-                ],
-                "id_facture = $id_facture",
-                $db
-            );
         }
 
-        if ($insert && $update) {
-            $output = array(
-                'success' => true,
-                'message' => 'Paiement ajouté !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
-        }
-    }
-
-    if ($_POST['action'] == 'supprimer_facture') {
-        $id_facture = $_POST['id_facture'];
-
-        $update = update(
-            'facture',
-            [
-                'statut_facture' => 'supprime'
-            ],
-            "id_facture = $id_facture",
-            $db
-        );
-
-        if ($update) {
+        if ($_POST['option'] == "supprimer_facture") {
 
             // Send email
-            $query = "SELECT * FROM facture WHERE id_facture = $id_facture";
+            $query = "SELECT * FROM facture WHERE id_facture = {$_POST['id_facture']}";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -1159,11 +1132,11 @@ if (isset($_POST['action'])) {
             // Ajouter le DD DEC
             $dd = find_dd_dec($db);
             $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
-            
+
             $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
-            
+
             $subject = 'Suppression d\'une facture dans GED-ELYON';
-            
+
             $message = <<<HTML
             
                 <!DOCTYPE html>
@@ -1559,23 +1532,78 @@ if (isset($_POST['action'])) {
                 </html>
             
             HTML;
-            
+
             $send_mail = send_mail($to, $from, $subject, $message);
 
-            $output = array(
-                'success' => true,
-                'send_mail' => $send_mail,
-                'message' => 'La facture a été supprimée !'
-            );
-        } else {
-            $output = array(
-                'success' => false,
-                'message' => 'Une erreur s\'est produite !'
-            );
+            if ($send_mail) {
+                $output = [
+                    'success' => true,
+                    'message' => 'Mail envoyé !',
+                ];
+            } else {
+                $output = [
+                    'success' => false,
+                    'message' => 'Une erreur s\'est produite ! !',
+                ];
+            }
         }
     }
-    
 
+    if ($_POST['action'] == 'fetch_page_facture') {
+
+        $id_facture = $_SESSION['id_view_facture'];
+        $id_client = select_info('id_client', 'facture', "id_facture = $id_facture", $db);
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND facture.id_facture = $id_facture ";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
+        FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_facture'] = $result['total_facture'];
+        $output['total_regle'] = $result['total_regle'];
+        $output['taux_recouvrement'] = round(($result['total_regle'] / $result['total_facture']) * 100, 2);
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_echue, COUNT(*) as nb_facture_echue 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'relance'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_echue'] = $result['total_echue'] ?? '--';
+        $output['nb_facture_echue'] = $result['nb_facture_echue'];
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_en_cour, COUNT(*) as nb_facture_en_cour 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'en cour'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_en_cour'] = $result['total_en_cour'] ?? '--';
+        $output['nb_facture_en_cour'] = $result['nb_facture_en_cour'];
+
+        // Récupérer les informations de la base de données
+        $query = "SELECT SUM(montant_ttc_facture) as total_solde, COUNT(*) as nb_facture_solde 
+        FROM facture WHERE id_client = $id_client AND statut_facture = 'paye'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output['total_solde'] = $result['total_solde'] ?? '--';
+        $output['nb_facture_solde'] = $result['nb_facture_solde'];
+    }
 }
 
 echo json_encode($output);
