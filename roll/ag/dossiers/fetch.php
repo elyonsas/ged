@@ -142,6 +142,12 @@ if (isset($_POST['datatable'])) {
                                     </div>
                                     <!--end::Menu item-->
 
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_client menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_client_modal" data-id_client="{$id_client}">Modification rapide</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
                                     $attribuer_a
 
                                     <!--begin::Menu item-->
@@ -190,6 +196,11 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_client menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_client_modal" data-id_client="{$id_client}">Modification rapide</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
@@ -3263,6 +3274,61 @@ if (isset($_POST['action'])) {
                 'message' => 'Erreur lors de l\'ajout du client'
             );
         }
+    }
+
+    if ($_POST['action'] == 'fetch_edit_client') {
+        $id_client = $_POST['id_client'];
+
+        $query = "SELECT * FROM utilisateur, compte, client, secteur_activite WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = client.id_utilisateur
+        AND client.id_secteur_activite = secteur_activite.id_secteur_activite AND client.id_client = $id_client";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
+
+    if ($_POST['action'] == 'edit_client'){
+        $id_client = $_POST['id_client'];
+        $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
+        $id_secteur_activite = select_info('id_secteur_activite', 'client', "id_client = $id_client", $db);
+        $nom_client = select_info('nom_utilisateur', 'utilisateur', "id_utilisateur = $id_utilisateur", $db);
+
+        $update1 = update(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_client'],
+                'adresse_utilisateur' => $_POST['adresse_client'],
+                'tel_utilisateur' => $_POST['tel_client'],
+                'email_utilisateur' => $_POST['email_client'],
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            "id_utilisateur = $id_utilisateur",
+            $db
+        );
+
+        $update2 = update(
+            'client',
+            [
+                'id_secteur_activite' => $id_secteur_activite,
+            ],
+            "id_client = $id_client",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => "Les informations du client <b>$nom_client</b> ont été modifiées !"
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+
+
     }
 
     if ($_POST['action'] == 'activer_compte') {
