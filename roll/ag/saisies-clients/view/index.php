@@ -408,11 +408,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
+        $(document).on('click', '.wrapper-saisie .saisie-value', function (e) {
+            // wrapperSaisie = $(e.target).parents('.wrapper-saisie');
+            console.log($(e.target));
+        });
+
         // Lorsqu'on clique sur .wrapper-saisie
         tooltip_showing = null;
-        $(document).on('click', '.wrapper-saisie', function (e) {
+        $(document).on('click', '.wrapper-saisie .saisie-value', function (e) {
+            wrapperSaisie = $(e.target).parents('.wrapper-saisie');
             if (tooltip_showing == null) {
-                $(this).find('.tooltip-saisie').css({
+                wrapperSaisie.find('.tooltip-saisie').css({
                     opacity: 1,
                     pointerEvents: 'auto',
                     transform: 'translateY(0px)',
@@ -422,7 +428,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     oTransform: 'translateY(0px)',
                 });
 
-                tooltip_showing = $(this).find('.tooltip-saisie');
+                tooltip_showing = wrapperSaisie.find('.tooltip-saisie');
             } else{
                 tooltip_showing.css({
                     opacity: 0,
@@ -439,7 +445,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         $(document).click(function(e) {
-            if (!$(e.target).is('.wrapper-saisie') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
+            if (!$(e.target).is('.wrapper-saisie .saisie-value') && !$(e.target).is('.tooltip-saisie') && !$(e.target).is('.saisie-option')) {
                 if (tooltip_showing != null) {
                     tooltip_showing.css({
                         opacity: 0,
@@ -456,11 +462,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             }
         });
 
-        // Lorsqu'on clique sur .saisie-option
-        $(document).on('click', '.saisie-option', function (e) {
-            id_saisie = $(this).find('input').data('id_saisie');
-            option = $(this).find('input').data('option');
-            value = $(this).find('input').val();
+        // Lorsqu'on clique sur .saisie-option input
+        $(document).on('click', '.saisie-option input', function (e) {
+            id_saisie = $(this).data('id_saisie');
+            option = $(this).data('option');
+            value = $(this).val();
+
+            // Trouver son parent .wrapper-saisie
+            wrapperSaisie = $(e.target).parents('.wrapper-saisie');
+            // Cacher le .saisie-value
+            wrapperSaisie.find('.saisie-value').addClass('d-none');
+
+            // Mettre un spinner dans le parent .wrapper-saisie (au début de la div)
+            wrapperSaisie.prepend('<div class="spinner-border spinner-border-sm align-middle ms-2"></div>');
+
+
 
             $.ajax({
                 url: "roll/ag/saisies-clients/fetch.php",
@@ -473,7 +489,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 },
                 dataType: "JSON",
                 success: function(data) {
-                    reload_datatable('saisies_clients');
+
+                    if (data.success) {
+                        // Supprimer le spinner
+                        wrapperSaisie.find('.spinner-border').remove();
+
+                        // Afficher le .saisie-value
+                        wrapperSaisie.find('.saisie-value').removeClass('d-none');
+                        wrapperSaisie.find('.saisie-value').html(data.value);
+                    }
+                    
                 }
             })
 
