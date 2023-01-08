@@ -12,35 +12,16 @@ if (isset($_POST['datatable'])) {
     if ($_POST['datatable'] == 'all_dossiers') {
 
         $output = array();
-        $query = '';
 
-        $query .= "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        if ($_POST['query'] != '') {
+            $query = $_POST['query'];
+        } else {
+            $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
         AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
-
-
-        // // pour la recherche
-        // if (isset($_POST["search"]["value"])) {
-        //     $query .= 'AND (nom_utilisateur LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR prenom_utilisateur LIKE "%'. $_POST["search"]["value"] .'%" ';
-        //     $query .= 'OR titre_client LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR created_at_client LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR date_valide_client LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR statut_compte LIKE "%' . $_POST["search"]["value"] . '%" ) ';
-        // }
-
-        // // Filtrage dans le tableau
-        // if (isset($_POST['order'])) {
-        //     $query .= 'ORDER BY ' . $colonne[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
-        // }
-        // if ($_POST['length'] != -1) {
-        //     $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-        // }
-
+        }
 
         $statement = $db->prepare($query);
-
         $statement->execute();
-
         $result = $statement->fetchAll();
 
         $data = array();

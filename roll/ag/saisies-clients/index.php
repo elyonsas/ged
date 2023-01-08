@@ -21,6 +21,8 @@ $menu_compta = "";
 $menu_compta_facture = "";
 $menu_compta_relance = "";
 
+$query = $_GET['query'] ?? '';
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/header.php');
@@ -191,6 +193,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: datatable,
+                    query: `<?= $query ?>`,
                 },
                 dataType: "JSON",
                 success: function(data) {
