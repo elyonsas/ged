@@ -78,6 +78,44 @@ if (isset($_POST['stat_chart'])) {
         );
         
     }
+    if ($_POST['stat_chart'] == 'mixedwidget') {
+
+        $max_moy = 1;
+        if (max_mois_client_a_jour($db, 'six month') > max_mois_client_a_jour($db, 'pass month')) {
+            $max_moy = max_mois_client_a_jour($db, 'six month');
+        } else {
+            $max_moy = max_mois_client_a_jour($db, 'pass month');
+        }
+
+        $month = date('Y-m');
+        $month_1 = date('Y-m', strtotime('-1 month'));
+        $month_2 = date('Y-m', strtotime('-2 months'));
+        $month_3 = date('Y-m', strtotime('-3 months'));
+        $month_4 = date('Y-m', strtotime('-4 months'));
+        $month_5 = date('Y-m', strtotime('-5 months'));
+
+        $stat_month = ceil((stat_mois_client_a_jour($db) * 100) / $max_moy);
+        $stat_month_1 = ceil((stat_mois_client_a_jour($db, $month_1) * 100) / $max_moy);
+        $stat_month_2 = ceil((stat_mois_client_a_jour($db, $month_2) * 100) / $max_moy);
+        $stat_month_3 = ceil((stat_mois_client_a_jour($db, $month_3) * 100) / $max_moy);
+        $stat_month_4 = ceil((stat_mois_client_a_jour($db, $month_4) * 100) / $max_moy);
+        $stat_month_5 = ceil((stat_mois_client_a_jour($db, $month_5) * 100) / $max_moy);
+
+        $stat_array = [
+            'stat_month' => $stat_month,
+            'stat_month_1' => $stat_month_1,
+            'stat_month_2' => $stat_month_2,
+            'stat_month_3' => $stat_month_3,
+            'stat_month_4' => $stat_month_4,
+            'stat_month_5' => $stat_month_5,
+            'stat_date' => date('M', strtotime($month)),
+            'stat_date_1' => date('M', strtotime($month_1)),
+            'stat_date_2' => date('M', strtotime($month_2)),
+            'stat_date_3' => date('M', strtotime($month_3)),
+            'stat_date_4' => date('M', strtotime($month_4)),
+            'stat_date_5' => date('M', strtotime($month_5)),
+        ];
+    }
 
     $output = $stat_array;
 }

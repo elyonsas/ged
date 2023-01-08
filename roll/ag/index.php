@@ -616,14 +616,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 								<!--begin::Items-->
 								<div class="mt-5">
 									<!--begin::Item-->
-									<div class="d-flex flex-stack flex-wrap">
+									<div class="d-flex flex-stack">
 										<!--begin::Section-->
-										<div class="text-gray-700 fw-semibold fs-6 me-2">Octobre</div>
+										<div class="text-gray-700 fw-semibold fs-6 me-2"><?= date_to_french(date('F')) ?></div>
 										<!--end::Section-->
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6">5 clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?> clients à jour</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -633,14 +633,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack flex-wrap">
+									<div class="d-flex flex-stack">
 										<!--begin::Section-->
-										<div class="text-gray-700 fw-semibold fs-6 me-2">Septembre</div>
+										<div class="text-gray-700 fw-semibold fs-6 me-2"><?= date_to_french(date('F', strtotime('-1 month'))) ?></div>
 										<!--end::Section-->
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6">15 clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?> clients à jour</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -650,14 +650,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack flex-wrap">
+									<div class="d-flex flex-stack">
 										<!--begin::Section-->
-										<div class="text-gray-700 fw-semibold fs-6 me-2">Août</div>
+										<div class="text-gray-700 fw-semibold fs-6 me-2"><?= date_to_french(date('F', strtotime('-2 months'))) ?></div>
 										<!--end::Section-->
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6">10 clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?> clients à jour</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -667,14 +667,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack flex-wrap">
+									<div class="d-flex flex-stack">
 										<!--begin::Section-->
-										<div class="text-gray-700 fw-semibold fs-6 me-2">Juillet</div>
+										<div class="text-gray-700 fw-semibold fs-6 me-2"><?= date_to_french(date('F', strtotime('-3 months'))) ?></div>
 										<!--end::Section-->
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6">14 clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?> clients à jour</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -684,14 +684,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<div class="separator separator-dashed my-3"></div>
 									<!--end::Separator-->
 									<!--begin::Item-->
-									<div class="d-flex flex-stack flex-wrap">
+									<div class="d-flex flex-stack">
 										<!--begin::Section-->
-										<div class="text-gray-700 fw-semibold fs-6 me-2">Juin</div>
+										<div class="text-gray-700 fw-semibold fs-6 me-2"><?= date_to_french(date('F', strtotime('-4 months'))) ?></div>
 										<!--end::Section-->
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6">4 clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?> clients à jour</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -851,7 +851,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 <!--end::Vendors Javascript-->
 <!--begin::Custom Javascript(used by this page)-->
 <script src="assets/js/widgets.bundle.js"></script>
-<script src="assets/js/custom/widgets.js"></script>
+<!-- <script src="assets/js/custom/widgets.js"></script> -->
 <script src="assets/js/custom/apps/chat/chat.js"></script>
 <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
 <script src="assets/js/custom/utilities/modals/create-app.js"></script>
@@ -1020,6 +1020,187 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 				KTUtil.onDOMContentLoaded((function () {
 					KTProjectList.init()
 				}));
+
+			}
+		});
+
+		// Requete pour récupérer les infos du chart MixedWidget5
+		$.ajax({
+			url: 'roll/ag/fetch.php',
+			method: 'POST',
+			data: {
+				stat_chart: 'mixedwidget',
+			},
+			dataType: 'json',
+			success: function(data) {
+				stat_date_mixedwidget5 = [
+					data.stat_date, data.stat_date_1, data.stat_date_2, data.stat_date_3,
+					data.stat_date_4, data.stat_date_5
+				];
+				// Définir le widget pour la tendance
+				var initMixedWidget5 = function() {
+					var charts = document.querySelectorAll('.mixed-widget-5-chart');
+
+					[].slice.call(charts).map(function(element) {
+						var height = parseInt(KTUtil.css(element, 'height'));
+
+						if (!element) {
+							return;
+						}
+
+						var color = element.getAttribute('data-kt-chart-color');
+
+						var labelColor = KTUtil.getCssVariableValue('--kt-' + 'gray-800');
+						var strokeColor = KTUtil.getCssVariableValue('--kt-' + 'gray-300');
+						var baseColor = KTUtil.getCssVariableValue('--kt-' + color);
+						var lightColor = KTUtil.getCssVariableValue('--kt-' + color + '-light');
+
+						var options = {
+							series: [{
+								name: 'Clients',
+								// data: [30, 30, 60, 25, 25, 40],
+								data: [
+									data.stat_month_5, data.stat_month_4,
+									data.stat_month_3, data.stat_month_2,
+									data.stat_month_1, data.stat_month
+								]
+							}],
+							chart: {
+								fontFamily: 'inherit',
+								type: 'area',
+								height: height,
+								toolbar: {
+									show: false
+								},
+								zoom: {
+									enabled: false
+								},
+								sparkline: {
+									enabled: true
+								}
+							},
+							plotOptions: {},
+							legend: {
+								show: false
+							},
+							dataLabels: {
+								enabled: false
+							},
+							fill: {
+								type: 'solid',
+								opacity: 1
+							},
+							fill1: {
+								type: 'gradient',
+								opacity: 1,
+								gradient: {
+									type: "vertical",
+									shadeIntensity: 0.5,
+									gradientToColors: undefined,
+									inverseColors: true,
+									opacityFrom: 1,
+									opacityTo: 0.375,
+									stops: [25, 50, 100],
+									colorStops: []
+								}
+							},
+							stroke: {
+								curve: 'smooth',
+								show: true,
+								width: 3,
+								colors: [baseColor]
+							},
+							xaxis: {
+								categories: [
+									stat_date_mixedwidget5[5], stat_date_mixedwidget5[4], stat_date_mixedwidget5[3],
+									stat_date_mixedwidget5[2], stat_date_mixedwidget5[1], stat_date_mixedwidget5[0]
+								],
+								axisBorder: {
+									show: false,
+								},
+								axisTicks: {
+									show: false
+								},
+								labels: {
+									show: false,
+									style: {
+										colors: labelColor,
+										fontSize: '12px'
+									}
+								},
+								crosshairs: {
+									show: false,
+									position: 'front',
+									stroke: {
+										color: strokeColor,
+										width: 1,
+										dashArray: 3
+									}
+								},
+								tooltip: {
+									enabled: true,
+									formatter: undefined,
+									offsetY: 0,
+									style: {
+										fontSize: '12px'
+									}
+								}
+							},
+							yaxis: {
+								min: 0,
+								max: 105,
+								labels: {
+									show: false,
+									style: {
+										colors: labelColor,
+										fontSize: '12px'
+									}
+								}
+							},
+							states: {
+								normal: {
+									filter: {
+										type: 'none',
+										value: 0
+									}
+								},
+								hover: {
+									filter: {
+										type: 'none',
+										value: 0
+									}
+								},
+								active: {
+									allowMultipleDataPointsSelection: false,
+									filter: {
+										type: 'none',
+										value: 0
+									}
+								}
+							},
+							tooltip: {
+								style: {
+									fontSize: '12px'
+								},
+								y: {
+									formatter: function(val) {
+										return val + "%"
+									}
+								}
+							},
+							colors: [lightColor],
+							markers: {
+								colors: [lightColor],
+								strokeColor: [baseColor],
+								strokeWidth: 3
+							}
+						};
+
+						var chart = new ApexCharts(element, options);
+						chart.render();
+					});
+				}
+				initMixedWidget5();
 
 			}
 		});

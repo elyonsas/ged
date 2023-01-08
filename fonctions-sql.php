@@ -219,6 +219,180 @@
         return $result['stat_ca_creance'];
     }
 
+    // Statistique tendance mensuelle saisie client
+    function month_abbr($month)
+    {
+        $month_abbr = '';
+        switch ($month) {
+            case '01':
+                $month_abbr = 'janv';
+                break;
+            case '02':
+                $month_abbr = 'fevr';
+                break;
+            case '03':
+                $month_abbr = 'mars';
+                break;
+            case '04':
+                $month_abbr = 'avr';
+                break;
+            case '05':
+                $month_abbr = 'mai';
+                break;
+            case '06':
+                $month_abbr = 'juin';
+                break;
+            case '07':
+                $month_abbr = 'juil';
+                break;
+            case '08':
+                $month_abbr = 'aout';
+                break;
+            case '09':
+                $month_abbr = 'sept';
+                break;
+            case '10':
+                $month_abbr = 'oct';
+                break;
+            case '11':
+                $month_abbr = 'nov';
+                break;
+            case '12':
+                $month_abbr = 'dec';
+                break;
+        }
+
+        return $month_abbr;
+    }
+
+    function stat_mois_saisie_a_jour(PDO $db, $id_client, $date = null)
+    {
+
+        if ($date != null) {
+
+            // Extrait les informations de la date
+            $annee = date('Y', strtotime($date));
+            $mois = date('m', strtotime($date));
+            $mois = month_abbr($mois);
+
+            $query = "SELECT * FROM saisie WHERE id_client = $id_client AND annee = $annee";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $saisie_a_jour = false;
+            foreach ($result as $row) {
+                if ($row[$mois.'_s'] == 'X') {
+                    $saisie_a_jour = true;
+                } else{
+                    $saisie_a_jour = false;
+                    break;
+                }
+            }
+        } else {
+
+            // Extrait les informations de la date du jour
+            $annee = date('Y');
+            $mois = date('m');
+            $mois = month_abbr($mois);
+
+            $query = "SELECT * FROM saisie WHERE id_client = $id_client AND annee = $annee";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $saisie_a_jour = false;
+            foreach ($result as $row) {
+                if ($row[$mois.'_s'] == 'X') {
+                    $saisie_a_jour = true;
+                }else {
+                    $saisie_a_jour = false;
+                    break;
+                }
+            }
+            
+        }
+
+        return $saisie_a_jour;
+    }
+
+    function stat_mois_client_a_jour(PDO $db, $date = null)
+    {
+
+        if ($date != null) {
+
+            $query = "SELECT * FROM client";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $stat_client_a_jour = 0;
+            foreach ($result as $row) {
+                if (stat_mois_saisie_a_jour($db, $row['id_client'], $date)) {
+                    $stat_client_a_jour++;
+                }
+            }
+        } else {
+
+            $query = "SELECT * FROM client";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $stat_client_a_jour = 0;
+            foreach ($result as $row) {
+                if (stat_mois_saisie_a_jour($db, $row['id_client'])) {
+                    $stat_client_a_jour++;
+                }
+            }
+        }
+
+        return $stat_client_a_jour;
+    }
+
+    function max_mois_client_a_jour(PDO $db, $six_month)
+    {
+        $date_array = [];
+        if ($six_month == 'six month') {
+
+            $month = date('Y-m');
+            $month_1 = date('Y-m', strtotime('-1 month'));
+            $month_2 = date('Y-m', strtotime('-2 months'));
+            $month_3 = date('Y-m', strtotime('-3 months'));
+            $month_4 = date('Y-m', strtotime('-4 months'));
+            $month_5 = date('Y-m', strtotime('-5 months'));
+
+            $date_array = [
+                'month' => stat_mois_client_a_jour($db, $month),
+                'month_1' => stat_mois_client_a_jour($db, $month_1),
+                'month_2' => stat_mois_client_a_jour($db, $month_2),
+                'month_3' => stat_mois_client_a_jour($db, $month_3),
+                'month_4' => stat_mois_client_a_jour($db, $month_4),
+                'month_5' => stat_mois_client_a_jour($db, $month_5),
+            ];
+        } else {
+
+            $month_6 = date('Y-m', strtotime('-6 month'));
+            $month_7 = date('Y-m', strtotime('-7 month'));
+            $month_8 = date('Y-m', strtotime('-8 month'));
+            $month_9 = date('Y-m', strtotime('-9 months'));
+            $month_10 = date('Y-m', strtotime('-10 months'));
+            $month_11 = date('Y-m', strtotime('-11 months'));
+
+            $date_array = [
+                'month_6' => stat_mois_client_a_jour($db, $month_6),
+                'month_7' => stat_mois_client_a_jour($db, $month_7),
+                'month_8' => stat_mois_client_a_jour($db, $month_8),
+                'month_9' => stat_mois_client_a_jour($db, $month_9),
+                'month_10' => stat_mois_client_a_jour($db, $month_10),
+                'month_11' => stat_mois_client_a_jour($db, $month_11),
+            ];
+        }
+
+        return max($date_array);
+    }
+    
+
     // Statistique client
     function stat_ca_all_client(PDO $db, $id_client)
     {
