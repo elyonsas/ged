@@ -64,8 +64,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 							<!--begin::Card body-->
 							<div class="card-body pt-3 d-flex flex-wrap align-items-center">
 								<!--begin::Chart-->
-								<div class="d-flex flex-center me-5 pt-2">
+								<!-- <div class="d-flex flex-center me-5 pt-2">
 									<div id="kt_card_widget_17_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11"></div>
+								</div> -->
+								<div class="d-flex flex-center h-100px w-100px me-9 mb-5">
+									<canvas id="kt_project_list_chart"></canvas>
 								</div>
 								<!--end::Chart-->
 								<!--begin::Labels-->
