@@ -13,19 +13,17 @@ if (isset($_POST['datatable'])) {
 
         $output = array();
 
-        if ($_POST['query'] != '') {
-            $query = $_POST['query'];
+        if (isset($_SESSION['data_client']) && $_POST['data_client'] != '') {
+            $result = $_SESSION['data_client'];
         } else {
             $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
         }
 
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll();
-
         $data = array();
-
 
         foreach ($result as $row) {
 

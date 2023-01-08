@@ -391,6 +391,42 @@
 
         return max($date_array);
     }
+
+    function data_mois_client_a_jour(PDO $db, $date = null)
+    {
+
+        if ($date != null) {
+
+            $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $data = [];
+            foreach ($result as $row) {
+                if (stat_mois_saisie_a_jour($db, $row['id_client'], $date)) {
+                    $data[] = $row;
+                }
+            }
+        } else {
+
+            $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            $data = [];
+            foreach ($result as $row) {
+                if (stat_mois_saisie_a_jour($db, $row['id_client'])) {
+                    $data[] = $row;
+                }
+            }
+        }
+
+        return $data;
+    }
     
 
     // Statistique client

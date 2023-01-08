@@ -623,7 +623,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?> clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?> 
+												<a class="text-dark" href="roll/ag/view_redirect/?action=view_of_stat_saisie&date=">
+													clients à jour
+												</a>
+											</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -640,7 +644,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?> clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?> 
+												<a class="text-dark" href="roll/ag/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-1 month'))?>">
+													clients à jour
+												</a>
+											</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -657,7 +665,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?> clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?>  
+												<a class="text-dark" href="roll/ag/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-2 month'))?>">
+													clients à jour
+												</a>
+											</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -674,7 +686,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?> clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?> 
+												<a class="text-dark" href="roll/ag/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-3 month'))?>">
+													clients à jour
+												</a>
+											</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->
@@ -691,7 +707,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?> clients à jour</span>
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?> 
+												<a class="text-dark" href="roll/ag/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-4 month'))?>">
+													clients à jour
+												</a>
+											</span>
 											<!--end::Number-->
 										</div>
 										<!--end::Statistics-->

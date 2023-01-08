@@ -32,6 +32,19 @@ if (isset($_GET['action'])) {
         header('Location: /ged/roll/ag/saisies-clients/view');
     }
 
+    if ($_GET['action'] == 'view_of_stat_saisie') {
+
+        $date = $_GET['date'];
+        
+        if ($date == '') {
+            $_SESSION['data_client'] = data_mois_client_a_jour($db);
+        }else{
+            $_SESSION['data_client'] = data_mois_client_a_jour($db, $date);
+        }
+
+        header('Location: /ged/roll/ag/saisies-clients/?data_client=true');
+    }
+
     if ($_GET['action'] == 'view_facture') {
 
         $id_facture = $_GET['id_view_facture'];
