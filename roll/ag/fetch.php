@@ -62,6 +62,26 @@ if (isset($_POST['datatable'])) {
 
 }
 
+if (isset($_POST['stat_chart'])) {
+
+    $stat_array = [];
+    if ($_POST['stat_chart'] == 'list_chart') {
+
+        $dec = stat_client($db, 1);
+        $dac = stat_client($db, 2);
+        $dc = stat_client($db, 3);
+
+        $stat_array = array(
+            'dec' => $dec,
+            'dac' => $dac,
+            'dc' => $dc
+        );
+        
+    }
+
+    $output = $stat_array;
+}
+
 if (isset($_POST['action'])) {
     
     // Paramêtre de l'application
