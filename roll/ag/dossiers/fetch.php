@@ -2126,6 +2126,102 @@ if (isset($_POST['action'])) {
         }
     }
 
+    if ($_POST['action'] == 'demander_doc') {
+
+        $id_client = $_SESSION['id_view_client'];
+        $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = '$id_client'", $db);
+        $nom_client = select_info('nom_utilisateur', 'utilisateur', "id_utilisateur = '$id_utilisateur'", $db);
+
+        $titre_document = $_POST['titre_document'];
+        $description_document = $_POST['description_document'];
+        $type_document = $_POST['type_document'];
+        $table_document = 'document_autre';
+        $aspect_document = $_POST['aspect_document'];
+        $type_dossier_document = $_POST['type_dossier'];
+        $rubrique_document = $_POST['rubrique'];
+
+        // Insertion dans la table document
+        $insert1 = insert(
+            'document',
+            [
+                'titre_document' => $titre_document,
+                'type_document' => $type_document,
+                'table_document' => $table_document,
+                'note_aspect_document' => 0,
+                'statut_document' => 'demande',
+                'aspect_document' => $aspect_document,
+                'type_dossier_document' => $type_dossier_document,
+                'rubrique_document' => $rubrique_document,
+                'created_at_document' => date('Y-m-d H:i:s'),
+                'updated_at_document' => date('Y-m-d H:i:s'),
+                'created_by_document' => $_SESSION['id_utilisateur'],
+                'updated_by_document' => $_SESSION['id_utilisateur'],
+                'id_client' => $id_client
+            ],
+            $db
+        );
+
+        // id_document
+        $id_document = $db->lastInsertId();
+
+        $update = update(
+            'document',
+            [
+                'n_document' => $id_document,
+                'code_document' => 13000 + $id_document
+            ],
+            "id_document = '$id_document'",
+            $db
+        );
+
+        // Insertion dans la table document_autre
+        $insert2 = insert(
+            'document_autre',
+            [
+                'src_document' => "",
+                'src_temp_document' => "",
+                'contenu_document' => "",
+                'contenu_text_document' => "",
+                'contenu_modele_document' => "",
+                'description_document' => $description_document,
+                'id_document' => $id_document
+            ],
+            $db
+        );
+
+        // Insertion dans la table notification
+        $insert3 = insert(
+            'notification',
+            [
+                'titre_notification' => 'Demande de document #' . 13000 + $id_document,
+                'message_notification' => 'Une demande de document a été faite par ' . $_SESSION['nom_utilisateur'] . ' ' . $_SESSION['prenom_utilisateur'] . ' pour le client ' . $nom_client . ' !',
+                'type_notification' => 'alert',
+                'lu_notification' => 'non',
+                'url_notification' => 'roll/client/demande/',
+                'created_at_notification' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur
+            ],
+            $db
+        );
+
+
+
+        if ($insert1 && $insert2 && $insert3 && $update) {
+            $output = [
+                'success' => true,
+                'message' => 'Le client recevra une notification de cette demande !',
+                'id_document' => $id_document,
+                'type_document' => $type_document,
+                'titre_document' => $titre_document,
+            ];
+        } else {
+            $output = [
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            ];
+        }
+    }
+
     if ($_POST['action'] == 'fetch_secteur_activite') {
 
         $query = "SELECT * FROM secteur_activite";
@@ -3543,6 +3639,12 @@ if (isset($_POST['action'])) {
                                     <!--end::Menu item-->
 
                                     $attribuer_a
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="demander_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#demander_doc_modal" data-id_client="{$id_client}">Demander document</a>
+                                    </div>
+                                    <!--end::Menu item-->
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">

@@ -1058,6 +1058,131 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal Ajouter un document-->
 
+    <!-- begin::Modal Demander un document-->
+    <div class="modal fade" id="demander_doc_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_demander_doc" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Demander un document</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Titre du document</label>
+                            <input id="id_demander_doc_titre_document" type="text" class="form-control form-control-solid" placeholder="Entrez le titre du document" name="titre_document">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Description (facultative)</label>
+                            <textarea id="id_demander_doc_description_document" class="form-control form-control-solid" rows="3" placeholder="Entrez une description du document" name="description_document"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Aspect de gestion</label>
+                            <select id="id_demander_doc_aspect_document" class="form-select form-select-solid" data-control="select2" data-placeholder="" data-hide-search="true" name="aspect_document">
+                                <option value="juridiques_et_administratifs">Juridiques et administratifs</option>
+                                <option value="techniques">Techniques</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <label class="fs-5 mb-2">Type du document</label>
+
+                        <div class="form-group col-6">
+                            <!--begin::Col-->
+                            <label class="form-check-clip text-center w-100">
+                                <input id="id_demander_doc_type_document_file" class="btn-check" type="radio" value="file" required name="type_document" />
+                                <div class="form-check-wrapper w-100">
+                                    <div class="form-check-indicator"></div>
+                                    <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
+                                        <span class="text-dark fw-bold d-block fs-3">Fichier</span>
+                                        <span class="text-muted fw-semibold fs-6">Téléversez un fichier</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <!--end::Col-->
+                        </div>
+
+                        <div class="form-group col-6">
+                            <!--begin::Col-->
+                            <label class="form-check-clip text-center w-100">
+                                <input id="id_demander_doc_type_document_write" class="btn-check" type="radio" value="write" required name="type_document" />
+                                <div class="form-check-wrapper w-100">
+                                    <div class="form-check-indicator"></div>
+                                    <div class="form-check-content fw-semibold text-start bg-light-primary rounded border-primary border border-dashed p-6">
+                                        <span class="text-dark fw-bold d-block fs-3">Écrire</span>
+                                        <span class="text-muted fw-semibold fs-6">Rédigez dans le logiciel</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <!--end::Col-->
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group col-6">
+                            <label class="fs-5 mb-2">Type de dossier</label>
+                            <select id="id_demander_doc_type_dossier" class="form-select form-select-solid" data-control="select2" data-placeholder="" data-hide-search="true" name="type_dossier">
+                                <option value="permanent">Permanent</option>
+                                <option value="general">Général de contrôle annuel</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="fs-5 mb-2">Rubrique (Facultative)</label>
+                            <select id="id_demander_doc_rubrique" class="form-select form-select-solid" data-control="select2" data-placeholder="Selectionnez une rubrique" data-hide-search="true" name="rubrique">
+                                <option></option>
+                                <option value="connaissance_generale_client">Connaissance générale du Client</option>
+                                <option value="documents_juridiques_client">Documents juridiques sur le Client</option>
+                                <option value="organisation_comptable_client">Organisation comptable du Client</option>
+                                <option value="documents_comptables_client">Documents comptables du Client</option>
+                                <option value="documents_fiscaux_client">Documents fiscaux du Client</option>
+                                <option value="documents_sociaux_client">Documents sociaux du Client</option>
+                                <option value="documents_gestion_client">Documents de Gestion du Client</option>
+                                <option value="prepare_mission_annee">Préparation de la mission au titre de la nouvelle année</option>
+                                <option value="exam_coherence_vraisemblance">Examen de cohérence et de vraisemblance</option>
+                                <option value="synthese_mission_rapport">Synthèse de la mission et rapports</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="demander_doc">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_demander_doc" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Demander un document-->
+
     <!-- begin::Modal detail-->
     <div class="modal fade" id="detail_document_modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -5926,6 +6051,71 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     }
                                 }
                             });
+
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Pour la demande d'un document
+        $(document).on('submit', '#form_demander_doc', function (event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_demander_doc');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function (data) {
+                    setTimeout(function () {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#demander_doc_modal').modal('hide');
+                            $('#form_demander_doc')[0].reset();
+                            reload_page();
+
+                            // swal avec message de succès
+                            swal.fire({
+                                title: 'Demande envoyée !',
+                                text: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, merci!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            // Envoi de mail pour notifier le client
+                            // $.ajax({
+                            //     url: 'roll/ag/dossiers/fetch.php',
+                            //     method: 'POST',
+                            //     data: {
+                            //         action: 'send_mail',
+                            //         id_document: data.id_document,
+                            //         option: 'demander_doc',
+                            //     },
+                            //     dataType: 'JSON',
+                            //     success: function (data) {
+                            //         if (data.success) {
+                            //             console.log(data.message);
+                            //         } else {
+                            //             console.log(data.message);
+                            //         }
+                            //     }
+                            // });
 
                         } else {
                             toastr.error('une erreur s\'est produite', '', {
