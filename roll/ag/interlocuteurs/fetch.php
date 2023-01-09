@@ -14,40 +14,16 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM utilisateur, compte, interlocuteur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur AND utilisateur.id_utilisateur <> {$_SESSION['id_utilisateur']} 
-        AND type_compte <> 'admin' AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
-
-
-        // // pour la recherche
-        // if (isset($_POST["search"]["value"])) {
-        //     $query .= 'AND (nom_utilisateur LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR prenom_utilisateur LIKE "%'. $_POST["search"]["value"] .'%" ';
-        //     $query .= 'OR titre_article LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR created_at_article LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR date_valide_article LIKE "%' . $_POST["search"]["value"] . '%" ';
-        //     $query .= 'OR statut_compte LIKE "%' . $_POST["search"]["value"] . '%" ) ';
-        // }
-
-        // // Filtrage dans le tableau
-        // if (isset($_POST['order'])) {
-        //     $query .= 'ORDER BY ' . $colonne[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
-        // }
-        // if ($_POST['length'] != -1) {
-        //     $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-        // }
-
+        $query .= "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
+        WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
+        AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
+        AND statut_assoc_client_interlo = 'actif' ORDER BY statut_compte ASC";
 
         $statement = $db->prepare($query);
-
         $statement->execute();
-
         $result = $statement->fetchAll();
 
         $data = array();
-
-        $filtered_rows = $statement->rowCount();
-
 
         foreach ($result as $row) {
 
