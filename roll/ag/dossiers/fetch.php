@@ -2191,17 +2191,12 @@ if (isset($_POST['action'])) {
         );
 
         // Insertion dans la table notification
-        $insert3 = insert(
-            'notification',
-            [
-                'titre_notification' => 'Demande de document #' . $code_document,
-                'message_notification' => 'Une demande de document a été faite par ' . $_SESSION['nom_utilisateur'] . ' ' . $_SESSION['prenom_utilisateur'] . ' pour le client ' . $nom_client . ' !',
-                'type_notification' => 'alert',
-                'lu_notification' => 'non',
-                'url_notification' => 'roll/client/demande/',
-                'created_at_notification' => date('Y-m-d H:i:s'),
-                'id_utilisateur' => $id_utilisateur
-            ],
+        $insert3 = add_notif(
+            'Demande de document #' . $code_document,
+            'Une demande de document a été faite par ' . $_SESSION['nom_utilisateur'] . ' ' . $_SESSION['prenom_utilisateur'] . ' pour le client ' . $nom_client . ' !',
+            'alert',
+            'roll/client/demande/',
+            $id_utilisateur,
             $db
         );
 

@@ -35,6 +35,30 @@
         }
     }
 
+    // Add notification
+    function add_notif($titre, $message, $type, $url, $id_utilisateur, PDO $db)
+    {
+        $insert = insert(
+            'notification',
+            [
+                'titre_notification' => $titre,
+                'message_notification' => $message,
+                'type_notification' => $type,
+                'lu_notification' => 'non',
+                'url_notification' => $url,
+                'created_at_notification' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur
+            ],
+            $db
+        );
+
+        if ($insert) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Insert
     function insert($table, $data, PDO $db)
     {
