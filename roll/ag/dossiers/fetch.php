@@ -463,7 +463,7 @@ if (isset($_POST['datatable'])) {
             $type_dossier_document_query = "AND type_dossier_document = '$type_dossier_document'";
         }
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query AND aspect_document = 'juridiques_et_administratifs' AND statut_document != 'supprime' ORDER BY updated_at_document DESC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query AND aspect_document = 'juridiques_et_administratifs' AND statut_document != 'supprime' AND statut_document != 'demande' ORDER BY updated_at_document DESC";
 
 
         // // pour la recherche
@@ -1169,7 +1169,7 @@ if (isset($_POST['datatable'])) {
             $rubrique_document_query = "AND rubrique_document = '$rubrique_document'";
         }
 
-        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query $rubrique_document_query AND aspect_document = 'techniques' AND statut_document != 'supprime' ORDER BY updated_at_document DESC";
+        $query .= "SELECT * FROM document WHERE id_client = {$_SESSION['id_view_client']} $type_dossier_document_query $rubrique_document_query AND aspect_document = 'techniques' AND statut_document != 'supprime' AND statut_document != 'demande' ORDER BY updated_at_document DESC";
 
 
         // // pour la recherche
@@ -2163,12 +2163,13 @@ if (isset($_POST['action'])) {
 
         // id_document
         $id_document = $db->lastInsertId();
+        $code_document = 13000 + $id_document;
 
         $update = update(
             'document',
             [
                 'n_document' => $id_document,
-                'code_document' => 13000 + $id_document
+                'code_document' => $code_document
             ],
             "id_document = '$id_document'",
             $db
@@ -2193,7 +2194,7 @@ if (isset($_POST['action'])) {
         $insert3 = insert(
             'notification',
             [
-                'titre_notification' => 'Demande de document #' . 13000 + $id_document,
+                'titre_notification' => 'Demande de document #' . $code_document,
                 'message_notification' => 'Une demande de document a été faite par ' . $_SESSION['nom_utilisateur'] . ' ' . $_SESSION['prenom_utilisateur'] . ' pour le client ' . $nom_client . ' !',
                 'type_notification' => 'alert',
                 'lu_notification' => 'non',
