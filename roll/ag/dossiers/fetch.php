@@ -2334,6 +2334,16 @@ if (isset($_POST['action'])) {
 
         }
 
+        // Créer un dossier pour le client sur le serveur
+        $id_departement = select_info('id_departement', 'client', "id_client = $id_client", $db);
+        $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
+
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $sigle_departement . '-' . $code;
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
         // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
         if ($insert4 && $insert5 && $update2) {
             $output = array(
