@@ -166,6 +166,7 @@ if (isset($_POST['action'])) {
         );
 
         if ($insert && $update) {
+            add_log('add_secteur_activite_client', "Ajout du secteur d'activité '$nom_secteur_activite' dans le système", $_SESSION['id_utilisateur'], $db);
             $output = array(
                 'success' => true,
                 'message' => ''

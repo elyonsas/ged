@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation du tableau de bord AG', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Tableau de bord';
 $titre_menu = 'Tableau de bord';
 $chemin_menu = <<<HTML

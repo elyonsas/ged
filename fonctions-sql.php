@@ -1,6 +1,40 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 
+    // Add log
+    function add_log($action, $message, $id_utilisateur, PDO $db)
+    {
+        // Insertion dans la table journaux
+        $insert = insert(
+            'journaux',
+            [
+                'action_journaux' => $action,
+                'message_journaux' => $message,
+                'date_journaux' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur,
+            ],
+            $db
+        );
+
+        $id_journaux = $db->lastInsertId();
+
+        // Mise à jour du code_journaux
+        $update = update(
+            'journaux',
+            [
+                'code_journaux' => 16000 + $id_journaux,
+            ],
+            "id_journaux = $id_journaux",
+            $db
+        );
+
+        if ($insert && $update) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Insert
     function insert($table, $data, PDO $db)
     {
