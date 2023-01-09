@@ -20,6 +20,9 @@ $menu_saisie_client = "";
 $menu_compta = "here show";
 $menu_compta_facture = "";
 $menu_compta_relance = "active";
+$menu_hist = "";
+$menu_hist_interlo = "";
+$menu_hist_collabo = "";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 

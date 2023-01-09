@@ -20,6 +20,9 @@ $menu_saisie_client = "";
 $menu_compta = "";
 $menu_compta_facture = "";
 $menu_compta_relance = "";
+$menu_hist = "";
+$menu_hist_interlo = "";
+$menu_hist_collabo = "";
 
 $data_client = $_GET['data_client'] ?? '';
 
