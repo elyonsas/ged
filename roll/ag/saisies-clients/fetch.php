@@ -13,11 +13,11 @@ if (isset($_POST['datatable'])) {
 
         $output = array();
 
-        if (isset($_SESSION['data_client']) && $_POST['data_client'] != '') {
-            $result = $_SESSION['data_client'];
+        if (isset($_SESSION['data_client_saisie']) && $_POST['data_client'] != '') {
+            $result = $_SESSION['data_client_saisie'];
         } else {
             $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'supprime' AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -54,6 +54,7 @@ if (isset($_POST['datatable'])) {
             }
 
             $statut_compte = $row['statut_compte'];
+            // dump($statut_compte);
             switch ($statut_compte) {
                 case 'actif':
                     $statut_compte_html = <<<HTML
@@ -1462,7 +1463,7 @@ if (isset($_POST['action'])) {
             $db
         );
 
-        $value = ($value == '')? '&nbsp;' : $value;
+        $value = ($value == '') ? '&nbsp;' : $value;
 
         if ($update) {
             $output = array(
@@ -1496,7 +1497,6 @@ if (isset($_POST['action'])) {
                 'message' => "Rubrique ajoutée !"
             );
         }
-
     }
 
     if ($_POST['action'] == 'delete_saisie') {
@@ -1517,7 +1517,6 @@ if (isset($_POST['action'])) {
             );
         }
     }
-
 }
 
 

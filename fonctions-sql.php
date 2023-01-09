@@ -428,6 +428,49 @@
         return $data;
     }
     
+    function data_client(PDO $db, $id_departement = null, $id_secteur_activite = null)
+    {
+        if ($id_departement != null && $id_secteur_activite != null) {
+
+            $query = "SELECT * FROM client, utilisateur, compte WHERE client.id_utilisateur = utilisateur.id_utilisateur 
+            AND utilisateur.id_utilisateur = compte.id_utilisateur AND id_departement = $id_departement 
+            AND id_secteur_activite = $id_secteur_activite AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            return $result;
+        } elseif ($id_departement != null && $id_secteur_activite == null) {
+
+            $query = "SELECT * FROM client, utilisateur, compte WHERE client.id_utilisateur = utilisateur.id_utilisateur 
+            AND utilisateur.id_utilisateur = compte.id_utilisateur AND id_departement = $id_departement 
+            AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            return $result;
+        } elseif ($id_departement == null && $id_secteur_activite != null) {
+
+            $query = "SELECT * FROM client, utilisateur, compte WHERE client.id_utilisateur = utilisateur.id_utilisateur 
+            AND utilisateur.id_utilisateur = compte.id_utilisateur AND id_secteur_activite = $id_secteur_activite 
+            AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            return $result;
+        } else {
+
+            $query = "SELECT * FROM client, utilisateur, compte WHERE client.id_utilisateur = utilisateur.id_utilisateur 
+            AND utilisateur.id_utilisateur = compte.id_utilisateur AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            return $result;
+        }
+    }
 
     // Statistique client
     function stat_ca_all_client(PDO $db, $id_client)

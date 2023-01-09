@@ -21,6 +21,8 @@ $menu_compta = "";
 $menu_compta_facture = "";
 $menu_compta_relance = "";
 
+$data_client = $_GET['data_client'] ?? '';
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/html_header.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/header.php');
@@ -475,6 +477,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 method: "POST",
                 data: {
                     datatable: datatable,
+                    data_client: `<?= $data_client ?>`,
                 },
                 dataType: "JSON",
                 success: function(data) {
@@ -489,6 +492,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             method: "POST",
             data: {
                 datatable: 'all_dossiers',
+                data_client: `<?= $data_client ?>`,
             },
             dataType: "JSON",
             success: function(data) {

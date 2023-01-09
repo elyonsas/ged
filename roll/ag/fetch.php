@@ -37,7 +37,9 @@ if (isset($_POST['datatable'])) {
             // Secteur activité
             $sub_array[] = <<<HTML
                 <div class="d-flex align-items-center">
-                    <div class="symbol symbol-45px me-5"><a href="#" class="text-dark fw-bold text-hover-primary fs-6" style="--bs-text-opacity:1;">$secteur_activite</a><br></div>
+                    <div class="symbol symbol-45px me-5">
+                        <div class="text-dark fw-bold fs-6" style="--bs-text-opacity:1;">$secteur_activite</div><br>
+                    </div>
                     <div class="d-flex justify-content-start flex-column">
                     </div>
                 </div>
@@ -46,7 +48,14 @@ if (isset($_POST['datatable'])) {
             // Client
             $sub_array[] = <<<HTML
                 <div class="d-flex align-items-center">
-                    <div class="symbol symbol-45px me-5"><span style="font-size: 13.975px;">$nbr_client client$end_s</span></div>
+                    <style>
+                        .text-underline-hover:hover {
+                            text-decoration: underline !important;
+                        }
+                    </style>
+                    <div class="symbol symbol-45px me-5">
+                        <a class="text-dark text-underline-hover" href="roll/ag/view_redirect/?action=view_of_secteur_activite&id_secteur_activite={$id_secteur_activite}" style="font-size: 13.975px;">$nbr_client client$end_s</a>
+                    </div>
                     <div class="d-flex justify-content-start flex-column">
                     </div>
                 </div>

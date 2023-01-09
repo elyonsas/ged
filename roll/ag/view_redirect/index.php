@@ -37,12 +37,20 @@ if (isset($_GET['action'])) {
         $date = $_GET['date'];
         
         if ($date == '') {
-            $_SESSION['data_client'] = data_mois_client_a_jour($db);
+            $_SESSION['data_client_saisie'] = data_mois_client_a_jour($db);
         }else{
-            $_SESSION['data_client'] = data_mois_client_a_jour($db, $date);
+            $_SESSION['data_client_saisie'] = data_mois_client_a_jour($db, $date);
         }
 
         header('Location: /ged/roll/ag/saisies-clients/?data_client=true');
+    }
+
+    if ($_GET['action'] == 'view_of_secteur_activite') {
+
+        $id_secteur_activite = $_GET['id_secteur_activite'];
+        $_SESSION['data_client_secteur_activite'] = data_client($db, null, $id_secteur_activite);
+
+        header('Location: /ged/roll/ag/dossiers/?data_client=true');
     }
 
     if ($_GET['action'] == 'view_facture') {
