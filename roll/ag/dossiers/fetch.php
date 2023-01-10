@@ -3635,6 +3635,12 @@ if (isset($_POST['action'])) {
                                     </div>
                                     <!--end::Menu item-->
 
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_client menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_client_modal" data-id_client="{$id_client}">Modification rapide</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
                                     $attribuer_a
 
                                     <!--begin::Menu item-->
@@ -3684,6 +3690,13 @@ if (isset($_POST['action'])) {
                                         <a href="" class="view_detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Détails</a>
                                     </div>
                                     <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_client menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_client_modal" data-id_client="{$id_client}">Modification rapide</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="activer_compte menu-link px-3" data-id_client="{$id_client}">Activer ce compte</a>
