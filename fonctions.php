@@ -45,6 +45,40 @@
         return str_replace($english_months, $french_months, str_replace($english_days, $french_days, date($format, strtotime($date))));
     }
 
+
+
+    function date_abbr($date, $lang='en')
+    {
+        if ($lang == 'en') {
+            $date = new DateTime($date);
+            $now = new DateTime();
+            $interval = $now->diff($date);
+            $suffix = ($interval->invert ? ' ago' : '');
+            if ($v = $interval->y >= 1) return $v . ' year' . ($v > 1 ? 's' : '') . $suffix;
+            if ($v = $interval->m >= 1) return $v . ' month' . ($v > 1 ? 's' : '') . $suffix;
+            if ($v = $interval->d >= 1) return $v . ' day' . ($v > 1 ? 's' : '') . $suffix;
+            if ($v = $interval->h >= 1) return $v . ' h' . ($v > 1 ? 's' : '') . $suffix;
+            if ($v = $interval->i >= 1) return $v . ' min' . ($v > 1 ? 's' : '') . $suffix;
+            if ($v = $interval->s >= 1) return $v . ' s' . ($v > 1 ? 's' : '') . $suffix;
+            return 'just now';
+        } else if ($lang == 'fr') {
+            
+            $date = new DateTime($date);
+            $now = new DateTime();
+            $interval = $now->diff($date);
+            $prefix = ($interval->invert ? 'il y a ' : '');
+            if ($v = $interval->y >= 1) return $prefix . $v . ' an' . ($v > 1 ? 's' : ''); 
+            if ($v = $interval->m >= 1) return $prefix . $v . ' mois';
+            if ($v = $interval->d >= 1) return $prefix . $v . ' j' . ($v > 1 ? 's' : '');
+            if ($v = $interval->h >= 1) return $prefix . $v . ' h' . ($v > 1 ? 's' : '');
+            if ($v = $interval->i >= 1) return $prefix . $v . ' min' . ($v > 1 ? 's' : '');
+            if ($v = $interval->s >= 1) return $prefix . $v . ' s' . ($v > 1 ? 's' : '');
+            return 'à l\'instant';
+            
+        }
+        
+    }
+
     ////////// Function-group pour déboguage des variables
     function d($data)
     {
