@@ -5,8 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
-$titre_page = 'GED-ELYON - Historique des collaborateurs';
-$titre_menu = 'Historique des collaborateurs';
+$titre_page = 'GED-ELYON - Historique des collaborateurs (Prise en charge de dossiers)';
+$titre_menu = 'Historique des collaborateurs (Prise en charge de dossiers)';
 $chemin_menu = <<<HTML
 
 HTML;
