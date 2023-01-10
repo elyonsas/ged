@@ -231,7 +231,7 @@
                                     <div class="fw-bold d-flex align-items-center fs-5"><?= user('prenom') . ' ' . user('nom') ?>
                                         <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
                                     </div>
-                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7"><?= user('email') ?></a>
+                                    <a href="mailto:" class="fw-semibold text-muted text-hover-primary fs-7"><?= user('email') ?></a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -240,62 +240,6 @@
                         <!--begin::Menu separator-->
                         <div class="separator my-2"></div>
                         <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="account/overview.php" class="menu-link px-5">My Profile</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title">My Subscription</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="account/referrals.php" class="menu-link px-5">Referrals</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="account/billing.php" class="menu-link px-5">Billing</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="account/statements.php" class="menu-link px-5">Payments</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="account/statements.php" class="menu-link d-flex flex-stack px-5">Statements
-                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu separator-->
-                                <div class="separator my-2"></div>
-                                <!--end::Menu separator-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <div class="menu-content px-3">
-                                        <label class="form-check form-switch form-check-custom form-check-solid">
-                                            <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications">
-                                            <span class="form-check-label text-muted fs-7">Notifications</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5 my-1">
-                            <a href="account/settings.php" class="menu-link px-5">Account Settings</a>
-                        </div>
-                        <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
                             <a href="deconnexion.php" class="menu-link px-5">Sign Out</a>
