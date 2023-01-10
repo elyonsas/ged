@@ -168,6 +168,54 @@ if (isset($_POST['action'])) {
         
     }
 
+    // Pour les notifications
+    if ($_POST['action'] == 'alert_notif_read') {
+
+        $update = update(
+            'notification',
+            [
+                'lu_notification' => 'oui'
+            ],
+            "type_notification = 'alert' AND id_utilisateur = {$_SESSION['id_utilisateur']}",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Alerte notif lu'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Erreur notif lu'
+            );
+        }
+    }
+    if ($_POST['action'] == 'log_notif_read') {
+
+        $update = update(
+            'notification',
+            [
+                'lu_notification' => 'oui'
+            ],
+            "type_notification = 'log' AND id_utilisateur = {$_SESSION['id_utilisateur']}",
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Log notif lu'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Erreur notif lu'
+            );
+        }
+    }
+
 }
 
 

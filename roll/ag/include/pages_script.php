@@ -31,5 +31,35 @@
                 });
             }
         });
+
+        // Lorsqu'on click sur #tab_alert_notif ou #header_btn_notif
+        $(document).on('click', '#tab_alert_notif,#header_btn_notif', function() {
+            $.ajax({
+                url: "roll/ag/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'alert_notif_read'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+
+        // Lorsqu'on click sur #tab_log_notif
+        $(document).on('click', '#tab_log_notif', function() {
+            $.ajax({
+                url: "roll/ag/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'log_notif_read'
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
     });
 </script>

@@ -46,10 +46,9 @@
                 <!--begin::Notifications-->
                 <div class="app-navbar-item ms-1 ms-lg-3">
                     <!--begin::Menu- wrapper-->
-                    <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                    <div id="header_btn_notif" class="position-relative btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                         <span class="svg-icon svg-icon-1 d-flex flex-column">
-                            <!-- <span class="bullet bullet-dot bg-primary h-6px w-6px position-relative animation-blink"></span> -->
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z" fill="currentColor" />
                                 <path d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z" fill="currentColor" />
@@ -58,6 +57,7 @@
                             </svg>
                         </span>
                         <!--end::Svg Icon-->
+                        <?= bullet_dot_notif($_SESSION['id_utilisateur'], $db) ?>
                     </div>
                     <!--begin::Menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
@@ -71,10 +71,16 @@
                             <!--begin::Tabs-->
                             <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-semibold px-9">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4 active" data-bs-toggle="tab" href="#kt_topbar_notifications_1">Alerts</a>
+                                    <a id="tab_alert_notif" class="nav-link text-white opacity-75 opacity-state-100 pb-4 active" data-bs-toggle="tab" href="#kt_topbar_notifications_1">
+                                        Alerts
+                                        <?= get_nbr_notif('alert', $_SESSION['id_utilisateur'], $db) ?>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4" data-bs-toggle="tab" href="#kt_topbar_notifications_3">Logs</a>
+                                    <a id="tab_log_notif" class="nav-link text-white opacity-75 opacity-state-100 pb-4" data-bs-toggle="tab" href="#kt_topbar_notifications_3">
+                                        Logs
+                                        <?= get_nbr_notif('log', $_SESSION['id_utilisateur'], $db) ?>
+                                    </a>
                                 </li>
                             </ul>
                             <!--end::Tabs-->

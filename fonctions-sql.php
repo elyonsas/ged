@@ -72,9 +72,29 @@
     }
 
     // Get notification
+    function bullet_dot_notif($id_utilisateur, PDO $db)
+    {
+        $query = "SELECT count(*) nbr_notif FROM notification WHERE id_utilisateur = '$id_utilisateur' AND lu_notification = 'non'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $nbr_notif = $result['nbr_notif'];
+
+        if ($nbr_notif > 0) {
+            $html = <<<HTML
+                <span style="top: 5px; left: 25px;" class="position-absolute bullet bullet-dot bg-primary h-6px w-6px animation-blink"></span>
+            HTML;
+        } else {
+            $html = '';
+        }
+
+        return $html;
+    }
     function get_notif($type, $id_utilisateur, PDO $db)
     {
-        $query = "SELECT * FROM notification WHERE type_notification = '$type' AND id_utilisateur = '$id_utilisateur' ORDER BY date_notification DESC";
+        $query = "SELECT * FROM notification WHERE type_notification = '$type' AND id_utilisateur = '$id_utilisateur' 
+        AND lu_notification = 'non' ORDER BY date_notification DESC";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -83,7 +103,8 @@
     }
     function get_notif_html($type, $id_utilisateur, PDO $db)
     {
-        $query = "SELECT * FROM notification WHERE type_notification = '$type' AND id_utilisateur = '$id_utilisateur' ORDER BY date_notification DESC";
+        $query = "SELECT * FROM notification WHERE type_notification = '$type' AND id_utilisateur = '$id_utilisateur' 
+        AND lu_notification = 'non' ORDER BY date_notification DESC";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -198,6 +219,25 @@
         }
 
         return $html;
+    }
+    function get_nbr_notif($type, $id_utilisateur, PDO $db)
+    {
+        $query = "SELECT count(*) as nbr_notif FROM notification WHERE type_notification = '$type' AND id_utilisateur = '$id_utilisateur' 
+        AND lu_notification = 'non' ORDER BY date_notification DESC";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        if ($result['nbr_notif'] > 0) {
+            $html = <<<HTML
+                <span class="badge badge-circle badge-primary ms-2">{$result['nbr_notif']}</span>
+            HTML;
+        } else {
+            $html = '';
+        }
+
+        return $html;
+        
     }
 
     // Insert
