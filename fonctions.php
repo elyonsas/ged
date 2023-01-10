@@ -49,32 +49,32 @@
 
     function date_abbr($date, $lang='en')
     {
-        if ($lang == 'en') {
-            $date = new DateTime($date);
-            $now = new DateTime();
-            $interval = $now->diff($date);
-            $suffix = ($interval->invert ? ' ago' : '');
-            if ($v = $interval->y >= 1) return $v . ' year' . ($v > 1 ? 's' : '') . $suffix;
-            if ($v = $interval->m >= 1) return $v . ' month' . ($v > 1 ? 's' : '') . $suffix;
-            if ($v = $interval->d >= 1) return $v . ' day' . ($v > 1 ? 's' : '') . $suffix;
-            if ($v = $interval->h >= 1) return $v . ' h' . ($v > 1 ? 's' : '') . $suffix;
-            if ($v = $interval->i >= 1) return $v . ' min' . ($v > 1 ? 's' : '') . $suffix;
-            if ($v = $interval->s >= 1) return $v . ' s' . ($v > 1 ? 's' : '') . $suffix;
-            return 'just now';
-        } else if ($lang == 'fr') {
+        if ($lang == 'fr') {
             
             $date = new DateTime($date);
             $now = new DateTime();
             $interval = $now->diff($date);
             $prefix = ($interval->invert ? 'il y a ' : '');
-            if ($v = $interval->y >= 1) return $prefix . $v . ' an' . ($v > 1 ? 's' : ''); 
-            if ($v = $interval->m >= 1) return $prefix . $v . ' mois';
-            if ($v = $interval->d >= 1) return $prefix . $v . ' j' . ($v > 1 ? 's' : '');
-            if ($v = $interval->h >= 1) return $prefix . $v . ' h' . ($v > 1 ? 's' : '');
-            if ($v = $interval->i >= 1) return $prefix . $v . ' min' . ($v > 1 ? 's' : '');
-            if ($v = $interval->s >= 1) return $prefix . $v . ' s' . ($v > 1 ? 's' : '');
+            if ($interval->y >= 1) return $prefix . $interval->y . ' an'; 
+            if ($interval->m >= 1) return $prefix . $interval->m . ' mois';
+            if ($interval->d >= 1) return $prefix . $interval->d . ' j';
+            if ($interval->h >= 1) return $prefix . $interval->h . ' h';
+            if ($interval->i >= 1) return $prefix . $interval->i . ' min';
+            if ($interval->s >= 1) return $prefix . $interval->s . ' s';
             return 'à l\'instant';
             
+        } else {
+            $date = new DateTime($date);
+            $now = new DateTime();
+            $interval = $now->diff($date);
+            $sufix = ($interval->invert ? ' ago' : '');
+            if ($interval->y >= 1) return $interval->y . ' year' . $sufix;
+            if ($interval->m >= 1) return $interval->m . ' month' . $sufix;
+            if ($interval->d >= 1) return $interval->d . ' day' . $sufix;
+            if ($interval->h >= 1) return $interval->h . ' h' . $sufix;
+            if ($interval->i >= 1) return $interval->i . ' min' . $sufix;
+            if ($interval->s >= 1) return $interval->s . ' s' . $sufix;
+            return 'just now';
         }
         
     }
