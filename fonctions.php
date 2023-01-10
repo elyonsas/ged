@@ -55,9 +55,7 @@
             $now = new DateTime();
             $interval = $now->diff($date);
             $prefix = ($interval->invert ? 'il y a ' : '');
-            if ($interval->y >= 1) return $prefix . $interval->y . ' an'; 
-            if ($interval->m >= 1) return $prefix . $interval->m . ' mois';
-            if ($interval->d >= 1) return $prefix . $interval->d . ' j';
+            if ($interval->d >= 1) return $date->format('d/M');
             if ($interval->h >= 1) return $prefix . $interval->h . ' h';
             if ($interval->i >= 1) return $prefix . $interval->i . ' min';
             if ($interval->s >= 1) return $prefix . $interval->s . ' s';
@@ -68,9 +66,7 @@
             $now = new DateTime();
             $interval = $now->diff($date);
             $sufix = ($interval->invert ? ' ago' : '');
-            if ($interval->y >= 1) return $interval->y . ' year' . $sufix;
-            if ($interval->m >= 1) return $interval->m . ' month' . $sufix;
-            if ($interval->d >= 1) return $interval->d . ' day' . $sufix;
+            if ($interval->d >= 1) return $date->format('d/M');
             if ($interval->h >= 1) return $interval->h . ' h' . $sufix;
             if ($interval->i >= 1) return $interval->i . ' min' . $sufix;
             if ($interval->s >= 1) return $interval->s . ' s' . $sufix;

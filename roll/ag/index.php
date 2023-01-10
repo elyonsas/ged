@@ -951,6 +951,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 					"bSort": true,
 					"order": [],
 					"data": data.data,
+					"pageLength": 7,
+                	"lengthMenu": [7, 10, 15, 20],
 					"initComplete": function(settings, json) {
 						KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
 						KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)

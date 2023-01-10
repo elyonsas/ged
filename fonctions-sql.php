@@ -183,7 +183,7 @@
                         <div class="d-flex align-items-center me-2">
                             $code
                             <!--begin::Title-->
-                            <span class="text-gray-800 fw-semibold" style="font-size: 12px;">$titre</span>
+                            <span class="text-gray-800 fw-semibold" style="font-size: 11.5px;">$titre</span>
                             <!--end::Title-->
                         </div>
                         <!--end::Section-->
