@@ -36,7 +36,7 @@
     }
 
     // Add notification
-    function add_notif($titre, $message, $type, $url, $id_utilisateur, PDO $db)
+    function add_notif($titre, $message, $type, $statut, $url, $id_utilisateur, PDO $db)
     {
         $insert = insert(
             'notification',
@@ -45,6 +45,7 @@
                 'message_notification' => $message,
                 'type_notification' => $type,
                 'lu_notification' => 'non',
+                'statut_notification' => $statut,
                 'url_notification' => $url,
                 'date_notification' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => $id_utilisateur

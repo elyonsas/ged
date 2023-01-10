@@ -47,6 +47,8 @@ if (isset($_POST['credential'])) {
                 die;
             }
 
+            add_notif('Connexion à GED réussir','','log','succes','',$result['id_utilisateur'],$db);
+
             $query = "SELECT * FROM compte, utilisateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND compte.email_compte = '$email'";
             $statement = $db->prepare($query);
             $statement->execute();
@@ -129,6 +131,8 @@ if (isset($_POST['credential'])) {
             //Si le mot de passe de l'admin correspond 
             if ($password == $data['mdp_compte']) {
 
+                add_notif('Connexion à GED réussir','','log','succes','',$data['id_utilisateur'],$db);
+
                 //update('utilisateur', ['etat_personne' => 'connecte'], "email_personne = '$email'", $db);
                 //On créé une session pour stocker l'id de l'admin et son role
 
@@ -176,6 +180,8 @@ if (isset($_POST['credential'])) {
             } else {
 
                 $message = "Mot de passe erroné";
+                
+                add_notif('Connexion à GED échouer','','log','erreur','',$data['id_utilisateur'],$db);
             }
         } else {
 
