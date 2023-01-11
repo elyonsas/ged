@@ -4432,6 +4432,93 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
     </div>
     <!-- end::Modal edit_info_doc_file -->
 
+    <!-- begin::Modal Exporter le document-->
+    <div class="modal fade" id="exporter_doc_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_exporter_doc" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Exporter le document</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="d-flex fw-semibold me-5 mb-5">
+                        <i class="fas fa-exclamation-circle ms-2 fs-5"></i>
+                        <div class="fs-6 text-muted ms-3 fst-italic">
+                            Choisissez les paramètres que vous voulez voir apparaître à l'exportation du document.
+                        </div>
+                    </div>
+
+                    <div class="row ms-1 my-10">
+                        <label class="form-check form-switch form-check-custom form-check-solid justify-content-around">
+                            <span class="form-check-label">
+                                Exporter avec l'en tête d'Elyon
+                            </span>
+                            <input id="id_exporter_doc_header_export" class="form-check-input" type="checkbox" value="" name="header_export">   
+                        </label>
+                    </div>
+
+                    <div class="row ms-1 my-10">
+                        <label class="form-check form-switch form-check-custom form-check-solid justify-content-around">
+                            <span class="form-check-label">
+                                Exporter avec le pieds de page
+                            </span>
+                            <input id="id_exporter_doc_footer_export" class="form-check-input" type="checkbox" value="" name="footer_export">   
+                        </label>
+                    </div>
+
+                    <div class="row ms-1 my-10">
+                        <label class="form-check form-switch form-check-custom form-check-solid justify-content-around">
+                            <span class="form-check-label">
+                                Graphiques d'arrière plan
+                            </span>
+                            <input id="id_exporter_doc_bg_export" class="form-check-input" type="checkbox" value="" name="bg_export">   
+                        </label>
+                    </div>
+
+                    <div class="row ms-1 my-10">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Mode de visualisation</label>
+                            <select id="id_exporter_doc_mode_export" class="form-select form-select-solid" data-control="select2" data-placeholder="Sélectionnez une mode" data-hide-search="true" name="mode_export" required>
+                                <option></option>
+                                <option value="portrait">Portrait</option>
+                                <option value="paysage">Paysage</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="exporter_doc">
+                    <input type="hidden" name="id_document" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_exporter_doc" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Exporter le document-->
+
     <!-- begin::Modal Information relance-->
     <div class="modal fade" id="edit_info_relance_modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -8062,6 +8149,61 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     })
                 }
             });
+        });
+
+        /* -----------------Exporter des documents---------------- */
+        // Lorsqu'on clique sur .exporter_doc
+        $(document).on('click', '.exporter_doc', function (e) {
+            e.preventDefault();
+
+            var id_document = $(this).data('id_document');
+            $('#form_exporter_doc input[name="id_document"]').val(id_document);
+
+            // ...
+           
+        });
+
+        // Lorsqu'on soumet le formulaire #form_exporter_doc
+        $(document).on('submit', '#form_exporter_doc', function () {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_exporter_doc');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function (data) {
+                    setTimeout(function () {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+
+                            $('#exporter_doc_modal').modal('hide');
+
+                            redirect_url = data.redirect_url;
+
+                            // redirect in new tab
+                            var win = window.open(redirect_url, '_blank');
+                            win.focus();
+
+
+                            
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+
+                    }, 2000);
+
+                }
+            })
         });
 
         /* -----------------Information de relance client---------------- */

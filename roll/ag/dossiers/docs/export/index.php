@@ -13,11 +13,11 @@ use Dompdf\Options;
 use Knp\Snappy\Pdf;
 
 $id_document = $_GET['id_document'];
-$header_html = $_GET['header_html'];
-$footer_html = $_GET['footer_html'];
-$bg_graphique = $_GET['bg_graphique'];
-$filigrane = $_GET['filigrane'];
-$mode = $_GET['mode'];
+$header_export = $_GET['header_export'];
+$footer_export = $_GET['footer_export'];
+$bg_export = $_GET['bg_export'];
+// $filigrane = $_GET['filigrane'];
+$mode_export = $_GET['mode_export'];
 
 $query = "SELECT * FROM document WHERE id_document = $id_document";
 $statement = $db->prepare($query);
@@ -35,9 +35,9 @@ $snappy->setOption('enable-local-file-access', true);
 
 $snappy->setOption('title', $result['titre_document']);
 
-if ($mode == 'portrait') {
+if ($mode_export == 'portrait') {
   $snappy->setOption('orientation', 'Portrait');
-} else if ($mode == 'paysage') {
+} else if ($mode_export == 'paysage') {
   $snappy->setOption('orientation', 'Landscape');
 }
 
@@ -48,7 +48,7 @@ if ($type_document == 'generate') {
   $statement->execute();
   $result = $statement->fetch();
 
-  if ($bg_graphique == 'non') {
+  if ($bg_export == 'non') {
     $css = 'background-color: #fff !important;';
   }
 
@@ -70,10 +70,10 @@ if ($type_document == 'generate') {
   // html content
   $htmlTemplate .= $result['contenu_document'];
 
-  if ($header_html == 'oui') {
+  if ($header_export == 'oui') {
     $snappy->setOption('header-html', 'header.html');
   }
-  if ($footer_html == 'oui') {
+  if ($footer_export == 'oui') {
     $snappy->setOption('footer-html', 'footer.html');
   }
 
@@ -85,7 +85,7 @@ if ($type_document == 'generate') {
   $statement->execute();
   $result = $statement->fetch();
 
-  if ($bg_graphique == 'non') {
+  if ($bg_export == 'non') {
     $css = 'background-color: #fff !important;';
   }
 
@@ -106,12 +106,12 @@ if ($type_document == 'generate') {
   // html content
   $htmlTemplate .= $result['contenu_document'];
 
-  $snappy->setOption('minimum-font-size', 20);
+  // $snappy->setOption('minimum-font-size', 15);
 
-  if ($header_html == 'oui') {
+  if ($header_export == 'oui') {
     $snappy->setOption('header-html', 'header.html');
   }
-  if ($footer_html == 'oui') {
+  if ($footer_export == 'oui') {
     $snappy->setOption('footer-html', 'footer.html');
   }
 }

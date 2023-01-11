@@ -655,7 +655,7 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                            <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -710,7 +710,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                                <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -758,7 +758,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                                <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -1361,7 +1361,7 @@ if (isset($_POST['datatable'])) {
 
                                         <!-- begin::Menu item -->
                                         <div class="menu-item px-3">
-                                            <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                            <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                         </div>
                                         <!--end::Menu item-->
 
@@ -1416,7 +1416,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                                <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -1464,7 +1464,7 @@ if (isset($_POST['datatable'])) {
 
                                             <!-- begin::Menu item -->
                                             <div class="menu-item px-3">
-                                                <a href="roll/ag/dossiers/docs/export/index.php?id_document={$id_document}" target="_blank" class="menu-link px-3">Exporter le document</a>
+                                                <a href="" class="exporter_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#exporter_doc_modal" data-id_document="{$id_document}">Exporter le document</a>
                                             </div>
                                             <!--end::Menu item-->
 
@@ -5151,6 +5151,39 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             ];
         }
+    }
+
+    if ($_POST['action'] == 'exporter_doc') {
+        
+        if (isset($_POST['header_export'])) {
+            $header_export = 'oui';
+        } else {
+            $header_export = 'non';
+        }
+
+        if (isset($_POST['footer_export'])) {
+            $footer_export = 'oui';
+        } else {
+            $footer_export = 'non';
+        }
+
+        if (isset($_POST['bg_export'])) {
+            $bg_export = 'oui';
+        } else {
+            $bg_export = 'non';
+        }
+
+        $id_document = $_POST['id_document'];
+        $mode_export = $_POST['mode_export'];
+
+        $redirect_url = "roll/ag/dossiers/docs/export/index.php?id_document={$id_document}&header_export={$header_export}&footer_export={$footer_export}&bg_export={$bg_export}&mode_export={$mode_export}";
+        
+        $output = [
+            'success' => true,
+            'message' => 'ok',
+            'redirect_url' => $redirect_url
+        ];
+
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
