@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de page de saisie', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - MAJ comptabilité';
 $titre_menu = 'Evolution de la mise à jour de la comptabilité';
 $chemin_menu = <<<HTML

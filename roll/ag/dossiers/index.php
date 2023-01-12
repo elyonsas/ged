@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de tous les dossiers de travail', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Dossiers de tavail';
 $titre_menu = 'Dossiers de tavail';
 $chemin_menu = <<<HTML

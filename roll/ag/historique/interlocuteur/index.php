@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de l\'historique des interlocuteurs', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Historique des interlocuteurs';
 $titre_menu = 'Historique des interlocuteurs';
 $chemin_menu = <<<HTML

@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de la page de paramétrage des relances clients', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Paramètre de relance';
 $titre_menu = 'Paramètre de relance';
 $chemin_menu = <<<HTML

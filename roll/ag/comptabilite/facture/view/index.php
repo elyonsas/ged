@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de la page de la facture #' . $_SESSION['id_view_facture'], $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Factures';
 $titre_menu = 'Factures';
 $chemin_menu = <<<HTML

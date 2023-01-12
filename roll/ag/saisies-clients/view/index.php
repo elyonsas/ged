@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de la page la saisie du client #' . $_SESSION['id_view_saisie_client'], $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - MAJ comptabilité';
 $titre_menu = 'Evolution de la mise à jour de la comptabilité';
 $chemin_menu = <<<HTML
@@ -102,6 +104,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 .table>:not(caption)>*>* {
                                     padding: 0.3rem 0.3rem !important;
                                 }
+
                                 .table.table-bordered tr {
                                     border: 1px solid var(--kt-border-color);
                                 }
@@ -333,7 +336,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         </div>
     </div>
     <!-- end::Modal Ajouter une rubrique-->
-    
+
 </div>
 <!--end::Content wrapper-->
 
@@ -392,7 +395,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 "data": data,
                 "columnDefs": [],
                 "pageLength": 15,
-                "lengthMenu": [15,20,25,50,100],
+                "lengthMenu": [15, 20, 25, 50, 100],
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -472,7 +475,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     "data": data.data,
                     "columnDefs": [],
                     "pageLength": 15,
-                    "lengthMenu": [15,20,25,50,100],
+                    "lengthMenu": [15, 20, 25, 50, 100],
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -494,13 +497,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on change la valeur de #filter_annee_saisie
-        $('#filter_annee_saisie').on('change', function (event) {
+        $('#filter_annee_saisie').on('change', function(event) {
             reload_datatable('saisies_clients');
         })
 
         // Lorsqu'on clique sur td:not(:first-child)
         tooltip_showing = null;
-        $(document).on('click', 'td:not(:first-child)', function (e) {
+        $(document).on('click', 'td:not(:first-child)', function(e) {
 
             if (tooltip_showing != null) {
                 tooltip_showing.css({
@@ -525,7 +528,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 tooltip_showing = $(this).find('.tooltip-saisie');
 
-            }else if (tooltip_showing == null) {
+            } else if (tooltip_showing == null) {
                 $(this).find('.tooltip-saisie').css({
                     opacity: 1,
                     pointerEvents: 'auto',
@@ -559,7 +562,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .saisie-option input
-        $(document).on('click', '.saisie-option input', function (e) {
+        $(document).on('click', '.saisie-option input', function(e) {
             id_saisie = $(this).data('id_saisie');
             option = $(this).data('option');
             value = $(this).val();
@@ -596,9 +599,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         // Afficher la valeur saisie
                         wrapperSaisie.html(data.value);
                         wrapperSaisie.append(wrapperSaisie_html);
-                    
+
                     }
-                    
+
                 }
             })
 
@@ -651,7 +654,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
         });
 
         // Lorsqu'on clique sur .delete_saisie
-        $(document).on('click', '.delete_saisie', function (e) {
+        $(document).on('click', '.delete_saisie', function(e) {
             id_saisie = $(this).data('id_saisie');
 
             $.ajax({
@@ -675,13 +678,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                             positionClass: "toastr-bottom-left",
                         });
                     }
-                    
+
                 }
             })
 
         });
-
-        
 
 
     })

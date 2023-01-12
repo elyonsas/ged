@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de page de paramétrage de compte', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Paramètres';
 $titre_menu = 'Paramètres de compte';
 $chemin_menu = <<<HTML

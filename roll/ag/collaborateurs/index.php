@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('consultation', 'Consultation de la listes des collaborateur', $_SESSION['id_utilisateur'], $db);
+
 $titre_page = 'GED-ELYON - Collaborateurs';
 $titre_menu = 'Collaborateurs';
 $chemin_menu = <<<HTML

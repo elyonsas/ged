@@ -7,6 +7,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('ag');
 
+add_log('exportation', 'Exportation du document #' . $_GET['id_document'], $_SESSION['id_utilisateur'], $db);
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
