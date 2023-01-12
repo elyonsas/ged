@@ -59,7 +59,7 @@
 
 
 
-    function date_abbr($date, $lang='en')
+    function date_abbr($date, $lang)
     {
         if ($lang == 'fr') {
             
@@ -67,7 +67,7 @@
             $now = new DateTime();
             $interval = $now->diff($date);
             $prefix = ($interval->invert ? 'il y a ' : '');
-            if ($interval->d >= 1) return $date->format('d/M');
+            if ($interval->d >= 1) return $date->format('d M');
             if ($interval->h >= 1) return $prefix . $interval->h . ' h';
             if ($interval->i >= 1) return $prefix . $interval->i . ' min';
             if ($interval->s >= 1) return $prefix . $interval->s . ' s';
@@ -78,7 +78,7 @@
             $now = new DateTime();
             $interval = $now->diff($date);
             $sufix = ($interval->invert ? ' ago' : '');
-            if ($interval->d >= 1) return $date->format('d/M');
+            if ($interval->d >= 1) return $date->format('d M');
             if ($interval->h >= 1) return $interval->h . ' h' . $sufix;
             if ($interval->i >= 1) return $interval->i . ' min' . $sufix;
             if ($interval->s >= 1) return $interval->s . ' s' . $sufix;

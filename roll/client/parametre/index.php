@@ -105,20 +105,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                 <!--begin::Input group-->
                                 <div class="row mb-6">
                                     <!--begin::Label-->
-                                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Nom, prénom</label>
+                                    <label class="col-lg-4 col-form-label required fw-semibold fs-6">Nom</label>
                                     <!--end::Label-->
                                     <!--begin::Col-->
                                     <div class="col-lg-8">
                                         <!--begin::Row-->
                                         <div class="row">
                                             <!--begin::Col-->
-                                            <div class="col-lg-6 fv-row">
+                                            <div class="fv-row">
                                                 <input type="text" name="nom_utilisateur" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Entrez le nom" value="" required/>
-                                            </div>
-                                            <!--end::Col-->
-                                            <!--begin::Col-->
-                                            <div class="col-lg-6 fv-row">
-                                                <input type="text" name="prenom_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Entrez le prénom" value="" required/>
                                             </div>
                                             <!--end::Col-->
                                         </div>
@@ -310,7 +305,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                 // Affiche les données dans la page
                 $('#kt_account_profile_details_form .image-input-wrapper').css('background-image', 'url(assets/media/avatars/' + data.avatar_utilisateur + ')');
                 $('#kt_account_profile_details_form input[name="nom_utilisateur"]').val(data.nom_utilisateur);
-                $('#kt_account_profile_details_form input[name="prenom_utilisateur"]').val(data.prenom_utilisateur);
 
                 $('#kt_account_profile_details_form input[name="tel_utilisateur"]').val(data.tel_utilisateur);
                 $('#kt_account_profile_details_form input[name="email_utilisateur"]').val(data.email_utilisateur);
