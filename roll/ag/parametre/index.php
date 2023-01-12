@@ -111,12 +111,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="row">
                                             <!--begin::Col-->
                                             <div class="col-lg-6 fv-row">
-                                                <input type="text" name="nom_utilisateur" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Entrez le nom" value="" />
+                                                <input type="text" name="nom_utilisateur" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Entrez le nom" value="" required/>
                                             </div>
                                             <!--end::Col-->
                                             <!--begin::Col-->
                                             <div class="col-lg-6 fv-row">
-                                                <input type="text" name="prenom_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Entrez le prénom" value="" />
+                                                <input type="text" name="prenom_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Entrez le prénom" value="" required/>
                                             </div>
                                             <!--end::Col-->
                                         </div>
@@ -132,7 +132,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                     <!--end::Label-->
                                     <!--begin::Col-->
                                     <div class="col-lg-8 fv-row">
-                                        <input type="text" name="tel_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Votre numéro de téléphone" value="" />
+                                        <input type="text" name="tel_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Votre numéro de téléphone" value="" required/>
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -141,12 +141,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <div class="row mb-6">
                                     <!--begin::Label-->
                                     <label class="col-lg-4 col-form-label fw-semibold fs-6">
-                                        <span class="required">E-mail</span>
+                                        <span class="required">E-mail de connexion</span>
                                     </label>
                                     <!--end::Label-->
                                     <!--begin::Col-->
                                     <div class="col-lg-8 fv-row">
-                                        <input type="text" name="email_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Entrez un mail" value="" />
+                                        <input type="text" name="email_compte" class="form-control form-control-lg form-control-solid" placeholder="Entrez un mail" value="" required/>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <span class="required">E-mail de travail</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="text" name="email_utilisateur" class="form-control form-control-lg form-control-solid" placeholder="Entrez un mail" value="" required/>
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -217,7 +231,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 <div class="d-flex flex-stack flex-grow-1">
                                     <!--begin::Content-->
                                     <div class="fw-semibold">
-                                        <div class="fs-6 text-gray-700">Vous pouvez changer votre mot de passe ici. (<a href="#" class="fw-bold">Cliquez pour configurer</a>)</div></div>
+                                        <div class="fs-6 text-gray-700">Vous pouvez changer votre mot de passe ici. (<a href="change-pwd/" class="fw-bold">Cliquez pour configurer</a>)</div></div>
                                     </div>
                                     <!--end::Content-->
                                 </div>
@@ -298,6 +312,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 
                 $('#kt_account_profile_details_form input[name="tel_utilisateur"]').val(data.tel_utilisateur);
                 $('#kt_account_profile_details_form input[name="email_utilisateur"]').val(data.email_utilisateur);
+                $('#kt_account_profile_details_form input[name="email_compte"]').val(data.email_compte);
                 $('#kt_account_profile_details_form input[name="adresse_utilisateur"]').val(data.adresse_utilisateur);
                 
 

@@ -129,7 +129,7 @@ if (isset($_POST['credential'])) {
         if ($data['statut_compte'] == 'actif') {
 
             //Si le mot de passe de l'admin correspond 
-            if ($password == $data['mdp_compte']) {
+            if (password_verify($password, $data['mdp_compte'])) {
 
                 add_notif('Connexion à GED réussir','','log','succes','',$data['id_utilisateur'],$db);
 

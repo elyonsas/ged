@@ -211,7 +211,7 @@ License: For each use you must have a valid license purchased only from above li
                                         callback: {
                                             message: "Veuillez entrer un mot de passe valide",
                                             callback: function(t) {
-                                                if (t.value.length > 0) return a()
+                                                // if (t.value.length > 0) return a()
                                             }
                                         }
                                     }
