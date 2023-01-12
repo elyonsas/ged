@@ -242,6 +242,11 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
+                            <a href="roll/ag/parametre" class="menu-link px-5">Paramètres de compte</a>
+                        </div>
+                        <!--end::Menu item-->
+                        <!--begin::Menu item-->
+                        <div class="menu-item px-5">
                             <a href="deconnexion.php" class="menu-link px-5">Déconnexion</a>
                         </div>
                         <!--end::Menu item-->
