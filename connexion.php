@@ -70,32 +70,24 @@ if (isset($_POST['credential'])) {
             $_SESSION['param_sidebar_minimize'] = 'off';
 
 
-            if ($result['type_compte'] == "ag") {
+            if ($data['type_compte'] == "admin") {
+                $message = "parametres corrects - admin";
+            }
+
+            if ($data['type_compte'] == "ag") {
                 $message = "parametres corrects - ag";
             }
 
-            if ($result['type_compte'] == "dd") {
+            if ($data['type_compte'] == "dd") {
                 $message = "parametres corrects - dd";
             }
 
-            if ($result['type_compte'] == "dm") {
-                $message = "parametres corrects - dm";
-            }
-
-            if ($result['type_compte'] == "cm") {
+            if ($data['type_compte'] == "cm") {
                 $message = "parametres corrects - cm";
             }
 
-            if ($result['type_compte'] == "am") {
-                $message = "parametres corrects - am";
-            }
-
-            if ($result['type_compte'] == "stg") {
-                $message = "parametres corrects - stg";
-            }
-
-            if ($result['type_compte'] == "admin") {
-                $message = "parametres corrects - admin";
+            if ($data['type_compte'] == "client") {
+                $message = "parametres corrects - client";
             }
 
         } else {
@@ -148,6 +140,9 @@ if (isset($_POST['credential'])) {
                 $_SESSION['tel_utilisateur'] = $data['tel_utilisateur'];
                 $_SESSION['avatar_utilisateur'] = $data['avatar_utilisateur'];
 
+                if ($data['type_compte'] == "admin") {
+                    $message = "parametres corrects - admin";
+                }
 
                 if ($data['type_compte'] == "ag") {
                     $message = "parametres corrects - ag";
@@ -157,24 +152,12 @@ if (isset($_POST['credential'])) {
                     $message = "parametres corrects - dd";
                 }
 
-                if ($data['type_compte'] == "dm") {
-                    $message = "parametres corrects - dm";
-                }
-
                 if ($data['type_compte'] == "cm") {
                     $message = "parametres corrects - cm";
                 }
 
-                if ($data['type_compte'] == "am") {
-                    $message = "parametres corrects - am";
-                }
-
-                if ($data['type_compte'] == "stg") {
-                    $message = "parametres corrects - stg";
-                }
-
-                if ($data['type_compte'] == "admin") {
-                    $message = "parametres corrects - admin";
+                if ($data['type_compte'] == "client") {
+                    $message = "parametres corrects - client";
                 }
                 
             } else {

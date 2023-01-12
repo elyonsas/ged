@@ -4,6 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 if (isset($_SESSION['id_compte'])) {
+	if ($_SESSION['type_compte'] == "admin") {
+		header("Location:/ged/roll/ag");
+	}
+	
 	if ($_SESSION['type_compte'] == "ag") {
 		header("Location:/ged/roll/ag");
 	}
@@ -12,24 +16,12 @@ if (isset($_SESSION['id_compte'])) {
 		header("Location:/ged/roll/dd");
 	}
 
-	if ($_SESSION['type_compte'] == "dm") {
-		header("Location:/ged/roll/dm");
-	}
-
 	if ($_SESSION['type_compte'] == "cm") {
 		header("Location:/ged/roll/cm");
 	}
 
-	if ($_SESSION['type_compte'] == "am") {
-		header("Location:/ged/roll/am");
-	}
-
-	if ($_SESSION['type_compte'] == "stg") {
-		header("Location:/ged/roll/stg");
-	}
-
-	if ($_SESSION['type_compte'] == "admin") {
-		header("Location:/ged/roll/ag");
+	if ($_SESSION['type_compte'] == "client") {
+		header("Location:/ged/roll/client");
 	}
 }
 ?>
@@ -264,6 +256,14 @@ License: For each use you must have a valid license purchased only from above li
 							var redirect = false;
 						<?php } ?>
 
+						if (data == "parametres corrects - admin") {
+							if (redirect) {
+								window.location = redirect;
+							} else {
+								window.location = "roll/ag/";
+							}
+						}
+
 						if (data == "parametres corrects - ag") {
 							if (redirect) {
 								window.location = redirect;
@@ -280,14 +280,6 @@ License: For each use you must have a valid license purchased only from above li
 							}
 						}
 
-						if (data == "parametres corrects - dm") {
-							if (redirect) {
-								window.location = redirect;
-							} else {
-								window.location = "roll/dm/";
-							}
-						}
-
 						if (data == "parametres corrects - cm") {
 							if (redirect) {
 								window.location = redirect;
@@ -296,27 +288,11 @@ License: For each use you must have a valid license purchased only from above li
 							}
 						}
 
-						if (data == "parametres corrects - am") {
+						if (data == "parametres corrects - client") {
 							if (redirect) {
 								window.location = redirect;
 							} else {
-								window.location = "roll/am/";
-							}
-						}
-
-						if (data == "parametres corrects - stg") {
-							if (redirect) {
-								window.location = redirect;
-							} else {
-								window.location = "roll/stg/";
-							}
-						}
-
-						if (data == "parametres corrects - admin") {
-							if (redirect) {
-								window.location = redirect;
-							} else {
-								window.location = "roll/ag/";
+								window.location = "roll/client/";
 							}
 						}	
 					}
@@ -417,6 +393,13 @@ License: For each use you must have a valid license purchased only from above li
 											var redirect = false;
 										<?php } ?>
 
+										if (data == "parametres corrects - admin") {
+											if (redirect) {
+												window.location = redirect;
+											} else {
+												window.location = "roll/ag/";
+											}
+										}
 
 										if (data == "parametres corrects - ag") {
 											if (redirect) {
@@ -434,14 +417,6 @@ License: For each use you must have a valid license purchased only from above li
 											}
 										}
 
-										if (data == "parametres corrects - dm") {
-											if (redirect) {
-												window.location = redirect;
-											} else {
-												window.location = "roll/dm/";
-											}
-										}
-
 										if (data == "parametres corrects - cm") {
 											if (redirect) {
 												window.location = redirect;
@@ -450,27 +425,11 @@ License: For each use you must have a valid license purchased only from above li
 											}
 										}
 
-										if (data == "parametres corrects - am") {
+										if (data == "parametres corrects - client") {
 											if (redirect) {
 												window.location = redirect;
 											} else {
-												window.location = "roll/am/";
-											}
-										}
-
-										if (data == "parametres corrects - stg") {
-											if (redirect) {
-												window.location = redirect;
-											} else {
-												window.location = "roll/stg/";
-											}
-										}
-
-										if (data == "parametres corrects - admin") {
-											if (redirect) {
-												window.location = redirect;
-											} else {
-												window.location = "roll/ag/";
+												window.location = "roll/client/";
 											}
 										}
 
