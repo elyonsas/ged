@@ -54,7 +54,7 @@
 
                             HTML;
                     ?>
-                    <?= single_menu('Tableau de bord', $icon, 'roll/client', $menu_tb) ?>
+                    <?= single_menu('Accueil', $icon, 'roll/client', $menu_tb) ?>
                     <!--end:Menu item-->
 
                     <!--begin:Menu item-->
