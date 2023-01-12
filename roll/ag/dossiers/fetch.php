@@ -3092,6 +3092,30 @@ if (isset($_POST['action'])) {
                     'success' => true,
                     'message' => 'Mail envoyé !',
                 ];
+                // Ajouter une notification pour les AG
+                foreach ($ag as $row) {
+                    add_notif(
+                        'Ajout de document',
+                        "Le document #$code_document à été ajouté au dossier client #$matricule_client",
+                        'alert',
+                        'important',
+                        'roll/ag/dossiers/',
+                        $row['id_utilisateur'],
+                        $db
+                    );
+                }
+
+                // Ajouter une notification pour DD
+                add_notif(
+                    'Ajout de document',
+                    "Le document #$code_document à été ajouté au dossier client #$matricule_client",
+                    'alert',
+                    'important',
+                    'roll/ag/dossiers/',
+                    $dd['id_utilisateur'],
+                    $db
+                );
+
             } else {
                 $output = [
                     'success' => false,
@@ -3536,6 +3560,30 @@ if (isset($_POST['action'])) {
                     'success' => true,
                     'message' => 'Mail envoyé !',
                 ];
+
+                // Ajouter une notification pour les AG
+                foreach ($ag as $row) {
+                    add_notif(
+                        'Suppression de document',
+                        "Le document #$code_document à été supprimé au dossier client #$matricule_client",
+                        'alert',
+                        'danger',
+                        'roll/ag/dossiers/',
+                        $row['id_utilisateur'],
+                        $db
+                    );
+                }
+
+                // Ajouter une notification pour DD
+                add_notif(
+                    'Suppression de document',
+                    "Le document #$code_document à été supprimé au dossier client #$matricule_client",
+                    'alert',
+                    'danger',
+                    'roll/ag/dossiers/',
+                    $dd['id_utilisateur'],
+                    $db
+                );
             } else {
                 $output = [
                     'success' => false,

@@ -14,6 +14,7 @@ $result = $statement->fetchAll();
 foreach ($result as $row) {
     $id_facture = $row['id_facture'];
     $id_client = $row['id_client'];
+    $id_utilisateur = find_id_utilisateur_by_id_client($id_client, $db);
     $relance_auto_client = find_info_client('relance_auto_client', $id_client, $db);                                                                                                                                  
     $date_echeance_plus_5_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +5 days'));
     $date_echeance_plus_30_jours = date('Y-m-d H:i:s', strtotime($row['date_echeance_facture'] . ' +30 days'));
@@ -58,15 +59,15 @@ foreach ($result as $row) {
         // Ajouter le client
         $to['to'][] = [$email_client, $nom_client];
 
-        // // Ajouter les AG
-        // $ag = find_ag_cabinet($db);
-        // foreach ($ag as $row) {
-        //     $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
-        // }
+        // Ajouter les AG
+        $ag = find_ag_cabinet($db);
+        foreach ($ag as $row) {
+            $to['to'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
+        }
 
-        // // Ajouter le DD DEC
-        // $dd = find_dd_dec($db);
-        // $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
+        // Ajouter le DD DEC
+        $dd = find_dd_dec($db);
+        $to['to'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
         
         $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
         
@@ -119,6 +120,47 @@ foreach ($result as $row) {
         HTML;
         
         $send_mail = send_mail($to, $from, $subject, $message);
+
+        if($send_mail) {
+
+            // Ajouter une notification pour les AG
+            foreach ($ag as $row) {
+                add_notif(
+                    'Envoi de mail de relance',
+                    'Un mail de relance a été envoyé au client ' . $nom_client . ' pour la facture ' . $n_facture . '.',
+                    'alert',
+                    'important',
+                    'roll/ag/dossiers/',
+                    $row['id_utilisateur'],
+                    $db
+                );
+            }
+
+            // Ajouter une notification pour le DD DEC
+            add_notif(
+                'Envoi de mail de relance',
+                'Un mail de relance a été envoyé au client ' . $nom_client . ' pour la facture ' . $n_facture . '.',
+                'alert',
+                'important',
+                'roll/dd/dossiers/',
+                $dd['id_utilisateur'],
+                $db
+            );
+            
+
+            // Ajouter une notification pour le client
+            add_notif(
+                'Envoi de mail de relance',
+                'Un mail de relance vous a été envoyé pour la facture ' . $n_facture . '.',
+                'alert',
+                'important',
+                'roll/client/dossiers/',
+                $id_utilisateur,
+                $db
+            );
+        }
+
+
     } else if($row['relance_option_facture'] != 'after_30_days' && $date_echeance_plus_30_jours < date('Y-m-d H:i:s') && $relance_auto_client == 'oui') {
         
         $update = update('facture', ['relance_option_facture' => 'after_30_days'], "id_facture = $id_facture", $db);
@@ -160,15 +202,15 @@ foreach ($result as $row) {
         // Ajouter le client
         $to['to'][] = [$email_client, $nom_client];
 
-        // // Ajouter les AG
-        // $ag = find_ag_cabinet($db);
-        // foreach ($ag as $row) {
-        //     $to['cc'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
-        // }
+        // Ajouter les AG
+        $ag = find_ag_cabinet($db);
+        foreach ($ag as $row) {
+            $to['cc'][] = [$row['email_utilisateur'], $row['prenom_utilisateur'] . ' ' . $row['nom_utilisateur']];
+        }
 
-        // // Ajouter le DD DEC
-        // $dd = find_dd_dec($db);
-        // $to['cc'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
+        // Ajouter le DD DEC
+        $dd = find_dd_dec($db);
+        $to['cc'][] = [$dd['email_utilisateur'], $dd['prenom_utilisateur'] . ' ' . $dd['nom_utilisateur']];
         
         $from = ['c_elyon@yahoo.fr', 'Cabinet Elyon'];
         
@@ -221,5 +263,44 @@ foreach ($result as $row) {
         HTML;
         
         $send_mail = send_mail($to, $from, $subject, $message);
+
+        if($send_mail) {
+
+            // Ajouter une notification pour les AG
+            foreach ($ag as $row) {
+                add_notif(
+                    'Envoi de mail de relance',
+                    'Un mail de relance a été envoyé au client ' . $nom_client . ' pour la facture ' . $n_facture . '.',
+                    'alert',
+                    'important',
+                    'roll/ag/dossiers/',
+                    $row['id_utilisateur'],
+                    $db
+                );
+            }
+
+            // Ajouter une notification pour le DD DEC
+            add_notif(
+                'Envoi de mail de relance',
+                'Un mail de relance a été envoyé au client ' . $nom_client . ' pour la facture ' . $n_facture . '.',
+                'alert',
+                'important',
+                'roll/dd/dossiers/',
+                $dd['id_utilisateur'],
+                $db
+            );
+            
+
+            // Ajouter une notification pour le client
+            add_notif(
+                'Envoi de mail de relance',
+                'Un mail de relance vous a été envoyé pour la facture ' . $n_facture . '.',
+                'alert',
+                'important',
+                'roll/client/dossiers/',
+                $id_utilisateur,
+                $db
+            );
+        }
     }
 }
