@@ -126,7 +126,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="mb-1">
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative mb-3">
-                                        <input class="form-control bg-transparent" type="password" placeholder="Entrez le mot de passe" name="password" autocomplete="off" />
+                                        <input class="form-control bg-transparent" type="password" placeholder="Entrez le nouveau mot de passe" name="password" autocomplete="off" />
                                         <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
                                             <i class="bi bi-eye-slash fs-2"></i>
                                             <i class="bi bi-eye fs-2 d-none"></i>
@@ -151,7 +151,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Repeat Password-->
-                                <input type="password" placeholder="Confirmez le mot de passe" name="confirm-password" autocomplete="off" class="form-control bg-transparent" />
+                                <input type="password" placeholder="Confirmez le nouveau mot de passe" name="confirm-password" autocomplete="off" class="form-control bg-transparent" />
                                 <!--end::Repeat Password-->
                             </div>
                             <!--end::Input group=-->
@@ -206,10 +206,10 @@ License: For each use you must have a valid license purchased only from above li
                                 password: {
                                     validators: {
                                         notEmpty: {
-                                            message: "The password is required"
+                                            message: "Un mot de passe est requis"
                                         },
                                         callback: {
-                                            message: "Please enter valid password",
+                                            message: "Veuillez entrer un mot de passe valide",
                                             callback: function(t) {
                                                 if (t.value.length > 0) return a()
                                             }
@@ -219,20 +219,20 @@ License: For each use you must have a valid license purchased only from above li
                                 "confirm-password": {
                                     validators: {
                                         notEmpty: {
-                                            message: "The password confirmation is required"
+                                            message: "La confirmation du mot de passe est requise"
                                         },
                                         identical: {
                                             compare: function() {
                                                 return t.querySelector('[name="password"]').value
                                             },
-                                            message: "The password and its confirm are not the same"
+                                            message: "Le mot de passe et sa confirmation ne correspondent pas"
                                         }
                                     }
                                 },
                                 toc: {
                                     validators: {
                                         notEmpty: {
-                                            message: "You must accept the terms and conditions"
+                                            message: "Vous devez accepter les conditions d'utilisation"
                                         }
                                     }
                                 }
@@ -305,7 +305,7 @@ License: For each use you must have a valid license purchased only from above li
                                 } else {
                                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                                     Swal.fire({
-                                        text: "Sorry, looks like there are some errors detected, please try again.",
+                                        text: "Désole, il semble que vous avez saisi des informations non valides. Veuillez vérifier et réessayer.",
                                         icon: "error",
                                         buttonsStyling: false,
                                         confirmButtonText: "Ok, j'ai compris",
