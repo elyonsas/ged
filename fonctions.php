@@ -7,16 +7,28 @@
     use PHPMailer\PHPMailer\Exception;
 
 
-    function connected($acces)
+    function connected($acces=null)
     {
-        if (!isset($_SESSION['id_compte']) || ($_SESSION['type_compte'] != $acces && $_SESSION['type_compte'] != 'admin')) {
-            $redirect = $_SERVER['REQUEST_URI'];
-
-            $uuid = Uuid::uuid1();
-            $deceive_uri_rand_str = $uuid->toString();
-
-            header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
-            exit();
+        if ($acces != null) {
+            if (!isset($_SESSION['id_compte']) || ($_SESSION['type_compte'] != $acces && $_SESSION['type_compte'] != 'admin')) {
+                $redirect = $_SERVER['REQUEST_URI'];
+    
+                $uuid = Uuid::uuid1();
+                $deceive_uri_rand_str = $uuid->toString();
+    
+                header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
+                exit();
+            }
+        } else {
+            if (!isset($_SESSION['id_compte'])) {
+                $redirect = $_SERVER['REQUEST_URI'];
+    
+                $uuid = Uuid::uuid1();
+                $deceive_uri_rand_str = $uuid->toString();
+    
+                header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
+                exit();
+            }
         }
     }
     ////////// dump avec des pre pour saut de ligne
