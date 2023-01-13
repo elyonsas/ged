@@ -107,7 +107,7 @@ if (isset($_POST['datatable'])) {
 
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="" class="edit_interlo menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_interlo_modal" data-id_interlocuteur="{$id_interlocuteur}">Modifier interlocuteur</a>
+                                        <a href="" class="edit_interlocuteur menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_interlocuteur_modal" data-id_interlocuteur="{$id_interlocuteur}">Modifier interlocuteur</a>
                                     </div>
                                     <!--end::Menu item-->
 

@@ -57,7 +57,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar my-1">
                             <!-- begin::add btn interlo -->
-                            <div id="add_interlo" data-bs-toggle="modal" data-bs-target="#add_interlo_modal" class="btn btn-sm btn-light btn-active-primary me-3">
+                            <div id="add_interlocuteur" data-bs-toggle="modal" data-bs-target="#add_interlocuteur_modal" class="btn btn-sm btn-light btn-active-primary me-3">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,6 +124,76 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
         <!--end::Content container-->
     </div>
     <!--end::Content-->
+
+    <!-- begin::Modal Ajouter un interlocuteur-->
+    <div class="modal fade" id="add_interlocuteur_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_add_interlocuteur" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Ajouter un interlocuteur</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Nom</label>
+                            <input id="add_interlocuteur_nom" type="text" class="form-control form-control-solid" name="nom_interlocuteur" placeholder="Entrez le nom du interlocuteur" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Prenom</label>
+                            <input id="add_interlocuteur_prenom" type="text" class="form-control form-control-solid" name="prenom_interlocuteur" placeholder="Entrez le prenom du interlocuteur" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Téléphone</label>
+                            <input id="add_interlocuteur_tel" type="text" class="form-control form-control-solid" name="tel_interlocuteur" placeholder="Entrez un téléphone">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Fonction</label>
+                            <input id="add_interlocuteur_fonction" type="text" class="form-control form-control-solid" name="fonction_interlocuteur" placeholder="Entrez une fonction">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Email</label>
+                            <input id="add_interlocuteur_email" type="email" class="form-control form-control-solid" name="email_interlocuteur" placeholder="Entrez un email">
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="add_interlocuteur">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_add_interlocuteur" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Ajouter un interlocuteur-->
     
 </div>
 <!--end::Content wrapper-->
