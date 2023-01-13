@@ -301,7 +301,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                                 <th class="min-w-200px">Collaborateur</th>
                                                 <th class="">Téléphone</th>
                                                 <th class="">Rôle</th>
-                                                <th class="text-end">Actions</th>
                                             </tr>
                                         </thead>
                                         <!--end::Head-->
@@ -414,18 +413,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
 
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar my-1">
-                                    <!-- begin::add btn document -->
-                                    <div id="add_btn_document" data-bs-toggle="modal" data-bs-target="#add_doc_modal" class="btn btn-sm btn-light btn-active-primary me-3">
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                        <span class="svg-icon svg-icon-3">
-                                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
-                                                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
-                                            </svg>
-                                        </span>Ajouter un document
-                                        <!--end::Svg Icon-->
-                                    </div>
-                                    <!-- end::add btn document -->
                                     <!--begin::Search-->
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -460,7 +447,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                                 <th class="min-w-200px">Document</th>
                                                 <th class="">Dernière modification</th>
                                                 <th class="">statut</th>
-                                                <th class="text-end">Actions</th>
                                             </tr>
                                         </thead>
                                         <!--end::Head-->
@@ -523,18 +509,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
 
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar my-1">
-                                    <!-- begin::add btn document -->
-                                    <div data-bs-toggle="modal" data-bs-target="#add_doc_modal" class="btn btn-sm btn-light btn-active-primary me-3">
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                        <span class="svg-icon svg-icon-3">
-                                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
-                                                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
-                                            </svg>
-                                        </span>Ajouter un document
-                                        <!--end::Svg Icon-->
-                                    </div>
-                                    <!-- end::add btn document -->
                                     <!--begin::Search-->
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -569,7 +543,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                                 <th class="min-w-200px">Document</th>
                                                 <th class="">Dernière modification</th>
                                                 <th class="">statut</th>
-                                                <th class="text-end">Actions</th>
                                             </tr>
                                         </thead>
                                         <!--end::Head-->
@@ -730,11 +703,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                             </a>
                                         </div>
                                     </div>
-                                    <!--begin::Action-->
-                                    <div class="text-center">
-                                        <div class="info_relance btn btn-sm btn-dark fw-bold" data-bs-toggle="modal" data-bs-target="#edit_info_relance_modal">Informations de relance</div>
-                                    </div>
-                                    <!--begin::Action-->
                                 </div>
                                 <!--begin::Wrapper-->
                                 <!--begin::Illustration-->
