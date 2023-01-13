@@ -58,7 +58,7 @@ if (isset($_POST['datatable'])) {
             // interlocuteur
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <div data-sorting="{$prenom} {$nom}" class="fs-6 text-gray-800 text-hover-primary">$prenom $nom</div>
+                    <div data-sorting="{$prenom} {$nom}" class="fs-6 text-gray-800">$prenom $nom</div>
                 </div>
             HTML;
 
@@ -92,88 +92,88 @@ if (isset($_POST['datatable'])) {
             HTML;
 
             // Action
-            // switch ($statut_compte) {
-            //     case 'actif':
-            //         $action = <<<HTML
+            switch ($statut_compte) {
+                case 'actif':
+                    $action = <<<HTML
 
-            //             <td>
-            //                 <div class="d-flex justify-content-end flex-shrink-0">
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
                             
-            //                     <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-            //                         <i class="bi bi-three-dots fs-3"></i>
-            //                     </button>
-            //                     <!--begin::Menu 3-->
-            //                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 
-            //                         <!--begin::Menu item-->
-            //                         <div class="menu-item px-3">
-            //                             <a href="" class="desactiver_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Désactiver ce compte</a>
-            //                         </div>
-            //                         <!--end::Menu item-->
-                                    
-            //                         <!--begin::Menu item-->
-            //                         <div class="menu-item px-3">
-            //                             <a href="" class="attribuer_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#attribuer_modal" data-id_interlocuteur="{$id_interlocuteur}">Attribuer un dossier</a>
-            //                         </div>
-            //                         <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_interlo menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_interlo_modal" data-id_interlocuteur="{$id_interlocuteur}">Modifier interlocuteur</a>
+                                    </div>
+                                    <!--end::Menu item-->
 
-            //                         <!--begin::Menu separator-->
-            //                         <!-- <div class="separator mt-3 opacity-75"></div> -->
-            //                         <!--end::Menu separator-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="desactiver_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Désactiver ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
 
-            //                         <!--begin::Menu item-->
-            //                         <!-- <div class="menu-item">
-            //                             <div class="menu-content px-3 py-3">
-            //                                 <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
-            //                             </div>
-            //                         </div> -->
-            //                         <!--end::Menu item-->
-            //                     </div>
-            //                     <!--end::Menu 3-->
-            //                 </div>
-            //             </td>
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
 
-            //         HTML;
-            //         break;
-            //     case 'inactif':
-            //         $action = <<<HTML
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
 
-            //             <td>
-            //                 <div class="d-flex justify-content-end flex-shrink-0">
+                    HTML;
+                    break;
+                case 'inactif':
+                    $action = <<<HTML
 
-            //                     <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-            //                         <i class="bi bi-three-dots fs-3"></i>
-            //                     </button>
-            //                     <!--begin::Menu 3-->
-            //                     <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
 
-            //                         <!--begin::Menu item-->
-            //                         <div class="menu-item px-3">
-            //                             <a href="" class="activer_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Activer ce compte</a>
-            //                         </div>
-            //                         <!--end::Menu item-->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 
-            //                         <!--begin::Menu separator-->
-            //                         <!-- <div class="separator mt-3 opacity-75"></div> -->
-            //                         <!--end::Menu separator-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="activer_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Activer ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
 
-            //                         <!--begin::Menu item-->
-            //                         <!-- <div class="menu-item">
-            //                             <div class="menu-content px-3 py-3">
-            //                                 <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
-            //                             </div>
-            //                         </div> -->
-            //                         <!--end::Menu item-->
-            //                     </div>
-            //                     <!--end::Menu 3-->
-            //                 </div>
-            //             </td>
+                                    <!--begin::Menu separator-->
+                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                    <!--end::Menu separator-->
 
-            //         HTML;
-            //         break;
-            // }
+                                    <!--begin::Menu item-->
+                                    <!-- <div class="menu-item">
+                                        <div class="menu-content px-3 py-3">
+                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                        </div>
+                                    </div> -->
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
 
-            // $sub_array[] = $action;
+                    HTML;
+                    break;
+            }
+
+            $sub_array[] = $action;
 
             $data[] = $sub_array;
         }
