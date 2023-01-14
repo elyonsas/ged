@@ -70,23 +70,23 @@ if (isset($_POST['credential'])) {
             $_SESSION['param_sidebar_minimize'] = 'off';
 
 
-            if ($data['type_compte'] == "admin") {
+            if ($result['type_compte'] == "admin") {
                 $message = "parametres corrects - admin";
             }
 
-            if ($data['type_compte'] == "ag") {
+            if ($result['type_compte'] == "ag") {
                 $message = "parametres corrects - ag";
             }
 
-            if ($data['type_compte'] == "dd") {
+            if ($result['type_compte'] == "dd") {
                 $message = "parametres corrects - dd";
             }
 
-            if ($data['type_compte'] == "cm") {
+            if ($result['type_compte'] == "cm") {
                 $message = "parametres corrects - cm";
             }
 
-            if ($data['type_compte'] == "client") {
+            if ($result['type_compte'] == "client") {
                 $message = "parametres corrects - client";
             }
 

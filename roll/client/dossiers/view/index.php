@@ -5,6 +5,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 connected('client');
 
+// Variables en sessions
+$_SESSION['id_view_client'] = select_info('id_client', 'client', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
 add_log('consultation', 'Consultation de la page du dossier client #' . $_SESSION['id_view_client'], $_SESSION['id_utilisateur'], $db);
 
 $titre_page = 'GED-ELYON - Client';
