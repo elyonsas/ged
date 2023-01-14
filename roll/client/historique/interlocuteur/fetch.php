@@ -13,9 +13,12 @@ if (isset($_POST['datatable'])) {
 
         $output = array();
 
+        $id_client = select_info('id_client', 'client', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
         $query = "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
         WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
-        AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur ORDER BY updated_at_assoc_client_interlo DESC";
+        AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
+        AND client.id_client = $id_client ORDER BY updated_at_assoc_client_interlo DESC";
 
         $statement = $db->prepare($query);
         $statement->execute();
@@ -56,13 +59,6 @@ if (isset($_POST['datatable'])) {
 
             $debut = date('d/m/Y', strtotime($row['date_debut_assoc_client_interlo']));
             $fin = si_funct1($row['date_fin_assoc_client_interlo'], date('d/m/Y', strtotime($row['date_fin_assoc_client_interlo'])), '--');
-
-            // Client
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <div class="fs-6 text-gray-800">$client</div>
-                </div>
-            HTML;
 
             // Interlocuteur
             $sub_array[] = <<<HTML
