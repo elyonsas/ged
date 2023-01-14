@@ -17,7 +17,7 @@ if (isset($_POST['datatable'])) {
         $query .= "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
         WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
         AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
-        AND statut_assoc_client_interlo = 'actif' ORDER BY statut_compte ASC";
+        AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
 
         $statement = $db->prepare($query);
         $statement->execute();
@@ -117,6 +117,12 @@ if (isset($_POST['datatable'])) {
                                     </div>
                                     <!--end::Menu item-->
 
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_interlocuteur menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer interlocuteur</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
                                     <!--begin::Menu separator-->
                                     <!-- <div class="separator mt-3 opacity-75"></div> -->
                                     <!--end::Menu separator-->
@@ -150,6 +156,12 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="activer_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Activer ce compte</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_interlocuteur menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer interlocuteur</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -187,7 +199,98 @@ if (isset($_POST['datatable'])) {
 
 if (isset($_POST['action'])) {
 
-    // some code
+    if ($_POST['action'] == 'add_interlocuteur') {
+
+        // Si le compte existe déjà alors exit
+        if (compte_exists($_POST['email_interlocuteur'], $db)) {
+            $output = [
+                'success' => false,
+                'message' => 'Cet email existe déjà dans GED !'
+            ];
+            
+            echo json_encode($output);
+            exit();
+            
+        }
+            
+        $insert1 = insert(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_interlocuteur'],
+                'prenom_utilisateur' => $_POST['prenom_interlocuteur'],
+                'tel_utilisateur' => $_POST['tel_interlocuteur'],
+                'email_utilisateur' => $_POST['email_interlocuteur'],
+                'created_at_utilisateur' => date('Y-m-d H:i:s'),
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            $db
+        );
+
+        $id_utilisateur = $db->lastInsertId();
+
+        $insert2 = insert(
+            'compte',
+            [
+                'pseudo_compte' => $_POST['nom_interlocuteur'],
+                'email_compte' => $_POST['email_interlocuteur'],
+                'statut_compte' => 'actif',
+                'type_compte' => 'membre',
+                'created_at_compte' => date('Y-m-d H:i:s'),
+                'updated_at_compte' => date('Y-m-d H:i:s'),
+                'id_utilisateur' => $id_utilisateur,
+            ],
+            $db
+        );
+
+        $insert3 = false;
+        $update = false;
+        if ($insert1 && $insert2) {
+            $insert3 = insert(
+                'interlocuteur',
+                [
+                    'fonction_interlocuteur' => $_POST['fonction_interlocuteur'],
+                    'id_utilisateur' => $id_utilisateur,
+                ],
+                $db
+            );
+
+            $id_interlocuteur = $db->lastInsertId();
+
+            $update = update(
+                'interlocuteur',
+                [
+                    'code_interlocuteur' => 15000 + $id_interlocuteur,
+                ],
+                "id_interlocuteur = $id_interlocuteur",
+                $db
+            );
+        }
+        $id_client = select_info('id_client', 'client', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+        $insert4 = insert(
+            'assoc_client_interlo',
+            [
+                'statut_assoc_client_interlo' => 'actif',
+                'date_debut_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'created_at_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'id_client' => $id_client,
+                'id_interlocuteur' => $id_interlocuteur,
+            ],
+            $db
+        );
+
+        if ($insert1 && $insert2 && $insert3 && $insert4 && $update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Un interlocuteur ajouté avec succès'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite'
+            );
+        }
+    }
 
 }
 

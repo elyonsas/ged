@@ -334,6 +334,57 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
             }
         });
 
+        // Lorsqu'on clique sur #add_btn_interlocuteur
+        $(document).on('click', '#add_btn_interlocuteur', function() {
+            $('#form_add_interlocuteur')[0].reset();
+        });
+
+        // Pour l'ajout d'un nouveau interlocuteur
+        $(document).on('submit', '#form_add_interlocuteur', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_add_interlocuteur');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/client/interlocuteurs/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#add_interlocuteur_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Interlocuteur ajouté !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reload_datatable('all_interlo'); // On recharge le datatable
+
+                        } else {
+                            toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
+        });
+
 
     })
 </script>

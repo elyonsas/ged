@@ -17,7 +17,7 @@ if (isset($_POST['datatable'])) {
         $query .= "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
         WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
         AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
-        AND statut_assoc_client_interlo = 'actif' ORDER BY statut_compte ASC";
+        AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
 
         $statement = $db->prepare($query);
         $statement->execute();
