@@ -80,7 +80,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
 								<!--begin::Head-->
 								<thead class="fs-7 text-gray-400 text-uppercase">
 									<tr>
-										<th class="min-w-100px">Client</th>
 										<th class="min-w-100px">Collaborateur</th>
 										<th class="">Fonction</th>
 										<th class="">Téléphone</th>
