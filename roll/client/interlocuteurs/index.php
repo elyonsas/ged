@@ -98,7 +98,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                         <th class="min-w-200px">Email</th>
                                         <th class="min-w-75px">Téléphone</th>
                                         <th class="min-w-100px">Fonction</th>
-                                        <th class="min-w-100px">Client</th>
                                         <th class="min-w-75px">Statut</th>
                                         <th class="text-end">Action</th>
                                     </tr>
@@ -403,6 +402,139 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                     }, 1000);
                 })
             }
+        });
+
+        // Lorsqu'on clique sur .activer_compte
+        $(document).on('click', '.activer_compte', function(e) {
+            e.preventDefault();
+            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
+
+            // Voulez-vous vraiment activer ce compte ?
+            Swal.fire({
+                title: "Voulez-vous vraiment activer ce compte ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui, activer !",
+                cancelButtonText: "Non, annuler !",
+                reverseButtons: true
+            }).then(function(result) {
+                if (result.value) {
+
+                    $.ajax({
+                        url: "roll/client/interlocuteurs/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_interlocuteur: id_interlocuteur,
+                            action: 'activer_compte'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                reload_datatable('all_interlo'); // On recharge le datatable
+
+                                toastr.success(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+
+                }
+            });
+
+        });
+
+        // Lorsqu'on clique sur .desactiver_compte
+        $(document).on('click', '.desactiver_compte', function(e) {
+            e.preventDefault();
+            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
+
+            // Voulez-vous vraiment désactiver ce compte ?
+            Swal.fire({
+                title: "Voulez-vous vraiment désactiver ce compte ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui, désactiver !",
+                cancelButtonText: "Non, annuler !",
+                reverseButtons: true
+            }).then(function(result) {
+                if (result.value) {
+
+                    $.ajax({
+                        url: "roll/client/interlocuteurs/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_interlocuteur: id_interlocuteur,
+                            action: 'desactiver_compte'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                reload_datatable('all_interlo'); // On recharge le datatable
+
+                                toastr.success(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+
+                }
+            });
+
+        });
+
+        // Lorsqu'on clique sur .supprimer_compte
+        $(document).on('click', '.supprimer_compte', function(e) {
+            e.preventDefault();
+            var id_interlocuteur = $(this).data('id_interlocuteur'); // On récupère l'id de l'article
+
+            // Voulez-vous vraiment supprimer ce compte ?
+            Swal.fire({
+                title: "Voulez-vous vraiment supprimer ce compte ?",
+                text: "Vous ne pourrez plus revenir en arrière !",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui, supprimer !",
+                cancelButtonText: "Non, annuler !",
+                reverseButtons: true
+            }).then(function(result) {
+                if (result.value) {
+
+                    $.ajax({
+                        url: "roll/client/interlocuteurs/fetch.php",
+                        method: "POST",
+                        data: {
+                            id_interlocuteur: id_interlocuteur,
+                            action: 'supprimer_compte'
+                        },
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.success) {
+                                reload_datatable('all_interlo'); // On recharge le datatable
+
+                                toastr.success(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            } else {
+                                toastr.error(data.message, '', {
+                                    positionClass: "toastr-bottom-left",
+                                });
+                            }
+                        }
+                    })
+
+                }
+            });
+
         });
 
         // Lorsqu'on clique sur #add_btn_interlocuteur

@@ -14,9 +14,8 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
-        WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
-        AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
+        $query .= "SELECT * FROM interlocuteur, utilisateur, compte 
+        WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
         AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
 
         $statement = $db->prepare($query);
@@ -30,7 +29,7 @@ if (isset($_POST['datatable'])) {
             $sub_array = array();
 
             $id_interlocuteur = $row['id_interlocuteur'];
-            $id_client = $row['id_client'];
+            $id_client = find_id_client_by_id_interlocuteur($id_interlocuteur, $db);
             $id_utilisateur = find_id_utilisateur_by_id_client($id_client, $db);
             $nom = $row['nom_utilisateur'];
             $prenom = $row['prenom_utilisateur'];

@@ -842,6 +842,33 @@
         return $result['id_utilisateur'];
     }
 
+    function find_id_client_by_id_interlocuteur($id_interlocuteur, PDO $db)
+    {
+        $query = "SELECT * FROM assoc_client_interlo, client, interlocuteur WHERE assoc_client_interlo.id_client = client.id_client 
+        AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur 
+        AND interlocuteur.id_interlocuteur = :id_interlocuteur LIMIT 1";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_interlocuteur' => $id_interlocuteur
+        ]);
+        $result = $statement->fetch();
+
+        return $result['id_client'];
+    }
+
+    function is_client_interlocuteur($id_client, $id_interlocuteur, PDO $db)
+    {
+        $query = "SELECT * FROM assoc_client_interlo WHERE id_client = :id_client AND id_interlocuteur = :id_interlocuteur";
+        $statement = $db->prepare($query);
+        $statement->execute([
+            ':id_client' => $id_client,
+            ':id_interlocuteur' => $id_interlocuteur
+        ]);
+        $result = $statement->fetch();
+
+        return $result;
+    }
+
     function find_dep_client($id_client, PDO $db)
     {
         $query = "SELECT * FROM departement, client WHERE departement.id_departement = client.id_departement AND client.id_client = :id_client";

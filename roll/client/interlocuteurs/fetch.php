@@ -14,9 +14,8 @@ if (isset($_POST['datatable'])) {
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM assoc_client_interlo, interlocuteur, client, utilisateur, compte 
-        WHERE assoc_client_interlo.id_client = client.id_client AND assoc_client_interlo.id_interlocuteur = interlocuteur.id_interlocuteur
-        AND utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
+        $query .= "SELECT * FROM interlocuteur, utilisateur, compte 
+        WHERE utilisateur.id_utilisateur = compte.id_utilisateur AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur 
         AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
 
         $statement = $db->prepare($query);
@@ -25,169 +24,163 @@ if (isset($_POST['datatable'])) {
 
         $data = array();
 
+        $id_client = select_info('id_client', 'client', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
         foreach ($result as $row) {
 
-            $sub_array = array();
+            if (is_client_interlocuteur($id_client, $row['id_interlocuteur'], $db)) {
+                $sub_array = array();
 
-            $id_interlocuteur = $row['id_interlocuteur'];
-            $id_client = $row['id_client'];
-            $id_utilisateur = find_id_utilisateur_by_id_client($id_client, $db);
-            $nom = $row['nom_utilisateur'];
-            $prenom = $row['prenom_utilisateur'];
-            $email = $row['email_utilisateur'];
-            $telephone = $row['tel_utilisateur'];
+                $id_interlocuteur = $row['id_interlocuteur'];
+                $nom = $row['nom_utilisateur'];
+                $prenom = $row['prenom_utilisateur'];
+                $email = $row['email_utilisateur'];
+                $telephone = $row['tel_utilisateur'];
 
-            $statut_compte = $row['statut_compte'];
+                $statut_compte = $row['statut_compte'];
 
-            $fonction = $row['fonction_interlocuteur'];
-            $client = find_info_utilisateur('nom_utilisateur', $id_utilisateur, $db);
+                $fonction = $row['fonction_interlocuteur'];
 
-            switch ($statut_compte) {
-                case 'actif':
-                    $statut_compte_html = <<<HTML
-                        <span class="badge badge-light-success">Actif</span>
-                    HTML;
-                    break;
-                case 'inactif':
-                    $statut_compte_html = <<<HTML
-                        <span class="badge badge-light-danger">Inactif</span>
-                    HTML;
-                    break;
-            }
+                switch ($statut_compte) {
+                    case 'actif':
+                        $statut_compte_html = <<<HTML
+                            <span class="badge badge-light-success">Actif</span>
+                        HTML;
+                        break;
+                    case 'inactif':
+                        $statut_compte_html = <<<HTML
+                            <span class="badge badge-light-danger">Inactif</span>
+                        HTML;
+                        break;
+                }
 
-            // interlocuteur
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <div data-sorting="{$prenom} {$nom}" class="fs-6 text-gray-800">$prenom $nom</div>
-                </div>
-            HTML;
+                // interlocuteur
+                $sub_array[] = <<<HTML
+                    <div class="d-flex flex-column justify-content-center">
+                        <div data-sorting="{$prenom} {$nom}" class="fs-6 text-gray-800">$prenom $nom</div>
+                    </div>
+                HTML;
 
-            // email
-            $sub_array[] = <<<HTML
-                $email
-            HTML;
+                // email
+                $sub_array[] = <<<HTML
+                    $email
+                HTML;
 
-            // Telephone
-            $sub_array[] = <<<HTML
-                $telephone
-            HTML;
+                // Telephone
+                $sub_array[] = <<<HTML
+                    $telephone
+                HTML;
 
-            // fonction
-            $sub_array[] = <<<HTML
-                <td>
-                    <div class="text-dark fw-bold d-block fs-6">$fonction</div>
-                </td>
-            HTML;
+                // fonction
+                $sub_array[] = <<<HTML
+                    <td>
+                        <div class="text-dark fw-bold d-block fs-6">$fonction</div>
+                    </td>
+                HTML;
 
-            // Client
-            $sub_array[] = <<<HTML
-                <td>
-                    <div class="text-dark fw-bold d-block fs-6">$client</div>
-                </td>
-            HTML;
+                // Statut
+                $sub_array[] = <<<HTML
+                    $statut_compte_html
+                HTML;
 
-            // Statut
-            $sub_array[] = <<<HTML
-                $statut_compte_html
-            HTML;
+                // Action
+                switch ($statut_compte) {
+                    case 'actif':
+                        $action = <<<HTML
 
-            // Action
-            switch ($statut_compte) {
-                case 'actif':
-                    $action = <<<HTML
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
 
-                        <td>
-                            <div class="d-flex justify-content-end flex-shrink-0">
-                            
-                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <i class="bi bi-three-dots fs-3"></i>
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="edit_interlocuteur menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_interlocuteur_modal" data-id_interlocuteur="{$id_interlocuteur}">Modifier interlocuteur</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="desactiver_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Désactiver ce compte</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="supprimer_interlocuteur menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer interlocuteur</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu separator-->
-                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
-                                    <!--end::Menu separator-->
-
-                                    <!--begin::Menu item-->
-                                    <!-- <div class="menu-item">
-                                        <div class="menu-content px-3 py-3">
-                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_interlocuteur menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_interlocuteur_modal" data-id_interlocuteur="{$id_interlocuteur}">Modifier interlocuteur</a>
                                         </div>
-                                    </div> -->
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 3-->
-                            </div>
-                        </td>
+                                        <!--end::Menu item-->
 
-                    HTML;
-                    break;
-                case 'inactif':
-                    $action = <<<HTML
-
-                        <td>
-                            <div class="d-flex justify-content-end flex-shrink-0">
-
-                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <i class="bi bi-three-dots fs-3"></i>
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="activer_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Activer ce compte</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="supprimer_interlocuteur menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer interlocuteur</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu separator-->
-                                    <!-- <div class="separator mt-3 opacity-75"></div> -->
-                                    <!--end::Menu separator-->
-
-                                    <!--begin::Menu item-->
-                                    <!-- <div class="menu-item">
-                                        <div class="menu-content px-3 py-3">
-                                            <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="desactiver_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Désactiver ce compte</a>
                                         </div>
-                                    </div> -->
-                                    <!--end::Menu item-->
+                                        <!--end::Menu item-->
+
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="supprimer_compte menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer ce compte</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!--begin::Menu separator-->
+                                        <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                        <!--end::Menu separator-->
+
+                                        <!--begin::Menu item-->
+                                        <!-- <div class="menu-item">
+                                            <div class="menu-content px-3 py-3">
+                                                <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                            </div>
+                                        </div> -->
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
                                 </div>
-                                <!--end::Menu 3-->
-                            </div>
-                        </td>
+                            </td>
 
-                    HTML;
-                    break;
+                        HTML;
+                        break;
+                    case 'inactif':
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="activer_compte menu-link px-3" data-id_interlocuteur="{$id_interlocuteur}">Activer ce compte</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="supprimer_compte menu-link px-3 text-hover-danger" data-id_interlocuteur="{$id_interlocuteur}">Supprimer ce compte</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!--begin::Menu separator-->
+                                        <!-- <div class="separator mt-3 opacity-75"></div> -->
+                                        <!--end::Menu separator-->
+
+                                        <!--begin::Menu item-->
+                                        <!-- <div class="menu-item">
+                                            <div class="menu-content px-3 py-3">
+                                                <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_interlocuteur="{$id_interlocuteur}">Supprimer définitivement</a>
+                                            </div>
+                                        </div> -->
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                        break;
+                }
+
+                $sub_array[] = $action;
+
+                $data[] = $sub_array;
             }
-
-            $sub_array[] = $action;
-
-            $data[] = $sub_array;
         }
 
 
@@ -198,6 +191,141 @@ if (isset($_POST['datatable'])) {
 }
 
 if (isset($_POST['action'])) {
+
+    if ($_POST['action'] == 'activer_compte') {
+        $id_interlocuteur = $_POST['id_interlocuteur'];
+        $id_client = select_info('id_client', 'client', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
+        $query = "SELECT * FROM utilisateur, compte, interlocuteur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur AND interlocuteur.id_interlocuteur = '$id_interlocuteur'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update = update(
+            'compte',
+            ['statut_compte' => 'actif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        $insert = insert(
+            'assoc_client_interlo',
+            [
+                'statut_assoc_client_interlo' => 'actif',
+                'date_debut_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'created_at_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'id_client' => $id_client,
+                'id_interlocuteur' => $id_interlocuteur
+            ],
+            $db
+        );
+
+        if ($update) {
+            $output = array(
+                'success' => true,
+                'message' => 'Compte activé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+    if ($_POST['action'] == 'desactiver_compte') {
+        $id_interlocuteur = $_POST['id_interlocuteur'];
+
+        $query = "SELECT * FROM utilisateur, compte, interlocuteur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur AND interlocuteur.id_interlocuteur = '$id_interlocuteur'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update1 = update(
+            'compte',
+            ['statut_compte' => 'inactif'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        $update2 = update(
+            'assoc_client_interlo',
+            [
+                'statut_assoc_client_interlo' => 'inactif',
+                'date_fin_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_interlo' => date('Y-m-d H:i:s')
+            ],
+            "id_interlocuteur = $id_interlocuteur AND statut_assoc_client_interlo = 'actif'",
+            $db
+        );
+
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => 'Compte désactivé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
+    if ($_POST['action'] == 'supprimer_compte') {
+        $id_interlocuteur = $_POST['id_interlocuteur'];
+
+        $query = "SELECT * FROM utilisateur, compte, interlocuteur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur AND interlocuteur.id_interlocuteur = '$id_interlocuteur'";
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $id_utilisateur = $result['id_utilisateur'];
+        $statut_compte = $result['statut_compte'];
+
+        $update1 = update(
+            'compte',
+            ['statut_compte' => 'supprime'],
+            "id_utilisateur = '$id_utilisateur'",
+            $db
+        );
+
+        $update2 = update(
+            'assoc_client_interlo',
+            [
+                'statut_assoc_client_interlo' => 'inactif',
+                'date_fin_assoc_client_interlo' => date('Y-m-d H:i:s'),
+                'updated_at_assoc_client_interlo' => date('Y-m-d H:i:s')
+            ],
+            "id_interlocuteur = $id_interlocuteur AND statut_assoc_client_interlo = 'actif'",
+            $db
+        );
+
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => 'Compte supprimé !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+    }
 
     if ($_POST['action'] == 'add_interlocuteur') {
 

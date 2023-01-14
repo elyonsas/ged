@@ -387,7 +387,7 @@ if (isset($_POST['action'])) {
                 'date_fin_assoc_client_collabo' => date('Y-m-d H:i:s'),
                 'updated_at_assoc_client_collabo' => date('Y-m-d H:i:s')
             ],
-            "id_collaborateur = $id_collaborateur AND role_assoc_client_collabo = 'cm'",
+            "id_collaborateur = $id_collaborateur AND role_assoc_client_collabo = 'cm' AND statut_assoc_client_collabo = 'actif'",
             $db
         );
 
