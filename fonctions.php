@@ -57,8 +57,6 @@
         return str_replace($english_months, $french_months, str_replace($english_days, $french_days, date($format, strtotime($date))));
     }
 
-
-
     function date_abbr($date, $lang)
     {
         if ($lang == 'fr') {

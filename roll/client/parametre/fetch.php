@@ -38,7 +38,6 @@ if (isset($_POST['action'])) {
         $avatar_utilisateur = $uniq . '_' . $_FILES['avatar_utilisateur']['name'];
 
         $nom_utilisateur = $_POST['nom_utilisateur'];
-        $prenom_utilisateur = $_POST['prenom_utilisateur'];
         $tel_utilisateur = $_POST['tel_utilisateur'];
         $email_utilisateur = $_POST['email_utilisateur'];
         $adresse_utilisateur = $_POST['adresse_utilisateur'];
@@ -55,7 +54,6 @@ if (isset($_POST['action'])) {
                 [
                     'avatar_utilisateur' => $avatar_utilisateur,
                     'nom_utilisateur' => $nom_utilisateur,
-                    'prenom_utilisateur' => $prenom_utilisateur,
                     'tel_utilisateur' => $tel_utilisateur,
                     'email_utilisateur' => $email_utilisateur,
                     'adresse_utilisateur' => $adresse_utilisateur,
@@ -68,7 +66,6 @@ if (isset($_POST['action'])) {
                 'utilisateur',
                 [
                     'nom_utilisateur' => $nom_utilisateur,
-                    'prenom_utilisateur' => $prenom_utilisateur,
                     'tel_utilisateur' => $tel_utilisateur,
                     'email_utilisateur' => $email_utilisateur,
                     'adresse_utilisateur' => $adresse_utilisateur,
