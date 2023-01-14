@@ -40,6 +40,10 @@ License: For each use you must have a valid license purchased only from above li
 	<!--end::Global Stylesheets Bundle-->
 
 	<style>
+		[data-kt-app-layout=dark-sidebar] .app-sidebar {
+			background-color: #000000;
+			border-right: 0!important;
+		}
 		.toastr-success,
 		.toastr-error,
 		.toastr-warning,

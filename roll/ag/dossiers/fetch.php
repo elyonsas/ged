@@ -1483,7 +1483,6 @@ if (isset($_POST['datatable'])) {
                         }
                     } else if ($type_document == 'file') {
                         if ($table_document != 'document_file') {
-                            dump($result['id_document']);
                             $action = <<<HTML
 
                                 <td>
@@ -2066,6 +2065,7 @@ if (isset($_POST['action'])) {
             'document',
             [
                 'titre_document' => $titre_document,
+                'description_document' => $description_document,
                 'type_document' => $type_document,
                 'table_document' => $table_document,
                 'note_aspect_document' => 0,
@@ -2103,7 +2103,6 @@ if (isset($_POST['action'])) {
                 'contenu_document' => "",
                 'contenu_text_document' => "",
                 'contenu_modele_document' => "",
-                'description_document' => $description_document,
                 'id_document' => $id_document
             ],
             $db
@@ -2145,6 +2144,7 @@ if (isset($_POST['action'])) {
             'document',
             [
                 'titre_document' => $titre_document,
+                'description_document' => $description_document,
                 'type_document' => $type_document,
                 'table_document' => $table_document,
                 'note_aspect_document' => 0,
@@ -2184,7 +2184,6 @@ if (isset($_POST['action'])) {
                 'contenu_document' => "",
                 'contenu_text_document' => "",
                 'contenu_modele_document' => "",
-                'description_document' => $description_document,
                 'id_document' => $id_document
             ],
             $db
@@ -2271,7 +2270,7 @@ if (isset($_POST['action'])) {
             [
                 'pseudo_compte' => $_POST['nom_client'],
                 'email_compte' => $_POST['email_client'],
-                'mdp_compte' => '12345',
+                'mdp_compte' => '$2y$10$c/8ZhUpJYOZ7HVIHeOCtaOt3woYGZd5MJ67V0.2Uo0InzrdX.vdla',
                 'statut_compte' => 'inactif',
                 'type_compte' => 'client',
                 'created_at_compte' => date('Y-m-d H:i:s'),
