@@ -194,6 +194,77 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
         </div>
     </div>
     <!-- end::Modal Ajouter un interlocuteur-->
+
+    <!-- begin::Modal Modifier un interlocuteur-->
+    <div class="modal fade" id="edit_interlocuteur_modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form id="form_edit_interlocuteur" method="POST" class="form modal-content" action="">
+                <div class="modal-header p-5">
+                    <h4 class="modal-title">Modifier un interlocuteur</h4>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                </div>
+
+                <!--begin::Modal body-->
+                <div class="modal-body">
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Nom</label>
+                            <input id="edit_interlocuteur_nom" type="text" class="form-control form-control-solid" name="nom_interlocuteur" placeholder="Entrez le nom du interlocuteur" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Prenom</label>
+                            <input id="edit_interlocuteur_prenom" type="text" class="form-control form-control-solid" name="prenom_interlocuteur" placeholder="Entrez le prenom du interlocuteur" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Téléphone</label>
+                            <input id="edit_interlocuteur_tel" type="text" class="form-control form-control-solid" name="tel_interlocuteur" placeholder="Entrez un téléphone">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="fs-5 mb-2">Fonction</label>
+                            <input id="edit_interlocuteur_fonction" type="text" class="form-control form-control-solid" name="fonction_interlocuteur" placeholder="Entrez une fonction">
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="form-group">
+                            <label class="fs-5 mb-2">Email</label>
+                            <input id="edit_interlocuteur_email" type="email" class="form-control form-control-solid" name="email_interlocuteur" placeholder="Entrez un email">
+                        </div>
+                    </div>
+
+                </div>
+                <!--end::Modal body-->
+
+                <!--begin::Modal footer-->
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="edit_interlocuteur">
+                    <input type="hidden" name="id_interlocuteur" value="">
+                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
+                    <button id="btn_edit_interlocuteur" type="submit" class="btn btn-lg btn-primary ms-2">
+                        <span class="indicator-label">Valider</span>
+                        <span class="indicator-progress">Veuillez patienter...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+                <!--end::Modal footer-->
+            </form>
+        </div>
+    </div>
+    <!-- end::Modal Modifier un interlocuteur-->
     
 </div>
 <!--end::Content wrapper-->
@@ -376,6 +447,83 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
 
                         } else {
                             toastr.error(data.message, '', {
+                                positionClass: "toastr-bottom-left",
+                            });
+                        }
+                    }, 2000);
+
+                }
+            })
+        });
+
+        // Lorsqu'on clique sur .edit_interlocuteur
+        $(document).on('click', '.edit_interlocuteur', function(e) {
+            e.preventDefault();
+            id_interlocuteur = $(this).data('id_interlocuteur');
+            $('#form_edit_interlocuteur input[name="id_interlocuteur"]').val(id_interlocuteur);
+
+            // On vide le formulaire
+            $('#form_edit_interlocuteur')[0].reset();
+
+            // On récupère les infos interlocuteur
+            $.ajax({
+                url: "roll/client/interlocuteurs/fetch.php",
+                method: "POST",
+                data: {
+                    id_interlocuteur: id_interlocuteur,
+                    action: 'fetch_edit_interlocuteur'
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    // On remplit le formulaire
+                    $('#edit_interlocuteur_nom').val(data.nom_utilisateur);
+                    $('#edit_interlocuteur_prenom').val(data.prenom_utilisateur);
+                    $('#edit_interlocuteur_tel').val(data.tel_utilisateur);
+                    $('#edit_interlocuteur_fonction').val(data.fonction_interlocuteur);
+                    $('#edit_interlocuteur_email').val(data.email_utilisateur);
+                }
+            });
+
+        });
+
+        // Pour la modification d'un interlocuteur
+        $(document).on('submit', '#form_edit_interlocuteur', function(event) {
+            event.preventDefault();
+
+            // Show loading indication
+            formSubmitButton = document.querySelector('#btn_edit_interlocuteur');
+            formSubmitButton.setAttribute('data-kt-indicator', 'on');
+
+            $.ajax({
+                url: "roll/client/interlocuteurs/fetch.php",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    setTimeout(function() {
+                        // Hide loading indication
+                        formSubmitButton.removeAttribute('data-kt-indicator');
+
+                        if (data.success) {
+                            $('#edit_interlocuteur_modal').modal('hide');
+
+                            // swal
+                            Swal.fire({
+                                title: "Infos de l'interlocuteur modifié !",
+                                html: data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, j'ai compris !",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary"
+                                }
+                            });
+
+                            reload_datatable('all_interlo'); // On recharge le datatable
+
+                        } else {
+                            toastr.error('une erreur s\'est produite', '', {
                                 positionClass: "toastr-bottom-left",
                             });
                         }

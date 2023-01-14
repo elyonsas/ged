@@ -234,7 +234,7 @@ if (isset($_POST['action'])) {
                 'pseudo_compte' => $_POST['nom_interlocuteur'],
                 'email_compte' => $_POST['email_interlocuteur'],
                 'statut_compte' => 'actif',
-                'type_compte' => 'membre',
+                'type_compte' => 'interlocuteur',
                 'created_at_compte' => date('Y-m-d H:i:s'),
                 'updated_at_compte' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => $id_utilisateur,
@@ -290,6 +290,59 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite'
             );
         }
+    }
+    if ($_POST['action'] == 'fetch_edit_interlocuteur') {
+        $id_interlocuteur = $_POST['id_interlocuteur'];
+
+        $query = "SELECT * FROM utilisateur, compte, interlocuteur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = interlocuteur.id_utilisateur
+        AND interlocuteur.id_interlocuteur = $id_interlocuteur";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $output = $result;
+    }
+    if ($_POST['action'] == 'edit_interlocuteur'){
+
+        $id_interlocuteur = $_POST['id_interlocuteur'];
+        $id_utilisateur = select_info('id_utilisateur', 'interlocuteur', "id_interlocuteur = $id_interlocuteur", $db);
+
+        $update1 = update(
+            'utilisateur',
+            [
+                'nom_utilisateur' => $_POST['nom_interlocuteur'],
+                'prenom_utilisateur' => $_POST['prenom_interlocuteur'],
+                'tel_utilisateur' => $_POST['tel_interlocuteur'],
+                'email_utilisateur' => $_POST['email_interlocuteur'],
+                'updated_at_utilisateur' => date('Y-m-d H:i:s'),
+            ],
+            "id_utilisateur = $id_utilisateur",
+            $db
+        );
+
+        $update2 = update(
+            'interlocuteur',
+            [
+                'fonction_interlocuteur' => $_POST['fonction_interlocuteur'],
+            ],
+            "id_interlocuteur = $id_interlocuteur",
+            $db
+        );
+
+        if ($update1 && $update2) {
+            $output = array(
+                'success' => true,
+                'message' => 'Interlocuteur modifié !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'message' => 'Une erreur s\'est produite !'
+            );
+        }
+
+
     }
 
 }
