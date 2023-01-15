@@ -9,12 +9,15 @@ $output = '';
 
 if (isset($_POST['datatable'])) {
 
-    if ($_POST['datatable'] == 'secteur_activite_client') {
+    if ($_POST['datatable'] == 'all_collabo') {
 
         $output = array();
         $query = '';
 
-        $query .= "SELECT * FROM secteur_activite";
+        $query .= "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND utilisateur.id_utilisateur <> {$_SESSION['id_utilisateur']} 
+        AND type_compte <> 'admin' AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+
 
         $statement = $db->prepare($query);
 
@@ -24,36 +27,62 @@ if (isset($_POST['datatable'])) {
 
         $data = array();
 
+        $filtered_rows = $statement->rowCount();
+
 
         foreach ($result as $row) {
 
             $sub_array = array();
 
-            $id_secteur_activite = $row['id_secteur_activite'];
-            $secteur_activite = $row['nom_secteur_activite'];
-            $nbr_client = stat_client($db, null, $id_secteur_activite);
-            $end_s = end_s($nbr_client);
+            $id_collaborateur = $row['id_collaborateur'];
+            $nom = $row['nom_utilisateur'];
+            $prenom = $row['prenom_utilisateur'];
+            $email = $row['email_utilisateur'];
+            $telephone = $row['tel_utilisateur'];
 
-            // Secteur activité
+            $statut_compte = $row['statut_compte'];
+
+            $dossiers = select_all_actifs_dossiers_collabo($id_collaborateur, $db);
+
+            switch ($statut_compte) {
+                case 'actif':
+                    $statut_compte_html = <<<HTML
+                        <span class="badge badge-light-success">Actif</span>
+                    HTML;
+                    break;
+                case 'inactif':
+                    $statut_compte_html = <<<HTML
+                        <span class="badge badge-light-danger">Inactif</span>
+                    HTML;
+                    break;
+            }
+
+            // Collaborateur
             $sub_array[] = <<<HTML
-                <div class="text-dark fw-bold fs-6" style="--bs-text-opacity:1;">$secteur_activite</div>
+                <div class="d-flex flex-column justify-content-center">
+                    <a data-sorting="{$prenom} {$nom}" href="roll/dd/view_redirect/?action=view_collaborateur&id_view_collaborateur={$id_collaborateur}" 
+                    class="fs-6 text-gray-800 text-hover-primary">$prenom $nom</a>
+                </div>
             HTML;
 
-            // Client
+            // dossiers
             $sub_array[] = <<<HTML
-                <style>
-                    .text-underline-hover:hover {
-                        text-decoration: underline !important;
-                    }
-                </style>
-                <a class="text-dark text-underline-hover" href="roll/dd/view_redirect/?action=view_of_secteur_activite&id_secteur_activite={$id_secteur_activite}" style="font-size: 13.975px;">$nbr_client client$end_s</a>
+                <td>
+                    <div class="text-dark fw-bold d-block fs-6">$dossiers</div>
+                    <span class="text-muted fw-semibold text-muted d-block fs-7">dossiers</span>
+                </td>
+            HTML;
+
+            // Statut
+            $sub_array[] = <<<HTML
+                $statut_compte_html
             HTML;
 
             $data[] = $sub_array;
         }
 
         $output = array(
-            "data" => $data
+            "data"                =>    $data
         );
     }
 

@@ -56,8 +56,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Nbr client-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" 
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) ?>">0</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) ?>">0</span>
 										<span class="text-dark pt-1 fw-bold fs-15">Clients</span>
 										<!--end::Nbr client-->
 									</div>
@@ -169,8 +168,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 1) ?>">0</span>
+										<span class="text-gray-900 fw-bolder fs-6" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_contrat($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -187,8 +185,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 1) ?>">0</span>
+										<span class="text-gray-900 fw-bolder fs-6" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_facture($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -205,8 +202,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db, 1) - stat_ca_facture($db, 1) ?>">0</span>
+										<span class="text-gray-900 fw-bolder fs-6" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_all($db, 1) - stat_ca_facture($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -223,8 +219,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db, 1) ?>">0</span>
+										<span class="text-gray-900 fw-bolder fs-6" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_encaisse($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -241,8 +236,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Statistics-->
 									<div class="d-flex align-items-senter">
 										<!--begin::Number-->
-										<span class="text-gray-900 fw-bolder fs-6"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db, 1) ?>">0</span>
+										<span class="text-gray-900 fw-bolder fs-6" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_ca_creance($db, 1) ?>">0</span>
 										<!--end::Number-->
 									</div>
 									<!--end::Statistics-->
@@ -264,8 +258,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Amount-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_pris_en_charge($db, 1) ?>">0</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_pris_en_charge($db, 1) ?>">0</span>
 										<!--end::Amount-->
 
 									</div>
@@ -284,7 +277,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 								<div class="d-flex align-items-center flex-column mt-5 w-100">
 									<div class="d-flex justify-content-between fw-bold fs-6 text-gray-500 w-100 mt-auto mb-2">
 										<span><?= stat_client_pris_en_charge($db, 1) ?> clients</span>
-										<span><?= $percent = round((stat_client_pris_en_charge($db, 1)/stat_client($db))*100, 3) ?>%</span>
+										<span><?= $percent = round((stat_client_pris_en_charge($db, 1) / stat_client($db)) * 100, 3) ?>%</span>
 									</div>
 									<div class="h-8px mx-3 w-100 bg-light-primary rounded">
 										<div class="bg-primary rounded h-8px" role="progressbar" style="width: <?= $percent ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -307,8 +300,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Amount-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2"
-										data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_actif_portefeuille($db, 1) ?>">0</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_actif_portefeuille($db, 1) ?>">0</span>
 										<!--end::Amount-->
 
 									</div>
@@ -327,7 +319,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 								<div class="d-flex align-items-center flex-column mt-5 w-100">
 									<div class="d-flex justify-content-between fw-bold fs-6 text-gray-500 w-100 mt-auto mb-2">
 										<span><?= stat_client_actif_portefeuille($db, 1) ?> clients</span>
-										<span><?= $percent = round((stat_client_actif_portefeuille($db, 1)/stat_client($db))*100, 3) ?>%</span>
+										<span><?= $percent = round((stat_client_actif_portefeuille($db, 1) / stat_client($db)) * 100, 3) ?>%</span>
 									</div>
 									<div class="h-8px mx-3 w-100 bg-light-primary rounded">
 										<div class="bg-primary rounded h-8px" role="progressbar" style="width: <?= $percent ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -339,7 +331,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 						</div>
 						<!--end::Card widget 17-->
 					</div>
-					
+
 				</div>
 				<!--end::Row-->
 
@@ -372,7 +364,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?> 
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?>
 												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=">
 													clients à jour
 												</a>
@@ -393,8 +385,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?> 
-												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-1 month'))?>">
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?>
+												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-1 month')) ?>">
 													clients à jour
 												</a>
 											</span>
@@ -414,8 +406,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?>  
-												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-2 month'))?>">
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?>
+												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-2 month')) ?>">
 													clients à jour
 												</a>
 											</span>
@@ -435,8 +427,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?> 
-												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-3 month'))?>">
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?>
+												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-3 month')) ?>">
 													clients à jour
 												</a>
 											</span>
@@ -456,8 +448,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 										<!--begin::Statistics-->
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
-											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?> 
-												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?=date('Y-m', strtotime('-4 month'))?>">
+											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?>
+												<a class="text-dark" href="roll/dd/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-4 month')) ?>">
 													clients à jour
 												</a>
 											</span>
@@ -481,20 +473,22 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 							<!--begin::Header-->
 							<div class="card-header border-0 pt-5">
 								<h3 class="card-title align-items-start flex-column">
-									<span class="card-label fw-bold fs-3 mb-1">Secteurs d'activés des clients</span>
-									<span class="text-muted mt-1 fw-semibold fs-7">plus de 25 secteurs d'activités</span>
+									<span class="card-label fw-bold fs-3 mb-1">Tous les collaborateurs</span>
 								</h3>
 								<div class="card-toolbar">
-									<div id="add_secteur_activite_client" data-bs-toggle="modal" data-bs-target="#add_secteur_activite_client_modal" class="btn btn-sm btn-light btn-active-primary">
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-										<span class="svg-icon svg-icon-3">
+									<!--begin::Search-->
+									<div class="d-flex align-items-center position-relative my-1">
+										<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+										<span class="svg-icon svg-icon-3 position-absolute ms-3">
 											<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
-												<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
+												<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"></rect>
+												<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"></path>
 											</svg>
-										</span>Ajouter un secteur d'activité
+										</span>
 										<!--end::Svg Icon-->
+										<input type="text" id="kt_filter_search" class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Rechercher...">
 									</div>
+									<!--end::Search-->
 								</div>
 							</div>
 							<!--end::Header-->
@@ -503,18 +497,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 								<!--begin::Table container-->
 								<div class="table-responsive">
 									<!--begin::Table-->
-									<table id="secteur_activite_client" class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-										<!--begin::Table head-->
-										<thead>
-											<tr class="fw-bold text-muted">
-												<th class="min-w-200px">Secteurs d'activités</th>
-												<th class="min-w-150px">Clients</th>
+									<table id="all_collabo" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+										<!--begin::Head-->
+										<thead class="fs-7 text-gray-400 text-uppercase">
+											<tr>
+												<th class="min-w-100px">Collaborateur</th>
+												<th class="min-w-50px">Dossier en charge</th>
+												<th class="min-w-75px">Statut</th>
 											</tr>
 										</thead>
-										<!--end::Table head-->
-										<tbody>
+										<!--end::Head-->
+										<!--begin::Body-->
+										<tbody class="fs-6">
+
 										</tbody>
-										<!--end::Table body-->
+										<!--end::Body-->
 									</table>
 									<!--end::Table-->
 								</div>
@@ -532,62 +529,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 		<!--end::Content container-->
 	</div>
 	<!--end::Content-->
-
-	<!-- begin::Modal Ajouter un secteur d'activité-->
-    <div class="modal fade" id="add_secteur_activite_client_modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <form id="form_add_secteur_activite_client" method="POST" class="form modal-content" action="">
-                <div class="modal-header p-5">
-                    <h4 class="modal-title">Ajouter un secteur d'activité</h4>
-                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-1">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </div>
-                </div>
-
-				<!--begin::Modal body-->
-                <div class="modal-body">
-
-					<div class="row mb-5">
-						<div class="form-group">
-							<label class="fs-5 mb-2">Secteur d'activité</label>
-							<input id="id_nom_secteur_activite" type="text" class="form-control form-control-solid" placeholder="Désignation" name="nom_secteur_activite">
-						</div>
-					</div>
-
-					<div class="row mb-5">
-						<div class="form-group">
-							<label class="fs-5 mb-2">Description</label>
-							<textarea id="id_description_secteur_activite" class="form-control form-control-solid" rows="3"
-							placeholder="Entrez une description du secteur d'activité" name="description_secteur_activite"></textarea>
-						</div>
-					</div>
-
-                </div>
-				<!--end::Modal body-->
-
-				<!--begin::Modal footer-->
-                <div class="modal-footer">
-                    <input type="hidden" name="action" value="add_secteur_activite_client">
-                    <button type="button" class="btn btn-light font-weight-bold" data-bs-dismiss="modal">Annuler</button>
-                    <button id="btn_add_secteur_activite_client" type="submit" class="btn btn-lg btn-primary ms-2">
-                        <span class="indicator-label">Valider</span>
-                        <span class="indicator-progress">Veuillez patienter...
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                    </button>
-                </div>
-                <!--end::Modal footer-->
-            </form>
-        </div>
-    </div>
-    <!-- end::Modal Ajouter un secteur d'activité-->
 </div>
 <!--end::Content wrapper-->
 
@@ -634,21 +575,27 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 
 		function update_data_datatable(data) {
 
-			$("#secteur_activite_client").DataTable().destroy();
-			var secteur_activite_client = $('#secteur_activite_client').DataTable({
+			$("#all_collabo").DataTable().destroy();
+			var all_collabo = $('#all_collabo').DataTable({
 				"processing": true,
 				"serverSide": false,
 				"paging": true,
-				"bInfo": false,
-				"bFilter": false,
+				"bInfo": true,
+				"bFilter": true,
 				"bSort": true,
 				"order": [],
 				"data": data,
+				"columnDefs": [],
 				"initComplete": function(settings, json) {
 					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
 					KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
 				}
 			});
+			$('#kt_filter_search').keyup(function() {
+				all_collabo.search($(this).val()).draw();
+				KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+				KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+			})
 
 			$('.dataTables_paginate').click(function() {
 				KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -677,31 +624,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 			})
 		}
 
-		// Datatable for all dossiers
+		// Datatable for all collaborateurs
 		$.ajax({
 			url: "roll/dd/fetch.php",
 			method: "POST",
 			data: {
-				datatable: 'secteur_activite_client',
+				datatable: 'all_collabo',
 			},
 			dataType: "JSON",
 			success: function(data) {
-				var secteur_activite_client = $('#secteur_activite_client').DataTable({
+				var all_collabo = $('#all_collabo').DataTable({
 					"processing": true,
 					"serverSide": false,
 					"paging": true,
-					"bInfo": false,
-					"bFilter": false,
+					"bInfo": true,
+					"bFilter": true,
 					"bSort": true,
 					"order": [],
 					"data": data.data,
-					"pageLength": 7,
-                	"lengthMenu": [7, 10, 15, 20],
+					"columnDefs": [],
 					"initComplete": function(settings, json) {
 						KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
 						KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
 					}
 				});
+				$('#kt_filter_search').keyup(function() {
+					all_collabo.search($(this).val()).draw();
+					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+					KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+				})
 
 				$('.dataTables_paginate').click(function() {
 					KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
@@ -726,11 +677,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 			},
 			dataType: 'json',
 			success: function(data) {
-				
+
 				"use strict";
 				var KTProjectList = {
-					init: function () {
-						! function () {
+					init: function() {
+						! function() {
 							var t = document.getElementById("kt_project_list_chart");
 							if (t) {
 								var e = t.getContext("2d");
@@ -788,7 +739,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 						}()
 					}
 				};
-				KTUtil.onDOMContentLoaded((function () {
+				KTUtil.onDOMContentLoaded((function() {
 					KTProjectList.init()
 				}));
 
@@ -998,18 +949,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 							$('#add_secteur_activite_client_modal').modal('hide');
 
 							// swal
-                            Swal.fire({
-                                title: "Secteur d'activité ajouté !",
-                                html: data.message,
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, j'ai compris !",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            });
+							Swal.fire({
+								title: "Secteur d'activité ajouté !",
+								html: data.message,
+								icon: "success",
+								buttonsStyling: false,
+								confirmButtonText: "Ok, j'ai compris !",
+								customClass: {
+									confirmButton: "btn fw-bold btn-primary"
+								}
+							});
 
-                            reload_datatable('secteur_activite_client'); // On recharge le datatable
+							reload_datatable('secteur_activite_client'); // On recharge le datatable
 
 						} else {
 							toastr.error('une erreur s\'est produite', '', {
