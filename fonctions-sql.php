@@ -363,6 +363,87 @@
         return $result['stat_client'];
     }
 
+    function stat_client_pris_en_charge(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+
+            $query = "SELECT COUNT(*) stat_client_pris_en_charge FROM client WHERE id_departement = $id_departement AND prise_en_charge_client = 'oui'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+            
+        } else {
+
+            $query = "SELECT COUNT(*) stat_client_pris_en_charge FROM client WHERE prise_en_charge_client = 'oui'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+            
+        }
+
+        return $result['stat_client_pris_en_charge'];
+        
+    }
+
+    function stat_client_actif_portefeuille(PDO $db, $id_departement = null)
+    {
+        $taux_recouvrement = 0;
+        $nbr_client = 0;
+        if ($id_departement != null) {
+
+            $query = "SELECT * FROM client WHERE id_departement = $id_departement";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            foreach ($result as $row) {
+                $id_client = $row['id_client'];
+                
+                $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
+                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+
+                $total_regle = $result['total_regle'];
+                $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
+                $taux_recouvrement = round(($total_regle / $total_facture) * 100, 2);
+
+                if ($taux_recouvrement >= 80) {
+                    $nbr_client++;
+                }
+            }
+            
+        } else {
+
+            $query = "SELECT * FROM client";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+            foreach ($result as $row) {
+                $id_client = $row['id_client'];
+                
+                $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
+                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+                $statement = $db->prepare($query);
+                $statement->execute();
+                $result = $statement->fetch();
+
+                $total_regle = $result['total_regle'];
+                $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
+                $taux_recouvrement = round(($total_regle / $total_facture) * 100, 2);
+
+                if ($taux_recouvrement >= 80) {
+                    $nbr_client++;
+                }
+            }
+        }
+
+        return $nbr_client;
+        
+    }
+
     function stat_ca_all(PDO $db, $id_departement = null)
     {
         if ($id_departement != null) {
