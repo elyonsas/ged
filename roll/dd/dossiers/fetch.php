@@ -2195,7 +2195,7 @@ if (isset($_POST['action'])) {
             'Une demande de document a été faite par ' . $_SESSION['nom_utilisateur'] . ' ' . $_SESSION['prenom_utilisateur'] . ' pour le client ' . $nom_client . ' !',
             'alert',
             'important',
-            'roll/client/demande/',
+            'roll/client/demandes/',
             $id_utilisateur,
             $db
         );
