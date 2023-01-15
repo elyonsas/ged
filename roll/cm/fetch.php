@@ -9,83 +9,83 @@ $output = '';
 
 if (isset($_POST['datatable'])) {
 
-    if ($_POST['datatable'] == 'all_collabo') {
+    if ($_POST['datatable'] == 'dossiers_collabo') {
 
-        $output = array();
-        $query = '';
+        $id_collaborateur = select_info('id_collaborateur', 'collaborateur', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
 
-        $query .= "SELECT * FROM utilisateur, compte, collaborateur WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-        AND utilisateur.id_utilisateur = collaborateur.id_utilisateur AND utilisateur.id_utilisateur <> {$_SESSION['id_utilisateur']} 
-        AND type_compte <> 'admin' AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
-
-
+        $query = "SELECT * FROM assoc_client_collabo, client, collaborateur, utilisateur 
+        WHERE assoc_client_collabo.id_client = client.id_client AND assoc_client_collabo.id_collaborateur = collaborateur.id_collaborateur 
+        AND utilisateur.id_utilisateur = client.id_utilisateur AND collaborateur.id_collaborateur = $id_collaborateur 
+        AND statut_assoc_client_collabo = 'actif' ORDER BY updated_at_assoc_client_collabo DESC";
         $statement = $db->prepare($query);
-
         $statement->execute();
-
         $result = $statement->fetchAll();
 
         $data = array();
-
         $filtered_rows = $statement->rowCount();
 
-
+        $i = 1;
         foreach ($result as $row) {
 
             $sub_array = array();
 
-            $id_collaborateur = $row['id_collaborateur'];
-            $nom = $row['nom_utilisateur'];
-            $prenom = $row['prenom_utilisateur'];
-            $email = $row['email_utilisateur'];
-            $telephone = $row['tel_utilisateur'];
+            $id_client = $row['id_client'];
+            $nom_client = $row['nom_utilisateur'];
+            $matricule_client = $row['matricule_client'];
+            $email_client = $row['email_utilisateur'];
+            $telephone_client = $row['tel_utilisateur'];
+            $role_client = $row['role_assoc_client_collabo'];
 
-            $statut_compte = $row['statut_compte'];
+            // #
+            $sub_array[] = $i;
 
-            $dossiers = select_all_actifs_dossiers_collabo($id_collaborateur, $db);
-
-            switch ($statut_compte) {
-                case 'actif':
-                    $statut_compte_html = <<<HTML
-                        <span class="badge badge-light-success">Actif</span>
-                    HTML;
-                    break;
-                case 'inactif':
-                    $statut_compte_html = <<<HTML
-                        <span class="badge badge-light-danger">Inactif</span>
-                    HTML;
-                    break;
-            }
-
-            // Collaborateur
+            // Client
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a data-sorting="{$prenom} {$nom}" href="roll/cm/view_redirect/?action=view_collaborateur&id_view_collaborateur={$id_collaborateur}" 
-                    class="fs-6 text-gray-800 text-hover-primary">$prenom $nom</a>
+                    <a href="roll/cm/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                    class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                 </div>
             HTML;
 
-            // dossiers
+            // Matricule
             $sub_array[] = <<<HTML
-                <td>
-                    <div class="text-dark fw-bold d-block fs-6">$dossiers</div>
-                    <span class="text-muted fw-semibold text-muted d-block fs-7">dossiers</span>
-                </td>
+                $matricule_client
             HTML;
 
-            // Statut
-            $sub_array[] = <<<HTML
-                $statut_compte_html
-            HTML;
+            // Rôle
+            switch ($role_client) {
+                case 'ag':
+                    $role_client = 'Associé Gérant';
+                    break;
+
+                case 'dd':
+                    $role_client = 'Directeur de département';
+                    break;
+
+                case 'dm':
+                    $role_client = 'Directeur de mission';
+                    break;
+
+                case 'cm':
+                    $role_client = 'Chef de mission';
+                    break;
+
+                case 'am':
+                    $role_client = 'Assistant mission';
+                    break;
+
+                case 'stg':
+                    $role_client = 'Stagiaire';
+                    break;
+            }
 
             $data[] = $sub_array;
+            $i++;
         }
 
-        $output = array(
-            "data"                =>    $data
-        );
-    }
 
+        $output = $data;
+    }
 }
 
 if (isset($_POST['stat_chart'])) {
@@ -102,7 +102,6 @@ if (isset($_POST['stat_chart'])) {
             'dac' => $dac,
             'dc' => $dc
         );
-        
     }
     if ($_POST['stat_chart'] == 'mixedwidget') {
 
@@ -147,18 +146,18 @@ if (isset($_POST['stat_chart'])) {
 }
 
 if (isset($_POST['action'])) {
-    
+
     // Paramêtre de l'application
-    if ($_POST['action'] == 'sidebar_minimize'){
+    if ($_POST['action'] == 'sidebar_minimize') {
         $_SESSION['param_sidebar_minimize'] = $_POST['sidebar_minimize'];
         $output = array(
             'success' => true,
-            'message' => 'Sidebar minimize = '. $_SESSION['param_sidebar_minimize']
+            'message' => 'Sidebar minimize = ' . $_SESSION['param_sidebar_minimize']
         );
     }
 
-    if ($_POST['action'] == 'add_secteur_activite_client'){
-        
+    if ($_POST['action'] == 'add_secteur_activite_client') {
+
         $nom_secteur_activite = $_POST['nom_secteur_activite'];
         $description_secteur_activite = $_POST['description_secteur_activite'];
 
@@ -194,7 +193,6 @@ if (isset($_POST['action'])) {
                 'message' => ''
             );
         }
-        
     }
 
     // Pour les notifications
@@ -244,7 +242,6 @@ if (isset($_POST['action'])) {
             );
         }
     }
-
 }
 
 
