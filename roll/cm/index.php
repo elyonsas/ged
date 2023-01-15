@@ -473,7 +473,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 							<!--begin::Header-->
 							<div class="card-header border-0 pt-5">
 								<h3 class="card-title align-items-start flex-column">
-									<span class="card-label fw-bold fs-3 mb-1">Tous les collaborateurs</span>
+									<span class="card-label fw-bold fs-3 mb-1">Mes dossiers</span>
 								</h3>
 								<div class="card-toolbar">
 								</div>
@@ -588,7 +588,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 
 		function reload_datatable(datatable) {
 			$.ajax({
-				url: "roll/cm/collaborateurs/fetch.php",
+				url: "roll/cm/fetch.php",
 				method: "POST",
 				data: {
 					datatable: datatable,
@@ -606,7 +606,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 
 		// Datatable for dossiers collaborateur
 		$.ajax({
-			url: "roll/cm/collaborateurs/fetch.php",
+			url: "roll/cm/fetch.php",
 			method: "POST",
 			data: {
 				datatable: 'dossiers_collabo',
