@@ -1613,7 +1613,7 @@ if (isset($_POST['action'])) {
 
         // Récupérer les informations de la base de données
         $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-        FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();

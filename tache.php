@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
 
 // Tâche pour relance facture client
-$query = "SELECT * FROM facture WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer' ";
+$query = "SELECT * FROM facture WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprime' ";
 $statement = $db->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();

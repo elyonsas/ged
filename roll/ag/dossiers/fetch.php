@@ -3906,18 +3906,18 @@ if (isset($_POST['action'])) {
 
             // Récupérer les informations de la base de données
             $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-            FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
 
             $output['total_facture'] = $result['total_facture'];
             $output['query_total_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             
             $output['total_regle'] = $result['total_regle'];
             $output['query_total_regle'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             
             $total_regle = $result['total_regle'];
             $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
@@ -3925,23 +3925,23 @@ if (isset($_POST['action'])) {
 
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
             $output['query_stat_contrat'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprime'";
             
             $output['stat_facture'] = stat_ca_facture_client($db, $id_client);
             $output['query_stat_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             
             $output['stat_non_facture'] = stat_ca_all_client($db, $id_client) - stat_ca_facture_client($db, $id_client);
             $output['query_stat_non_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'en attente' AND statut_facture <> 'supprime'";
             
             $output['stat_encaisse'] = stat_ca_encaisse_client($db, $id_client);
             $output['query_stat_encaisse'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
 
             $output['stat_creance'] = stat_ca_creance_client($db, $id_client);
             $output['query_stat_creance'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
 
 
             // Récupérer les informations de la base de données

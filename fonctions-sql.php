@@ -400,7 +400,7 @@
                 $id_client = $row['id_client'];
                 
                 $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
                 $statement = $db->prepare($query);
                 $statement->execute();
                 $result = $statement->fetch();
@@ -425,7 +425,7 @@
                 $id_client = $row['id_client'];
                 
                 $query = "SELECT SUM(montant_ttc_facture) as total_facture,  SUM(montant_regle_facture) as total_regle
-                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+                FROM facture WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
                 $statement = $db->prepare($query);
                 $statement->execute();
                 $result = $statement->fetch();
@@ -448,13 +448,13 @@
     {
         if ($id_departement != null) {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture, client WHERE client.id_client = facture.id_client 
-            AND id_departement = $id_departement AND statut_facture <> 'supprimer'";
+            AND id_departement = $id_departement AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
         } else {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture 
-            WHERE statut_facture <> 'supprimer'";
+            WHERE statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -467,13 +467,13 @@
     {
         if ($id_departement != null) {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture, client WHERE client.id_client = facture.id_client 
-            AND id_departement = $id_departement AND type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+            AND id_departement = $id_departement AND type_facture = 'contrat' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
         } else {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture 
-            WHERE type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+            WHERE type_facture = 'contrat' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -486,13 +486,13 @@
     {
         if ($id_departement != null) {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture, client WHERE client.id_client = facture.id_client 
-            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
         } else {
             $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture 
-            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -505,13 +505,13 @@
     {
         if ($id_departement != null) {
             $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture, client WHERE client.id_client = facture.id_client 
-            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
         } else {
             $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture 
-            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -524,13 +524,13 @@
     {
         if ($id_departement != null) {
             $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture, client WHERE client.id_client = facture.id_client 
-            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            AND id_departement = $id_departement AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
         } else {
             $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture 
-            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+            WHERE statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -796,7 +796,7 @@
     function stat_ca_all_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(montant_ttc_facture) stat_ca_all FROM facture 
-        WHERE id_client = $id_client AND statut_facture <> 'supprimer'";
+        WHERE id_client = $id_client AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -807,7 +807,7 @@
     function stat_ca_contrat_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(montant_ttc_facture) stat_ca_contrat FROM facture 
-        WHERE id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprimer'";
+        WHERE id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -818,7 +818,7 @@
     function stat_ca_facture_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(montant_ttc_facture) stat_ca_facture FROM facture 
-        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -829,7 +829,7 @@
     function stat_ca_encaisse_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(montant_regle_facture) stat_ca_encaisse FROM facture 
-        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
@@ -840,7 +840,7 @@
     function stat_ca_creance_client(PDO $db, $id_client)
     {
         $query = "SELECT SUM(solde_facture) stat_ca_creance FROM facture 
-        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprimer'";
+        WHERE id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
