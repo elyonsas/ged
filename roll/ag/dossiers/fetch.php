@@ -2419,7 +2419,7 @@ if (isset($_POST['action'])) {
         if ($insert4 && $insert5 && $update2) {
             $output = array(
                 'success' => true,
-                'message' => 'Le client ajouté avec succès'
+                'message' => 'Un nouveau client a été ajouté !'
             );
         } else {
             $output = array(
