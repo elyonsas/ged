@@ -20,8 +20,12 @@ if (isset($_POST['datatable'])) {
         if (isset($_SESSION['data_client_secteur_activite']) && $_POST['data_client'] != '') {
             $result = $_SESSION['data_client_secteur_activite'];
         } else {
-            $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
+            $id_collaborateur = select_info('id_collaborateur', 'collaborateur', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
+            $query = "SELECT * FROM assoc_client_collabo, client, collaborateur, utilisateur, compte 
+            WHERE assoc_client_collabo.id_client = client.id_client AND assoc_client_collabo.id_collaborateur = collaborateur.id_collaborateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND utilisateur.id_utilisateur = compte.id_utilisateur AND collaborateur.id_collaborateur = $id_collaborateur 
+            AND statut_assoc_client_collabo = 'actif' AND statut_compte <> 'supprime' ORDER BY statut_compte ASC";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -127,14 +131,6 @@ if (isset($_POST['datatable'])) {
                                     </div>
                                     <!--end::Menu item-->
 
-                                    $attribuer_a
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
                                     <!--begin::Menu separator-->
                                     <!-- <div class="separator mt-3 opacity-75"></div> -->
                                     <!--end::Menu separator-->
@@ -180,11 +176,6 @@ if (isset($_POST['datatable'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="edit_client menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_client_modal" data-id_client="{$id_client}">Modification rapide</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="activer_compte menu-link px-3" data-id_client="{$id_client}">Activer ce compte</a>
                                     </div>
                                     <!--end::Menu item-->
 
@@ -414,11 +405,6 @@ if (isset($_POST['datatable'])) {
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
                                 <a href="" class="view_detail_collabo menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_collabo_modal" data-id_collaborateur="{$id_collaborateur}">Details</a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="retirer_dossier menu-link text-hover-danger px-3" data-id_client="{$id_client}" data-id_collaborateur="{$id_collaborateur}">Retirer ce dossier</a>
                             </div>
                             <!--end::Menu item-->
 
@@ -3693,12 +3679,6 @@ if (isset($_POST['action'])) {
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="" class="demander_doc menu-link px-3" data-bs-toggle="modal" data-bs-target="#demander_doc_modal" data-id_client="{$id_client}">Demander document</a>
-                                    </div>
-                                    <!--end::Menu item-->
-
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="" class="desactiver_compte menu-link px-3" data-id_client="{$id_client}">Désactiver ce compte</a>
                                     </div>
                                     <!--end::Menu item-->
 

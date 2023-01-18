@@ -353,9 +353,10 @@ if (isset($_POST['action'])) {
         $date_echeance_facture = date('Y-m-d H:i:s', strtotime($date_emission_facture . " + $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
         $tva_facture = $_POST['tva_facture'];
-        $montant_ttc_facture = $_POST['montant_ttc_facture'];
+        $montant_tva_facture = $_POST['montant_ht_facture'] * $_POST['tva_facture'] / 100;
+        $montant_ttc_facture = $_POST['montant_ht_facture'] + $montant_tva_facture;
         $montant_regle_facture = 0;
-        $solde_facture = $_POST['montant_ttc_facture'];
+        $solde_facture = $montant_ttc_facture;
         $statut_facture = 'en attente';
         $created_at_facture = date('Y-m-d H:i:s');
         $updated_at_facture = date('Y-m-d H:i:s');
@@ -373,6 +374,7 @@ if (isset($_POST['action'])) {
                 'date_echeance_facture' => $date_echeance_facture,
                 'montant_ht_facture' => $montant_ht_facture,
                 'tva_facture' => $tva_facture,
+                'montant_tva_facture' => $montant_tva_facture,
                 'montant_ttc_facture' => $montant_ttc_facture,
                 'montant_regle_facture' => $montant_regle_facture,
                 'solde_facture' => $solde_facture,
@@ -504,8 +506,9 @@ if (isset($_POST['action'])) {
         $date_echeance_facture = date('Y-m-d H:i:s', strtotime($result['date_emission_facture'] . " + $echeance_facture days"));
         $montant_ht_facture = $_POST['montant_ht_facture'];
         $tva_facture = $_POST['tva_facture'];
-        $montant_ttc_facture = $_POST['montant_ttc_facture'];
-        $solde_facture = $_POST['montant_ttc_facture'] - $result['montant_regle_facture'];
+        $montant_tva_facture = $_POST['montant_ht_facture'] * $_POST['tva_facture'] / 100;
+        $montant_ttc_facture = $_POST['montant_ht_facture'] + $montant_tva_facture;
+        $solde_facture = $montant_ttc_facture - $result['montant_regle_facture'];
         $updated_at_facture = date('Y-m-d H:i:s');
         $updated_by_facture = $_SESSION['id_utilisateur'];
 
@@ -518,6 +521,7 @@ if (isset($_POST['action'])) {
                 'date_echeance_facture' => $date_echeance_facture,
                 'montant_ht_facture' => $montant_ht_facture,
                 'tva_facture' => $tva_facture,
+                'montant_tva_facture' => $montant_tva_facture,
                 'montant_ttc_facture' => $montant_ttc_facture,
                 'solde_facture' => $solde_facture,
                 'updated_at_facture' => $updated_at_facture,
@@ -1121,7 +1125,6 @@ if (isset($_POST['action'])) {
                     $dd['id_utilisateur'],
                     $db
                 );
-
             } else {
                 $output = [
                     'success' => false,

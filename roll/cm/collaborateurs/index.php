@@ -87,7 +87,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                                         <th class="min-w-75px">Téléphone</th>
                                         <th class="min-w-50px">Dossier en charge</th>
                                         <th class="min-w-75px">Statut</th>
-                                        <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
                                 <!--end::Head-->
@@ -221,10 +220,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                 "bSort": true,
                 "order": [],
                 "data": data,
-                "columnDefs": [{
-                    "targets": [5],
-                    "orderable": false,
-                }, ],
+                "columnDefs": [],
                 "initComplete": function(settings, json) {
                     KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                     KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
@@ -281,10 +277,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                     "bSort": true,
                     "order": [],
                     "data": data.data,
-                    "columnDefs": [{
-                        "targets": [5],
-                        "orderable": false,
-                    }, ],
+                    "columnDefs": [],
                     "initComplete": function(settings, json) {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)

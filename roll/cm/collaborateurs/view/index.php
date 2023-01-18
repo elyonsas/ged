@@ -498,7 +498,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                 $('#tel_collaborateur').html(data.tel_collaborateur);
                 $('#adresse_collaborateur').html(data.adresse_collaborateur);
                 $('#statut_collaborateur').html(data.statut_collaborateur);
-                $('#action_collaborateur').html(data.action_collaborateur);
+                // $('#action_collaborateur').html(data.action_collaborateur);
                 $('#niveau_collaborateur').html(data.niveau_collaborateur);
 
                 KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 

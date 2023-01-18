@@ -189,9 +189,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="input-group">
                             <input id="add_facture_montant_ht" type="text" class="form-control" placeholder="Montant HT" name="montant_ht_facture" required>
                             <span class="input-group-text">-</span>
-                            <input id="add_facture_tva" type="text" class="form-control" placeholder="TVA" name="tva_facture" required>
+                            <input id="add_facture_tva" type="text" class="form-control" placeholder="TVA (%)" name="tva_facture" value="18" required>
                             <span class="input-group-text">-</span>
-                            <input id="add_facture_montant_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_ttc_facture" required>
+                            <input id="add_facture_montant_ttc" type="text" class="form-control not-allowed" placeholder="Montant TTC" name="montant_ttc_facture" disabled required>
                         </div>
                     </div>
 
@@ -419,7 +419,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         <div class="input-group">
                             <input id="modifier_facture_montant_ht" type="text" class="form-control" placeholder="Montant HT" name="montant_ht_facture" required>
                             <span class="input-group-text">-</span>
-                            <input id="modifier_facture_tva" type="text" class="form-control" placeholder="TVA" name="tva_facture" required>
+                            <input id="modifier_facture_tva" type="text" class="form-control" placeholder="TVA (%)" name="tva_facture" required>
                             <span class="input-group-text">-</span>
                             <input id="modifier_facture_montant_ttc" type="text" class="form-control" placeholder="Montant TTC" name="montant_ttc_facture" required>
                         </div>
@@ -769,6 +769,23 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             });
         });
 
+        // Lorsqu'on est entrain de remplir le champ #add_facture_montant_ht
+        $(document).on('keyup', '#add_facture_montant_ht', function() {
+            var montant_ht = isNaN(parseFloat($(this).val())) ? 0 : parseFloat($(this).val());
+            var tva = isNaN(parseFloat($('#add_facture_tva').val())) ? 0 : parseFloat($('#add_facture_tva').val());
+            var montant_ttc = montant_ht + (montant_ht * tva / 100);
+            $('#add_facture_montant_ttc').val(montant_ttc);
+        });
+
+        // Lorsqu'on est entrain de remplir le champ #add_facture_tva
+        $(document).on('keyup', '#add_facture_tva', function() {
+            var montant_ht = isNaN(parseFloat($('#add_facture_montant_ht').val())) ? 0 : parseFloat($('#add_facture_montant_ht').val());
+            var tva = isNaN(parseFloat($(this).val())) ? 0 : parseFloat($(this).val());
+            var montant_ttc = montant_ht + (montant_ht * tva / 100);
+            $('#add_facture_montant_ttc').val(montant_ttc);
+        });
+        
+
         // Pour l'ajout d'une nouvelle facture
         $(document).on('submit', '#form_add_facture', function(event) {
             event.preventDefault();
@@ -1016,6 +1033,22 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 }
             });
 
+        });
+
+        // Lorsqu'on est entrain de remplir le champ #modifier_facture_montant_ht
+        $(document).on('keyup', '#modifier_facture_montant_ht', function() {
+            var montant_ht = isNaN(parseFloat($(this).val())) ? 0 : parseFloat($(this).val());
+            var tva = isNaN(parseFloat($('#modifier_facture_tva').val())) ? 0 : parseFloat($('#modifier_facture_tva').val());
+            var montant_ttc = montant_ht + (montant_ht * tva / 100);
+            $('#modifier_facture_montant_ttc').val(montant_ttc);
+        });
+
+        // Lorsqu'on est entrain de remplir le champ #modifier_facture_tva
+        $(document).on('keyup', '#modifier_facture_tva', function() {
+            var tva = isNaN(parseFloat($(this).val())) ? 0 : parseFloat($(this).val());
+            var montant_ht = isNaN(parseFloat($('#modifier_facture_montant_ht').val())) ? 0 : parseFloat($('#modifier_facture_montant_ht').val());
+            var montant_ttc = montant_ht + (montant_ht * tva / 100);
+            $('#modifier_facture_montant_ttc').val(montant_ttc);
         });
 
         // Pour la modification d'une facture
