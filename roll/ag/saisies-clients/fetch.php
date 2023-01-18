@@ -1419,11 +1419,6 @@ if (isset($_POST['datatable'])) {
                 </td>
             HTML;
 
-            // Action
-            $sub_array[] = <<<HTML
-                <i class="delete_saisie fas fa-times text-danger text-center" data-id_saisie="{$id_saisie}"></i>
-            HTML;
-
             $data[] = $sub_array;
         }
 
