@@ -81,7 +81,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Label-->
 									<div class="d-flex fw-semibold align-items-center">
 										<!--begin::Bullet-->
-										<div class="bullet w-8px h-3px rounded-2 bg-success me-3"></div>
+										<div class="bullet w-8px h-3px rounded-2 bg-primary me-3"></div>
 										<!--end::Bullet-->
 										<!--begin::Label-->
 										<div class="text-gray-500 flex-grow-1 me-2">DEC</div>
@@ -94,7 +94,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
 									<!--begin::Label-->
 									<div class="d-flex fw-semibold align-items-center my-3">
 										<!--begin::Bullet-->
-										<div class="bullet w-8px h-3px rounded-2 bg-primary me-3"></div>
+										<div class="bullet w-8px h-3px rounded-2 bg-success me-3"></div>
 										<!--end::Bullet-->
 										<!--begin::Label-->
 										<div class="text-gray-500 flex-grow-1 me-2">DAC</div>

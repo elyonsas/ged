@@ -166,7 +166,7 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
 								<div></div>
 								<!--begin::Link-->
-								<a href="" class="link-primary">Mot de passe oublié ?</a>
+								<!-- <a href="" class="link-primary">Mot de passe oublié ?</a> -->
 								<!--end::Link-->
 							</div>
 							<!--end::Wrapper-->
