@@ -143,7 +143,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Title-->
 							<h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">Build An Outstanding Solutions
 							<br />with
-							<span style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+							<span style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%); -webkit-text-fill-color: transparent;">
 								<span id="kt_landing_hero_text">The Best Theme Ever</span>
 							</span></h1>
 							<!--end::Title-->
