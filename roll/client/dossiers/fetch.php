@@ -786,6 +786,7 @@ if (isset($_POST['datatable'])) {
             $type_document = $row['type_document'];
             $table_document = $row['table_document'];
             $table_info_document = $row['table_info_document'];
+            $aspect_document = $row['aspect_document'];
             $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
             $statut_document = $row['statut_document'];
             $src_scan_document = $row['src_scan_document'];
@@ -801,6 +802,20 @@ if (isset($_POST['datatable'])) {
                     $statut_document_html = <<<HTML
                         <span class="badge badge-light-danger">Invalidé</span>
                     HTML;
+                    break;
+            }
+
+            switch ($aspect_document) {
+                case 'juridiques_et_administratifs':
+                    $document[0] = "AJ-{$document[0]}";
+                    break;
+
+                case 'techniques':
+                    $document[0] = "AT-{$document[0]}";
+                    break;
+
+                case 'comptables_et_financiers':
+                    $document[0] = "AC-{$document[0]}";
                     break;
             }
 
