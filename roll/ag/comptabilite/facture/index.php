@@ -53,7 +53,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                     <div class="card-header mt-5">
                         <!--begin::Card title-->
                         <div class="card-title flex-column">
-                            <h2>Tous les factures</h2>
+                            <h2>Toutes les factures</h2>
                         </div>
                         <!--begin::Card title-->
                         <!--begin::Card toolbar-->
