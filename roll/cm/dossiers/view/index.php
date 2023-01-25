@@ -358,6 +358,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                                 <!-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> -->
                                 <!--end::Chart-->
 
+                                <!--begin::Legende-->
+                                <div class="d-flex fw-semibold me-5 mb-5">
+                                    <div class="fs-6 text-muted ms-3 fst-italic">
+                                        <ul>
+                                            <li>AJ : Aspects juridiques et administratifs</li>
+                                            <li>AT : Aspects techniques</li>
+                                            <li>AC : Aspects comptables et financiers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--end::Legende-->
+
                                 <!--begin::Table container-->
                                 <div class="table-responsive" style="max-width: 600px; margin: 0 auto;">
                                     <!--begin::Table-->
