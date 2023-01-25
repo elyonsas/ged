@@ -696,7 +696,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
                                             <a id="view_facture_total_echue_query" href="#">
                                                 <div class="card card-flush flex-column flex-stack py-5" style="background: linear-gradient(#f1416c 60%, #f5f8fa);">
-                                                    <div class="text-white text-center fs-2 fw-bold">Facture échues</div>
+                                                    <div class="text-white text-center fs-2 fw-bold">Factures échuees</div>
                                                     <div class="text-center">
                                                         <span id="view_facture_total_echue" class="text-light fw-bold fs-1 d-block">--</span>
                                                         <span id="view_facture_nb_echue" class="text-dark fw-semibold fs-3">--</span>
@@ -707,7 +707,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
                                             <a id="view_facture_total_en_cour_query" href="#">
                                                 <div class="card card-flush bg-primary flex-column flex-stack py-5" style="background: linear-gradient(#009ef7 60%, #f5f8fa);">
-                                                    <div class="text-white text-center fs-2 fw-bold">Facture en cours</div>
+                                                    <div class="text-white text-center fs-2 fw-bold">Factures en cours</div>
                                                     <div class="text-center">
                                                         <span id="view_facture_total_en_cour" class="text-light fw-bold fs-1 d-block">--</span>
                                                         <span id="view_facture_nb_en_cour" class="text-dark fw-semibold fs-3">--</span>
@@ -718,7 +718,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                         <div class="col-md-4 rounded-3 p-3 mb-5">
                                             <a id="view_facture_total_solde_query" href="#">
                                                 <div class="card card-flush bg-success flex-column flex-stack py-5" style="background: linear-gradient(#50cd89 60%, #f5f8fa);">
-                                                    <div class="text-white text-center fs-2 fw-bold">Facture soldés</div>
+                                                    <div class="text-white text-center fs-2 fw-bold">Factures soldées</div>
                                                     <div class="text-center">
                                                         <span id="view_facture_total_solde" class="text-light fw-bold fs-1 d-block">--</span>
                                                         <span id="view_facture_nb_solde" class="text-dark fw-semibold fs-3">--</span>
