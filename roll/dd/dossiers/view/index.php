@@ -605,7 +605,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                                                 <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-primary border-bottom w-100"></span>
                                             </span>
                                         </div>
-                                        <a id="view_facture_total_facture_query" href="#">
+                                        <a class="d-none" id="view_facture_total_facture_query" href="#">
                                             <div class="mb-7 min-w-250px p-3" style="background-color: #abfdd0;">
                                                 <!--begin::Title-->
                                                 <h5 class="mb-4">Total facturé</h5>
@@ -617,7 +617,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                                                 <!--end::Details-->
                                             </div>
                                         </a>
-                                        <a id="view_facture_total_regle_query" href="#">
+                                        <a class="d-none" id="view_facture_total_regle_query" href="#">
                                             <div class="mb-7 min-w-250px p-3" style="background-color: #abe5fd;">
                                                 <!--begin::Title-->
                                                 <h5 class="mb-4">Total réglé</h5>
