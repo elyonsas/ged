@@ -385,6 +385,31 @@
         
     }
 
+    function stat_client_inactif(PDO $db, $id_departement = null)
+    {
+        if ($id_departement != null) {
+
+            $query = "SELECT COUNT(*) stat_client_actif FROM client, utilisateur, compte, departement WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND departement.id_departement = client.id_departement 
+            AND statut_compte = 'inactif' AND client.id_departement = '$id_departement'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+            
+        } else {
+
+            $query = "SELECT COUNT(*) stat_client_actif FROM client, utilisateur, compte WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte = 'inactif'";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+            
+        }
+
+        return $result['stat_client_actif'];
+        
+    }
+
     function stat_client_actif_portefeuille(PDO $db, $id_departement = null)
     {
         $taux_recouvrement = 0;

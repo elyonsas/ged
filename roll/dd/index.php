@@ -258,13 +258,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Amount-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_pris_en_charge($db, 1) ?>">0</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) - stat_client_pris_en_charge($db, 1) ?>">0</span>
 										<!--end::Amount-->
 
 									</div>
 									<!--end::Info-->
 									<!--begin::Subtitle-->
-									<span class="text-dark pt-1 fw-bold fs-15">Clients pris en charge au cabinet
+									<span class="text-dark pt-1 fw-bold fs-15">Clients non pris en charge
 										<br><span class="text-gray-700 fw-semibold fs-6">(Sur <span data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) ?>">0</span> au DEC)</span></span>
 									<!--end::Subtitle-->
 								</div>
@@ -276,8 +276,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 								<!--begin::Progress-->
 								<div class="d-flex align-items-center flex-column mt-5 w-100">
 									<div class="d-flex justify-content-between fw-bold fs-6 text-gray-500 w-100 mt-auto mb-2">
-										<span><?= stat_client_pris_en_charge($db, 1) ?> clients</span>
-										<span><?= $percent = round((stat_client_pris_en_charge($db, 1) / stat_client($db)) * 100, 3) ?>%</span>
+										<span><?= stat_client($db) - stat_client_pris_en_charge($db, 1) ?> clients</span>
+										<span><?= $percent = round(((stat_client($db) - stat_client_pris_en_charge($db, 1)) / stat_client($db)) * 100) ?>%</span>
 									</div>
 									<div class="h-8px mx-3 w-100 bg-light-primary rounded">
 										<div class="bg-primary rounded h-8px" role="progressbar" style="width: <?= $percent ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -300,13 +300,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 									<!--begin::Info-->
 									<div class="d-flex align-items-center">
 										<!--begin::Amount-->
-										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_actif_portefeuille($db, 1) ?>">0</span>
+										<span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client_inactif($db, 1) ?>">0</span>
 										<!--end::Amount-->
 
 									</div>
 									<!--end::Info-->
 									<!--begin::Subtitle-->
-									<span class="text-dark pt-1 fw-bold fs-15">Clients actifs en portefeuille
+									<span class="text-dark pt-1 fw-bold fs-15">Clients Inactifs
 										<br><span class="text-gray-700 fw-semibold fs-6">(Sur <span data-kt-countup="true" data-kt-countup-separator="." data-kt-countup-value="<?= stat_client($db) ?>">0</span> au DEC)</span></span>
 									<!--end::Subtitle-->
 								</div>
@@ -318,8 +318,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 								<!--begin::Progress-->
 								<div class="d-flex align-items-center flex-column mt-5 w-100">
 									<div class="d-flex justify-content-between fw-bold fs-6 text-gray-500 w-100 mt-auto mb-2">
-										<span><?= stat_client_actif_portefeuille($db, 1) ?> clients</span>
-										<span><?= $percent = round((stat_client_actif_portefeuille($db, 1) / stat_client($db)) * 100, 3) ?>%</span>
+										<span><?= stat_client_inactif($db, 1) ?> clients</span>
+										<span><?= $percent = round((stat_client_inactif($db, 1) / stat_client($db)) * 100) ?>%</span>
 									</div>
 									<div class="h-8px mx-3 w-100 bg-light-primary rounded">
 										<div class="bg-primary rounded h-8px" role="progressbar" style="width: <?= $percent ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
