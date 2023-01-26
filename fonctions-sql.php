@@ -74,7 +74,7 @@
     // Get notification
     function bullet_dot_notif($id_utilisateur, PDO $db)
     {
-        $query = "SELECT count(*) nbr_notif FROM notification WHERE id_utilisateur = '$id_utilisateur' AND lu_notification = 'non'";
+        $query = "SELECT count(*) nbr_notif FROM notification WHERE id_utilisateur = '$id_utilisateur' AND lu_notification = 'non' AND type_notification = 'alert'";
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetch();
