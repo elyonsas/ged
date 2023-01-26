@@ -263,6 +263,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                 <!--end::Body-->
                             </table>
                             <!--end::Table-->
+                            <!--begin::NB-->
+                            <div class="d-flex fw-semibold me-5 mb-5">
+                                <div class="fs-5 text-muted ms-3 fst-italic">
+                                    <u>NB</u>: Si vous n'êtes pas satisfait, veuillez nous adressez un mail
+                                </div>
+                            </div>
+                            <!--end::NB-->
                         </div>
                         <!--end::Table container-->
                     </div>
