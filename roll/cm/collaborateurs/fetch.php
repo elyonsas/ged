@@ -148,8 +148,7 @@ if (isset($_POST['datatable'])) {
             // Client
             $sub_array[] = <<<HTML
                 <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/cm/view_redirect/?action=view_client&id_view_client={$id_client}" 
-                    class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
+                    <div class="fs-6 text-gray-800">$nom_client</a>
                 </div>
             HTML;
 
@@ -188,48 +187,6 @@ if (isset($_POST['datatable'])) {
             $sub_array[] = <<<HTML
                 $role_client
             HTML;
-
-            // Actions
-            $action = <<<HTML
-
-                <td>
-                    <div class="d-flex justify-content-end flex-shrink-0">
-
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="bi bi-three-dots fs-3"></i>
-                        </button>
-                        <!--begin::Menu 3-->
-                        <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
-
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="detail_dossier menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_dossier_modal" data-id_client="{$id_client}">Details</a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="" class="retirer_dossier menu-link text-hover-danger px-3" data-id_client="{$id_client}" data-id_collaborateur="{$id_collaborateur}">Retirer ce dossier</a>
-                            </div>
-                            <!--end::Menu item-->
-
-                            <!--begin::Menu separator-->
-                            <!-- <div class="separator mt-3 opacity-75"></div> -->
-                            <!--end::Menu separator-->
-
-                            <!--begin::Menu item-->
-                            <!-- <div class="menu-item">
-                                <div class="menu-content px-3 py-3">
-                                    <a href="" class="supprimer_definitivement btn btn-light-danger px-4 w-100" data-id_collaborateur="{$id_collaborateur}">Supprimer définitivement</a>
-                                </div>
-                            </div> -->
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu 3-->
-                    </div>
-                </td>
-
-            HTML;
-            $sub_array[] = $action;
 
             $data[] = $sub_array;
             $i++;
