@@ -4884,7 +4884,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
         // Check dossier pris en charge
         function check_dossier_pris_en_charge() {
             $.ajax({
-                url: "roll/ag/dossiers/fetch.php",
+                url: "roll/dd/dossiers/fetch.php",
                 method: "POST",
                 data: {
                     action: 'check_dossier_pris_en_charge',
@@ -4898,7 +4898,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                         // fetch data
                         id_client = data.id_client;
                         $.ajax({
-                            url: "roll/ag/dossiers/fetch.php",
+                            url: "roll/dd/dossiers/fetch.php",
                             method: "POST",
                             data: {
                                 id_client: id_client,
@@ -4917,7 +4917,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                             e.preventDefault();
                             
                             // redirect
-                            window.location.href = "roll/ag/dossiers";
+                            window.location.href = "roll/dd/dossiers";
                         });
                     }
                 }

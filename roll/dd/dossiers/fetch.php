@@ -72,12 +72,25 @@ if (isset($_POST['datatable'])) {
             }
 
             // Client
-            $sub_array[] = <<<HTML
-                <div class="d-flex flex-column justify-content-center">
-                    <a href="roll/dd/view_redirect/?action=view_client&id_view_client={$id_client}" 
-                    class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
-                </div>
-            HTML;
+            if ($statut_compte == 'actif') {
+
+                $sub_array[] = <<<HTML
+                    <div class="d-flex flex-column justify-content-center">
+                        <a href="roll/dd/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                        class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
+                    </div>
+                HTML;
+                
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez activer ce compte" 
+                        class="d-flex flex-column justify-content-center">
+                        <span class="fs-6 text-gray-800">$nom_client</span>
+                    </div>
+                HTML;
+            }
+            
 
             // Matricule
             $sub_array[] = <<<HTML
@@ -159,10 +172,9 @@ if (isset($_POST['datatable'])) {
                         <td>
                             <div class="d-flex justify-content-end flex-shrink-0">
 
-                                <a href="roll/dd/view_redirect/?action=view_client&id_view_client={$id_client}"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="Aperçu" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <span style="cursor: not-allowed;" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez activer ce compte" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="bi bi-eye-fill fs-3"></i>
-                                </a>
+                                </span>
                                 <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                 <i class="bi bi-clipboard2-plus-fill fs-3"></i>
                                 </a> -->
