@@ -365,9 +365,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
 											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db) ?>
-												<a class="text-dark" href="roll/cm/view_redirect/?action=view_of_stat_saisie&date=">
+												<span class="text-dark">
 													clients à jour
-												</a>
+												</span>
 											</span>
 											<!--end::Number-->
 										</div>
@@ -386,9 +386,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
 											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-1 month'))) ?>
-												<a class="text-dark" href="roll/cm/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-1 month')) ?>">
+												<span class="text-dark">
 													clients à jour
-												</a>
+												</span>
 											</span>
 											<!--end::Number-->
 										</div>
@@ -407,9 +407,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
 											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-2 month'))) ?>
-												<a class="text-dark" href="roll/cm/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-2 month')) ?>">
+												<span class="text-dark">
 													clients à jour
-												</a>
+												</span>
 											</span>
 											<!--end::Number-->
 										</div>
@@ -428,9 +428,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
 											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-3 month'))) ?>
-												<a class="text-dark" href="roll/cm/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-3 month')) ?>">
+												<span class="text-dark">
 													clients à jour
-												</a>
+												</span>
 											</span>
 											<!--end::Number-->
 										</div>
@@ -449,9 +449,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 										<div class="d-flex align-items-senter">
 											<!--begin::Number-->
 											<span class="text-gray-900 fw-bolder fs-6"><?= stat_mois_client_a_jour($db, date('Y-m', strtotime('-4 month'))) ?>
-												<a class="text-dark" href="roll/cm/view_redirect/?action=view_of_stat_saisie&date=<?= date('Y-m', strtotime('-4 month')) ?>">
+												<span class="text-dark">
 													clients à jour
-												</a>
+												</span>
 											</span>
 											<!--end::Number-->
 										</div>

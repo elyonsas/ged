@@ -16,8 +16,12 @@ if (isset($_POST['datatable'])) {
         if (isset($_SESSION['data_client_saisie']) && $_POST['data_client'] != '') {
             $result = $_SESSION['data_client_saisie'];
         } else {
-            $query = "SELECT * FROM utilisateur, compte, client WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
-            AND utilisateur.id_utilisateur = client.id_utilisateur AND statut_compte <> 'supprime' AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
+            $id_collaborateur = select_info('id_collaborateur', 'collaborateur', "id_utilisateur = {$_SESSION['id_utilisateur']}", $db);
+
+            $query = "SELECT * FROM assoc_client_collabo, client, collaborateur, utilisateur, compte 
+            WHERE assoc_client_collabo.id_client = client.id_client AND assoc_client_collabo.id_collaborateur = collaborateur.id_collaborateur 
+            AND utilisateur.id_utilisateur = client.id_utilisateur AND utilisateur.id_utilisateur = compte.id_utilisateur AND collaborateur.id_collaborateur = $id_collaborateur 
+            AND statut_assoc_client_collabo = 'actif' AND statut_compte <> 'supprime' AND statut_compte <> 'inactif' ORDER BY statut_compte ASC";
             $statement = $db->prepare($query);
             $statement->execute();
             $result = $statement->fetchAll();

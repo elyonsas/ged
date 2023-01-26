@@ -740,7 +740,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                                         </div>
                                     </div>
                                     <!--begin::Action-->
-                                    <div class="text-center">
+                                    <div class="text-center d-none">
                                         <div class="info_relance btn btn-sm btn-dark fw-bold" data-bs-toggle="modal" data-bs-target="#edit_info_relance_modal">Informations de relance</div>
                                     </div>
                                     <!--begin::Action-->
