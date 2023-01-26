@@ -4881,6 +4881,49 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             })
         }
 
+        // Check dossier pris en charge
+        function check_dossier_pris_en_charge() {
+            $.ajax({
+                url: "roll/ag/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    action: 'check_dossier_pris_en_charge',
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    if (!data.success) {
+                        // Afficher le modal #attribuer_modal
+                        $('#attribuer_modal').modal('show');
+
+                        // fetch data
+                        id_client = data.id_client;
+                        $.ajax({
+                            url: "roll/ag/dossiers/fetch.php",
+                            method: "POST",
+                            data: {
+                                id_client: id_client,
+                                action: 'fetch_attribuer_collabo'
+                            },
+                            dataType: "JSON",
+                            success: function (data) {
+                                $('#attribuer_nom_client').html(data.nom_client);
+                                $('#attribuer_collabo').html(data.dossier_html);
+                                $('#attribuer_id_client').val(data.id_client);
+                            }
+                        });
+
+                        // Si l'utilisateur essaie de fermer le modal #attribuer_modal
+                        $('#attribuer_modal').on('hide.bs.modal', function (e) {
+                            e.preventDefault();
+                            
+                            // redirect
+                            window.location.href = "roll/ag/dossiers";
+                        });
+                    }
+                }
+            })
+        }
+
 
 
         // Reload all data pages and datatable
@@ -4988,6 +5031,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
             reload_datatable2();
             reload_datatable3();
             reload_datatable4();
+
+            check_dossier_pris_en_charge();
 
         }
 
@@ -5359,6 +5404,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                 })
             }
         });
+
+        // Vérifier si le dossier est pris en charge
+        check_dossier_pris_en_charge();
         
         
 
