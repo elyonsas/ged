@@ -2485,7 +2485,7 @@ if (isset($_POST['action'])) {
     if ($_POST['action'] == 'edit_client'){
         $id_client = $_POST['id_client'];
         $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
-        $id_secteur_activite = select_info('id_secteur_activite', 'client', "id_client = $id_client", $db);
+        $id_secteur_activite = $_POST['secteur_activite_client'];
         $nom_client = select_info('nom_utilisateur', 'utilisateur', "id_utilisateur = $id_utilisateur", $db);
 
         $update1 = update(
