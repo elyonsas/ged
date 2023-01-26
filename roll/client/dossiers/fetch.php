@@ -470,6 +470,8 @@ if (isset($_POST['datatable'])) {
 
         foreach ($result as $row) {
 
+            if (in_array($row['n_document'], [2,3,4,19,9,11,13,14,15,16,17]) || $row['n_document'] > 19) continue;
+
             $sub_array = array();
 
             $id_document = $row['id_document'];
@@ -641,6 +643,8 @@ if (isset($_POST['datatable'])) {
 
         foreach ($result as $row) {
 
+            if (in_array($row['n_document'], [2,3,4,19,9,11,13,14,15,16,17]) || $row['n_document'] > 19) continue;
+
             $sub_array = array();
 
             $id_document = $row['id_document'];
@@ -773,6 +777,9 @@ if (isset($_POST['datatable'])) {
         $data = array();
 
         foreach ($result as $row) {
+
+            if (in_array($row['n_document'], [2,3,4,19,9,11,13,14,15,16,17]) || $row['n_document'] > 19) continue;
+
             $sub_array = array();
 
             $id_document = $row['id_document'];
