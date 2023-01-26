@@ -362,7 +362,7 @@ if (isset($_POST['action'])) {
                 'pseudo_compte' => $_POST['nom_interlocuteur'],
                 'email_compte' => $_POST['email_interlocuteur'],
                 'statut_compte' => 'actif',
-                'type_compte' => 'interlocuteur',
+                'type_compte' => 'interlo',
                 'created_at_compte' => date('Y-m-d H:i:s'),
                 'updated_at_compte' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => $id_utilisateur,
