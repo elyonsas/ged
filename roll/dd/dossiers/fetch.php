@@ -2668,6 +2668,29 @@ if (isset($_POST['action'])) {
     }
 
     // espace client
+    if ($_POST['action'] == 'check_dossier_pris_en_charge') {
+            
+        $id_client = $_SESSION['id_view_client'];
+
+        $query = "SELECT * FROM client WHERE id_client = '$id_client'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        if ($result['prise_en_charge_client'] == 'oui') {
+            $output = array(
+                'success' => true,
+                'id_client' => $id_client,
+                'message' => 'Le dossier est pris en charge !'
+            );
+        } else {
+            $output = array(
+                'success' => false,
+                'id_client' => $id_client,
+                'message' => 'Le dossier n\'est pas pris en charge !'
+            );
+        }
+    }
     if ($_POST['action'] == 'send_mail') {
 
         if ($_POST['option'] == 'add_doc') {
