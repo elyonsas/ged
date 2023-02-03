@@ -76,7 +76,7 @@ if (isset($_POST['datatable'])) {
 
                 $sub_array[] = <<<HTML
                     <div class="d-flex flex-column justify-content-center">
-                        <a href="roll/dd/view_redirect/?action=view_client&id_view_client={$id_client}" 
+                        <a href="roll/ag/view_redirect/?action=view_client&id_view_client={$id_client}" 
                         class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                     </div>
                 HTML;
