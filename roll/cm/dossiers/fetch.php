@@ -4167,7 +4167,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4175,7 +4175,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -4202,7 +4202,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4210,7 +4210,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
