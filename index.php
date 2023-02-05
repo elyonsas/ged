@@ -92,11 +92,11 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Page bg image-->
 		<style>
 			body {
-				background-image: url('assets/media/auth/bg10.jpeg');
+				background-image: url('assets/media/auth/bg6.jpeg');
 			}
 
 			[data-theme="dark"] body {
-				background-image: url('assets/media/auth/bg10-dark.jpeg');
+				background-image: url('assets/media/auth/bg6-dark.jpeg');
 			}
 		</style>
 		<!--end::Page bg image-->
@@ -114,7 +114,7 @@ License: For each use you must have a valid license purchased only from above li
 					<h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7">Quality in Everything We Do !</h1>
 					<!--end::Title-->
 					<!--begin::Text-->
-					<div class="text-gray-600 fs-base text-center fw-semibold">
+					<div class="text-dark fs-4 text-center fw-semibold">
 						Audit, Commissariat aux comptes, Expertise Comptable & Conseils<br>
 						Nous avons pour mission de donner confiance à notre clientèle et au public<br>
 						et de résoudre ce qui est important pour vous.
