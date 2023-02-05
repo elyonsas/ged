@@ -92,11 +92,11 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Page bg image-->
 		<style>
 			body {
-				background-image: url('assets/media/auth/bg6.jpeg');
+				background-image: url('assets/media/auth/bg6.jpg');
 			}
 
 			[data-theme="dark"] body {
-				background-image: url('assets/media/auth/bg6-dark.jpeg');
+				background-image: url('assets/media/auth/bg6-dark.jpg');
 			}
 		</style>
 		<!--end::Page bg image-->
