@@ -80,7 +80,6 @@ if (isset($_POST['datatable'])) {
                         class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                     </div>
                 HTML;
-                
             } else {
 
                 $sub_array[] = <<<HTML
@@ -454,6 +453,328 @@ if (isset($_POST['datatable'])) {
 
             $data[] = $sub_array;
             $i++;
+        }
+
+
+        $output = array(
+            "data" => $data
+        );
+    }
+
+    if ($_POST['datatable'] == 'all_demande') {
+
+        $output = array();
+        $id_client = $_SESSION['id_view_client'];
+
+        $query = "SELECT * FROM document WHERE id_client = $id_client AND statut_document = 'demande' ORDER BY updated_at_document DESC";
+
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        $data = array();
+
+        foreach ($result as $row) {
+
+            $sub_array = array();
+
+            $id_document = $row['id_document'];
+            $n_document = $row['n_document'];
+            $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
+            $titre_document = $row['titre_document'];
+            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
+            $type_document = $row['type_document'];
+            $table_document = $row['table_document'];
+            $table_info_document = $row['table_info_document'];
+            $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
+            $statut_document = $row['statut_document'];
+            $src_scan_document = $row['src_scan_document'];
+
+            $statut_document = <<<HTML
+                <span class="badge badge-light-danger">Invalidé</span>
+            HTML;
+
+            // N° Document
+            $sub_array[] = <<<HTML
+                $n_document
+            HTML;
+
+            // Document
+            if ($statut_document == 'valide') {
+
+                if ($src_scan_document != NULL) {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                } else {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                }
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                    </div>
+                HTML;
+            }
+
+            // Statut
+            $sub_array[] = <<<HTML
+                $statut_document
+            HTML;
+
+            // Select table_document
+            $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+
+            // Action
+            if ($type_document == 'generate') {
+                $action = <<<HTML
+
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            
+                            <span style="cursor: not-allowed;"
+                                class="btn btn-icon btn-bg-light btn-sm me-1">
+                                <i class="bi bi-eye-fill fs-3"></i>
+                            </span>
+                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                            </a> -->
+                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                <i class="bi bi-three-dots fs-3"></i>
+                            </button>
+                            <!--begin::Menu 3-->
+                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                </div>
+                                <!--end::Menu item-->
+
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="edit_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Remplir le formulaire</a>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 3-->
+                        </div>
+                    </td>
+
+                HTML;
+            } else if ($type_document == 'write') {
+                $action = <<<HTML
+
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            
+                            <span style="cursor: not-allowed;"
+                                class="btn btn-icon btn-bg-light btn-sm me-1">
+                                <i class="bi bi-eye-fill fs-3"></i>
+                            </span>
+                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                            </a> -->
+                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                <i class="bi bi-three-dots fs-3"></i>
+                            </button>
+                            <!--begin::Menu 3-->
+                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                </div>
+                                <!--end::Menu item-->
+
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Rédiger le document</a>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 3-->
+                        </div>
+                    </td>
+
+                HTML;
+            } else if ($type_document == 'file') {
+
+                if ($table_document != 'document_file') {
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <span style="cursor: not-allowed;"
+                                    class="btn btn-icon btn-bg-light btn-sm me-1">
+                                    <i class="bi bi-eye-fill fs-3"></i>
+                                </span>
+                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                </a> -->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                    <!-- begin::Menu item -->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!-- begin::Menu item -->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                } else {
+                    if ($table_info_document != NULL) {
+
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;"
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_info_doc_file menu-link px-3" data-id_document="{$id_document}">Ajouter informations</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    } else {
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;"
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    }
+                }
+            }
+
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
         }
 
 
@@ -2681,7 +3002,7 @@ if (isset($_POST['action'])) {
 
     // espace client
     if ($_POST['action'] == 'check_dossier_pris_en_charge') {
-            
+
         $id_client = $_SESSION['id_view_client'];
 
         $query = "SELECT * FROM client WHERE id_client = '$id_client'";
