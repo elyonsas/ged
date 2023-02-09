@@ -16,7 +16,7 @@ if (isset($_POST['datatable'])) {
     if ($_POST['datatable'] == 'all_dossiers') {
 
         $output = array();
-        
+
         if (isset($_SESSION['data_client_secteur_activite']) && $_POST['data_client'] != '') {
             $result = $_SESSION['data_client_secteur_activite'];
         } else {
@@ -80,7 +80,6 @@ if (isset($_POST['datatable'])) {
                         class="fs-6 text-gray-800 text-hover-primary">$nom_client</a>
                     </div>
                 HTML;
-                
             } else {
 
                 $sub_array[] = <<<HTML
@@ -90,7 +89,7 @@ if (isset($_POST['datatable'])) {
                     </div>
                 HTML;
             }
-            
+
 
             // Matricule
             $sub_array[] = <<<HTML
@@ -2390,7 +2389,6 @@ if (isset($_POST['datatable'])) {
         $output = array(
             "data" => $data
         );
-
     }
 }
 
@@ -2590,12 +2588,11 @@ if (isset($_POST['action'])) {
                 'success' => false,
                 'message' => 'Cet email existe déjà dans GED !'
             ];
-            
+
             echo json_encode($output);
             exit();
-            
         }
-        
+
         // Insertion dans la table utilisateur
         $insert1 = insert(
             'utilisateur',
@@ -2703,6 +2700,36 @@ if (isset($_POST['action'])) {
             [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
         ];
 
+        // Insertion dans la table activite_client
+
+        $insert6 = insert(
+            'activite_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table dirigeant_client
+
+        $insert7 = insert(
+            'dirigeant_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table membre_conseil_client
+
+        $insert8 = insert(
+            'membre_conseil_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
         foreach ($documents as $key => $document) {
 
             // Insérer les documents
@@ -2750,8 +2777,6 @@ if (isset($_POST['action'])) {
                     $db
                 );
             }
-
-
         }
 
         // Créer un dossier pour le client sur le serveur
@@ -2769,17 +2794,14 @@ if (isset($_POST['action'])) {
         if (!file_exists($archive_path)) {
             mkdir($archive_path, 0777, true);
         }
-        $id_departement = select_info('id_departement', 'client', "id_client = $id_client", $db);
-        $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
 
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $sigle_departement . '-' . $code;
-
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-
-        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
-        if ($insert4 && $insert5 && $update2) {
+        if (
+            $insert1 && $insert2 &&
+            $insert3 &&  $insert4 &&
+            $insert5 && $insert6 &&
+            $insert7 && $insert8 &&
+            $update1 && $update2
+        ) {
             $output = array(
                 'success' => true,
                 'message' => 'Un nouveau client a été ajouté !'
@@ -2804,7 +2826,7 @@ if (isset($_POST['action'])) {
         $output = $result;
     }
 
-    if ($_POST['action'] == 'edit_client'){
+    if ($_POST['action'] == 'edit_client') {
         $id_client = $_POST['id_client'];
         $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
         $id_secteur_activite = $_POST['secteur_activite_client'];
@@ -2843,8 +2865,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             );
         }
-
-
     }
 
     if ($_POST['action'] == 'activer_compte') {
@@ -3017,7 +3037,7 @@ if (isset($_POST['action'])) {
 
     // espace client
     if ($_POST['action'] == 'check_dossier_pris_en_charge') {
-            
+
         $id_client = $_SESSION['id_view_client'];
 
         $query = "SELECT * FROM client WHERE id_client = '$id_client'";
@@ -3500,7 +3520,6 @@ if (isset($_POST['action'])) {
                     $dd['id_utilisateur'],
                     $db
                 );
-
             } else {
                 $output = [
                     'success' => false,
@@ -3976,7 +3995,6 @@ if (isset($_POST['action'])) {
                 ];
             }
         }
-        
     }
 
     if ($_POST['action'] == 'fetch_page_client') {
@@ -4176,32 +4194,31 @@ if (isset($_POST['action'])) {
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'doc_19_quiz_lcb':
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'doc_8_fiche_id_client':
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'document_file':
                             if ($row['table_info_document'] == 'doc_6_info_lettre_mission')
                                 if ($row['statut_document'] == 'valide')
                                     $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         default:
                             # code...
                             break;
                     }
-                }else if ($aspect_document == 'techniques') {
+                } else if ($aspect_document == 'techniques') {
                     if ($row['statut_document'] == 'valide')
                         $nbr_doc_ready_techniques++;
                 }
-                    
             }
 
             if ($nbr_doc_ready_juridiques_et_administratifs >= 4) {
@@ -4213,7 +4230,7 @@ if (isset($_POST['action'])) {
                         </svg>
                     </span>
                 HTML;
-            }else{
+            } else {
                 $ready_icon_juridiques_et_administratifs = <<<HTML
                     <span class="svg-icon svg-icon-4 svg-icon-danger">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4242,7 +4259,7 @@ if (isset($_POST['action'])) {
                         </svg>
                     </span>
                 HTML;
-            }else{
+            } else {
                 $ready_icon_techniques = <<<HTML
                     <span class="svg-icon svg-icon-4 svg-icon-danger">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4300,11 +4317,11 @@ if (isset($_POST['action'])) {
             $output['total_facture'] = $result['total_facture'];
             $output['query_total_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['total_regle'] = $result['total_regle'];
             $output['query_total_regle'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $total_regle = $result['total_regle'];
             $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
             $output['taux_recouvrement'] = round(($total_regle / $total_facture) * 100, 2);
@@ -4312,15 +4329,15 @@ if (isset($_POST['action'])) {
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
             $output['query_stat_contrat'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_facture'] = stat_ca_facture_client($db, $id_client);
             $output['query_stat_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_non_facture'] = stat_ca_all_client($db, $id_client) - stat_ca_facture_client($db, $id_client);
             $output['query_stat_non_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_encaisse'] = stat_ca_encaisse_client($db, $id_client);
             $output['query_stat_encaisse'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
@@ -5587,7 +5604,7 @@ if (isset($_POST['action'])) {
     }
 
     if ($_POST['action'] == 'exporter_doc') {
-        
+
         if (isset($_POST['header_export'])) {
             $header_export = 'oui';
         } else {
@@ -5610,13 +5627,12 @@ if (isset($_POST['action'])) {
         $mode_export = $_POST['mode_export'];
 
         $redirect_url = "roll/dd/dossiers/docs/export/index.php?id_document={$id_document}&header_export={$header_export}&footer_export={$footer_export}&bg_export={$bg_export}&mode_export={$mode_export}";
-        
+
         $output = [
             'success' => true,
             'message' => 'ok',
             'redirect_url' => $redirect_url
         ];
-
     }
 
     if ($_POST['action'] == 'retirer_dossier') {

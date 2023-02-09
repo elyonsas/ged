@@ -2700,6 +2700,36 @@ if (isset($_POST['action'])) {
             [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
         ];
 
+        // Insertion dans la table activite_client
+
+        $insert6 = insert(
+            'activite_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table dirigeant_client
+
+        $insert7 = insert(
+            'dirigeant_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table membre_conseil_client
+
+        $insert8 = insert(
+            'membre_conseil_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
         foreach ($documents as $key => $document) {
 
             // Insérer les documents
@@ -2765,8 +2795,13 @@ if (isset($_POST['action'])) {
             mkdir($archive_path, 0777, true);
         }
 
-        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
-        if ($insert4 && $insert5 && $update2) {
+        if (
+            $insert1 && $insert2 && 
+            $insert3 &&  $insert4 && 
+            $insert5 && $insert6 &&
+            $insert7 && $insert8 && 
+            $update1 && $update2
+            ) {
             $output = array(
                 'success' => true,
                 'message' => 'Un nouveau client a été ajouté !'
