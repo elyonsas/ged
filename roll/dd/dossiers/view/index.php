@@ -269,53 +269,104 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                     <!--end::Col-->
                     <!--begin::Col-->
                     <div class="col-lg-7">
-                        <!--begin::Card-->
-                        <div class="card mb-5 mb-xxl-8">
-                            <!--begin::Header-->
-                            <div class="card-header border-0 pt-5">
-                                <!--begin::Title-->
-                                <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label fw-bold fs-3 mb-1">Collaborateurs en charge</span>
-                                    <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
-                                </h3>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body pt-0">
-                                <!--begin::Chart-->
-                                <!-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> -->
-                                <!--end::Chart-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!--begin::Card-->
+                                <div class="card mb-5 mb-xxl-8">
+                                    <!--begin::Header-->
+                                    <div class="card-header border-0 pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bold fs-3 mb-1">Collaborateurs en charge</span>
+                                            <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
+                                        </h3>
+                                        <!--end::Title-->
+                                    </div>
+                                    <!--end::Header-->
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-0">
+                                        <!--begin::Chart-->
+                                        <!-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> -->
+                                        <!--end::Chart-->
 
-                                <!--begin::Table container-->
-                                <div class="table-responsive">
-                                    <!--begin::Table-->
-                                    <table id="collabos_dossier" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
-                                        <!--begin::Head-->
-                                        <thead class="fs-7 text-gray-400 text-uppercase">
-                                            <tr>
-                                                <th class="">#</th>
-                                                <th class="min-w-200px">Collaborateur</th>
-                                                <th class="">Téléphone</th>
-                                                <th class="">Rôle</th>
-                                                <th class="text-end">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <!--end::Head-->
-                                        <!--begin::Body-->
-                                        <tbody class="fs-6">
+                                        <!--begin::Table container-->
+                                        <div class="table-responsive">
+                                            <!--begin::Table-->
+                                            <table id="collabos_dossier" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                                                <!--begin::Head-->
+                                                <thead class="fs-7 text-gray-400 text-uppercase">
+                                                    <tr>
+                                                        <th class="">#</th>
+                                                        <th class="min-w-200px">Collaborateur</th>
+                                                        <th class="">Téléphone</th>
+                                                        <th class="">Rôle</th>
+                                                        <th class="text-end">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <!--end::Head-->
+                                                <!--begin::Body-->
+                                                <tbody class="fs-6">
 
-                                        </tbody>
-                                        <!--end::Body-->
-                                    </table>
-                                    <!--end::Table-->
+                                                </tbody>
+                                                <!--end::Body-->
+                                            </table>
+                                            <!--end::Table-->
+                                        </div>
+                                        <!--end::Table container-->
+
+                                    </div>
+                                    <!--end::Body-->
                                 </div>
-                                <!--end::Table container-->
-
+                                <!--end::Card-->
                             </div>
-                            <!--end::Body-->
+                            <div class="col-lg-12">
+                                <!--begin::Card-->
+                                <div class="card mb-5 mb-xxl-8">
+                                    <!--begin::Header-->
+                                    <div class="card-header border-0 pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bold fs-3 mb-1">Demandes de documents</span>
+                                            <!-- <span class="text-muted fw-semibold fs-7">Plus de 100 articles validés</span> -->
+                                        </h3>
+                                        <!--end::Title-->
+                                    </div>
+                                    <!--end::Header-->
+                                    <!--begin::Body-->
+                                    <div class="card-body pt-0">
+                                        <!--begin::Chart-->
+                                        <!-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> -->
+                                        <!--end::Chart-->
+
+                                        <!--begin::Table container-->
+                                        <div class="table-responsive">
+                                            <!--begin::Table-->
+                                            <table id="all_demande" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                                                <!--begin::Head-->
+                                                <thead class="fs-7 text-gray-400 text-uppercase">
+                                                    <tr>
+                                                        <th class="">#</th>
+                                                        <th class="min-w-200px">Document</th>
+                                                        <th class="">statut</th>
+                                                    </tr>
+                                                </thead>
+                                                <!--end::Head-->
+                                                <!--begin::Body-->
+                                                <tbody class="fs-6">
+
+                                                </tbody>
+                                                <!--end::Body-->
+                                            </table>
+                                            <!--end::Table-->
+                                        </div>
+                                        <!--end::Table container-->
+
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                                <!--end::Card-->
+                            </div>
                         </div>
-                        <!--end::Card-->
                     </div>
                     <!--end::Col-->
                 </div>
@@ -4881,6 +4932,53 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
             })
         }
 
+        // Datatable5 = datatable demande
+        function update_data_datatable5(data) {
+
+            $("#all_demande").DataTable().destroy();
+            var all_demande = $('#all_demande').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "paging": false,
+                "bInfo": false,
+                "bFilter": false,
+                "bSort": false,
+                "order": [],
+                "data": data,
+                "columnDefs": [],
+                "initComplete": function(settings, json) {
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }
+            });
+
+            $('.dataTables_paginate').click(function() {
+                KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
+            })
+
+            $('.sorting').click(function() {
+                setTimeout(() => {
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                }, 1000);
+            })
+        }
+
+        function reload_datatable5() {
+            $.ajax({
+                url: "roll/dd/dossiers/fetch.php",
+                method: "POST",
+                data: {
+                    datatable: 'all_demande',
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    update_data_datatable5(data.data);
+                }
+            })
+        }
+
         // Check dossier pris en charge
         function check_dossier_pris_en_charge() {
             $.ajax({
@@ -5031,6 +5129,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
             reload_datatable2();
             reload_datatable3();
             reload_datatable4();
+            reload_datatable5();
 
             check_dossier_pris_en_charge();
 
@@ -5399,6 +5498,45 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
                 $('.sorting').click(function () {
                     setTimeout(() => {
                         KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js)
+                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                    }, 1000);
+                })
+            }
+        });
+
+        // Datatable for all demandes
+        $.ajax({
+            url: "roll/dd/dossiers/fetch.php",
+            method: "POST",
+            data: {
+                datatable: 'all_demande',
+            },
+            dataType: "JSON",
+            success: function(data) {
+                var all_demande = $('#all_demande').DataTable({
+                    "processing": true,
+                    "serverSide": false,
+                    "paging": false,
+                    "bInfo": false,
+                    "bFilter": false,
+                    "bSort": false,
+                    "order": [],
+                    "data": data.data,
+                    "columnDefs": [],
+                    "initComplete": function(settings, json) {
+                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                        KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
+                    }
+                });
+
+                $('.dataTables_paginate').click(function() {
+                    KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
+                    KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)				
+                })
+
+                $('.sorting').click(function() {
+                    setTimeout(() => {
+                        KTMenu.createInstances('.drop_action'); // Ici, nous avons créé des instances de menu ayant pour class .drop_action (Check on line :2599 of scripts.bundle.js) 
                         KTApp.createInstances(); // Ici, nous avons recréer toutes les instances des utilitaires comme "tooltip" "popover" et autres (:6580 of scripts.bundle.js)
                     }, 1000);
                 })

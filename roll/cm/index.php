@@ -44,7 +44,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
 		<div id="kt_app_content_container" class="app-container container-fluid">
 			<div class="container-xxl" id="kt_content_container">
 				<!--begin::Row-->
-				<div id="tb-stat" class="row m-auto my-5">
+				<div id="tb-stat" class="row my-5">
 
 					<div class="col-md-4 col-lg-3 mb-5 mb-lg-0">
 						<!--begin::Card widget 17-->

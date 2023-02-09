@@ -16,7 +16,7 @@ if (isset($_POST['datatable'])) {
     if ($_POST['datatable'] == 'all_dossiers') {
 
         $output = array();
-        
+
         if (isset($_SESSION['data_client_secteur_activite']) && $_POST['data_client'] != '') {
             $result = $_SESSION['data_client_secteur_activite'];
         } else {
@@ -429,6 +429,328 @@ if (isset($_POST['datatable'])) {
 
             $data[] = $sub_array;
             $i++;
+        }
+
+
+        $output = array(
+            "data" => $data
+        );
+    }
+
+    if ($_POST['datatable'] == 'all_demande') {
+
+        $output = array();
+        $id_client = $_SESSION['id_view_client'];
+
+        $query = "SELECT * FROM document WHERE id_client = $id_client AND statut_document = 'demande' ORDER BY updated_at_document DESC";
+
+
+        $statement = $db->prepare($query);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        $data = array();
+
+        foreach ($result as $row) {
+
+            $sub_array = array();
+
+            $id_document = $row['id_document'];
+            $n_document = $row['n_document'];
+            $matricule_client = find_info_client('matricule_client', $row['id_client'], $db);
+            $titre_document = $row['titre_document'];
+            $max_titre_document = (strlen($titre_document) > 55) ? substr($titre_document, 0, 55) . '...' : $titre_document;
+            $type_document = $row['type_document'];
+            $table_document = $row['table_document'];
+            $table_info_document = $row['table_info_document'];
+            $derniere_modif = date('d/m/Y H:i:s', strtotime($row['updated_at_document']));
+            $statut_document = $row['statut_document'];
+            $src_scan_document = $row['src_scan_document'];
+
+            $statut_document = <<<HTML
+                <span class="badge badge-light-danger">Invalidé</span>
+            HTML;
+
+            // N° Document
+            $sub_array[] = <<<HTML
+                $n_document
+            HTML;
+
+            // Document
+            if ($statut_document == 'valide') {
+
+                if ($src_scan_document != NULL) {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_scan d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_scan_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                } else {
+
+                    if ($type_document == 'generate') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'write') {
+
+                        $sub_array[] = <<<HTML
+                            <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    } else if ($type_document == 'file') {
+
+                        $sub_array[] = <<<HTML
+                            <div class="preview_doc_file d-flex flex-column justify-content-center" data-id_document="{$id_document}" data-bs-toggle="modal" data-bs-target="#preview_doc_file_modal">
+                                <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                                class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                            </div>
+                        HTML;
+                    }
+                }
+            } else {
+
+                $sub_array[] = <<<HTML
+                    <div style="cursor: not-allowed;" class="d-flex flex-column justify-content-center" data-id_document="{$id_document}">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-dismiss="click" title="{$titre_document}"
+                        class="fs-6 text-gray-800 text-hover-primary">$max_titre_document</span>
+                    </div>
+                HTML;
+            }
+
+            // Statut
+            $sub_array[] = <<<HTML
+                $statut_document
+            HTML;
+
+            // Select table_document
+            $query = "SELECT * FROM document, $table_document WHERE document.id_document = $table_document.id_document AND $table_document.id_document = $id_document";
+            $statement = $db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+
+
+            // Action
+            if ($type_document == 'generate') {
+                $action = <<<HTML
+
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            
+                            <span style="cursor: not-allowed;"
+                                class="btn btn-icon btn-bg-light btn-sm me-1">
+                                <i class="bi bi-eye-fill fs-3"></i>
+                            </span>
+                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                            </a> -->
+                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                <i class="bi bi-three-dots fs-3"></i>
+                            </button>
+                            <!--begin::Menu 3-->
+                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                </div>
+                                <!--end::Menu item-->
+
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="edit_form_doc_generate menu-link px-3" data-id_document="{$id_document}">Remplir le formulaire</a>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 3-->
+                        </div>
+                    </td>
+
+                HTML;
+            } else if ($type_document == 'write') {
+                $action = <<<HTML
+
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            
+                            <span style="cursor: not-allowed;"
+                                class="btn btn-icon btn-bg-light btn-sm me-1">
+                                <i class="bi bi-eye-fill fs-3"></i>
+                            </span>
+                            <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                            </a> -->
+                            <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                <i class="bi bi-three-dots fs-3"></i>
+                            </button>
+                            <!--begin::Menu 3-->
+                            <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                </div>
+                                <!--end::Menu item-->
+
+                                <!-- begin::Menu item -->
+                                <div class="menu-item px-3">
+                                    <a href="" class="edit_doc_write menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_write_modal" data-id_document="{$id_document}">Rédiger le document</a>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 3-->
+                        </div>
+                    </td>
+
+                HTML;
+            } else if ($type_document == 'file') {
+
+                if ($table_document != 'document_file') {
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                
+                                <span style="cursor: not-allowed;"
+                                    class="btn btn-icon btn-bg-light btn-sm me-1">
+                                    <i class="bi bi-eye-fill fs-3"></i>
+                                </span>
+                                <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                </a> -->
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                    <!-- begin::Menu item -->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!-- begin::Menu item -->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                } else {
+                    if ($table_info_document != NULL) {
+
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;"
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_info_doc_file menu-link px-3" data-id_document="{$id_document}">Ajouter informations</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    } else {
+                        $action = <<<HTML
+
+                            <td>
+                                <div class="d-flex justify-content-end flex-shrink-0">
+                                    
+                                    <span style="cursor: not-allowed;"
+                                        class="btn btn-icon btn-bg-light btn-sm me-1">
+                                        <i class="bi bi-eye-fill fs-3"></i>
+                                    </span>
+                                    <!-- <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="bi bi-clipboard2-plus-fill fs-3"></i>
+                                    </a> -->
+                                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        <i class="bi bi-three-dots fs-3"></i>
+                                    </button>
+                                    <!--begin::Menu 3-->
+                                    <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="view_detail_document menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_document_modal" data-id_document="{$id_document}">Détails</a>
+                                        </div>
+                                        <!--end::Menu item-->
+
+                                        <!-- begin::Menu item -->
+                                        <div class="menu-item px-3">
+                                            <a href="" class="edit_doc_file menu-link px-3" data-bs-toggle="modal" data-bs-target="#edit_doc_file_modal" data-id_document="{$id_document}">Importer le document</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu 3-->
+                                </div>
+                            </td>
+
+                        HTML;
+                    }
+                }
+            }
+
+            $sub_array[] = $action;
+
+            $data[] = $sub_array;
         }
 
 
@@ -2042,7 +2364,6 @@ if (isset($_POST['datatable'])) {
         $output = array(
             "data" => $data
         );
-
     }
 }
 
@@ -2242,12 +2563,11 @@ if (isset($_POST['action'])) {
                 'success' => false,
                 'message' => 'Cet email existe déjà dans GED !'
             ];
-            
+
             echo json_encode($output);
             exit();
-            
         }
-        
+
         // Insertion dans la table utilisateur
         $insert1 = insert(
             'utilisateur',
@@ -2355,6 +2675,36 @@ if (isset($_POST['action'])) {
             [NULL, NULL, 19, 'DOC N°19 Questionnaire Lutte Anti Blanchiment', 'generate', 'doc_19_quiz_lcb', NULL, 2, 'invalide', 'juridiques_et_administratifs', 'permanent', 'connaissance_generale_client', '2022-11-20 10:14:20', '2022-12-29 17:47:17', 6, NULL, '', NULL, 2, 1, 7]
         ];
 
+        // Insertion dans la table activite_client
+
+        $insert6 = insert(
+            'activite_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table dirigeant_client
+
+        $insert7 = insert(
+            'dirigeant_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
+        // Insertion dans la table membre_conseil_client
+
+        $insert8 = insert(
+            'membre_conseil_client',
+            [
+                'id_client' => $id_client,
+            ],
+            $db
+        );
+
         foreach ($documents as $key => $document) {
 
             // Insérer les documents
@@ -2402,8 +2752,6 @@ if (isset($_POST['action'])) {
                     $db
                 );
             }
-
-
         }
 
         // Créer un dossier pour le client sur le serveur
@@ -2421,17 +2769,14 @@ if (isset($_POST['action'])) {
         if (!file_exists($archive_path)) {
             mkdir($archive_path, 0777, true);
         }
-        $id_departement = select_info('id_departement', 'client', "id_client = $id_client", $db);
-        $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
 
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $sigle_departement . '-' . $code;
-
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-
-        // if ($insert1 && $insert2 && $insert3 && $insert4 && $update1) {
-        if ($insert4 && $insert5 && $update2) {
+        if (
+            $insert1 && $insert2 &&
+            $insert3 &&  $insert4 &&
+            $insert5 && $insert6 &&
+            $insert7 && $insert8 &&
+            $update1 && $update2
+        ) {
             $output = array(
                 'success' => true,
                 'message' => 'Un nouveau client a été ajouté !'
@@ -2456,7 +2801,7 @@ if (isset($_POST['action'])) {
         $output = $result;
     }
 
-    if ($_POST['action'] == 'edit_client'){
+    if ($_POST['action'] == 'edit_client') {
         $id_client = $_POST['id_client'];
         $id_utilisateur = select_info('id_utilisateur', 'client', "id_client = $id_client", $db);
         $id_secteur_activite = select_info('id_secteur_activite', 'client', "id_client = $id_client", $db);
@@ -2495,8 +2840,6 @@ if (isset($_POST['action'])) {
                 'message' => 'Une erreur s\'est produite !'
             );
         }
-
-
     }
 
     if ($_POST['action'] == 'activer_compte') {
@@ -3129,7 +3472,6 @@ if (isset($_POST['action'])) {
                     $dd['id_utilisateur'],
                     $db
                 );
-
             } else {
                 $output = [
                     'success' => false,
@@ -3605,7 +3947,6 @@ if (isset($_POST['action'])) {
                 ];
             }
         }
-        
     }
 
     if ($_POST['action'] == 'fetch_page_client') {
@@ -3799,32 +4140,31 @@ if (isset($_POST['action'])) {
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'doc_19_quiz_lcb':
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'doc_8_fiche_id_client':
                             if ($row['statut_document'] == 'valide')
                                 $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         case 'document_file':
                             if ($row['table_info_document'] == 'doc_6_info_lettre_mission')
                                 if ($row['statut_document'] == 'valide')
                                     $nbr_doc_ready_juridiques_et_administratifs++;
                             break;
-    
+
                         default:
                             # code...
                             break;
                     }
-                }else if ($aspect_document == 'techniques') {
+                } else if ($aspect_document == 'techniques') {
                     if ($row['statut_document'] == 'valide')
                         $nbr_doc_ready_techniques++;
                 }
-                    
             }
 
             if ($nbr_doc_ready_juridiques_et_administratifs >= 4) {
@@ -3836,7 +4176,7 @@ if (isset($_POST['action'])) {
                         </svg>
                     </span>
                 HTML;
-            }else{
+            } else {
                 $ready_icon_juridiques_et_administratifs = <<<HTML
                     <span class="svg-icon svg-icon-4 svg-icon-danger">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3865,7 +4205,7 @@ if (isset($_POST['action'])) {
                         </svg>
                     </span>
                 HTML;
-            }else{
+            } else {
                 $ready_icon_techniques = <<<HTML
                     <span class="svg-icon svg-icon-4 svg-icon-danger">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3923,11 +4263,11 @@ if (isset($_POST['action'])) {
             $output['total_facture'] = $result['total_facture'];
             $output['query_total_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['total_regle'] = $result['total_regle'];
             $output['query_total_regle'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $total_regle = $result['total_regle'];
             $total_facture = ($result['total_facture'] == 0) ? 1 : $result['total_facture'];
             $output['taux_recouvrement'] = round(($total_regle / $total_facture) * 100, 2);
@@ -3935,15 +4275,15 @@ if (isset($_POST['action'])) {
             $output['stat_contrat'] = stat_ca_contrat_client($db, $id_client);
             $output['query_stat_contrat'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur 
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND type_facture = 'contrat' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_facture'] = stat_ca_facture_client($db, $id_client);
             $output['query_stat_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_non_facture'] = stat_ca_all_client($db, $id_client) - stat_ca_facture_client($db, $id_client);
             $output['query_stat_non_facture'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture = 'en attente' AND statut_facture <> 'supprime'";
-            
+
             $output['stat_encaisse'] = stat_ca_encaisse_client($db, $id_client);
             $output['query_stat_encaisse'] = "SELECT * FROM utilisateur, compte, client, facture WHERE utilisateur.id_utilisateur = compte.id_utilisateur
             AND utilisateur.id_utilisateur = client.id_utilisateur AND facture.id_client = client.id_client AND client.id_client = $id_client AND statut_facture <> 'en attente' AND statut_facture <> 'supprime'";
@@ -4167,7 +4507,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4175,7 +4515,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -4202,7 +4542,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4210,7 +4550,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://elyonsas.com/ged//assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -5210,7 +5550,7 @@ if (isset($_POST['action'])) {
     }
 
     if ($_POST['action'] == 'exporter_doc') {
-        
+
         if (isset($_POST['header_export'])) {
             $header_export = 'oui';
         } else {
@@ -5233,13 +5573,12 @@ if (isset($_POST['action'])) {
         $mode_export = $_POST['mode_export'];
 
         $redirect_url = "roll/cm/dossiers/docs/export/index.php?id_document={$id_document}&header_export={$header_export}&footer_export={$footer_export}&bg_export={$bg_export}&mode_export={$mode_export}";
-        
+
         $output = [
             'success' => true,
             'message' => 'ok',
             'redirect_url' => $redirect_url
         ];
-
     }
 
     if ($_POST['action'] == 'retirer_dossier') {
