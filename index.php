@@ -92,7 +92,10 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Page bg image-->
 		<style>
 			body {
-				background-image: url('assets/media/auth/bg6.jpg');
+				background-image: url('assets/media/auth/bg23.png');
+				background-color: #999999 !important;
+				background-blend-mode: multiply;
+
 			}
 
 			[data-theme="dark"] body {
@@ -111,10 +114,10 @@ License: For each use you must have a valid license purchased only from above li
 					<img class="theme-dark-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20" src="assets/media/auth/agency-ged.png" alt="" />
 					<!--end::Image-->
 					<!--begin::Title-->
-					<h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7">Quality in Everything We Do !</h1>
+					<h1 class="fs-2qx fw-bold text-center mb-7" style="color: #ffffff;">Quality in Everything We Do !</h1>
 					<!--end::Title-->
 					<!--begin::Text-->
-					<div class="text-dark fs-4 text-center fw-semibold">
+					<div class="fs-4 text-center fw-semibold" style="color: #ffffff;">
 						Audit, Commissariat aux comptes, Expertise Comptable & Conseils<br>
 						Nous avons pour mission de donner confiance à notre clientèle et au public<br>
 						et de résoudre ce qui est important pour vous.
