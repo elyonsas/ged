@@ -2363,7 +2363,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                         </div>
 
                         <div class="row mb-5">
-                            <label class="fs-5 mb-2">Boite postal</label>
+                            <label class="fs-5 mb-2">Boite postale</label>
                             <div class="input-group">
                                 <input id="table_doc_8_fiche_id_client_num_code" type="text" class="form-control" placeholder="" name="num_code">
                                 <span class="input-group-text">-</span>
