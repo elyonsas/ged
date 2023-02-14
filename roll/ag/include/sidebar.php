@@ -1,4 +1,26 @@
 <!--begin::Wrapper-->
+<style>
+    #kt_app_sidebar{
+        background-image: url('assets/media/auth/bg19.jpg'); 
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: cover;
+        background-color: #999999 !important;
+        background-blend-mode: multiply;
+    }
+
+    #kt_app_sidebar .menu-title{
+        color: #ffffff !important;
+    }
+
+    #kt_app_main {
+        background-image: url('assets/media/auth/bg5.jpg'); 
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: cover;
+        background-blend-mode: multiply;
+    }
+</style>
 <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
     <!--begin::sidebar-->
     <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
