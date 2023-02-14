@@ -150,7 +150,7 @@
                     ?>
                     <?= single_menu('Saisies clients', $icon, 'roll/cm/saisies-clients', $menu_saisie_client) ?>
                     <!--end:Menu item-->
-                    <?php if ($_SESSION['id_utilisateur'] == 7) : ?>
+                    <?php if ($_SESSION['id_utilisateur'] == 8) : ?>
 
                     <!--begin:Menu item-->
                     <?php
