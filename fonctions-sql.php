@@ -6073,8 +6073,11 @@
                 </tr>
             HTML;
 
-            $total_ca += $row['chiffre_affaires_ht_activite_client'];
-            $total_percent += $row['percent_activite_in_ca_activite_client'];
+            if ($row['chiffre_affaires_ht_activite_client'] != null)
+                $total_ca += $row['chiffre_affaires_ht_activite_client'];
+
+            if ($row['percent_activite_in_ca_activite_client'] != null)
+                $total_percent += $row['percent_activite_in_ca_activite_client'];
             
         }
 
