@@ -92,11 +92,16 @@ License: For each use you must have a valid license purchased only from above li
 		<!--begin::Page bg image-->
 		<style>
 			body {
-				background-image: url('assets/media/auth/bg6.jpg');
+				background-image: url('assets/media/auth/bg23.png');
+				background-color: #999999 !important;
+				background-blend-mode: multiply;
+
 			}
 
 			[data-theme="dark"] body {
-				background-image: url('assets/media/auth/bg6-dark.jpg');
+				background-image: url('assets/media/auth/bg23.png');
+				background-color: #252525 !important;
+				background-blend-mode: multiply;
 			}
 		</style>
 		<!--end::Page bg image-->
