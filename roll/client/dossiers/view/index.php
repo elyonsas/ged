@@ -2292,7 +2292,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/client/include/sidebar.php')
                                 <span class="input-group-text">-</span>
                                 <input id="table_doc_8_fiche_id_client_boite_postal" type="text" class="form-control" placeholder="Boite postale" name="boite_postal">
                                 <span class="input-group-text">-</span>
-                                <input id="table_doc_8_fiche_id_client_ville" type="text" class="form-control" placeholder="Boite postale" name="ville">
+                                <input id="table_doc_8_fiche_id_client_ville" type="text" class="form-control" placeholder="Ville" name="ville">
                             </div>
                         </div>
 
