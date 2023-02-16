@@ -108,6 +108,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/cm/include/sidebar.php');
                                         <th class="min-w-75px">Montant réglé</th>
                                         <!-- <th class="min-w-75px">Solde</th> -->
                                         <th class="">Statut</th>
+                                        <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
                                 <!--end::Head-->
