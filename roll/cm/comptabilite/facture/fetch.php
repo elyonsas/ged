@@ -171,6 +171,164 @@ if (isset($_POST['datatable'])) {
                $statut_facture_html
             HTML;
 
+            // Action
+            switch ($statut_facture) {
+                case 'en attente':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">                            
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="emettre_facture menu-link px-3" data-id_facture="{$id_facture}">Émettre la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+                case 'en cour':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">                            
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="encaisser_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#encaisser_facture_modal" data-id_facture="{$id_facture}">Encaisser facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+                case 'paye':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+                case 'relance':
+                    $action = <<<HTML
+
+                        <td>
+                            <div class="d-flex justify-content-end flex-shrink-0">
+                                <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="bi bi-three-dots fs-3"></i>
+                                </button>
+                                <!--begin::Menu 3-->
+                                <div class="drop_action menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3" data-kt-menu="true">
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="view_detail_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#detail_facture_modal" data-id_facture="{$id_facture}">Détails</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="modifier_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#modifier_facture_modal" data-id_facture="{$id_facture}">Modifier facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="encaisser_facture menu-link px-3" data-bs-toggle="modal" data-bs-target="#encaisser_facture_modal" data-id_facture="{$id_facture}">Encaisser facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="" class="supprimer_facture text-hover-danger menu-link px-3" data-id_facture="{$id_facture}">Supprimer la facture</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                        </td>
+
+                    HTML;
+                    break;
+            }
+
+            $sub_array[] = $action;
+
             $data[] = $sub_array;
         }
 
