@@ -2,7 +2,7 @@
     date_default_timezone_set('Africa/Porto-Novo');
     setlocale(LC_TIME, "fr_FR", "French");
     define('DB_NAME', 'u333556793_ged');
-    define('DB_USER', 'u333556793_root');
+    define('DB_USER', 'u333556793_ged');
     define('DB_PASSWORD', 'Arn5551666*');
     define('DB_HOST', 'localhost');
 
