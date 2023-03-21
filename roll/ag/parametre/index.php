@@ -352,6 +352,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/ag/include/sidebar.php');
                                 positionClass: "toastr-bottom-left",
                             });
 
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+
 						} else {
 							toastr.error(data.message, '', {
 								positionClass: "toastr-bottom-left",
