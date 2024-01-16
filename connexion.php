@@ -140,6 +140,9 @@ if (isset($_POST['credential'])) {
                 $_SESSION['tel_utilisateur'] = $data['tel_utilisateur'];
                 $_SESSION['avatar_utilisateur'] = $data['avatar_utilisateur'];
 
+                // Variable de session pour les paramètres
+                $_SESSION['param_sidebar_minimize'] = 'off';
+
                 if ($data['type_compte'] == "admin") {
                     $message = "parametres corrects - admin";
                 }
