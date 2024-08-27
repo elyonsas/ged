@@ -1,9 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 $message = '';
 

@@ -1,9 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 use Ramsey\Uuid\Uuid;
 
 connected('client');
@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
         $email_compte = $_POST['email_compte'];
 
         // upload avatar
-        $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/media/avatars/' . $avatar_utilisateur;
+        $upload_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/media/avatars/' . $avatar_utilisateur;
         $upload = move_uploaded_file($_FILES['avatar_utilisateur']['tmp_name'], $upload_path);
 
         if ($_FILES['avatar_utilisateur']['name'] != '') {

@@ -1,9 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 connected('dd');
 
@@ -24,7 +24,7 @@ $result = $statement->fetch();
 $table_document = $result['table_document'];
 $titre_document = $result['titre_document'];
 
-$snappy = new Pdf($_SERVER['DOCUMENT_ROOT'] . '/ged/assets/plugins/custom/wkhtmltopdf/bin/wkhtmltopdf');
+$snappy = new Pdf($_SERVER['DOCUMENT_ROOT'] . '/assets/plugins/custom/wkhtmltopdf/bin/wkhtmltopdf');
 
 $snappy->setOption('encoding', 'UTF-8');
 $snappy->setOption('image-quality', 100);

@@ -1,27 +1,27 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 if (isset($_SESSION['id_compte'])) {
 	if ($_SESSION['type_compte'] == "admin") {
-		header("Location:/ged/roll/ag");
+		header("Location:/roll/ag");
 	}
 	
 	if ($_SESSION['type_compte'] == "ag") {
-		header("Location:/ged/roll/ag");
+		header("Location:/roll/ag");
 	}
 
 	if ($_SESSION['type_compte'] == "dd") {
-		header("Location:/ged/roll/dd");
+		header("Location:/roll/dd");
 	}
 
 	if ($_SESSION['type_compte'] == "cm") {
-		header("Location:/ged/roll/cm");
+		header("Location:/roll/cm");
 	}
 
 	if ($_SESSION['type_compte'] == "client") {
-		header("Location:/ged/roll/client");
+		header("Location:/roll/client");
 	}
 }
 ?>
@@ -41,7 +41,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Head-->
 
 <head>
-	<!-- <base href="/ged/" /> -->
+	<!-- <base href="/" /> -->
 	<title>GED-ELYON - Connexion</title>
 	<meta charset="utf-8" />
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask & Laravel versions. Grab your copy now and get life-time updates for free." />

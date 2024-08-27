@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
 
     // Add log
     function add_log($action, $message, $id_utilisateur, PDO $db)

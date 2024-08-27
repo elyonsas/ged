@@ -1,9 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 use Ramsey\Uuid\Uuid;
 
@@ -2759,8 +2759,8 @@ if (isset($_POST['action'])) {
         $sigle_departement = select_info('sigle_departement', 'departement', "id_departement = $id_departement", $db);
         $nom_client = $_POST['nom_client'];
 
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $sigle_departement . '-' . $code;
-        $archive_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/elfinder/Documents/' . $sigle_departement . '-' . $code . '-' . $nom_client;
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $sigle_departement . '-' . $code;
+        $archive_path = $_SERVER['DOCUMENT_ROOT'] . '/elfinder/Documents/' . $sigle_departement . '-' . $code . '-' . $nom_client;
 
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
@@ -4507,7 +4507,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4515,7 +4515,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -4542,7 +4542,7 @@ if (isset($_POST['action'])) {
         // Si le type du document est dans le tableau ['docx','.ppt','.pptx','.doc','.xls','.xlsx']
         if (in_array($type_document, ['.docx', '.ppt', '.pptx', '.doc', '.xls', '.xlsx'])) {
             $output['iframe_html'] .= <<<HTML
-                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
+                <iframe class="iframe_html" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/elyonsas/main/assets/docs/{$matricule_client}/{$src_document}" width='100%' height='100%' frameborder='0'></iframe>
             HTML;
         } else if ($type_document == '.pdf') {
             $output['iframe_html'] .= <<<HTML
@@ -4550,7 +4550,7 @@ if (isset($_POST['action'])) {
             HTML;
         } else {
             $output['iframe_html'] = <<<HTML
-                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/ged/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe class="iframe_html" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/elyonsas/main/assets/docs/{$matricule_client}/{$src_document}&embedded=true" width="100%" height="100%" frameborder="0"></iframe>
             HTML;
         }
     }
@@ -4724,7 +4724,7 @@ if (isset($_POST['action'])) {
 
             $infoPath = pathinfo($src_temp_document);
             $type_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/' . $src_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
@@ -4791,7 +4791,7 @@ if (isset($_POST['action'])) {
 
             $infoPath = pathinfo($src_scan_temp_document);
             $type_scan_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_scan_document;
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/' . $src_scan_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
@@ -5712,7 +5712,7 @@ if (isset($_FILES['file'])) {
         $matricule_client = find_info_client('matricule_client', $id_client, $db);
 
         $tempFile = $_FILES['file']['tmp_name'];
-        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/';
 
         $uuid = Uuid::uuid1();
         $uniq_str = $uuid->toString();
@@ -5751,7 +5751,7 @@ if (isset($_FILES['file'])) {
         $matricule_client = find_info_client('matricule_client', $id_client, $db);
 
         $tempFile = $_FILES['file']['tmp_name'];
-        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/';
 
         $uuid = Uuid::uuid1();
         $uniq_str = $uuid->toString();

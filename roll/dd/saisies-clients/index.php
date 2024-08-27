@@ -1,7 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 connected('dd');
 
@@ -28,11 +28,11 @@ $menu_hist_collabo = "";
 
 $data_client = $_GET['data_client'] ?? '';
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/html_header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/roll/dd/include/html_header.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/roll/dd/include/header.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/roll/dd/include/sidebar.php');
 
 ?>
 
@@ -115,7 +115,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 <!--end::Content wrapper-->
 
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/footer_activities.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/roll/dd/include/footer_activities.php'); ?>
 
 
 <!--begin::Javascript-->
@@ -150,7 +150,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/sidebar.php');
 <script src="assets/js/custom/utilities/modals/new-target.js"></script>
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/roll/dd/include/pages_script.php'); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/roll/dd/include/pages_script.php'); ?>
 
 <script>
     $(document).ready(function() {

@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
     use Ramsey\Uuid\Uuid;
 
     use PHPMailer\PHPMailer\PHPMailer;
@@ -16,7 +16,7 @@
                 $uuid = Uuid::uuid1();
                 $deceive_uri_rand_str = $uuid->toString();
     
-                header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
+                header("Location:/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
                 exit();
             }
         } else {
@@ -26,7 +26,7 @@
                 $uuid = Uuid::uuid1();
                 $deceive_uri_rand_str = $uuid->toString();
     
-                header("Location:/ged/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
+                header("Location:/?redirect=true&deceive_uri_rand_str=$deceive_uri_rand_str&redirect_uri=$redirect");
                 exit();
             }
         }

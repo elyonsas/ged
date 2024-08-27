@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/global.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/global.php');
 
 $dbName = DB_NAME;
 $dbHost = DB_HOST;

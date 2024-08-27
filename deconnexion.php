@@ -1,5 +1,5 @@
 <?php 
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
     // Supprimer les variables de session
     $_SESSION = [];
     session_destroy();

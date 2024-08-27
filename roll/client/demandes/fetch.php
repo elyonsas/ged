@@ -1,9 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/db.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/ged/fonctions-sql.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/fonctions-sql.php');
 
 use Ramsey\Uuid\Uuid;
 
@@ -561,7 +561,7 @@ if (isset($_POST['action'])) {
 
             $infoPath = pathinfo($src_temp_document);
             $type_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_document;
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/' . $src_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
@@ -628,7 +628,7 @@ if (isset($_POST['action'])) {
 
             $infoPath = pathinfo($src_scan_temp_document);
             $type_scan_document = '.' . $infoPath['extension'];
-            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/' . $src_scan_document;
+            $file_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/' . $src_scan_document;
 
             if (is_file($file_path)) {
                 unlink($file_path);
@@ -749,7 +749,7 @@ if (isset($_FILES['file'])) {
         $matricule_client = find_info_client('matricule_client', $id_client, $db);
 
         $tempFile = $_FILES['file']['tmp_name'];
-        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/ged/assets/docs/' . $matricule_client . '/';
+        $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/docs/' . $matricule_client . '/';
 
         $uuid = Uuid::uuid1();
         $uniq_str = $uuid->toString();
